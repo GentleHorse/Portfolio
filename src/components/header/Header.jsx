@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="fixed mt-5 ml-5 z-10">
+    <header className="fixed right-1 text-right mt-5 mr-5 z-10">
       <section>
         <p className="font-roboto mb-[5px] text-[20px] text-[#FFB11B]">
           This is "robot" font.
