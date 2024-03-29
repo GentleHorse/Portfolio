@@ -1,4 +1,4 @@
-import { useKeyboardControls } from "@react-three/drei";
+import { Outlines, useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
@@ -7,7 +7,23 @@ const MOVE_SPEED_NORMAL = 0.5;
 const MOVE_SPEED_FAST = 1.5;
 const JUMP_FORCE = 0.5;
 
-export default function TestCube() {
+/**
+ * 
+ * @param {*float} scale scale (RigidBody)
+ * @param {*array} position position (RigidBody)
+ * @param {*str} outlinesColor color of Outline
+ * @param {*float} thickness thickness of Outline
+ * @param {*boolean} outlines visibility of Outline
+ * 
+ * @returns Test Cube Geometry
+ */
+export default function TestCube({
+  scale = 0.5,
+  position = [0, 3, 0],
+  outlinesColor = "black",
+  thickness = 0.07,
+  outlines = false,
+}) {
   const body = useRef();
 
   const [subscribeKeys, getKeys] = useKeyboardControls();
@@ -51,11 +67,14 @@ export default function TestCube() {
 
   const jump = () => {
     body.current.applyImpulse({ x: 0, y: JUMP_FORCE, z: 0 }, true);
-    body.current.applyTorqueImpulse({
-      x: Math.random() * 0.01,
-      y: Math.random() * 0.01,
-      z: Math.random() * 0.01,
-    }, true);
+    body.current.applyTorqueImpulse(
+      {
+        x: Math.random() * 0.01,
+        y: Math.random() * 0.01,
+        z: Math.random() * 0.01,
+      },
+      true
+    );
   };
 
   useEffect(() => {
@@ -68,7 +87,7 @@ export default function TestCube() {
 
     return () => {
       unsubscribeJump();
-    }
+    };
   }, []);
 
   return (
@@ -78,8 +97,11 @@ export default function TestCube() {
       friction={0.2}
       linearDamping={true}
       angularDamping={true}
+      scale={scale}
+      position={position}
     >
-      <mesh scale={0.5} position={[0, 3, 0]}>
+      <mesh>
+        <Outlines color={outlinesColor} thickness={thickness} visible={outlines} />
         <boxGeometry />
         <meshNormalMaterial />
       </mesh>

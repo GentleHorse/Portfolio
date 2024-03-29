@@ -1,4 +1,4 @@
-import { useKeyboardControls } from "@react-three/drei";
+import { Edges, Outlines, useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
@@ -8,7 +8,23 @@ const MOVE_SPEED_FAST = 1.5;
 const TORQUE_FORCE = 0.05;
 const JUMP_FORCE = 0.7;
 
-export default function TestIcosahedron() {
+/**
+ * 
+ * @param {*float} scale scale (RigidBody)
+ * @param {*array} position position (RigidBody)
+ * @param {*str} outlinesColor color of Outline
+ * @param {*float} thickness thickness of Outline
+ * @param {*boolean} outlines visibility of Outline
+ * 
+ * @returns Test Icosahedron Geometry
+ */
+export default function TestIcosahedron({
+  scale = 0.5,
+  position = [0, 3, 0],
+  outlinesColor = "black",
+  thickness = 0.07,
+  outlines = false,
+}) {
   const body = useRef();
 
   const [subscribeKeys, getKeys] = useKeyboardControls();
@@ -62,11 +78,14 @@ export default function TestIcosahedron() {
 
   const jump = () => {
     body.current.applyImpulse({ x: 0, y: JUMP_FORCE, z: 0 }, true);
-    body.current.applyTorqueImpulse({
-      x: Math.random() * 0.01,
-      y: Math.random() * 0.01,
-      z: Math.random() * 0.01,
-    }, true);
+    body.current.applyTorqueImpulse(
+      {
+        x: Math.random() * 0.01,
+        y: Math.random() * 0.01,
+        z: Math.random() * 0.01,
+      },
+      true
+    );
   };
 
   useEffect(() => {
@@ -79,7 +98,7 @@ export default function TestIcosahedron() {
 
     return () => {
       unsubscribeJump();
-    }
+    };
   }, []);
 
   return (
@@ -90,8 +109,11 @@ export default function TestIcosahedron() {
       friction={0.2}
       linearDamping={true}
       angularDamping={true}
+      scale={scale}
+      position={position}
     >
-      <mesh scale={0.5} position={[0, 3, 0]}>
+      <mesh>
+        <Outlines color={outlinesColor} thickness={thickness} visible={outlines} />
         <icosahedronGeometry args={[0.7, 2]} />
         <meshNormalMaterial flatShading={true} />
       </mesh>

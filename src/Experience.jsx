@@ -15,8 +15,8 @@ export default function Experience() {
       <axesHelper />
 
       <Physics debug={true}>
-        <TestIcosahedron />
-        <TestCube />
+        <TestIcosahedron outlines={true} />
+        <TestCube outlines={true} />
         <TestFloor />
       </Physics>
     </>
