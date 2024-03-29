@@ -28,6 +28,8 @@ You can directly download rigged characters from below sites. <br><br>
 - [Free3D](https://free3d.com/)
 - [BLEND SWAP](https://www.blendswap.com/)
 
+### 1-1. Auto rigging via Mixamo
+
 ### cf. Manually rig a custom character (in Blender)
 
 #### cf-0. Activate the "rigify" addon
