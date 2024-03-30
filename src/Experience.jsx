@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import TestCube from "./components/test/TestCube";
 import TestFloor from "./components/test/TestFloor";
@@ -10,6 +10,8 @@ export default function Experience() {
   return (
     <>
       <OrbitControls makeDefault />
+
+      <Environment preset="city" />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, Outlines } from "@react-three/drei";
+
 
 export default function FourthDimensionalBeing(props) {
   const group = useRef();
@@ -12,7 +13,6 @@ export default function FourthDimensionalBeing(props) {
 
   // Animations
   useEffect(() => {
-
     // Test
     // actions.Idle.play();
     // actions.Walk.play();
@@ -22,7 +22,7 @@ export default function FourthDimensionalBeing(props) {
     // actions.Jump_Land.play();
     // actions.Climbing.play();
     actions.Dance.play();
-  })
+  }, []);
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -36,10 +36,11 @@ export default function FourthDimensionalBeing(props) {
           <skinnedMesh
             name="lowpoly-male-abstraction-01001"
             geometry={nodes["lowpoly-male-abstraction-01001"].geometry}
-            material={materials.Material}
+            // material={materials.Material}
             skeleton={nodes["lowpoly-male-abstraction-01001"].skeleton}
           >
-            <meshNormalMaterial />
+            {/* <meshNormalMaterial /> */}
+            <meshStandardMaterial color="crimson" />
           </skinnedMesh>
         </group>
       </group>
