@@ -4,7 +4,7 @@ import TestCube from "./components/test/TestCube";
 import TestFloor from "./components/test/TestFloor";
 import { Perf } from "r3f-perf";
 import TestIcosahedron from "./components/test/TestIcosahedron";
-import { AbstractHuman01 } from "./components/character/abstract-human-01/AbstractHuman01";
+import FourthDimensionalBeing from "./components/character/fourth-dimensional-being/FourthDimensionalBeing";
 
 export default function Experience() {
   return (
@@ -21,7 +21,7 @@ export default function Experience() {
         <TestFloor />
       </Physics>
 
-      <AbstractHuman01 scale={0.1} />
+      <FourthDimensionalBeing scale={0.1} />
     </>
   );
 }
