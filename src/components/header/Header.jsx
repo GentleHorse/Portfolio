@@ -2,6 +2,15 @@ export default function Header() {
   return (
     <header className="fixed right-1 text-right mt-5 mr-5 z-10">
       <section>
+        <p className="font-micro-5 mb-[5px] text-[20px] text-[#FFB11B]">
+          Toshihito End0's Portfolio
+        </p>
+        <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#FFB11B]">
+          Test: character control
+        </p>
+      </section>
+
+      {/* <section>
         <p className="font-roboto mb-[5px] text-[20px] text-[#FFB11B]">
           This is "robot" font.
         </p>
@@ -29,7 +38,7 @@ export default function Header() {
         <p className="font-dot-gothic-16 mb-[5px] text-[20px] text-[#FFB11B]">
           此れは、「ドットゴシック１６」の書体である。
         </p>
-      </section>
+      </section> */}
     </header>
   );
 }

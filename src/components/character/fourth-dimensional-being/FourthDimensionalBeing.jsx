@@ -12,25 +12,26 @@ export default function FourthDimensionalBeing(props) {
   const { actions } = useAnimations(animations, group);
 
   // Animations
-  useEffect(() => {
-    // Test
-    actions.Idle.play();
-    // actions.Walk.play();
-    // actions.Run.play();
-    // actions.Jump_Start.play();
-    // actions.Jump_Idle.play();
-    // actions.Jump_Land.play();
-    // actions.Climbing.play();
-    // actions.Dance.play();
-  }, []);
+  // useEffect(() => {
+  //   // Test
+  //   actions.Idle.play();
+  //   // actions.Walk.play();
+  //   // actions.Run.play();
+  //   // actions.Jump_Start.play();
+  //   // actions.Jump_Idle.play();
+  //   // actions.Jump_Land.play();
+  //   // actions.Climbing.play();
+  //   // actions.Dance.play();
+  // }, []);
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <group
           name="FourthDimensionalBeing"
+          position={[0, -0.9, 0]}
           rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
+          scale={0.0007}
         >
           <primitive object={nodes.mixamorigHips} />
           <skinnedMesh
@@ -39,8 +40,7 @@ export default function FourthDimensionalBeing(props) {
             // material={materials.Material}
             skeleton={nodes["lowpoly-male-abstraction-01001"].skeleton}
           >
-            {/* <meshNormalMaterial /> */}
-            <meshStandardMaterial color="crimson" />
+            <meshStandardMaterial color="silver" metalness={0.7} roughness={0.05} />
           </skinnedMesh>
         </group>
       </group>
