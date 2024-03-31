@@ -14,14 +14,14 @@ export default function FourthDimensionalBeing(props) {
   // Animations
   useEffect(() => {
     // Test
-    // actions.Idle.play();
+    actions.Idle.play();
     // actions.Walk.play();
     // actions.Run.play();
     // actions.Jump_Start.play();
     // actions.Jump_Idle.play();
     // actions.Jump_Land.play();
     // actions.Climbing.play();
-    actions.Dance.play();
+    // actions.Dance.play();
   }, []);
 
   return (
