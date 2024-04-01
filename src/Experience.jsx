@@ -1,32 +1,10 @@
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
-import TestCube from "./components/test/TestCube";
-import TestFloor from "./components/test/TestFloor";
+import { Physics, RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
-
-import TestIcosahedron from "./components/test/TestIcosahedron";
-import FourthDimensionalBeing from "./components/character/fourth-dimensional-being/FourthDimensionalBeing";
+import TestFloor from "./components/test/TestFloor.jsx";
+import CharacterControl from "./components/character/CharacterControl.jsx";
 
 export default function Experience() {
-  const characterURL =
-    "./models/fourth-dimensional-being/fourth-dimensional-being.gltf";
-
-  const animationSet = {
-    idle: "Idle",
-    walk: "Walk",
-    run: "Run",
-    jump: "Jump_Start",
-    jumpIdle: "Jump_Idle",
-    jumpLand: "Jump_Land",
-    fall: "Climbing", // This is for falling from high sky
-    // Currently support four additional animations
-    // action1: "Wave",
-    action2: "Dance",
-    // action3: "Cheer",
-    // action4: "Attack(1h)", // This is special action which can be trigger while walking or running
-  };
-
   return (
     <>
       <OrbitControls makeDefault />
@@ -38,21 +16,23 @@ export default function Experience() {
       <axesHelper />
 
       <Physics debug={Physics} timeStep="vary">
-        {/* <TestIcosahedron outlines={true} /> */}
-        {/* <TestCube outlines={true} /> */}
         <TestFloor />
 
-        <Ecctrl
-          position={[0, 0, 0]}
-          animated
-        >
-          <EcctrlAnimation
-            characterURL={characterURL} // Must have property
-            animationSet={animationSet} // Must have property
-          >
-            <FourthDimensionalBeing />
-          </EcctrlAnimation>
-        </Ecctrl>
+        <RigidBody position={[-1, 3, 0]}>
+          <mesh>
+            <boxGeometry />
+            <meshNormalMaterial />
+          </mesh>
+        </RigidBody>
+
+        <RigidBody colliders="ball" position={[1, 2, 0]}>
+          <mesh>
+            <icosahedronGeometry />
+            <meshNormalMaterial />
+          </mesh>
+        </RigidBody>
+
+        <CharacterControl />
       </Physics>
     </>
   );
