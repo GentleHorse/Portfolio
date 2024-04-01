@@ -43,7 +43,7 @@ export default function Experience() {
         <TestFloor />
 
         <Ecctrl
-          position={[0, 10, 0]}
+          position={[0, 0, 0]}
           animated
         >
           <EcctrlAnimation
@@ -54,8 +54,6 @@ export default function Experience() {
           </EcctrlAnimation>
         </Ecctrl>
       </Physics>
-
-      {/* <FourthDimensionalBeing /> */}
     </>
   );
 }

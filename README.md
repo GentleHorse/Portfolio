@@ -95,5 +95,102 @@ npx gltfjsx public/models/female-cyborg/model.gltf
 npm install ecctrl
 ```
 
+### 3-2. Set up `KeyboardControls` from drei
+In order to use ecctrl, you need to set up [KeyboardControls](https://github.com/pmndrs/drei?tab=readme-ov-file#keyboardcontrols) from drei. In the below code, `KeyboardControls` is set up outside `<Canvas>` in case for implementing an user interface, but it can be inside `<Canvas>`.<br>
 
+```
+const keyboardMap = [
+    { name: "forward", keys: ["ArrowUp", "KeyW"] },
+    { name: "backward", keys: ["ArrowDown", "KeyS"] },
+    { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+    { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+    { name: "jump", keys: ["Space"] },
+    { name: "run", keys: ["Shift"] },
+
+    // Optional animation key map
+    { name: "action1", keys: ["1"] },
+    { name: "action2", keys: ["2"] },
+    { name: "action3", keys: ["3"] },
+    { name: "action4", keys: ["KeyF"] },
+  ];
+
+export default function App() {
+  return (
+    <>
+      <Header />
+
+      <KeyboardControls map={keyboardMap}>
+        <Canvas
+          camera={{
+            fov: 45,
+            near: 0.1,
+            far: 200,
+            position: [1, 5, 6],
+          }}
+        >
+          <Experience />
+        </Canvas>
+      </KeyboardControls>
+    </>
+  );
+}
+```
+
+### 3-3. Set up `Ecctrl` & `EcctrlAnimation` for animated character control
+In below code, `Ecctrl` & `EcctrlAnimation` are set up inside the `Experience` component inside `<Canvas>`. <br>
+
+```
+....
+
+import Ecctrl, { EcctrlAnimation } from "ecctrl";
+
+....
+
+export default function Experience() {
+  const characterURL =
+    "./models/fourth-dimensional-being/fourth-dimensional-being.gltf";
+
+  const animationSet = {
+    idle: "Idle",
+    walk: "Walk",
+    run: "Run",
+    jump: "Jump_Start",
+    jumpIdle: "Jump_Idle",
+    jumpLand: "Jump_Land",
+    fall: "Climbing", // This is for falling from high sky
+
+    // Currently support four additional animations
+    action1: "Wave",
+    action2: "Dance",
+    action3: "Cheer",
+    action4: "Attack(1h)", // This is special action which can be trigger while walking or running
+  };
+
+  return (
+    <>
+
+      ....
+
+      <Physics debug={Physics} timeStep="vary">
+        
+        ....
+
+        <Ecctrl
+          position={[0, 0, 0]}
+          animated
+        >
+          <EcctrlAnimation
+            characterURL={characterURL} // Must have property
+            animationSet={animationSet} // Must have property
+          >
+            <FourthDimensionalBeing />  // The character component 
+          </EcctrlAnimation>
+        </Ecctrl>
+
+      </Physics>
+      
+    </>
+  );
+}
+```
 
