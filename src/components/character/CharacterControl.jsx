@@ -1,5 +1,10 @@
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import FourthDimensionalBeing from "./fourth-dimensional-being/FourthDimensionalBeing.jsx";
+import { useKeyboardControls } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import useSound from "use-sound";
+import walkSound from "../../../public/sounds/character/walk.wav";
+import { useEffect, useState } from "react";
 
 export default function CharacterControl() {
   const characterURL =
@@ -19,6 +24,47 @@ export default function CharacterControl() {
     // action3: "Cheer",
     // action4: "Attack(1h)", // This is special action which can be trigger while walking or running
   };
+
+  const [playWalkSound, { stop, isPlaying }] = useSound(walkSound);
+
+  const [moveForward, setMoveForward] = useState(false);
+
+  const [subscribeKeys, getKeys] = useKeyboardControls();
+
+  // useFrame((state, delta) => {
+  //   const { forward, backward, leftward, rightward, jump, run } = getKeys();
+
+  //   if (forward) {
+  //     if (isPlaying){
+  //       stop()
+  //     }
+  //     playWalkSound()
+
+  //   }
+  // });
+
+  useEffect(() => {
+    const unsubscribeForward = subscribeKeys(
+      (state) => state.forward,
+      (value) => {
+        if (value) {
+          setMoveForward(true);
+        } else {
+          setMoveForward(false);
+        }
+      }
+    );
+
+    return () => {
+      unsubscribeForward();
+    };
+  }, []);
+
+  if (moveForward) {
+    playWalkSound();
+  } else {
+    stop();
+  }
 
   return (
     <>

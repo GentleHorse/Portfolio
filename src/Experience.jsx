@@ -25,7 +25,7 @@ export default function Experience() {
           </mesh>
         </RigidBody>
 
-        <RigidBody colliders="ball" position={[1, 2, 0]}>
+        <RigidBody colliders="hull" position={[1, 2, 0]}>
           <mesh>
             <icosahedronGeometry />
             <meshNormalMaterial />
