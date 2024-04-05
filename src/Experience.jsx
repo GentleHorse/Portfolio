@@ -7,7 +7,7 @@ import CharacterControl from "./components/character/CharacterControl.jsx";
 export default function Experience() {
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       <Environment preset="city" />
 
@@ -18,14 +18,14 @@ export default function Experience() {
       <Physics debug={Physics} timeStep="vary">
         <TestFloor />
 
-        <RigidBody position={[-1, 3, 0]}>
+        <RigidBody position={[-2, 3, 0]}>
           <mesh>
             <boxGeometry />
             <meshNormalMaterial />
           </mesh>
         </RigidBody>
 
-        <RigidBody colliders="hull" position={[1, 2, 0]}>
+        <RigidBody colliders="hull" position={[2, 2, 0]}>
           <mesh>
             <icosahedronGeometry />
             <meshNormalMaterial />

@@ -199,8 +199,75 @@ export default function Experience() {
 ### 4-0. Free sounds resources
 - [freesound.org](https://freesound.org/)
 
-### 4-1. Install useSound
+### 4-1. useSound documentation
+- [useSound documentation](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
+- [useSound Github repo](https://github.com/joshwcomeau/use-sound)
+
+### 4-2. Install useSound
 ```
 npm install use-sound
 ```
 
+### 4-3. Prepare for playing the character walk sound
+In the below example, `playWalkSound()` to play, `stopPlayWalkSound()` to stop the sound. `isPlayingWalkSound` returns boolean for indicating wheather the sound is currently playing or not. <br>
+
+```
+const [
+  playWalkSound, 
+  {
+    stop: stopPlayWalkSound,
+    isPlaying: isPlayingWalkSound,
+    sound: walkingSound,
+  },
+] = useSound(walkSound);
+```
+
+### 4-4. Walk sound logic
+To avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"walking state"** to control whether play the walk sound or not. <br>
+
+```
+/**
+  * LISTEN CHARACTER MOVEMENTS
+  */
+const [isWalking, setIsWalking] = useState(false);
+
+const forwardPressed = useKeyboardControls((state) => state.forward);
+const backwardPressed = useKeyboardControls((state) => state.backward);
+const leftwardPressed = useKeyboardControls((state) => state.leftward);
+const rightwardPressed = useKeyboardControls((state) => state.rightward);
+
+useEffect(() => {
+  if (
+    forwardPressed ||
+    backwardPressed ||
+    leftwardPressed ||
+    rightwardPressed
+  ) {
+    setIsWalking(true);
+  } else {
+    setIsWalking(false);
+  }
+}, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
+
+/**
+  * SOUND CONTROL - WALK
+  */
+const [
+  playWalkSound,  // play sound method
+  {
+    stop: stopPlayWalkSound,  // stop sound method
+    isPlaying: isPlayingWalkSound, // return boolean 
+    sound: walkingSound,  // allow access to "sound" object
+  },
+] = useSound(walkSound);
+
+useEffect(() => {
+  if (isWalking) {
+    playWalkSound();
+    walkingSound.loop(true);  // allow looping
+  } else {
+    stopPlayWalkSound();
+  }
+}, [isWalking]);
+
+```

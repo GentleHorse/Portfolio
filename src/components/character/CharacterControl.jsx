@@ -3,13 +3,19 @@ import FourthDimensionalBeing from "./fourth-dimensional-being/FourthDimensional
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import useSound from "use-sound";
-import walkSound from "../../../public/sounds/character/walk.wav";
+import walkSound from "../../../public/sounds/character/walk-soft.mp3";
 import { useEffect, useState } from "react";
 
 export default function CharacterControl() {
+  /**
+   * GLTF MODEL LOCATION
+   */
   const characterURL =
     "./models/fourth-dimensional-being/fourth-dimensional-being.gltf";
 
+  /**
+   * CHARACTER ANIMATION LIST
+   */
   const animationSet = {
     idle: "Idle",
     walk: "Walk",
@@ -25,50 +31,53 @@ export default function CharacterControl() {
     // action4: "Attack(1h)", // This is special action which can be trigger while walking or running
   };
 
-  const [playWalkSound, { stop, isPlaying }] = useSound(walkSound);
+  /**
+   * LISTEN CHARACTER MOVEMENTS
+   */
+  const [isWalking, setIsWalking] = useState(false);
 
-  const [moveForward, setMoveForward] = useState(false);
-
-  const [subscribeKeys, getKeys] = useKeyboardControls();
-
-  // useFrame((state, delta) => {
-  //   const { forward, backward, leftward, rightward, jump, run } = getKeys();
-
-  //   if (forward) {
-  //     if (isPlaying){
-  //       stop()
-  //     }
-  //     playWalkSound()
-
-  //   }
-  // });
+  const forwardPressed = useKeyboardControls((state) => state.forward);
+  const backwardPressed = useKeyboardControls((state) => state.backward);
+  const leftwardPressed = useKeyboardControls((state) => state.leftward);
+  const rightwardPressed = useKeyboardControls((state) => state.rightward);
 
   useEffect(() => {
-    const unsubscribeForward = subscribeKeys(
-      (state) => state.forward,
-      (value) => {
-        if (value) {
-          setMoveForward(true);
-        } else {
-          setMoveForward(false);
-        }
-      }
-    );
+    if (
+      forwardPressed ||
+      backwardPressed ||
+      leftwardPressed ||
+      rightwardPressed
+    ) {
+      setIsWalking(true);
+    } else {
+      setIsWalking(false);
+    }
+  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
 
-    return () => {
-      unsubscribeForward();
-    };
-  }, []);
+  /**
+   * SOUNDS CONTROL - WALK
+   */
+  const [
+    playWalkSound,  // play sound method
+    {
+      stop: stopPlayWalkSound,  // stop sound method
+      isPlaying: isPlayingWalkSound, // return boolean 
+      sound: walkingSound,  // allow access to "sound" object
+    },
+  ] = useSound(walkSound);
 
-  if (moveForward) {
-    playWalkSound();
-  } else {
-    stop();
-  }
+  useEffect(() => {
+    if (isWalking) {
+      playWalkSound();
+      walkingSound.loop(true);  // allow looping
+    } else {
+      stopPlayWalkSound();
+    }
+  }, [isWalking]);
 
   return (
     <>
-      <Ecctrl position={[0, 0, 0]} animated>
+      <Ecctrl animated camInitDis={-6} camInitDir={{ x: 0.5, y: 0 }}>
         <EcctrlAnimation
           characterURL={characterURL} // Must have property
           animationSet={animationSet} // Must have property
