@@ -4,6 +4,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import useSound from "use-sound";
 import walkSound from "../../../public/sounds/character/walk-soft.mp3";
+import jumpSound from "../../../public/sounds/character/jump-male.wav";
 import { useEffect, useState } from "react";
 
 export default function CharacterControl() {
@@ -40,6 +41,8 @@ export default function CharacterControl() {
   const backwardPressed = useKeyboardControls((state) => state.backward);
   const leftwardPressed = useKeyboardControls((state) => state.leftward);
   const rightwardPressed = useKeyboardControls((state) => state.rightward);
+  const runPressed = useKeyboardControls((state) => state.run);
+  const jumpPressed = useKeyboardControls((state) => state.jump);
 
   useEffect(() => {
     if (
@@ -58,22 +61,43 @@ export default function CharacterControl() {
    * SOUNDS CONTROL - WALK
    */
   const [
-    playWalkSound,  // play sound method
+    playWalkSound, // play sound method
     {
-      stop: stopPlayWalkSound,  // stop sound method
-      isPlaying: isPlayingWalkSound, // return boolean 
-      sound: walkingSound,  // allow access to "sound" object
+      stop: stopPlayWalkSound, // stop sound method
+      isPlaying: isPlayingWalkSound, // return boolean
+      sound: walkingSound, // allow access to "sound" object
     },
   ] = useSound(walkSound);
 
   useEffect(() => {
     if (isWalking) {
       playWalkSound();
-      walkingSound.loop(true);  // allow looping
+      walkingSound.loop(true); // allow looping
     } else {
       stopPlayWalkSound();
     }
   }, [isWalking]);
+
+   /**
+   * SOUNDS CONTROL - JUMP
+   */
+   const [
+    playJumpSound, // play sound method
+    {
+      stop: stopPlayJumpSound, // stop sound method
+      isPlaying: isPlayingJumpSound, // return boolean
+      sound: jumpingSound, // allow access to "sound" object
+    },
+  ] = useSound(jumpSound);
+
+  useEffect(() => {
+    if (jumpPressed) {
+      playJumpSound();
+    } else {
+      stopPlayJumpSound();
+    }
+  }, [jumpPressed]);
+
 
   return (
     <>
