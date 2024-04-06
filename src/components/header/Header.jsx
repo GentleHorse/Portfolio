@@ -6,7 +6,7 @@ export default function Header() {
           Toshihito End0's Portfolio
         </p>
         <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#FFB11B]">
-          Test: character control
+          Test: character SFX
         </p>
       </section>
 

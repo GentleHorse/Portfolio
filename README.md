@@ -222,8 +222,8 @@ const [
 ] = useSound(walkSound);
 ```
 
-### 4-4. Walk sound logic
-To avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"walking state"** to control whether play the walk sound or not. <br>
+### 4-4. Walking SFX logic
+To avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"walking state"** to control whether play the walking sound or not. <br>
 
 ```
 /**
@@ -270,4 +270,119 @@ useEffect(() => {
   }
 }, [isWalking]);
 
+```
+
+### 4-5. Runing SFX logic
+Like the walking SFX logic, to avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"running state"** to control whether play the running sound or not. <br>
+
+```
+/**
+  * LISTEN CHARACTER MOVEMENTS
+  */
+const [isWalking, setIsWalking] = useState(false);
+const [isRunning, setIsRunning] = useState(false);
+
+const forwardPressed = useKeyboardControls((state) => state.forward);
+const backwardPressed = useKeyboardControls((state) => state.backward);
+const leftwardPressed = useKeyboardControls((state) => state.leftward);
+const rightwardPressed = useKeyboardControls((state) => state.rightward);
+const runPressed = useKeyboardControls((state) => state.run);
+const jumpPressed = useKeyboardControls((state) => state.jump);
+
+useEffect(() => {
+  // Update the walking state
+  if (
+    (!jumpPressed && !runPressed && forwardPressed) ||
+    (!jumpPressed && !runPressed && backwardPressed) ||
+    (!jumpPressed && !runPressed && leftwardPressed) ||
+    (!jumpPressed && !runPressed && rightwardPressed)
+  ) {
+    setIsWalking(true);
+  } else {
+    setIsWalking(false);
+  }
+
+  // Update the running state
+  if (
+    (!jumpPressed && runPressed && forwardPressed) ||
+    (!jumpPressed && runPressed && backwardPressed) ||
+    (!jumpPressed && runPressed && leftwardPressed) ||
+    (!jumpPressed && runPressed && rightwardPressed)
+  ) {
+    setIsRunning(true);
+  } else {
+    setIsRunning(false);
+  }
+}, [
+  forwardPressed,
+  backwardPressed,
+  leftwardPressed,
+  rightwardPressed,
+  jumpPressed,
+  runPressed,
+]);
+
+/**
+  * SOUNDS CONTROL - WALK, RUN
+  */
+
+// Walk
+const [
+  playWalkSound, // play sound method
+  {
+    stop: stopPlayWalkSound, // stop sound method
+    isPlaying: isPlayingWalkSound, // return boolean
+    sound: walkingSound, // allow access to "sound" object
+  },
+] = useSound(walkSound);
+
+// Run
+const [
+  playRunSound, // play sound method
+  {
+    stop: stopPlayRunSound, // stop sound method
+    isPlaying: isPlayingRunSound, // return boolean
+    sound: runingSound, // allow access to "sound" object
+  },
+] = useSound(runSound);
+
+// Set up the walking sound
+  const [
+    playWalkSound, // play sound method
+    {
+      stop: stopPlayWalkSound, // stop sound method
+      isPlaying: isPlayingWalkSound, // return boolean
+      sound: walkingSound, // allow access to "sound" object
+    },
+  ] = useSound(walkSound);
+
+  // Set up the running sound
+  const [
+    playRunSound, // play sound method
+    {
+      stop: stopPlayRunSound, // stop sound method
+      isPlaying: isPlayingRunSound, // return boolean
+      sound: runingSound, // allow access to "sound" object
+    },
+  ] = useSound(runSound);
+
+  // Play the walking & running sounds conditionally
+  useEffect(() => {
+    // Walk
+    if (isWalking) {
+      playWalkSound();
+      walkingSound.loop(true); // allow looping
+    } else {
+      stopPlayWalkSound();
+    }
+
+    // Run
+    if (isRunning) {
+      playRunSound();
+      runingSound.loop(true); // allow looping
+    } else {
+      stopPlayRunSound();
+    }
+
+  }, [isWalking, isRunning]);
 ```

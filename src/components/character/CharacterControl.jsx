@@ -1,9 +1,9 @@
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import FourthDimensionalBeing from "./fourth-dimensional-being/FourthDimensionalBeing.jsx";
 import { useKeyboardControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import useSound from "use-sound";
-import walkSound from "../../../public/sounds/character/walk-soft.mp3";
+import walkSound from "../../../public/sounds/character/walking.mp3";
+import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
 import { useEffect, useState } from "react";
 
@@ -36,6 +36,7 @@ export default function CharacterControl() {
    * LISTEN CHARACTER MOVEMENTS
    */
   const [isWalking, setIsWalking] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
 
   const forwardPressed = useKeyboardControls((state) => state.forward);
   const backwardPressed = useKeyboardControls((state) => state.backward);
@@ -45,21 +46,43 @@ export default function CharacterControl() {
   const jumpPressed = useKeyboardControls((state) => state.jump);
 
   useEffect(() => {
+    // Update the walking state
     if (
-      forwardPressed ||
-      backwardPressed ||
-      leftwardPressed ||
-      rightwardPressed
+      (!jumpPressed && !runPressed && forwardPressed) ||
+      (!jumpPressed && !runPressed && backwardPressed) ||
+      (!jumpPressed && !runPressed && leftwardPressed) ||
+      (!jumpPressed && !runPressed && rightwardPressed)
     ) {
       setIsWalking(true);
     } else {
       setIsWalking(false);
     }
-  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
+
+    // Update the running state
+    if (
+      (!jumpPressed && runPressed && forwardPressed) ||
+      (!jumpPressed && runPressed && backwardPressed) ||
+      (!jumpPressed && runPressed && leftwardPressed) ||
+      (!jumpPressed && runPressed && rightwardPressed)
+    ) {
+      setIsRunning(true);
+    } else {
+      setIsRunning(false);
+    }
+  }, [
+    forwardPressed,
+    backwardPressed,
+    leftwardPressed,
+    rightwardPressed,
+    jumpPressed,
+    runPressed,
+  ]);
 
   /**
-   * SOUNDS CONTROL - WALK
+   * SOUNDS CONTROL - WALK, RUN
    */
+
+  // Set up the walking sound
   const [
     playWalkSound, // play sound method
     {
@@ -69,19 +92,40 @@ export default function CharacterControl() {
     },
   ] = useSound(walkSound);
 
+  // Set up the running sound
+  const [
+    playRunSound, // play sound method
+    {
+      stop: stopPlayRunSound, // stop sound method
+      isPlaying: isPlayingRunSound, // return boolean
+      sound: runingSound, // allow access to "sound" object
+    },
+  ] = useSound(runSound);
+
+  // Play the walking & running sounds conditionally
   useEffect(() => {
+    // Walk
     if (isWalking) {
       playWalkSound();
       walkingSound.loop(true); // allow looping
     } else {
       stopPlayWalkSound();
     }
-  }, [isWalking]);
 
-   /**
+    // Run
+    if (isRunning) {
+      playRunSound();
+      runingSound.loop(true); // allow looping
+    } else {
+      stopPlayRunSound();
+    }
+
+  }, [isWalking, isRunning]);
+
+  /**
    * SOUNDS CONTROL - JUMP
    */
-   const [
+  const [
     playJumpSound, // play sound method
     {
       stop: stopPlayJumpSound, // stop sound method
@@ -97,7 +141,6 @@ export default function CharacterControl() {
       stopPlayJumpSound();
     }
   }, [jumpPressed]);
-
 
   return (
     <>
