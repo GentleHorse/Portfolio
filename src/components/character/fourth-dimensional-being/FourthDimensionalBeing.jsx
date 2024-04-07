@@ -40,7 +40,7 @@ export default function FourthDimensionalBeing(props) {
             // material={materials.Material}
             skeleton={nodes["lowpoly-male-abstraction-01001"].skeleton}
           >
-            <meshStandardMaterial color="silver" metalness={0.7} roughness={0.05} />
+            <meshStandardMaterial color="white" metalness={0.7} roughness={0.05} />
             {/* <MeshDistortMaterial distort={0.15} speed={5} /> */}
             {/* <MeshWobbleMaterial factor={0.15} speed={5} /> */}
             {/* <Outlines thickness={20} /> */}

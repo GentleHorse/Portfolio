@@ -144,7 +144,7 @@ export default function CharacterControl() {
 
   return (
     <>
-      <Ecctrl animated camInitDis={-6} camInitDir={{ x: 0.5, y: 0 }}>
+      <Ecctrl animated camInitDis={-4.5} camInitDir={{ x: 0.35, y: 0 }}>
         <EcctrlAnimation
           characterURL={characterURL} // Must have property
           animationSet={animationSet} // Must have property
