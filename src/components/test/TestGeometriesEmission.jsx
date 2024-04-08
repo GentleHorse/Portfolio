@@ -11,7 +11,7 @@ export default function TestGeometriesEmission() {
   return (
     <>
       <Suspense>
-        <RigidBody colliders="ball" position={[-1.5, 1, -1.5]} scale={0.9}>
+        <RigidBody colliders="ball" position={[-1.5, 1, 1.5]} scale={0.9}>
           <mesh castShadow>
             <sphereGeometry />
             <meshBasicMaterial
@@ -27,7 +27,7 @@ export default function TestGeometriesEmission() {
       </Suspense>
 
       <Suspense>
-        <RigidBody position={[2, 1, -1]} scale={0.9}>
+        <RigidBody position={[2, 1, 1.5]} scale={0.9}>
           <mesh castShadow>
             <boxGeometry />
             <meshBasicMaterial

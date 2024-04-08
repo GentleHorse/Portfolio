@@ -6,6 +6,7 @@ import TestFloor from "./components/test/TestFloor.jsx";
 import CharacterControl from "./components/character/CharacterControl.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import TestGeometriesEmission from "./components/test/TestGeometriesEmission.jsx";
+import Background from "./components/util-components/Background.jsx";
 
 export default function Experience() {
   const [isSceneReady, setIsSceneReady] = useState(false);
@@ -20,6 +21,8 @@ export default function Experience() {
       {/* <OrbitControls makeDefault /> */}
 
       <Environment preset="city" />
+
+      <Background />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
