@@ -6,13 +6,13 @@ import walkSound from "../../../public/sounds/character/walking.mp3";
 import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
 import { useEffect, useState } from "react";
+import MangaStyleMan from "./manga-style-man/MangaStyleMan.jsx";
 
 export default function CharacterControl() {
   /**
    * GLTF MODEL LOCATION
    */
-  const characterURL =
-    "./models/fourth-dimensional-being/fourth-dimensional-being.gltf";
+  const characterURL = "./models/manga-style-man/manga-style-man.gltf";
 
   /**
    * CHARACTER ANIMATION LIST
@@ -25,11 +25,12 @@ export default function CharacterControl() {
     jumpIdle: "Jump_Idle",
     jumpLand: "Jump_Land",
     fall: "Climbing", // This is for falling from high sky
+
     // Currently support four additional animations
-    // action1: "Wave",
+    action1: "Wave",
     action2: "Dance",
-    // action3: "Cheer",
-    // action4: "Attack(1h)", // This is special action which can be trigger while walking or running
+    action3: "Cheer",
+    action4: "Attack(1h)", // This is special action which can be trigger while walking or running
   };
 
   /**
@@ -119,7 +120,6 @@ export default function CharacterControl() {
     } else {
       stopPlayRunSound();
     }
-
   }, [isWalking, isRunning]);
 
   /**
@@ -144,12 +144,12 @@ export default function CharacterControl() {
 
   return (
     <>
-      <Ecctrl animated camInitDis={-4.5} camInitDir={{ x: 0.35, y: 0 }}>
+      <Ecctrl animated camInitDis={-4} camInitDir={{ x: 0.35, y: 0 }}>
         <EcctrlAnimation
           characterURL={characterURL} // Must have property
           animationSet={animationSet} // Must have property
         >
-          <FourthDimensionalBeing />
+          <MangaStyleMan />
         </EcctrlAnimation>
       </Ecctrl>
     </>

@@ -3,12 +3,16 @@ import {
   ToneMapping,
   EffectComposer,
 } from "@react-three/postprocessing";
+import { Suspense } from "react";
 
 const PostProcessingEffects = () => {
   return (
     <EffectComposer disableNormalPass>
-      <Bloom mipmapBlur intensity={0.1} luminanceThreshold={0} />
-      <ToneMapping />
+      <Suspense>
+        <Bloom mipmapBlur intensity={0.05} luminanceThreshold={0} />
+      </Suspense>
+
+      {/* <ToneMapping /> */}
     </EffectComposer>
   );
 };

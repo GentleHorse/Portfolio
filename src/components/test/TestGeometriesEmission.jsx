@@ -15,9 +15,6 @@ export default function TestGeometriesEmission() {
   const MIN_EMISSION_STRENGTH = 0.1;
   useFrame((state, delta) => { 
     const time = state.clock.getElapsedTime();
-
-    // console.log(emissionCubeMesh.current.material.color.r)
-    console.log(Math.sin(time))
    
     emissionCubeMesh.current.material.color.r = 4 * ((Math.sin(time) + 1) + MIN_EMISSION_STRENGTH)
     emissionCubeMesh.current.material.color.g = 1.5 * ((Math.sin(time) + 1) + MIN_EMISSION_STRENGTH)

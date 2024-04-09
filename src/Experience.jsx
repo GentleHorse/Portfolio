@@ -7,6 +7,7 @@ import CharacterControl from "./components/character/CharacterControl.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import TestGeometriesEmission from "./components/test/TestGeometriesEmission.jsx";
 import Background from "./components/util-components/Background.jsx";
+import MangaStyleMan from "./components/character/manga-style-man/MangaStyleMan.jsx";
 
 export default function Experience() {
   const [isSceneReady, setIsSceneReady] = useState(false);
@@ -29,11 +30,7 @@ export default function Experience() {
       <axesHelper />
 
       {/* POSTRPROCESSING */}
-      {isSceneReady && (
-        <Suspense>
-          <PostProcessingEffects />
-        </Suspense>
-      )}
+      {isSceneReady && <PostProcessingEffects />}
 
       <Physics debug={Physics} timeStep="vary">
         <TestFloor />
