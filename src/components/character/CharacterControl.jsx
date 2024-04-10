@@ -1,12 +1,12 @@
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import FourthDimensionalBeing from "./fourth-dimensional-being/FourthDimensionalBeing.jsx";
+import FourthDimensionalBeing from "./fourthDimensionalBeing/FourthDimensionalBeing.jsx";
 import { useKeyboardControls } from "@react-three/drei";
 import useSound from "use-sound";
 import walkSound from "../../../public/sounds/character/walking.mp3";
 import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
 import { useEffect, useState } from "react";
-import MangaStyleMan from "./manga-style-man/MangaStyleMan.jsx";
+import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
 
 export default function CharacterControl() {
   /**

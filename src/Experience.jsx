@@ -6,17 +6,32 @@ import TestFloor from "./components/test/TestFloor.jsx";
 import CharacterControl from "./components/character/CharacterControl.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import TestGeometriesEmission from "./components/test/TestGeometriesEmission.jsx";
-import Background from "./components/util-components/Background.jsx";
-import Lights from "./components/util-components/Lights.jsx";
-import TestSimpleGeometries from "./components/test/testSimpleGeometries.jsx";
+import Background from "./components/utilComponents/Background.jsx";
+import Lights from "./components/utilComponents/Lights.jsx";
+import { useKeyboardControls } from "@react-three/drei";
 
 export default function Experience() {
-  const [isSceneReady, setIsSceneReady] = useState(false);
+  const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
+
+  const forwardPressed = useKeyboardControls((state) => state.forward);
+  const backwardPressed = useKeyboardControls((state) => state.backward);
+  const leftwardPressed = useKeyboardControls((state) => state.leftward);
+  const rightwardPressed = useKeyboardControls((state) => state.rightward);
+
 
   useEffect(() => {
-    setIsSceneReady(true);
-    console.log("scene is ready");
-  }, []);
+    if (!isCharacterStartMove) {
+      if (
+        forwardPressed ||
+        backwardPressed ||
+        leftwardPressed ||
+        rightwardPressed
+      ) {
+        setIsCharacterStartMove(true);
+        console.log("character starts moving")
+      }
+    }
+  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
 
   return (
     <>
@@ -32,14 +47,15 @@ export default function Experience() {
       <Perf position="top-left" />
       <axesHelper />
 
-      {/* POSTRPROCESSING: needs to optimize the perfomance */}
-      {/* {isSceneReady && <PostProcessingEffects />} */}
+      {/* POSTRPROCESSING */}
+      {isCharacterStartMove && <PostProcessingEffects />}
 
       <Physics debug={Physics} timeStep="vary">
         <TestFloor />
 
         <CharacterControl />
 
+        <TestGeometriesEmission />
       </Physics>
     </>
   );

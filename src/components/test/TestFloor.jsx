@@ -5,7 +5,8 @@ export default function TestFloor() {
     <RigidBody type="fixed" restitution={0.5} friction={0.2}>
       <mesh scale={[20, 0.1, 20]} position={[0, 0, 0]}>
         <boxGeometry />
-        <meshBasicMaterial color="#676767" />
+        {/* <meshBasicMaterial color="#676767" /> */}
+        <meshStandardMaterial color="#676767" />
       </mesh>
     </RigidBody>
   );
