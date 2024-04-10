@@ -48,7 +48,7 @@ export default function Experience() {
       <axesHelper />
 
       {/* POSTRPROCESSING */}
-      {isCharacterStartMove && <PostProcessingEffects />}
+      {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={Physics} timeStep="vary">
         <TestFloor />

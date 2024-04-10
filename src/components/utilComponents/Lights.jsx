@@ -8,7 +8,7 @@ export default function Lights() {
 
   return (
     <>
-      {/* <directionalLight
+      <directionalLight
         ref={directionalLightRef}
         castShadow
         position={[4, 2, 0]}
@@ -20,7 +20,7 @@ export default function Lights() {
         shadow-camera-right={10}
         shadow-camera-bottom={-10}
         shadow-camera-left={-10}
-      /> */}
+      />
       
       <ambientLight intensity={0.1} />
 
