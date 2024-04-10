@@ -8,9 +8,16 @@ import { Suspense } from "react";
 const PostProcessingEffects = () => {
   return (
     <EffectComposer disableNormalPass>
-      <Suspense>
-        <Bloom mipmapBlur intensity={0.05} luminanceThreshold={0} />
-      </Suspense>
+        <Bloom
+          mipmapBlur={true}
+          intensity={0.05}
+          kernelSize={0.1}
+          levels={9} 
+          luminanceThreshold={0.9}
+          luminanceSmoothing={0.025}
+          resolutionX={128}
+          resolutionY={128}
+        />
 
       {/* <ToneMapping /> */}
     </EffectComposer>

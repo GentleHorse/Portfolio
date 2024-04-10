@@ -7,7 +7,8 @@ import CharacterControl from "./components/character/CharacterControl.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import TestGeometriesEmission from "./components/test/TestGeometriesEmission.jsx";
 import Background from "./components/util-components/Background.jsx";
-import MangaStyleMan from "./components/character/manga-style-man/MangaStyleMan.jsx";
+import Lights from "./components/util-components/Lights.jsx";
+import TestSimpleGeometries from "./components/test/testSimpleGeometries.jsx";
 
 export default function Experience() {
   const [isSceneReady, setIsSceneReady] = useState(false);
@@ -21,7 +22,9 @@ export default function Experience() {
     <>
       {/* <OrbitControls makeDefault /> */}
 
-      <Environment preset="city" />
+      {/* <Environment preset="city" /> */}
+
+      <Lights />
 
       <Background />
 
@@ -29,35 +32,14 @@ export default function Experience() {
       <Perf position="top-left" />
       <axesHelper />
 
-      {/* POSTRPROCESSING */}
-      {isSceneReady && <PostProcessingEffects />}
+      {/* POSTRPROCESSING: needs to optimize the perfomance */}
+      {/* {isSceneReady && <PostProcessingEffects />} */}
 
       <Physics debug={Physics} timeStep="vary">
         <TestFloor />
 
-        <Suspense>
-          <RigidBody position={[-2, 3, 0]}>
-            <mesh>
-              <boxGeometry />
-              <meshNormalMaterial />
-            </mesh>
-          </RigidBody>
-        </Suspense>
+        <CharacterControl />
 
-        <Suspense>
-          <RigidBody colliders="hull" position={[2, 2, 0]}>
-            <mesh>
-              <icosahedronGeometry />
-              <meshNormalMaterial />
-            </mesh>
-          </RigidBody>
-        </Suspense>
-
-        <Suspense>
-          <CharacterControl />
-        </Suspense>
-
-        <TestGeometriesEmission />
       </Physics>
     </>
   );
