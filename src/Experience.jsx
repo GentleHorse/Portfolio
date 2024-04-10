@@ -11,26 +11,26 @@ import Lights from "./components/utilComponents/Lights.jsx";
 import { useKeyboardControls } from "@react-three/drei";
 
 export default function Experience() {
-  // const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
+  const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
 
-  // const forwardPressed = useKeyboardControls((state) => state.forward);
-  // const backwardPressed = useKeyboardControls((state) => state.backward);
-  // const leftwardPressed = useKeyboardControls((state) => state.leftward);
-  // const rightwardPressed = useKeyboardControls((state) => state.rightward);
+  const forwardPressed = useKeyboardControls((state) => state.forward);
+  const backwardPressed = useKeyboardControls((state) => state.backward);
+  const leftwardPressed = useKeyboardControls((state) => state.leftward);
+  const rightwardPressed = useKeyboardControls((state) => state.rightward);
 
-  // useEffect(() => {
-  //   if (!isCharacterStartMove) {
-  //     if (
-  //       forwardPressed ||
-  //       backwardPressed ||
-  //       leftwardPressed ||
-  //       rightwardPressed
-  //     ) {
-  //       setIsCharacterStartMove(true);
-  //       console.log("character starts moving");
-  //     }
-  //   }
-  // }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
+  useEffect(() => {
+    if (!isCharacterStartMove) {
+      if (
+        forwardPressed ||
+        backwardPressed ||
+        leftwardPressed ||
+        rightwardPressed
+      ) {
+        setIsCharacterStartMove(true);
+        console.log("character starts moving");
+      }
+    }
+  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
 
   return (
     <>
@@ -47,10 +47,11 @@ export default function Experience() {
       <axesHelper />
 
       {/* POSTRPROCESSING */}
-      {/* {isCharacterStartMove && <PostProcessingEffects />} */}
+      {isCharacterStartMove && <PostProcessingEffects />}
 
-      <Physics debug={Physics} timeStep="vary">
+      <Physics debug={false}>
         <TestFloor />
+
 
         <CharacterControl />
 
