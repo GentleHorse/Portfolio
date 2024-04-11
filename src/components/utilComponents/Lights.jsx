@@ -23,8 +23,6 @@ export default function Lights() {
       />
       
       <ambientLight intensity={0.1} />
-
-      {/* <pointLight ref={pointLightRef} position={[0, 2, 0]} /> */}
     </>
   );
 }

@@ -47,24 +47,6 @@ export default function CharacterControl() {
   const jumpPressed = useKeyboardControls((state) => state.jump);
 
   /**
-   * SPAWN THE CHARACTER MESH
-   */
-  const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
-  useEffect(() => {
-    if (!isCharacterStartMove) {
-      if (
-        forwardPressed ||
-        backwardPressed ||
-        leftwardPressed ||
-        rightwardPressed
-      ) {
-        setIsCharacterStartMove(true);
-        console.log("character starts moving");
-      }
-    }
-  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
-
-  /**
    * CHARACTER MOVEMENT CONTROL
    */
   useEffect(() => {
@@ -165,15 +147,13 @@ export default function CharacterControl() {
 
   return (
     <>
-      <Ecctrl animated camInitDis={-4} camInitDir={{ x: 0.35, y: 0 }}>
-        {isCharacterStartMove && (
+      <Ecctrl animated camInitDis={-4} camInitDir={{ x: 0.3, y: 0 }} position-z={-8}>
           <EcctrlAnimation
             characterURL={characterURL} // Must have property
             animationSet={animationSet} // Must have property
           >
             <MangaStyleMan />
           </EcctrlAnimation>
-        )}
       </Ecctrl>
     </>
   );

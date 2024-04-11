@@ -9,32 +9,23 @@ import TestGeometriesEmission from "./components/test/TestGeometriesEmission.jsx
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
 import { useKeyboardControls } from "@react-three/drei";
+import AmbienceOfLight from "./components/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
-
-  const forwardPressed = useKeyboardControls((state) => state.forward);
-  const backwardPressed = useKeyboardControls((state) => state.backward);
-  const leftwardPressed = useKeyboardControls((state) => state.leftward);
-  const rightwardPressed = useKeyboardControls((state) => state.rightward);
+  const [subscribeKeys, getKeys] = useKeyboardControls();
 
   useEffect(() => {
-    if (!isCharacterStartMove) {
-      if (
-        forwardPressed ||
-        backwardPressed ||
-        leftwardPressed ||
-        rightwardPressed
-      ) {
-        setIsCharacterStartMove(true);
-        console.log("character starts moving");
-      }
-    }
-  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
+    const unsubscribeAny = subscribeKeys(() => setIsCharacterStartMove(true));
+
+    return () => {
+      return unsubscribeAny();
+    };
+  }, []);
 
   return (
     <>
-      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* <Environment preset="city" /> */}
 
@@ -46,16 +37,13 @@ export default function Experience() {
       <Perf position="top-left" />
       <axesHelper />
 
-      {/* POSTRPROCESSING */}
+      {/* POSTRPROCESSING: needs to find a way for optimizing GPU, CPU */}
       {isCharacterStartMove && <PostProcessingEffects />}
 
       <Physics debug={false}>
-        <TestFloor />
-
-
         <CharacterControl />
 
-        <TestGeometriesEmission />
+        <AmbienceOfLight />
       </Physics>
     </>
   );

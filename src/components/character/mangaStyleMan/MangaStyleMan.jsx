@@ -34,7 +34,7 @@ export default function MangaStyleMan(props) {
             <meshStandardMaterial color="snow" />
             {/* <MeshDistortMaterial distort={0.15} speed={5} /> */}
             {/* <MeshWobbleMaterial factor={0.15} speed={5} /> */}
-            <Outlines thickness={10} />/
+            <Outlines thickness={10} />
           </skinnedMesh>
         </group>
       </group>

@@ -428,30 +428,20 @@ In order to apply the bloom effect to the scene in order for better performance,
 
 ### 5-1. Code
 
-To activate the bloom effect after one of the keys (`forward`, `backward`, `leftward`, `rightward`) is pressed, in the `Experience` component, listening keyboard state with `useKeyboardControls` and let it control the activation of the bloom effect.
+To activate the bloom effect after one of the keys is pressed, in the `Experience` component, listening keyboard state with `useKeyboardControls` and let it control the activation of the bloom effect.
 
 ```
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
-
-  const forwardPressed = useKeyboardControls((state) => state.forward);
-  const backwardPressed = useKeyboardControls((state) => state.backward);
-  const leftwardPressed = useKeyboardControls((state) => state.leftward);
-  const rightwardPressed = useKeyboardControls((state) => state.rightward);
+  const [subscribeKeys, getKeys] = useKeyboardControls();
 
   useEffect(() => {
-    if (!isCharacterStartMove) {
-      if (
-        forwardPressed ||
-        backwardPressed ||
-        leftwardPressed ||
-        rightwardPressed
-      ) {
-        setIsCharacterStartMove(true);
-        console.log("character starts moving")
-      }
-    }
-  }, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
+    const unsubscribeAny = subscribeKeys(() => setIsCharacterStartMove(true));
+
+    return () => {
+      return unsubscribeAny();
+    };
+  }, []);
 
   return (
     <>
