@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   useGLTF,
   useAnimations,
@@ -7,14 +7,32 @@ import {
   MeshWobbleMaterial,
   Outlines,
 } from "@react-three/drei";
-import { SkinnedMesh } from "three";
+import { useGameStore } from "../../../store/store";
 
 export default function MangaStyleMan(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
     "./models/manga-style-man/manga-style-man.gltf"
   );
+
+  // Animations: Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land
   const { actions } = useAnimations(animations, group);
+
+  // Import the character state
+  const characterState = useGameStore((state) => state.characterState);
+
+  // Switch character animations
+  useEffect(() => {
+    actions[characterState].reset().fadeIn(0.01).play();
+
+    return () => {
+      actions[characterState].fadeOut(0.1);
+      actions[characterState].stop();
+    }
+
+  }, [characterState])
+
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">

@@ -27,6 +27,7 @@
     "react-dom": "18.2",
     "three": "^0.162.0",
     "use-sound": "^4.0.1",
-    "vite-plugin-glsl": "^1.1.2"
+    "vite-plugin-glsl": "^1.1.2",
+    "zustand": "^4.5.2"
   }
 }

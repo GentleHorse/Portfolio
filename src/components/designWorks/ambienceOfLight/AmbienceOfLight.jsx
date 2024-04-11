@@ -42,7 +42,7 @@ export default function AmbienceOfLight() {
         />
       ))}
 
-      <RigidBody type="fixed" restitution={0.5} friction={0.2}>
+      <RigidBody type="fixed" restitution={0.5} friction={0.6}>
         <mesh scale={[20, 0.1, 20]} position={[0, -0.2, 0]}>
           <boxGeometry />
           <meshStandardMaterial color="#000000" roughness={0.1} />

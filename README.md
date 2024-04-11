@@ -101,19 +101,19 @@ Run gltfjsx again to generate the code, and switch the model with the animation 
 npx gltfjsx public/models/female-cyborg/model.gltf
 ```
 
-## 3. Character control with ecctrl
+## 3-a. Character control with ecctrl
 
-### 3-0. Documentation
+### 3-a-0. Documentation
 
 - [pmndrs/ecctrl Git Repo](https://github.com/pmndrs/ecctrl?tab=readme-ov-file)
 
-### 3-1. Install
+### 3-a-1. Install
 
 ```
 npm install ecctrl
 ```
 
-### 3-2. Set up `KeyboardControls` from drei
+### 3-a-2. Set up `KeyboardControls` from drei
 
 In order to use ecctrl, you need to set up [KeyboardControls](https://github.com/pmndrs/drei?tab=readme-ov-file#keyboardcontrols) from drei. In the below code, `KeyboardControls` is set up outside `<Canvas>` in case for implementing an user interface, but it can be inside `<Canvas>`.<br>
 
@@ -155,7 +155,7 @@ export default function App() {
 }
 ```
 
-### 3-3. Set up `Ecctrl` & `EcctrlAnimation` for animated character control
+### 3-a-3. Set up `Ecctrl` & `EcctrlAnimation` for animated character control
 
 In below code, `Ecctrl` & `EcctrlAnimation` are set up inside the `Experience` component inside `<Canvas>`. <br>
 
@@ -213,6 +213,363 @@ export default function Experience() {
   );
 }
 ```
+
+## 3-b. Character control with `KeyboardControls`
+
+### 3-b-0. Set up `KeyboardControls` from drei
+
+In order to control the character with the keyboard, you need to set up [KeyboardControls](https://github.com/pmndrs/drei?tab=readme-ov-file#keyboardcontrols) from drei. In the below code, `KeyboardControls` is set up outside `<Canvas>` in case for implementing an user interface, but it can be inside `<Canvas>`.<br>
+
+```
+const keyboardMap = [
+    { name: "forward", keys: ["ArrowUp", "KeyW"] },
+    { name: "backward", keys: ["ArrowDown", "KeyS"] },
+    { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+    { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+    { name: "jump", keys: ["Space"] },
+    { name: "run", keys: ["Shift"] },
+
+    // Optional animation key map
+    { name: "action1", keys: ["1"] },
+    { name: "action2", keys: ["2"] },
+    { name: "action3", keys: ["3"] },
+    { name: "action4", keys: ["KeyF"] },
+  ];
+
+export default function App() {
+  return (
+    <>
+      <Header />
+
+      <KeyboardControls map={keyboardMap}>
+        <Canvas
+          camera={{
+            fov: 45,
+            near: 0.1,
+            far: 200,
+            position: [1, 5, 6],
+          }}
+        >
+          <Experience />
+        </Canvas>
+      </KeyboardControls>
+    </>
+  );
+}
+```
+
+### 3-b-1. Create the `CharacterController` component
+First you need to create the `CharacterController` component and wrap `Character` component with `RigidBody`.
+
+```
+<RigidBody>
+    <Character />
+</RigidBody>
+```
+
+### 3-b-2. Set up with `useKeyboardControls` 
+In order to make the character move with keyboard inputs, first you need to set up `useKeyboardControls` from `@react-three/drei`.
+
+```
+const [subscribeKeys, getKeys] = useKeyboardControls();
+```
+
+### 3-b-3. Link ref to `RigidBody`
+Making the character move involves the physics, thus you need to reference the character via `<RigidBody>`.
+
+```
+const body = useRef();
+
+....
+
+    <RigidBody ref={body} .... >
+        <Character />
+    </RigidBody>
+```
+
+### 3-b-4. Apply forces to make the character move
+Using "getter" of `useKeyboardControls` to fetch keyboard input states, then apply forces to the model with `applyImpulse`. It's important to use and tweak "one vector" to apply forces otherwise unwanted forces could be applied to the character leading to unpredictable character movements. Applying forces needs to be done inside `useFrame`. For provide the same user experience regardless of device, the amount of applied force should be optimized through `delta`. The second boolean parameter of applyImpulse is to wake up the character (react three rapier system automatically sets objects sleep after several seconds).
+
+```
+useFrame((state, delta) => {
+    // Get input key states
+    const { forward, backward, leftward, rightward } = getKeys();
+
+    // One vector for handling all applied forces
+    const impluse = { x: 0, y: 0, z: 0 };
+
+    // Move forward, backward, leftward, rightward
+    if (forward) {
+        impluse.z -= 3 * delta;
+    }
+    if (backward) {
+        impluse.z += 3 * delta;
+    }
+    if (leftward ) {
+        impluse.x -= 3 * delta;
+    }
+    if (rightward) {
+        impluse.x += 3 * delta;
+    }
+
+    // Apply forces to the rigid body
+    body.current.applyImpulse(impluse, true);
+});
+```
+
+### 3-b-5. Use `CapsuleCollider` instead of default collider
+For better and optimized physicall simulations, implement `CapsuleCollider`.
+
+```
+<RigidBody .... colliders={false} >
+    <Character />
+    <CapsuleCollider .... />
+</RigidBody>
+```
+
+### 3-b-6. Prevent the character to fall on the ground
+When the force is applied to the character, it will fall on the ground. To prevent it, tweak the enabledRotations attribute of `RigidBody`.
+
+```
+<RigidBody .... enabledRotations={[false, false, false]} >
+    <Character />
+    <CapsuleCollider .... />
+</RigidBody>
+```
+
+### 3-b-7. Control the character movement speed to make it more natural
+In order to create natural character movements, you need to limit its speed by accessing its movement speed via `linvel()` method. And also set `linearDamping` of `RigidBody` to automatically diminish applied forces.
+
+```
+useFrame((state, delta) => {
+    // Get input key states
+    const { forward, backward, leftward, rightward } = getKeys();
+
+    // One vector for handling all applied forces
+    const impluse = { x: 0, y: 0, z: 0 };
+
+    // Access the character linear velocity
+    const linvel = body.current.linvel();
+
+    // Move forward, backward, leftward, rightward
+    if (forward && linvel.z > -3) {
+        impluse.z -= 3 * delta;
+    }
+    if (backward && linvel.z < 3) {
+        impluse.z += 3 * delta;
+    }
+    if (leftward && linvel.x > -3) {
+        impluse.x -= 3 * delta;
+    }
+    if (rightward && linvel.x < 3) {
+        impluse.x += 3 * delta;
+    }
+
+    // Apply forces to the rigid body
+    body.current.applyImpulse(impluse, true);
+});
+
+....
+
+    <RigidBody .... linearDamping={0.5} >
+        <Character />
+        <CapsuleCollider .... />
+    </RigidBody>
+```
+
+### 3-b-8. Face the character towards movement directions
+It looks more natural if the character face the direction in which it moves. It can be done through accessing the character mesh and tweaking its rotation.
+
+```
+const character = useRef();
+
+useFrame((state, delta) => {
+    // Get input key states
+    const { forward, backward, leftward, rightward } = getKeys();
+
+    // One vector for handling all applied forces
+    const impluse = { x: 0, y: 0, z: 0 };
+
+    // Access the character linear velocity
+    const linvel = body.current.linvel();
+
+    // Control the character mesh rotation
+    let changeRotation = false;
+
+    // Move forward, backward, leftward, rightward
+    if (forward && linvel.z > -3) {
+        impluse.z -= 3 * delta;
+        changeRotation = true;
+    }
+    if (backward && linvel.z < 3) {
+        impluse.z += 3 * delta;
+        changeRotation = true;
+    }
+    if (leftward && linvel.x > -3) {
+        impluse.x -= 3 * delta;
+        changeRotation = true;
+    }
+    if (rightward && linvel.x < 3) {
+        impluse.x += 3 * delta;
+        changeRotation = true;
+    }
+
+    // Rotate the character according to move directions
+    if (changeRotation) {
+      const angle = Math.atan2(linvel.x, linvel.z);
+      character.current.rotation.y = angle;
+    }
+
+    // Apply forces to the rigid body
+    body.current.applyImpulse(impluse, true);
+});
+
+....
+
+
+    <RigidBody .... >
+
+        <group ref={character}>
+          <Character />
+        </group>
+
+        <CapsuleCollider .... />
+
+    </RigidBody>
+```
+
+### 3-b-9. Use `zustand` for controlling the character animation state
+First, you need to install `zustand`.
+```
+npm install zustand
+```
+
+<br>
+
+And then, you need to creat a store for switching character animations. You also need to subscribe to the changes on the store, but the store currently doesn't allow subscribing. So here needs a trick. You need to use **Zustand middleware**. In `store.js`, import `subscribeWithSelector` from `zustand/middleware`.
+```
+import { create } from "zustand";
+import { subscribeWithSelector } from "zustand/middleware";
+
+export const useGameStore = create(
+  subscribeWithSelector((set, get) => ({
+    /**
+     * CHARACTER ANIMATION CONTROLLER
+     */
+    characterState: "Idle",
+    setCharacterState: (characterState) => {
+      set({ characterState: characterState });
+    },
+  }))
+);
+```
+
+### 3-b-10. Implement animation switch logic (`MangaStyleMan.jsx`, `CharacterControl.jsx`)
+**`MangaStyleMan.jsx`**
+```
+// Animations: Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land
+const { actions } = useAnimations(animations, group);
+
+// Import the character state
+const characterState = useGameStore((state) => state.characterState);
+
+// Switch character animations
+useEffect(() => {
+  actions[characterState].reset().fadeIn(0.01).play();
+
+  return () => {
+    actions[characterState].fadeOut(0.1);
+    actions[characterState].stop();
+  }
+
+}, [characterState])
+```
+
+<br>
+
+**`CharacterControl.jsx`**
+```
+/**
+  * CHARACTER STATE
+  */
+const { characterState, setCharacterState } = useGameStore((state) => ({
+  characterState: state.characterState,
+  setCharacterState: state.setCharacterState,
+}));
+
+....
+
+/**
+  * MAKE THE CHARACTER MOVE
+  */
+const [subscribeKeys, getKeys] = useKeyboardControls();
+
+const MOVE_SPEED = 2.5;
+
+useFrame((state, delta) => {
+  // Get input key states
+  const { forward, backward, leftward, rightward } = getKeys();
+
+  // One vector for handling all applied forces
+  const impluse = { x: 0, y: 0, z: 0 };
+
+  // Access the character linear velocity
+  const linvel = body.current.linvel();
+
+  // Control the character mesh rotation
+  let changeRotation = false;
+
+  // Move forward, backward, leftward, rightward
+  if (forward && linvel.z > -MOVE_SPEED) {
+    impluse.z -= MOVE_SPEED * delta;
+    changeRotation = true;
+
+    if (characterState === "Idle") {
+      setCharacterState("Walk");
+    }
+  }
+  if (backward && linvel.z < MOVE_SPEED) {
+    impluse.z += MOVE_SPEED * delta;
+    changeRotation = true;
+
+    if (characterState === "Idle") {
+      setCharacterState("Walk");
+    }
+  }
+  if (leftward && linvel.x > -MOVE_SPEED) {
+    impluse.x -= MOVE_SPEED * delta;
+    changeRotation = true;
+
+    if (characterState === "Idle") {
+      setCharacterState("Walk");
+    }
+  }
+  if (rightward && linvel.x < MOVE_SPEED) {
+    impluse.x += MOVE_SPEED * delta;
+    changeRotation = true;
+
+    if (characterState === "Idle") {
+      setCharacterState("Walk");
+    }
+  }
+
+  if (!forward && !backward && !rightward && !leftward) {
+    if (characterState !== "Idle") {
+      setCharacterState("Idle");
+    }
+  }
+
+  // Rotate the character according to move directions
+  if (changeRotation) {
+    const angle = Math.atan2(linvel.x, linvel.z);
+    character.current.rotation.y = angle;
+  }
+
+  // Apply forces to the rigid body
+  body.current.applyImpulse(impluse, true);
+});
+```
+
 
 ## 4. Character control with sounds
 

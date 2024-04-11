@@ -1,12 +1,14 @@
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import FourthDimensionalBeing from "./fourthDimensionalBeing/FourthDimensionalBeing.jsx";
 import { useKeyboardControls } from "@react-three/drei";
 import useSound from "use-sound";
 import walkSound from "../../../public/sounds/character/walking.mp3";
 import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
+import { CapsuleCollider, RigidBody } from "@react-three/rapier";
+import { useFrame } from "@react-three/fiber";
+import { useGameStore } from "../../store/store.js";
 
 export default function CharacterControl() {
   /**
@@ -34,6 +36,20 @@ export default function CharacterControl() {
   };
 
   /**
+   * REF - CHARACTER
+   */
+  const body = useRef();
+  const character = useRef();
+
+  /**
+   * CHARACTER STATE
+   */
+  const { characterState, setCharacterState } = useGameStore((state) => ({
+    characterState: state.characterState,
+    setCharacterState: state.setCharacterState,
+  }));
+
+  /**
    * LISTEN CHARACTER MOVEMENTS
    */
   const [isWalking, setIsWalking] = useState(false);
@@ -47,7 +63,77 @@ export default function CharacterControl() {
   const jumpPressed = useKeyboardControls((state) => state.jump);
 
   /**
-   * CHARACTER MOVEMENT CONTROL
+   * MAKE THE CHARACTER MOVE
+   */
+  const [subscribeKeys, getKeys] = useKeyboardControls();
+
+  const MOVE_SPEED = 2.5;
+  
+  useFrame((state, delta) => {
+    // Get input key states
+    const { forward, backward, leftward, rightward } = getKeys();
+
+    // One vector for handling all applied forces
+    const impluse = { x: 0, y: 0, z: 0 };
+
+    // Access the character linear velocity
+    const linvel = body.current.linvel();
+
+    // Control the character mesh rotation
+    let changeRotation = false;
+
+    // Move forward, backward, leftward, rightward
+    if (forward && linvel.z > -MOVE_SPEED) {
+      impluse.z -= MOVE_SPEED * delta;
+      changeRotation = true;
+
+      if (characterState === "Idle") {
+        setCharacterState("Walk");
+      }
+    }
+    if (backward && linvel.z < MOVE_SPEED) {
+      impluse.z += MOVE_SPEED * delta;
+      changeRotation = true;
+
+      if (characterState === "Idle") {
+        setCharacterState("Walk");
+      }
+    }
+    if (leftward && linvel.x > -MOVE_SPEED) {
+      impluse.x -= MOVE_SPEED * delta;
+      changeRotation = true;
+
+      if (characterState === "Idle") {
+        setCharacterState("Walk");
+      }
+    }
+    if (rightward && linvel.x < MOVE_SPEED) {
+      impluse.x += MOVE_SPEED * delta;
+      changeRotation = true;
+
+      if (characterState === "Idle") {
+        setCharacterState("Walk");
+      }
+    }
+
+    if (!forward && !backward && !rightward && !leftward) {
+      if (characterState !== "Idle") {
+        setCharacterState("Idle");
+      }
+    }
+
+    // Rotate the character according to move directions
+    if (changeRotation) {
+      const angle = Math.atan2(linvel.x, linvel.z);
+      character.current.rotation.y = angle;
+    }
+
+    // Apply forces to the rigid body
+    body.current.applyImpulse(impluse, true);
+  });
+
+  /**
+   * UPDATE "WALKING" & "RUNNING" STATES
    */
   useEffect(() => {
     // Update the walking state
@@ -147,14 +233,33 @@ export default function CharacterControl() {
 
   return (
     <>
-      <Ecctrl animated camInitDis={-4} camInitDir={{ x: 0.3, y: 0 }} position-z={-8}>
+      <Suspense>
+        <RigidBody
+          ref={body}
+          colliders={false}
+          position={[0, 0, 5]}
+          linearDamping={0.9}
+          angularDamping={0.5}
+          enabledRotations={[false, false, false]}
+          friction={0.6}
+        >
+          <group ref={character}>
+            <MangaStyleMan position={[0, 1, 0]} />
+          </group>
+
+          <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />
+        </RigidBody>
+      </Suspense>
+
+      {/* WITH ECCTRL */}
+      {/* <Ecctrl animated camInitDis={-4} camInitDir={{ x: 0.3, y: 0 }} position-z={-8}>
           <EcctrlAnimation
             characterURL={characterURL} // Must have property
             animationSet={animationSet} // Must have property
           >
             <MangaStyleMan />
           </EcctrlAnimation>
-      </Ecctrl>
+      </Ecctrl> */}
     </>
   );
 }
