@@ -504,70 +504,120 @@ const { characterState, setCharacterState } = useGameStore((state) => ({
   */
 const [subscribeKeys, getKeys] = useKeyboardControls();
 
-const MOVE_SPEED = 2.5;
+ const WALK_SPEED = 2.5;
+const RUN_SPEED = 5.0;
 
 useFrame((state, delta) => {
-  // Get input key states
-  const { forward, backward, leftward, rightward } = getKeys();
+  if (body.current) {
+    // Get input key states
+    const { forward, backward, leftward, rightward, run } = getKeys();
 
-  // One vector for handling all applied forces
-  const impluse = { x: 0, y: 0, z: 0 };
+    // One vector for handling all applied forces
+    const impluse = { x: 0, y: 0, z: 0 };
 
-  // Access the character linear velocity
-  const linvel = body.current.linvel();
+    // Access the character linear velocity
+    const linvel = body.current.linvel();
 
-  // Control the character mesh rotation
-  let changeRotation = false;
+    // Control the character mesh rotation
+    let changeRotation = false;
 
-  // Move forward, backward, leftward, rightward
-  if (forward && linvel.z > -MOVE_SPEED) {
-    impluse.z -= MOVE_SPEED * delta;
-    changeRotation = true;
+    /**
+      * Walk & Run
+      */
+    // Forward
+    if (forward) {
+      if (run && linvel.z > -RUN_SPEED) {
+        impluse.z -= RUN_SPEED * delta;
+        changeRotation = true;
 
-    if (characterState === "Idle") {
-      setCharacterState("Walk");
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.z > -WALK_SPEED) {
+        impluse.z -= WALK_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
     }
-  }
-  if (backward && linvel.z < MOVE_SPEED) {
-    impluse.z += MOVE_SPEED * delta;
-    changeRotation = true;
 
-    if (characterState === "Idle") {
-      setCharacterState("Walk");
+    // Backward
+    if (backward) {
+      if (run && linvel.z < RUN_SPEED) {
+        impluse.z += RUN_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.z < WALK_SPEED) {
+        impluse.z += WALK_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
     }
-  }
-  if (leftward && linvel.x > -MOVE_SPEED) {
-    impluse.x -= MOVE_SPEED * delta;
-    changeRotation = true;
 
-    if (characterState === "Idle") {
-      setCharacterState("Walk");
+    // Leftward
+    if (leftward) {
+      if (run && linvel.x > -RUN_SPEED) {
+        impluse.x -= RUN_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.x > -WALK_SPEED) {
+        impluse.x -= WALK_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
     }
-  }
-  if (rightward && linvel.x < MOVE_SPEED) {
-    impluse.x += MOVE_SPEED * delta;
-    changeRotation = true;
 
-    if (characterState === "Idle") {
-      setCharacterState("Walk");
+    // Rightward
+    if (rightward) {
+      if (run && linvel.x < RUN_SPEED) {
+        impluse.x += RUN_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.x < WALK_SPEED) {
+        impluse.x += WALK_SPEED * delta;
+        changeRotation = true;
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
     }
-  }
 
-  if (!forward && !backward && !rightward && !leftward) {
-    if (characterState !== "Idle") {
-      setCharacterState("Idle");
+    // Activate the idle animation when the character stops
+    if (!forward && !backward && !rightward && !leftward) {
+      if (characterState !== "Idle") {
+        setCharacterState("Idle");
+      }
     }
-  }
 
-  // Rotate the character according to move directions
-  if (changeRotation) {
-    const angle = Math.atan2(linvel.x, linvel.z);
-    character.current.rotation.y = angle;
-  }
+    // Rotate the character according to move directions
+    if (changeRotation) {
+      const angle = Math.atan2(linvel.x, linvel.z);
+      character.current.rotation.y = angle;
+    }
 
-  // Apply forces to the rigid body
-  body.current.applyImpulse(impluse, true);
+    // Apply forces to the rigid body
+    body.current.applyImpulse(impluse, true);
+  }
 });
+
 ```
 
 
@@ -588,128 +638,12 @@ useFrame((state, delta) => {
 npm install use-sound
 ```
 
-### 4-3. Prepare for playing the character walk sound
+### 4-3. Prepare for playing the character walk & run sound
 
-In the below example, `playWalkSound()` to play, `stopPlayWalkSound()` to stop the sound. `isPlayingWalkSound` returns boolean for indicating wheather the sound is currently playing or not. <br>
-
-```
-const [
-  playWalkSound,
-  {
-    stop: stopPlayWalkSound,
-    isPlaying: isPlayingWalkSound,
-    sound: walkingSound,
-  },
-] = useSound(walkSound);
-```
-
-### 4-4. Walking SFX logic
-
-To avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"walking state"** to control whether play the walking sound or not. <br>
+In the below example, `playWalkSound()` & `playRunSound()` to play, `stopPlayWalkSound()` & `stopPlayRunSound()` to stop the sound. `isPlayingWalkSound` & `isPlayingRunSound` return boolean for indicating wheather the sound is currently playing or not. <br>
 
 ```
-/**
-  * LISTEN CHARACTER MOVEMENTS
-  */
-const [isWalking, setIsWalking] = useState(false);
-
-const forwardPressed = useKeyboardControls((state) => state.forward);
-const backwardPressed = useKeyboardControls((state) => state.backward);
-const leftwardPressed = useKeyboardControls((state) => state.leftward);
-const rightwardPressed = useKeyboardControls((state) => state.rightward);
-
-useEffect(() => {
-  if (
-    forwardPressed ||
-    backwardPressed ||
-    leftwardPressed ||
-    rightwardPressed
-  ) {
-    setIsWalking(true);
-  } else {
-    setIsWalking(false);
-  }
-}, [forwardPressed, backwardPressed, leftwardPressed, rightwardPressed]);
-
-/**
-  * SOUND CONTROL - WALK
-  */
-const [
-  playWalkSound,  // play sound method
-  {
-    stop: stopPlayWalkSound,  // stop sound method
-    isPlaying: isPlayingWalkSound, // return boolean
-    sound: walkingSound,  // allow access to "sound" object
-  },
-] = useSound(walkSound);
-
-useEffect(() => {
-  if (isWalking) {
-    playWalkSound();
-    walkingSound.loop(true);  // allow looping
-  } else {
-    stopPlayWalkSound();
-  }
-}, [isWalking]);
-
-```
-
-### 4-5. Runing SFX logic
-
-Like the walking SFX logic, to avoid playing multiple sounds at the same time in case multiple keys are pressed, let **"running state"** to control whether play the running sound or not. <br>
-
-```
-/**
-  * LISTEN CHARACTER MOVEMENTS
-  */
-const [isWalking, setIsWalking] = useState(false);
-const [isRunning, setIsRunning] = useState(false);
-
-const forwardPressed = useKeyboardControls((state) => state.forward);
-const backwardPressed = useKeyboardControls((state) => state.backward);
-const leftwardPressed = useKeyboardControls((state) => state.leftward);
-const rightwardPressed = useKeyboardControls((state) => state.rightward);
-const runPressed = useKeyboardControls((state) => state.run);
-const jumpPressed = useKeyboardControls((state) => state.jump);
-
-useEffect(() => {
-  // Update the walking state
-  if (
-    (!jumpPressed && !runPressed && forwardPressed) ||
-    (!jumpPressed && !runPressed && backwardPressed) ||
-    (!jumpPressed && !runPressed && leftwardPressed) ||
-    (!jumpPressed && !runPressed && rightwardPressed)
-  ) {
-    setIsWalking(true);
-  } else {
-    setIsWalking(false);
-  }
-
-  // Update the running state
-  if (
-    (!jumpPressed && runPressed && forwardPressed) ||
-    (!jumpPressed && runPressed && backwardPressed) ||
-    (!jumpPressed && runPressed && leftwardPressed) ||
-    (!jumpPressed && runPressed && rightwardPressed)
-  ) {
-    setIsRunning(true);
-  } else {
-    setIsRunning(false);
-  }
-}, [
-  forwardPressed,
-  backwardPressed,
-  leftwardPressed,
-  rightwardPressed,
-  jumpPressed,
-  runPressed,
-]);
-
-/**
-  * SOUNDS CONTROL - WALK, RUN
-  */
-
-// Walk
+// Set up the walking sound
 const [
   playWalkSound, // play sound method
   {
@@ -719,7 +653,7 @@ const [
   },
 ] = useSound(walkSound);
 
-// Run
+// Set up the running sound
 const [
   playRunSound, // play sound method
   {
@@ -728,31 +662,16 @@ const [
     sound: runingSound, // allow access to "sound" object
   },
 ] = useSound(runSound);
+```
 
-// Set up the walking sound
-  const [
-    playWalkSound, // play sound method
-    {
-      stop: stopPlayWalkSound, // stop sound method
-      isPlaying: isPlayingWalkSound, // return boolean
-      sound: walkingSound, // allow access to "sound" object
-    },
-  ] = useSound(walkSound);
+### 4-4. Walking & running SFX logic
 
-  // Set up the running sound
-  const [
-    playRunSound, // play sound method
-    {
-      stop: stopPlayRunSound, // stop sound method
-      isPlaying: isPlayingRunSound, // return boolean
-      sound: runingSound, // allow access to "sound" object
-    },
-  ] = useSound(runSound);
+Since we can subscribe the character state with zustand, let walking & running sounds play according to the character state. <br>
 
-  // Play the walking & running sounds conditionally
-  useEffect(() => {
+```
+useEffect(() => {
     // Walk
-    if (isWalking) {
+    if (characterState === "Walk") {
       playWalkSound();
       walkingSound.loop(true); // allow looping
     } else {
@@ -760,14 +679,14 @@ const [
     }
 
     // Run
-    if (isRunning) {
+    if (characterState === "Run") {
       playRunSound();
       runingSound.loop(true); // allow looping
     } else {
       stopPlayRunSound();
     }
+  }, [characterState]);
 
-  }, [isWalking, isRunning]);
 ```
 
 ## 5. Bloom + geometry emissions

@@ -41,7 +41,7 @@ export default function Experience() {
       {isCharacterStartMove && <PostProcessingEffects />}
 
       <Physics debug={true}>
-        <CharacterControl />
+          <CharacterControl />
 
         <AmbienceOfLight />
       </Physics>
