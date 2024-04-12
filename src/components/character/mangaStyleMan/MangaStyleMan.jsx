@@ -4,7 +4,6 @@ import {
   useAnimations,
   MeshDistortMaterial,
   MeshTransmissionMaterial,
-  MeshWobbleMaterial,
   Outlines,
 } from "@react-three/drei";
 import { useGameStore } from "../../../store/store";
@@ -50,8 +49,7 @@ export default function MangaStyleMan(props) {
             skeleton={nodes["manga-style-man001"].skeleton}
           >
             <meshStandardMaterial color="snow" />
-            {/* <MeshDistortMaterial distort={0.15} speed={5} /> */}
-            {/* <MeshWobbleMaterial factor={0.15} speed={5} /> */}
+            {/* <MeshDistortMaterial distort={0.5} speed={5} /> */}
             <Outlines thickness={10} />
           </skinnedMesh>
         </group>

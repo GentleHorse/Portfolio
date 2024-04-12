@@ -817,3 +817,20 @@ export default function TestGeometriesEmission() {
   );
 }
 ```
+
+## 6. Lights
+
+ * Lights are super performance consumming !!
+ * Use less lights as possible !!
+ *
+ * Mimimum cost
+ *  _> AmbientLight
+ *  _> HemisphereLight
+ *
+ * Moderate cost
+ *  _> DirectionalLight
+ *  _> PointLight
+ *
+ * Hight cost
+ *  _> SpotLight
+ *  _> RectAreaLight

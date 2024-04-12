@@ -1,12 +1,12 @@
-export default function Header() {
+export default function Header({testTopic}) {
   return (
     <header className="fixed right-1 text-right mt-5 mr-5 z-10">
       <section>
         <p className="font-micro-5 mb-[5px] text-[20px] text-[#FFB11B]">
-          Toshihito End0's Portfolio
+          Toshihito Endo's Portfolio
         </p>
         <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#FFB11B]">
-          Test: material emission
+          Test: {testTopic}
         </p>
       </section>
 

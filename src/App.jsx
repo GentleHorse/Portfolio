@@ -24,7 +24,7 @@ const keyboardMap = [
 export default function App() {
   return (
     <>
-      <Header />
+      <Header testTopic="Ambience of Light" />
 
       <KeyboardControls map={keyboardMap}>
         <Canvas

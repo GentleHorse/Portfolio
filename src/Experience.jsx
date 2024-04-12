@@ -38,9 +38,9 @@ export default function Experience() {
       <axesHelper />
 
       {/* POSTRPROCESSING: needs to find a way for optimizing GPU, CPU */}
-      {isCharacterStartMove && <PostProcessingEffects />}
+      {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
           <CharacterControl />
 
         <AmbienceOfLight />

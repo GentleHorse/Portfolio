@@ -215,7 +215,7 @@ export default function CharacterControl() {
           ref={body}
           colliders={false}
           position={[0, 0, 5]}
-          linearDamping={10}
+          linearDamping={10} // Set the high value for stop movements as soon as the key is released
           angularDamping={0.1}
           enabledRotations={[false, false, false]}
           friction={0.6}
