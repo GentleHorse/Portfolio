@@ -18,12 +18,16 @@ export default function CharacterControl() {
   const character = useRef();
 
   /**
-   * CHARACTER STATE
+   * GAME PHASE & CHARACTER STATE
    */
-  const { characterState, setCharacterState } = useGameStore((state) => ({
-    characterState: state.characterState,
-    setCharacterState: state.setCharacterState,
-  }));
+  const { gamePhase, setGamePhase, characterState, setCharacterState } =
+    useGameStore((state) => ({
+      gamePhase: state.gamePhase,
+      setGamePhase: state.setGamePhase,
+
+      characterState: state.characterState,
+      setCharacterState: state.setCharacterState,
+    }));
 
   /**
    * MAKE THE CHARACTER MOVE
