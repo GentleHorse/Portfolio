@@ -689,6 +689,68 @@ useEffect(() => {
 
 ```
 
+### 4-5. Let the camera follow the character
+To let the camera follow the character movements, access its position through `getWorldPosition` of the character `mesh` (in this case, it's done with its `mesh` ref, `character`) and synchronize the both movements with adjusting the camera position & target (where the camera looks at). <br>
+
+- **Camera position:** synchronize xz-axis, but y-axis is fixed
+- **Camera target:** synchronize xyz-axis
+
+```
+useFrame((state, delta) => {
+    // Get the character position
+    const characterWorldPosition = character.current.getWorldPosition(
+        new THREE.Vector3()
+    );
+
+    // Set the camera position
+    state.camera.position.x = characterWorldPosition.x;
+    state.camera.position.z = characterWorldPosition.z + 10;
+
+    // Set the camera target
+    const cameraTarget = new THREE.Vector3();
+    cameraTarget.copy(characterWorldPosition);
+    state.camera.lookAt(cameraTarget);
+});
+```
+
+### 4-6. Let the light follow the character
+**THREE JS MATRIX** <br>
+Three.js updates object matrices when their transformation coordinates change (`position`, `rotation`, `scale`) but they need to be in the scene. In this case, the light is in the scene but not the `target`. Thus, you need to update the matrix of the `target` manually with the `updateMatrixWorld` method.<br>
+
+```
+export default function Lights() {
+  const light = useRef();
+
+  useFrame((state) => {
+    const cameraPosition = state.camera.position;
+
+    light.current.position.z = cameraPosition.z + 1 -4;
+    light.current.target.position.z = cameraPosition.z - 4;
+    light.current.target.updateMatrixWorld();
+  });
+
+  return (
+    <>
+      <directionalLight
+        ref={light}
+        castShadow
+        position={[4, 4, 1]}
+        intensity={4.5}
+        shadow-mapSize={[1024, 1024]}
+        shadow-camera-near={1}
+        shadow-camera-far={10}
+        shadow-camera-top={10}
+        shadow-camera-right={10}
+        shadow-camera-bottom={-10}
+        shadow-camera-left={-10}
+      />
+      <ambientLight intensity={1.5} />
+    </>
+  );
+}
+```
+
+
 ## 5. Bloom + geometry emissions
 
 ![bloom before activation](./public/images/screenshots/bloom-before-activation.png)<br>

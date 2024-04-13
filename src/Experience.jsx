@@ -40,7 +40,7 @@ export default function Experience() {
       {/* POSTRPROCESSING: needs to find a way for optimizing GPU, CPU */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
           <CharacterControl />
 
         <AmbienceOfLight />

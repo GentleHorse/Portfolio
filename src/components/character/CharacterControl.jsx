@@ -1,10 +1,10 @@
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import * as THREE from "three";
 import { useKeyboardControls } from "@react-three/drei";
 import useSound from "use-sound";
 import walkSound from "../../../public/sounds/character/walking.mp3";
 import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
@@ -142,6 +142,20 @@ export default function CharacterControl() {
 
       // Apply forces to the rigid body
       body.current.applyImpulse(impluse, true);
+
+      /**
+       * Let the camera follow the character
+       */
+      const characterWorldPosition = character.current.getWorldPosition(
+        new THREE.Vector3()
+      );
+
+      state.camera.position.x = characterWorldPosition.x;
+      state.camera.position.z = characterWorldPosition.z + 7;
+
+      const cameraTarget = new THREE.Vector3();
+      cameraTarget.copy(characterWorldPosition);
+      state.camera.lookAt(cameraTarget);
     }
   });
 
