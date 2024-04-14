@@ -10,11 +10,13 @@ import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
 import { useKeyboardControls } from "@react-three/drei";
 import AmbienceOfLight from "./components/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
+import BeautyOfTimePassing from "./components/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
   const [subscribeKeys, getKeys] = useKeyboardControls();
 
+  // Listen whether the character starts moving or not
   useEffect(() => {
     const unsubscribeAny = subscribeKeys(() => setIsCharacterStartMove(true));
 
@@ -25,25 +27,25 @@ export default function Experience() {
 
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* ENVIRONMENT SET UP */}
+      <Lights />
+      <Background />
 
       {/* <Environment preset="city" /> */}
-
-      <Lights />
-
-      <Background />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       <axesHelper />
+      <OrbitControls makeDefault />
 
-      {/* POSTRPROCESSING: needs to find a way for optimizing GPU, CPU */}
+      {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={true}>
-          <CharacterControl />
+        {/* <CharacterControl /> */}
 
-        <AmbienceOfLight />
+        {/* <AmbienceOfLight /> */}
+        <BeautyOfTimePassing />
       </Physics>
     </>
   );

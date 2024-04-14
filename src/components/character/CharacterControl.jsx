@@ -209,22 +209,22 @@ export default function CharacterControl() {
   /**
    * SOUNDS CONTROL - JUMP
    */
-  const [
-    playJumpSound, // play sound method
-    {
-      stop: stopPlayJumpSound, // stop sound method
-      isPlaying: isPlayingJumpSound, // return boolean
-      sound: jumpingSound, // allow access to "sound" object
-    },
-  ] = useSound(jumpSound);
+  // const [
+  //   playJumpSound, // play sound method
+  //   {
+  //     stop: stopPlayJumpSound, // stop sound method
+  //     isPlaying: isPlayingJumpSound, // return boolean
+  //     sound: jumpingSound, // allow access to "sound" object
+  //   },
+  // ] = useSound(jumpSound);
 
-  useEffect(() => {
-    if (jump) {
-      playJumpSound();
-    } else {
-      stopPlayJumpSound();
-    }
-  }, [jump]);
+  // useEffect(() => {
+  //   if (jump) {
+  //     playJumpSound();
+  //   } else {
+  //     stopPlayJumpSound();
+  //   }
+  // }, [jump]);
 
   return (
     <>
