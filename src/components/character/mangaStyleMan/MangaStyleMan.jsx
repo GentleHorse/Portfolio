@@ -47,6 +47,7 @@ export default function MangaStyleMan(props) {
             geometry={nodes["manga-style-man001"].geometry}
             // material={nodes["manga-style-man001"].material}
             skeleton={nodes["manga-style-man001"].skeleton}
+            castShadow
           >
             <meshStandardMaterial color="snow" />
             {/* <MeshDistortMaterial distort={0.5} speed={5} /> */}

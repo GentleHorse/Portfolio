@@ -36,7 +36,7 @@ export default function CharacterControl() {
   const { forward, backward, leftward, rightward, run, jump } = getKeys();
 
   const WALK_SPEED = 2.5;
-  const RUN_SPEED = 5.0;
+  const RUN_SPEED = 10.0;
 
   useFrame((state, delta) => {
     if (body.current) {
@@ -155,7 +155,7 @@ export default function CharacterControl() {
       );
 
       state.camera.position.x = characterWorldPosition.x;
-      state.camera.position.z = characterWorldPosition.z + 7;
+      state.camera.position.z = characterWorldPosition.z + 15;
 
       const cameraTarget = new THREE.Vector3();
       cameraTarget.copy(characterWorldPosition);
@@ -233,7 +233,7 @@ export default function CharacterControl() {
           ref={body}
           colliders={false}
           position={[0, 0, 5]}
-          linearDamping={10} // Set the high value for stop movements as soon as the key is released
+          linearDamping={15} // Set the high value for stop movements as soon as the key is released
           angularDamping={0.1}
           enabledRotations={[false, false, false]}
           friction={0.6}

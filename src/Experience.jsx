@@ -41,11 +41,11 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
-        {/* <CharacterControl /> */}
+      <Physics debug={false}>
+        <CharacterControl />
 
         {/* <AmbienceOfLight /> */}
-        <BeautyOfTimePassing />
+        <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} />
       </Physics>
     </>
   );

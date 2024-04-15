@@ -1,12 +1,25 @@
 import { useState } from "react";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import {
+  useGLTF,
+  MeshTransmissionMaterial,
+  MeshReflectorMaterial,
+} from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 import clearSceneryVideo from "../../../../public/videos/clear.mp4";
+import MangaStyleMan from "../../character/mangaStyleMan/MangaStyleMan";
+
+const FILED_SIZES = {
+  x: 80,
+  z: 80,
+};
 
 export default function BeautyOfTimePassing(props) {
+  /**
+   * IMPORT THE SPACE STRUCTURE
+   */
   const { nodes, materials } = useGLTF(
     "./models/design-works/beauty-of-time-passing/beauty-of-time-passing.gltf"
   );
@@ -28,24 +41,24 @@ export default function BeautyOfTimePassing(props) {
    * GLASS TEXUTRES
    */
   // Load normal textures for the glass plane
-  const glassNormalTextureSnow01 = useLoader(
-    THREE.TextureLoader,
-    "./textures/snow/Snow004_1K-JPG_NormalGL.jpg"
-  );
-  const glassNormalTextureSnow02 = useLoader(
-    THREE.TextureLoader,
-    "./textures/snow/Snow004_1K-JPG_NormalDX.jpg"
-  );
-  const glassNormalTextureAbstractOrganic = useLoader(
+  const glassNormalTextureAbstractOrganic01 = useLoader(
     THREE.TextureLoader,
     "./textures/abstarct-organic/Abstract_Organic_002_NORM.jpg"
+  );
+  const glassNormalTextureAbstractOrganic02 = useLoader(
+    THREE.TextureLoader,
+    "./textures/abstarct-organic/Abstract_004_NRM.jpg"
+  );
+  const glassNormalTextureAbstractOrganic03 = useLoader(
+    THREE.TextureLoader,
+    "./textures/abstarct-organic/Abstract_Organic_003_normal.jpg"
   );
 
   // The texture object used for "normalMap" attribute of meshPhysicalMaterial
   const GLASS_TEXTURES = {
-    snow01: glassNormalTextureSnow01,
-    snow02: glassNormalTextureSnow02,
-    abstractOrganic: glassNormalTextureAbstractOrganic,
+    abstractOrganic01: glassNormalTextureAbstractOrganic01,
+    abstractOrganic02: glassNormalTextureAbstractOrganic02,
+    abstractOrganic03: glassNormalTextureAbstractOrganic03,
   };
 
   // GUI to display texture names
@@ -56,46 +69,79 @@ export default function BeautyOfTimePassing(props) {
   });
 
   return (
-    <>
+    <group {...props}>
       {/* VIDEO PLANE */}
-      <mesh scale={[5, 8, 1]} position={[0, 3, 0]}>
+      <mesh scale={[10, 18, 1]} position={[0, 8, -12]}>
         <planeGeometry />
-        <meshStandardMaterial emissive={"snow"}>
+        <meshStandardMaterial emissive={"white"}>
           <videoTexture attach="map" args={[video]} />
           <videoTexture attach="emissiveMap" args={[video]} />
         </meshStandardMaterial>
       </mesh>
 
       {/* GLASS PLANE */}
-      <mesh scale={[3, 5, 0.25]} position={[0, 3, 1]}>
+      <mesh scale={[10, 18, 0.5]} position={[0, 8, -11.5]}>
         <boxGeometry />
-        <meshPhysicalMaterial
-          attach="material"
-          clearcoat={1.0}
-          clearcoatRoughness={0.5}
-          roughness={0.0}
-          transmission={0.5}
-          thickness={0.7}
+        <MeshTransmissionMaterial
+          backside
+          samples={6} // refraction samples, default: 6
+          thickness={0.2}
+          chromaticAberration={0.05}
+          anisotropy={0.9} // the structural property of non-uniformity in different directions, default: 0.1
+          distortion={0.1} // default: 0
+          distortionScale={0.1}
+          temporalDistortion={0.1} // speed of movement, default: 0.0
+          iridescence={1} // certain surfaces that appear gradually to change colour
+          iridescenceIOR={1}
+          iridescenceThicknessRange={[100, 400]}
           normalMap={GLASS_TEXTURES[glassTexture]}
-          color="snow"
         />
       </mesh>
 
       {/* FLOOR */}
       <RigidBody type="fixed" restitution={0.5} friction={0.6}>
-        <mesh scale={[20, 0.1, 20]} position={[0, -0.2, 0]}>
+        <mesh
+          scale={[FILED_SIZES.x, 0.1, FILED_SIZES.x]}
+          position={[0, -0.1, 0]}
+          receiveShadow
+        >
           <boxGeometry />
-          <meshStandardMaterial color="#000000" roughness={0.7} />
+          <meshStandardMaterial color="#000000" roughness={0.8} />
+        </mesh>
+
+        <mesh
+          scale={[FILED_SIZES.x, FILED_SIZES.x, 1]}
+          rotation={[-Math.PI * 0.5, 0, 0]}
+        >
+          <planeGeometry />
+          <MeshReflectorMaterial
+            blur={[300, 100]}
+            resolution={2048}
+            mixBlur={1}
+            mixStrength={80}
+            roughness={0.7}
+            depthScale={1.2}
+            minDepthThreshold={0.4}
+            maxDepthThreshold={1.4}
+            color="#050505"
+            metalness={0.5}
+          />
         </mesh>
       </RigidBody>
 
-      <group {...props} dispose={null}>
+      {/* ARCHITECTURE */}
+      <group dispose={null}>
         <mesh
           geometry={nodes.walls001.geometry}
           material={materials["dark-color-wall"]}
           position={[0, 6.685, 0]}
           scale={-9.998}
-        />
+        >
+          {/* <meshStandardMaterial emissive={"white"}>
+            <videoTexture attach="map" args={[video]} />
+            <videoTexture attach="emissiveMap" args={[video]} />
+          </meshStandardMaterial> */}
+        </mesh>
         <mesh
           geometry={nodes.beams003.geometry}
           material={materials["dark-color-wall"]}
@@ -109,7 +155,16 @@ export default function BeautyOfTimePassing(props) {
           scale={[9.268, 0.095, 0.495]}
         />
       </group>
-    </>
+
+      {/* SPOTLIGHT */}
+      <spotLight
+        intensity={1}
+        decay={0}
+        position={[0, 20, -25]}
+        angle={0.35}
+        penumbra={1}
+      />
+    </group>
   );
 }
 
