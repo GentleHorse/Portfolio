@@ -31,7 +31,7 @@ export default function Experience() {
       <Lights />
       <Background />
 
-      {/* <Environment preset="city" /> */}
+      <Environment preset="night" />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />

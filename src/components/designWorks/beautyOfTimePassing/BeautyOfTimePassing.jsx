@@ -1,11 +1,16 @@
 import { useState } from "react";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 import clearSceneryVideo from "../../../../public/videos/clear.mp4";
 
-export default function BeautyOfTimePassing() {
+export default function BeautyOfTimePassing(props) {
+  const { nodes, materials } = useGLTF(
+    "./models/design-works/beauty-of-time-passing/beauty-of-time-passing.gltf"
+  );
+
   /**
    * SCENERY VIDEO SETUP AT THE INITIAL RENDER
    */
@@ -83,6 +88,31 @@ export default function BeautyOfTimePassing() {
           <meshStandardMaterial color="#000000" roughness={0.7} />
         </mesh>
       </RigidBody>
+
+      <group {...props} dispose={null}>
+        <mesh
+          geometry={nodes.walls001.geometry}
+          material={materials["dark-color-wall"]}
+          position={[0, 6.685, 0]}
+          scale={-9.998}
+        />
+        <mesh
+          geometry={nodes.beams003.geometry}
+          material={materials["dark-color-wall"]}
+          position={[0, 16.209, 5.091]}
+          scale={[11.707, 0.563, 0.65]}
+        />
+        <mesh
+          geometry={nodes.ceiling002.geometry}
+          material={materials["dark-color-wood"]}
+          position={[0, 15.135, 15.806]}
+          scale={[9.268, 0.095, 0.495]}
+        />
+      </group>
     </>
   );
 }
+
+useGLTF.preload(
+  "./models/design-works/beauty-of-time-passing/beauty-of-time-passing.gltf"
+);
