@@ -31,11 +31,11 @@ export default function Experience() {
       <Lights />
       <Background />
 
-      <Environment preset="night" />
+      {/* <Environment preset="night" /> */}
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
-      <axesHelper />
+      {/* <axesHelper /> */}
       <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}

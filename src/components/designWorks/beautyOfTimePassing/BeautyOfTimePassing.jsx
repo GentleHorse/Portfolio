@@ -131,18 +131,13 @@ export default function BeautyOfTimePassing(props) {
 
       {/* ARCHITECTURE */}
       <group dispose={null}>
-        <mesh
+        {/* <mesh
           geometry={nodes.walls001.geometry}
           material={materials["dark-color-wall"]}
           position={[0, 6.685, 0]}
           scale={-9.998}
-        >
-          {/* <meshStandardMaterial emissive={"white"}>
-            <videoTexture attach="map" args={[video]} />
-            <videoTexture attach="emissiveMap" args={[video]} />
-          </meshStandardMaterial> */}
-        </mesh>
-        <mesh
+        /> */}
+        {/* <mesh
           geometry={nodes.beams003.geometry}
           material={materials["dark-color-wall"]}
           position={[0, 16.209, 5.091]}
@@ -153,7 +148,7 @@ export default function BeautyOfTimePassing(props) {
           material={materials["dark-color-wood"]}
           position={[0, 15.135, 15.806]}
           scale={[9.268, 0.095, 0.495]}
-        />
+        /> */}
       </group>
 
       {/* SPOTLIGHT */}
