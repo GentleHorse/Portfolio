@@ -9,7 +9,6 @@ import {
 import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 import clearSceneryVideo from "../../../../public/videos/clear.mp4";
-import MangaStyleMan from "../../character/mangaStyleMan/MangaStyleMan";
 
 const FILED_SIZES = {
   x: 80,

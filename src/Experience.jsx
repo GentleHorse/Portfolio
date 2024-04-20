@@ -31,21 +31,21 @@ export default function Experience() {
       <Lights />
       <Background />
 
-      {/* <Environment preset="night" /> */}
+      <Environment preset="night" />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
-      {/* <axesHelper /> */}
+      <axesHelper />
       <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={false}>
-        <CharacterControl />
+        {/* <CharacterControl /> */}
 
-        {/* <AmbienceOfLight /> */}
-        <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} />
+        <AmbienceOfLight />
+        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} /> */}
       </Physics>
     </>
   );

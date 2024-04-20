@@ -155,9 +155,13 @@ export default function CharacterControl() {
       );
 
       state.camera.position.x = characterWorldPosition.x;
-      state.camera.position.z = characterWorldPosition.z + 15;
+      // state.camera.position.z = characterWorldPosition.z - 2;
+      state.camera.position.z = characterWorldPosition.z + 8;
 
       const cameraTarget = new THREE.Vector3();
+      // cameraTarget.x = characterWorldPosition.x;
+      // cameraTarget.z = characterWorldPosition.z - 10;
+
       cameraTarget.copy(characterWorldPosition);
       state.camera.lookAt(cameraTarget);
     }
