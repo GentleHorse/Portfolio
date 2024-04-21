@@ -1,13 +1,23 @@
 import { RigidBody } from "@react-three/rapier";
 
-export default function TestFloor() {
+export default function TestFloor(props) {
   return (
-    <RigidBody type="fixed" restitution={0.5} friction={0.2}>
+    <>
+      {/* FOR 3D */}
+      {/* <RigidBody type="fixed" restitution={0.5} friction={0.2}>
       <mesh scale={[20, 0.1, 20]} position={[0, 0, 0]}>
         <boxGeometry />
-        {/* <meshBasicMaterial color="#676767" /> */}
         <meshStandardMaterial color="#676767" />
       </mesh>
-    </RigidBody>
+    </RigidBody> */}
+
+      {/* FOR 2D */}
+      <RigidBody type="fixed" restitution={0.5} friction={0.2} {...props}>
+        <mesh>
+          <boxGeometry />
+          <meshStandardMaterial color="#676767" />
+        </mesh>
+      </RigidBody>
+    </>
   );
 }

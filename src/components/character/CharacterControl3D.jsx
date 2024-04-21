@@ -10,7 +10,7 @@ import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
 
-export default function CharacterControl() {
+export default function CharacterControl3D() {
   /**
    * REF - CHARACTER
    */
