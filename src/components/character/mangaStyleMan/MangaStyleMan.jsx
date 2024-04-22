@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
+import * as THREE from "three";
 import {
   useGLTF,
   useAnimations,
   MeshDistortMaterial,
-  MeshTransmissionMaterial,
   Outlines,
 } from "@react-three/drei";
 import { useGameStore } from "../../../store/store";
@@ -14,23 +14,45 @@ export default function MangaStyleMan(props) {
     "./models/manga-style-man/manga-style-man.gltf"
   );
 
-  // Animations: Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land
+  /**
+   * Animations
+   *
+   * * Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land, Climbing
+   * * Attack, Cheer, Dance, Wave
+   *
+   */
   const { actions } = useAnimations(animations, group);
 
   // Import the character state
   const characterState = useGameStore((state) => state.characterState);
+  const setCharacterState = useGameStore((state) => state.setCharacterState);
 
   // Switch character animations
+  // Several animations should play once
   useEffect(() => {
-    actions[characterState].reset().fadeIn(0.01).play();
+    if (
+      characterState === "Jump_Start" ||
+      characterState === "Jump_Land" ||
+      characterState === "Attack" ||
+      characterState === "Cheer" ||
+      characterState === "Dance" ||
+      characterState === "Wave"
+    ) {
+      actions[characterState]
+        .reset()
+        .fadeIn(0.2)
+        .setLoop(THREE.LoopOnce, undefined)
+        .play();
+      actions[characterState].clampWhenFinished = true;
+    } else {
+      actions[characterState].reset().fadeIn(0.2).play();
+    }
 
     return () => {
       actions[characterState].fadeOut(0.1);
       actions[characterState].stop();
-    }
-
-  }, [characterState])
-
+    };
+  }, [characterState]);
 
   return (
     <group ref={group} {...props} dispose={null}>

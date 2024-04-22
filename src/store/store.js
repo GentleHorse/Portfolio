@@ -15,6 +15,7 @@ export const useGameStore = create(
      * CHARACTER ANIMATION CONTROLLER
      */
     characterState: "Idle",
+
     setCharacterState: (characterState) => {
       set({ characterState: characterState });
     },

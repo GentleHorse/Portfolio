@@ -46,7 +46,7 @@ export default function Experience() {
         {/* <CharacterControl /> */}
         <CharacterControl2D />
 
-        <TestFloor scale={[100, 0.1, 5]} position={[0, -0.5, 0]} />
+        <TestFloor scale={[100, 2, 5]} position={[0, -1.5, 0]} />
 
         {/* <AmbienceOfLight /> */}
         {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} /> */}
