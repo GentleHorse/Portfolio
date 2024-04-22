@@ -12,7 +12,7 @@ export default function TestFloor(props) {
     </RigidBody> */}
 
       {/* FOR 2D */}
-      <RigidBody type="fixed" restitution={0.5} friction={0.2} {...props}>
+      <RigidBody type="fixed" restitution={0.5} friction={0.2} name={"ground"} {...props}>
         <mesh>
           <boxGeometry />
           <meshStandardMaterial color="#676767" />

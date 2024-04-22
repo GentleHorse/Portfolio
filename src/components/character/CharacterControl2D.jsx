@@ -114,6 +114,8 @@ export default function CharacterControl2D(props) {
 
       // Activate the idle animation when the character stops
       if (!rightward && !leftward && !isJumping) {
+        body.current.linvel().x = 0;
+
         if (characterState !== "Idle") {
           setCharacterState("Idle");
         }
@@ -149,8 +151,10 @@ export default function CharacterControl2D(props) {
 
       // Add downward force after the character jumps
       if (castRayHit && castRayHit.toi > 1.5) {
-        body.current.applyImpulse({ x: 0, y: -3.8, z: 0 }, true);
+        body.current.applyImpulse({ x: 0, y: -1, z: 0 }, true);
       }
+
+      console.log(isJumping);
     }
   });
 
@@ -173,19 +177,10 @@ export default function CharacterControl2D(props) {
     if (hit.toi < 0.15) {
       setIsJumping(true);
 
-      if (characterState !== "Jump_Start") {
-        setCharacterState("Jump_Start");
+      setCharacterState("Jump_Start");
 
-        setTimeout(() => {
-          body.current.applyImpulse({ x: 0, y: 5, z: 0 }, true);
-
-          setTimeout(() => {
-            setIsJumping(false);
-          }, 500);
-        }, 500);
-      }
+      body.current.applyImpulse({ x: 0, y: 5, z: 0 }, true);
     }
-
   };
 
   useEffect(() => {
@@ -273,10 +268,15 @@ export default function CharacterControl2D(props) {
           ref={body}
           colliders={false}
           position={[0, 0, 0]}
-          linearDamping={10} // Set the high value for stop movements as soon as the key is released
+          linearDamping={5} // Set the high value for stop movements as soon as the key is released
           angularDamping={0.1}
           enabledRotations={[false, false, false]}
           friction={0.6}
+          onCollisionEnter={(event) => {
+            if (event.other.rigidBodyObject.name === "ground") {
+              setIsJumping(false);
+            }
+          }}
         >
           <group ref={character}>
             <MangaStyleMan position={[0, 1, 0]} />
