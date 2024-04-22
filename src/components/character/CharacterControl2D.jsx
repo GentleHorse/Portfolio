@@ -154,6 +154,16 @@ export default function CharacterControl2D(props) {
         body.current.applyImpulse({ x: 0, y: -1, z: 0 }, true);
       }
 
+      // if (isJumping && castRayHit && castRayHit.toi < 0.01) {
+      //   setCharacterState("Jump_Land");
+      // }
+
+      if (isJumping) {
+        if (characterState !== "Jump_Idle") {
+          setCharacterState("Jump_Idle");
+        }
+      }
+
       console.log(isJumping);
     }
   });
@@ -177,7 +187,9 @@ export default function CharacterControl2D(props) {
     if (hit.toi < 0.15) {
       setIsJumping(true);
 
-      setCharacterState("Jump_Start");
+      // if (characterState !== "Jump_Land") {
+      //   setCharacterState("Jump_Idle");
+      // }
 
       body.current.applyImpulse({ x: 0, y: 5, z: 0 }, true);
     }

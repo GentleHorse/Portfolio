@@ -43,13 +43,14 @@ export default function MangaStyleMan(props) {
         .fadeIn(0.2)
         .setLoop(THREE.LoopOnce, undefined)
         .play();
-      actions[characterState].clampWhenFinished = true;
+      actions[characterState].clampWhenFinished = true; 
     } else {
       actions[characterState].reset().fadeIn(0.2).play();
+      actions[characterState].setEffectiveTimeScale(1.5); // animation speed
     }
 
     return () => {
-      actions[characterState].fadeOut(0.1);
+      actions[characterState].fadeOut(2);
       actions[characterState].stop();
     };
   }, [characterState]);
