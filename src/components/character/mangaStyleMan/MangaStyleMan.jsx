@@ -25,7 +25,6 @@ export default function MangaStyleMan(props) {
 
   // Import the character state
   const characterState = useGameStore((state) => state.characterState);
-  const setCharacterState = useGameStore((state) => state.setCharacterState);
 
   // Switch character animations
   // Several animations should play once
@@ -43,7 +42,7 @@ export default function MangaStyleMan(props) {
         .fadeIn(0.2)
         .setLoop(THREE.LoopOnce, undefined)
         .play();
-      actions[characterState].clampWhenFinished = true; 
+      actions[characterState].clampWhenFinished = true;
     } else {
       actions[characterState].reset().fadeIn(0.2).play();
       actions[characterState].setEffectiveTimeScale(1.5); // animation speed

@@ -4,6 +4,7 @@ import useSound from "use-sound";
 import walkSound from "../../../public/sounds/character/walking.mp3";
 import runSound from "../../../public/sounds/character/run.wav";
 import jumpSound from "../../../public/sounds/character/jump-male.wav";
+import pongSound from "../../../public/sounds/character/pong.mp3";
 import { Suspense, useEffect, useRef, useState } from "react";
 import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
@@ -154,17 +155,11 @@ export default function CharacterControl2D(props) {
         body.current.applyImpulse({ x: 0, y: -1, z: 0 }, true);
       }
 
-      // if (isJumping && castRayHit && castRayHit.toi < 0.01) {
-      //   setCharacterState("Jump_Land");
-      // }
-
       if (isJumping) {
         if (characterState !== "Jump_Idle") {
           setCharacterState("Jump_Idle");
         }
       }
-
-      console.log(isJumping);
     }
   });
 
@@ -186,10 +181,6 @@ export default function CharacterControl2D(props) {
      */
     if (hit.toi < 0.15) {
       setIsJumping(true);
-
-      // if (characterState !== "Jump_Land") {
-      //   setCharacterState("Jump_Idle");
-      // }
 
       body.current.applyImpulse({ x: 0, y: 5, z: 0 }, true);
     }
@@ -256,6 +247,8 @@ export default function CharacterControl2D(props) {
   /**
    * SOUNDS CONTROL - JUMP
    */
+  // const { jump } = getKeys();
+
   // const [
   //   playJumpSound, // play sound method
   //   {
@@ -273,6 +266,21 @@ export default function CharacterControl2D(props) {
   //   }
   // }, [jump]);
 
+  /**
+   * SOUNDS CONTROL - CONTACT TO THE GOUND
+   * 
+   * In order to play the sound only ONCE,
+   * set the character & floor restitution to "0" (zero bounciness)
+   */
+  const [
+    playPongSound, // play sound method
+    {
+      stop: stopPlayPongSound, // stop sound method
+      isPlaying: isPlayingPongSound, // return boolean
+      sound: PongSound, // allow access to "sound" object
+    },
+  ] = useSound(pongSound);
+
   return (
     <>
       <Suspense>
@@ -284,9 +292,11 @@ export default function CharacterControl2D(props) {
           angularDamping={0.1}
           enabledRotations={[false, false, false]}
           friction={0.6}
+          restitution={0}
           onCollisionEnter={(event) => {
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
+              playPongSound();
             }
           }}
         >
