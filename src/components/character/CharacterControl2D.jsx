@@ -48,28 +48,28 @@ export default function CharacterControl2D(props) {
   const [isJumping, setIsJumping] = useState(false);
 
   /**
-   * CHARACTER ROTATION
+   * CHARACTER ROTATION STATE
    */
   const [isCharacterFaceForward, setIsCharacterFaceForward] = useState(true);
-  useGSAP(() => {
-    if (character.current.rotation) {
-      if (isCharacterFaceForward) {
-        // Right
-        gsap.to(character.current.rotation, {
-          y: Math.PI * 0.5,
-          duration: 0.4,
-          ease: "expo.inOut",
-        });
-      } else {
-        // Left
-        gsap.to(character.current.rotation, {
-          y: Math.PI * -0.5,
-          duration: 0.4,
-          ease: "expo.inOut",
-        });
-      }
-    }
-  }, [isCharacterFaceForward]);
+  // useGSAP(() => {
+  //   if (character.current.rotation) {
+  //     if (isCharacterFaceForward) {
+  //       // Right
+  //       gsap.to(character.current.rotation, {
+  //         y: Math.PI * 0.5,
+  //         duration: 0.4,
+  //         ease: "expo.inOut",
+  //       });
+  //     } else {
+  //       // Left
+  //       gsap.to(character.current.rotation, {
+  //         y: Math.PI * -0.5,
+  //         duration: 0.4,
+  //         ease: "expo.inOut",
+  //       });
+  //     }
+  //   }
+  // }, [isCharacterFaceForward]);
 
   /**
    * MOVE FORWARD AND BACKWARD
@@ -325,8 +325,8 @@ export default function CharacterControl2D(props) {
             }
           }}
         >
-          <group ref={character}>
-            <MangaStyleMan position={[0, 1, 0]} />
+          <group ref={character} position={[0, 1, 0]}>
+            <MangaStyleMan isCharacterFaceForward={isCharacterFaceForward} />
           </group>
 
           <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />

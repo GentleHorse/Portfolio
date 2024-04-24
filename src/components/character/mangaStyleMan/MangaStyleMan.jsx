@@ -7,15 +7,17 @@ import {
   Outlines,
 } from "@react-three/drei";
 import { useGameStore } from "../../../store/store";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
-export default function MangaStyleMan(props) {
+export default function MangaStyleMan({ isCharacterFaceForward }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
     "./models/manga-style-man/manga-style-man.gltf"
   );
 
   /**
-   * Animations
+   * ANIMATIONS
    *
    * * Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land, Climbing
    * * Attack, Cheer, Dance, Wave
@@ -54,8 +56,29 @@ export default function MangaStyleMan(props) {
     };
   }, [characterState]);
 
+  /**
+   * ROTATIONS
+   */
+  useGSAP(() => {
+      if (isCharacterFaceForward) {
+        // Right
+        gsap.to(group.current.rotation, {
+          y: Math.PI * 0.5,
+          duration: 0.4,
+          ease: "expo.inOut",
+        });
+      } else {
+        // Left
+        gsap.to(group.current.rotation, {
+          y: Math.PI * -0.5,
+          duration: 0.4,
+          ease: "expo.inOut",
+        });
+      }
+  }, [isCharacterFaceForward]);
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} dispose={null}>
       <group name="Scene">
         <group
           name="manga-style-man"
