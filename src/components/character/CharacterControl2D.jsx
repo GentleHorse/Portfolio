@@ -10,6 +10,8 @@ import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function CharacterControl2D(props) {
   /**
@@ -46,7 +48,29 @@ export default function CharacterControl2D(props) {
   const [isJumping, setIsJumping] = useState(false);
 
   /**
-   * WALK & RUN
+   * CHARACTER ROTATION
+   */
+  const [isCharacterFaceForward, setIsCharacterFaceForward] = useState(true);
+  useGSAP(() => {
+    if (isCharacterFaceForward) {
+      // Right
+      gsap.to(character.current.rotation, {
+        y: Math.PI * 0.5,
+        duration: 0.4,
+        ease: "expo.inOut",
+      });
+    } else {
+      // Left
+      gsap.to(character.current.rotation, {
+        y: Math.PI * -0.5,
+        duration: 0.4,
+        ease: "expo.inOut",
+      });
+    }
+  }, [isCharacterFaceForward]);
+
+  /**
+   * MOVE FORWARD AND BACKWARD
    */
   const WALK_SPEED = 2.5;
   const RUN_SPEED = 10.0;
@@ -69,9 +93,6 @@ export default function CharacterControl2D(props) {
       // Access the character linear velocity
       const linvel = body.current.linvel();
 
-      // Control the character mesh rotation
-      let changeRotation = false;
-
       /**
        * Walk & Run
        */
@@ -79,14 +100,18 @@ export default function CharacterControl2D(props) {
       if (leftward && !isJumping) {
         if (run && linvel.x > -RUN_SPEED) {
           impluse.x -= RUN_SPEED * delta;
-          changeRotation = true;
+
+          // Rotate the character
+          setIsCharacterFaceForward(false);
 
           if (characterState !== "Run") {
             setCharacterState("Run");
           }
         } else if (linvel.x > -WALK_SPEED) {
           impluse.x -= WALK_SPEED * delta;
-          changeRotation = true;
+
+          // Rotate the character
+          setIsCharacterFaceForward(false);
 
           if (characterState !== "Walk") {
             setCharacterState("Walk");
@@ -98,14 +123,18 @@ export default function CharacterControl2D(props) {
       if (rightward && !isJumping) {
         if (run && linvel.x < RUN_SPEED) {
           impluse.x += RUN_SPEED * delta;
-          changeRotation = true;
+
+          // Rotate the character
+          setIsCharacterFaceForward(true);
 
           if (characterState !== "Run") {
             setCharacterState("Run");
           }
         } else if (linvel.x < WALK_SPEED) {
           impluse.x += WALK_SPEED * delta;
-          changeRotation = true;
+
+          // Rotate the character
+          setIsCharacterFaceForward(true);
 
           if (characterState !== "Walk") {
             setCharacterState("Walk");
@@ -120,12 +149,6 @@ export default function CharacterControl2D(props) {
         if (characterState !== "Idle") {
           setCharacterState("Idle");
         }
-      }
-
-      // Rotate the character according to move directions
-      if (changeRotation) {
-        const angle = Math.atan2(linvel.x, linvel.z);
-        character.current.rotation.y = angle;
       }
 
       // Apply forces to the rigid body
@@ -268,7 +291,7 @@ export default function CharacterControl2D(props) {
 
   /**
    * SOUNDS CONTROL - CONTACT TO THE GOUND
-   * 
+   *
    * In order to play the sound only ONCE,
    * set the character & floor restitution to "0" (zero bounciness)
    */
