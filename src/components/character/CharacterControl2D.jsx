@@ -52,7 +52,7 @@ export default function CharacterControl2D(props) {
    */
   const [isCharacterFaceForward, setIsCharacterFaceForward] = useState(true);
   useGSAP(() => {
-    if (character) {
+    if (character.current.rotation) {
       if (isCharacterFaceForward) {
         // Right
         gsap.to(character.current.rotation, {
