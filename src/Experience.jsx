@@ -12,6 +12,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import AmbienceOfLight from "./components/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 import BeautyOfTimePassing from "./components/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 import CharacterControl2D from "./components/character/CharacterControl2D.jsx";
+import Title from "./components/title/Title.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -47,6 +48,8 @@ export default function Experience() {
         <CharacterControl2D />
 
         <TestFloor scale={[100, 2, 5]} position={[0, -1.5, 0]} />
+
+        <Title />
 
         {/* <AmbienceOfLight /> */}
         {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} /> */}

@@ -177,7 +177,7 @@ export default function CharacterControl2D(props) {
 
       // Add downward force after the character jumps
       if (castRayHit && castRayHit.toi > 1.5) {
-        body.current.applyImpulse({ x: 0, y: -1, z: 0 }, true);
+        body.current.applyImpulse({ x: 0, y: -0.3, z: 0 }, true);
       }
 
       if (isJumping) {
