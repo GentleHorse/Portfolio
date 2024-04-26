@@ -74,8 +74,8 @@ export default function CharacterControl2D(props) {
   /**
    * MOVE FORWARD AND BACKWARD
    */
-  const WALK_SPEED = 2.5;
-  const RUN_SPEED = 10.0;
+  const WALK_SPEED = 3.5;
+  const RUN_SPEED = 12.0;
 
   useFrame((state, delta) => {
     if (body.current) {
@@ -207,7 +207,7 @@ export default function CharacterControl2D(props) {
     if (hit.toi < 0.15) {
       setIsJumping(true);
 
-      body.current.applyImpulse({ x: 0, y: 5, z: 0 }, true);
+      body.current.applyImpulse({ x: 0, y: 8, z: 0 }, true);
     }
   };
 
@@ -321,6 +321,11 @@ export default function CharacterControl2D(props) {
           onCollisionEnter={(event) => {
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
+              playPongSound();
+            }
+
+            if (event.other.rigidBodyObject.name === "title"){
+              body.current.applyImpulse({ x: 0, y: -2.5, z: 0 }, true)
               playPongSound();
             }
           }}

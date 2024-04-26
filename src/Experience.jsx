@@ -43,8 +43,7 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
-        {/* <CharacterControl /> */}
+      <Physics debug={false}>
         <CharacterControl2D />
 
         <TestFloor scale={[100, 2, 5]} position={[0, -1.5, 0]} />
