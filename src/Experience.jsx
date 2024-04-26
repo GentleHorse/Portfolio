@@ -37,13 +37,13 @@ export default function Experience() {
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
-      <axesHelper />
+      {/* <axesHelper /> */}
       <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         <CharacterControl2D />
 
         <TestFloor scale={[100, 2, 5]} position={[0, -1.5, 0]} />
