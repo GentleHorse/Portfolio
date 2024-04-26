@@ -185,6 +185,8 @@ export default function CharacterControl2D(props) {
           setCharacterState("Jump_Idle");
         }
       }
+
+      // console.log(characterWorldPosition)
     }
   });
 
@@ -319,13 +321,20 @@ export default function CharacterControl2D(props) {
           friction={0.6}
           restitution={0}
           onCollisionEnter={(event) => {
+            // Make the character stay on "Z = 0" axis 
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
               playPongSound();
+              body.current.setTranslation({
+                x: body.current.translation().x,
+                y: body.current.translation().y,
+                z: 0,
+              });
+              console.log(body.current.translation().z);
             }
 
-            if (event.other.rigidBodyObject.name === "title"){
-              body.current.applyImpulse({ x: 0, y: -2.5, z: 0 }, true)
+            if (event.other.rigidBodyObject.name === "title") {
+              body.current.applyImpulse({ x: 0, y: -3.5, z: 0 }, true);
               playPongSound();
             }
           }}

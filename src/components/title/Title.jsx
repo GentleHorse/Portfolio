@@ -9,15 +9,16 @@ export default function Title() {
   const logo = useGLTF("./models/title/logo.gltf");
   const arrowMark = useGLTF("./models/title/arrow-mark.gltf");
 
-  const [isTouched, setIsTouched] = useState(false);
+  const [isLogoTouched, setIsLogoTouched] = useState(false);
+  const [isArrowTouched, setIsArrowTouched] = useState(false);
 
   return (
     <>
       {/* LOGO */}
       <RigidBody
         name="title"
-        gravityScale={isTouched ? 1.5 : 0}
-        onCollisionEnter={() => setIsTouched(true)}
+        gravityScale={isLogoTouched ? 1.5 : 0}
+        onCollisionEnter={() => setIsLogoTouched(true)}
         canSleep={false}
       >
         <mesh
@@ -44,8 +45,8 @@ export default function Title() {
       {/* ARROW MARK */}
       <RigidBody
         name="title"
-        gravityScale={isTouched ? 1.5 : 0}
-        onCollisionEnter={() => setIsTouched(true)}
+        gravityScale={isArrowTouched ? 1.5 : 0}
+        onCollisionEnter={() => setIsArrowTouched(true)}
         canSleep={false}
       >
         <mesh
