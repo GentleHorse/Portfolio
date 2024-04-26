@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from "react";
-import { useGLTF, Text3D } from "@react-three/drei";
+import { useState } from "react";
+import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
+import TitleText from "./TitleText";
 
 const TITLE = "Toshihito Endo's portfolio";
 
@@ -21,7 +22,7 @@ export default function Title() {
       >
         <mesh
           scale={2}
-          position={[0.8, 3.3, 0]}
+          position={[0.8, 2.3, 0]}
           rotation={[0, 0, 0]}
           geometry={logo.nodes.logo.geometry}
         >
@@ -32,30 +33,11 @@ export default function Title() {
       {/* 3D TEXT */}
       <group position={[1.5, 0, 0]}>
         {TITLE.split("").map((char, index) => (
-          <RigidBody
-            name="title"
-            key={index}
-            position={[index * 0.5, 3, 0]}
-            gravityScale={isTouched ? 1.5 : 0}
-            restitution={1.6}
-            onCollisionEnter={() => setIsTouched(true)}
-            canSleep={false}
-          >
-            <Text3D
-              font="./fonts/Vollkorn_ExtraBold_Regular.json"
-              size={0.5}
-              height={0.2}
-              curveSegments={12}
-              bevelEnabled
-              bevelThickness={0.02}
-              bevelSize={0.02}
-              bevelOffset={0}
-              bevelSegments={1}
-            >
-              {char}
-              <meshNormalMaterial />
-            </Text3D>
-          </RigidBody>
+          <TitleText
+            key={char + index}
+            char={char}
+            index={index}
+          />
         ))}
       </group>
 
@@ -68,7 +50,7 @@ export default function Title() {
       >
         <mesh
           scale={2}
-          position={[15.5, 3, 0]}
+          position={[15.5, 2, 0]}
           rotation={[0, 0, 0]}
           geometry={arrowMark.nodes.arrowMark.geometry}
         >
