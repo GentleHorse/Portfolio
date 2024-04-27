@@ -101,7 +101,7 @@ Run gltfjsx again to generate the code, and switch the model with the animation 
 npx gltfjsx public/models/female-cyborg/model.gltf
 ```
 
-## 3-a. Character control with ecctrl
+## 3-a. 3D Character control with ecctrl
 
 ### 3-a-0. Documentation
 
@@ -214,7 +214,7 @@ export default function Experience() {
 }
 ```
 
-## 3-b. Character control with `KeyboardControls`
+## 3-b. 3D Character control with `KeyboardControls`
 
 ### 3-b-0. Set up `KeyboardControls` from drei
 
@@ -259,6 +259,7 @@ export default function App() {
 ```
 
 ### 3-b-1. Create the `CharacterController` component
+
 First you need to create the `CharacterController` component and wrap `Character` component with `RigidBody`.
 
 ```
@@ -267,7 +268,8 @@ First you need to create the `CharacterController` component and wrap `Character
 </RigidBody>
 ```
 
-### 3-b-2. Set up with `useKeyboardControls` 
+### 3-b-2. Set up with `useKeyboardControls`
+
 In order to make the character move with keyboard inputs, first you need to set up `useKeyboardControls` from `@react-three/drei`.
 
 ```
@@ -275,6 +277,7 @@ const [subscribeKeys, getKeys] = useKeyboardControls();
 ```
 
 ### 3-b-3. Link ref to `RigidBody`
+
 Making the character move involves the physics, thus you need to reference the character via `<RigidBody>`.
 
 ```
@@ -288,6 +291,7 @@ const body = useRef();
 ```
 
 ### 3-b-4. Apply forces to make the character move
+
 Using "getter" of `useKeyboardControls` to fetch keyboard input states, then apply forces to the model with `applyImpulse`. It's important to use and tweak "one vector" to apply forces otherwise unwanted forces could be applied to the character leading to unpredictable character movements. Applying forces needs to be done inside `useFrame`. For provide the same user experience regardless of device, the amount of applied force should be optimized through `delta`. The second boolean parameter of applyImpulse is to wake up the character (react three rapier system automatically sets objects sleep after several seconds).
 
 ```
@@ -318,6 +322,7 @@ useFrame((state, delta) => {
 ```
 
 ### 3-b-5. Use `CapsuleCollider` instead of default collider
+
 For better and optimized physicall simulations, implement `CapsuleCollider`.
 
 ```
@@ -328,6 +333,7 @@ For better and optimized physicall simulations, implement `CapsuleCollider`.
 ```
 
 ### 3-b-6. Prevent the character to fall on the ground
+
 When the force is applied to the character, it will fall on the ground. To prevent it, tweak the enabledRotations attribute of `RigidBody`.
 
 ```
@@ -338,6 +344,7 @@ When the force is applied to the character, it will fall on the ground. To preve
 ```
 
 ### 3-b-7. Control the character movement speed to make it more natural
+
 In order to create natural character movements, you need to limit its speed by accessing its movement speed via `linvel()` method. And also set `linearDamping` of `RigidBody` to automatically diminish applied forces.
 
 ```
@@ -378,6 +385,7 @@ useFrame((state, delta) => {
 ```
 
 ### 3-b-8. Face the character towards movement directions
+
 It looks more natural if the character face the direction in which it moves. It can be done through accessing the character mesh and tweaking its rotation.
 
 ```
@@ -439,7 +447,9 @@ useFrame((state, delta) => {
 ```
 
 ### 3-b-9. Use `zustand` for controlling the character animation state
+
 First, you need to install `zustand`.
+
 ```
 npm install zustand
 ```
@@ -447,6 +457,7 @@ npm install zustand
 <br>
 
 And then, you need to creat a store for switching character animations. You also need to subscribe to the changes on the store, but the store currently doesn't allow subscribing. So here needs a trick. You need to use **Zustand middleware**. In `store.js`, import `subscribeWithSelector` from `zustand/middleware`.
+
 ```
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
@@ -465,7 +476,9 @@ export const useGameStore = create(
 ```
 
 ### 3-b-10. Implement animation switch logic (`MangaStyleMan.jsx`, `CharacterControl.jsx`)
+
 **`MangaStyleMan.jsx`**
+
 ```
 // Animations: Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land
 const { actions } = useAnimations(animations, group);
@@ -488,6 +501,7 @@ useEffect(() => {
 <br>
 
 **`CharacterControl.jsx`**
+
 ```
 /**
   * CHARACTER STATE
@@ -621,6 +635,7 @@ useFrame((state, delta) => {
 ```
 
 ### 3-b-11. Let the camera follow the character
+
 To let the camera follow the character movements, access its position through `getWorldPosition` of the character `mesh` (in this case, it's done with its `mesh` ref, `character`) and synchronize the both movements with adjusting the camera position & target (where the camera looks at). <br>
 
 - **Camera position:** synchronize xz-axis, but y-axis is fixed
@@ -645,6 +660,7 @@ useFrame((state, delta) => {
 ```
 
 ### 3-b-12. Let the light follow the character
+
 **THREE JS MATRIX** <br>
 Three.js updates object matrices when their transformation coordinates change (`position`, `rotation`, `scale`) but they need to be in the scene. In this case, the light is in the scene but not the `target`. Thus, you need to update the matrix of the `target` manually with the `updateMatrixWorld` method.<br>
 
@@ -681,24 +697,275 @@ export default function Lights() {
 }
 ```
 
-## 4. Character control with sounds
+## 4. 2D Character control with `KeyboardControls`
 
-### 4-0. Free sounds resources
+![2d character control](./public/images/screenshots/2d-character-control.png)
+
+<br>
+
+The set up of 2D character control is almost same as 3D character control.
+
+- **Walk & run movement:** same as 3D character control
+- **Walk & run SFX:** same as 3D character control
+- **Camera following the character:** same as 3D character control
+
+<br>
+
+But there're several differences.
+
+- **Character rotate animation:** use `GSAP` & the character facing direction states
+- **Jump logic:** applying the additional force depening on the direction the character faces, managing `isJumping` state, etc
+
+### 4-0. Character rotate animation
+
+- **CharacterControl2D.jsx**: managing the facing direction state
+- **MangaStyleMan.jsx**: managing the rotate animation with GSAP
+
+<br>
+
+**CharacterControl2D.jsx**
+
+```
+/**
+  * CHARACTER ROTATION STATE
+  */
+const [isCharacterFaceForward, setIsCharacterFaceForward] = useState(true);
+
+....
+
+/**
+  * MOVE FORWARD AND BACKWARD
+  */
+useFrame((state, delta) => {
+
+    ....
+
+    /**
+      * Walk & Run
+      */
+    // Leftward
+    if (leftward && !isJumping) {
+      if (run && linvel.x > -RUN_SPEED) {
+        impluse.x -= RUN_SPEED * delta;
+
+        // Rotate the character
+        setIsCharacterFaceForward(false);
+
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.x > -WALK_SPEED) {
+        impluse.x -= WALK_SPEED * delta;
+
+        // Rotate the character
+        setIsCharacterFaceForward(false);
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
+    }
+
+    // Rightward
+    if (rightward && !isJumping) {
+      if (run && linvel.x < RUN_SPEED) {
+        impluse.x += RUN_SPEED * delta;
+
+        // Rotate the character
+        setIsCharacterFaceForward(true);
+
+        if (characterState !== "Run") {
+          setCharacterState("Run");
+        }
+      } else if (linvel.x < WALK_SPEED) {
+        impluse.x += WALK_SPEED * delta;
+
+        // Rotate the character
+        setIsCharacterFaceForward(true);
+
+        if (characterState !== "Walk") {
+          setCharacterState("Walk");
+        }
+      }
+    }
+
+    ....
+
+});
+```
+
+**MangaStyleMan.jsx**
+
+```
+/**
+  * ROTATIONS
+  */
+useGSAP(() => {
+    if (isCharacterFaceForward) {
+      // Right
+      gsap.to(group.current.rotation, {
+        y: Math.PI * 0.5,
+        duration: 0.4,
+        ease: "expo.inOut",
+      });
+    } else {
+      // Left
+      gsap.to(group.current.rotation, {
+        y: Math.PI * -0.5,
+        duration: 0.4,
+        ease: "expo.inOut",
+      });
+    }
+}, [isCharacterFaceForward]);
+```
+
+### 4-1. Jump logic
+
+There're few things needed to be taken care of.
+
+- The `jump` key's value changes (`false` > `true`) will trigger the jump logic ---------(0)
+- Managing the `isJumping` state for jumping-in-the-air animation ---------(1)
+- Apply the downwards force for natural jumping behaviours when the character reaches the certain height or hits the certain objects when it jumps ---------(2)
+- Apply the additional jumping forces (x-axis) depending the character facing directions ---------(3)
+- Make the character keep staying on the "z = 0" axis otherwise the character z position will move unexpectedly ---------(4)
+
+```
+const JUMP_LEFT_FORCE = -2;
+const JUMP_RIGHT_FORCE = 2;
+const JUMP_HEIGHT = 10;
+
+export default function CharacterControl2D(props) {
+
+  ....
+
+  const [isJumping, setIsJumping] = useState(false);  ---------(1)
+
+  ....
+
+  useFrame((state, delta) => {
+    if (body.current) {
+
+      ....
+
+      // Add downward force after the character jumps
+      if (castRayHit && castRayHit.toi > 1) {
+        body.current.applyImpulse({ x: 0, y: -0.3, z: 0 }, true); ---------(2)
+      }
+
+      // Set the jumping in the air animation
+      if (isJumping) {
+        if (characterState !== "Jump_Idle") {
+          setCharacterState("Jump_Idle");   ---------(1)
+        }
+      }
+    }
+  });
+
+  ....
+
+  const jumpAction = () => {
+    const origin = body.current.translation();
+    origin.y -= 0.3 + 0.25 + 0.01;
+    const direction = { x: 0, y: -1, z: 0 };
+    const ray = new rapier.Ray(origin, direction);
+    const hit = world.castRay(ray, 10, true);
+
+    const { rightward, leftward } = getKeys();
+
+    if (hit.toi < 0.15) {
+      setIsJumping(true);
+
+      // Change the jump direction slightly
+      if (leftward) {                   ---------(3)
+        body.current.applyImpulse(
+          { x: JUMP_LEFT_FORCE, y: JUMP_HEIGHT, z: 0 },
+          true
+        );
+      } else if (rightward) {           ---------(3)
+        body.current.applyImpulse(
+          { x: JUMP_RIGHT_FORCE, y: JUMP_HEIGHT, z: 0 },
+          true
+        );
+      } else {
+        body.current.applyImpulse({ x: 0, y: JUMP_HEIGHT, z: 0 }, true);
+      }
+    }
+  };
+
+  useEffect(() => {                         ---------(0)
+    const unSubscribeJump = subscribeKeys(
+      (state) => state.jump,
+      (jumpPressedValue) => {
+        if (jumpPressedValue) {
+          jumpAction();
+        }
+      }
+    );
+
+    return () => {
+      unSubscribeJump();
+    };
+  }, []);
+
+  ....
+
+  return (
+    <>
+      <Suspense>
+        <RigidBody
+          ref={body}
+
+          ....
+
+          onCollisionEnter={(event) => {
+            if (event.other.rigidBodyObject.name === "ground") {
+              setIsJumping(false);                          ---------(1)
+              playPongSound();
+
+              // Make the character stay on "Z = 0" axis
+              body.current.setTranslation({                 ---------(4)
+                x: body.current.translation().x,
+                y: body.current.translation().y,
+                z: 0,
+              });
+            }
+
+            if (event.other.rigidBodyObject.name === "title") {   ---------(3)
+              body.current.applyImpulse({ x: 0, y: -3.5, z: 0 }, true);
+              playPongSound();
+            }
+          }}
+        >
+          <group ref={character} position={[0, 1, 0]}>
+            <MangaStyleMan isCharacterFaceForward={isCharacterFaceForward} />
+          </group>
+
+          <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />
+        </RigidBody>
+      </Suspense>
+    </>
+  );
+}
+```
+
+## 5. Character control with sounds
+
+### 5-0. Free sounds resources
 
 - [freesound.org](https://freesound.org/)
 
-### 4-1. useSound documentation
+### 5-1. useSound documentation
 
 - [useSound documentation](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
 - [useSound Github repo](https://github.com/joshwcomeau/use-sound)
 
-### 4-2. Install useSound
+### 5-2. Install useSound
 
 ```
 npm install use-sound
 ```
 
-### 4-3. Prepare for playing the character walk & run sound
+### 5-3. Prepare for playing the character walk & run sound
 
 In the below example, `playWalkSound()` & `playRunSound()` to play, `stopPlayWalkSound()` & `stopPlayRunSound()` to stop the sound. `isPlayingWalkSound` & `isPlayingRunSound` return boolean for indicating wheather the sound is currently playing or not. <br>
 
@@ -724,7 +991,7 @@ const [
 ] = useSound(runSound);
 ```
 
-### 4-4. Walking & running SFX logic
+### 5-4. Walking & running SFX logic
 
 Since we can subscribe the character state with zustand, let walking & running sounds play according to the character state. <br>
 
@@ -749,12 +1016,12 @@ useEffect(() => {
 
 ```
 
-## 5. Bloom + geometry emissions
+## 6. Bloom + geometry emissions
 
 ![bloom before activation](./public/images/screenshots/bloom-before-activation.png)<br>
 ![bloom after activation](./public/images/screenshots/bloom-after-activation.png)
 
-### 5-0. The approach
+### 6-0. The approach
 
 In order to apply the bloom effect to the scene in order for better performance, activate `PostProcessingEffects` (`EffectComposer` + `Bloom`) once the character starts moving. Thus, the order is like below; <br>
 
@@ -762,7 +1029,7 @@ In order to apply the bloom effect to the scene in order for better performance,
 2. Press keys to move the character
 3. Bloom effect gets activated
 
-### 5-1. Code
+### 6-1. Code
 
 To activate the bloom effect after one of the keys is pressed, in the `Experience` component, listening keyboard state with `useKeyboardControls` and let it control the activation of the bloom effect.
 
@@ -793,7 +1060,7 @@ export default function Experience() {
 }
 ```
 
-### 5-2. Emission material blinking (`TestGeometriesEmission`)
+### 6-2. Emission material blinking (`TestGeometriesEmission`)
 
 In order to change the emission strength of materials, let it change frame by frame with `useFrame`.
 
@@ -878,79 +1145,86 @@ export default function TestGeometriesEmission() {
 }
 ```
 
-## 6. Lights
+## 7. Lights
 
- Lights are super performance consumming, so use less lights as possible. <br>
- 
- **Mimimum cost**
- - AmbientLight
- - HemisphereLight
- 
+Lights are super performance consumming, so use less lights as possible. <br>
+
+**Mimimum cost**
+
+- AmbientLight
+- HemisphereLight
+
  <br>
 
- **Moderate cost**
- - DirectionalLight
- - PointLight
- 
+**Moderate cost**
+
+- DirectionalLight
+- PointLight
+
  <br>
 
- **Hight cost**
- - SpotLight
- - RectAreaLight
+**Hight cost**
 
- ## 7. Playing a video on plane geometry (`BeautyOfTimePassing.jsx`)
- ![play video texture](./public/images/screenshots/play-video-texture.png)
- 
- <br><br>
+- SpotLight
+- RectAreaLight
 
- ```
+## 8. Playing a video on plane geometry (`BeautyOfTimePassing.jsx`)
+
+![play video texture](./public/images/screenshots/play-video-texture.png)
+
+<br><br>
+
+```
 import { useState } from "react";
 import clearSceneryVideo from "../../../../public/videos/clear.mp4";
 
 export default function BeautyOfTimePassing() {
-  /**
-   * SCENERY VIDEO SETUP AT THE INITIAL RENDER
-   */
-  const [video] = useState(() => {
-    const vid = document.createElement("video");
-    vid.src = clearSceneryVideo;
-    vid.crossOrigin = "Anonymous";
-    vid.loop = true;
-    vid.muted = true;
-    vid.play();
-    return vid;
-  });
+ /**
+  * SCENERY VIDEO SETUP AT THE INITIAL RENDER
+  */
+ const [video] = useState(() => {
+   const vid = document.createElement("video");
+   vid.src = clearSceneryVideo;
+   vid.crossOrigin = "Anonymous";
+   vid.loop = true;
+   vid.muted = true;
+   vid.play();
+   return vid;
+ });
 
-  return (
-    <>
-      {/* VIDEO PLANE */}
-      <mesh scale={[3, 5, 1]} position={[0, 3, 0]}>
-        <planeGeometry />
-        <meshStandardMaterial emissive={"snow"}>
-          <videoTexture attach="map" args={[video]} />
-          <videoTexture attach="emissiveMap" args={[video]} />
-        </meshStandardMaterial>
-      </mesh>
+ return (
+   <>
+     {/* VIDEO PLANE */}
+     <mesh scale={[3, 5, 1]} position={[0, 3, 0]}>
+       <planeGeometry />
+       <meshStandardMaterial emissive={"snow"}>
+         <videoTexture attach="map" args={[video]} />
+         <videoTexture attach="emissiveMap" args={[video]} />
+       </meshStandardMaterial>
+     </mesh>
 
 
-      ....
+     ....
 
-    </>
-  );
+   </>
+ );
 }
 
 ```
 
-## 8. Exploring the glass texture (`BeautyOfTimePassing.jsx`)
+## 9. Exploring the glass texture (`BeautyOfTimePassing.jsx`)
+
 ![glass normal textures](./public/images/screenshots/glass-normal-textures.png)
 
-### 8-0. Free resources
+### 9-0. Free resources
+
 - [3D TEXTURES by João Paulo](https://3dtextures.me/)
 - [Poly Haven - "Textures"](https://polyhaven.com/textures)
 - [ambienctCG](https://ambientcg.com/)
 - [cgbookcase - "textures"](https://www.cgbookcase.com/textures)
 
-### 8-1. Loading normal textures
+### 9-1. Loading normal textures
+
 To load textures, use `useLoader` from `@react-three/fiber`.
 
 ```
@@ -976,8 +1250,9 @@ import { useLoader } from "@react-three/fiber";
 
 ```
 
-### 8-2. Implement GUI for switching normal textures
-In order to switch materials via GUI, use `useControls` from `leva` and there needs a bit of logic to show options properly. 
+### 9-2. Implement GUI for switching normal textures
+
+In order to switch materials via GUI, use `useControls` from `leva` and there needs a bit of logic to show options properly.
 
 1. Prepare an object containing texture options
 2. In GUI, show **"keys"** as options, not **"texture itself"**
@@ -990,7 +1265,7 @@ import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 
 export default function BeautyOfTimePassing() {
- 
+
  ....
 
   /**
@@ -1011,16 +1286,16 @@ export default function BeautyOfTimePassing() {
   );
 
   // The texture object used for "normalMap" attribute of meshPhysicalMaterial
-  const GLASS_TEXTURES = {                              
+  const GLASS_TEXTURES = {
     snow01: glassNormalTextureSnow01,
-    snow02: glassNormalTextureSnow02,                         -------- 1        
+    snow02: glassNormalTextureSnow02,                         -------- 1
     abstractOrganic: glassNormalTextureAbstractOrganic,
   };
 
   // GUI to display texture names
   const { glassTexture } = useControls("glassTextures", {
     glassTexture: {
-      options: Object.keys(GLASS_TEXTURES),                   -------- 2             
+      options: Object.keys(GLASS_TEXTURES),                   -------- 2
     },
   });
 
@@ -1039,13 +1314,124 @@ export default function BeautyOfTimePassing() {
           roughness={0.0}
           transmission={0.5}
           thickness={0.7}
-          normalMap={GLASS_TEXTURES[glassTexture]}           -------- 3    
+          normalMap={GLASS_TEXTURES[glassTexture]}           -------- 3
           color="snow"
         />
       </mesh>
 
       ....
 
+    </>
+  );
+}
+```
+
+## 10. Website title blocks (`Title.jsx`)
+![title block apply physics](./public/images/screenshots/title-block-apply-physics.png)
+
+<br>
+
+In order to apply physics to individual blocks, mananing states one by one and changing the gravities conditionally through the `gravityScale` property.
+
+- **Logo:** `isLogoTouched` in `Title.jsx` 
+- **Arrow mark:** `isArrowTouched` in `Title.jsx` 
+- **Individual letters:** `isTouched` in `TitleText.jsx`
+
+<br><br>
+
+**Title.jsx**
+```
+const TITLE = "Toshihito Endo's portfolio";
+
+export default function Title(props) {
+  const logo = useGLTF("./models/title/logo.gltf");
+  const arrowMark = useGLTF("./models/title/arrow-mark.gltf");
+
+  const [isLogoTouched, setIsLogoTouched] = useState(false);
+  const [isArrowTouched, setIsArrowTouched] = useState(false);
+
+  return (
+    <group {...props}>
+      {/* LOGO */}
+      <RigidBody
+        name="title"
+        gravityScale={isLogoTouched ? 1.5 : 0}
+        onCollisionEnter={() => setIsLogoTouched(true)}
+        canSleep={false}
+      >
+        <mesh
+          scale={2}
+          position={[0.8, 2.3, 0]}
+          rotation={[0, 0, 0]}
+          geometry={logo.nodes.logo.geometry}
+        >
+          <meshNormalMaterial />
+        </mesh>
+      </RigidBody>
+
+      {/* 3D TEXT */}
+      <group position={[1.5, 0, 0]}>
+        {TITLE.split("").map((char, index) => (
+          <TitleText
+            key={char + index}
+            char={char}
+            index={index}
+          />
+        ))}
+      </group>
+
+      {/* ARROW MARK */}
+      <RigidBody
+        name="title"
+        gravityScale={isArrowTouched ? 1.5 : 0}
+        onCollisionEnter={() => setIsArrowTouched(true)}
+        canSleep={false}
+      >
+        <mesh
+          scale={2}
+          position={[15.5, 2, 0]}
+          rotation={[0, 0, 0]}
+          geometry={arrowMark.nodes.arrowMark.geometry}
+        >
+          <meshNormalMaterial />
+        </mesh>
+      </RigidBody>
+    </group>
+  );
+}
+```
+
+**TitleText.jsx**
+```
+export default function TitleText({ char, index }) {
+    const [isTouched, setIsTouched] = useState(false);
+
+  return (
+    <>
+      <RigidBody
+        name="title"
+        key={index}
+        position={[index * 0.5, 2, 0]}
+        gravityScale={isTouched ? 1.5 : 0}
+        restitution={1.6}
+        onCollisionEnter={() => setIsTouched(true)}
+        canSleep={false}
+      >
+        <Text3D
+          font="./fonts/Vollkorn_ExtraBold_Regular.json"
+          size={0.5}
+          height={0.2}
+          curveSegments={12}
+          bevelEnabled
+          bevelThickness={0.02}
+          bevelSize={0.02}
+          bevelOffset={0}
+          bevelSegments={1}
+        >
+          {char}
+          <meshNormalMaterial />
+        </Text3D>
+      </RigidBody>
     </>
   );
 }

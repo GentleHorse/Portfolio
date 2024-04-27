@@ -60,7 +60,7 @@ export default function CharacterControl2D(props) {
       // Ray setting
       const origin = body.current.translation();
       origin.y -= 0.3 + 0.25 + 0.01;
-      const direction = { x: 0, y: -1, z: 0 }; 
+      const direction = { x: 0, y: -1, z: 0 };
       const ray = new rapier.Ray(origin, direction);
       const castRayHit = world.castRay(ray, 10, true);
 
@@ -154,10 +154,11 @@ export default function CharacterControl2D(props) {
       state.camera.lookAt(cameraTarget);
 
       // Add downward force after the character jumps
-      if (castRayHit && castRayHit.toi > 1.5) {
+      if (castRayHit && castRayHit.toi > 1) {
         body.current.applyImpulse({ x: 0, y: -0.3, z: 0 }, true);
       }
 
+      // Set the jumping in the air animation
       if (isJumping) {
         if (characterState !== "Jump_Idle") {
           setCharacterState("Jump_Idle");
@@ -169,7 +170,6 @@ export default function CharacterControl2D(props) {
   /**
    * Jump
    */
-
   const jumpAction = () => {
     const origin = body.current.translation();
     origin.y -= 0.3 + 0.25 + 0.01;
@@ -183,15 +183,22 @@ export default function CharacterControl2D(props) {
      * Jump is allowed only if the ball is close enough to the floor
      * In order to hit the ray properly, the floor should be thick enough to be hit
      * (otherwise the "hit" returns NULL and cannot read the null property of "toi")
+     * TEMP_GROUND_THICKNESS ---> refer to <TestFloor />
      */
     if (hit.toi < 0.15) {
       setIsJumping(true);
 
       // Change the jump direction slightly
       if (leftward) {
-        body.current.applyImpulse({ x: JUMP_LEFT_FORCE, y: JUMP_HEIGHT, z: 0 }, true);
+        body.current.applyImpulse(
+          { x: JUMP_LEFT_FORCE, y: JUMP_HEIGHT, z: 0 },
+          true
+        );
       } else if (rightward) {
-        body.current.applyImpulse({ x: JUMP_RIGHT_FORCE, y: JUMP_HEIGHT, z: 0 }, true);
+        body.current.applyImpulse(
+          { x: JUMP_RIGHT_FORCE, y: JUMP_HEIGHT, z: 0 },
+          true
+        );
       } else {
         body.current.applyImpulse({ x: 0, y: JUMP_HEIGHT, z: 0 }, true);
       }
@@ -216,7 +223,6 @@ export default function CharacterControl2D(props) {
   /**
    * SOUNDS CONTROL - WALK, RUN
    */
-
   // Set up the walking sound
   const [
     playWalkSound, // play sound method

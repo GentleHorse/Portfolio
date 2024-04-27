@@ -1,5 +1,8 @@
 import { RigidBody } from "@react-three/rapier";
 
+// Temporary value, the ray casting should be optimized later
+const MIN_FLOOR_THICKNESS = 1.1;
+
 export default function TestFloor(props) {
   return (
     <>
@@ -10,7 +13,7 @@ export default function TestFloor(props) {
           name={"ground"}
           restitution={0}
           friction={0.2}
-          scale={[3, 1.1, 1]}
+          scale={[3, MIN_FLOOR_THICKNESS, 1]}
           position={[5, 2.5, 0]}
         >
           <mesh>
@@ -24,7 +27,7 @@ export default function TestFloor(props) {
           name={"ground"}
           restitution={0}
           friction={0.2}
-          scale={[3, 1.1, 1]}
+          scale={[3, MIN_FLOOR_THICKNESS, 1]}
           position={[7, 5, 0]}
         >
           <mesh>
@@ -39,7 +42,7 @@ export default function TestFloor(props) {
           name={"ground"}
           restitution={0}
           friction={0.2}
-          scale={[100, 1.1, 5]}
+          scale={[100, MIN_FLOOR_THICKNESS, 5]}
           position={[0, 0, 0]}
         >
           <mesh>

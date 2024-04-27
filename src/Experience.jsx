@@ -43,7 +43,7 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
         <CharacterControl2D />
 
         <TestFloor />
@@ -51,7 +51,7 @@ export default function Experience() {
         <Title position={[0, 5, 0]} />
 
         {/* <AmbienceOfLight /> */}
-        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} /> */}
+        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, 10]} /> */}
       </Physics>
     </>
   );
