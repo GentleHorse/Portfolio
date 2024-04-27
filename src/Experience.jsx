@@ -37,7 +37,7 @@ export default function Experience() {
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
-      {/* <axesHelper /> */}
+      <axesHelper />
       <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
@@ -46,9 +46,9 @@ export default function Experience() {
       <Physics debug={false}>
         <CharacterControl2D />
 
-        <TestFloor scale={[100, 2, 5]} position={[0, -1.5, 0]} />
+        <TestFloor />
 
-        <Title />
+        <Title position={[0, 5, 0]} />
 
         {/* <AmbienceOfLight /> */}
         {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, -10]} /> */}

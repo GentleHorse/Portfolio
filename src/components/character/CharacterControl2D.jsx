@@ -10,8 +10,12 @@ import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+
+const WALK_SPEED = 3.5;
+const RUN_SPEED = 12.0;
+const JUMP_LEFT_FORCE = -2;
+const JUMP_RIGHT_FORCE = 2;
+const JUMP_HEIGHT = 10;
 
 export default function CharacterControl2D(props) {
   /**
@@ -23,14 +27,10 @@ export default function CharacterControl2D(props) {
   /**
    * GAME PHASE & CHARACTER STATE
    */
-  const { gamePhase, setGamePhase, characterState, setCharacterState } =
-    useGameStore((state) => ({
-      gamePhase: state.gamePhase,
-      setGamePhase: state.setGamePhase,
-
-      characterState: state.characterState,
-      setCharacterState: state.setCharacterState,
-    }));
+  const { characterState, setCharacterState } = useGameStore((state) => ({
+    characterState: state.characterState,
+    setCharacterState: state.setCharacterState,
+  }));
 
   /**
    * MAKE THE CHARACTER MOVE
@@ -51,43 +51,21 @@ export default function CharacterControl2D(props) {
    * CHARACTER ROTATION STATE
    */
   const [isCharacterFaceForward, setIsCharacterFaceForward] = useState(true);
-  // useGSAP(() => {
-  //   if (character.current.rotation) {
-  //     if (isCharacterFaceForward) {
-  //       // Right
-  //       gsap.to(character.current.rotation, {
-  //         y: Math.PI * 0.5,
-  //         duration: 0.4,
-  //         ease: "expo.inOut",
-  //       });
-  //     } else {
-  //       // Left
-  //       gsap.to(character.current.rotation, {
-  //         y: Math.PI * -0.5,
-  //         duration: 0.4,
-  //         ease: "expo.inOut",
-  //       });
-  //     }
-  //   }
-  // }, [isCharacterFaceForward]);
 
   /**
    * MOVE FORWARD AND BACKWARD
    */
-  const WALK_SPEED = 3.5;
-  const RUN_SPEED = 12.0;
-
   useFrame((state, delta) => {
     if (body.current) {
       // Ray setting
       const origin = body.current.translation();
       origin.y -= 0.3 + 0.25 + 0.01;
-      const direction = { x: 0, y: -1, z: 0 };
+      const direction = { x: 0, y: -1, z: 0 }; 
       const ray = new rapier.Ray(origin, direction);
       const castRayHit = world.castRay(ray, 10, true);
 
       // Get input key states
-      const { leftward, rightward, run, jump } = getKeys();
+      const { leftward, rightward, run } = getKeys();
 
       // One vector for handling all applied forces
       const impluse = { x: 0, y: 0, z: 0 };
@@ -185,8 +163,6 @@ export default function CharacterControl2D(props) {
           setCharacterState("Jump_Idle");
         }
       }
-
-      // console.log(characterWorldPosition)
     }
   });
 
@@ -201,6 +177,8 @@ export default function CharacterControl2D(props) {
     const ray = new rapier.Ray(origin, direction);
     const hit = world.castRay(ray, 10, true);
 
+    const { rightward, leftward } = getKeys();
+
     /**
      * Jump is allowed only if the ball is close enough to the floor
      * In order to hit the ray properly, the floor should be thick enough to be hit
@@ -209,7 +187,14 @@ export default function CharacterControl2D(props) {
     if (hit.toi < 0.15) {
       setIsJumping(true);
 
-      body.current.applyImpulse({ x: 0, y: 8, z: 0 }, true);
+      // Change the jump direction slightly
+      if (leftward) {
+        body.current.applyImpulse({ x: JUMP_LEFT_FORCE, y: JUMP_HEIGHT, z: 0 }, true);
+      } else if (rightward) {
+        body.current.applyImpulse({ x: JUMP_RIGHT_FORCE, y: JUMP_HEIGHT, z: 0 }, true);
+      } else {
+        body.current.applyImpulse({ x: 0, y: JUMP_HEIGHT, z: 0 }, true);
+      }
     }
   };
 
@@ -321,16 +306,16 @@ export default function CharacterControl2D(props) {
           friction={0.6}
           restitution={0}
           onCollisionEnter={(event) => {
-            // Make the character stay on "Z = 0" axis 
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
               playPongSound();
+
+              // Make the character stay on "Z = 0" axis
               body.current.setTranslation({
                 x: body.current.translation().x,
                 y: body.current.translation().y,
                 z: 0,
               });
-              console.log(body.current.translation().z);
             }
 
             if (event.other.rigidBodyObject.name === "title") {

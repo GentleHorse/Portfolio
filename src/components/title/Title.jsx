@@ -5,7 +5,7 @@ import TitleText from "./TitleText";
 
 const TITLE = "Toshihito Endo's portfolio";
 
-export default function Title() {
+export default function Title(props) {
   const logo = useGLTF("./models/title/logo.gltf");
   const arrowMark = useGLTF("./models/title/arrow-mark.gltf");
 
@@ -13,7 +13,7 @@ export default function Title() {
   const [isArrowTouched, setIsArrowTouched] = useState(false);
 
   return (
-    <>
+    <group {...props}>
       {/* LOGO */}
       <RigidBody
         name="title"
@@ -58,7 +58,7 @@ export default function Title() {
           <meshNormalMaterial />
         </mesh>
       </RigidBody>
-    </>
+    </group>
   );
 }
 
