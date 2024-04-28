@@ -1,9 +1,18 @@
 import { RigidBody } from "@react-three/rapier";
+import { useControls } from "leva";
 
 // Temporary value, the ray casting should be optimized later
 const MIN_FLOOR_THICKNESS = 1.1;
 
 export default function TestFloor(props) {
+  const floor = useControls('test-floor', {
+    color: "#676767"
+})
+
+const blocks = useControls('test-blocks', {
+  color: "#ffffff"
+})
+
   return (
     <>
       <group {...props}>
@@ -12,13 +21,13 @@ export default function TestFloor(props) {
           type="fixed"
           name={"ground"}
           restitution={0}
-          friction={0.2}
+          friction={0}    // set "0" otherwise the character gets stuck 
           scale={[3, MIN_FLOOR_THICKNESS, 1]}
           position={[5, 2.5, 0]}
         >
           <mesh>
             <boxGeometry />
-            <meshStandardMaterial color="#ffffff" />
+            <meshStandardMaterial color={blocks.color} />
           </mesh>
         </RigidBody>
 
@@ -32,7 +41,7 @@ export default function TestFloor(props) {
         >
           <mesh>
             <boxGeometry />
-            <meshStandardMaterial color="#ffffff" />
+            <meshStandardMaterial color={blocks.color} />
           </mesh>
         </RigidBody>
 
@@ -47,7 +56,7 @@ export default function TestFloor(props) {
         >
           <mesh>
             <boxGeometry />
-            <meshStandardMaterial color="#676767" />
+            <meshStandardMaterial color={floor.color} />
           </mesh>
         </RigidBody>
       </group>

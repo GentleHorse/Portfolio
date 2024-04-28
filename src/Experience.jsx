@@ -13,6 +13,7 @@ import AmbienceOfLight from "./components/designWorks/ambienceOfLight/AmbienceOf
 import BeautyOfTimePassing from "./components/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 import CharacterControl2D from "./components/character/CharacterControl2D.jsx";
 import Title from "./components/title/Title.jsx";
+import Fog from "./components/fog/Fog.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -32,6 +33,7 @@ export default function Experience() {
       {/* ENVIRONMENT SET UP */}
       <Lights />
       <Background />
+      <Fog />
 
       <Environment preset="night" />
 
