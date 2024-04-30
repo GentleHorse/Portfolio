@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text3D } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
-export default function TitleText({ char, index }) {
+export default function TitleText({ char, index, color }) {
     const [isTouched, setIsTouched] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export default function TitleText({ char, index }) {
           bevelSegments={1}
         >
           {char}
-          <meshNormalMaterial />
+          <meshStandardMaterial color={color} />
         </Text3D>
       </RigidBody>
     </>

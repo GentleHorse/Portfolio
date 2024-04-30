@@ -2,7 +2,7 @@ import { useControls } from "leva";
 
 export default function Fog() {
   const fog = useControls("fog", {
-    color: "#5b87a6",
+    color: "#51A8DD",
     near: {
       value: 0,
       min: -50,
@@ -10,7 +10,7 @@ export default function Fog() {
       step: 0.1,
     },
     far: {
-      value: 12.5,
+      value: 15,
       min: -50,
       max: 50,
       step: 0.1,

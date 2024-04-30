@@ -2,7 +2,7 @@ import { useControls } from "leva";
 
 export default function Background() {
     const {color} = useControls('background', {
-        color: "#5b87a6"
+        color: "#51A8DD"
     })
 
   return (

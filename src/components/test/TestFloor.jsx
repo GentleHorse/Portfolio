@@ -6,11 +6,11 @@ const MIN_FLOOR_THICKNESS = 1.1;
 
 export default function TestFloor(props) {
   const floor = useControls('test-floor', {
-    color: "#676767"
+    color: "#fcfaf2"
 })
 
 const blocks = useControls('test-blocks', {
-  color: "#ffffff"
+  color: "#fcfaf2"
 })
 
   return (

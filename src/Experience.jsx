@@ -14,6 +14,7 @@ import BeautyOfTimePassing from "./components/designWorks/beautyOfTimePassing/Be
 import CharacterControl2D from "./components/character/CharacterControl2D.jsx";
 import Title from "./components/title/Title.jsx";
 import Fog from "./components/fog/Fog.jsx";
+import ProductOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/ProductOfAmbienceOfLight.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -45,7 +46,7 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         <CharacterControl2D />
 
         <TestFloor />
@@ -53,7 +54,8 @@ export default function Experience() {
         <Title position={[0, 5, 0]} />
 
         {/* <AmbienceOfLight /> */}
-        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[0, 0, 10]} /> */}
+        <ProductOfAmbienceOfLight position={[15, 1.8, 0]} />
+        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[10, -2, 18]} /> */}
       </Physics>
     </>
   );

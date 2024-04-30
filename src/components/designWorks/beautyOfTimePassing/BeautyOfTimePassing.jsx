@@ -84,6 +84,7 @@ export default function BeautyOfTimePassing(props) {
         <MeshTransmissionMaterial
           backside
           samples={6} // refraction samples, default: 6
+          transmission={1}
           thickness={0.2}
           chromaticAberration={0.05}
           anisotropy={0.9} // the structural property of non-uniformity in different directions, default: 0.1
@@ -98,7 +99,7 @@ export default function BeautyOfTimePassing(props) {
       </mesh>
 
       {/* FLOOR */}
-      <RigidBody type="fixed" restitution={0.5} friction={0.6}>
+      {/* <RigidBody type="fixed" restitution={0.5} friction={0.6}>
         <mesh
           scale={[FILED_SIZES.x, 0.1, FILED_SIZES.x]}
           position={[0, -0.1, 0]}
@@ -126,10 +127,10 @@ export default function BeautyOfTimePassing(props) {
             metalness={0.5}
           />
         </mesh>
-      </RigidBody>
+      </RigidBody> */}
 
       {/* ARCHITECTURE */}
-      <group dispose={null}>
+      {/* <group dispose={null}> */}
         {/* <mesh
           geometry={nodes.walls001.geometry}
           material={materials["dark-color-wall"]}
@@ -148,16 +149,16 @@ export default function BeautyOfTimePassing(props) {
           position={[0, 15.135, 15.806]}
           scale={[9.268, 0.095, 0.495]}
         /> */}
-      </group>
+      {/* </group> */}
 
       {/* SPOTLIGHT */}
-      <spotLight
+      {/* <spotLight
         intensity={1}
         decay={0}
         position={[0, 20, -25]}
         angle={0.35}
         penumbra={1}
-      />
+      /> */}
     </group>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
+import { useControls } from "leva";
 import TitleText from "./TitleText";
 
 const TITLE = "Toshihito Endo's portfolio";
@@ -11,6 +12,11 @@ export default function Title(props) {
 
   const [isLogoTouched, setIsLogoTouched] = useState(false);
   const [isArrowTouched, setIsArrowTouched] = useState(false);
+
+  // UI
+  const { color } = useControls("title", {
+    color: "#fcfaf2",
+  });
 
   return (
     <group {...props}>
@@ -27,18 +33,14 @@ export default function Title(props) {
           rotation={[0, 0, 0]}
           geometry={logo.nodes.logo.geometry}
         >
-          <meshNormalMaterial />
+          <meshStandardMaterial color={color} />
         </mesh>
       </RigidBody>
 
       {/* 3D TEXT */}
       <group position={[1.5, 0, 0]}>
         {TITLE.split("").map((char, index) => (
-          <TitleText
-            key={char + index}
-            char={char}
-            index={index}
-          />
+          <TitleText key={char + index} char={char} index={index} color={color} />
         ))}
       </group>
 
@@ -55,7 +57,7 @@ export default function Title(props) {
           rotation={[0, 0, 0]}
           geometry={arrowMark.nodes.arrowMark.geometry}
         >
-          <meshNormalMaterial />
+          <meshStandardMaterial color={color} />
         </mesh>
       </RigidBody>
     </group>

@@ -74,13 +74,8 @@ export default function AmbienceOfLight() {
         />
       ))} */}
 
-      <GlassBrick position={[0, 0.5, 0]} />
-      <GlassBrick position={[0, 1.5, 0]} />
-
-      <mesh position={[0, 0.5, 0]}>
-        <planeGeometry />
-        <meshNormalMaterial />
-      </mesh>
+      {/* <GlassBrick position={[0, 0.5, 0]} />
+      <GlassBrick position={[0, 1.5, 0]} /> */}
 
       <pointLight intensity={50} position={[0, 1, 0]} />
 

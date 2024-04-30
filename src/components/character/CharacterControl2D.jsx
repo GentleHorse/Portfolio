@@ -143,7 +143,7 @@ export default function CharacterControl2D(props) {
 
       state.camera.position.x = characterWorldPosition.x;
       state.camera.position.y = characterWorldPosition.y + 2;
-      state.camera.position.z = characterWorldPosition.z + 8;
+      state.camera.position.z = characterWorldPosition.z + 10;
 
       const cameraTarget = new THREE.Vector3(
         characterWorldPosition.x,
