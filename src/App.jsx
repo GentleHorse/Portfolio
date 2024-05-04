@@ -3,6 +3,7 @@ import { KeyboardControls } from "@react-three/drei";
 
 import Experience from "./Experience.jsx";
 import Header from "./components/header/Header.jsx";
+import Interface from "./components/interface/Interface.jsx";
 
 /**
  * Keyboard control preset
@@ -24,7 +25,9 @@ const keyboardMap = [
 export default function App() {
   return (
     <>
-      <Header testTopic="2D character control" />
+      <Header testTopic="Interface" />
+
+      <Interface />
 
       <KeyboardControls map={keyboardMap}>
         <Canvas
@@ -37,6 +40,8 @@ export default function App() {
         >
           <Experience />
         </Canvas>
+
+        
       </KeyboardControls>
     </>
   );

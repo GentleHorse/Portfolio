@@ -27,10 +27,16 @@ export default function CharacterControl2D(props) {
   /**
    * GAME PHASE & CHARACTER STATE
    */
-  const { characterState, setCharacterState } = useGameStore((state) => ({
-    characterState: state.characterState,
-    setCharacterState: state.setCharacterState,
-  }));
+  const { characterState, setCharacterState, interfaceState } = useGameStore(
+    (state) => ({
+      characterState: state.characterState,
+      setCharacterState: state.setCharacterState,
+      interfaceState: state.interfaceState,
+    })
+  );
+
+  console.log(interfaceState);
+  console.log(characterState);
 
   /**
    * MAKE THE CHARACTER MOVE
@@ -77,7 +83,7 @@ export default function CharacterControl2D(props) {
        * Walk & Run
        */
       // Leftward
-      if (leftward && !isJumping) {
+      if ((leftward || interfaceState.left) && !isJumping) {
         if (run && linvel.x > -RUN_SPEED) {
           impluse.x -= RUN_SPEED * delta;
 
@@ -100,7 +106,7 @@ export default function CharacterControl2D(props) {
       }
 
       // Rightward
-      if (rightward && !isJumping) {
+      if ((rightward || interfaceState.right) && !isJumping) {
         if (run && linvel.x < RUN_SPEED) {
           impluse.x += RUN_SPEED * delta;
 
@@ -123,7 +129,13 @@ export default function CharacterControl2D(props) {
       }
 
       // Activate the idle animation when the character stops
-      if (!rightward && !leftward && !isJumping) {
+      if (
+        !rightward &&
+        !interfaceState.right &&
+        !leftward &&
+        !interfaceState.left &&
+        !isJumping
+      ) {
         body.current.linvel().x = 0;
 
         if (characterState !== "Idle") {
@@ -143,7 +155,7 @@ export default function CharacterControl2D(props) {
 
       state.camera.position.x = characterWorldPosition.x;
       state.camera.position.y = characterWorldPosition.y + 2;
-      state.camera.position.z = characterWorldPosition.z + 10;
+      state.camera.position.z = characterWorldPosition.z + 15;
 
       const cameraTarget = new THREE.Vector3(
         characterWorldPosition.x,

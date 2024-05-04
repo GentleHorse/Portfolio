@@ -19,5 +19,37 @@ export const useGameStore = create(
     setCharacterState: (characterState) => {
       set({ characterState: characterState });
     },
+
+    /**
+     * INTERFACE
+     */
+    interfaceState: {
+      left: false,
+      right: false,
+      run: false,
+      jump: false,
+    },
+
+    setActivateInterfaceState: (identifier) => {
+      set((prevState) => {
+        return {
+          interfaceState: {
+            ...prevState.interfaceState,
+            [identifier]: true,
+          },
+        };
+      });
+    },
+
+    setDeactivateInterfaceState: (identifier) => {
+      set((prevState) => {
+        return {
+          interfaceState: {
+            ...prevState.interfaceState,
+            [identifier]: false,
+          },
+        };
+      });
+    },
   }))
 );

@@ -45,6 +45,21 @@ const blocks = useControls('test-blocks', {
           </mesh>
         </RigidBody>
 
+        <RigidBody
+          type="fixed"
+          name={"ground"}
+          restitution={0}
+          friction={0.2}
+          scale={[5, MIN_FLOOR_THICKNESS, 1]}
+          position={[10, 0.5, 0]}
+          rotation={[0, 0, Math.PI * 0.1]}
+        >
+          <mesh>
+            <boxGeometry />
+            <meshStandardMaterial color={blocks.color} />
+          </mesh>
+        </RigidBody>
+
         {/* FLOOR */}
         <RigidBody
           type="fixed"
@@ -53,6 +68,21 @@ const blocks = useControls('test-blocks', {
           friction={0.2}
           scale={[100, MIN_FLOOR_THICKNESS, 5]}
           position={[0, 0, 0]}
+        >
+          <mesh>
+            <boxGeometry />
+            <meshStandardMaterial color={floor.color} />
+          </mesh>
+        </RigidBody>
+
+        {/* BACKGROUND SCENERY */}
+        <RigidBody
+          type="fixed"
+          name={"ground"}
+          restitution={0}
+          friction={0.2}
+          scale={[5, 10, 5]}
+          position={[0, 0, -3]}
         >
           <mesh>
             <boxGeometry />
