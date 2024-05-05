@@ -25,10 +25,12 @@ export default function Interface() {
               onTouchStart={(event) => {
                 setActivateInterfaceState("left");
                 event.preventDefault();
+                event.stopPropagation();
               }}
               onTouchEnd={(event) => {
                 setDeactivateInterfaceState("left");
                 event.preventDefault();
+                event.stopPropagation();
               }}
             ></div>
             <div
@@ -38,10 +40,12 @@ export default function Interface() {
               onTouchStart={(event) => {
                 setActivateInterfaceState("right");
                 event.preventDefault();
+                event.stopPropagation();
               }}
               onTouchEnd={(event) => {
                 setDeactivateInterfaceState("right");
                 event.preventDefault();
+                event.stopPropagation();
               }}
             ></div>
           </div>
