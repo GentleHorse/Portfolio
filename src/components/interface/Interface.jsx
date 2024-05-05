@@ -11,7 +11,7 @@ export default function Interface() {
     setDeactivateInterfaceState: state.setDeactivateInterfaceState,
   }));
 
-//   console.log(interfaceState)
+  //   console.log(interfaceState)
 
   return (
     <div className="fixed z-10 h-screen w-screen">
@@ -22,15 +22,27 @@ export default function Interface() {
               className="w-10 h-10 my-20 mx-5 rounded-xl bg-orange-500"
               onMouseDown={() => setActivateInterfaceState("left")}
               onMouseUp={() => setDeactivateInterfaceState("left")}
-              onTouchStart={() => setActivateInterfaceState("left")}
-              onTouchEnd={() => setDeactivateInterfaceState("left")}
+              onTouchStart={(event) => {
+                setActivateInterfaceState("left");
+                event.preventDefault();
+              }}
+              onTouchEnd={(event) => {
+                setDeactivateInterfaceState("left");
+                event.preventDefault();
+              }}
             ></div>
             <div
               className="w-10 h-10 my-20 mx-5 rounded-xl bg-orange-500"
               onMouseDown={() => setActivateInterfaceState("right")}
               onMouseUp={() => setDeactivateInterfaceState("right")}
-              onTouchStart={() => setActivateInterfaceState("right")}
-              onTouchEnd={() => setDeactivateInterfaceState("right")}
+              onTouchStart={(event) => {
+                setActivateInterfaceState("right");
+                event.preventDefault();
+              }}
+              onTouchEnd={(event) => {
+                setDeactivateInterfaceState("right");
+                event.preventDefault();
+              }}
             ></div>
           </div>
           <div className="flex flex-row">
