@@ -1,15 +1,15 @@
 import * as THREE from "three";
 import { useKeyboardControls } from "@react-three/drei";
 import useSound from "use-sound";
-import walkSound from "../../../public/sounds/character/walking.mp3";
-import runSound from "../../../public/sounds/character/run.wav";
-import jumpSound from "../../../public/sounds/character/jump-male.wav";
-import pongSound from "../../../public/sounds/character/pong.mp3";
+import walkSound from "../../../../public/sounds/character/walking.mp3";
+import runSound from "../../../../public/sounds/character/run.wav";
+import jumpSound from "../../../../public/sounds/character/jump-male.wav";
+import pongSound from "../../../../public/sounds/character/pong.mp3";
 import { Suspense, useEffect, useRef, useState } from "react";
-import MangaStyleMan from "./mangaStyleMan/MangaStyleMan.jsx";
+import MangaStyleMan from "../mangaStyleMan/MangaStyleMan.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
-import { useGameStore } from "../../store/store.js";
+import { useGameStore } from "../../../store/store.js";
 
 const WALK_SPEED = 3.5;
 const RUN_SPEED = 12.0;
@@ -34,9 +34,6 @@ export default function CharacterControl2D(props) {
       interfaceState: state.interfaceState,
     })
   );
-
-  console.log(interfaceState);
-  console.log(characterState);
 
   /**
    * MAKE THE CHARACTER MOVE

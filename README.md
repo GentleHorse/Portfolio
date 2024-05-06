@@ -1437,3 +1437,30 @@ export default function TitleText({ char, index }) {
 }
 
 ```
+
+## 11. Deactivate default long press behaviour in touch devices
+As default in touch devices such as iPhone or other smart screen devices, pressing a screen by finger(s) for a certain time triggers to open the context memu or select texts, elements. To prevent these behaviours, you need to set up with CSS and the component.
+
+<br>
+
+**CSS**
+```
+* {
+  -webkit-touch-callout: none; /* Safari */
+  -webkit-user-select: none; /* Chrome */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+```
+
+<br>
+
+**Component**
+```
+<div .... onContextMenu={(e) => e.preventDefault()}>
+  
+  ....
+  
+</div>
+```

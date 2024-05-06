@@ -1,3 +1,4 @@
+import { events } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
 
 export default function Interface() {
@@ -11,12 +12,10 @@ export default function Interface() {
     setDeactivateInterfaceState: state.setDeactivateInterfaceState,
   }));
 
-  //   console.log(interfaceState)
-
   return (
     <div
       className="fixed z-10 h-screen w-screen"
-      onContextMenu={(event) => event.preventDefault()}
+      onContextMenu={(e) => e.preventDefault()}
     >
       <div className="flex h-full flex-col justify-end">
         <div className="flex justify-around">
@@ -27,14 +26,11 @@ export default function Interface() {
               onMouseUp={() => setDeactivateInterfaceState("left")}
               onTouchStart={(event) => {
                 setActivateInterfaceState("left");
-                // event.preventDefault();
-                // event.stopPropagation();
               }}
               onTouchEnd={(event) => {
                 setDeactivateInterfaceState("left");
-                // event.preventDefault();
-                // event.stopPropagation();
               }}
+              onTouchMove={(event) => event.preventDefault()}
             ></div>
             <div
               className="w-10 h-10 my-20 mx-5 rounded-xl bg-orange-500"
@@ -42,14 +38,11 @@ export default function Interface() {
               onMouseUp={() => setDeactivateInterfaceState("right")}
               onTouchStart={(event) => {
                 setActivateInterfaceState("right");
-                // event.preventDefault();
-                // event.stopPropagation();
               }}
               onTouchEnd={(event) => {
                 setDeactivateInterfaceState("right");
-                // event.preventDefault();
-                // event.stopPropagation();
               }}
+              onTouchMove={(event) => event.preventDefault()}
             ></div>
           </div>
           <div className="flex flex-row">
