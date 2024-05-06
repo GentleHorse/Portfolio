@@ -198,12 +198,12 @@ export default function CharacterControl2D(props) {
       setIsJumping(true);
 
       // Change the jump direction slightly
-      if (leftward) {
+      if (leftward || interfaceState.left) {
         body.current.applyImpulse(
           { x: JUMP_LEFT_FORCE, y: JUMP_HEIGHT, z: 0 },
           true
         );
-      } else if (rightward) {
+      } else if (rightward || interfaceState.right) {
         body.current.applyImpulse(
           { x: JUMP_RIGHT_FORCE, y: JUMP_HEIGHT, z: 0 },
           true
