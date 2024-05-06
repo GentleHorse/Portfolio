@@ -81,7 +81,7 @@ export default function CharacterControl2D(props) {
        */
       // Leftward
       if ((leftward || interfaceState.left) && !isJumping) {
-        if (run && linvel.x > -RUN_SPEED) {
+        if ((run || interfaceState.run) && linvel.x > -RUN_SPEED) {
           impluse.x -= RUN_SPEED * delta;
 
           // Rotate the character
@@ -104,7 +104,7 @@ export default function CharacterControl2D(props) {
 
       // Rightward
       if ((rightward || interfaceState.right) && !isJumping) {
-        if (run && linvel.x < RUN_SPEED) {
+        if ((run || interfaceState.run) && linvel.x < RUN_SPEED) {
           impluse.x += RUN_SPEED * delta;
 
           // Rotate the character
@@ -229,8 +229,16 @@ export default function CharacterControl2D(props) {
     };
   }, []);
 
+  useEffect(() => {
+
+      if (interfaceState.jump){
+        jumpAction();
+      }
+
+  }, [interfaceState.jump]);
+
   /**
-   * SOUNDS CONTROL - WALK, RUN
+   * SOUNDS CONTROL - WALK, RU
    */
   // Set up the walking sound
   const [
