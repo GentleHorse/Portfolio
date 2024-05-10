@@ -4,13 +4,13 @@ export default function Fog() {
   const fog = useControls("fog", {
     color: "#51A8DD",
     near: {
-      value: 7.5,
+      value: -3.0,
       min: -50,
       max: 50,
       step: 0.1,
     },
     far: {
-      value: 21.5,
+      value: 20.5,
       min: -50,
       max: 50,
       step: 0.1,

@@ -18,17 +18,23 @@ export default function Interface() {
       onContextMenu={(e) => e.preventDefault()}
     >
       <div className="flex h-full flex-col justify-end">
-        <div className="flex justify-around">
+        <div className="flex justify-around items-center">
           <div className="flex flex-row">
             <div
-              className="w-10 h-10 my-20 mx-5 rounded-xl bg-orange-500"
+              className="w-0 h-0 my-20 mx-5
+                border-t-[40px] border-t-transparent
+                border-r-[55px] border-r-orange-500/65
+                border-b-[40px] border-b-transparent"
               onMouseDown={() => setActivateInterfaceState("left")}
               onMouseUp={() => setDeactivateInterfaceState("left")}
               onTouchStart={(event) => setActivateInterfaceState("left")}
               onTouchEnd={(event) => setDeactivateInterfaceState("left")}
             ></div>
             <div
-              className="w-10 h-10 my-20 mx-5 rounded-xl bg-orange-500"
+              className="w-0 h-0 my-20 mx-5
+              border-t-[40px] border-t-transparent
+              border-l-[55px] border-l-orange-500/65
+              border-b-[40px] border-b-transparent"
               onMouseDown={() => setActivateInterfaceState("right")}
               onMouseUp={() => setDeactivateInterfaceState("right")}
               onTouchStart={() => setActivateInterfaceState("right")}
@@ -37,14 +43,14 @@ export default function Interface() {
           </div>
           <div className="flex flex-row">
             <div
-              className="w-10 h-10 my-20 mx-5 rounded-xl bg-green-500"
+              className="w-[4rem] h-[4rem] my-20 mx-2 rounded-full bg-teal-500/75"
               onMouseDown={() => console.log("The left green button pressed")}
               onMouseUp={() => console.log("The left green button released")}
               onTouchStart={() => setActivateInterfaceState("run")}
               onTouchEnd={() => setDeactivateInterfaceState("run")}
             ></div>
             <div
-              className="w-10 h-10 my-20 mx-5 rounded-xl bg-green-500"
+              className="w-[4rem] h-[4rem] my-20 mx-2 rounded-full  bg-teal-500/75"
               onMouseDown={() => {
                 console.log("The right green button pressed");
                 setActivateInterfaceState("jump");
