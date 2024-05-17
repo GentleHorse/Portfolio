@@ -94,7 +94,8 @@ export default function MangaStyleMan({ isCharacterFaceForward }) {
             skeleton={nodes["manga-style-man001"].skeleton}
             castShadow
           >
-            <meshStandardMaterial color="#BDC0BA" />
+            {/* <meshStandardMaterial color="#BDC0BA" /> */}
+            <meshToonMaterial transparent opacity={0.7} color="#ffffff" />
             {/* <MeshDistortMaterial distort={0.5} speed={5} /> */}
             {/* <Outlines thickness={10} /> */}
           </skinnedMesh>

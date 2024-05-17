@@ -74,21 +74,6 @@ const blocks = useControls('test-blocks', {
             <meshStandardMaterial color={floor.color} />
           </mesh>
         </RigidBody>
-
-        {/* BACKGROUND SCENERY */}
-        <RigidBody
-          type="fixed"
-          name={"ground"}
-          restitution={0}
-          friction={0.2}
-          scale={[5, 10, 5]}
-          position={[0, 0, -3]}
-        >
-          <mesh>
-            <boxGeometry />
-            <meshStandardMaterial color={floor.color} />
-          </mesh>
-        </RigidBody>
       </group>
     </>
   );

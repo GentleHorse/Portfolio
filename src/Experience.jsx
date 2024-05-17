@@ -34,7 +34,7 @@ export default function Experience() {
       {/* ENVIRONMENT SET UP */}
       <Lights />
       <Background />
-      <Fog />
+      {/* <Fog /> */}
 
       <Environment preset="night" />
 
@@ -54,7 +54,7 @@ export default function Experience() {
         <Title position={[0, 5, 0]} />
 
         {/* <AmbienceOfLight /> */}
-        <ProductOfAmbienceOfLight position={[20, 1.8, 0]} />
+        {/* <ProductOfAmbienceOfLight position={[20, 1.8, 0]} /> */}
         {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[10, -2, 18]} /> */}
       </Physics>
     </>

@@ -80,7 +80,11 @@ export default function CharacterControl2D(props) {
        * Walk & Run
        */
       // Leftward
-      if ((leftward || interfaceState.left) && !isJumping) {
+      if (
+        (leftward || interfaceState.left) &&
+        !isJumping &&
+        castRayHit.toi === 0
+      ) {
         if ((run || interfaceState.run) && linvel.x > -RUN_SPEED) {
           impluse.x -= RUN_SPEED * delta;
 
@@ -103,7 +107,11 @@ export default function CharacterControl2D(props) {
       }
 
       // Rightward
-      if ((rightward || interfaceState.right) && !isJumping) {
+      if (
+        (rightward || interfaceState.right) &&
+        !isJumping &&
+        castRayHit.toi === 0
+      ) {
         if ((run || interfaceState.run) && linvel.x < RUN_SPEED) {
           impluse.x += RUN_SPEED * delta;
 
@@ -163,15 +171,13 @@ export default function CharacterControl2D(props) {
       state.camera.lookAt(cameraTarget);
 
       // Add downward force after the character jumps
-      if (castRayHit && castRayHit.toi > 1) {
+      if (castRayHit && castRayHit.toi > 0.1) {
         body.current.applyImpulse({ x: 0, y: -0.3, z: 0 }, true);
       }
 
-      // Set the jumping in the air animation
-      if (isJumping) {
-        if (characterState !== "Jump_Idle") {
-          setCharacterState("Jump_Idle");
-        }
+      // Check the character is in the air
+      if (castRayHit && castRayHit.toi > 0.1) {
+        setCharacterState("Jump_Idle");
       }
     }
   });
@@ -230,11 +236,9 @@ export default function CharacterControl2D(props) {
   }, []);
 
   useEffect(() => {
-
-      if (interfaceState.jump){
-        jumpAction();
-      }
-
+    if (interfaceState.jump) {
+      jumpAction();
+    }
   }, [interfaceState.jump]);
 
   /**
@@ -331,7 +335,7 @@ export default function CharacterControl2D(props) {
           onCollisionEnter={(event) => {
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
-              playPongSound();
+              // playPongSound();
 
               // Make the character stay on "Z = 0" axis
               body.current.setTranslation({
