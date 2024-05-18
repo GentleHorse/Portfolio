@@ -1,46 +1,43 @@
-import { Canvas } from "@react-three/fiber";
-import { KeyboardControls } from "@react-three/drei";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Experience from "./Experience.jsx";
-import Header from "./components/header/Header.jsx";
-import Interface from "./components/interface/Interface.jsx";
+import HomePage from "./pages/Home.jsx";
+import RootLayout from "./pages/Root.jsx";
+import ThreeDVisualsPage from "./pages/ThreeDVisuals.jsx";
+import AmbienceOfLightPage from "./pages/designProjects/AmbienceOfLight.jsx";
+import BeautyOfTimePassingPage from "./pages/designProjects/BeautyOfTimePassing.jsx";
+import UnderrepresentedUniquenessPage from "./pages/designProjects/UnderrepresentedUniqueness.jsx";
+import InterventionInOurDisconnectionPage from "./pages/designProjects/InterventionInOurDisconnection.jsx";
+import LivingTypographyPage from "./pages/designProjects/LivingTypography.jsx";
+import ComfortingDinnerPage from "./pages/designProjects/ComfortingDinner.jsx";
 
-/**
- * Keyboard control preset
- */
-const keyboardMap = [
-  { name: "forward", keys: ["ArrowUp", "KeyW"] },
-  { name: "backward", keys: ["ArrowDown", "KeyS"] },
-  { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
-  { name: "rightward", keys: ["ArrowRight", "KeyD"] },
-  { name: "jump", keys: ["Space"] },
-  { name: "run", keys: ["Shift"] },
-  // Optional animation key map
-  { name: "action1", keys: ["1"] },
-  { name: "action2", keys: ["2"] },
-  { name: "action3", keys: ["3"] },
-  { name: "action4", keys: ["KeyF"] },
-];
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "ambience-of-light", element: <AmbienceOfLightPage /> },
+      { path: "beauty-of-time-passing", element: <BeautyOfTimePassingPage /> },
+      {
+        path: "underrepresented-uniqueness",
+        element: <UnderrepresentedUniquenessPage />,
+      },
+      {
+        path: "intervention-in-our-disconnection",
+        element: <InterventionInOurDisconnectionPage />,
+      },
+      { path: "living-typography", element: <LivingTypographyPage /> },
+      {},
+      { path: "comforting-dinner", element: <ComfortingDinnerPage /> },
+      { path: "three-d-visuals", element: <ThreeDVisualsPage /> },
+    ],
+  },
+]);
 
 export default function App() {
   return (
     <>
-      <Header testTopic="Interface" />
-
-      <Interface />
-
-      <KeyboardControls map={keyboardMap}>
-        <Canvas
-          camera={{
-            fov: 45,
-            near: 0.1,
-            far: 200,
-            position: [0, 1.5, 8],
-          }}
-        >
-          <Experience />
-        </Canvas>
-      </KeyboardControls>
+      <RouterProvider router={router} />
     </>
   );
 }
