@@ -159,12 +159,12 @@ export default function CharacterControl2D(props) {
       );
 
       state.camera.position.x = characterWorldPosition.x;
-      state.camera.position.y = characterWorldPosition.y + 2;
-      state.camera.position.z = characterWorldPosition.z + 10;
+      state.camera.position.y = characterWorldPosition.y + 3;
+      state.camera.position.z = characterWorldPosition.z + 15;
 
       const cameraTarget = new THREE.Vector3(
         characterWorldPosition.x,
-        characterWorldPosition.y + 2,
+        characterWorldPosition.y + 3,
         characterWorldPosition.z
       );
 

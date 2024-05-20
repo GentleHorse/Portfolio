@@ -4,7 +4,7 @@ import Header from "../components/header/Header.jsx";
 
 export default function RootLayout() {
   return <>
-        <Header />
+        <Header topic="Ambience of Light" />
 
         <Outlet />
   </>;

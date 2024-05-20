@@ -23,7 +23,7 @@ const blocks = useControls('test-blocks', {
           restitution={0}
           friction={0}    // set "0" otherwise the character gets stuck 
           scale={[3, MIN_FLOOR_THICKNESS, 1]}
-          position={[5, 2.5, 0]}
+          position={[10, 2.5, 0]}
         >
           <mesh>
             <boxGeometry />
@@ -37,7 +37,7 @@ const blocks = useControls('test-blocks', {
           restitution={0}
           friction={0.2}
           scale={[3, MIN_FLOOR_THICKNESS, 1]}
-          position={[7, 5, 0]}
+          position={[12, 5, 0]}
         >
           <mesh>
             <boxGeometry />

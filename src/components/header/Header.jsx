@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Header({ topic="Enjoy exploration !!" }) {
   return (
     <header className="fixed right-1 text-right mt-5 mr-5 z-10">
       <section>
@@ -6,7 +6,7 @@ export default function Header() {
           Toshihito Endo's Portfolio
         </p>
         <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#FFB11B]">
-          Enjoy exploration !!
+          {topic}
         </p>
       </section>
 
