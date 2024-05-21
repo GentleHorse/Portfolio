@@ -20,6 +20,7 @@ import Title from "./components/title/Title.jsx";
 import Fog from "./components/fog/Fog.jsx";
 import ProductOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/ProductOfAmbienceOfLight.jsx";
 import BoxRoom from "./components/models/BoxRoom.jsx";
+import RoomOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/RoomOfAmbienceOfLight.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -46,30 +47,19 @@ export default function Experience() {
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
-        <CharacterControl2D />
+      <Physics debug={true}>
+        {/* <CharacterControl2D /> */}
 
-        <TestFloor />
+        {/* <TestFloor /> */}
 
-        <Title position={[-5, 6, 0]} />
+        {/* <Title position={[-3, 5, 0]} scale={0.45} /> */}
 
-        <BoxRoom rotation={[0, -Math.PI / 2, 0]} position={[0, 0.6, 0]} />
-        {/* <RigidBody colliders={false} type="fixed" position={[0, -1, 0]}>
-          <CuboidCollider args={[7, 1, 7]} />
-        </RigidBody> */}
-
-        <Float floatIntensity={0.5} floatingRange={0.5}>
-          <ProductOfAmbienceOfLight scale={1.5} position={[0, 2, 0]} />
-        </Float>
-
-        {/* <AmbienceOfLight /> */}
-        {/* <ProductOfAmbienceOfLight position={[20, 1.8, 0]} /> */}
-        {/* <BeautyOfTimePassing scale={[0.7, 0.8, 1.5]} position={[10, -2, 18]} /> */}
+        <RoomOfAmbienceOfLight />
       </Physics>
     </>
   );
