@@ -53,7 +53,7 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         <CharacterControl2D />
 
         {/* <TestFloor /> */}

@@ -25,7 +25,7 @@ const keyboardMap = [
 export default function HomePage() {
   return (
     <>
-      {/* <Interface /> */}
+      <Interface />
 
       <KeyboardControls map={keyboardMap}>
         <Canvas
