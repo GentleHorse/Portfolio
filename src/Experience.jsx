@@ -21,6 +21,7 @@ import Fog from "./components/fog/Fog.jsx";
 import ProductOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/ProductOfAmbienceOfLight.jsx";
 import BoxRoom from "./components/models/BoxRoom.jsx";
 import RoomOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/RoomOfAmbienceOfLight.jsx";
+import { Joe } from "./components/character/joe/Joe.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -47,13 +48,13 @@ export default function Experience() {
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={true}>
-        {/* <CharacterControl2D /> */}
+        <CharacterControl2D />
 
         {/* <TestFloor /> */}
 

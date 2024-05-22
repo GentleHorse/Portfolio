@@ -7,6 +7,7 @@ import jumpSound from "../../../../public/sounds/character/jump-male.wav";
 import pongSound from "../../../../public/sounds/character/pong.mp3";
 import { Suspense, useEffect, useRef, useState } from "react";
 import MangaStyleMan from "../mangaStyleMan/MangaStyleMan.jsx";
+import { Joe } from "../joe/Joe.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../../store/store.js";
@@ -160,7 +161,7 @@ export default function CharacterControl2D(props) {
 
       state.camera.position.x = characterWorldPosition.x;
       state.camera.position.y = characterWorldPosition.y + 3;
-      state.camera.position.z = characterWorldPosition.z + 15;
+      state.camera.position.z = characterWorldPosition.z + 12;
 
       const cameraTarget = new THREE.Vector3(
         characterWorldPosition.x,
@@ -352,7 +353,8 @@ export default function CharacterControl2D(props) {
           }}
         >
           <group ref={character} position={[0, 1, 0]}>
-            <MangaStyleMan isCharacterFaceForward={isCharacterFaceForward} />
+            {/* <MangaStyleMan isCharacterFaceForward={isCharacterFaceForward} /> */}
+            <Joe isCharacterFaceForward={isCharacterFaceForward} />
           </group>
 
           <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />

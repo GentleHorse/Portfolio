@@ -21,7 +21,7 @@ export default function RoomOfAmbienceOfLight() {
         <CuboidCollider args={[4.5, 1, 4.5]} />
       </RigidBody>
 
-      <AmbienceOfLightLowPoly scale={0.9} position={[0, 4, 0]} />
+      <AmbienceOfLightLowPoly scale={0.9} position={[0, 3, 0]} />
     </>
   );
 }
