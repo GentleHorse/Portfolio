@@ -16,12 +16,12 @@ import Lights from "./components/utilComponents/Lights.jsx";
 import AmbienceOfLight from "./components/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 import BeautyOfTimePassing from "./components/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 import CharacterControl2D from "./components/character/characterControls/CharacterControl2D.jsx";
+import CharacterControl3D from "./components/character/characterControls/CharacterControl3D.jsx";
 import Title from "./components/title/Title.jsx";
 import Fog from "./components/fog/Fog.jsx";
 import ProductOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/ProductOfAmbienceOfLight.jsx";
 import BoxRoom from "./components/models/BoxRoom.jsx";
 import RoomOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/RoomOfAmbienceOfLight.jsx";
-import { Joe } from "./components/character/joe/Joe.jsx";
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -54,13 +54,11 @@ export default function Experience() {
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={false}>
-        <CharacterControl2D />
+        <CharacterControl3D />
 
-        {/* <TestFloor /> */}
+        <Title position={[-3, 2, 3.5]} scale={0.45} />
 
-        {/* <Title position={[-3, 5, 0]} scale={0.45} /> */}
-
-        <RoomOfAmbienceOfLight />
+        <RoomOfAmbienceOfLight position={[0, 0, 0]} scale={1.2} />
       </Physics>
     </>
   );

@@ -7,7 +7,7 @@ import jumpSound from "../../../../public/sounds/character/jump-male.wav";
 import pongSound from "../../../../public/sounds/character/pong.mp3";
 import { Suspense, useEffect, useRef, useState } from "react";
 import MangaStyleMan from "../mangaStyleMan/MangaStyleMan.jsx";
-import { Joe } from "../joe/Joe.jsx";
+import Joe from "../joe/Joe.jsx";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../../store/store.js";
@@ -37,7 +37,7 @@ export default function CharacterControl2D(props) {
   );
 
   /**
-   * MAKE THE CHARACTER MOVE
+   * SET UP KEYBORD CONTROL
    */
   const [subscribeKeys, getKeys] = useKeyboardControls();
 

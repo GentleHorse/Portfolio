@@ -10,7 +10,7 @@ import { useGameStore } from "../../../store/store";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-export default function Joe({ isCharacterFaceForward }) {
+export default function JoeFor3D() {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/joe/joe.gltf");
 
@@ -44,7 +44,7 @@ export default function Joe({ isCharacterFaceForward }) {
         .play();
       actions[characterState].clampWhenFinished = true;
     } else {
-      actions[characterState].reset().fadeIn(0.2).play();
+      actions[characterState].reset().play();
       actions[characterState].setEffectiveTimeScale(1.5); // animation speed
     }
 
@@ -54,33 +54,12 @@ export default function Joe({ isCharacterFaceForward }) {
     };
   }, [characterState]);
 
-  /**
-   * ROTATIONS
-   */
-  useGSAP(() => {
-    if (isCharacterFaceForward) {
-      // Right
-      gsap.to(group.current.rotation, {
-        y: Math.PI * 0.5,
-        duration: 0.4,
-        ease: "expo.inOut",
-      });
-    } else {
-      // Left
-      gsap.to(group.current.rotation, {
-        y: Math.PI * -0.5,
-        duration: 0.4,
-        ease: "expo.inOut",
-      });
-    }
-  }, [isCharacterFaceForward]);
-
   return (
     <group ref={group} dispose={null}>
       <group name="Scene">
         <group
           name="joeLowPoly"
-          position={[0, -0.6, 0]}
+          position={[0, 0.5, 0]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.0075}
         >
@@ -88,7 +67,6 @@ export default function Joe({ isCharacterFaceForward }) {
           <skinnedMesh
             name="joe001"
             geometry={nodes.joe001.geometry}
-            material={nodes.joe001.material}
             skeleton={nodes.joe001.skeleton}
           >
             <meshBasicMaterial color="snow" />
