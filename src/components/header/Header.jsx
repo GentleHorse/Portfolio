@@ -1,4 +1,6 @@
-export default function Header({ topic="Enjoy exploration !!" }) {
+import { Link } from "react-router-dom";
+
+export default function Header({ topic = "Enjoy exploration !!" }) {
   return (
     <header className="fixed right-1 text-right mt-5 mr-5 z-10">
       <section>
@@ -8,6 +10,53 @@ export default function Header({ topic="Enjoy exploration !!" }) {
         <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#FFB11B]">
           {topic}
         </p>
+
+        <Link to="/">
+          <h1 className="font-dot-gothic-16 mt-[30px] mb-[5px] text-[20px] text-[#721bff]">
+            Home
+          </h1>
+        </Link>
+
+        <h1 className="font-dot-gothic-16 mt-[10px] mb-[5px] text-[20px] text-[#721bff]">
+          Design Projects
+        </h1>
+
+        <Link to="/ambience-of-light">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Ambience of Light
+          </p>
+        </Link>
+        <Link to="/beauty-of-time-passing">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Beauty of Time Passing
+          </p>
+        </Link>
+        <Link to="/underrepresented-uniqueness">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Underrepresented Uniqueness
+          </p>
+        </Link>
+        <Link to="/intervention-in-our-disconnection">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Intervention in our disconnection
+          </p>
+        </Link>
+        <Link to="/living-typography">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Living Typography
+          </p>
+        </Link>
+        <Link to="/comforting-dinner">
+          <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
+            Comforting Dinner
+          </p>
+        </Link>
+
+        <Link to="three-d-visuals">
+          <h1 className="font-dot-gothic-16 mt-[10px] mb-[5px] text-[20px] text-[#721bff]">
+            3D Visuals
+          </h1>
+        </Link>
       </section>
 
       {/* <section>
