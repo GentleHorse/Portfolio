@@ -48,17 +48,18 @@ export default function Experience() {
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
         <CharacterControl3D />
 
-        <Title position={[-3, 2, 3.5]} scale={0.45} />
+        <Title position={[0, 2, 0]} scale={0.45} />
 
-        <RoomOfAmbienceOfLight position={[0, 0, 0]} scale={1.2} />
+        <TestFloor />
+
       </Physics>
     </>
   );

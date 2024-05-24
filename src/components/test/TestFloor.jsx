@@ -1,64 +1,52 @@
+import { Cylinder } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 
-// Temporary value, the ray casting should be optimized later
-const MIN_FLOOR_THICKNESS = 1.1;
+const MIN_FLOOR_THICKNESS = 1.1; // Temporary value, the ray casting should be optimized later
+const FLOOR_DIMENSION = 30;
+
+const BLOCK_MAX_Y_POSITION = 3;
+const BLOCK_NUM = 10;
+const BLOCK_POSITIONS = [];
+
+for (let i = 0; i < BLOCK_NUM; i++) {
+  BLOCK_POSITIONS.push({
+    id: "block0" + i,
+    x: (Math.random() - 0.5) * FLOOR_DIMENSION,
+    y: Math.random() * BLOCK_MAX_Y_POSITION,
+    z: (Math.random() - 0.5) * FLOOR_DIMENSION,
+  });
+}
 
 export default function TestFloor(props) {
-  const floor = useControls('test-floor', {
-    color: "#fcfaf2"
-})
+  const floor = useControls("test-floor", {
+    color: "#BDC0BA",
+  });
 
-const blocks = useControls('test-blocks', {
-  color: "#fcfaf2"
-})
+  const blocks = useControls("test-blocks", {
+    color: "#FFFFFB",
+  });
 
   return (
     <>
       <group {...props}>
         {/* BLOCKS */}
-        <RigidBody
-          type="fixed"
-          name={"ground"}
-          restitution={0}
-          friction={0}    // set "0" otherwise the character gets stuck 
-          scale={[3, MIN_FLOOR_THICKNESS, 1]}
-          position={[10, 2.5, 0]}
-        >
-          <mesh>
-            <boxGeometry />
-            <meshStandardMaterial color={blocks.color} />
-          </mesh>
-        </RigidBody>
-
-        <RigidBody
-          type="fixed"
-          name={"ground"}
-          restitution={0}
-          friction={0.2}
-          scale={[3, MIN_FLOOR_THICKNESS, 1]}
-          position={[12, 5, 0]}
-        >
-          <mesh>
-            <boxGeometry />
-            <meshStandardMaterial color={blocks.color} />
-          </mesh>
-        </RigidBody>
-
-        <RigidBody
-          type="fixed"
-          name={"ground"}
-          restitution={0}
-          friction={0.2}
-          scale={[5, MIN_FLOOR_THICKNESS, 1]}
-          position={[10, 0.5, 0]}
-          rotation={[0, 0, Math.PI * 0.1]}
-        >
-          <mesh>
-            <boxGeometry />
-            <meshStandardMaterial color={blocks.color} />
-          </mesh>
-        </RigidBody>
+        {BLOCK_POSITIONS.map((position) => (
+          <RigidBody
+            key={position.id}
+            type="fixed"
+            name={"ground"}
+            restitution={0}
+            friction={0} // set "0" otherwise the character gets stuck
+            scale={[3, MIN_FLOOR_THICKNESS, 3]}
+            position={[position.x, position.y, position.z]}
+          >
+            <mesh>
+              <boxGeometry />
+              <meshBasicMaterial color={blocks.color} />
+            </mesh>
+          </RigidBody>
+        ))}
 
         {/* FLOOR */}
         <RigidBody
@@ -66,12 +54,12 @@ const blocks = useControls('test-blocks', {
           name={"ground"}
           restitution={0}
           friction={0.2}
-          scale={[100, MIN_FLOOR_THICKNESS, 5]}
+          scale={[FLOOR_DIMENSION, MIN_FLOOR_THICKNESS, FLOOR_DIMENSION]}
           position={[0, 0, 0]}
         >
           <mesh>
             <boxGeometry />
-            <meshStandardMaterial color={floor.color} />
+            <meshBasicMaterial color={floor.color} />
           </mesh>
         </RigidBody>
       </group>
