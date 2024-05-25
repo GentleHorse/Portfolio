@@ -16,6 +16,8 @@ export default {
         'dot-gothic-16': ['"DotGothic16", sans-serif'],
         'vt323': ['"VT323", monospace'],
         'pixelify-sans': ['"Pixelify Sans", sans-serif'],
+        'open-sans': ['"Open Sans", sans-serif'],
+        'playfair-display': ['"Playfair Display", serif'],
       }
     },
   },
