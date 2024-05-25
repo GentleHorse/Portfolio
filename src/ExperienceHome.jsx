@@ -23,7 +23,7 @@ import ProductOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/P
 import BoxRoom from "./components/models/BoxRoom.jsx";
 import RoomOfAmbienceOfLight from "./components/designWorks/ambienceOfLight/RoomOfAmbienceOfLight.jsx";
 
-export default function Experience() {
+export default function ExperienceHome() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
   const [subscribeKeys, getKeys] = useKeyboardControls();
 

@@ -49,8 +49,10 @@ export default function JoeFor3D() {
     }
 
     return () => {
-      actions[characterState].fadeOut(2);
-      actions[characterState].stop();
+      if (actions[characterState]) {
+        actions[characterState].fadeOut(2);
+        actions[characterState].stop();
+      }
     };
   }, [characterState]);
 

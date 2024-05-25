@@ -1,7 +1,18 @@
+import { Canvas } from "@react-three/fiber";
+import { Perf } from "r3f-perf";
+import Experience3DVisuals from "../Experience3DVisuals.jsx";
+
 export default function ThreeDVisualsPage() {
   return (
-    <h1 className="font-permanent-marker mb-[5px] text-[60px] text-[#ff1b95]">
-      This is "3D visuals" page.
-    </h1>
+    <Canvas
+      camera={{
+        fov: 45,
+        near: 0.1,
+        far: 200,
+        position: [0, 1.5, 8],
+      }}
+    >
+      <Experience3DVisuals />
+    </Canvas>
   );
 }

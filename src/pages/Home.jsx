@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 
-import Experience from "../Experience.jsx";
+import ExperienceHome from "../ExperienceHome.jsx";
 import Header from "../components/header/Header.jsx";
 import Interface from "../components/interface/Interface.jsx";
 
@@ -36,7 +36,7 @@ export default function HomePage() {
             position: [0, 1.5, 8],
           }}
         >
-          <Experience />
+          <ExperienceHome />
         </Canvas>
       </KeyboardControls>
     </>
