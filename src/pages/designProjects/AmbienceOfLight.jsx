@@ -1,8 +1,7 @@
-import { useRef } from "react";
-import { motion, useTransform, useScroll, useSpring } from "framer-motion";
-
-import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
 import HorizontalScrollTexts from "../../components/HorizontalScrollTexts/HorizontalScrollTexts.jsx";
+
+import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
+import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
 
 /**
  * HORIZONTAL SCROLL TEXTS
@@ -18,6 +17,7 @@ for (let i = 0; i < SCROLL_TEXT_REPETITION_NUM; i++) {
 export default function AmbienceOfLightPage() {
   return (
     <div className="bg-neutral-900">
+      {/* Header */}
       <header className="pt-[5%] px-[12%]">
         <p className="font-open-sans font-bold text-[#e16b8c] uppercase">
           Create a nature ambience with industrial materials
@@ -65,9 +65,12 @@ export default function AmbienceOfLightPage() {
       {/* Horizontal scroll section */}
       <HorizontalScrollTexts>{SCROLL_TEXTS}</HorizontalScrollTexts>
 
-      {/* Dummy continue section */}
-      <section className="relative h-[300vh] bg-sky-800">
-        
+      {/* Images */}
+      <section className="flex flex-col">
+      <img
+          src={AmbienceOfLightImage01}
+          className="sticky top-0 h-[100vh] object-none"
+        />
       </section>
     </div>
   );

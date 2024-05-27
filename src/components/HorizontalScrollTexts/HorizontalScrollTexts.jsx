@@ -21,9 +21,9 @@ export default function HorizontalScrollTexts({ children }) {
     <section className="py-[5rem]">
       <motion.div
         style={{ x }}
-        className="h-[20vh] w-[300vw] flex items-center justify-start overflow-hidden bg-neutral-900"
+        className="h-[20vh] w-[300vw] flex items-center justify-start bg-neutral-900"
       >
-        <h1 className="uppercase font-eb-garamond text-slate-50 text-[20vh]">
+        <h1 className="uppercase font-eb-garamond text-slate-50 text-[20vh] text-nowrap">
           {children}
         </h1>
       </motion.div>
