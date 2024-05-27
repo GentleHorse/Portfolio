@@ -1,6 +1,10 @@
 import HorizontalScrollTexts from "../../components/HorizontalScrollTexts/HorizontalScrollTexts.jsx";
 
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
+import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
+import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
+import AmbienceOfLightImage07 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-07.jpg";
+import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-11.jpg";
 import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
 
 /**
@@ -65,11 +69,31 @@ export default function AmbienceOfLightPage() {
       {/* Horizontal scroll section */}
       <HorizontalScrollTexts>{SCROLL_TEXTS}</HorizontalScrollTexts>
 
-      {/* Images */}
+      {/* Project image section */}
       <section className="flex flex-col">
-      <img
+        <img
           src={AmbienceOfLightImage01}
-          className="sticky top-0 h-[100vh] object-none"
+          className="sticky top-0 w-[100vw] object-none"
+        />
+        <img
+          src={AmbienceOfLightImage02}
+          className="sticky top-0 w-[100vw] object-none"
+        />
+        <img
+          src={AmbienceOfLightImage07}
+          className="sticky top-0 w-[100vw] object-none"
+        />
+        <img
+          src={AmbienceOfLightImage11}
+          className="sticky top-0 w-[100vw] object-none"
+        />
+        <img
+          src={AmbienceOfLightImage06}
+          className="sticky top-0 w-[100vw] object-none"
+        />
+        <img
+          src={AmbienceOfLightImage13}
+          className="sticky top-0 w-[100vw] object-none"
         />
       </section>
     </div>
