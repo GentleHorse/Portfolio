@@ -18,6 +18,7 @@ export default {
         'pixelify-sans': ['"Pixelify Sans", sans-serif'],
         'open-sans': ['"Open Sans", sans-serif'],
         'playfair-display': ['"Playfair Display", serif'],
+        'eb-garamond': ['"EB Garamond", serif'],
       }
     },
   },
