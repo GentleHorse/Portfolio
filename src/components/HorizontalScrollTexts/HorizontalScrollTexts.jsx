@@ -18,7 +18,7 @@ export default function HorizontalScrollTexts({ children }) {
   const x = useTransform(smoothedScrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section className="py-[5rem]">
+    <section className="py-[5rem] overflow-hidden">
       <motion.div
         style={{ x }}
         className="h-[20vh] w-[300vw] flex items-center justify-start bg-neutral-900"
