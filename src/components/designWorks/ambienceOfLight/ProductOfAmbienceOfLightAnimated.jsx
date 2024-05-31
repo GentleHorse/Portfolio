@@ -8,8 +8,7 @@ export default function ProductOfAmbienceOfLightAnimated(props) {
   );
   const { actions } = useAnimations(animations, group);
 
-  console.log(actions);
-
+  // Test animations
   useEffect(() => {
     actions["frameAction.001"].play().setEffectiveTimeScale(0.3);
     actions["glassBrickDetailed.001Action"].play().setEffectiveTimeScale(0.3);
@@ -38,8 +37,13 @@ export default function ProductOfAmbienceOfLightAnimated(props) {
           position={[-0.034, 1.43, 0]}
           rotation={[Math.PI / 2, -0.005, 0]}
         >
-          <meshBasicMaterial color="white" opacity={0.8} transparent />
-          <Outlines thickness={0.01} />
+          <meshBasicMaterial
+            color="#1c1c1c"
+            opacity={1.0}
+            transparent={false}
+            toneMapped={false}
+          />
+          <Outlines thickness={0.005} color="white" />
         </mesh>
         <group name="frame">
           <mesh
@@ -47,24 +51,39 @@ export default function ProductOfAmbienceOfLightAnimated(props) {
             geometry={nodes.Cylinder025.geometry}
             material={materials["wood-dark-brown"]}
           >
-            <meshBasicMaterial color="white" opacity={0.8} transparent />
-            <Outlines thickness={0.01} />
+            <meshBasicMaterial
+              color="#1c1c1c"
+              opacity={1.0}
+              transparent={false}
+              toneMapped={false}
+            />
+            <Outlines thickness={0.005} color="white" />
           </mesh>
           <mesh
             name="Cylinder025_1"
             geometry={nodes.Cylinder025_1.geometry}
             material={materials["wood-brown"]}
           >
-            <meshBasicMaterial color="white" opacity={0.8} transparent />
-            <Outlines thickness={0.01} />
+            <meshBasicMaterial
+              color="#1c1c1c"
+              opacity={1.0}
+              transparent={false}
+              toneMapped={false}
+            />
+            <Outlines thickness={0.005} color="white" />
           </mesh>
           <mesh
             name="Cylinder025_2"
             geometry={nodes.Cylinder025_2.geometry}
             material={materials.black}
           >
-            <meshBasicMaterial color="white" opacity={0.8} transparent />
-            <Outlines thickness={0.01} />
+            <meshBasicMaterial
+              color="#1c1c1c"
+              opacity={1.0}
+              transparent={false}
+              toneMapped={false}
+            />
+            <Outlines thickness={0.005} color="white" />
           </mesh>
         </group>
         <mesh
@@ -74,8 +93,13 @@ export default function ProductOfAmbienceOfLightAnimated(props) {
           position={[1.912, -0.4, 0]}
           rotation={[0, 0, -0.005]}
         >
-          <meshBasicMaterial color="white" opacity={0.8} transparent />
-          <Outlines thickness={0.01} />
+          <meshBasicMaterial
+            color="#1c1c1c"
+            opacity={1.0}
+            transparent={false}
+            toneMapped={false}
+          />
+          <Outlines thickness={0.005} color="white" />
         </mesh>
       </group>
     </group>

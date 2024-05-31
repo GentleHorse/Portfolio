@@ -23,7 +23,7 @@ import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibi
 export default function AmbienceOfLightPage() {
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }}>
-      <ScrollControls damping={0.2} pages={7} distance={0.5}>
+      <ScrollControls damping={0.2} pages={10} distance={0.5}>
         {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
         {/* <TestCube scale={1.5} position={[0, 0, -2]} /> */}
