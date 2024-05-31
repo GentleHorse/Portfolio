@@ -11,18 +11,19 @@ import {
 } from "@react-three/drei";
 import { easing } from "maath";
 
+import ProductOfAmbienceOfLightAnimated from "../../components/designWorks/ambienceOfLight/ProductOfAmbienceOfLightAnimated.jsx";
+
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
 import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
 import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
 import AmbienceOfLightImage07 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-07.jpg";
 import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-11.jpg";
 import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
-import { toneMapping } from "three/examples/jsm/nodes/Nodes.js";
 
 export default function AmbienceOfLightPage() {
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }}>
-      <ScrollControls damping={0.2} pages={5} distance={0.5}>
+      <ScrollControls damping={0.2} pages={7} distance={0.5}>
         {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
         {/* <TestCube scale={1.5} position={[0, 0, -2]} /> */}
@@ -32,14 +33,17 @@ export default function AmbienceOfLightPage() {
 
           <Typography />
           <ProjectImages />
+
+          <ProductOfAmbienceOfLightAnimated position={[0, -30, 0]} />
+
         </Scroll>
 
         <Scroll html>
           {/* DOM contents in here will scroll along */}
 
           <article
-            className="py-[5%] px-[12%]"
-            style={{ transform: "translate3d(0vw, 420vh, 0)" }}
+            className="py-[5%] px-[12%] w-[60vw]"
+            style={{ transform: "translate3d(40vw, 250vh, 0)" }}
           >
             <p className="font-roboto text-[#fcfaf2]">
               In his earlier work, "Beauty of Time Passing" (2023), the designer
@@ -61,7 +65,12 @@ export default function AmbienceOfLightPage() {
               enhances the aesthetic appeal but also makes the project more
               relatable and meaningful to a broader audience.
             </p>
-            <br />
+          </article>
+
+          <article
+            className="py-[5%] px-[12%] w-[60vw]"
+            style={{ transform: "translate3d(0vw, 325vh, 0)" }}
+          >
             <p className="font-roboto text-[#fcfaf2]">
               This project was presented at OBJECT Rotterdam 2024 (Feb 2 - 4,
               2024, HAKA-gebouw, Vierhavensstraat 40, 3029 BE Rotterdam).
@@ -90,7 +99,7 @@ function Typography() {
     <>
       <Text
         anchorX="left"
-        position={[-width / 2, -height * 0.1, 12]}
+        position={[-width / 2.25, -height * 0.1, 12]}
         {...shared}
       >
         AMBIENCE
