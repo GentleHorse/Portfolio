@@ -5,7 +5,6 @@ import RootLayout from "./pages/Root.jsx";
 import ThreeDVisualsPage from "./pages/ThreeDVisuals.jsx";
 import AmbienceOfLightPage from "./pages/designProjects/AmbienceOfLight.jsx";
 import BeautyOfTimePassingPage from "./pages/designProjects/BeautyOfTimePassing.jsx";
-import UnderrepresentedUniquenessPage from "./pages/designProjects/UnderrepresentedUniqueness.jsx";
 import InterventionInOurDisconnectionPage from "./pages/designProjects/InterventionInOurDisconnection.jsx";
 import LivingTypographyPage from "./pages/designProjects/LivingTypography.jsx";
 import ComfortingDinnerPage from "./pages/designProjects/ComfortingDinner.jsx";
@@ -18,10 +17,6 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "ambience-of-light", element: <AmbienceOfLightPage /> },
       { path: "beauty-of-time-passing", element: <BeautyOfTimePassingPage /> },
-      {
-        path: "underrepresented-uniqueness",
-        element: <UnderrepresentedUniquenessPage />,
-      },
       {
         path: "intervention-in-our-disconnection",
         element: <InterventionInOurDisconnectionPage />,

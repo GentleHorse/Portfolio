@@ -54,11 +54,6 @@ export default function Header({ topic = "Enjoy exploration !!" }) {
                   Beauty of Time Passing
                 </p>
               </Link>
-              <Link to="/underrepresented-uniqueness">
-                <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
-                  Underrepresented Uniqueness
-                </p>
-              </Link>
               <Link to="/intervention-in-our-disconnection">
                 <p className="font-pixelify-sans mb-[5px] text-[20px] text-[#1bff6b]">
                   Intervention in our disconnection
