@@ -31,7 +31,7 @@ export default function TestFloor(props) {
     <>
       <group {...props}>
         {/* BLOCKS */}
-        {BLOCK_POSITIONS.map((position) => (
+        {/* {BLOCK_POSITIONS.map((position) => (
           <RigidBody
             key={position.id}
             type="fixed"
@@ -46,7 +46,7 @@ export default function TestFloor(props) {
               <meshStandardMaterial color={blocks.color} />
             </mesh>
           </RigidBody>
-        ))}
+        ))} */}
 
         {/* FLOOR */}
         <RigidBody

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
-import { MeshTransmissionMaterial } from "@react-three/drei";
+import { MeshTransmissionMaterial, useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 import clearSceneryVideo from "../../../../public/videos/clear.mp4";
+import { TetrahedralUpscaler } from "postprocessing";
 
 export default function BeautyOfTimePassing(props) {
   /**
@@ -19,6 +20,13 @@ export default function BeautyOfTimePassing(props) {
     vid.play();
     return vid;
   });
+
+  /**
+   * GLASS BRICK WINDOW
+   */
+  const { nodes, materials } = useGLTF(
+    "/models/design-works/beauty-of-time-passing/glass-brick.gltf"
+  );
 
   /**
    * GLASS TEXUTRES
@@ -54,56 +62,64 @@ export default function BeautyOfTimePassing(props) {
   return (
     <group {...props}>
       {/* VIDEO PLANE */}
-      <mesh scale={[10, 18, 1]} position={[0, 8, -12]}>
+      <mesh scale={[8, 14, 3]} position={[2, 9, -13]}>
         <planeGeometry />
-        <meshStandardMaterial emissive={"white"}>
+        <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
           <videoTexture attach="map" args={[video]} />
           <videoTexture attach="emissiveMap" args={[video]} />
         </meshStandardMaterial>
       </mesh>
 
       {/* GLASS PLANE */}
-      <mesh scale={[2.5, 14, 3]} position={[2, 9, -11.5]}>
-        <boxGeometry />
-        <MeshTransmissionMaterial
-          backside
-          samples={6} // refraction samples, default: 6
-          transmission={1}
-          thickness={0.2}
-          chromaticAberration={0.05}
-          anisotropy={0.9} // the structural property of non-uniformity in different directions, default: 0.1
-          distortion={3.2} // default: 0
-          distortionScale={0.6}
-          temporalDistortion={0.1} // speed of movement, default: 0.0
-          iridescence={1} // certain surfaces that appear gradually to change colour
-          iridescenceIOR={1}
-          iridescenceThicknessRange={[100, 400]}
-          normalMap={GLASS_TEXTURES[glassTexture]}
-        />
-      </mesh>
+      <group {...props} dispose={null}>
+        <mesh
+          geometry={nodes["glass-brick001"].geometry}
+          // material={nodes["glass-brick001"].material}
+          position={[7.5, 6.8, -40]}
+          scale={4.7}
+        >
+          <MeshTransmissionMaterial
+            backside
+            samples={6} // refraction samples, default: 6
+            transmission={1}
+            thickness={0.9}
+            chromaticAberration={0.05}
+            anisotropy={0.9} // the structural property of non-uniformity in different directions, default: 0.1
+            distortion={2.0} // default: 0
+            distortionScale={0.6}
+            temporalDistortion={0.1} // speed of movement, default: 0.0
+            iridescence={1} // certain surfaces that appear gradually to change colour
+            iridescenceIOR={1}
+            iridescenceThicknessRange={[100, 400]}
+            normalMap={GLASS_TEXTURES[glassTexture]}
+          />
+        </mesh>
+      </group>
 
       {/* WALL */}
 
       {/* Left */}
-      <mesh scale={[6, 14, 0.5]} position={[-2, 9, -11.5]}>
+      <mesh scale={[6, 14, 0.5]} position={[-2, 9, -13]}>
         <boxGeometry />
         <meshStandardMaterial color="white" />
       </mesh>
       {/* Right */}
-      <mesh scale={[3, 14, 0.5]} position={[5, 9, -11.5]}>
+      <mesh scale={[3, 14, 0.5]} position={[5, 9, -13]}>
         <boxGeometry />
         <meshStandardMaterial color="white" />
       </mesh>
       {/* Bottom */}
-      <mesh scale={[11.5, 2, 0.5]} position={[0.75, 1, -11.5]}>
+      <mesh scale={[11.5, 2, 0.5]} position={[0.75, 1, -13]}>
         <boxGeometry />
         <meshStandardMaterial color="white" />
       </mesh>
       {/* Top */}
-      <mesh scale={[11.5, 2, 0.5]} position={[0.75, 17, -11.5]}>
+      <mesh scale={[11.5, 2, 0.5]} position={[0.75, 17, -13]}>
         <boxGeometry />
         <meshStandardMaterial color="white" />
       </mesh>
     </group>
   );
 }
+
+useGLTF.preload("/models/design-works/beauty-of-time-passing/glass-brick.gltf");
