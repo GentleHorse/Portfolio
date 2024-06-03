@@ -53,7 +53,7 @@ const PRODUCTS = [
 export default function AmbienceOfLight() {
   return (
     <>
-      {/* {PRODUCTS.map((product, index) => (
+      {PRODUCTS.map((product, index) => (
         <ProductOfAmbienceOfLight
           key={index}
           scale={product.scale}
@@ -72,19 +72,19 @@ export default function AmbienceOfLight() {
           blinkSpeed={product.blinkSpeed}
           blinkDelay={product.blinkDelay}
         />
-      ))} */}
+      ))}
 
       {/* <GlassBrick position={[0, 0.5, 0]} />
       <GlassBrick position={[0, 1.5, 0]} /> */}
 
-      <pointLight intensity={50} position={[0, 1, 0]} />
+      {/* <pointLight intensity={50} position={[0, 1, 0]} />
 
       <RigidBody type="fixed" restitution={0.5} friction={0.6}>
         <mesh scale={[20, 0.1, 20]} position={[0, -0.2, 0]}>
           <boxGeometry />
           <meshStandardMaterial color="#000000" roughness={0.6} />
         </mesh>
-      </RigidBody>
+      </RigidBody> */}
     </>
   );
 }

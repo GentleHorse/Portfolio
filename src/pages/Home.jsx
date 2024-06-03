@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
+import { Leva } from "leva";
 
 import ExperienceHome from "../ExperienceHome.jsx";
 import Header from "../components/header/Header.jsx";
@@ -26,6 +27,8 @@ export default function HomePage() {
   return (
     <>
       {/* <Interface /> */}
+
+      <Leva collapsed={true} />
 
       <KeyboardControls map={keyboardMap}>
         <Canvas

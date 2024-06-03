@@ -43,22 +43,26 @@ export default function ExperienceHome() {
       <Background />
       {/* <Fog /> */}
 
-      <Environment preset="night" />
+      {/* <Environment preset="night" /> */}
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         <CharacterControl3D />
 
-        <Title position={[0, 2, 0]} scale={0.45} />
+        {/* <Title position={[0, 2, 0]} scale={0.45} /> */}
 
         <TestFloor />
+
+        {/* <AmbienceOfLight /> */}
+
+        <BeautyOfTimePassing scale={0.3} rotation={[0, 0, 0]} />
 
       </Physics>
     </>

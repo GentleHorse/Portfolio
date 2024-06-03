@@ -43,7 +43,7 @@ export default function TestFloor(props) {
           >
             <mesh>
               <boxGeometry />
-              <meshBasicMaterial color={blocks.color} />
+              <meshStandardMaterial color={blocks.color} />
             </mesh>
           </RigidBody>
         ))}
@@ -59,7 +59,7 @@ export default function TestFloor(props) {
         >
           <mesh>
             <boxGeometry />
-            <meshBasicMaterial color={floor.color} />
+            <meshStandardMaterial color={floor.color} />
           </mesh>
         </RigidBody>
       </group>
