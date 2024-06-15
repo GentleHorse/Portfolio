@@ -21,8 +21,8 @@ const JUMP_BACKWARD_FORCE = 2;
 const JUMP_LEFT_FORCE = -2;
 const JUMP_RIGHT_FORCE = 2;
 
-const CAMERA_HEIGHT = 8;
-const CAMERA_DISTANCE = 12;
+const CAMERA_HEIGHT = 6;
+const CAMERA_DISTANCE = 8;
 const CAMERA_TARGET_Z_ADJUSTMENT = 1.5;
 
 export default function CharacterControl3D() {

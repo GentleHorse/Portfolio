@@ -54,7 +54,7 @@ export default function AmbienceOfLightLowPolyAnimated(props) {
           geometry={nodes.frame001.geometry}
           // material={nodes.frame001.material}
         >
-          <meshBasicMaterial map={bakedTexture} />
+          {/* <meshBasicMaterial map={bakedTexture} /> */}
         </mesh>
         <mesh
           name="glassBrickBottom"
@@ -62,7 +62,7 @@ export default function AmbienceOfLightLowPolyAnimated(props) {
           // material={nodes.glassBrickBottom.material}
         >
           {/* <meshBasicMaterial map={bakedTexture} /> */}
-          <meshPhysicalMaterial {...config} />
+          {/* <meshPhysicalMaterial {...config} /> */}
         </mesh>
         <mesh
           name="glassBrickTop"
@@ -70,7 +70,7 @@ export default function AmbienceOfLightLowPolyAnimated(props) {
           // material={nodes.glassBrickTop.material}
         >
           {/* <meshBasicMaterial map={bakedTexture} /> */}
-          <meshPhysicalMaterial {...config} />
+          {/* <meshPhysicalMaterial {...config} /> */}
         </mesh>
       </group>
     </group>
