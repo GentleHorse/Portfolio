@@ -49,7 +49,7 @@ export default function ExperienceHome() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
         <CharacterControl3D />
 
         {/* <Title position={[0, 2, 0]} scale={0.45} /> */}

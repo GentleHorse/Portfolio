@@ -3,6 +3,7 @@ import * as THREE from "three";
 import {
   useGLTF,
   useAnimations,
+  useTexture,
   MeshDistortMaterial,
   Outlines,
 } from "@react-three/drei";
@@ -13,6 +14,14 @@ import gsap from "gsap";
 export default function JoeFor3D() {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/joe/joe.gltf");
+
+  /**
+   * TEXTURE
+   */
+  const bakedJoeTexture = useTexture(
+    "./textures/joe/joe-baked.jpg"
+  );
+  bakedJoeTexture.flipY = false;
 
   /**
    * ANIMATIONS
@@ -71,7 +80,7 @@ export default function JoeFor3D() {
             geometry={nodes.joe001.geometry}
             skeleton={nodes.joe001.skeleton}
           >
-            <meshBasicMaterial color="snow" />
+            <meshBasicMaterial map={bakedJoeTexture} />
           </skinnedMesh>
         </group>
       </group>
