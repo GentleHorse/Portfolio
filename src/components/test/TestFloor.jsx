@@ -20,12 +20,12 @@ for (let i = 0; i < BLOCK_NUM; i++) {
 
 export default function TestFloor(props) {
   const floor = useControls("test-floor", {
-    color: "#BDC0BA",
+    color: "#000000",
   });
 
-  const blocks = useControls("test-blocks", {
-    color: "#FFFFFB",
-  });
+  // const blocks = useControls("test-blocks", {
+  //   color: "#FFFFFB",
+  // });
 
   return (
     <>

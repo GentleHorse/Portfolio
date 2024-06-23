@@ -12,6 +12,7 @@ import PostProcessingEffects from "./components/postprocessing/PostProcessingEff
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
 import CharacterControl from "./components/characterControl/CharacterControl.jsx";
+import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 
 
 export default function ExperienceHome() {
@@ -33,7 +34,7 @@ export default function ExperienceHome() {
       <Lights />
       <Background />
 
-      <Environment preset="city" />
+      {/* <Environment preset="forest" /> */}
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
@@ -44,9 +45,11 @@ export default function ExperienceHome() {
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={true}>
-        <CharacterControl />
+        {/* <CharacterControl /> */}
 
         <TestFloor />
+
+        <AmbienceOfLight />
 
       </Physics>
     </>
