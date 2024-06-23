@@ -9,7 +9,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
-import LowPolyMan from "../models/character/lowPolyMan/lowPolyMan.jsx";
+import LowPolyMan from "../models/character/lowPolyMan/LowPolyMan.jsx";
 
 const WALK_SPEED = 3.5;
 const RUN_SPEED = 12.0;
