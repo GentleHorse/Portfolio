@@ -11,8 +11,6 @@ import {
 } from "@react-three/drei";
 import { easing } from "maath";
 
-import ProductOfAmbienceOfLightAnimated from "../../components/designWorks/ambienceOfLight/ProductOfAmbienceOfLightAnimated.jsx";
-
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
 import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
 import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
@@ -33,8 +31,6 @@ export default function AmbienceOfLightPage() {
 
           <Typography />
           <ProjectImages />
-
-          <ProductOfAmbienceOfLightAnimated position={[0, -30, 0]} />
 
         </Scroll>
 

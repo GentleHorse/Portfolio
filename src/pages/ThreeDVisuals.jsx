@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
-import Experience3DVisuals from "../Experience3DVisuals.jsx";
+import { OrbitControls } from "@react-three/drei";
 
 export default function ThreeDVisualsPage() {
   return (
@@ -12,7 +12,17 @@ export default function ThreeDVisualsPage() {
         position: [0, 1.5, 8],
       }}
     >
-      <Experience3DVisuals />
+      
+      {/* DEBUG TOOLS */}
+      <Perf position="top-left" />
+      <axesHelper />
+      <OrbitControls makeDefault />
+
+      <mesh>
+        <boxGeometry />
+        <meshNormalMaterial />
+      </mesh>
+
     </Canvas>
   );
 }
