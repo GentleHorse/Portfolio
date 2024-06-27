@@ -27,7 +27,7 @@ export default function CharacterController() {
 
   return (
     <>
-      <Ecctrl mode="FixedCamera" animated position={[0, 15, 0]}>
+      <Ecctrl mode="FixedCamera" animated position={[0, 3, 0]}>
         <Suspense>
           <EcctrlAnimation
             characterURL={characterURL} // Must have property
