@@ -27,13 +27,15 @@ export default function CharacterController() {
 
   return (
     <>
-      <Ecctrl mode="FixedCamera" animated>
+      <Ecctrl mode="FixedCamera" animated position={[0, 15, 0]}>
         <Suspense>
           <EcctrlAnimation
             characterURL={characterURL} // Must have property
             animationSet={animationSet} // Must have property
           >
-            <LowPolyMale scale={0.8} position={[0, -0.8, 0]} />
+            <Suspense>
+              <LowPolyMale scale={0.8} position={[0, -0.8, 0]} />
+            </Suspense>
           </EcctrlAnimation>
         </Suspense>
       </Ecctrl>

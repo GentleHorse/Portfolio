@@ -4,19 +4,23 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 export default function LowPolyMale(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-    "/models/low-poly-male/low-poly-male.gltf"
+    "/models/low-poly-male/low-poly-male.glb"
   );
   const { actions } = useAnimations(animations, group);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <group name="low-poly-male" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <group
+          name="low-poly-male-full"
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={0.01}
+        >
           <primitive object={nodes.mixamorigHips} />
           <skinnedMesh
-            name="low-poly-male001"
-            geometry={nodes["low-poly-male001"].geometry}
+            name="low-poly-male003"
+            geometry={nodes["low-poly-male003"].geometry}
             material={materials["low-poly-male.001"]}
-            skeleton={nodes["low-poly-male001"].skeleton}
+            skeleton={nodes["low-poly-male003"].skeleton}
           />
         </group>
       </group>
@@ -24,4 +28,4 @@ export default function LowPolyMale(props) {
   );
 }
 
-useGLTF.preload("/models/low-poly-male/low-poly-male.gltf");
+useGLTF.preload("/models/low-poly-male/low-poly-male.glb");
