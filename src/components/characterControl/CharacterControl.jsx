@@ -9,6 +9,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
+import LowPolyMale from "../models/character/lowPolyMale/LowPolyMale.jsx";
 import LowPolyMan from "../models/character/lowPolyMan/LowPolyMan.jsx";
 
 const WALK_SPEED = 3.5;
@@ -87,7 +88,7 @@ export default function CharacterControl() {
        * Walk & Run
        */
       // Forward
-      if (forward && !isJumping && castRayHit.toi === 0) {
+      if (forward && !isJumping && castRayHit.timeOfImpact === 0) {
         if (run && linvel.z > -RUN_SPEED) {
           impluse.z -= RUN_SPEED * delta;
           changeRotation = true;
@@ -106,7 +107,7 @@ export default function CharacterControl() {
       }
 
       // Backward
-      if (backward && !isJumping && castRayHit.toi === 0) {
+      if (backward && !isJumping && castRayHit.timeOfImpact === 0) {
         if (run && linvel.z < RUN_SPEED) {
           impluse.z += RUN_SPEED * delta;
           changeRotation = true;
@@ -125,7 +126,7 @@ export default function CharacterControl() {
       }
 
       // Leftward
-      if (leftward && !isJumping && castRayHit.toi === 0) {
+      if (leftward && !isJumping && castRayHit.timeOfImpact === 0) {
         if (run && linvel.x > -RUN_SPEED) {
           impluse.x -= RUN_SPEED * delta;
           changeRotation = true;
@@ -144,7 +145,7 @@ export default function CharacterControl() {
       }
 
       // Rightward
-      if (rightward && !isJumping && castRayHit.toi === 0) {
+      if (rightward && !isJumping && castRayHit.timeOfImpact === 0) {
         if (run && linvel.x < RUN_SPEED) {
           impluse.x += RUN_SPEED * delta;
           changeRotation = true;
@@ -200,12 +201,12 @@ export default function CharacterControl() {
       state.camera.lookAt(cameraTarget);
 
       // Add downward force after the character jumps
-      if (castRayHit && castRayHit.toi > 0.1) {
+      if (castRayHit && castRayHit.timeOfImpact > 0.1) {
         body.current.applyImpulse({ x: 0, y: JUMP_DOWN_FORCE, z: 0 }, true);
       }
 
       // Check the character is in the air
-      if (castRayHit && castRayHit.toi > 0.1) {
+      if (castRayHit && castRayHit.timeOfImpact > 0.1) {
         setCharacterState("Jump_Idle");
       }
     }
@@ -227,10 +228,10 @@ export default function CharacterControl() {
     /**
      * Jump is allowed only if the ball is close enough to the floor
      * In order to hit the ray properly, the floor should be thick enough to be hit
-     * (otherwise the "hit" returns NULL and cannot read the null property of "toi")
+     * (otherwise the "hit" returns NULL and cannot read the null property of "timeOfImpact")
      * TEMP_GROUND_THICKNESS ---> refer to <TestFloor />
      */
-    if (hit.toi < 0.15) {
+    if (hit.timeOfImpact < 0.15) {
       setIsJumping(true);
 
       // Add upward jump force
@@ -369,8 +370,8 @@ export default function CharacterControl() {
             }
           }}
         >
-          <group ref={character} position={[0, 0, 0]}>
-            <LowPolyMan />
+          <group ref={character} position={[0, 0.5, 0]}>
+            <LowPolyMale scale={0.8} />
           </group>
 
           <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />

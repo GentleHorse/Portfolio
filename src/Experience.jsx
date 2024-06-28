@@ -14,7 +14,6 @@ import Lights from "./components/utilComponents/Lights.jsx";
 import CharacterControl from "./components/characterControl/CharacterControl.jsx";
 import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 
-
 import CharacterController from "./components/characterControl/CharacterController.jsx";
 
 export default function ExperienceHome() {
@@ -47,13 +46,13 @@ export default function ExperienceHome() {
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={true}>
-        {/* <CharacterControl /> */}
+        <CharacterControl />
 
-        <CharacterController />
+        {/* <CharacterController /> */}
 
         <TestFloor />
 
-        <AmbienceOfLight scale={0.3} rotation={[0, -Math.PI, 0]} />
+        <AmbienceOfLight scale={0.3} rotation={[0, 0, 0]} />
       </Physics>
     </>
   );
