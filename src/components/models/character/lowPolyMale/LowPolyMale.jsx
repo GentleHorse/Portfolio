@@ -1,75 +1,45 @@
-import React, { useRef, useEffect } from "react";
-import * as THREE from "three";
-import { useGLTF, useAnimations } from "@react-three/drei";
-import { useGameStore } from "../../../../store/store.js";
+import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import LowPolyMaleModel from "./LowPolyMaleModel.jsx";
+import { Suspense } from "react";
 
-export default function LowPolyMale(props) {
-  const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "/models/low-poly-male/low-poly-male.glb"
-  );
+export default function LowPolyMale() {
+  // Prepare character model url
+  const characterURL = "./models/low-poly-male/low-poly-male.glb";
 
-  /**
-   * ANIMATIONS
-   *
-   * * Idle, Walk, Run, Jump_Start, Jump_Idle, Jump_Land, Climbing
-   * * Attack, Cheer, Dance, Wave
-   *
-   */
-  const { actions } = useAnimations(animations, group);
+  // Prepare and rename your character animations here
+  // Note: idle, walk, run, jump, jumpIdle, jumpLand and fall names are essential
+  // Missing any of these names might result in an error: "cannot read properties of undifined (reading 'reset')"
+  const animationSet = {
+    idle: "Idle",
+    walk: "Walk",
+    run: "Run",
+    jump: "Jump_Start",
+    jumpIdle: "Jump_Idle",
+    jumpLand: "Jump_Land",
+    fall: "Climbing", // This is for falling from high sky
 
-  // Import the character state
-  const characterState = useGameStore((state) => state.characterState);
-
-  // Switch character animations
-  // Several animations should play once
-  useEffect(() => {
-    if (
-      characterState === "Jump_Start" ||
-      characterState === "Jump_Land" ||
-      characterState === "Attack" ||
-      characterState === "Cheer" ||
-      characterState === "Dance" ||
-      characterState === "Wave"
-    ) {
-      actions[characterState]
-        .reset()
-        .fadeIn(0.2)
-        .setLoop(THREE.LoopOnce, undefined)
-        .play();
-      actions[characterState].clampWhenFinished = true;
-    } else {
-      actions[characterState].reset().play();
-      actions[characterState].setEffectiveTimeScale(1.5); // animation speed
-    }
-
-    return () => {
-      if (actions[characterState]) {
-        actions[characterState].fadeOut(2);
-        actions[characterState].stop();
-      }
-    };
-  }, [characterState]);
+    // Currently support four additional animations
+    action1: "Wave",
+    action2: "Dance",
+    action3: "Cheer",
+    action4: "Attack(1h)", // This is special action which can be trigger while walking or running
+  };
 
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        <group
-          name="low-poly-male-full"
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
-        >
-          <primitive object={nodes.mixamorigHips} />
-          <skinnedMesh
-            name="low-poly-male003"
-            geometry={nodes["low-poly-male003"].geometry}
-            material={materials["low-poly-male.001"]}
-            skeleton={nodes["low-poly-male003"].skeleton}
-          />
-        </group>
-      </group>
-    </group>
+    <>
+      {/* "friction" must be set above 0, otherwise it causes the bug! */}
+      <Ecctrl mode="FixedCamera" animated position={[0, 3, 0]} friction={0.6}>
+        <Suspense>
+          <EcctrlAnimation
+            characterURL={characterURL} // Must have property
+            animationSet={animationSet} // Must have property
+          >
+            <Suspense>
+              <LowPolyMaleModel scale={0.8} position={[0, -0.8, 0]} />
+            </Suspense>
+          </EcctrlAnimation>
+        </Suspense>
+      </Ecctrl>
+    </>
   );
 }
-
-useGLTF.preload("/models/low-poly-male/low-poly-male.glb");

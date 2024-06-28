@@ -9,8 +9,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useGameStore } from "../../store/store.js";
-import LowPolyMale from "../models/character/lowPolyMale/LowPolyMale.jsx";
-import LowPolyMan from "../models/character/lowPolyMan/LowPolyMan.jsx";
+import LowPolyMaleModel from "../models/character/lowPolyMale/LowPolyMaleModel.jsx";
 
 const WALK_SPEED = 3.5;
 const RUN_SPEED = 12.0;
@@ -311,25 +310,6 @@ export default function CharacterControl() {
     }
   }, [characterState]);
 
-  /**
-   * SOUNDS CONTROL - JUMP
-   */
-  // const [
-  //   playJumpSound, // play sound method
-  //   {
-  //     stop: stopPlayJumpSound, // stop sound method
-  //     isPlaying: isPlayingJumpSound, // return boolean
-  //     sound: jumpingSound, // allow access to "sound" object
-  //   },
-  // ] = useSound(jumpSound);
-
-  // useEffect(() => {
-  //   if (jump) {
-  //     playJumpSound();
-  //   } else {
-  //     stopPlayJumpSound();
-  //   }
-  // }, [jump]);
 
   /**
    * SOUNDS CONTROL - CONTACT TO THE GOUND
@@ -361,7 +341,6 @@ export default function CharacterControl() {
           onCollisionEnter={(event) => {
             if (event.other.rigidBodyObject.name === "ground") {
               setIsJumping(false);
-              playPongSound();
             }
 
             if (event.other.rigidBodyObject.name === "title") {
@@ -371,7 +350,7 @@ export default function CharacterControl() {
           }}
         >
           <group ref={character} position={[0, 0.5, 0]}>
-            <LowPolyMale scale={0.8} />
+            <LowPolyMaleModel scale={0.8} />
           </group>
 
           <CapsuleCollider args={[0.3, 0.25]} position={[0, 1, 0]} />

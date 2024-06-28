@@ -3,7 +3,6 @@ import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
 
 import Experience from "../Experience.jsx";
-import Header from "../components/header/Header.jsx";
 import Interface from "../components/interface/Interface.jsx";
 
 /**
