@@ -1,9 +1,10 @@
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
+import { EcctrlJoystick } from "ecctrl";
+import { MobileView } from "react-device-detect";
 
 import Experience from "../Experience.jsx";
-import Interface from "../components/interface/Interface.jsx";
 
 /**
  * Keyboard control preset
@@ -25,9 +26,12 @@ const keyboardMap = [
 export default function HomePage() {
   return (
     <>
-      {/* <Interface /> */}
-
       <Leva collapsed={true} />
+
+      {/* The interface for smartphones */}
+      <MobileView>
+        <EcctrlJoystick />
+      </MobileView>
 
       <KeyboardControls map={keyboardMap}>
         <Canvas
