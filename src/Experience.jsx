@@ -14,6 +14,7 @@ import Lights from "./components/utilComponents/Lights.jsx";
 import CharacterControl from "./components/characterControl/CharacterControl.jsx";
 import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 import LowPolyMale from "./components/models/character/lowPolyMale/LowPolyMale.jsx";
+import StageTest from "./components/models/test/StageTest.jsx";
 
 
 export default function ExperienceHome() {
@@ -35,7 +36,7 @@ export default function ExperienceHome() {
       <Lights />
       <Background />
 
-      {/* <Environment preset="forest" /> */}
+      <Environment preset="forest"  />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
@@ -45,12 +46,14 @@ export default function ExperienceHome() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         <LowPolyMale />
 
-        <TestFloor position={[0, -0.5, 0]} />
+        <TestFloor position={[0, -0.5, 20]} scale={[0.8, 0.5, 2.0]} />
 
-        <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} />
+        <StageTest scale={0.22} rotation={[0, Math.PI, 0]} position={[0.8, -0.2, 0]} />
+
+        {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
 
       </Physics>
     </>
