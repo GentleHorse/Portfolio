@@ -28,6 +28,7 @@ export default function LowPolyMale() {
   return (
     <>
       {/* "friction" must be set above 0, otherwise it causes the bug! */}
+
       <Ecctrl animated position={[0, 3, 0]} friction={0.6}>
         <Suspense>
           <EcctrlAnimation

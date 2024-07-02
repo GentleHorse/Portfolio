@@ -11,10 +11,8 @@ import TestFloor from "./components/test/TestFloor.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
-import CharacterControl from "./components/characterControl/CharacterControl.jsx";
-import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
-import LowPolyMale from "./components/models/character/lowPolyMale/LowPolyMale.jsx";
 import StageTest from "./components/models/test/StageTest.jsx";
+import FirstPersonViewControl from "./components/models/character/firstPersonViewControl/FirstPersonViewControl.jsx";
 
 
 export default function ExperienceHome() {
@@ -47,7 +45,7 @@ export default function ExperienceHome() {
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={false}>
-        <LowPolyMale />
+        <FirstPersonViewControl />
 
         <TestFloor position={[0, -0.5, 20]} scale={[0.8, 0.5, 2.0]} />
 

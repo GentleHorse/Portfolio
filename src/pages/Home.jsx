@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
@@ -30,7 +31,43 @@ export default function HomePage() {
 
       {/* The interface for smartphones */}
       <MobileView>
-        <EcctrlJoystick />
+        <EcctrlJoystick
+          joystickBaseProps={{
+            material: new THREE.MeshBasicMaterial({
+              color: "#080808",
+              transparent: true,
+              opacity: 0.45,
+            }),
+          }}
+          joystickStickProps={{
+            material: new THREE.MeshBasicMaterial({
+              color: "#434343",
+              transparent: true,
+              opacity: 0.45,
+            }),
+          }}
+          joystickHandleProps={{
+            material: new THREE.MeshBasicMaterial({
+              color: "#080808",
+              transparent: true,
+              opacity: 0.6,
+            }),
+          }}
+          buttonLargeBaseProps={{
+            material: new THREE.MeshBasicMaterial({
+              color: "#080808",
+              transparent: true,
+              opacity: 0.45,
+            }),
+          }}
+          buttonTop1Props={{
+            material: new THREE.MeshBasicMaterial({
+              color: "#080808",
+              transparent: true,
+              opacity: 0.45,
+            }),
+          }}
+        />
       </MobileView>
 
       <KeyboardControls map={keyboardMap}>
