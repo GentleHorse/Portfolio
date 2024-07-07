@@ -13,6 +13,7 @@ import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
 import StageTest from "./components/models/test/StageTest.jsx";
 import FirstPersonViewControl from "./components/models/character/firstPersonViewControl/FirstPersonViewControl.jsx";
+import StageTestCollisionObjects from "./components/models/test/StageTestCollisionObjects.jsx";
 
 
 export default function ExperienceHome() {
@@ -47,9 +48,9 @@ export default function ExperienceHome() {
       <Physics debug={false}>
         <FirstPersonViewControl />
 
-        <TestFloor position={[0, -0.5, 20]} scale={[0.8, 0.5, 2.0]} />
+        <StageTestCollisionObjects />
 
-        <StageTest scale={0.22} rotation={[0, Math.PI, 0]} position={[0.8, -0.2, 0]} />
+        <StageTest scale={0.22} rotation={[0, Math.PI, 0]} position={[0.8, 0, 0]} />
 
         {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
 
