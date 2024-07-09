@@ -47,22 +47,17 @@ export default function ExperienceHome() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
+      <Physics debug={false}>
         {isMobile && <FirstPersonViewControlWithEcctrl position={[12, 0, -18]} />}
 
         {isBrowser && <FirstPersonViewControl />}
 
         <StageTestCollisionObjects />
-        {/* <StageTest
+        <StageTest
           scale={0.22}
-          rotation={[0, Math.PI, 0]}
+          rotation={[0, 0, 0]}
           position={[0.8, 0, 0]}
-        /> */}
-
-        <mesh scale={[40, 0.1, 40]}>
-          <boxGeometry />
-          <meshNormalMaterial />
-        </mesh>
+        />
 
         {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
       </Physics>

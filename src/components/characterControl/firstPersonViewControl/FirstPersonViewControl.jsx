@@ -2,7 +2,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 import { clamp, lerp } from "three/src/math/MathUtils.js";
 import { useFrame, useThree } from "@react-three/fiber";
-import { RigidBody } from "@react-three/rapier";
+import { RigidBody, BallCollider } from "@react-three/rapier";
 import { useMouseCapture } from "../../../hooks/useMouseCapture.js";
 import { useKeyboard } from "../../../hooks/useKeyboard.js";
 
@@ -10,7 +10,8 @@ import { useKeyboard } from "../../../hooks/useKeyboard.js";
  * INITIAL PARAMS
  */
 const MOVE_SPEED = 0.1;
-const INITIAL_POSITION = [0, 1, 0];
+const INITIAL_CHARACTER_POSITION = [-5, 1, 15];
+const INITIAL_CAMERA_POSITION = { x: 0, y: 0.5, z: 0 };
 
 /**
  * EXPORT - PLAYER CONTROL
@@ -80,12 +81,15 @@ function Player({
   const gaze = new THREE.Quaternion();
   const yaw = new THREE.Quaternion();
   const pitch = new THREE.Quaternion();
-  const cameraOffset = new THREE.Vector3(0, 3, 5);
+  const cameraOffset = new THREE.Vector3(
+    INITIAL_CAMERA_POSITION.x,
+    INITIAL_CAMERA_POSITION.y,
+    INITIAL_CAMERA_POSITION.z
+  );
   const down = new THREE.Vector3(0, -1, 0);
   const yAxis = new THREE.Vector3(0, 1, 0);
   const xAxis = new THREE.Vector3(1, 0, 0);
   const raycaster = new THREE.Raycaster(new THREE.Vector3(0, 0, 0), down, 0, 2);
-  const slope = new THREE.Vector3(0, 1, 0);
 
   // Function to update the player's camera orientation based on user input
   const updateOrientation = ([x, y]) => {
@@ -109,11 +113,6 @@ function Player({
     const { move, look, running } = input();
 
     updateOrientation(look); // Update the player's camera orientaion
-
-    // Filter the scene to get all walkable objects
-    const walkable = scene.children.filter(
-      (obj) => obj.children[0]?.uuid !== mesh?.current?.uuid
-    );
 
     raycaster.set(position, down);
 
@@ -140,17 +139,14 @@ function Player({
       <RigidBody
         ref={body}
         lockRotations // Lock rotations to prevent unwanted rotations during physics simulation
-        position={INITIAL_POSITION}
+        position={INITIAL_CHARACTER_POSITION}
         linearDamping={5}
         angularDamping={0.1}
         friction={0.8}
         restitution={0.2}
-        colliders="ball"
+        colliders={false}
       >
-        <mesh ref={mesh}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshPhysicalMaterial metalness={0.5} roughness={0} />
-        </mesh>
+        <BallCollider ref={mesh} args={[1]} />
       </RigidBody>
     </>
   );
