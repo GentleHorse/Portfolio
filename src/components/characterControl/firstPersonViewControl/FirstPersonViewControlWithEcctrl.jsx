@@ -1,6 +1,6 @@
 import Ecctrl from "ecctrl";
 
-export default function FirstPersonViewControl({position=[0, 0, 0]}) {
+export default function FirstPersonViewControlWithEcctrl({position=[0, 0, 0]}) {
   return (
     <>
       {/* "friction" must be set above 0, otherwise it causes the bug! */}
