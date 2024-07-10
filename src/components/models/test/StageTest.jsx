@@ -160,28 +160,36 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["test-ground"].geometry}
-        material={materials["test-architecture-white-matt"]}
+        // material={materials["test-architecture-white-matt"]}
         scale={95.777}
-      />
+      >
+        <meshStandardMaterial roughness={0.6} metalness={0.7} color="black" />
+      </mesh>
       <mesh
         geometry={nodes["test-outer-wall"].geometry}
         material={materials["test-architecture-white-matt"]}
         position={[0, 0, -75.213]}
         rotation={[Math.PI / 2, 0, 0]}
         scale={[88.336, 14.08, 14.08]}
-      />
+      >
+        <meshStandardMaterial roughness={0.6} metalness={0.7} color="black" />
+      </mesh>
       <mesh
         geometry={nodes["test-inner-walls"].geometry}
         material={materials["test-architecture-white-matt"]}
         scale={[1, 13.192, 1]}
-      />
+      >
+        <meshStandardMaterial roughness={0.6} metalness={0.7} color="black" />
+      </mesh>
       <mesh
         geometry={nodes["test-ceiling"].geometry}
         material={materials["test-architecture-white-matt"]}
         position={[0, 28.394, 0]}
         rotation={[0, 0, Math.PI]}
         scale={95.777}
-      />
+      >
+        <meshStandardMaterial roughness={0.6} metalness={0.7} color="black" />
+      </mesh>
       <mesh
         geometry={nodes["comforting-dinner-baked-johns"].geometry}
         material={materials["john-mesh-baked"]}

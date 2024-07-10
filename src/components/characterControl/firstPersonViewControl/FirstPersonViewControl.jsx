@@ -7,10 +7,15 @@ import { useMouseCapture } from "../../../hooks/useMouseCapture.js";
 import { useKeyboard } from "../../../hooks/useKeyboard.js";
 
 /**
+ * INITIAL CHARACTER / CAMERA POSITION
+ */
+const INITIAL_POSITION = [-5, 1, 15];
+
+/**
  * INITIAL PARAMS
  */
 const MOVE_SPEED = 0.1;
-const INITIAL_CHARACTER_POSITION = [-5, 1, 15];
+const INITIAL_CHARACTER_POSITION = INITIAL_POSITION;
 const INITIAL_CAMERA_POSITION = { x: 0, y: 0.5, z: 0 };
 
 /**
@@ -28,7 +33,7 @@ export default function FirstPersonViewControl() {
 }
 
 /**
- * FUNCTION - MOUSE & KEYBOARD INPUT
+ * FUNCTION - MOUSE & KEYBOARD INPUT (QWERTY + AZERTY keyboards)
  */
 function getInput(keyboard, mouse) {
   let [x, y, z] = [0, 0, 0];

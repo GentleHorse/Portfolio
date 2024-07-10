@@ -3,8 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
 import { EcctrlJoystick } from "ecctrl";
-import { MobileView } from "react-device-detect";
-
+import { MobileView, BrowserView } from "react-device-detect";
+import Menu from "../components/menu/Menu.jsx";
 import Experience from "../Experience.jsx";
 
 /**
@@ -22,11 +22,17 @@ const keyboardMap = [
   { name: "action2", keys: ["2"] },
   { name: "action3", keys: ["3"] },
   { name: "action4", keys: ["KeyF"] },
+  // For the menu
+  { name: "menu", keys: ["Escape"] },
 ];
 
 export default function HomePage() {
   return (
     <>
+      <BrowserView>
+        <Menu />
+      </BrowserView>
+
       <Leva collapsed={true} />
 
       {/* The interface for smartphones */}

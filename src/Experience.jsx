@@ -18,7 +18,8 @@ import FirstPersonViewControlWithEcctrl from "./components/characterControl/firs
 import StageTestCollisionObjects from "./components/models/test/StageTestCollisionObjects.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 
-export default function ExperienceHome() {
+
+export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
   const [subscribeKeys, getKeys] = useKeyboardControls();
 
@@ -48,16 +49,14 @@ export default function ExperienceHome() {
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={false}>
-        {isMobile && <FirstPersonViewControlWithEcctrl position={[12, 0, -18]} />}
+        {isMobile && (
+          <FirstPersonViewControlWithEcctrl position={[12, 0, -18]} />
+        )}
 
         {isBrowser && <FirstPersonViewControl />}
 
         <StageTestCollisionObjects />
-        <StageTest
-          scale={0.22}
-          rotation={[0, 0, 0]}
-          position={[0.8, 0, 0]}
-        />
+        <StageTest scale={0.22} rotation={[0, 0, 0]} position={[0.8, 0, 0]} />
 
         {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
       </Physics>

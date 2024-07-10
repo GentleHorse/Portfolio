@@ -1,14 +1,31 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 
+// /**
+//  * INITIAL CHARACTER / CAMERA POSITION
+//  */
+// export const INITIAL_POSITION = [-5, 1, 15];
+
+/**
+ * GAME STATES
+ */
+export const gameStates = {
+  MENU: "MENU",
+  PLAY: "PLAY",
+  RESTART: "RESTART"
+}
+
+/**
+ * GAME STORE
+ */
 export const useGameStore = create(
   subscribeWithSelector((set, get) => ({
     /**
      * GAME PHASE - GAME, GAME_OVER
      */
-    gamePhase: "GAME",
-    setGamePhase: (gamePhase) => {
-      set({ gamePhase: gamePhase });
+    gameState: gameStates.MENU,
+    setGameState: (gameState) => {
+      set({ gameState: gameState });
     },
 
     /**

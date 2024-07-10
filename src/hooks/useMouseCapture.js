@@ -1,6 +1,15 @@
 import { useMemo, useEffect } from "react";
+import { gameStates, useGameStore } from "../store/store.js";
 
 export function useMouseCapture() {
+  /**
+   * GAME STORE
+   */
+  const { gameState, setGameState } = useGameStore((state) => ({
+    gameState: state.gameState,
+    setGameState: state.setGameState,
+  }));
+
   /**
    * STORE MOUSE COORDINATES
    */
@@ -17,7 +26,7 @@ export function useMouseCapture() {
     ) {
       mouse.x += event.movementX;
       mouse.y += event.movementY;
-    }
+    } 
   };
 
   /**
@@ -30,7 +39,10 @@ export function useMouseCapture() {
       document.body.mozRequestPointerLock ||
       document.body.webkitRequestPointerLock;
 
-    document.body.requestPointerLock();
+    // Only while playingm, activate the pointer lock
+    if (gameState === gameStates.PLAY) {
+      document.body.requestPointerLock();
+    }
   };
 
   /**
@@ -51,5 +63,5 @@ export function useMouseCapture() {
   /**
    * RETURN
    */
-  return mouse;     // The mouse obj with current mouse coordinates
+  return mouse; // The mouse obj with current mouse coordinates
 }
