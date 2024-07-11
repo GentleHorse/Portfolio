@@ -16,19 +16,26 @@ export default function Menu() {
     setGameState: state.setGameState,
   }));
 
+  /**
+   * HANDLER - THE MENU GETS CLOSED WITH THE "PLAY" BUTTON
+   */
   const modalCloseHandler = () => {
     setIsModalOpen(false);
     document.body.requestPointerLock();
   };
 
+  /**
+   * HANDLER - THE MENU GETS CLOSED WITH THE "ESCAPE" KEY
+   */
   const gameStartHandler = () => {
     setIsModalOpen(false);
     setGameState(gameStates.PLAY);
     document.body.requestPointerLock();
   };
 
-  // ---------------------------
-
+  /**
+   * HANDLER - POPULATE THE MENU WHEN THE "ESCAPE" KEY PRESSED
+   */
   const pointerLockStateChangeHandler = () => {
     if (
       document.pointerLockElement === document.body ||
@@ -42,6 +49,9 @@ export default function Menu() {
     }
   };
 
+  /**
+   * USEEFFECT - FOR POINTER LOCK STATE CHANGES
+   */
   useEffect(() => {
     document.addEventListener(
       "pointerlockchange",
@@ -58,15 +68,23 @@ export default function Menu() {
 
   return (
     <>
-      <Modal open={isModalOpen} onClose={gameStartHandler}>
-        <section className="w-[70vw] h-[70vh] rounded-2xl bg-slate-300 flex flex-col items-center justify-center">
-          <h1>Menu test</h1>
+      <Modal
+        open={isModalOpen}
+        onClose={gameStartHandler}
+        className="w-[60vw] h-[60vh] overflow-hidden rounded-2xl bg-[#0B346E75]"
+      >
+        <section className="w-full h-full flex flex-col items-center justify-between">
           <button
-            className="bg-slate-500 m-10 p-5 rounded-xl"
+            className="w-full h-4/5 bg-[#F05E1C85] py-10 rounded-t-xl text-slate-50 uppercase font-serif font-extrabold text-4xl"
             onClick={modalCloseHandler}
           >
-            Play
+            Explore the world
           </button>
+          <div className="w-full text-slate-50 text-2xl uppercase flex justify-center">
+            <p className="mx-5">About</p>
+            <p className="mx-5">Works</p>
+            <p className="mx-5">Contact</p>
+          </div>
         </section>
       </Modal>
     </>

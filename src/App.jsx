@@ -22,7 +22,6 @@ const router = createBrowserRouter([
         element: <InterventionInOurDisconnectionPage />,
       },
       { path: "living-typography", element: <LivingTypographyPage /> },
-      {},
       { path: "comforting-dinner", element: <ComfortingDinnerPage /> },
       { path: "three-d-visuals", element: <ThreeDVisualsPage /> },
     ],

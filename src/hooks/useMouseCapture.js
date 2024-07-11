@@ -1,6 +1,15 @@
 import { useMemo, useEffect } from "react";
 import { gameStates, useGameStore } from "../store/store.js";
 
+/**
+ * NOTE (10th, July, 2024): 
+ * 
+ * This component is reusable except the logic of "requestPointerLock()".
+ * It's conditionally called due to implementation of the menu modal component.
+ * If it's not the case, just remove the conditional statement.
+ * 
+ */
+
 export function useMouseCapture() {
   /**
    * GAME STORE
@@ -39,7 +48,7 @@ export function useMouseCapture() {
       document.body.mozRequestPointerLock ||
       document.body.webkitRequestPointerLock;
 
-    // Only while playingm, activate the pointer lock
+    // Only while playing, activate the pointer lock
     if (gameState === gameStates.PLAY) {
       document.body.requestPointerLock();
     }
