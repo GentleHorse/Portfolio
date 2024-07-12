@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.2.18 ./public/models/design-works/comforting-dinner/comfo
 */
 
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Text } from "@react-three/drei";
 
 export default function ComfortingDinner(props) {
   const { nodes, materials } = useGLTF(
@@ -12,6 +12,20 @@ export default function ComfortingDinner(props) {
   );
   return (
     <group {...props} dispose={null}>
+      {/* TOPIC */}
+      <group scale={5} rotation={[0, -Math.PI * 0.2, 0]} position={[-10, 20, 20]}>
+        <Text
+          color="white"
+          anchorX="center"
+          anchorY="middle"
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          characters="abcdefghijklmnopqrstuvwxyz0123456789!"
+        >
+          Comforting Dinner
+        </Text>
+      </group>
+
+      {/* MODEL */}
       <group
         position={[17.777, 7.922, -0.585]}
         rotation={[0.133, -0.995, -0.373]}

@@ -24,6 +24,8 @@ export default function MasuTypo(props) {
           Masu Typo
         </Text>
       </group>
+
+      {/* MODEL */}
       <mesh
         geometry={nodes["typo-alphabet-a002"].geometry}
         material={materials["white-matt-typography"]}

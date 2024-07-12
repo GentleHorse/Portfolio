@@ -4,6 +4,7 @@ import {
   OrbitControls,
   useKeyboardControls,
   Float,
+  MeshReflectorMaterial,
 } from "@react-three/drei";
 import { Physics, RigidBody, CuboidCollider } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
@@ -21,8 +22,10 @@ import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/Amb
 import BeautyOfTimePassing from "./components/models/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 import InterventionInOurDisconnection from "./components/models/designWorks/interventionInOurDisconnection/InterventionInOurDisconnection.jsx";
 import MasuTypo from "./components/models/designWorks/masuTypo/MasuTypo.jsx";
-import ComfortingDinner from "../ComfortingDinner.jsx";
+import ComfortingDinner from "./components/models/designWorks/comfortingDinner/ComfortingDinner.jsx";
 
+const FLOAT_INTENSITY = 0.15;
+const FLOAT_ROTATION_INTENTSITY = 0.25;
 
 export default function Experience() {
   const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
@@ -53,23 +56,66 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={true}>
-        {isMobile && (
-          <FirstPersonViewControlWithEcctrl position={[0, 0, 0]} />
-        )}
+      <Physics debug={false}>
+        {isMobile && <FirstPersonViewControlWithEcctrl position={[0, 0, 0]} />}
 
-        {/* {isBrowser && <FirstPersonViewControl />} */}
+        {isBrowser && <FirstPersonViewControl />}
 
         <StageTestCollisionObjects />
         {/* <StageTest scale={0.22} rotation={[0, 0, 0]} position={[0.8, 0, 0]} /> */}
 
-        <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
-        <BeautyOfTimePassing scale={0.25} rotation={[0, -Math.PI * 0.1, 0]} position={[3, 0, -15]} />
-        <InterventionInOurDisconnection scale={0.5} rotation={[0, Math.PI * 0.1, 0]} position={[-4, 0, -40]} />
-        <MasuTypo scale={0.3} position={[4, 0, -65]} />
-        <ComfortingDinner scale={0.5} rotation={[0, Math.PI * 0.2, 0]} position={[-5, 0, -100]}  />
+        {/* DESIGN WORKS */}
+        <group scale={0.8} position={[0, 0.5, -10]}>
+          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+            <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
+          </Float>
 
-        {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
+          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+            <BeautyOfTimePassing
+              scale={0.25}
+              rotation={[0, -Math.PI * 0.1, 0]}
+              position={[3, 0, -15]}
+            />
+          </Float>
+
+          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+            <InterventionInOurDisconnection
+              scale={0.5}
+              rotation={[0, Math.PI * 0.1, 0]}
+              position={[-4, 0, -40]}
+            />
+          </Float>
+
+          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+            <MasuTypo scale={0.3} position={[4, 0, -65]} />
+          </Float>
+
+          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+            <ComfortingDinner
+              scale={0.5}
+              rotation={[0, Math.PI * 0.2, 0]}
+              position={[-5, 0, -100]}
+            />
+          </Float>
+        </group>
+
+        {/* TEST GROUND */}
+        <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
+          <planeGeometry args={[5, 150]} />
+          <MeshReflectorMaterial
+              resolution={512}
+              blur={[400, 400]}
+              mixBlur={0.5}
+              mirror={[0.85]}
+              color="#1C1C1C"
+              mixStrength={2}
+              depthScale={1}
+              minDepthThreshold={0.85}
+              metalness={0.5}
+              roughness={0.8}
+            />
+        </mesh>
+
       </Physics>
     </>
   );
