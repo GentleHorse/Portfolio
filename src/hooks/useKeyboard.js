@@ -9,7 +9,16 @@ export function useKeyboard() {
   /**
    * EVENT HANDLER - KEY DOWN
    */
-  const keydown = (event) => (keyboard[event.key] = true);
+  const keydown = (event) => {
+    keyboard[event.key] = true;
+
+    console.log(event)
+
+    if (event.key === "Escape"){
+      event.preventDefault();
+    }
+  }
+    
 
   /**
    * EVENT HANDLER - KEY UP
