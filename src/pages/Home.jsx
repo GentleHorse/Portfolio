@@ -29,9 +29,9 @@ const keyboardMap = [
 export default function HomePage() {
   return (
     <>
-      <BrowserView>
+      {/* <BrowserView>
         <Menu />
-      </BrowserView>
+      </BrowserView> */}
 
       <Leva collapsed={true} />
 

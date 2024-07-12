@@ -12,8 +12,8 @@ export default function StageTestCollisionObjects() {
       {/* <RigidBody colliders={false} type="fixed" position={[5, 2, 35]}>
         <CuboidCollider args={[15, 0.5, 20]} />
       </RigidBody> */}
-      <RigidBody colliders={false} type="fixed" position={[0, -0.5, 0]}>
-        <CuboidCollider args={[20, 0.5, 20]} />
+      <RigidBody colliders={false} type="fixed" position={[0, -0.5, -35]}>
+        <CuboidCollider args={[5, 0.5, 50]} />
       </RigidBody>
 
       {/* GROUND IN FRONT OF WINDOW */}

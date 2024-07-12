@@ -9,7 +9,7 @@ import { useKeyboard } from "../../../hooks/useKeyboard.js";
 /**
  * INITIAL CHARACTER / CAMERA POSITION
  */
-const INITIAL_POSITION = [-5, 1, 15];
+const INITIAL_POSITION = [0, 1, 0];
 
 /**
  * INITIAL PARAMS

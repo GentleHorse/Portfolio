@@ -12,8 +12,6 @@ export function useKeyboard() {
   const keydown = (event) => {
     keyboard[event.key] = true;
 
-    console.log(event)
-
     if (event.key === "Escape"){
       event.preventDefault();
     }

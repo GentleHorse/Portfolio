@@ -17,6 +17,8 @@ import StageTest from "./components/models/test/StageTest.jsx";
 import FirstPersonViewControlWithEcctrl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControlWithEcctrl.jsx";
 import StageTestCollisionObjects from "./components/models/test/StageTestCollisionObjects.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
+import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
+import BeautyOfTimePassing from "./components/models/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
 
 
 export default function Experience() {
@@ -48,15 +50,18 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
         {isMobile && (
-          <FirstPersonViewControlWithEcctrl position={[12, 0, -18]} />
+          <FirstPersonViewControlWithEcctrl position={[0, 0, 0]} />
         )}
 
-        {isBrowser && <FirstPersonViewControl />}
+        {/* {isBrowser && <FirstPersonViewControl />} */}
 
         <StageTestCollisionObjects />
-        <StageTest scale={0.22} rotation={[0, 0, 0]} position={[0.8, 0, 0]} />
+        {/* <StageTest scale={0.22} rotation={[0, 0, 0]} position={[0.8, 0, 0]} /> */}
+
+        <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
+        <BeautyOfTimePassing scale={0.25} rotation={[0, -Math.PI * 0.1, 0]} position={[3, 0, -15]} />
 
         {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
       </Physics>

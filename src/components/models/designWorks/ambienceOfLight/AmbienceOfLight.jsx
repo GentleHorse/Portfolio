@@ -14,7 +14,7 @@ export default function AmbienceOfLight(props) {
     <group {...props} dispose={null}>
       
       {/* TOPIC */}
-      <group scale={2.5} position={[0, 5, -3]}>
+      <group scale={2} position={[0, 3, 5]}>
         <Text
           color="white"
           anchorX="center"
@@ -22,7 +22,7 @@ export default function AmbienceOfLight(props) {
           font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
           characters="abcdefghijklmnopqrstuvwxyz0123456789!"
         >
-          Around the light
+          Ambience of Light
         </Text>
       </group>
 
