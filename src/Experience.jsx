@@ -19,6 +19,7 @@ import StageTestCollisionObjects from "./components/models/test/StageTestCollisi
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 import BeautyOfTimePassing from "./components/models/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
+import InterventionInOurDisconnection from "./components/models/designWorks/interventionInOurDisconnection/InterventionInOurDisconnection.jsx";
 
 
 export default function Experience() {
@@ -62,6 +63,7 @@ export default function Experience() {
 
         <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
         <BeautyOfTimePassing scale={0.25} rotation={[0, -Math.PI * 0.1, 0]} position={[3, 0, -15]} />
+        <InterventionInOurDisconnection scale={0.5} rotation={[0, Math.PI * 0.1, 0]} position={[-4, 0, -40]} />
 
         {/* <AmbienceOfLight scale={0.3} rotation={[0, Math.PI, 0]} /> */}
       </Physics>
