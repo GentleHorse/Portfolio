@@ -40,7 +40,7 @@ export default function HomePage() {
         <EcctrlJoystick
           joystickBaseProps={{
             material: new THREE.MeshBasicMaterial({
-              color: "#080808",
+              color: "#FCFAF2",
               transparent: true,
               opacity: 0.45,
             }),
@@ -61,7 +61,7 @@ export default function HomePage() {
           }}
           buttonLargeBaseProps={{
             material: new THREE.MeshBasicMaterial({
-              color: "#080808",
+              color: "#FCFAF2",
               transparent: true,
               opacity: 0.45,
             }),

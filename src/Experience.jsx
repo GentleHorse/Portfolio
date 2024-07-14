@@ -51,34 +51,45 @@ export default function Experience() {
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={false}>
-        {isMobile && <FirstPersonViewControlWithEcctrl position={[0, 0, 0]} />}
+        {isMobile && (
+          <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
+        )}
 
         {isBrowser && <FirstPersonViewControl />}
 
+        {/* STAGE COLLISION OBJECTS */}
         <StageTestCollisionObjects />
-        {/* <StageTest scale={0.22} rotation={[0, 0, 0]} position={[0.8, 0, 0]} /> */}
 
         {/* DESIGN WORKS */}
         <group scale={0.8} position={[0, 0.5, -10]}>
-          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+          <Float
+            floatIntensity={FLOAT_INTENSITY}
+            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
+          >
             <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
           </Float>
 
-          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+          <Float
+            floatIntensity={FLOAT_INTENSITY}
+            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
+          >
             <BeautyOfTimePassing
-              scale={0.25}
+              scale={[0.25, 0.25, 0.25]}
               rotation={[0, -Math.PI * 0.1, 0]}
               position={[3, 0, -15]}
             />
           </Float>
 
-          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+          <Float
+            floatIntensity={FLOAT_INTENSITY}
+            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
+          >
             <InterventionInOurDisconnection
               scale={0.5}
               rotation={[0, Math.PI * 0.1, 0]}
@@ -86,11 +97,17 @@ export default function Experience() {
             />
           </Float>
 
-          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+          <Float
+            floatIntensity={FLOAT_INTENSITY}
+            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
+          >
             <MasuTypo scale={0.3} position={[4, 0, -65]} />
           </Float>
 
-          <Float floatIntensity={FLOAT_INTENSITY} rotationIntensity={FLOAT_ROTATION_INTENTSITY}>
+          <Float
+            floatIntensity={FLOAT_INTENSITY}
+            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
+          >
             <ComfortingDinner
               scale={0.5}
               rotation={[0, Math.PI * 0.2, 0]}
@@ -103,19 +120,18 @@ export default function Experience() {
         <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
           <planeGeometry args={[5, 150]} />
           <MeshReflectorMaterial
-              resolution={512}
-              blur={[400, 400]}
-              mixBlur={0.5}
-              mirror={[0.85]}
-              color="#1C1C1C"
-              mixStrength={2}
-              depthScale={1}
-              minDepthThreshold={0.85}
-              metalness={0.5}
-              roughness={0.8}
-            />
+            resolution={512}
+            blur={[400, 400]}
+            mixBlur={0.5}
+            mirror={[0.85]}
+            color="#1C1C1C"
+            mixStrength={2}
+            depthScale={1}
+            minDepthThreshold={0.85}
+            metalness={0.5}
+            roughness={0.8}
+          />
         </mesh>
-
       </Physics>
     </>
   );

@@ -34,34 +34,78 @@ export default function BeautyOfTimePassing(props) {
       </group>
 
       {/* MODEL */}
-      <mesh
-        geometry={nodes.wall004.geometry}
-        material={materials["wood-natural-wall"]}
-      />
-      <mesh
-        geometry={nodes["scenery-window-spring"].geometry}
-        // material={materials["emission-plane-pink"]}
-      >
-        <meshBasicMaterial map={springVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={nodes["scenery-window-summer"].geometry}
-        // material={materials["emission-plane-green"]}
+      <group scale={[1, 1, 1]}>
+        <group
+          position={[-5.602, 7.534, -4.363]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[1.288, 1, 1.579]}
         >
-        <meshBasicMaterial map={summerVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={nodes["scenery-window-fall"].geometry}
-        // material={materials["emission-plane-red"]}
+          <mesh
+            geometry={nodes.Plane045.geometry}
+            material={materials["black-low-poly"]}
+          />
+          <mesh
+            geometry={nodes.Plane045_1.geometry}
+            material={materials["black-low-poly"]}
+          />
+        </group>
+        <group
+          position={[0.123, 0.573, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[0.753, 1, 1.513]}
         >
-        <meshBasicMaterial map={autumnVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={nodes["scenery-window-winter"].geometry}
-        // material={materials["emission-plane-white"]}
+          <mesh
+            geometry={nodes.Plane051.geometry}
+            material={materials["scenery-wall"]}
+          />
+          <mesh
+            geometry={nodes.Plane051_1.geometry}
+            material={materials["plane-white"]}
+          />
+        </group>
+        <mesh
+          geometry={nodes["window-vertical-divisions"].geometry}
+          material={materials["scenery-wall"]}
+          position={[-4.528, 7.478, 0]}
+          scale={[0.186, 1, 1]}
+        />
+        <mesh
+          geometry={nodes["scnery-window-spring"].geometry}
+          material={materials["emission-plane-pink"]}
+          position={[0.16, 7.516, -3.324]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[0.6, 1, 1.513]}
         >
-        <meshBasicMaterial map={winterVideoTexture} toneMapped={false} />
-      </mesh>
+          <meshBasicMaterial map={springVideoTexture} toneMapped={false} />
+        </mesh>
+        <mesh
+          geometry={nodes["scnery-window-summer"].geometry}
+          material={materials["emission-plane-green"]}
+          position={[0.16, 7.516, -3.324]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[0.6, 1, 1.513]}
+        >
+          <meshBasicMaterial map={summerVideoTexture} toneMapped={false} />
+        </mesh>
+        <mesh
+          geometry={nodes["scnery-window-autumn"].geometry}
+          material={materials["emission-plane-red"]}
+          position={[0.16, 7.516, -3.324]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[0.6, 1, 1.513]}
+        >
+          <meshBasicMaterial map={autumnVideoTexture} toneMapped={false} />
+        </mesh>
+        <mesh
+          geometry={nodes["scnery-window-winter"].geometry}
+          material={materials["emission-plane-white"]}
+          position={[0.16, 7.516, -3.324]}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={[0.6, 1, 1.513]}
+        >
+          <meshBasicMaterial map={winterVideoTexture} toneMapped={false} />
+        </mesh>
+      </group>
     </group>
   );
 }
