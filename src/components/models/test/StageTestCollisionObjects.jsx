@@ -14,14 +14,14 @@ export default function StageTestCollisionObjects(props) {
         <CuboidCollider args={[15, 0.5, 20]} />
       </RigidBody> */}
         <RigidBody colliders={false} type="fixed" position={[0, -0.5, -60]}>
-          <CuboidCollider args={[5, 0.5, 80]} />
+          <CuboidCollider args={[80, 0.5, 80]} />
         </RigidBody>
 
-        <RigidBody colliders={false} type="fixed" position={[-3, -0.5, -60]}>
+        <RigidBody colliders={false} type="fixed" position={[-30, -0.5, -60]}>
           <CuboidCollider args={[0.5, 5, 80]} />
         </RigidBody>
 
-        <RigidBody colliders={false} type="fixed" position={[3, -0.5, -60]}>
+        <RigidBody colliders={false} type="fixed" position={[30, -0.5, -60]}>
           <CuboidCollider args={[0.5, 5, 80]} />
         </RigidBody>
 

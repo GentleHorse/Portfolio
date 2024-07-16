@@ -56,7 +56,7 @@ export default function Experience() {
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
-      <Physics debug={false}>
+      <Physics debug={true}>
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
         )}
@@ -118,7 +118,7 @@ export default function Experience() {
 
         {/* TEST GROUND */}
         <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
-          <planeGeometry args={[5, 150]} />
+          <planeGeometry args={[100, 150]} />
           <MeshReflectorMaterial
             resolution={512}
             blur={[400, 400]}
