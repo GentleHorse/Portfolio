@@ -474,12 +474,12 @@ export default function StageTest(props) {
         position={[2.48, 0, -162.101]}
         scale={[0.61, 13.192, 1]}
       />
-      <mesh
+      {/* <mesh
         geometry={nodes["test-ceiling-ver2"].geometry}
         material={materials["test-architecture-white-matt"]}
         position={[-13.72, 37.993, 0]}
         scale={[141.667, 96.638, 96.638]}
-      />
+      /> */}
     </group>
   );
 }

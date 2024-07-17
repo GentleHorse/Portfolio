@@ -23,6 +23,7 @@ import BeautyOfTimePassing from "./components/models/designWorks/beautyOfTimePas
 import InterventionInOurDisconnection from "./components/models/designWorks/interventionInOurDisconnection/InterventionInOurDisconnection.jsx";
 import MasuTypo from "./components/models/designWorks/masuTypo/MasuTypo.jsx";
 import ComfortingDinner from "./components/models/designWorks/comfortingDinner/ComfortingDinner.jsx";
+import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 
 const FLOAT_INTENSITY = 0.15;
 const FLOAT_ROTATION_INTENTSITY = 0.25;
@@ -50,7 +51,7 @@ export default function Experience() {
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
-      {/* <axesHelper /> */}
+      <axesHelper />
       <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
@@ -64,78 +65,16 @@ export default function Experience() {
 
         {isBrowser && <FirstPersonViewControl />}
 
-        {/* STAGE COLLISION OBJECTS */}
-        <StageTestCollisionObjects />
+        <group position={[0, 0, -15]}>
+          {/* UI */}
+          <DesignProjectUI />
 
-        {/* STAGE TEST MODEL */}
-        <StageTest scale={0.2} />
+          {/* STAGE COLLISION OBJECTS */}
+          <StageTestCollisionObjects />
 
-        {/* DESIGN WORKS */}
-        {/* <group scale={0.8} position={[0, 0.5, -10]}>
-          <Float
-            floatIntensity={FLOAT_INTENSITY}
-            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
-          >
-            <AmbienceOfLight scale={0.5} position={[-2, 0, 2]} />
-          </Float>
-
-          <Float
-            floatIntensity={FLOAT_INTENSITY}
-            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
-          >
-            <BeautyOfTimePassing
-              scale={[0.25, 0.25, 0.25]}
-              rotation={[0, -Math.PI * 0.1, 0]}
-              position={[3, 0, -15]}
-            />
-          </Float>
-
-          <Float
-            floatIntensity={FLOAT_INTENSITY}
-            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
-          >
-            <InterventionInOurDisconnection
-              scale={0.5}
-              rotation={[0, Math.PI * 0.1, 0]}
-              position={[-4, 0, -40]}
-            />
-          </Float>
-
-          <Float
-            floatIntensity={FLOAT_INTENSITY}
-            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
-          >
-            <MasuTypo scale={0.3} position={[4, 0, -65]} />
-          </Float>
-
-          <Float
-            floatIntensity={FLOAT_INTENSITY}
-            rotationIntensity={FLOAT_ROTATION_INTENTSITY}
-          >
-            <ComfortingDinner
-              scale={0.5}
-              rotation={[0, Math.PI * 0.2, 0]}
-              position={[-5, 0, -100]}
-            />
-          </Float>
-        </group> */}
-
-        {/* TEST GROUND */}
-        {/* <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
-          <planeGeometry args={[100, 150]} />
-          <MeshReflectorMaterial
-            resolution={512}
-            blur={[400, 400]}
-            mixBlur={0.5}
-            mirror={[0.85]}
-            color="#1C1C1C"
-            mixStrength={2}
-            depthScale={1}
-            minDepthThreshold={0.85}
-            metalness={0.5}
-            roughness={0.8}
-          />
-        </mesh> */}
+          {/* STAGE TEST MODEL */}
+          <StageTest scale={0.2} />
+        </group>
       </Physics>
     </>
   );
