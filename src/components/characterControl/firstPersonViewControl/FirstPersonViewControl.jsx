@@ -14,9 +14,9 @@ const INITIAL_POSITION = [0, 1, 0];
 /**
  * INITIAL PARAMS
  */
-const MOVE_SPEED = 0.1;
+const MOVE_SPEED = 10.0;
 const INITIAL_CHARACTER_POSITION = INITIAL_POSITION;
-const INITIAL_CAMERA_POSITION = { x: 0, y: 0.5, z: 0 };
+const INITIAL_CAMERA_POSITION = { x: 0, y: 1.7, z: 0 };
 
 /**
  * EXPORT - PLAYER CONTROL
@@ -145,9 +145,9 @@ function Player({
         ref={body}
         lockRotations // Lock rotations to prevent unwanted rotations during physics simulation
         position={INITIAL_CHARACTER_POSITION}
-        linearDamping={5}
+        linearDamping={3}
         angularDamping={0.1}
-        friction={0.8}
+        friction={0.5}
         restitution={0.2}
         colliders={false}
       >

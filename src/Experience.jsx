@@ -14,9 +14,9 @@ import TestFloor from "./components/test/TestFloor.jsx";
 import PostProcessingEffects from "./components/postprocessing/PostProcessingEffects.jsx";
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
-import StageTest from "./components/models/test/StageTest.jsx";
+import StageTest from "./components/models/stage-test/StageTest.jsx";
 import FirstPersonViewControlWithEcctrl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControlWithEcctrl.jsx";
-import StageTestCollisionObjects from "./components/models/test/StageTestCollisionObjects.jsx";
+import StageTestCollisionObjects from "./components/models/stage-test/StageTestCollisionObjects.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import AmbienceOfLight from "./components/models/designWorks/ambienceOfLight/AmbienceOfLight.jsx";
 import BeautyOfTimePassing from "./components/models/designWorks/beautyOfTimePassing/BeautyOfTimePassing.jsx";
@@ -51,12 +51,13 @@ export default function Experience() {
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* POSTRPROCESSING */}
       {/* {isCharacterStartMove && <PostProcessingEffects />} */}
 
       <Physics debug={true}>
+        {/* CONTROLS */}
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
         )}
@@ -66,8 +67,11 @@ export default function Experience() {
         {/* STAGE COLLISION OBJECTS */}
         <StageTestCollisionObjects />
 
+        {/* STAGE TEST MODEL */}
+        <StageTest scale={0.2} />
+
         {/* DESIGN WORKS */}
-        <group scale={0.8} position={[0, 0.5, -10]}>
+        {/* <group scale={0.8} position={[0, 0.5, -10]}>
           <Float
             floatIntensity={FLOAT_INTENSITY}
             rotationIntensity={FLOAT_ROTATION_INTENTSITY}
@@ -114,10 +118,10 @@ export default function Experience() {
               position={[-5, 0, -100]}
             />
           </Float>
-        </group>
+        </group> */}
 
         {/* TEST GROUND */}
-        <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
+        {/* <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, -60]}>
           <planeGeometry args={[100, 150]} />
           <MeshReflectorMaterial
             resolution={512}
@@ -131,7 +135,7 @@ export default function Experience() {
             metalness={0.5}
             roughness={0.8}
           />
-        </mesh>
+        </mesh> */}
       </Physics>
     </>
   );
