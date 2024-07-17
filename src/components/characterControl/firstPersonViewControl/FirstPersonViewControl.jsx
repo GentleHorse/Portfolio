@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
 import { clamp, lerp } from "three/src/math/MathUtils.js";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -73,6 +73,8 @@ function Player({
   jump = 4, // Default jump force for the player
   input = () => ({ move: [0, 0, 0], look: [0, 0] }), // Function to get the player input
 }) {
+
+
   const body = useRef(null); // Ref to RigidBody API
   const mesh = useRef(); // Ref to the 3D mesh
   const { scene, camera } = useThree();
@@ -143,6 +145,7 @@ function Player({
     <>
       <RigidBody
         ref={body}
+        name="player"
         lockRotations // Lock rotations to prevent unwanted rotations during physics simulation
         position={INITIAL_CHARACTER_POSITION}
         linearDamping={3}

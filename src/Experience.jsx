@@ -24,23 +24,9 @@ import InterventionInOurDisconnection from "./components/models/designWorks/inte
 import MasuTypo from "./components/models/designWorks/masuTypo/MasuTypo.jsx";
 import ComfortingDinner from "./components/models/designWorks/comfortingDinner/ComfortingDinner.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
-
-const FLOAT_INTENSITY = 0.15;
-const FLOAT_ROTATION_INTENTSITY = 0.25;
+import SensorUIObjects from "./components/UI/SensorUIOBjects.jsx";
 
 export default function Experience() {
-  const [isCharacterStartMove, setIsCharacterStartMove] = useState(false);
-  const [subscribeKeys, getKeys] = useKeyboardControls();
-
-  // Listen whether the character starts moving or not
-  useEffect(() => {
-    const unsubscribeAny = subscribeKeys(() => setIsCharacterStartMove(true));
-
-    return () => {
-      return unsubscribeAny();
-    };
-  }, []);
-
   return (
     <>
       {/* ENVIRONMENT SET UP */}
@@ -54,10 +40,8 @@ export default function Experience() {
       <axesHelper />
       <OrbitControls makeDefault />
 
-      {/* POSTRPROCESSING */}
-      {/* {isCharacterStartMove && <PostProcessingEffects />} */}
-
-      <Physics debug={true}>
+      {/* PHYSICS SCENE */}
+      <Physics debug={false}>
         {/* CONTROLS */}
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
@@ -71,6 +55,9 @@ export default function Experience() {
 
           {/* STAGE COLLISION OBJECTS */}
           <StageTestCollisionObjects />
+
+          {/* PROJECT PAGE JUMP SENSOR */}
+          <SensorUIObjects />
 
           {/* STAGE TEST MODEL */}
           <StageTest scale={0.2} />

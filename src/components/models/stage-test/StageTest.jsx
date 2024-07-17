@@ -4,10 +4,27 @@ Command: npx gltfjsx@6.4.1 ./public/models/test/stage-test.glb
 */
 
 import React from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
 
 export default function StageTest(props) {
+  /**
+   * VIDEOS FOR THE BEAUTY OF TIME PASSING PROJECT
+   */
+  const springVideoTexture = useVideoTexture(
+    "./videos/beauty-of-time-passing/spring.mp4"
+  );
+  const summerVideoTexture = useVideoTexture(
+    "./videos/beauty-of-time-passing/summer.mp4"
+  );
+  const autumnVideoTexture = useVideoTexture(
+    "./videos/beauty-of-time-passing/autumn.mp4"
+  );
+  const winterVideoTexture = useVideoTexture(
+    "./videos/beauty-of-time-passing/winter.mp4"
+  );
+
   const { nodes, materials } = useGLTF("./models/test/stage-test.glb");
+
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -210,28 +227,37 @@ export default function StageTest(props) {
         position={[55.603, 7.323, -100.787]}
         rotation={[Math.PI / 2, 0, 0.509]}
         scale={[0.54, 1, 1.22]}
-      />
+        >
+        <meshBasicMaterial map={autumnVideoTexture} toneMapped={false} />
+      </mesh>
+
       <mesh
         geometry={nodes["scnery-window-spring001"].geometry}
         material={materials["emission-plane-pink"]}
         position={[50.244, 7.323, -103.78]}
         rotation={[Math.PI / 2, 0, 0.509]}
         scale={[0.54, 1, 1.22]}
-      />
+       >
+          <meshBasicMaterial map={springVideoTexture} toneMapped={false} />
+        </mesh>
       <mesh
         geometry={nodes["scnery-window-summer001"].geometry}
         material={materials["emission-plane-green"]}
         position={[52.965, 7.323, -102.26]}
         rotation={[Math.PI / 2, 0, 0.509]}
         scale={[0.54, 1, 1.22]}
-      />
+        >
+        <meshBasicMaterial map={summerVideoTexture} toneMapped={false} />
+      </mesh>
       <mesh
         geometry={nodes["scnery-window-winter001"].geometry}
         material={materials["emission-plane-white"]}
         position={[58.341, 7.323, -99.258]}
         rotation={[Math.PI / 2, 0, 0.509]}
         scale={[0.54, 1, 1.22]}
-      />
+        >
+        <meshBasicMaterial map={winterVideoTexture} toneMapped={false} />
+      </mesh>
       <group
         position={[46.28, 4.463, -107.297]}
         rotation={[Math.PI / 2, 0, 0.509]}
