@@ -7,7 +7,7 @@ export default function Background() {
 
   return (
     <>
-      <color args={["#1c1c1c"]} attach="background" />
+      <color args={["#C1C1C1"]} attach="background" />
     </>
   );
 }

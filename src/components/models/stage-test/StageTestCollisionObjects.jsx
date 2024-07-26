@@ -5,12 +5,12 @@ export default function StageTestCollisionObjects(props) {
     <>
       <group {...props}>
         {/* GROUND */}
-        <RigidBody colliders={false} type="fixed" position={[0, -0.5, -20]}>
-          <CuboidCollider args={[20, 0.5, 50]} />
+        <RigidBody colliders={false} type="fixed" position={[-20, -0.5, -20]}>
+          <CuboidCollider args={[40, 0.5, 50]} />
         </RigidBody>
 
         {/* LEFT WALL */}
-        <RigidBody colliders={false} type="fixed" position={[-20, 5, -20]}>
+        <RigidBody colliders={false} type="fixed" position={[-50, 5, -20]}>
           <CuboidCollider args={[0.5, 5, 50]} />
         </RigidBody>
 
@@ -20,13 +20,13 @@ export default function StageTestCollisionObjects(props) {
         </RigidBody>
 
         {/* FRONT WALL */}
-        <RigidBody colliders={false} type="fixed" position={[0, 5, 20]}>
-          <CuboidCollider args={[20, 5, 0.5]} />
+        <RigidBody colliders={false} type="fixed" position={[-20, 5, 20]}>
+          <CuboidCollider args={[40, 5, 0.5]} />
         </RigidBody>
 
         {/* BACK WALL */}
-        <RigidBody colliders={false} type="fixed" position={[0, 5, -40]}>
-          <CuboidCollider args={[20, 5, 0.5]} />
+        <RigidBody colliders={false} type="fixed" position={[-20, 5, -40]}>
+          <CuboidCollider args={[40, 5, 0.5]} />
         </RigidBody>
 
         {/* STAIRS */}
