@@ -6,7 +6,6 @@ Command: npx gltfjsx@6.4.1 ./public/models/test/stage-test.glb
 import React, { Suspense } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { texture } from "three/examples/jsm/nodes/Nodes.js";
 
 export default function StageTest(props) {
   /**
@@ -32,30 +31,65 @@ export default function StageTest(props) {
     "./videos/three-d-visuals/Silkey_Sphere.mp4"
   );
 
-  // silkySphereVideoTexture.wrapS = THREE.RepeatWrapping;
-  // silkySphereVideoTexture.wrapT = THREE.RepeatWrapping;
-  // silkySphereVideoTexture.rotation = Math.PI * 0.5;
-
-  // silkySphereVideoTexture.repeat.x = 4;
-  // silkySphereVideoTexture.repeat.y = 4;
-  // silkySphereVideoTexture.offset.x = 0.6;
-  // silkySphereVideoTexture.offset.y = 0.25;
+  silkySphereVideoTexture.wrapS = THREE.RepeatWrapping;
+  silkySphereVideoTexture.wrapT = THREE.RepeatWrapping;
+  silkySphereVideoTexture.flipY = false;
 
   const bloomingFlowerVideoTexture = useVideoTexture(
     "./videos/three-d-visuals/Blooming_Flower.mp4"
   );
 
+  bloomingFlowerVideoTexture.wrapS = THREE.RepeatWrapping;
+  bloomingFlowerVideoTexture.wrapT = THREE.RepeatWrapping;
+  bloomingFlowerVideoTexture.flipY = false;
+
   const dancingTentacleVideoTexture = useVideoTexture(
     "./videos/three-d-visuals/Dancing_Tentacles.mp4"
   );
+
+  dancingTentacleVideoTexture.wrapS = THREE.RepeatWrapping;
+  dancingTentacleVideoTexture.wrapT = THREE.RepeatWrapping;
+  dancingTentacleVideoTexture.flipY = false;
 
   const glassPoppingVideoTexture = useVideoTexture(
     "./videos/three-d-visuals/Glass_Popping.mp4"
   );
 
+  glassPoppingVideoTexture.wrapS = THREE.RepeatWrapping;
+  glassPoppingVideoTexture.wrapT = THREE.RepeatWrapping;
+  glassPoppingVideoTexture.flipY = false;
+
   const beautyOfTimePassingVideoTexture = useVideoTexture(
     "./videos/three-d-visuals/Beauty_Of_Time_Passing.mp4"
   );
+
+  beautyOfTimePassingVideoTexture.wrapS = THREE.RepeatWrapping;
+  beautyOfTimePassingVideoTexture.wrapT = THREE.RepeatWrapping;
+  beautyOfTimePassingVideoTexture.flipY = false;
+
+  const sakuraPetalsVideoTexture = useVideoTexture(
+    "./videos/three-d-visuals/Sakura_Petals.mp4"
+  );
+
+  sakuraPetalsVideoTexture.wrapS = THREE.RepeatWrapping;
+  sakuraPetalsVideoTexture.wrapT = THREE.RepeatWrapping;
+  sakuraPetalsVideoTexture.flipY = false;
+
+  const squishyObjectsVideoTexture = useVideoTexture(
+    "./videos/three-d-visuals/Squishy_Objects.mp4"
+  );
+
+  squishyObjectsVideoTexture.wrapS = THREE.RepeatWrapping;
+  squishyObjectsVideoTexture.wrapT = THREE.RepeatWrapping;
+  squishyObjectsVideoTexture.flipY = false;
+
+  const sequenceRiverVideoTexture = useVideoTexture(
+    "./videos/three-d-visuals/Sequence_River.mp4"
+  );
+
+  sequenceRiverVideoTexture.wrapS = THREE.RepeatWrapping;
+  sequenceRiverVideoTexture.wrapT = THREE.RepeatWrapping;
+  sequenceRiverVideoTexture.flipY = false;
 
   /**
    * MODEL -------------------------------------------------------
@@ -99,51 +133,43 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["analog-tv-01-modified-square-screen"].geometry}
-        // material={materials["analog-tv-01-modified-square-screen"]}
       >
-        <meshNormalMaterial />
+        <meshBasicMaterial map={silkySphereVideoTexture} toneMapped={false} />
       </mesh>
       <mesh
         geometry={nodes["analog-tv-02-modified-horizontal-screen-01"].geometry}
-        // material={materials["analog-tv-02-modified-horizontal-screen-01"]}
       >
-        <meshNormalMaterial />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-03-modified-horizontal-screen"].geometry}
-        // material={materials["analog-tv-03-modified-horizontal-screen"]}
-      >
-        <meshNormalMaterial />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-03-modified-vertical-big-screen"].geometry}
-        // material={materials["analog-tv-03-modified-vertical-big-screen"]}
-      >
-        <meshNormalMaterial />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-03-modified-vertical-small-screen"].geometry}
-        // material={materials["analog-tv-03-modified-vertical-small-screen"]}
-      >
-        <meshNormalMaterial />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-04-modified-horizontal-screen"].geometry}
-        // material={materials["analog-tv-04-modified-horizontal-screen"]}
-      >
-        <meshNormalMaterial />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-05-modified-horizontal-screen"].geometry}
-        // material={materials["analog-tv-05-modified-horizontal-screen"]}
-      >
-        <meshNormalMaterial />
+        <meshBasicMaterial map={dancingTentacleVideoTexture} toneMapped={false} />
       </mesh>
       <mesh
         geometry={nodes["analog-tv-02-modified-horizontal-screen-02"].geometry}
-        // material={materials["analog-tv-02-modified-horizontal-screen-02"]}
       >
-        <meshNormalMaterial />
+        <meshBasicMaterial map={sequenceRiverVideoTexture} toneMapped={false} />
+      </mesh>
+      <mesh
+        geometry={nodes["analog-tv-03-modified-horizontal-screen"].geometry}
+      >
+        <meshBasicMaterial map={bloomingFlowerVideoTexture} toneMapped={false} />
+      </mesh>
+      <mesh
+        geometry={nodes["analog-tv-03-modified-vertical-big-screen"].geometry}
+      >
+        <meshBasicMaterial map={beautyOfTimePassingVideoTexture} toneMapped={false} />
+      </mesh>
+      <mesh
+        geometry={nodes["analog-tv-03-modified-vertical-small-screen"].geometry}
+      >
+        <meshBasicMaterial map={squishyObjectsVideoTexture} toneMapped={false} />
+      </mesh>
+      <mesh
+        geometry={nodes["analog-tv-04-modified-horizontal-screen"].geometry}
+      >
+        <meshBasicMaterial map={sakuraPetalsVideoTexture} toneMapped={false} />
+      </mesh>
+      <mesh
+        geometry={nodes["analog-tv-05-modified-horizontal-screen"].geometry}
+      >
+        <meshBasicMaterial map={glassPoppingVideoTexture} toneMapped={false} />
       </mesh>
       <mesh
         geometry={nodes["wood-frame-right002"].geometry}
