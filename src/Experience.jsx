@@ -51,13 +51,13 @@ export default function Experience() {
 
         <group position={[0, 0, -15]}>
           {/* UI */}
-          <DesignProjectUI />
+          {/* <DesignProjectUI /> */}
 
           {/* STAGE COLLISION OBJECTS */}
           <StageTestCollisionObjects />
 
           {/* PROJECT PAGE JUMP SENSOR */}
-          <SensorUIObjects />
+          {/* <SensorUIObjects /> */}
 
           {/* STAGE TEST MODEL */}
           <StageTest scale={0.2} />
