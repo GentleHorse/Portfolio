@@ -14,7 +14,8 @@ const INITIAL_POSITION = [0, 1, 0];
 /**
  * INITIAL PARAMS
  */
-const MOVE_SPEED = 10.0;
+const MOVE_STRENGTH = 10.0;
+const MOVE_VELOCITY = 10.0;
 const INITIAL_CHARACTER_POSITION = INITIAL_POSITION;
 const INITIAL_CAMERA_POSITION = { x: 0, y: 1.7, z: 0 };
 
@@ -27,7 +28,7 @@ export default function FirstPersonViewControl() {
 
   return (
     <>
-      <Player walk={2} jump={5} input={() => getInput(keyboard, mouse)} />
+      <Player walk={MOVE_VELOCITY} jump={5} input={() => getInput(keyboard, mouse)} />
     </>
   );
 }
@@ -40,22 +41,22 @@ function getInput(keyboard, mouse) {
 
   // Move forward
   if (keyboard["w"] || keyboard["z"] || keyboard["ArrowUp"]) {
-    z -= MOVE_SPEED;
+    z -= MOVE_STRENGTH;
   }
 
   // Move backward
   if (keyboard["s"] || keyboard["ArrowDown"]) {
-    z += MOVE_SPEED;
+    z += MOVE_STRENGTH;
   }
 
   // Move leftward
   if (keyboard["a"] || keyboard["q"] || keyboard["ArrowLeft"]) {
-    x -= MOVE_SPEED;
+    x -= MOVE_STRENGTH;
   }
 
   // Move rightward
   if (keyboard["d"] || keyboard["ArrowRight"]) {
-    x += MOVE_SPEED;
+    x += MOVE_STRENGTH;
   }
 
   return {
