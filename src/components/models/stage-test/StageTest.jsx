@@ -313,25 +313,81 @@ export default function StageTest(props) {
         scale={[0.968, 1, 1]}
       />
       <mesh
-        geometry={nodes["coating-paint"].geometry}
-        material={materials["coating-brown"]}
-        position={[7.145, 12.105, 27.693]}
-        scale={[7.247, 12.061, 7.247]}
+        geometry={nodes["fluid-domain002"].geometry}
+        material={materials["wood-coating-acajou"]}
+        position={[-3.359, 6.595, 30.273]}
+        scale={[5.586, 9.296, 5.586]}
       />
-      <mesh
-        geometry={nodes["paint-brush001"].geometry}
-        material={materials.lambert2}
-        position={[3.579, 28.429, 25.919]}
+      <group
+        position={[-6.107, 19.177, 28.906]}
         rotation={[-1.625, -0.484, 0.341]}
-        scale={[0.023, 0.01, 0.039]}
-      />
+        scale={[0.017, 0.008, 0.03]}
+      >
+        <mesh
+          geometry={nodes.Mesh013.geometry}
+          material={materials["brush-hair"]}
+        />
+        <mesh
+          geometry={nodes.Mesh013_1.geometry}
+          material={materials["brush-metal"]}
+        />
+        <mesh
+          geometry={nodes.Mesh013_2.geometry}
+          material={materials["brush-wood"]}
+        />
+      </group>
+      <group
+        position={[-1.342, 12.757, 27.373]}
+        rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+        scale={[7.202, 0.497, 1.918]}
+      >
+        <mesh
+          geometry={nodes.Cube193.geometry}
+          material={materials["wood-beech"]}
+        />
+        <mesh
+          geometry={nodes.Cube193_1.geometry}
+          material={materials["wood-coating-acajou"]}
+        />
+      </group>
       <mesh
-        geometry={nodes.wood001.geometry}
-        material={materials["wood-natural"]}
-        position={[7.117, 6.328, 27.962]}
-        rotation={[0.139, -0.056, -0.399]}
-        scale={[6.382, 0.44, 1.699]}
+        geometry={nodes["fluid-domain003"].geometry}
+        material={materials["wood-coating-palissandre"]}
+        position={[7.561, 6.595, 30.273]}
+        scale={[5.586, 9.296, 5.586]}
       />
+      <group
+        position={[4.813, 19.177, 28.906]}
+        rotation={[-1.625, -0.484, 0.341]}
+        scale={[0.017, 0.008, 0.03]}
+      >
+        <mesh
+          geometry={nodes.Mesh014.geometry}
+          material={materials["brush-hair"]}
+        />
+        <mesh
+          geometry={nodes.Mesh014_1.geometry}
+          material={materials["brush-metal"]}
+        />
+        <mesh
+          geometry={nodes.Mesh014_2.geometry}
+          material={materials["brush-wood"]}
+        />
+      </group>
+      <group
+        position={[9.578, 12.757, 27.373]}
+        rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+        scale={[7.202, 0.497, 1.918]}
+      >
+        <mesh
+          geometry={nodes.Cube195.geometry}
+          material={materials["wood-beech"]}
+        />
+        <mesh
+          geometry={nodes.Cube195_1.geometry}
+          material={materials["wood-coating-palissandre"]}
+        />
+      </group>
       <mesh
         geometry={nodes["scnery-window-screen"].geometry}
         material={materials["emission-plane-pink"]}
@@ -382,10 +438,10 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["weather-data-plane"].geometry}
-        material={nodes["weather-data-plane"].material}
-        position={[96.149, 0, -161.665]}
-        rotation={[1.26, -0.377, 0.853]}
-        scale={[1.519, 1.18, 1.18]}
+        material={materials["weather-data-amsterdam"]}
+        position={[107.452, -4.124, -170.383]}
+        rotation={[1.275, -0.361, 0.859]}
+        scale={[1.622, 1.261, 1.261]}
       />
       <group position={[57.181, -0.519, -246.029]} scale={1.21}>
         <mesh
@@ -687,4 +743,3 @@ export default function StageTest(props) {
 }
 
 useGLTF.preload("./models/test/stage-test.glb");
-
