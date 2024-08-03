@@ -20,67 +20,8 @@ const DESCRIPTION_TEXT_SIZE = 18;
 export default function DesignProjectUI() {
   return (
     <>
-      {/* DESIGN WORKS INTRO */}
-      <group position={[-5.5, 3.5, 5]}>
-        <Root>
-          <Container flexDirection="row" gap={40}>
-            <Text
-              margin={30}
-              fontWeight="extra-bold"
-              fontSize={INTRO_TITLE_FONT_SIZE}
-              color="#1C1C1C"
-            >
-              DESIGN
-            </Text>
-            <Container flexDirection="column" gap={10}>
-              <Text
-                marginX={30}
-                marginTop={30}
-                marginBottom={60}
-                fontSize={INTRO_TEXTS_FONT_SIZE}
-                color={INTRO_TEXTS_COLOR}
-              >
-                Space between objects, space around objects.
-              </Text>
-              <Text
-                marginX={30}
-                marginY={3}
-                fontSize={INTRO_TEXTS_FONT_SIZE}
-                color={INTRO_TEXTS_COLOR}
-              >
-                What's happing there?
-              </Text>
-              <Text
-                marginX={30}
-                marginY={3}
-                fontSize={INTRO_TEXTS_FONT_SIZE}
-                color={INTRO_TEXTS_COLOR}
-              >
-                What will happen there?
-              </Text>
-              <Text
-                marginX={30}
-                marginY={3}
-                fontSize={INTRO_TEXTS_FONT_SIZE}
-                color={INTRO_TEXTS_COLOR}
-              >
-                What happened there?
-              </Text>
-              <Text
-                marginX={30}
-                marginTop={60}
-                fontSize={INTRO_TEXTS_FONT_SIZE}
-                color={INTRO_TEXTS_COLOR}
-              >
-                ...and what can you feel there?
-              </Text>
-            </Container>
-          </Container>
-        </Root>
-      </group>
-
       {/* AMBIENCE OF LIGHT */}
-      <group position={[-12, 5, 0]} rotation-y={Math.PI / 2}>
+      <group position={[35, 3, 5]}>
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text
@@ -101,7 +42,7 @@ export default function DesignProjectUI() {
       </group>
 
       {/* BEAUTY OF TIME PASSING */}
-      <group position={[-1, 5.5, -14.5]} rotation-y={Math.PI / 2}>
+      <group position={[5, 5.5, -5]}>
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text
@@ -122,7 +63,7 @@ export default function DesignProjectUI() {
       </group>
 
       {/* INTERVENTION IN OUR DISCONNECTION */}
-      <group position={[6, 5, -39.5]}>
+      <group position={[40, 5, -40]}>
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text
@@ -143,7 +84,7 @@ export default function DesignProjectUI() {
       </group>
 
       {/* COMFORTING DINNER */}
-      <group position={[-20, 5, -29]} rotation-y={Math.PI / 2}>
+      <group position={[-25, 3, -30]}>
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text
@@ -164,7 +105,7 @@ export default function DesignProjectUI() {
       </group>
 
       {/* MASU TYPO */}
-      <group position={[-2, 5, -16]} rotation-y={-Math.PI / 2}>
+      <group position={[-18, 2.5, -75]} >
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text
