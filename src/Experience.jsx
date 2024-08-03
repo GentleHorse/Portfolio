@@ -41,14 +41,14 @@ export default function Experience() {
       <OrbitControls makeDefault />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
 
         {/* CONTROLS */}
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
         )}
 
-        {isBrowser && <FirstPersonViewControl />}
+        {/* {isBrowser && <FirstPersonViewControl />} */}
 
         <group position={[0, 0, -15]}>
           {/* UI */}

@@ -199,73 +199,112 @@ export default function StageTest(props) {
       <mesh geometry={nodes['rain-drop002'].geometry} material={materials.rain} position={[49.621, 32.713, -138.656]} scale={[1.115, 1.681, 1.115]} />
       <mesh geometry={nodes['rain-drop003'].geometry} material={materials.rain} position={[53.132, 26.04, -142.083]} scale={[1.161, 1.752, 1.161]} />
       <mesh geometry={nodes['rain-drop004'].geometry} material={materials.rain} position={[51.209, 45.768, -145.427]} scale={[0.98, 1.478, 0.98]} />
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <group position={[307.175, -2.908, -296.912]} rotation={[0, -1.41, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube161.geometry} material={materials['wood-natural-stand-without-texture']} />
         <mesh geometry={nodes.Cube161_1.geometry} material={materials['wood-natural-stand-without-texture']} />
       </group>
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <group position={[307.175, -2.908, -296.912]} rotation={[0, -1.41, 0]} scale={2.33}>
         <mesh geometry={nodes.Cylinder170.geometry} material={materials['wood-natural-stand-without-texture']} />
         <mesh geometry={nodes.Cylinder170_1.geometry} material={materials['wood-natural-stand-without-texture']} />
       </group>
-      <mesh geometry={nodes['wood-stand003'].geometry} material={materials['wood-natural-stand-without-texture']} position={[274.167, -0.476, -275.51]} scale={1.607} />
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <mesh geometry={nodes['wood-stand003'].geometry} material={materials['wood-natural-stand-without-texture']} position={[307.175, -2.908, -296.912]} rotation={[0, -1.41, 0]} scale={2.33} />
+      <group position={[307.175, -2.908, -296.912]} rotation={[0, -1.41, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube162.geometry} material={materials['marble-black-witouth-texture']} />
         <mesh geometry={nodes.Cube162_1.geometry} material={materials['marble-black-witouth-texture']} />
       </group>
-      <group position={[274.145, -1.88, -275.579]} scale={1.607}>
+      <group position={[273.634, -4.943, -263.606]} rotation={[0, -0.589, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube163.geometry} material={materials['marble-black-witouth-texture']} />
         <mesh geometry={nodes.Cube163_1.geometry} material={materials['marble-black-witouth-texture']} />
       </group>
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <group position={[273.604, -2.908, -263.506]} rotation={[0, -0.589, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube164.geometry} material={materials['marble-white-without-texture']} />
         <mesh geometry={nodes.Cube164_1.geometry} material={materials['marble-white-without-texture']} />
       </group>
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <group position={[273.604, -2.908, -263.506]} rotation={[0, -0.589, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube165.geometry} material={materials['wood-natural-stand-without-texture']} />
         <mesh geometry={nodes.Cube165_1.geometry} material={materials['wood-natural-stand-without-texture']} />
       </group>
-      <group position={[274.167, -0.476, -275.51]} scale={1.607}>
+      <group position={[273.604, -2.908, -263.506]} rotation={[0, -0.589, 0]} scale={2.33}>
         <mesh geometry={nodes.Cube166.geometry} material={materials['marble-black-witouth-texture']} />
         <mesh geometry={nodes.Cube166_1.geometry} material={materials['marble-black-witouth-texture']} />
       </group>
-      <group position={[119.093, 0, -269.29]} rotation={[0, 0.33, 0]} scale={14.896}>
+      <group position={[135.181, 0, -285.853]} rotation={[0, 0.33, 0]} scale={14.896}>
         <mesh geometry={nodes.Cylinder179.geometry} material={materials['rounded-screen']} />
         <mesh geometry={nodes.Cylinder179_1.geometry} material={materials['rounded-screen-front']} />
       </group>
-      <mesh geometry={nodes['marble-contour-01001'].geometry} material={materials['marble-contours']} position={[146.717, 22.237, -262.545]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
-      <mesh geometry={nodes['marble-contour-02001'].geometry} material={materials['marble-contours']} position={[146.717, 22.237, -262.545]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
-      <mesh geometry={nodes['marble-contour-03001'].geometry} material={materials['marble-contours']} position={[146.717, 22.237, -262.545]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
-      <mesh geometry={nodes['marble-contour-04001'].geometry} material={materials['marble-contours']} position={[146.717, 22.237, -262.545]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
-      <mesh geometry={nodes['marble-contour-05001'].geometry} material={materials['marble-contours']} position={[146.717, 22.237, -262.545]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
-      <group position={[211.039, 5.471, -281.273]} rotation={[Math.PI / 2, 0, -2.356]} scale={9.912}>
+      <mesh geometry={nodes['marble-contour-01001'].geometry} material={materials['marble-contours']} position={[144.62, 22.237, -271.531]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
+      <mesh geometry={nodes['marble-contour-02001'].geometry} material={materials['marble-contours']} position={[144.62, 22.237, -271.531]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
+      <mesh geometry={nodes['marble-contour-03001'].geometry} material={materials['marble-contours']} position={[144.62, 22.237, -271.531]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
+      <mesh geometry={nodes['marble-contour-04001'].geometry} material={materials['marble-contours']} position={[144.62, 22.237, -271.531]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
+      <mesh geometry={nodes['marble-contour-05001'].geometry} material={materials['marble-contours']} position={[144.62, 22.237, -271.531]} rotation={[Math.PI / 2, 0, 0]} scale={[1.36, 1.282, 1.36]} />
+      <group position={[200.256, 5.471, -277.823]} rotation={[Math.PI / 2, 0, -2.356]} scale={9.912}>
         <mesh geometry={nodes.PolySphere.geometry} material={materials['stone-material']} />
         <mesh geometry={nodes.PolySphere_1.geometry} material={materials['stone-material']} />
       </group>
-      <group position={[211.758, 0.971, -281.29]} rotation={[-Math.PI, Math.PI / 4, -Math.PI]} scale={[1.025, 1.025, 10.365]}>
+      <group position={[200.975, 0.971, -277.839]} rotation={[-Math.PI, Math.PI / 4, -Math.PI]} scale={[1.025, 1.025, 10.365]}>
         <mesh geometry={nodes.Cube198.geometry} material={materials['wood-beech']} />
         <mesh geometry={nodes.Cube198_1.geometry} material={materials['wood-beech']} />
       </group>
-      <mesh geometry={nodes['stone-support-wood-02'].geometry} material={materials['wood-beech']} position={[211.758, 0.971, -281.29]} rotation={[Math.PI, -0.785, Math.PI]} scale={[1.025, 1.025, 10.365]} />
-      <group position={[211.758, 28.467, -281.29]} rotation={[-Math.PI, Math.PI / 4, -Math.PI]} scale={[3.134, 15.642, 3.134]}>
+      <mesh geometry={nodes['stone-support-wood-02'].geometry} material={materials['wood-beech']} position={[200.975, 0.971, -277.839]} rotation={[Math.PI, -0.785, Math.PI]} scale={[1.025, 1.025, 10.365]} />
+      <group position={[200.975, 28.467, -277.839]} rotation={[-Math.PI, Math.PI / 4, -Math.PI]} scale={[3.134, 15.642, 3.134]}>
         <mesh geometry={nodes.Cylinder180.geometry} material={materials['wood-natural']} />
         <mesh geometry={nodes.Cylinder180_1.geometry} material={materials['wood-natural']} />
       </group>
-      <mesh geometry={nodes['typo-alphabet-a002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['typo-alphabet-b002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['typo-alphabet-c002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['typo-hiragana-a002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['typo-hiragana-i002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['typo-hiragana-u002'].geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['back-lighting'].geometry} material={materials['emission-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes.grid.geometry} material={materials['white-matt-typography']} position={[-65.585, 0, -334.697]} rotation={[0, 1.14, 0]} />
-      <mesh geometry={nodes['square-frame001'].geometry} material={materials['black-low-poly.002']} position={[-51.757, 13.686, -306.601]} rotation={[-Math.PI, 1.206, -Math.PI]} scale={[8.619, 8.619, 2.596]} />
-      <mesh geometry={nodes['paper-typo001'].geometry} material={materials['white-paper']} position={[-51.757, 13.686, -306.601]} rotation={[Math.PI / 2, 0, -1.936]} scale={[8.426, 9.266, 8.426]} />
-      <mesh geometry={nodes['comforting-dinner-baked-johns002'].geometry} material={materials['john-mesh-without-texture']} position={[-252.009, 1.299, -351.761]} rotation={[Math.PI / 2, 0, 0]} scale={29.583} />
-      <group position={[-185.896, 15.567, -350.486]} rotation={[0.133, -0.995, -0.373]} scale={1.862}>
-        <mesh geometry={nodes.Plane072.geometry} material={materials['ceramic-white-cutlery-without-texture']} />
-        <mesh geometry={nodes.Plane072_1.geometry} material={materials['ceramic-black-cutlery-without-texture']} />
+      <group position={[326.85, 4.176, -235.001]} rotation={[-Math.PI, 0.589, -2.716]} scale={[-13.628, -1.34, -13.628]}>
+        <mesh geometry={nodes.Cube200.geometry} material={materials['marble-white-without-texture']} />
+        <mesh geometry={nodes.Cube200_1.geometry} material={materials['marble-white-without-texture']} />
       </group>
-      <mesh geometry={nodes['comforting-dinner-baked-table002'].geometry} material={materials['table-comforting-dinner-without-texture']} position={[-220.487, 3.199, -347.711]} scale={1.862} />
+      <group position={[296.46, 3.499, -219.652]} rotation={[0, 1.484, 0.317]} scale={[-13.628, -1.34, -13.628]}>
+        <mesh geometry={nodes.Cube201.geometry} material={materials['marble-b-low-poly']} />
+        <mesh geometry={nodes.Cube201_1.geometry} material={materials['marble-b-low-poly']} />
+      </group>
+      <mesh geometry={nodes['wood-cylinder-inside-marble-01'].geometry} material={materials['wood-natural']} position={[328.741, 10.62, -232.603]} rotation={[0, -0.589, -0.426]} scale={[2.133, 1.305, 2.133]} />
+      <mesh geometry={nodes['wood-cylinder-inside-marble-02'].geometry} material={materials['wood-natural']} position={[293.991, 12.865, -219.935]} rotation={[-Math.PI, -1.484, 2.824]} scale={[2.133, 1.305, 2.133]} />
+      <group position={[283.204, 16.024, -298.809]} rotation={[0, -0.589, Math.PI]} scale={2.972}>
+        <mesh geometry={nodes.Cube202.geometry} material={materials['marble-dark-brown']} />
+        <mesh geometry={nodes.Cube202_1.geometry} material={materials['marble-dark-brown']} />
+      </group>
+      <group position={[275.12, 3.568, -290.26]} rotation={[0, -0.589, Math.PI / 2]} scale={[3.338, 6.901, 1.42]}>
+        <mesh geometry={nodes.Cube203.geometry} material={materials['wood-natural']} />
+        <mesh geometry={nodes.Cube203_1.geometry} material={materials['wood-natural']} />
+      </group>
+      <group position={[274.847, 14.967, -293.999]} rotation={[0, 0.982, -Math.PI / 2]} scale={[3.338, 6.901, 1.42]}>
+        <mesh geometry={nodes.Cube204.geometry} material={materials['wood-natural']} />
+        <mesh geometry={nodes.Cube204_1.geometry} material={materials['wood-natural']} />
+      </group>
+      <mesh geometry={nodes['marble-d-3'].geometry} material={materials['marble-brown']} position={[270.48, 3.273, -288.498]} rotation={[0, 0.982, 1.571]} scale={[1.232, 1.103, 1.232]} />
+      <mesh geometry={nodes['marble-d-2'].geometry} material={materials['marble-white-without-texture']} position={[280.237, 14.56, -294.343]} rotation={[0, -0.589, -Math.PI / 2]} scale={[1.232, 1.103, 1.232]} />
+      <mesh geometry={nodes['marble-d-1'].geometry} material={materials['marble-baige']} position={[270.37, 26.678, -288.572]} rotation={[0, 0.982, Math.PI / 2]} scale={[1.232, 1.103, 1.232]} />
+      <group position={[275.12, 27.103, -290.26]} rotation={[0, -0.589, Math.PI / 2]} scale={[3.338, 6.901, 1.42]}>
+        <mesh geometry={nodes.Cube210.geometry} material={materials['wood-natural']} />
+        <mesh geometry={nodes.Cube210_1.geometry} material={materials['wood-natural']} />
+      </group>
+      <group position={[295.184, 1.725, -254.56]} rotation={[-Math.PI / 2, 0, -0.63]} scale={[7.741, 12.507, 2.226]}>
+        <mesh geometry={nodes.Cube213.geometry} material={materials['wood-natural']} />
+        <mesh geometry={nodes.Cube213_1.geometry} material={materials['wood-natural']} />
+      </group>
+      <group position={[299.337, 8.317, -251.533]} rotation={[-Math.PI / 2, 0, -0.63]} scale={[0.993, 13.287, 2.067]}>
+        <mesh geometry={nodes.Cube216.geometry} material={materials['marble-black-witouth-texture']} />
+        <mesh geometry={nodes.Cube216_1.geometry} material={materials['marble-black-witouth-texture']} />
+      </group>
+      <mesh geometry={nodes.Cube050.geometry} material={materials['marble-white-without-texture']} position={[290.116, 9.027, -266.742]} rotation={[-Math.PI / 2, 0, -0.63]} scale={[1.396, 1.981, 10.391]} />
+      <mesh geometry={nodes['mono-frame-01'].geometry} material={materials['black-low-poly']} position={[-49.988, 12.351, -372.741]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['typo-hiragana-a003'].geometry} material={materials['white-matt-typography']} position={[-50.502, 9.274, -372.603]} scale={[6.171, 6.171, 4.469]} />
+      <mesh geometry={nodes['mono-frame-03'].geometry} material={materials['black-low-poly']} position={[27.054, 12.351, -398.103]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['paper-typo002'].geometry} material={materials['white-paper']} position={[28.587, 12.27, -390.475]} rotation={[Math.PI / 2, 0, -0.589]} scale={[9.723, 3.723, 9.723]} />
+      <mesh geometry={nodes['mono-frame-04'].geometry} material={materials['black-low-poly']} position={[67.03, 12.351, -409.558]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['paper-typo003'].geometry} material={materials['white-paper']} position={[67.003, 12.27, -409.536]} rotation={[Math.PI / 2, 0, 0]} scale={[9.723, 3.723, 9.723]} />
+      <mesh geometry={nodes['paper-typo004'].geometry} material={materials['white-paper']} position={[38.996, 12.27, -378.431]} rotation={[Math.PI / 2, 0, 1.072]} scale={[9.723, 3.17, 9.723]} />
+      <mesh geometry={nodes['mono-frame-02'].geometry} material={materials['black-low-poly']} position={[-14.135, 12.351, -386.413]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['mono-frame-05'].geometry} material={materials['black-low-poly']} position={[105.879, 12.351, -420.129]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['paper-typo005'].geometry} material={materials['white-paper']} position={[105.853, 12.27, -420.107]} rotation={[Math.PI / 2, 0, 0]} scale={[9.723, 3.723, 9.723]} />
+      <mesh geometry={nodes['inner-square'].geometry} material={materials['mono-frame-inner-square']} position={[105.879, 12.351, -420.129]} scale={[-10.525, -10.525, -3.215]} />
+      <mesh geometry={nodes['inner-circle'].geometry} material={materials['mono-frame-inner-circle']} position={[105.853, 12.27, -420.256]} rotation={[Math.PI / 2, 0, 0]} scale={[9.611, 1.091, 9.611]} />
+      <group position={[-97.285, 12.936, -285.767]} rotation={[0.08, -0.431, -0.452]} scale={5.045}>
+        <mesh geometry={nodes.Plane078.geometry} material={materials['ceramic-white-cutlery-without-texture']} />
+        <mesh geometry={nodes.Plane078_1.geometry} material={materials['ceramic-black-cutlery-without-texture']} />
+      </group>
+      <mesh geometry={nodes['comforting-dinner-baked-johns001'].geometry} material={materials['john-mesh-without-texture']} position={[-250.166, -25.718, -192.399]} rotation={[Math.PI / 2, 0, -0.568]} scale={80.141} />
       <mesh geometry={nodes['analog-tv-01-modified-square'].geometry} material={materials['analog-tv-black-matt']} position={[10.108, 0, 35.09]} rotation={[0, 0.242, 0]} />
       <mesh geometry={nodes['analog-tv-02-modified-horizontal-01'].geometry} material={materials['analog-tv-black-matt']} position={[10.108, 0, 35.09]} rotation={[0, 0.242, 0]} />
       <mesh geometry={nodes['analog-tv-03-modified-horizontal'].geometry} material={materials['analog-tv-black-matt']} position={[10.108, 0, 35.09]} rotation={[0, 0.242, 0]} />
