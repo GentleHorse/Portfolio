@@ -6,12 +6,16 @@ import AboutPage from "./pages/About.jsx";
 import WorksPage from "./pages/Works.jsx";
 import ContactPage from "./pages/Contact.jsx";
 
-import AmbienceOfLightPage from "./pages/designProjects/AmbienceOfLight.jsx";
-import BeautyOfTimePassingPage from "./pages/designProjects/BeautyOfTimePassing.jsx";
-import InterventionInOurDisconnectionPage from "./pages/designProjects/InterventionInOurDisconnection.jsx";
-import LivingTypographyPage from "./pages/designProjects/LivingTypography.jsx";
-import ComfortingDinnerPage from "./pages/designProjects/ComfortingDinner.jsx";
+import AmbienceOfLightPage from "./pages/design/AmbienceOfLight.jsx";
+import BeautyOfTimePassingPage from "./pages/design/BeautyOfTimePassing.jsx";
+import InterventionInOurDisconnectionPage from "./pages/design/InterventionInOurDisconnection.jsx";
+import MasuTypoPage from "./pages/design/MasuTypo.jsx";
+import ComfortingDinnerPage from "./pages/design/ComfortingDinner.jsx";
+import ThreeDVisualsPage from "./pages/design/ThreeDVisuals.jsx";
 
+import ObjectRotterdam2024Page from "./pages/webDev/ObjectRotterdam2024.jsx";
+import WeatherCerealPage from "./pages/webDev/WeatherCereal.jsx";
+import DonutsUniversePage from "./pages/webDev/DonutsUniverse.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +33,13 @@ const router = createBrowserRouter([
         path: "intervention-in-our-disconnection",
         element: <InterventionInOurDisconnectionPage />,
       },
-      { path: "living-typography", element: <LivingTypographyPage /> },
+      { path: "masu-typo", element: <MasuTypoPage /> },
       { path: "comforting-dinner", element: <ComfortingDinnerPage /> },
+      { path: "three-d-visuals", element: <ThreeDVisualsPage /> },
+
+      { path: "object-rotterdam-2024", element: <ObjectRotterdam2024Page /> },
+      { path: "weather-cereal", element: <WeatherCerealPage /> },
+      { path: "donuts-universe", element: <DonutsUniversePage /> },
     ],
   },
 ]);
