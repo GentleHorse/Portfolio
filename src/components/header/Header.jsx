@@ -7,6 +7,7 @@ import {
   faInstagram,
   faGithub,
   faLinkedin,
+  faXTwitter
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Header({ home, about, works, contact }) {
@@ -89,6 +90,16 @@ export default function Header({ home, about, works, contact }) {
                 >
                   <FontAwesomeIcon
                     icon={faLinkedin}
+                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
+                  />
+                </a>
+
+                <a
+                  href="https://x.com/toshihito_endo"
+                  target="_blank"
+                >
+                  <FontAwesomeIcon
+                    icon={faXTwitter}
                     className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
                   />
                 </a>
