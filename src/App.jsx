@@ -6,7 +6,6 @@ import AboutPage from "./pages/About.jsx";
 import WorksPage from "./pages/Works.jsx";
 import ContactPage from "./pages/Contact.jsx";
 
-import ThreeDVisualsPage from "./pages/ThreeDVisuals.jsx";
 import AmbienceOfLightPage from "./pages/designProjects/AmbienceOfLight.jsx";
 import BeautyOfTimePassingPage from "./pages/designProjects/BeautyOfTimePassing.jsx";
 import InterventionInOurDisconnectionPage from "./pages/designProjects/InterventionInOurDisconnection.jsx";
@@ -32,7 +31,6 @@ const router = createBrowserRouter([
       },
       { path: "living-typography", element: <LivingTypographyPage /> },
       { path: "comforting-dinner", element: <ComfortingDinnerPage /> },
-      { path: "three-d-visuals", element: <ThreeDVisualsPage /> },
     ],
   },
 ]);
