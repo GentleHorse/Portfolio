@@ -64,7 +64,7 @@ export default function Experience() {
           {/* <SensorUIObjects /> */}
 
           <CollisionEnterJumpPageArea
-            redirectWatingSeconds={2.0}
+            redirectWatingSeconds={0.5}
             url="/beauty-of-time-passing"
           />
 
