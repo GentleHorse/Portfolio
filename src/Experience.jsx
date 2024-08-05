@@ -1,4 +1,5 @@
 import { useState, useEffect, Suspense } from "react";
+
 import {
   Environment,
   OrbitControls,
@@ -25,8 +26,11 @@ import MasuTypo from "./components/models/designWorks/masuTypo/MasuTypo.jsx";
 import ComfortingDinner from "./components/models/designWorks/comfortingDinner/ComfortingDinner.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import SensorUIObjects from "./components/UI/SensorUIOBjects.jsx";
+import CollisionEnterJumpPageArea from "./components/UI/CollisionEnterJumpPageArea.jsx";
 
 export default function Experience() {
+
+
   return (
     <>
       {/* ENVIRONMENT SET UP */}
@@ -42,7 +46,6 @@ export default function Experience() {
 
       {/* PHYSICS SCENE */}
       <Physics debug={false}>
-
         {/* CONTROLS */}
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
@@ -59,6 +62,11 @@ export default function Experience() {
 
           {/* PROJECT PAGE JUMP SENSOR */}
           {/* <SensorUIObjects /> */}
+
+          <CollisionEnterJumpPageArea
+            redirectWatingSeconds={2.0}
+            url="/beauty-of-time-passing"
+          />
 
           {/* STAGE TEST MODEL */}
           <StageTest scale={0.2} />
