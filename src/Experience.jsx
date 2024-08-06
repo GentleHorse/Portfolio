@@ -66,6 +66,8 @@ export default function Experience() {
           <CollisionEnterJumpPageArea
             redirectWatingSeconds={0.5}
             url="/beauty-of-time-passing"
+            position={[0, 0, 0]}
+            rotation={[0, 0, 0]}
           />
 
           {/* STAGE TEST MODEL */}
