@@ -25,12 +25,9 @@ import InterventionInOurDisconnection from "./components/models/designWorks/inte
 import MasuTypo from "./components/models/designWorks/masuTypo/MasuTypo.jsx";
 import ComfortingDinner from "./components/models/designWorks/comfortingDinner/ComfortingDinner.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
-import SensorUIObjects from "./components/UI/SensorUIOBjects.jsx";
-import CollisionEnterJumpPageArea from "./components/UI/CollisionEnterJumpPageArea.jsx";
+import PortalAreas from "./components/portal/PortalAreas.jsx";
 
 export default function Experience() {
-
-
   return (
     <>
       {/* ENVIRONMENT SET UP */}
@@ -60,15 +57,8 @@ export default function Experience() {
           {/* STAGE COLLISION OBJECTS */}
           <StageTestCollisionObjects />
 
-          {/* PROJECT PAGE JUMP SENSOR */}
-          {/* <SensorUIObjects /> */}
-
-          <CollisionEnterJumpPageArea
-            redirectWatingSeconds={0.5}
-            url="/beauty-of-time-passing"
-            position={[0, 0, 0]}
-            rotation={[0, 0, 0]}
-          />
+          {/* PROJECT PAGE PORTALS */}
+          <PortalAreas />
 
           {/* STAGE TEST MODEL */}
           <StageTest scale={0.2} />

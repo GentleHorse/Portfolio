@@ -3,7 +3,7 @@ import { RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
 import { gameStates, useGameStore } from "../../store/store";
 
-export default function CollisionEnterJumpPageArea({
+export default function PortalArea({
   redirectWatingSeconds,
   url,
   ...props
