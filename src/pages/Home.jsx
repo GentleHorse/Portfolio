@@ -30,9 +30,9 @@ export default function HomePage() {
   return (
     <>
     {/* The menu for the player control */}
-      <BrowserView>
+      {/* <BrowserView>
         <Menu />
-      </BrowserView>
+      </BrowserView> */}
 
       <Leva collapsed={true} />
 
