@@ -1,14 +1,19 @@
+import { useRef } from "react";
+import * as THREE from "three";
+import { useFrame, extend } from "@react-three/fiber";
+import { shaderMaterial } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
 import { RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
 import { gameStates, useGameStore } from "../../store/store";
 
-export default function PortalArea({
-  redirectWatingSeconds,
-  url,
-  ...props
-}) {
+import portalVertexShader from "../../shaders/portal/vertex.glsl";
+import portalFragmentShader from "../../shaders/portal/fragment.glsl";
+
+export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
   const navigate = useNavigate();
+
+  const portalWall = useRef();
 
   /**
    * GAME STORE
@@ -18,23 +23,36 @@ export default function PortalArea({
     setGameState: state.setGameState,
   }));
 
+  // Shader material -portal material
+  const portalMaterial = new THREE.ShaderMaterial({
+    vertexShader: portalVertexShader,
+    fragmentShader: portalFragmentShader,
+    uniforms: {
+      uTime: new THREE.Uniform(0.0),
+      uColorStart: new THREE.Uniform(new THREE.Color("#027a00")),
+      uColorEnd: new THREE.Uniform(new THREE.Color("#1b9dee")),
+    },
+    side: THREE.DoubleSide,
+    wireframe: false,
+    depthWrite: false,
+    transparent: true,
+  });
+
+  useFrame((status, delta) => {
+    portalWall.current.material.uniforms.uTime.value += delta;
+  });
+
   return (
     <group {...props}>
-
       <group position={[0, 3, 0]} rotation={[0, 0, 0]}>
         <Root>
           <Container flexDirection="column" gap={15}>
-            <Text fontWeight="extra-bold" fontSize={40} color="crimson">
+            <Text fontWeight="extra-bold" fontSize={40} color="snow">
               Go to the project page
             </Text>
           </Container>
         </Root>
       </group>
-
-      <mesh scale={[4.0, 6.0, 1.0]} position={[0, 3.1, 0]}>
-        <boxGeometry />
-        <meshBasicMaterial color="#E8B647" wireframe />
-      </mesh>
 
       <RigidBody
         type="fixed"
@@ -53,11 +71,21 @@ export default function PortalArea({
           }, redirectWatingSeconds * 1000);
         }}
       >
-        <mesh>
+        <mesh scale={0.9}>
           <planeGeometry />
-          <meshBasicMaterial color="crimson" />
+          <meshNormalMaterial transparent opacity={0.0} />
         </mesh>
       </RigidBody>
+
+      <mesh
+        ref={portalWall}
+        scale={3.0}
+        position={[0, 3.2, 0]}
+        rotation={[0, Math.PI, 0]}
+        material={portalMaterial}
+      >
+        <cylinderGeometry args={[1, 1, 2.5, 16, 1, true]} />
+      </mesh>
     </group>
   );
 }
