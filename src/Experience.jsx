@@ -33,7 +33,7 @@ export default function Experience() {
       <OrbitControls makeDefault />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
         {/* CONTROLS */}
         {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
