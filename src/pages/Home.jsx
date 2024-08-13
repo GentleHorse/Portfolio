@@ -29,7 +29,7 @@ const keyboardMap = [
 export default function HomePage() {
   return (
     <>
-    {/* The menu for the player control */}
+      {/* The menu for the player control */}
       <BrowserView>
         <Menu />
       </BrowserView>
@@ -77,18 +77,18 @@ export default function HomePage() {
         />
       </MobileView>
 
-      <KeyboardControls map={keyboardMap}>
-        <Canvas
-          camera={{
-            fov: 60,
-            near: 0.1,
-            far: 200,
-            position: [0, 1.5, 8],
-          }}
-        >
-          <Experience />
-        </Canvas>
-      </KeyboardControls>
+        <KeyboardControls map={keyboardMap}>
+          <Canvas
+            camera={{
+              fov: 60,
+              near: 0.1,
+              far: 200,
+              position: [0, 1.5, 8],
+            }}
+          >
+            <Experience />
+          </Canvas>
+        </KeyboardControls>
     </>
   );
 }

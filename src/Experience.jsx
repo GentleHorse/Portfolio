@@ -1,8 +1,5 @@
-import { useRef } from "react";
-import * as THREE from "three";
-import { useFrame, extend } from "@react-three/fiber";
-import { Environment, OrbitControls, shaderMaterial } from "@react-three/drei";
-import { Physics, RigidBody, CuboidCollider } from "@react-three/rapier";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import { isBrowser, isMobile } from "react-device-detect";
 
@@ -15,8 +12,6 @@ import StageTestCollisionObjects from "./components/models/stage-test/StageTestC
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
 
-import portalVertexShader from "./shaders/portal/vertex.glsl";
-import portalFragmentShader from "./shaders/portal/fragment.glsl";
 
 export default function Experience() {
   return (
@@ -35,11 +30,11 @@ export default function Experience() {
       {/* PHYSICS SCENE */}
       <Physics debug={true}>
         {/* CONTROLS */}
-        {isMobile && (
+        {/* {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
-        )}
+        )} */}
 
-        {isBrowser && <FirstPersonViewControl />}
+        {/* {isBrowser && <FirstPersonViewControl />} */}
 
         <group position={[0, 0, -15]}>
           {/* UI */}
