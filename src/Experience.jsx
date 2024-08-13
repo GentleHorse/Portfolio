@@ -34,7 +34,7 @@ export default function Experience() {
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
         )} */}
 
-        {/* {isBrowser && <FirstPersonViewControl />} */}
+        {isBrowser && <FirstPersonViewControl />}
 
         <group position={[0, 0, -15]}>
           {/* UI */}
