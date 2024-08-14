@@ -1447,16 +1447,16 @@ export default function StageTest(props) {
     <mesh
       geometry={nodes["analog-tv-01-modified-square-screen"].geometry}
       material={materials["analog-tv-01-modified-square-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial map={silkySphereVideoTexture} toneMapped={false} />
     </mesh>
     <mesh
       geometry={nodes["analog-tv-02-modified-horizontal-screen-01"].geometry}
       material={materials["analog-tv-02-modified-horizontal-screen-01"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial
         map={dancingTentacleVideoTexture}
@@ -1466,8 +1466,8 @@ export default function StageTest(props) {
     <mesh
       geometry={nodes["analog-tv-03-modified-horizontal-screen"].geometry}
       material={materials["analog-tv-03-modified-horizontal-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial
         map={bloomingFlowerVideoTexture}
@@ -1477,8 +1477,8 @@ export default function StageTest(props) {
     <mesh
       geometry={nodes["analog-tv-03-modified-vertical-big-screen"].geometry}
       material={materials["analog-tv-03-modified-vertical-big-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial
         map={beautyOfTimePassingVideoTexture}
@@ -1488,8 +1488,8 @@ export default function StageTest(props) {
     <mesh
       geometry={nodes["analog-tv-03-modified-vertical-small-screen"].geometry}
       material={materials["analog-tv-03-modified-vertical-small-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial
         map={squishyObjectsVideoTexture}
@@ -1499,24 +1499,24 @@ export default function StageTest(props) {
     <mesh
       geometry={nodes["analog-tv-04-modified-horizontal-screen"].geometry}
       material={materials["analog-tv-04-modified-horizontal-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial map={sakuraPetalsVideoTexture} toneMapped={false} />
     </mesh>
     <mesh
       geometry={nodes["analog-tv-05-modified-horizontal-screen"].geometry}
       material={materials["analog-tv-05-modified-horizontal-screen"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial map={glassPoppingVideoTexture} toneMapped={false} />
     </mesh>
     <mesh
       geometry={nodes["analog-tv-02-modified-horizontal-screen-02"].geometry}
       material={materials["analog-tv-02-modified-horizontal-screen-02"]}
-      position={[-362.242, 0, 4.351]}
-      rotation={[0, 0.242, 0]}
+      position={[-421.006, 0, -87.964]}
+      rotation={[-Math.PI, 0.466, -Math.PI]}
     >
       <meshBasicMaterial map={sequenceRiverVideoTexture} toneMapped={false} />
     </mesh>
