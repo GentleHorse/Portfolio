@@ -11,6 +11,7 @@ import FirstPersonViewControlWithEcctrl from "./components/characterControl/firs
 import StageTestCollisionObjects from "./components/models/stage-test/StageTestCollisionObjects.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
+import { faBullseye } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Experience() {
@@ -28,7 +29,7 @@ export default function Experience() {
       <OrbitControls makeDefault />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={true}>
+      <Physics debug={false}>
         {/* CONTROLS */}
         {/* {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
