@@ -3,7 +3,12 @@ import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
 import { EcctrlJoystick } from "ecctrl";
-import { isBrowser, MobileView, BrowserView, isMobile } from "react-device-detect";
+import {
+  isBrowser,
+  MobileView,
+  BrowserView,
+  isMobile,
+} from "react-device-detect";
 import Menu from "../components/menu/Menu.jsx";
 import Experience from "../Experience.jsx";
 import MobileExperience from "../components/mobileExperience/MobileExperience.jsx";
@@ -72,27 +77,29 @@ export default function HomePage() {
       </MobileView>
 
       {/* {isMobile && <MobileExperience />} */}
-
-      {isBrowser && (
-        <>
-          {/* The menu for the player control */}
+      {/* 
+      {isBrowser && ( */}
+      <>
+        {/* The menu for the player control */}
+        <BrowserView>
           <Menu />
+        </BrowserView>
 
-          <Leva collapsed={true} />
-          <KeyboardControls map={keyboardMap}>
-            <Canvas
-              camera={{
-                fov: 60,
-                near: 0.1,
-                far: 200,
-                position: [0, 1.5, 8],
-              }}
-            >
-              <Experience />
-            </Canvas>
-          </KeyboardControls>
-        </>
-      )}
+        <Leva collapsed={true} />
+        <KeyboardControls map={keyboardMap}>
+          <Canvas
+            camera={{
+              fov: 60,
+              near: 0.1,
+              far: 200,
+              position: [0, 1.5, 8],
+            }}
+          >
+            <Experience />
+          </Canvas>
+        </KeyboardControls>
+      </>
+      {/* )} */}
     </>
   );
 }

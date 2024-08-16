@@ -31,9 +31,9 @@ export default function Experience() {
       {/* PHYSICS SCENE */}
       <Physics debug={false}>
         {/* CONTROLS */}
-        {/* {isMobile && (
+        {isMobile && (
           <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
-        )} */}
+        )}
 
         {isBrowser && <FirstPersonViewControl />}
 
