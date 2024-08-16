@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <>
       {/* The interface for smartphones */}
-      {/* <MobileView>
+      <MobileView>
         <EcctrlJoystick
           joystickBaseProps={{
             material: new THREE.MeshBasicMaterial({
@@ -69,9 +69,9 @@ export default function HomePage() {
             }),
           }}
         />
-      </MobileView> */}
+      </MobileView>
 
-      {isMobile && <MobileExperience />}
+      {/* {isMobile && <MobileExperience />} */}
 
       {isBrowser && (
         <>
