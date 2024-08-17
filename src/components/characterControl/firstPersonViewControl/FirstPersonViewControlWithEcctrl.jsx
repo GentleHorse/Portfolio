@@ -8,7 +8,6 @@ export default function FirstPersonViewControlWithEcctrl({
       {/* "friction" must be set above 0, otherwise it causes the bug! */}
 
       <Ecctrl
-        name="player"
         friction={0.6}
         position={position}
         camInitDis={-0.01} // camera intial position

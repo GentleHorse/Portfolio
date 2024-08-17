@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       {/* The interface for smartphones */}
-      <MobileView>
+      {/* <MobileView>
         <EcctrlJoystick
           joystickBaseProps={{
             material: new THREE.MeshBasicMaterial({
@@ -74,32 +74,30 @@ export default function HomePage() {
             }),
           }}
         />
-      </MobileView>
+      </MobileView> */}
 
-      {/* {isMobile && <MobileExperience />} */}
-      {/* 
-      {isBrowser && ( */}
-      <>
-        {/* The menu for the player control */}
-        <BrowserView>
+      {isMobile && <MobileExperience />}
+
+      {isBrowser && (
+        <>
+          {/* The menu for the player control */}
           <Menu />
-        </BrowserView>
 
-        <Leva collapsed={true} />
-        <KeyboardControls map={keyboardMap}>
-          <Canvas
-            camera={{
-              fov: 60,
-              near: 0.1,
-              far: 200,
-              position: [0, 1.5, 8],
-            }}
-          >
-            <Experience />
-          </Canvas>
-        </KeyboardControls>
-      </>
-      {/* )} */}
+          <Leva collapsed={true} />
+          <KeyboardControls map={keyboardMap}>
+            <Canvas
+              camera={{
+                fov: 60,
+                near: 0.1,
+                far: 200,
+                position: [0, 1.5, 8],
+              }}
+            >
+              <Experience />
+            </Canvas>
+          </KeyboardControls>
+        </>
+      )}
     </>
   );
 }

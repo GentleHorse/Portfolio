@@ -8,30 +8,32 @@ import { useFrame, extend } from "@react-three/fiber";
 import { useGLTF, useVideoTexture, shaderMaterial, MeshTransmissionMaterial } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
-
-import portalVertexShader from "../../../shaders/portal/vertex.glsl";
-import portalFragmentShader from "../../../shaders/portal/fragment.glsl";
-
-// Test - shader material -portal material
-const PortalMaterial = shaderMaterial(
-  {
-    uTime: 0,
-    uColorStart: new THREE.Color("#027a00"),
-    uColorEnd: new THREE.Color("#1b9dee"),
-  },
-  portalVertexShader,
-  portalFragmentShader
-);
-
-extend({ PortalMaterial });
+import seasonalColorTransitionVertexShader from "../../../shaders/seasonalTransition/vertex.glsl";
+import seasonalColorTransitionFragmentShader from "../../../shaders/seasonalTransition/fragment.glsl";
 
 export default function StageTest(props) {
-  // Test - shader material -portal material
-  const portalMaterialRef = useRef();
+  /**
+   * REF - BEAUTY OF TIME PASSING
+   */
+  const tree01 = useRef();
+  const tree02 = useRef();
+  const leaves = useRef();
 
-  // useFrame((status, delta) => {
-  //   portalMaterialRef.current.uTime += delta;
-  // });
+  /**
+   * SHADER - SEASONAL COLOR TRANSITION MATERIAL
+   */
+  const seasonalColorTransitionMaterial = new THREE.ShaderMaterial({
+    vertexShader: seasonalColorTransitionVertexShader,
+    fragmentShader: seasonalColorTransitionFragmentShader,
+    uniforms: {
+      uTime: new THREE.Uniform(0.0),
+    },
+  });
+
+  useFrame((state, delta) => {
+    tree01.current.material.uniforms.uTime.value += delta;
+  });
+
 
   /**
    * VIDEOS FOR THE BEAUTY OF TIME PASSING PROJECT
@@ -457,20 +459,25 @@ export default function StageTest(props) {
         scale={1.535}
       />
       <mesh
+      ref={tree01}
         geometry={nodes["tree-leaves-low-poly006"].geometry}
-        material={materials["leaves-for-anim"]}
+        // material={materials["leaves-for-anim"]}
+        material={seasonalColorTransitionMaterial}
         position={[302.058, 11.762, -352.976]}
         rotation={[2.688, 0.068, 1.223]}
         scale={1.535}
       />
       <mesh
+      ref={leaves}
         geometry={nodes["float-particles006"].geometry}
-        material={materials["leaves-for-anim"]}
+        // material={materials["leaves-for-anim"]}
+        material={seasonalColorTransitionMaterial}
         position={[320.469, 10.343, -278.934]}
         rotation={[Math.PI / 2, 0, 2.101]}
         scale={[25.422, 19.288, 18.233]}
       />
       <mesh
+      ref={tree02}
         geometry={nodes["tree-trunk-low-poly004"].geometry}
         material={materials.Bark}
         position={[350.073, 8.053, -353.261]}
@@ -479,7 +486,8 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["tree-leaves-low-poly007"].geometry}
-        material={materials["leaves-for-anim"]}
+        // material={materials["leaves-for-anim"]}
+        material={seasonalColorTransitionMaterial}
         position={[349.914, 6.269, -354.735]}
         rotation={[2.261, -0.068, -1.918]}
         scale={3.069}

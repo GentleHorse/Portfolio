@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import * as THREE from "three";
-import { useFrame, extend } from "@react-three/fiber";
-import { shaderMaterial } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { useNavigate } from "react-router-dom";
 import { RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
@@ -23,7 +22,7 @@ export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
     setGameState: state.setGameState,
   }));
 
-  // Shader material -portal material
+  // Shader material - portal material
   const portalMaterial = new THREE.ShaderMaterial({
     vertexShader: portalVertexShader,
     fragmentShader: portalFragmentShader,
@@ -38,7 +37,7 @@ export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
     transparent: true,
   });
 
-  useFrame((status, delta) => {
+  useFrame((state, delta) => {
     portalWall.current.material.uniforms.uTime.value += delta;
   });
 
