@@ -4,8 +4,8 @@ Command: npx gltfjsx@6.4.1 ./public/models/test/stage-test.glb
 */
 
 import React, { useRef } from "react";
-import { useFrame, extend } from "@react-three/fiber";
-import { useGLTF, useVideoTexture, shaderMaterial, MeshTransmissionMaterial } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useGLTF, useVideoTexture, Mask, useMask } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import seasonalColorTransitionVertexShader from "../../../shaders/seasonalTransition/vertex.glsl";
@@ -20,20 +20,24 @@ export default function StageTest(props) {
   const leaves = useRef();
 
   /**
+   * MASK STENCIL
+   */
+  const stencil = useMask(1);
+
+  /**
    * SHADER - SEASONAL COLOR TRANSITION MATERIAL
    */
-  const seasonalColorTransitionMaterial = new THREE.ShaderMaterial({
-    vertexShader: seasonalColorTransitionVertexShader,
-    fragmentShader: seasonalColorTransitionFragmentShader,
-    uniforms: {
-      uTime: new THREE.Uniform(0.0),
-    },
-  });
+  // const seasonalColorTransitionMaterial = new THREE.ShaderMaterial({
+  //   vertexShader: seasonalColorTransitionVertexShader,
+  //   fragmentShader: seasonalColorTransitionFragmentShader,
+  //   uniforms: {
+  //     uTime: new THREE.Uniform(0.0),
+  //   },
+  // });
 
-  useFrame((state, delta) => {
-    tree01.current.material.uniforms.uTime.value += delta;
-  });
-
+  // useFrame((state, delta) => {
+  //   tree01.current.material.uniforms.uTime.value += delta;
+  // });
 
   /**
    * VIDEOS FOR THE BEAUTY OF TIME PASSING PROJECT
@@ -132,9 +136,7 @@ export default function StageTest(props) {
         position={[85.82, 11.971, -159.655]}
         rotation={[Math.PI, -0.841, 1.571]}
         scale={7.863}
-      >
-        
-      </mesh>
+      ></mesh>
       <mesh
         geometry={nodes.Cube047.geometry}
         material={nodes.Cube047.material}
@@ -421,29 +423,33 @@ export default function StageTest(props) {
           material={materials["wood-coating-palissandre"]}
         />
       </group>
+
       {/* <mesh
-        geometry={nodes["scenery-window-screen-front"].geometry}
-        material={materials["glass-material"]}
-        position={[261.285, 0.579, -331.619]}
-        rotation={[Math.PI / 2, 0, Math.PI / 2]}
-        scale={[56.603, 18.334, 29.674]}
-      >
-        <meshStandardMaterial transparent opacity={0.01} color="blue" />
-      </mesh> */}
-      <mesh
         geometry={nodes["scenery-window-screen-side"].geometry}
         material={nodes["scenery-window-screen-side"].material}
         position={[361.09, 0.579, -224.591]}
         rotation={[Math.PI / 2, 0, 0]}
         scale={[56.603, 18.334, 29.674]}
-      />
-      <mesh
+      /> */}
+
+      {/* <mesh
         geometry={nodes["window-frame-front"].geometry}
         material={materials["black-low-poly"]}
         position={[259.86, 0.579, -331.619]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
         scale={[56.603, 18.334, 29.674]}
-      />
+      /> */}
+
+      {/* MASK - SCENERY WINDOW FRAME SIDE */}
+      <Mask
+        id={1}
+        geometry={nodes["scenery-window-screen-side"].geometry}
+        position={[361.09, 0.579, -224.591]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={[56.603, 18.334, 29.674]}
+      >
+        <meshBasicMaterial />
+      </Mask>
       <mesh
         geometry={nodes["window-frame-side"].geometry}
         material={materials["black-low-poly"]}
@@ -451,47 +457,61 @@ export default function StageTest(props) {
         rotation={[Math.PI / 2, 0, 0]}
         scale={[56.603, 18.334, 29.674]}
       />
+
+      {/* MASKED - TREE TRUNKS */}
       <mesh
         geometry={nodes["tree-trunk-low-poly003"].geometry}
-        material={materials.Bark}
+        // material={materials.Bark}
         position={[301.979, 12.269, -351.936]}
         rotation={[2.688, 0.068, 1.223]}
         scale={1.535}
-      />
+      >
+        <meshStandardMaterial color="#554236" {...stencil} />
+      </mesh>
       <mesh
-      ref={tree01}
-        geometry={nodes["tree-leaves-low-poly006"].geometry}
-        // material={materials["leaves-for-anim"]}
-        material={seasonalColorTransitionMaterial}
-        position={[302.058, 11.762, -352.976]}
-        rotation={[2.688, 0.068, 1.223]}
-        scale={1.535}
-      />
-      <mesh
-      ref={leaves}
-        geometry={nodes["float-particles006"].geometry}
-        // material={materials["leaves-for-anim"]}
-        material={seasonalColorTransitionMaterial}
-        position={[320.469, 10.343, -278.934]}
-        rotation={[Math.PI / 2, 0, 2.101]}
-        scale={[25.422, 19.288, 18.233]}
-      />
-      <mesh
-      ref={tree02}
         geometry={nodes["tree-trunk-low-poly004"].geometry}
-        material={materials.Bark}
+        // material={materials.Bark}
         position={[350.073, 8.053, -353.261]}
         rotation={[2.261, -0.068, -1.918]}
         scale={3.069}
-      />
+      >
+        <meshStandardMaterial color="#554236" {...stencil} />
+      </mesh>
+
+      {/* MASKED - TREE LEAVES, FLOAT PARTICLE LEAVES */}
+      <mesh
+        geometry={nodes["tree-leaves-low-poly006"].geometry}
+        // material={materials["leaves-for-anim"]}
+        // material={seasonalColorTransitionMaterial}
+        position={[302.058, 11.762, -352.976]}
+        rotation={[2.688, 0.068, 1.223]}
+        scale={1.535}
+      >
+        <meshStandardMaterial color="#00896C" {...stencil} />
+      </mesh>
+
       <mesh
         geometry={nodes["tree-leaves-low-poly007"].geometry}
         // material={materials["leaves-for-anim"]}
-        material={seasonalColorTransitionMaterial}
+        // material={seasonalColorTransitionMaterial}
         position={[349.914, 6.269, -354.735]}
         rotation={[2.261, -0.068, -1.918]}
         scale={3.069}
-      />
+      >
+        <meshStandardMaterial color="#00896C" {...stencil} />
+      </mesh>
+      <mesh
+        ref={leaves}
+        geometry={nodes["float-particles006"].geometry}
+        // material={materials["leaves-for-anim"]}
+        // material={seasonalColorTransitionMaterial}
+        position={[320.469, 10.343, -278.934]}
+        rotation={[Math.PI / 2, 0, 2.101]}
+        scale={[25.422, 19.288, 18.233]}
+      >
+        <meshStandardMaterial color="#00896C" {...stencil} />
+      </mesh>
+
       <group
         position={[420.708, 21.994, -331.345]}
         rotation={[0, -1.247, 0]}
@@ -1644,7 +1664,7 @@ export default function StageTest(props) {
         scale={[2.114, 2.114, 1.627]}
       />
 
-      <RigidBody type="fixed" colliders="trimesh">
+      {/* <RigidBody type="fixed" colliders="trimesh">
         <mesh
           geometry={nodes["test-inner-wall-ver2-01001"].geometry}
           material={materials["test-architecture-white-matt"]}
@@ -1738,7 +1758,7 @@ export default function StageTest(props) {
           rotation={[0, Math.PI / 2, 0]}
           scale={[0.61, 13.192, 1]}
         />
-      </RigidBody>
+      </RigidBody> */}
     </group>
   );
 }
