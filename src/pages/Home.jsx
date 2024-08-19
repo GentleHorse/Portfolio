@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Leva } from "leva";
@@ -12,27 +11,36 @@ import {
 import Menu from "../components/menu/Menu.jsx";
 import Experience from "../Experience.jsx";
 import MobileExperience from "../components/mobileExperience/MobileExperience.jsx";
+import HowToControl from "../components/UI/HowToControl.jsx";
+import { useGameStore } from "../store/store.js";
 
 /**
  * Keyboard control preset
  */
-const keyboardMap = [
-  { name: "forward", keys: ["ArrowUp", "KeyW"] },
-  { name: "backward", keys: ["ArrowDown", "KeyS"] },
-  { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
-  { name: "rightward", keys: ["ArrowRight", "KeyD"] },
-  { name: "jump", keys: ["Space"] },
-  { name: "run", keys: ["Shift"] },
-  // Optional animation key map
-  { name: "action1", keys: ["1"] },
-  { name: "action2", keys: ["2"] },
-  { name: "action3", keys: ["3"] },
-  { name: "action4", keys: ["KeyF"] },
-  // For the menu
-  { name: "menu", keys: ["Escape"] },
-];
+// const keyboardMap = [
+//   { name: "forward", keys: ["ArrowUp", "KeyW"] },
+//   { name: "backward", keys: ["ArrowDown", "KeyS"] },
+//   { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+//   { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+//   { name: "jump", keys: ["Space"] },
+//   { name: "run", keys: ["Shift"] },
+//   // Optional animation key map
+//   { name: "action1", keys: ["1"] },
+//   { name: "action2", keys: ["2"] },
+//   { name: "action3", keys: ["3"] },
+//   { name: "action4", keys: ["KeyF"] },
+//   // For the menu
+//   { name: "menu", keys: ["Escape"] },
+// ];
 
 export default function HomePage() {
+  /**
+   * GAME STORE
+   */
+  const { gameState } = useGameStore((state) => ({
+    gameState: state.gameState,
+  }));
+
   return (
     <>
       {/* The interface for smartphones */}
@@ -83,19 +91,22 @@ export default function HomePage() {
           {/* The menu for the player control */}
           <Menu />
 
+          {/* Instruction of how to control the player */}
+          {gameState === "PLAY" && <HowToControl />}
+
           <Leva collapsed={true} />
-          <KeyboardControls map={keyboardMap}>
-            <Canvas
-              camera={{
-                fov: 60,
-                near: 0.1,
-                far: 200,
-                position: [0, 1.5, 8],
-              }}
-            >
-              <Experience />
-            </Canvas>
-          </KeyboardControls>
+          {/* <KeyboardControls map={keyboardMap}> */}
+          <Canvas
+            camera={{
+              fov: 60,
+              near: 0.1,
+              far: 200,
+              position: [0, 1.5, 8],
+            }}
+          >
+            <Experience />
+          </Canvas>
+          {/* </KeyboardControls> */}
         </>
       )}
     </>
