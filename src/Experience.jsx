@@ -1,16 +1,12 @@
-import { useRef } from "react";
-import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import { isBrowser, isMobile } from "react-device-detect";
+import { isBrowser } from "react-device-detect";
 
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
 import StageTest from "./components/models/stage-test/StageTest.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
-import FirstPersonViewControlWithEcctrl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControlWithEcctrl.jsx";
 import StageTestCollisionObjects from "./components/models/stage-test/StageTestCollisionObjects.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
@@ -32,10 +28,6 @@ export default function Experience() {
       {/* PHYSICS SCENE */}
       <Physics debug={false}>
         {/* CONTROLS */}
-        {/* {isMobile && (
-          <FirstPersonViewControlWithEcctrl position={[0, 0, -10]} />
-        )} */}
-
         {isBrowser && <FirstPersonViewControl />}
 
         <group position={[0, 0, -15]}>
