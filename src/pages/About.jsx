@@ -7,8 +7,10 @@ import {
   Image,
   Scroll,
   ScrollControls,
+  Environment,
 } from "@react-three/drei";
 import Header from "../components/header/Header.jsx";
+import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 
 export default function AboutPage() {
   return (
@@ -21,6 +23,10 @@ export default function AboutPage() {
 
           <TestCube scale={1.5} position={[0, 0, -2]} />
 
+          <MaleHead scale={0.4} position={[0, -2, 0]} />
+
+          <Environment preset="city" />
+
           <Scroll>{/* Canvas contents in here will scroll along */}</Scroll>
 
           <Scroll html>
@@ -29,7 +35,7 @@ export default function AboutPage() {
               Hello, it's Me, Toshi !
             </h1>
 
-            
+
 
             <article
               className="py-[5%] px-[12%] w-[60vw]"
