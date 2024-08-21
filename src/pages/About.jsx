@@ -21,56 +21,77 @@ export default function AboutPage() {
         <ScrollControls damping={0.15} pages={10} distance={0.5}>
           {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
-          <TestCube scale={1.5} position={[0, 0, -2]} />
+          <MaleHead scale={0.47} position={[0, -3, 0]} rotation={[Math.PI * -0.1, Math.PI * 0.1, 0]} />
 
-          <MaleHead scale={0.4} position={[0, -2, 0]} />
-
-          <Environment preset="city" />
+          <Environment preset="sunset" />
 
           <Scroll>{/* Canvas contents in here will scroll along */}</Scroll>
 
           <Scroll html>
             {/* DOM contents in here will scroll along */}
-            <h1 className="font-permanent-marker mb-[5px] text-[60px] text-[#cbe2fd]">
+            <h1 className="mt-10 font-permanent-marker mb-[5px] text-[60px] text-[#cbe2fd]">
               Hello, it's Me, Toshi !
             </h1>
-
-
 
             <article
               className="py-[5%] px-[12%] w-[60vw]"
               style={{ transform: "translate3d(40vw, 250vh, 0)" }}
             >
               <p className="font-roboto text-[#fcfaf2]">
-                In his earlier work, "Beauty of Time Passing" (2023), the
-                designer ambitiously sought to illuminate indoor spaces by
-                integrating data-driven weather landscapes and innovative light
-                manipulation. By using glass bricks, known for their reflective
-                qualities, he created a harmonious connection between the
-                interior environment and the natural world, resulting in a
-                sophisticated, nature-inspired ambiance. Now, with his latest
-                project, "Ambience of Light," he continues with the same
-                overarching goal but shifts his approach to make the project
-                more accessible. This time, he focuses on the raw, pure
-                qualities of materials like wood and glass, along with
-                intangible elements like light reflections and dispersions. By
-                carefully selecting and arranging these components, he crafts a
-                much stronger design language. The simplified structure of this
-                project also highlights the direct influences of the designer's
-                Japanese cultural heritage and his personal interpretation of
-                it. This thoughtful approach not only enhances the aesthetic
-                appeal but also makes the project more relatable and meaningful
-                to a broader audience.
-              </p>
-            </article>
-
-            <article
-              className="py-[5%] px-[12%] w-[60vw]"
-              style={{ transform: "translate3d(0vw, 325vh, 0)" }}
-            >
-              <p className="font-roboto text-[#fcfaf2]">
-                This project was presented at OBJECT Rotterdam 2024 (Feb 2 - 4,
-                2024, HAKA-gebouw, Vierhavensstraat 40, 3029 BE Rotterdam).
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                ut massa ultricies, venenatis lorem vitae, mollis urna. Aliquam
+                quis rutrum orci. Sed sodales, metus vel tempor fringilla, nibh
+                sapien molestie nisi, in convallis lorem erat et tortor. In
+                luctus tellus pharetra diam interdum, at fermentum nibh luctus.
+                Morbi rhoncus mollis enim, vitae rutrum dui accumsan eu. Cras
+                laoreet sit amet urna quis vulputate. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit. Integer venenatis, lectus id
+                dapibus consectetur, dui lacus viverra libero, eu faucibus ipsum
+                nibh ac ipsum. Ut nunc odio, blandit vel condimentum ac,
+                tincidunt ut nunc. Duis est dui, semper sit amet lectus eget,
+                feugiat scelerisque urna. Sed consequat, arcu sit amet pharetra
+                laoreet, dui mi pellentesque ante, in tristique orci enim in
+                ipsum. Sed ultrices fermentum est, quis congue mauris interdum
+                vel. Aliquam id eros in lectus pulvinar sagittis vitae eu augue.
+                Duis at semper risus, eu maximus mauris. Proin eget erat ac nisi
+                pharetra placerat. Vestibulum sit amet euismod ex. Vivamus
+                sagittis pulvinar ante ac tristique. Morbi convallis, magna in
+                bibendum tempus, nunc est commodo libero, at rhoncus augue ex
+                nec felis. Pellentesque condimentum bibendum mi, sit amet
+                sollicitudin nisl. Ut sem felis, pretium id iaculis vitae,
+                dignissim a quam. Quisque bibendum lacus sed erat ultrices, ut
+                efficitur sapien scelerisque. Phasellus orci nibh, convallis vel
+                dolor at, vulputate consectetur nulla. Duis vehicula orci augue,
+                non iaculis ipsum fringilla quis. Nullam consectetur, sapien sit
+                amet tincidunt pretium, lacus lectus ultricies nibh, sit amet
+                lobortis purus ex at diam. Pellentesque lorem dolor, malesuada
+                quis accumsan ac, auctor sed est. Nam aliquam sem vitae sagittis
+                pharetra. Duis volutpat, sapien vitae egestas lobortis, ipsum
+                nisl aliquam enim, ac ultrices ante erat eu lorem. Aliquam
+                tempor placerat volutpat. Nullam vitae tristique arcu. Vivamus
+                magna mauris, faucibus id dapibus ut, vehicula a dolor. Aliquam
+                tempus sem gravida felis porta aliquam. Nullam eu diam neque.
+                Nam euismod eleifend mauris a feugiat. Cras porttitor libero et
+                arcu gravida porttitor. Sed arcu odio, egestas dignissim sodales
+                sit amet, molestie sit amet erat. Fusce non turpis diam.
+                Vestibulum a ipsum non nulla tincidunt cursus. Fusce orci dui,
+                fermentum eget condimentum eget, viverra vitae odio. Integer sed
+                nisl vitae elit eleifend egestas eu eget nunc. In efficitur
+                pretium accumsan. Cras venenatis sollicitudin elit ut suscipit.
+                Duis quis justo urna. Aliquam venenatis id eros vitae commodo.
+                Suspendisse iaculis suscipit est nec sagittis. Nullam viverra
+                felis orci. Nam quis arcu accumsan, luctus lorem vitae, gravida
+                turpis. Integer gravida, libero et molestie consectetur, tellus
+                quam pellentesque ipsum, vitae hendrerit ante turpis nec ante.
+                Morbi dignissim nisi sed erat varius accumsan. Vivamus vitae
+                egestas nisl, et sodales est. Mauris ac blandit dolor. Ut quis
+                elit lacus. Integer convallis, justo ac pretium efficitur, erat
+                magna tincidunt urna, commodo gravida velit purus ut magna.
+                Nulla ac leo sed ipsum faucibus pulvinar. Duis a sollicitudin
+                leo, in interdum dolor. Pellentesque ac enim id ligula finibus
+                consectetur ut ut turpis. Class aptent taciti sociosqu ad litora
+                torquent per conubia nostra, per inceptos himenaeos. Vestibulum
+                luctus eleifend justo.
               </p>
             </article>
           </Scroll>
