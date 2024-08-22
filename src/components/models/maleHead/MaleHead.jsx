@@ -8,8 +8,8 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-const HEAD_MOVE_STRENGTH = 0.05;
-const EYE_BALLS_MOVE_STRENGTH = 0.055;
+const HEAD_MOVE_STRENGTH = 0.04;
+const EYE_BALLS_MOVE_STRENGTH = 0.05;
 
 export default function MaleHead(props) {
   /**
@@ -73,13 +73,13 @@ export default function MaleHead(props) {
           ref={eyeBallRight}
           geometry={nodes["right-eye"].geometry}
           material={materials["eye-ball-material"]}
-          position={[-1.218, 6.309, 2.809]}
+          position={[-1.115, 6.309, 2.809]}
         />
         <mesh
           ref={eyeBallLeft}
           geometry={nodes["left-eye"].geometry}
           material={materials["eye-ball-material"]}
-          position={[1.218, 6.309, 2.809]}
+          position={[1.115, 6.309, 2.809]}
         />
       </group>
 
