@@ -4,12 +4,28 @@ Command: npx gltfjsx@6.4.1 ./public/models/test/stage-test.glb
 */
 
 import React, { useEffect, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useGLTF, useVideoTexture, Mask, useMask } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 
 export default function StageTest(props) {
+  /**
+   * TEXTURE FOR MESH TRANSMISSION MATERIAL
+   */
+  const abstractOrganic02NormalTexture = useLoader(
+    THREE.TextureLoader,
+    "./textures/abstract-organic/Abstract_Organic_002_NORM.jpg"
+  );
+
+  const GLASS_MATERIAL_02 = new THREE.MeshPhysicalMaterial({
+    color: "#ffffff",
+    roughness: 0.15,
+    transmission: 1,
+    thickness: 0.5,
+    normalMap: abstractOrganic02NormalTexture,
+  });
+
   /**
    * MASK STENCIL
    */
@@ -138,6 +154,11 @@ export default function StageTest(props) {
 
   return (
     <group {...props} dispose={null}>
+      <mesh scale={[52, 38, 1]} position={[
+        15, 22, -45]} material={GLASS_MATERIAL_02}>
+        <planeGeometry />
+      </mesh>
+
       <mesh
         geometry={nodes.glassBrick01006.geometry}
         material={materials["glass-low-poly.002"]}
