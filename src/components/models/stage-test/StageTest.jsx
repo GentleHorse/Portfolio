@@ -131,31 +131,13 @@ export default function StageTest(props) {
 
   const { nodes, materials } = useGLTF("./models/test/stage-test.glb");
 
-  const comfortingDinnerTextTouch = useRef();
-  const comfortingDinnerTextSmell = useRef();
-  const comfortingDinnerTextListen = useRef();
-  const comfortingDinnerTextLook = useRef();
-  const comfortingDinnerTextTaste = useRef();
-
-  useEffect(() => {
-    if (comfortingDinnerTextTouch) {
-      comfortingDinnerTextTouch.current.material.transparent = true;
-      comfortingDinnerTextTouch.current.material.opacity = 0.25;
-    }
-  }, []);
-
-  useFrame((state, delta) => {
-    comfortingDinnerTextTouch.current.rotation.y += delta * 0.3;
-    comfortingDinnerTextSmell.current.rotation.y += delta * 0.3;
-    comfortingDinnerTextListen.current.rotation.y += delta * 0.3;
-    comfortingDinnerTextLook.current.rotation.y += delta * 0.3;
-    comfortingDinnerTextTaste.current.rotation.y += delta * 0.3;
-  });
-
   return (
     <group {...props} dispose={null}>
-      <mesh scale={[52, 38, 1]} position={[
-        15, 22, -45]} material={GLASS_MATERIAL_02}>
+      <mesh
+        scale={[52, 38, 1]}
+        position={[15, 22, -45]}
+        material={GLASS_MATERIAL_02}
+      >
         <planeGeometry />
       </mesh>
 
@@ -876,41 +858,6 @@ export default function StageTest(props) {
         scale={100.103}
       />
       <mesh
-        ref={comfortingDinnerTextTouch}
-        geometry={nodes["text-touch"].geometry}
-        material={materials["text-senses"]}
-        position={[-110.18, 17.858, -355.142]}
-        scale={0.996}
-      />
-      <mesh
-        ref={comfortingDinnerTextSmell}
-        geometry={nodes["text-smell"].geometry}
-        material={materials["text-senses"]}
-        position={[-62.949, 17.858, -401.024]}
-        scale={0.996}
-      />
-      <mesh
-        ref={comfortingDinnerTextListen}
-        geometry={nodes["text-listen"].geometry}
-        material={materials["text-senses"]}
-        position={[-0.2, 17.858, -412.494]}
-        scale={0.996}
-      />
-      <mesh
-        ref={comfortingDinnerTextLook}
-        geometry={nodes["text-look"].geometry}
-        material={materials["text-senses"]}
-        position={[53.778, 17.858, -371.336]}
-        scale={0.996}
-      />
-      <mesh
-        ref={comfortingDinnerTextTaste}
-        geometry={nodes["text-taste"].geometry}
-        material={materials["text-senses"]}
-        position={[63.225, 17.858, -299.14]}
-        scale={0.996}
-      />
-      <mesh
         geometry={nodes["working-desk001"].geometry}
         material={nodes["working-desk001"].material}
         position={[-33.833, 0.134, -7.815]}
@@ -963,24 +910,24 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["presentation-desk-long001"].geometry}
-        material={nodes["presentation-desk-long001"].material}
-        position={[26.906, 0, 230.452]}
-        rotation={[-Math.PI, 0, -Math.PI]}
-        scale={[4.741, 5.566, 5.566]}
+        material={materials["wood-natural"]}
+        position={[-15.991, 0, 131.082]}
+        rotation={[0, -1.571, 0]}
+        scale={[7.709, 9.05, 13.448]}
       />
       <mesh
         geometry={nodes["presentation-desk-short002"].geometry}
-        material={nodes["presentation-desk-short002"].material}
-        position={[34.998, 0, 126.634]}
+        material={materials["wood-natural"]}
+        position={[-30.918, 0, 188.816]}
         rotation={[0, -Math.PI / 2, 0]}
-        scale={[4.741, 5.566, 5.566]}
+        scale={[7.709, 9.05, 13.448]}
       />
       <mesh
         geometry={nodes["presentation-desk-short003"].geometry}
-        material={nodes["presentation-desk-short003"].material}
-        position={[34.997, 0, 169.945]}
+        material={materials["wood-natural"]}
+        position={[42.388, 0, 197.351]}
         rotation={[0, -Math.PI / 2, 0]}
-        scale={[4.741, 5.566, 5.566]}
+        scale={[7.709, 9.05, 13.448]}
       />
       <mesh
         geometry={nodes["monitor-screen-world-pin"].geometry}
@@ -997,82 +944,147 @@ export default function StageTest(props) {
         scale={1.599}
       />
       <mesh
+        geometry={nodes["presentation-desk-short004"].geometry}
+        material={materials["wood-natural"]}
+        position={[39.924, 0, 140.371]}
+        rotation={[0, -Math.PI / 2, 0]}
+        scale={[7.709, 9.05, 13.448]}
+      />
+      <mesh
+        geometry={nodes["cutting-mat"].geometry}
+        material={materials["cutting-mat-material"]}
+        position={[52.445, 73.729, 178.007]}
+        rotation={[0, -0.267, 0]}
+        scale={[81.879, 14.183, 61.409]}
+      />
+      <mesh
+        geometry={nodes["foam-board-01"].geometry}
+        material={materials["foam-board"]}
+        position={[122.94, -1.835, 161.199]}
+        rotation={[0, 0, -0.084]}
+        scale={[0.99, 1.03, 1.03]}
+      />
+      <mesh
+        geometry={nodes["foam-board-02"].geometry}
+        material={materials["foam-board"]}
+        position={[118.46, -2.003, 169.516]}
+        rotation={[0, 0, -0.084]}
+        scale={[0.99, 1.03, 1.03]}
+      />
+      <mesh
+        geometry={nodes["foam-board-03"].geometry}
+        material={materials["foam-board"]}
+        position={[113.221, -1.835, 161.199]}
+        rotation={[0, 0, -0.084]}
+        scale={[0.869, 0.905, 0.905]}
+      />
+      <mesh
+        geometry={nodes.ruler.geometry}
+        material={materials["metal-ruler-material"]}
+        position={[12.92, 1.602, 201.172]}
+        rotation={[0, -1.263, 0]}
+        scale={5.462}
+      />
+      <mesh
+        geometry={nodes["pencil-body-01"].geometry}
+        material={materials["pencil-body-metal"]}
+        position={[15.793, 4.666, 218.407]}
+        rotation={[1.752, 0.19, -0.77]}
+        scale={2.325}
+      />
+      <mesh
+        geometry={nodes["pencil-body-02"].geometry}
+        material={materials["pencil-body"]}
+        position={[15.693, 4.666, 218.301]}
+        rotation={[1.752, 0.19, -0.77]}
+        scale={2.325}
+      />
+      <group
+        position={[11.116, 5.508, 231.124]}
+        rotation={[0, 0, 0.123]}
+        scale={[7.888, 5.92, 5.92]}
+      >
+        <mesh geometry={nodes.Plane085.geometry} material={materials.frame} />
+        <mesh geometry={nodes.Plane085_1.geometry} material={materials.grip} />
+        <mesh geometry={nodes.Plane085_2.geometry} material={materials.blade} />
+      </group>
+      <mesh
         geometry={nodes["working-desk-workshop003"].geometry}
         material={materials["wood-natural"]}
-        position={[-162.852, 0.839, 6.721]}
+        position={[-164.397, 0.422, 6.978]}
         rotation={[0, 0.29, 0]}
-        scale={6.32}
+        scale={7.956}
       />
       <mesh
         geometry={nodes["working-desk-workshop004"].geometry}
         material={materials["wood-natural"]}
-        position={[-150.757, 0.839, 3.11]}
+        position={[-149.171, 0.422, 2.433]}
         rotation={[0, 0.29, 0]}
-        scale={6.32}
+        scale={7.956}
       />
       <mesh
         geometry={nodes["sculpture-stand-square-small001"].geometry}
         material={materials["wood-natural"]}
-        position={[-141.577, 0.166, 113.432]}
-        scale={10.961}
+        position={[-149.915, 0.66, 112.276]}
+        scale={13.798}
       />
       <mesh
         geometry={nodes["sculpture-stand-round001"].geometry}
         material={materials["wood-natural"]}
-        position={[-144.655, 0.839, 72.376]}
+        position={[-138.624, 0.422, 43.014]}
         rotation={[0, 0.191, 0]}
-        scale={10.726}
+        scale={13.502}
       />
       <mesh
         geometry={nodes["sculpture-stand-square-big001"].geometry}
         material={materials["wood-natural"]}
-        position={[-165.553, 0.839, 50.039]}
+        position={[-167.798, 0.422, 61.509]}
         rotation={[0, -0.091, 0]}
-        scale={[19.72, 12.767, 19.72]}
+        scale={[24.824, 16.072, 24.824]}
       />
       <mesh
         geometry={nodes["working-desk-workshop005"].geometry}
         material={materials["wood-dark"]}
-        position={[-120.599, 0.839, 18.796]}
-        scale={6.32}
+        position={[-111.208, 0.422, 22.179]}
+        scale={7.956}
       />
       <mesh
         geometry={nodes["clay-board001"].geometry}
         material={nodes["clay-board001"].material}
-        position={[-127.067, 9.539, 32.429]}
-        scale={1.36}
+        position={[-119.35, 11.373, 39.341]}
+        scale={1.712}
       />
       <mesh
         geometry={nodes.paper001.geometry}
         material={nodes.paper001.material}
-        position={[-127.054, 9.126, 46.801]}
-        scale={1.36}
+        position={[-119.334, 10.853, 57.433]}
+        scale={1.712}
       />
       <mesh
         geometry={nodes["clay-in-process-01001"].geometry}
         material={materials.clay}
-        position={[-121.226, 10.028, 14.51]}
-        scale={1.36}
+        position={[-111.997, 11.989, 16.784]}
+        scale={1.712}
       />
       <mesh
         geometry={nodes["clay-in-process-02001"].geometry}
         material={materials.clay}
-        position={[-119.91, 10.962, 18.568]}
+        position={[-110.34, 13.165, 21.892]}
         rotation={[-0.482, -0.017, 0.033]}
-        scale={1.36}
+        scale={1.712}
       />
       <mesh
         geometry={nodes["sculpture-tool-01001"].geometry}
         material={nodes["sculpture-tool-01001"].material}
-        position={[-121.041, 9.304, 6.026]}
-        scale={1.36}
+        position={[-111.644, 11.082, 5.476]}
+        scale={2.797}
       />
       <mesh
         geometry={nodes["sculpture-tool-02001"].geometry}
         material={nodes["sculpture-tool-02001"].material}
-        position={[-121.345, 9.291, 7.597]}
-        rotation={[0, -Math.PI / 2, 0]}
-        scale={0.276}
+        position={[-112.268, 11.057, 8.708]}
+        rotation={[0, -1.571, 0]}
+        scale={0.567}
       />
       <mesh
         geometry={nodes["analog-tv-01-modified-square001"].geometry}
@@ -1119,12 +1131,6 @@ export default function StageTest(props) {
       <mesh
         geometry={nodes["analog-tv-02-modified-horizontal-02001"].geometry}
         material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-01-modified-square-screen001"].geometry}
-        material={materials["analog-tv-01-modified-square-screen"]}
         position={[-194.784, 0, 11.666]}
         rotation={[-Math.PI, 0.791, -Math.PI]}
       />
@@ -1208,9 +1214,9 @@ export default function StageTest(props) {
       </mesh>
 
       <group
-        position={[-156.946, 9.303, 5.166]}
+        position={[-156.963, 9.75, 5.021]}
         rotation={[0, 0.29, 0]}
-        scale={10.663}
+        scale={13.422}
       >
         <mesh geometry={nodes.Cube329.geometry} material={materials.clay} />
         <mesh geometry={nodes.Cube329_1.geometry} material={materials.clay} />
@@ -1218,28 +1224,28 @@ export default function StageTest(props) {
       <mesh
         geometry={nodes["sequence-river-water001"].geometry}
         material={materials.clay}
-        position={[-156.946, 12.682, 5.166]}
+        position={[-156.963, 15.33, 5.021]}
         rotation={[0, 0.29, 0]}
-        scale={13.925}
+        scale={17.529}
       />
       <mesh
         geometry={nodes["blooming-flower001"].geometry}
         material={materials.clay}
-        position={[-142.442, 10.09, 114.37]}
+        position={[-151.004, 13.152, 113.457]}
         rotation={[Math.PI / 2, 0, 0.484]}
-        scale={3.702}
+        scale={4.661}
       />
       <mesh
         geometry={nodes["silky-sphere-low-planer001"].geometry}
         material={materials.clay}
-        position={[-144.995, 18.576, 72.331]}
+        position={[-139.051, 22.749, 42.957]}
         rotation={[0, 0.191, 0]}
-        scale={4.398}
+        scale={5.537}
       />
       <group
-        position={[-164.339, 15.537, 50.127]}
+        position={[-166.27, 18.923, 61.62]}
         rotation={[0, 0.34, 0]}
-        scale={19.184}
+        scale={24.149}
       >
         <mesh geometry={nodes.Plane109.geometry} material={materials.clay} />
         <mesh geometry={nodes.Plane109_1.geometry} material={materials.clay} />
@@ -1285,6 +1291,10 @@ export default function StageTest(props) {
           geometry={nodes.Cilindro001_1.geometry}
           material={materials["Material.004"]}
         />
+        <mesh
+          geometry={nodes.Cilindro001_2.geometry}
+          material={materials["Material.004"]}
+        />
       </group>
       <group
         position={[-91.174, 19.19, 112.227]}
@@ -1297,6 +1307,69 @@ export default function StageTest(props) {
         />
         <mesh geometry={nodes.camera001_1.geometry} material={materials.tri} />
       </group>
+      <mesh
+        geometry={nodes["camera-low-poly-screen"].geometry}
+        material={materials["Dark grey"]}
+        position={[-95.521, 19.483, 112.243]}
+        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+        scale={[1.633, 0.544, 1.633]}
+      />
+      <mesh
+        geometry={nodes["cable-01"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-02"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-03"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-04"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-05"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-06"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-07"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
+      <mesh
+        geometry={nodes["cable-08"].geometry}
+        material={materials["cable-black"]}
+        position={[-90.552, 13.64, 115.356]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+        scale={4.749}
+      />
       <mesh geometry={nodes.room.geometry} material={nodes.room.material} />
       <mesh
         geometry={nodes["picture-frame"].geometry}
@@ -1312,7 +1385,7 @@ export default function StageTest(props) {
       />
       <mesh
         geometry={nodes["gallery-ground"].geometry}
-        material={nodes["gallery-ground"].material}
+        material={materials["1"]}
         position={[0, 0, -255.626]}
       />
       <mesh
