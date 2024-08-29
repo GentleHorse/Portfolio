@@ -28,7 +28,7 @@ export default function Experience() {
       {/* PHYSICS SCENE */}
       <Physics debug={false}>
         {/* CONTROLS */}
-        {/* {isBrowser && <FirstPersonViewControl />} */}
+        {isBrowser && <FirstPersonViewControl />}
 
         <group position={[0, 0, -15]}>
           {/* UI */}
