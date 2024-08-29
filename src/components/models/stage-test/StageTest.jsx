@@ -34,6 +34,8 @@ const waterMaterial = new THREE.ShaderMaterial({
     uSurfaceColor: new THREE.Uniform(new THREE.Color("#00abf5")),
     uColorOffset: new THREE.Uniform(0.08),
     uColorMultiplier: new THREE.Uniform(5),
+
+    uMaterialOpacity: new THREE.Uniform(0.7),
   },
   transparent: true,
 });
@@ -938,6 +940,7 @@ export default function StageTest(props) {
         rotation={[0, 0, -Math.PI / 2]}
         scale={1.599}
       />
+
       <mesh
         geometry={nodes["cutting-mat"].geometry}
         material={materials["cutting-mat-material"]}
@@ -999,86 +1002,60 @@ export default function StageTest(props) {
       <mesh
         geometry={nodes["model-base-rect-01"].geometry}
         material={materials["foam-board"]}
-        position={[-12.114, 10.911, 126.656]}
+        position={[-45.717, 1.641, 141.687]}
         rotation={[0, 0.329, 0]}
-        scale={0.777}
-      />
-      <mesh
-        geometry={nodes["presentation-desk-rect-01"].geometry}
-        material={materials["wood-natural"]}
-        position={[-11.939, -5.075, 126.93]}
-        rotation={[0, -1.242, 0]}
-        scale={[5.986, 7.028, 10.444]}
+        scale={1.785}
       />
       <mesh
         geometry={nodes["mesh-marble-race"].geometry}
         material={materials["foam-board"]}
-        position={[-14.378, 10.831, 118.147]}
+        position={[-50.919, 1.456, 122.13]}
         rotation={[Math.PI, -0.526, Math.PI]}
-        scale={2.447}
+        scale={5.625}
       />
       <mesh
         geometry={nodes["model-base-rect-02"].geometry}
         material={materials["foam-board"]}
-        position={[-18.329, 10.911, 196.687]}
+        position={[-15.461, 1.641, 206.886]}
         rotation={[0, -0.295, 0]}
-        scale={[0.856, 0.777, 0.892]}
-      />
-      <mesh
-        geometry={nodes["presentation-desk-rect-02"].geometry}
-        material={materials["wood-natural"]}
-        position={[-18.374, -5.075, 196.508]}
-        rotation={[Math.PI, -1.276, Math.PI]}
-        scale={[5.986, 7.028, 10.444]}
+        scale={[1.967, 1.785, 2.051]}
       />
       <mesh
         geometry={nodes["mesh-object-rotterdam-2024"].geometry}
         material={materials["foam-board"]}
-        position={[-18.284, 11.282, 196.796]}
+        position={[-15.358, 2.494, 207.135]}
         rotation={[Math.PI, -1.276, Math.PI]}
-        scale={0.156}
-      />
-      <mesh
-        geometry={nodes["presentation-desk-square-01"].geometry}
-        material={materials["wood-natural"]}
-        position={[50.635, -5.075, 138.287]}
-        rotation={[0, -1.494, 0]}
-        scale={[5.986, 7.028, 10.444]}
+        scale={0.358}
       />
       <mesh
         geometry={nodes["model-base-square-01"].geometry}
         material={materials["foam-board"]}
-        position={[51.02, 10.92, 138.059]}
+        position={[-3.232, 1.258, 121.494]}
         rotation={[0, 0.077, 0]}
-        scale={0.777}
+        scale={1.991}
       />
       <mesh
         geometry={nodes["mesh-weather-cereal"].geometry}
         material={materials["foam-board"]}
-        position={[53.198, 13.965, 139.35]}
+        position={[2.354, 9.064, 124.804]}
         rotation={[-1.781, -0.016, -1.495]}
-        scale={0.215}
-      />
-      <mesh
-        geometry={nodes["presentation-desk-square-02"].geometry}
-        material={materials["wood-natural"]}
-        position={[27.98, -5.075, 181.063]}
-        rotation={[0, -Math.PI / 2, 0]}
-        scale={[5.986, 7.028, 10.444]}
+        scale={0.55}
       />
       <mesh
         geometry={nodes["model-base-square-02"].geometry}
         material={materials["foam-board"]}
-        position={[27.999, 10.92, 180.873]}
-        scale={0.777}
+        position={[32.067, 1.662, 161.068]}
+        scale={1.785}
       />
       <mesh
         geometry={nodes["mesh-donuts-universe"].geometry}
         material={materials["foam-board"]}
-        position={[27.824, 16.118, 180.111]}
+        position={[31.667, 13.608, 159.317]}
         rotation={[1.564, -0.209, 1.757]}
-        scale={78.992}
+        scale={181.553}
       />
+
+
       <mesh
         geometry={nodes["working-desk-workshop003"].geometry}
         material={materials["wood-natural"]}

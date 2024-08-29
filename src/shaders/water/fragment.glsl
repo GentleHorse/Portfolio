@@ -2,6 +2,7 @@ uniform vec3 uDepthColor;
 uniform vec3 uSurfaceColor;
 uniform float uColorOffset;
 uniform float uColorMultiplier;
+uniform float uMaterialOpacity;
 
 varying float vElevation;
 
@@ -15,7 +16,7 @@ void main(){
     /*
      * GL COLOR OUT
      */
-    gl_FragColor = vec4(color, 0.5);
+    gl_FragColor = vec4(color, uMaterialOpacity);
 
     #include <colorspace_fragment>
 }
