@@ -9,30 +9,46 @@ import { useGLTF, useVideoTexture, Mask, useMask } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 
+import waterVertexShader from "../../../shaders/water/vertex.glsl";
+import waterFragmentShader from "../../../shaders/water/fragment.glsl";
+
+/**
+ * MATERIAL FOR PICTURE FREAME GLASS
+ */
+const waterMaterial = new THREE.ShaderMaterial({
+  vertexShader: waterVertexShader,
+  fragmentShader: waterFragmentShader,
+  uniforms: {
+    uTime: new THREE.Uniform(0),
+
+    uBigWavesElevation: new THREE.Uniform(0.2),
+    uBigWaveFrequency: new THREE.Uniform(new THREE.Vector2(0.4, 0.25)),
+    uBigWavesSpeed: new THREE.Uniform(0.05),
+
+    uSmallWavesElevation: new THREE.Uniform(0.15),
+    uSmallWavesFrequency: new THREE.Uniform(0.3),
+    uSmallWavesSpeed: new THREE.Uniform(0.08),
+    uSmallWavesIteration: new THREE.Uniform(4),
+
+    uDepthColor: new THREE.Uniform(new THREE.Color("#1C1C1C")),
+    uSurfaceColor: new THREE.Uniform(new THREE.Color("#00abf5")),
+    uColorOffset: new THREE.Uniform(0.08),
+    uColorMultiplier: new THREE.Uniform(5),
+  },
+  transparent: true,
+});
+
 export default function StageTest(props) {
   /**
-   * TEXTURE FOR MESH TRANSMISSION MATERIAL
+   * REF - SHADER MATERIAL FOR PICTURE FRAME GLASS
    */
-  const abstractOrganic02NormalTexture = useMemo(() => {
-    const abstractOrganic02NormalTexture = useLoader(
-      THREE.TextureLoader,
-      "./textures/abstract-organic/Abstract_Organic_002_NORM.jpg"
-    );
+  const pictureFrameGlass = useRef();
 
-    return abstractOrganic02NormalTexture;
-  }, []);
-
-  const GLASS_MATERIAL_02 = useMemo(() => {
-    const GLASS_MATERIAL_02 = new THREE.MeshPhysicalMaterial({
-      color: "#ffffff",
-      roughness: 0.15,
-      transmission: 1,
-      thickness: 0.5,
-      normalMap: abstractOrganic02NormalTexture,
-    });
-
-    return GLASS_MATERIAL_02;
-  }, []);
+  useFrame(
+    (state, delta) =>
+      (pictureFrameGlass.current.material.uniforms.uTime.value =
+        state.clock.getElapsedTime())
+  );
 
   /**
    * MASK STENCIL
@@ -1443,10 +1459,17 @@ export default function StageTest(props) {
         material={materials["1"]}
         position={[0, 0, -255.626]}
       />
+
+      {/* PICTURE FRAME GLASS */}
       <mesh
-        geometry={nodes["picture-frame-glass"].geometry}
-        material={GLASS_MATERIAL_02}
-      />
+        ref={pictureFrameGlass}
+        position={[13, 22, -45]}
+        scale={[18, 12, 1]}
+        material={waterMaterial}
+      >
+        <planeGeometry args={[3, 3, 512, 512]} />
+      </mesh>
+
       <mesh
         geometry={nodes["left-hand-low-poly"].geometry}
         material={materials["human-skin"]}
