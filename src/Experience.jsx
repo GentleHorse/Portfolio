@@ -18,7 +18,7 @@ export default function Experience() {
       <Lights />
       <Background />
 
-      <Environment preset="forest" />
+      <Environment preset="night" background />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-right" />
