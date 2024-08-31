@@ -7,6 +7,7 @@ import React, { useEffect, useRef, useMemo } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import {
   useGLTF,
+  useAnimations,
   useVideoTexture,
   Mask,
   useMask,
@@ -161,1312 +162,1016 @@ export default function StageTest(props) {
    * MODEL -------------------------------------------------------
    */
 
-  const { nodes, materials } = useGLTF("./models/test/stage-test.glb");
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF(
+    "./models/test/stage-test.glb"
+  );
+  const { actions } = useAnimations(animations, group);
+
+  /**
+   * USEEFFECT - TYPOGRAPHY ANIMATIONS
+   */
+  useEffect(() => {
+    // Typo A
+    actions?.["typo-A-big-circle.001Action"].play();
+    actions?.["typo-A-line-horizontal.001Action"].play();
+    actions?.["typo-A-line-vertical-left.001Action"].play();
+    actions?.["typo-A-line-vertical-right.001Action"].play();
+
+    // Typo B
+    actions?.["typo-B-line-horizontal-bottom.001Action"].play();
+    actions?.["typo-B-line-horizontal-top.002Action"].play();
+    actions?.["typo-B-line-vertical.001Action"].play();
+    actions?.["typo-B-small-circle-bottom.001Action"].play();
+    actions?.["typo-B-small-circle-top.001Action"].play();
+
+    // Typo C
+    actions?.["typo-C-big-circle.001Action"].play();
+    actions?.["typo-C-line-horizontal-bottom.001Action"].play();
+    actions?.["typo-C-line-horizontal-top.001Action"].play();
+  }, []);
 
   return (
-    <group {...props} dispose={null}>
-      <mesh
-        geometry={nodes.glassBrick01006.geometry}
-        material={materials["glass-low-poly.002"]}
-        position={[-172.778, 56.159, -286.818]}
-        rotation={[-2.736, -0.377, 1.228]}
-        scale={8.516}
-      />
-      <mesh
-        geometry={nodes.glassBrick02006.geometry}
-        material={materials["glass-low-poly.002"]}
-        position={[-183.148, 40.642, -306.166]}
-        rotation={[-3.008, -0.345, 2.012]}
-        scale={8.516}
-      />
-      <mesh
-        geometry={nodes["led-light-socket003"].geometry}
-        material={materials["black-low-poly"]}
-        position={[-184.845, 70.391, -282.175]}
-        rotation={[0.782, -0.469, 0.297]}
-        scale={[50.274, 2.279, 50.274]}
-      />
-      <mesh
-        geometry={nodes["led-light-wire-curve010"].geometry}
-        material={materials["black-low-poly"]}
-        position={[-195.431, 68.226, -277.276]}
-        rotation={[1.971, 0.634, 2.709]}
-        scale={10.133}
-      />
-      <mesh
-        geometry={nodes["wood-frame-bottom003"].geometry}
-        material={materials["wood-dark-low-poly-without-texture"]}
-        position={[-168.931, 29.486, -304.269]}
-        rotation={[1.308, -0.821, 1.052]}
-        scale={[5.32, 0.76, 6.1]}
-      />
-      <mesh
-        geometry={nodes["wood-frame-left003"].geometry}
-        material={materials["wood-dark-low-poly-without-texture"]}
-        position={[-164.35, 61.843, -307.388]}
-        rotation={[-2.332, 0.788, 2.424]}
-        scale={[5.32, 16.973, 0.76]}
-      />
-      <mesh
-        geometry={nodes["wood-frame-right003"].geometry}
-        material={materials["wood-dark-low-poly-without-texture"]}
-        position={[-198.065, 35.721, -286.308]}
-        rotation={[1.107, -0.429, 0.975]}
-        scale={[5.32, 16.973, 0.76]}
-      />
-      <mesh
-        geometry={nodes["wood-frame-top003"].geometry}
-        material={materials["wood-dark-low-poly-without-texture"]}
-        position={[-195.618, 67.839, -274.063]}
-        rotation={[-1.655, 0.54, -0.675]}
-        scale={[5.32, 0.76, 6.1]}
-      />
-      <mesh
-        geometry={nodes["wood-stick-back003"].geometry}
-        material={materials["wood-natural-low-poly"]}
-        position={[-173.394, 34.475, -295.294]}
-        rotation={[2.078, 0.793, 1.203]}
-        scale={[10.133, 6.84, 10.133]}
-      />
-      <mesh
-        geometry={nodes["wood-stick-front003"].geometry}
-        material={materials["wood-natural-low-poly"]}
-        position={[-191.71, 50.399, -297.32]}
-        rotation={[0.981, 0.367, 0.89]}
-        scale={[10.133, 6.84, 10.133]}
-      />
-      <mesh
-        geometry={nodes["glass-brick-window-modified"].geometry}
-        material={materials["glass-low-poly"]}
-        position={[-227.762, 74.039, -306.295]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={1.557}
-      />
+    <group ref={group} {...props} dispose={null}>
+      <group name="Scene">
+        <mesh
+          name="glass-brick-window-modified"
+          geometry={nodes["glass-brick-window-modified"].geometry}
+          material={materials["glass-low-poly-opaque"]}
+          position={[-179.792, 74.039, -259.002]}
+          rotation={[0, 0.647, 0]}
+          scale={1.557}
+        />
+        <group
+          name="ambience-of-light-single-product"
+          position={[-123.531, 35, -185.844]}
+          rotation={[0.361, 1.186, -0.488]}
+          scale={[5.32, 16.973, 0.76]}
+        >
+          <mesh
+            name="Cube277"
+            geometry={nodes.Cube277.geometry}
+            material={materials["wood-dark-low-poly-without-texture"]}
+          />
+          <mesh
+            name="Cube277_1"
+            geometry={nodes.Cube277_1.geometry}
+            material={materials["glass-low-poly-opaque"]}
+          />
+          <mesh
+            name="Cube277_2"
+            geometry={nodes.Cube277_2.geometry}
+            material={materials["black-low-poly"]}
+          />
+          <mesh
+            name="Cube277_3"
+            geometry={nodes.Cube277_3.geometry}
+            material={materials["wood-natural-low-poly"]}
+          />
+        </group>
+        <group
+          name="ambience-of-light-wall"
+          position={[-181.793, 0, -256.852]}
+          rotation={[0, -0.923, 0]}
+        >
+          <mesh
+            name="Cube323"
+            geometry={nodes.Cube323.geometry}
+            material={materials["ambience-of-light-dispersion"]}
+          />
+          <mesh
+            name="Cube323_1"
+            geometry={nodes.Cube323_1.geometry}
+            material={materials["ambience-of-light-dispersion"]}
+          />
+        </group>
 
-      {/* MASK - SCENERY CIRCLE WINDOW */}
-      <Mask
-        id={1}
-        geometry={nodes["scenery-window-mask"].geometry}
-        position={[8.845, 84.768, -338.373]}
-        rotation={[Math.PI / 2, 0, -0.004]}
-        scale={7.427}
-      >
-        <meshBasicMaterial />
-      </Mask>
+        {/* MASK - SCENERY CIRCLE WINDOW */}
+        <Mask
+          id={1}
+          geometry={nodes["scenery-window-mask"].geometry}
+          position={[8.845, 28.988, -338.373]}
+          rotation={[Math.PI / 2, 0, -0.004]}
+          scale={7.427}
+        >
+          <meshBasicMaterial />
+        </Mask>
 
-      <group
-        position={[9.098, 85.164, -337.585]}
-        rotation={[0, 0.004, 0]}
-        scale={34.481}
-      >
-        <mesh
-          geometry={nodes.Plane110.geometry}
-          material={materials["black-low-poly"]}
-        />
-        <mesh
-          geometry={nodes.Plane110_1.geometry}
-          material={materials["paper-screen-white"]}
-        />
-      </group>
+        <group
+          name="circle-window-frame"
+          position={[8.774, 28.703, -334.365]}
+          rotation={[Math.PI / 2, 0, -0.004]}
+          scale={[1.582, 1.034, 1.582]}
+        >
+          <mesh
+            name="Cylinder239"
+            geometry={nodes.Cylinder239.geometry}
+            material={materials["black-low-poly"]}
+          />
+          <mesh
+            name="Cylinder239_1"
+            geometry={nodes.Cylinder239_1.geometry}
+            material={materials["paper-screen-white"]}
+          />
+        </group>
 
-      <mesh
-        geometry={nodes["circle-window-frame"].geometry}
-        material={materials["black-low-poly"]}
-        position={[8.774, 84.483, -334.365]}
-        rotation={[Math.PI / 2, 0, -0.004]}
-        scale={[1.582, 1.034, 1.582]}
-      />
+        {/* VIDEO SCREEN - SCENERY REFLECTIONS */}
+        <mesh
+          name="scenery-reflection-on-the-ground"
+          geometry={nodes["scenery-reflection-on-the-ground"].geometry}
+          position={[8.165, 5.485, -300.186]}
+        >
+          <meshBasicMaterial map={springVideoTexture} toneMapped={false} />
+        </mesh>
 
-      <mesh
-        geometry={nodes["scenery-reflection-on-the-ground-new"].geometry}
-        position={[7.596, 57.73, -404.334]}
-        scale={16.948}
-      >
-        <meshBasicMaterial map={springVideoTexture} toneMapped={false} />
-      </mesh>
+        {/* MASKED - TREE TRUNKS */}
+        <mesh
+          name="tree-trunks-low-poly"
+          geometry={nodes["tree-trunks-low-poly"].geometry}
+          position={[-45.805, 14.82, -424.357]}
+          rotation={[2.585, -0.595, 0.854]}
+          scale={1.382}
+        >
+          <meshStandardMaterial color="#554236" {...stencil} />
+        </mesh>
 
-      {/* MASKED - TREE TRUNKS */}
-      <mesh
-        geometry={nodes["tree-trunk-low-poly005"].geometry}
-        position={[-45.805, 70.6, -424.357]}
-        rotation={[2.585, -0.595, 0.854]}
-        scale={1.382}
-      >
-        <meshStandardMaterial color="#554236" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["tree-trunk-low-poly006"].geometry}
-        position={[-14.9, 66.802, -454.748]}
-        rotation={[2.069, -0.504, -2.562]}
-        scale={2.765}
-      >
-        <meshStandardMaterial color="#554236" {...stencil} />
-      </mesh>
+        {/* MASKED - TREE LEAVES, FLOAT PARTICLE LEAVES */}
+        <mesh
+          name="float-particles005"
+          geometry={nodes["float-particles005"].geometry}
+          position={[11.194, 13.085, -387.559]}
+          rotation={[Math.PI / 2, 0, 1.352]}
+          scale={[22.903, 17.377, 16.426]}
+        >
+          <MeshDistortMaterial
+            distort={0.5}
+            speed={1}
+            color="#F8C3CD"
+            {...stencil}
+          />
+        </mesh>
+        <mesh
+          name="tree-leaves-low-poly008"
+          geometry={nodes["tree-leaves-low-poly008"].geometry}
+          position={[-46.391, 14.363, -425.091]}
+          rotation={[2.585, -0.595, 0.854]}
+          scale={1.382}
+        >
+          <MeshDistortMaterial
+            distort={0.3}
+            speed={1}
+            color="#F8C3CD"
+            {...stencil}
+          />
+        </mesh>
+        <mesh
+          name="tree-leaves-low-poly009"
+          geometry={nodes["tree-leaves-low-poly009"].geometry}
+          position={[-15.909, 9.415, -455.623]}
+          rotation={[2.069, -0.504, -2.562]}
+          scale={2.765}
+        >
+          <MeshDistortMaterial
+            distort={0.3}
+            speed={1}
+            color="#F8C3CD"
+            {...stencil}
+          />
+        </mesh>
 
-      {/* MASKED - TREE LEAVES, FLOAT PARTICLE LEAVES */}
-      <mesh
-        geometry={nodes["float-particles005"].geometry}
-        position={[11.194, 68.865, -387.559]}
-        rotation={[Math.PI / 2, 0, 1.352]}
-        scale={[22.903, 17.377, 16.426]}
-      >
-        <MeshDistortMaterial  distort={0.5} speed={1} color="#F8C3CD" {...stencil}/>
-      </mesh>
-      <mesh
-        geometry={nodes["tree-leaves-low-poly008"].geometry}
-        position={[-46.391, 70.143, -425.091]}
-        rotation={[2.585, -0.595, 0.854]}
-        scale={1.382}
-      >
-        <MeshDistortMaterial  distort={0.3} speed={1} color="#F8C3CD" {...stencil}/>
-      </mesh>
-      <mesh
-        geometry={nodes["tree-leaves-low-poly009"].geometry}
-        position={[-15.909, 65.195, -455.623]}
-        rotation={[2.069, -0.504, -2.562]}
-        scale={2.765}
-      >
-        <MeshDistortMaterial  distort={0.3} speed={1} color="#F8C3CD" {...stencil}/>
-      </mesh>
+        {/* MASKED - DIGITAL SCENERY*/}
+        <mesh
+          name="digital-world"
+          geometry={nodes["digital-world"].geometry}
+          position={[8.346, 29.465, -408.117]}
+          rotation={[0, 0.004, 0]}
+        >
+          <meshBasicMaterial
+            map={binaryNumbersBackgroundVideo}
+            toneMapped={false}
+            {...stencil}
+          />
+        </mesh>
 
-      {/* MASKED - DIGITAL SCENERY*/}
-      <mesh
-        geometry={nodes["digital-world"].geometry}
-        position={[8.346, 85.245, -408.117]}
-        rotation={[0, 0.004, 0]}
-      >
-        <meshBasicMaterial
-          map={binaryNumbersBackgroundVideo}
-          toneMapped={false}
-          {...stencil}
-        />
-      </mesh>
+        <group
+          name="weather-models"
+          position={[22.066, 33.601, -360.556]}
+          rotation={[Math.PI / 2, 0, 0.616]}
+          scale={0.063}
+        >
+          <mesh name="clouds002" geometry={nodes.clouds002.geometry}>
+            <meshStandardMaterial color="snow" {...stencil} />
+          </mesh>
+          <mesh name="clouds002_1" geometry={nodes.clouds002_1.geometry}>
+            <meshStandardMaterial color="#81C7D4" {...stencil} />
+          </mesh>
+        </group>
 
-      <mesh
-        geometry={nodes.clouds001.geometry}
-        position={[22.066, 89.381, -360.556]}
-        rotation={[Math.PI / 2, 0, 0.616]}
-        scale={0.063}
-      >
-        <meshStandardMaterial color="snow" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["rain-drop005"].geometry}
-        position={[24.17, 102.828, -352.642]}
-        rotation={[0, -0.616, 0]}
-        scale={[1.31, 1.975, 1.31]}
-      >
-        <meshStandardMaterial color="#81C7D4" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["rain-drop006"].geometry}
-        position={[29.258, 96.789, -356.896]}
-        rotation={[0, -0.616, 0]}
-        scale={[1.751, 2.641, 1.751]}
-      >
-        <meshStandardMaterial color="#81C7D4" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["rain-drop007"].geometry}
-        position={[28.415, 90.332, -351.949]}
-        rotation={[0, -0.616, 0]}
-        scale={[1.257, 1.896, 1.257]}
-      >
-        <meshStandardMaterial color="#81C7D4" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["rain-drop008"].geometry}
-        position={[33.88, 82.807, -352.818]}
-        rotation={[0, -0.616, 0]}
-        scale={[1.31, 1.975, 1.31]}
-      >
-        <meshStandardMaterial color="#81C7D4" {...stencil} />
-      </mesh>
-      <mesh
-        geometry={nodes["rain-drop009"].geometry}
-        position={[34.287, 105.057, -357.149]}
-        rotation={[0, -0.616, 0]}
-        scale={[1.105, 1.667, 1.105]}
-      >
-        <meshStandardMaterial color="#81C7D4" {...stencil} />
-      </mesh>
+        <group
+          name="intervention-in-our-disconnection-models"
+          position={[63.786, 6.996, -148.779]}
+          rotation={[0.134, -0.786, 0.201]}
+          scale={2.089}
+        >
+          <mesh
+            name="Cube269"
+            geometry={nodes.Cube269.geometry}
+            material={materials["wood-natural-stand-without-texture"]}
+          />
+          <mesh
+            name="Cube269_1"
+            geometry={nodes.Cube269_1.geometry}
+            material={materials["marble-black-witouth-texture"]}
+          />
+          <mesh
+            name="Cube269_2"
+            geometry={nodes.Cube269_2.geometry}
+            material={materials["marble-white-without-texture"]}
+          />
+          <mesh
+            name="Cube269_3"
+            geometry={nodes.Cube269_3.geometry}
+            material={materials["marble-b-low-poly"]}
+          />
+          <mesh
+            name="Cube269_4"
+            geometry={nodes.Cube269_4.geometry}
+            material={materials["marble-baige"]}
+          />
+          <mesh
+            name="Cube269_5"
+            geometry={nodes.Cube269_5.geometry}
+            material={materials["marble-brown"]}
+          />
+          <mesh
+            name="Cube269_6"
+            geometry={nodes.Cube269_6.geometry}
+            material={materials["marble-dark-brown"]}
+          />
+          <mesh
+            name="Cube269_7"
+            geometry={nodes.Cube269_7.geometry}
+            material={materials["stone-material"]}
+          />
+          <mesh
+            name="Cube269_8"
+            geometry={nodes.Cube269_8.geometry}
+            material={materials["wood-beech"]}
+          />
+          <mesh
+            name="Cube269_9"
+            geometry={nodes.Cube269_9.geometry}
+            material={materials["wood-natural"]}
+          />
+          <mesh
+            name="Cube269_10"
+            geometry={nodes.Cube269_10.geometry}
+            material={materials["wood-natural"]}
+          />
+        </group>
 
-      <group
-        position={[23.043, 6.996, -131.541]}
-        rotation={[0.134, -0.786, 0.201]}
-        scale={2.089}
-      >
+        {/* TYPO ANIMATION WALLS */}
         <mesh
-          geometry={nodes.Cube280.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
+          name="typo-A-backwall001"
+          geometry={nodes["typo-A-backwall001"].geometry}
+          material={materials["matt-black"]}
+          position={[-245.98, 8.775, -613.353]}
+          rotation={[0, -0.741, 0]}
+          scale={[57.602, 97.036, 1.286]}
         />
         <mesh
-          geometry={nodes.Cube280_1.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
+          name="typo-A-line-horizontal001"
+          geometry={nodes["typo-A-line-horizontal001"].geometry}
+          material={materials["matt-white"]}
+          position={[-249.665, 56.08, -608.609]}
+          rotation={[0, -0.741, 0]}
+          scale={24.341}
         />
-      </group>
-      <group
-        position={[23.043, 6.996, -131.541]}
-        rotation={[0.134, -0.786, 0.201]}
-        scale={2.089}
-      >
+        <group
+          name="typo-A-big-circle001"
+          position={[-254.266, 56.08, -603.579]}
+          rotation={[0, -0.741, 0]}
+          scale={24.341}
+        >
+          <mesh
+            name="Circle001"
+            geometry={nodes.Circle001.geometry}
+            material={materials["matt-white"]}
+          />
+          <mesh
+            name="Circle001_1"
+            geometry={nodes.Circle001_1.geometry}
+            material={materials["matt-black"]}
+          />
+        </group>
         <mesh
-          geometry={nodes.Cylinder217.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
-        />
-        <mesh
-          geometry={nodes.Cylinder217_1.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["wood-stand004"].geometry}
-        material={materials["wood-natural-stand-without-texture"]}
-        position={[23.043, 6.996, -131.541]}
-        rotation={[0.134, -0.786, 0.201]}
-        scale={2.089}
-      />
-      <group
-        position={[23.043, 6.996, -131.541]}
-        rotation={[0.134, -0.786, 0.201]}
-        scale={2.089}
-      >
-        <mesh
-          geometry={nodes.Cube281.geometry}
-          material={materials["marble-black-witouth-texture"]}
+          name="typo-A-line-vertical-left001"
+          geometry={nodes["typo-A-line-vertical-left001"].geometry}
+          material={materials["matt-white"]}
+          position={[-276.606, 56.08, -614.982]}
+          rotation={[0, -0.741, 0]}
+          scale={24.341}
         />
         <mesh
-          geometry={nodes.Cube281_1.geometry}
-          material={materials["marble-black-witouth-texture"]}
-        />
-      </group>
-      <group
-        position={[21.474, 25.195, -123.027]}
-        rotation={[2.914, -1.225, 3.004]}
-        scale={2.089}
-      >
-        <mesh
-          geometry={nodes.Cube282.geometry}
-          material={materials["marble-black-witouth-texture"]}
+          name="typo-A-line-vertical-right001"
+          geometry={nodes["typo-A-line-vertical-right001"].geometry}
+          material={materials["matt-white"]}
+          position={[-240.908, 56.08, -582.328]}
+          rotation={[0, -0.741, 0]}
+          scale={24.341}
         />
         <mesh
-          geometry={nodes.Cube282_1.geometry}
-          material={materials["marble-black-witouth-texture"]}
-        />
-      </group>
-      <group
-        position={[21.295, 27.005, -123.209]}
-        rotation={[2.914, -1.225, 3.004]}
-        scale={2.089}
-      >
-        <mesh
-          geometry={nodes.Cube283.geometry}
-          material={materials["marble-white-without-texture"]}
+          name="typo-B-backwall001"
+          geometry={nodes["typo-B-backwall001"].geometry}
+          material={materials["matt-black"]}
+          position={[-164.761, 8.775, -645.58]}
+          rotation={[0, 1.45, 0]}
+          scale={[57.602, 97.036, 1.286]}
         />
         <mesh
-          geometry={nodes.Cube283_1.geometry}
-          material={materials["marble-white-without-texture"]}
-        />
-      </group>
-      <group
-        position={[21.295, 27.005, -123.209]}
-        rotation={[2.914, -1.225, 3.004]}
-        scale={2.089}
-      >
-        <mesh
-          geometry={nodes.Cube284.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
+          name="typo-B-line-horizontal-bottom001"
+          geometry={nodes["typo-B-line-horizontal-bottom001"].geometry}
+          material={materials["matt-white"]}
+          position={[-152.511, 30.329, -644.443]}
+          rotation={[0, 1.45, 0]}
+          scale={24.341}
         />
         <mesh
-          geometry={nodes.Cube284_1.geometry}
-          material={materials["wood-natural-stand-without-texture"]}
-        />
-      </group>
-      <group
-        position={[21.295, 27.005, -123.209]}
-        rotation={[2.914, -1.225, 3.004]}
-        scale={2.089}
-      >
-        <mesh
-          geometry={nodes.Cube285.geometry}
-          material={materials["marble-black-witouth-texture"]}
+          name="typo-B-line-horizontal-top002"
+          geometry={nodes["typo-B-line-horizontal-top002"].geometry}
+          material={materials["matt-white"]}
+          position={[-151.069, 80.783, -644.252]}
+          rotation={[0, 1.45, 0]}
+          scale={24.341}
         />
         <mesh
-          geometry={nodes.Cube285_1.geometry}
-          material={materials["marble-black-witouth-texture"]}
-        />
-      </group>
-      <group
-        position={[105.237, 15.625, -172.554]}
-        rotation={[Math.PI / 2, 0, -3.044]}
-        scale={15.467}
-      >
-        <mesh
-          geometry={nodes.PolySphere001.geometry}
-          material={materials["stone-material"]}
+          name="typo-B-line-horizontal-middle001"
+          geometry={nodes["typo-B-line-horizontal-middle001"].geometry}
+          material={materials["matt-white"]}
+          position={[-152.511, 55.541, -644.443]}
+          rotation={[0, 1.45, 0]}
+          scale={24.341}
         />
         <mesh
-          geometry={nodes.PolySphere001_1.geometry}
-          material={materials["stone-material"]}
+          name="typo-B-line-vertical001"
+          geometry={nodes["typo-B-line-vertical001"].geometry}
+          material={materials["matt-white"]}
+          position={[-147.73, 56.08, -619.419]}
+          rotation={[0, 1.45, 0]}
+          scale={24.341}
         />
-      </group>
-      <group
-        position={[106.088, 8.602, -173.286]}
-        rotation={[-Math.PI, 0.097, -Math.PI]}
-        scale={[1.6, 1.6, 16.174]}
-      >
+        <group
+          name="typo-B-small-circle-top001"
+          position={[-157.104, 68.24, -657.329]}
+          rotation={[0, 1.45, 0]}
+          scale={25.413}
+        >
+          <mesh
+            name="Circle003"
+            geometry={nodes.Circle003.geometry}
+            material={materials["matt-black"]}
+          />
+          <mesh
+            name="Circle003_1"
+            geometry={nodes.Circle003_1.geometry}
+            material={materials["matt-white"]}
+          />
+        </group>
+        <group
+          name="typo-B-small-circle-bottom001"
+          position={[-157.104, 42.827, -657.329]}
+          rotation={[0, 1.45, 0]}
+          scale={25.413}
+        >
+          <mesh
+            name="Circle005"
+            geometry={nodes.Circle005.geometry}
+            material={materials["matt-black"]}
+          />
+          <mesh
+            name="Circle005_1"
+            geometry={nodes.Circle005_1.geometry}
+            material={materials["matt-white"]}
+          />
+        </group>
         <mesh
-          geometry={nodes.Cube286.geometry}
+          name="typo-C-backwall001"
+          geometry={nodes["typo-C-backwall001"].geometry}
+          material={materials["matt-black"]}
+          position={[-230.381, 8.775, -699.237]}
+          rotation={[Math.PI, -0.425, Math.PI]}
+          scale={[57.602, 97.036, 1.286]}
+        />
+        <group
+          name="typo-C-big-circle001"
+          position={[-233.479, 56.082, -704.876]}
+          rotation={[Math.PI, -0.425, Math.PI]}
+          scale={24.341}
+        >
+          <mesh
+            name="Circle006"
+            geometry={nodes.Circle006.geometry}
+            material={materials["matt-white"]}
+          />
+          <mesh
+            name="Circle006_1"
+            geometry={nodes.Circle006_1.geometry}
+            material={materials["matt-black"]}
+          />
+        </group>
+        <mesh
+          name="typo-C-line-horizontal-bottom001"
+          geometry={nodes["typo-C-line-horizontal-bottom001"].geometry}
+          material={materials["matt-white"]}
+          position={[-236.484, 31.902, -711.501]}
+          rotation={[Math.PI, -0.425, Math.PI]}
+          scale={24.341}
+        />
+        <mesh
+          name="typo-C-line-horizontal-top001"
+          geometry={nodes["typo-C-line-horizontal-top001"].geometry}
+          material={nodes["typo-C-line-horizontal-top001"].material}
+          position={[-236.484, 80.283, -711.501]}
+          rotation={[Math.PI, -0.425, Math.PI]}
+          scale={24.341}
+        />
+
+        {/* TYPO - HANGING TEXTILE */}
+
+        <mesh
+          name="typo-graphic-wood-stick-bottom001"
+          geometry={nodes["typo-graphic-wood-stick-bottom001"].geometry}
+          material={materials["wood-natural-low-poly"]}
+          position={[-386.878, 14.515, -701.933]}
+          rotation={[-Math.PI, -0.117, Math.PI / 2]}
+          scale={[-0.745, -29.292, -0.745]}
+        />
+        <mesh
+          name="typo-graphic-textile001"
+          geometry={nodes["typo-graphic-textile001"].geometry}
+          material={materials["typo-graphic-textile"]}
+          position={[-386.79, 56.877, -701.943]}
+          rotation={[0, 0.117, Math.PI / 2]}
+          scale={1.488}
+        />
+        <mesh
+          name="typo-graphic-wood-stick-top001"
+          geometry={nodes["typo-graphic-wood-stick-top001"].geometry}
+          material={materials["wood-natural-low-poly"]}
+          position={[-386.878, 99.239, -701.933]}
+          rotation={[-Math.PI, -0.117, Math.PI / 2]}
+          scale={[-0.745, -29.292, -0.745]}
+        />
+        <group
+          name="comforting-dinner-baked-cutlery003"
+          position={[560.991, 40.635, -388.556]}
+          rotation={[2.739, -1.386, 2.26]}
+          scale={12.497}
+        >
+          <mesh
+            name="Plane106"
+            geometry={nodes.Plane106.geometry}
+            material={materials["ceramic-white-cutlery-without-texture"]}
+          />
+          <mesh
+            name="Plane106_1"
+            geometry={nodes.Plane106_1.geometry}
+            material={materials["ceramic-black-cutlery-without-texture"]}
+          />
+        </group>
+        <mesh
+          name="comforting-dinner-baked-johns003"
+          geometry={nodes["comforting-dinner-baked-johns003"].geometry}
+          material={materials["john-mesh-without-texture"]}
+          position={[239.751, -55.112, -694.671]}
+          rotation={[Math.PI / 2, 0, 0.742]}
+          scale={198.515}
+        />
+        <mesh
+          name="working-desk001"
+          geometry={nodes["working-desk001"].geometry}
+          material={materials["wood-coating-palissandre"]}
+          position={[-33.833, 0.134, -7.815]}
+          rotation={[0, -1.571, 0]}
+          scale={1.476}
+        />
+        <mesh
+          name="chair001"
+          geometry={nodes.chair001.geometry}
+          material={nodes.chair001.material}
+          position={[-24.225, 0.134, -9.61]}
+          rotation={[0, -1.229, 0]}
+          scale={10.889}
+        />
+        <mesh
+          name="keyboard001"
+          geometry={nodes.keyboard001.geometry}
+          material={materials.keyboard}
+          position={[-34.599, 9.473, -3.294]}
+          scale={3.085}
+        />
+        <mesh
+          name="monitor001"
+          geometry={nodes.monitor001.geometry}
+          material={materials.monitor}
+          position={[-34.207, 10.519, -2.958]}
+          scale={4.516}
+        />
+        <mesh
+          name="monitor-screen-world"
+          geometry={nodes["monitor-screen-world"].geometry}
+          material={materials["monitor-screen"]}
+          position={[-34.118, 10.519, -2.916]}
+          scale={4.516}
+        />
+        <mesh
+          name="mouse001"
+          geometry={nodes.mouse001.geometry}
+          material={materials.mouse}
+          position={[-33.065, 9.473, -3.121]}
+          rotation={[0, 0.301, 0]}
+          scale={3.085}
+        />
+        <mesh
+          name="wall-hanging-shelf"
+          geometry={nodes["wall-hanging-shelf"].geometry}
           material={materials["wood-beech"]}
+          position={[-36.954, 20.706, -28.273]}
+          scale={5.398}
         />
         <mesh
-          geometry={nodes.Cube286_1.geometry}
-          material={materials["wood-beech"]}
+          name="monitor-screen-world-pin"
+          geometry={nodes["monitor-screen-world-pin"].geometry}
+          material={materials["monitor-screen-world-pin"]}
+          position={[-39.552, 37.235, 42.702]}
+          rotation={[0, 0, -Math.PI / 2]}
+          scale={1.599}
         />
-      </group>
-      <mesh
-        geometry={nodes["stone-support-wood-02001"].geometry}
-        material={materials["wood-beech"]}
-        position={[106.088, 8.602, -173.286]}
-        rotation={[Math.PI, -1.473, Math.PI]}
-        scale={[1.6, 1.6, 16.174]}
-      />
-      <group
-        position={[106.088, 51.509, -173.286]}
-        rotation={[-Math.PI, 0.097, -Math.PI]}
-        scale={[4.891, 24.408, 4.891]}
-      >
         <mesh
-          geometry={nodes.Cylinder219.geometry}
+          name="monitor-screen-world-pin001"
+          geometry={nodes["monitor-screen-world-pin001"].geometry}
+          material={materials["monitor-screen-world-pin"]}
+          position={[-39.552, 37.235, 10.235]}
+          rotation={[0, 0, -Math.PI / 2]}
+          scale={1.599}
+        />
+        <mesh
+          name="cutting-mat"
+          geometry={nodes["cutting-mat"].geometry}
+          material={materials["cutting-mat-material"]}
+          position={[171.712, 73.729, 178.007]}
+          rotation={[0, -0.267, 0]}
+          scale={[81.879, 14.183, 61.409]}
+        />
+        <mesh
+          name="mesh-marble-race"
+          geometry={nodes["mesh-marble-race"].geometry}
+          material={materials["foam-board"]}
+          position={[34.949, 1.915, 120.951]}
+          rotation={[Math.PI, -1.325, Math.PI]}
+          scale={4.649}
+        />
+        <mesh
+          name="mesh-object-rotterdam-2024"
+          geometry={nodes["mesh-object-rotterdam-2024"].geometry}
+          material={materials["foam-board"]}
+          position={[-0.158, 2.773, 200.552]}
+          rotation={[Math.PI, -1.276, Math.PI]}
+          scale={0.296}
+        />
+        <mesh
+          name="mesh-weather-cereal"
+          geometry={nodes["mesh-weather-cereal"].geometry}
+          material={materials["foam-board"]}
+          position={[81.08, 8.203, 206.681]}
+          rotation={[-1.781, -0.016, -1.495]}
+          scale={0.455}
+        />
+        <mesh
+          name="mesh-donuts-universe"
+          geometry={nodes["mesh-donuts-universe"].geometry}
+          material={materials["foam-board"]}
+          position={[135.92, 11.959, 159.475]}
+          rotation={[1.564, -0.209, 1.757]}
+          scale={150.05}
+        />
+        <group
+          name="three-d-app-modeling-utils"
+          position={[197.713, 33.683, 219.971]}
+          rotation={[-0.184, -0.583, 0.831]}
+          scale={[7.888, 5.92, 5.92]}
+        >
+          <mesh
+            name="Plane091"
+            geometry={nodes.Plane091.geometry}
+            material={materials.frame}
+          />
+          <mesh
+            name="Plane091_1"
+            geometry={nodes.Plane091_1.geometry}
+            material={materials.grip}
+          />
+          <mesh
+            name="Plane091_2"
+            geometry={nodes.Plane091_2.geometry}
+            material={materials.blade}
+          />
+          <mesh
+            name="Plane091_3"
+            geometry={nodes.Plane091_3.geometry}
+            material={materials["foam-board"]}
+          />
+          <mesh
+            name="Plane091_4"
+            geometry={nodes.Plane091_4.geometry}
+            material={materials["metal-ruler-material"]}
+          />
+          <mesh
+            name="Plane091_5"
+            geometry={nodes.Plane091_5.geometry}
+            material={materials["pencil-body-metal"]}
+          />
+          <mesh
+            name="Plane091_6"
+            geometry={nodes.Plane091_6.geometry}
+            material={materials["pencil-body"]}
+          />
+        </group>
+        <mesh
+          name="working-desk-workshop003"
+          geometry={nodes["working-desk-workshop003"].geometry}
           material={materials["wood-natural"]}
+          position={[-164.397, 0.422, 6.978]}
+          rotation={[0, 0.29, 0]}
+          scale={7.956}
         />
         <mesh
-          geometry={nodes.Cylinder219_1.geometry}
+          name="working-desk-workshop004"
+          geometry={nodes["working-desk-workshop004"].geometry}
           material={materials["wood-natural"]}
-        />
-      </group>
-      <group
-        position={[23.388, 36.389, -94.867]}
-        rotation={[1.802, 0.371, -0.347]}
-        scale={[-12.22, -1.201, -12.22]}
-      >
-        <mesh
-          geometry={nodes.Cube288.geometry}
-          material={materials["marble-white-without-texture"]}
+          position={[-149.171, 0.422, 2.433]}
+          rotation={[0, 0.29, 0]}
+          scale={7.956}
         />
         <mesh
-          geometry={nodes.Cube288_1.geometry}
-          material={materials["marble-white-without-texture"]}
-        />
-      </group>
-      <group
-        position={[15.841, 56.173, -100.387]}
-        rotation={[2.147, -0.312, 1.583]}
-        scale={[-12.22, -1.201, -12.22]}
-      >
-        <mesh
-          geometry={nodes.Cube289.geometry}
-          material={materials["marble-b-low-poly"]}
-        />
-        <mesh
-          geometry={nodes.Cube289_1.geometry}
-          material={materials["marble-b-low-poly"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["wood-cylinder-inside-marble-01001"].geometry}
-        material={materials["wood-natural"]}
-        position={[25.104, 36.554, -88.71]}
-        rotation={[-1.339, -0.371, -2.795]}
-        scale={[1.913, 1.17, 1.913]}
-      />
-      <mesh
-        geometry={nodes["wood-cylinder-inside-marble-02001"].geometry}
-        material={materials["wood-natural"]}
-        position={[8.919, 58.602, -95.731]}
-        rotation={[-0.995, 0.312, 1.559]}
-        scale={[1.913, 1.17, 1.913]}
-      />
-      <group
-        position={[42.712, 46.657, -169.839]}
-        rotation={[-0.201, -0.446, 2.842]}
-        scale={2.665}
-      >
-        <mesh
-          geometry={nodes.Cube290.geometry}
-          material={materials["marble-dark-brown"]}
-        />
-        <mesh
-          geometry={nodes.Cube290_1.geometry}
-          material={materials["marble-dark-brown"]}
-        />
-      </group>
-      <group
-        position={[33.733, 38.152, -160.724]}
-        rotation={[-0.201, -0.446, 1.271]}
-        scale={[2.993, 6.188, 1.274]}
-      >
-        <mesh
-          geometry={nodes.Cube291.geometry}
+          name="sculpture-stand-square-small001"
+          geometry={nodes["sculpture-stand-square-small001"].geometry}
           material={materials["wood-natural"]}
+          position={[-149.915, 0.66, 112.276]}
+          scale={13.798}
         />
         <mesh
-          geometry={nodes.Cube291_1.geometry}
+          name="sculpture-stand-round001"
+          geometry={nodes["sculpture-stand-round001"].geometry}
           material={materials["wood-natural"]}
+          position={[-138.624, 0.422, 43.014]}
+          rotation={[0, 0.191, 0]}
+          scale={13.502}
         />
-      </group>
-      <group
-        position={[35.815, 47.933, -164.697]}
-        rotation={[0.421, 1.04, -2.124]}
-        scale={[2.993, 6.188, 1.274]}
-      >
         <mesh
-          geometry={nodes.Cube292.geometry}
+          name="sculpture-stand-square-big001"
+          geometry={nodes["sculpture-stand-square-big001"].geometry}
           material={materials["wood-natural"]}
+          position={[-167.798, 0.422, 61.509]}
+          rotation={[0, -0.091, 0]}
+          scale={[24.824, 16.072, 24.824]}
         />
         <mesh
-          geometry={nodes.Cube292_1.geometry}
-          material={materials["wood-natural"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["marble-d-3001"].geometry}
-        material={materials["marble-brown"]}
-        position={[29.875, 39.084, -158.694]}
-        rotation={[0.421, 1.04, 1.018]}
-        scale={[1.105, 0.989, 1.105]}
-      />
-      <mesh
-        geometry={nodes["marble-d-2001"].geometry}
-        material={materials["marble-white-without-texture"]}
-        position={[40.303, 46.256, -165.496]}
-        rotation={[-0.201, -0.446, -1.87]}
-        scale={[1.105, 0.989, 1.105]}
-      />
-      <mesh
-        geometry={nodes["marble-d-1001"].geometry}
-        material={materials["marble-baige"]}
-        position={[35.358, 59.291, -160.131]}
-        rotation={[0.421, 1.04, 1.018]}
-        scale={[1.105, 0.989, 1.105]}
-      />
-      <group
-        position={[39.35, 58.447, -162.114]}
-        rotation={[-0.201, -0.446, 1.271]}
-        scale={[2.993, 6.188, 1.274]}
-      >
-        <mesh
-          geometry={nodes.Cube293.geometry}
-          material={materials["wood-natural"]}
+          name="working-desk-workshop005"
+          geometry={nodes["working-desk-workshop005"].geometry}
+          material={materials["wood-dark"]}
+          position={[-111.208, 0.422, 22.179]}
+          scale={7.956}
         />
         <mesh
-          geometry={nodes.Cube293_1.geometry}
-          material={materials["wood-natural"]}
-        />
-      </group>
-      <group
-        position={[-18.212, 30.679, -118.629]}
-        rotation={[0.305, 0.23, 1.422]}
-        scale={[6.941, 11.215, 1.996]}
-      >
-        <mesh
-          geometry={nodes.Cube294.geometry}
-          material={materials["wood-natural"]}
+          name="clay-board001"
+          geometry={nodes["clay-board001"].geometry}
+          material={nodes["clay-board001"].material}
+          position={[-119.35, 11.373, 39.341]}
+          scale={1.712}
         />
         <mesh
-          geometry={nodes.Cube294_1.geometry}
-          material={materials["wood-natural"]}
-        />
-      </group>
-      <group
-        position={[-16.202, 33.342, -111.917]}
-        rotation={[0.305, 0.23, 1.422]}
-        scale={[0.89, 11.914, 1.854]}
-      >
-        <mesh
-          geometry={nodes.Cube295.geometry}
-          material={materials["marble-black-witouth-texture"]}
+          name="paper001"
+          geometry={nodes.paper001.geometry}
+          material={nodes.paper001.material}
+          position={[-119.334, 10.853, 57.433]}
+          scale={1.712}
         />
         <mesh
-          geometry={nodes.Cube295_1.geometry}
-          material={materials["marble-black-witouth-texture"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes.Cube052.geometry}
-        material={materials["marble-white-without-texture"]}
-        position={[-24.101, 19.579, -113.632]}
-        rotation={[0.305, 0.23, 1.422]}
-        scale={[1.252, 1.777, 9.317]}
-      />
-      <mesh
-        geometry={nodes["typo-A-backwall001"].geometry}
-        material={materials["matt-black"]}
-        position={[-69.062, -37.703, -539.781]}
-        rotation={[0, -0.741, 0]}
-        scale={[22.526, 37.947, 0.503]}
-      />
-      <mesh
-        geometry={nodes["typo-A-line-horizontal001"].geometry}
-        material={materials["matt-white"]}
-        position={[-70.503, -19.204, -537.926]}
-        rotation={[0, -0.741, 0]}
-        scale={9.519}
-      />
-      <group
-        position={[-72.302, -19.204, -535.959]}
-        rotation={[0, -0.741, 0]}
-        scale={9.519}
-      >
-        <mesh
-          geometry={nodes.Circle001.geometry}
-          material={materials["matt-white"]}
+          name="clay-in-process-01001"
+          geometry={nodes["clay-in-process-01001"].geometry}
+          material={materials.clay}
+          position={[-111.997, 11.989, 16.784]}
+          scale={1.712}
         />
         <mesh
-          geometry={nodes.Circle001_1.geometry}
-          material={materials["matt-black"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["typo-A-line-vertical-left001"].geometry}
-        material={materials["matt-white"]}
-        position={[-81.039, -19.204, -540.418]}
-        rotation={[0, -0.741, 0]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-A-line-vertical-right001"].geometry}
-        material={materials["matt-white"]}
-        position={[-67.079, -19.204, -527.648]}
-        rotation={[0, -0.741, 0]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-B-backwall001"].geometry}
-        material={materials["matt-black"]}
-        position={[-37.301, -37.703, -552.384]}
-        rotation={[0, 1.45, 0]}
-        scale={[22.526, 37.947, 0.503]}
-      />
-      <mesh
-        geometry={nodes["typo-B-line-horizontal-bottom001"].geometry}
-        material={materials["matt-white"]}
-        position={[-32.51, -29.274, -551.939]}
-        rotation={[0, 1.45, 0]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-B-line-horizontal-top002"].geometry}
-        material={materials["matt-white"]}
-        position={[-31.946, -9.544, -551.865]}
-        rotation={[0, 1.45, 0]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-B-line-horizontal-middle001"].geometry}
-        material={materials["matt-white"]}
-        position={[-32.51, -19.415, -551.939]}
-        rotation={[0, 1.45, 0]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-B-line-vertical001"].geometry}
-        material={materials["matt-white"]}
-        position={[-30.641, -19.204, -542.153]}
-        rotation={[0, 1.45, 0]}
-        scale={9.519}
-      />
-      <group
-        position={[-34.306, -14.449, -556.978]}
-        rotation={[0, 1.45, 0]}
-        scale={9.938}
-      >
-        <mesh
-          geometry={nodes.Circle003.geometry}
-          material={materials["matt-black"]}
+          name="clay-in-process-02001"
+          geometry={nodes["clay-in-process-02001"].geometry}
+          material={materials.clay}
+          position={[-110.34, 13.165, 21.892]}
+          rotation={[-0.482, -0.017, 0.033]}
+          scale={1.712}
         />
         <mesh
-          geometry={nodes.Circle003_1.geometry}
-          material={materials["matt-white"]}
-        />
-      </group>
-      <group
-        position={[-34.306, -24.387, -556.978]}
-        rotation={[0, 1.45, 0]}
-        scale={9.938}
-      >
-        <mesh
-          geometry={nodes.Circle005.geometry}
-          material={materials["matt-black"]}
+          name="sculpture-tool-01001"
+          geometry={nodes["sculpture-tool-01001"].geometry}
+          material={materials["clay-tools"]}
+          position={[-111.644, 11.082, 5.476]}
+          scale={2.797}
         />
         <mesh
-          geometry={nodes.Circle005_1.geometry}
-          material={materials["matt-white"]}
+          name="sculpture-tool-02001"
+          geometry={nodes["sculpture-tool-02001"].geometry}
+          material={materials["clay-tools"]}
+          position={[-112.268, 11.057, 8.708]}
+          rotation={[0, -1.571, 0]}
+          scale={0.567}
         />
-      </group>
-      <mesh
-        geometry={nodes["typo-C-backwall001"].geometry}
-        material={materials["matt-black"]}
-        position={[-62.962, -37.703, -573.367]}
-        rotation={[Math.PI, -0.425, Math.PI]}
-        scale={[22.526, 37.947, 0.503]}
-      />
-      <group
-        position={[-64.174, -19.203, -575.572]}
-        rotation={[Math.PI, -0.425, Math.PI]}
-        scale={9.519}
-      >
-        <mesh
-          geometry={nodes.Circle006.geometry}
-          material={materials["matt-white"]}
-        />
-        <mesh
-          geometry={nodes.Circle006_1.geometry}
-          material={materials["matt-black"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["typo-C-line-horizontal-bottom001"].geometry}
-        material={materials["matt-white"]}
-        position={[-65.349, -28.659, -578.163]}
-        rotation={[Math.PI, -0.425, Math.PI]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-C-line-horizontal-top001"].geometry}
-        material={nodes["typo-C-line-horizontal-top001"].material}
-        position={[-65.349, -9.739, -578.163]}
-        rotation={[Math.PI, -0.425, Math.PI]}
-        scale={9.519}
-      />
-      <mesh
-        geometry={nodes["typo-graphic-wood-stick-bottom001"].geometry}
-        material={materials["wood-natural-low-poly"]}
-        position={[-124.166, -40.61, -574.421]}
-        rotation={[-Math.PI, -0.117, Math.PI / 2]}
-        scale={[-0.418, -16.433, -0.418]}
-      />
-      <mesh
-        geometry={nodes["typo-graphic-textile001"].geometry}
-        material={materials["typo-graphic-textile"]}
-        position={[-124.117, -16.845, -574.426]}
-        rotation={[0, 0.117, Math.PI / 2]}
-        scale={0.835}
-      />
-      <mesh
-        geometry={nodes["typo-graphic-wood-stick-top001"].geometry}
-        material={materials["wood-natural-low-poly"]}
-        position={[-124.166, 6.92, -574.421]}
-        rotation={[-Math.PI, -0.117, Math.PI / 2]}
-        scale={[-0.418, -16.433, -0.418]}
-      />
-      <group
-        position={[343.079, -16.329, -456.266]}
-        rotation={[2.739, -1.386, 2.26]}
-        scale={6.302}
-      >
-        <mesh
-          geometry={nodes.Plane106.geometry}
-          material={materials["ceramic-white-cutlery-without-texture"]}
-        />
-        <mesh
-          geometry={nodes.Plane106_1.geometry}
-          material={materials["ceramic-black-cutlery-without-texture"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes["comforting-dinner-baked-johns003"].geometry}
-        material={materials["john-mesh-without-texture"]}
-        position={[181.09, -64.611, -610.628]}
-        rotation={[Math.PI / 2, 0, 0.742]}
-        scale={100.103}
-      />
-      <mesh
-        geometry={nodes["working-desk001"].geometry}
-        material={nodes["working-desk001"].material}
-        position={[-33.833, 0.134, -7.815]}
-        rotation={[0, -1.571, 0]}
-        scale={1.476}
-      />
-      <mesh
-        geometry={nodes.chair001.geometry}
-        material={nodes.chair001.material}
-        position={[-24.225, 0.134, -9.61]}
-        rotation={[0, -1.229, 0]}
-        scale={10.889}
-      />
-      <mesh
-        geometry={nodes.keyboard001.geometry}
-        material={materials.keyboard}
-        position={[-34.599, 9.473, -3.294]}
-        scale={3.085}
-      />
-      <mesh
-        geometry={nodes.monitor001.geometry}
-        material={materials.monitor}
-        position={[-34.207, 10.519, -2.958]}
-        scale={4.516}
-      />
-      <mesh
-        geometry={nodes["monitor-screen-world"].geometry}
-        material={materials["monitor-screen"]}
-        position={[-34.118, 10.519, -2.916]}
-        scale={4.516}
-      />
-      <mesh
-        geometry={nodes.mouse001.geometry}
-        material={materials.mouse}
-        position={[-33.065, 9.473, -3.121]}
-        rotation={[0, 0.301, 0]}
-        scale={3.085}
-      />
-      <mesh
-        geometry={nodes["wall-hanging-shelf-bottom001"].geometry}
-        material={nodes["wall-hanging-shelf-bottom001"].material}
-        position={[-36.954, 11.963, -28.273]}
-        scale={5.398}
-      />
-      <mesh
-        geometry={nodes["wall-hanging-shelf-top001"].geometry}
-        material={nodes["wall-hanging-shelf-top001"].material}
-        position={[-36.954, 20.706, -28.273]}
-        scale={5.398}
-      />
-      <mesh
-        geometry={nodes["monitor-screen-world-pin"].geometry}
-        material={materials["monitor-screen-world-pin"]}
-        position={[-39.552, 37.235, 42.702]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={1.599}
-      />
-      <mesh
-        geometry={nodes["monitor-screen-world-pin001"].geometry}
-        material={materials["monitor-screen-world-pin"]}
-        position={[-39.552, 37.235, 10.235]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={1.599}
-      />
-      <mesh
-        geometry={nodes["cutting-mat"].geometry}
-        material={materials["cutting-mat-material"]}
-        position={[171.712, 73.729, 178.007]}
-        rotation={[0, -0.267, 0]}
-        scale={[81.879, 14.183, 61.409]}
-      />
-      <mesh
-        geometry={nodes["foam-board-01"].geometry}
-        material={materials["foam-board"]}
-        position={[242.207, -1.835, 161.199]}
-        rotation={[0, 0, -0.084]}
-        scale={[0.99, 1.03, 1.03]}
-      />
-      <mesh
-        geometry={nodes["foam-board-02"].geometry}
-        material={materials["foam-board"]}
-        position={[237.726, -2.003, 169.516]}
-        rotation={[0, 0, -0.084]}
-        scale={[0.99, 1.03, 1.03]}
-      />
-      <mesh
-        geometry={nodes["foam-board-03"].geometry}
-        material={materials["foam-board"]}
-        position={[232.487, -1.835, 161.199]}
-        rotation={[0, 0, -0.084]}
-        scale={[0.869, 0.905, 0.905]}
-      />
-      <mesh
-        geometry={nodes.ruler.geometry}
-        material={materials["metal-ruler-material"]}
-        position={[195.194, 29.567, 225.745]}
-        rotation={[-0.112, -0.065, 0.68]}
-        scale={5.462}
-      />
-      <mesh
-        geometry={nodes["pencil-body-01"].geometry}
-        material={materials["pencil-body-metal"]}
-        position={[199.742, 25.316, 201.571]}
-        rotation={[2.226, 0.846, -1.565]}
-        scale={2.325}
-      />
-      <mesh
-        geometry={nodes["pencil-body-02"].geometry}
-        material={materials["pencil-body"]}
-        position={[199.646, 25.23, 201.504]}
-        rotation={[2.226, 0.846, -1.565]}
-        scale={2.325}
-      />
-      <group
-        position={[197.713, 33.683, 219.971]}
-        rotation={[-0.184, -0.583, 0.831]}
-        scale={[7.888, 5.92, 5.92]}
-      >
-        <mesh geometry={nodes.Plane085.geometry} material={materials.frame} />
-        <mesh geometry={nodes.Plane085_1.geometry} material={materials.grip} />
-        <mesh geometry={nodes.Plane085_2.geometry} material={materials.blade} />
-      </group>
-      <mesh
-        geometry={nodes["model-base-rect-01"].geometry}
-        material={materials["foam-board"]}
-        position={[75.356, 1.641, 139.557]}
-        rotation={[0, 1.128, 0]}
-        scale={1.785}
-      />
-      <mesh
-        geometry={nodes["mesh-marble-race"].geometry}
-        material={materials["foam-board"]}
-        position={[57.71, 1.456, 129.65]}
-        rotation={[Math.PI, -1.325, Math.PI]}
-        scale={5.625}
-      />
-      <mesh
-        geometry={nodes["model-base-rect-02"].geometry}
-        material={materials["foam-board"]}
-        position={[6.443, 1.641, 191.576]}
-        rotation={[0, -0.295, 0]}
-        scale={[1.967, 1.785, 2.051]}
-      />
-      <mesh
-        geometry={nodes["mesh-object-rotterdam-2024"].geometry}
-        material={materials["foam-board"]}
-        position={[6.546, 2.494, 191.825]}
-        rotation={[Math.PI, -1.276, Math.PI]}
-        scale={0.358}
-      />
-      <mesh
-        geometry={nodes["model-base-square-01"].geometry}
-        material={materials["foam-board"]}
-        position={[76.699, 1.258, 210.256]}
-        rotation={[0, 0.077, 0]}
-        scale={1.991}
-      />
-      <mesh
-        geometry={nodes["mesh-weather-cereal"].geometry}
-        material={materials["foam-board"]}
-        position={[82.285, 9.064, 213.566]}
-        rotation={[-1.781, -0.016, -1.495]}
-        scale={0.55}
-      />
-      <mesh
-        geometry={nodes["model-base-square-02"].geometry}
-        material={materials["foam-board"]}
-        position={[149.04, 1.662, 158.201]}
-        scale={1.785}
-      />
-      <mesh
-        geometry={nodes["mesh-donuts-universe"].geometry}
-        material={materials["foam-board"]}
-        position={[148.639, 13.608, 156.45]}
-        rotation={[1.564, -0.209, 1.757]}
-        scale={181.553}
-      />
-      <mesh
-        geometry={nodes["working-desk-workshop003"].geometry}
-        material={materials["wood-natural"]}
-        position={[-164.397, 0.422, 6.978]}
-        rotation={[0, 0.29, 0]}
-        scale={7.956}
-      />
-      <mesh
-        geometry={nodes["working-desk-workshop004"].geometry}
-        material={materials["wood-natural"]}
-        position={[-149.171, 0.422, 2.433]}
-        rotation={[0, 0.29, 0]}
-        scale={7.956}
-      />
-      <mesh
-        geometry={nodes["sculpture-stand-square-small001"].geometry}
-        material={materials["wood-natural"]}
-        position={[-149.915, 0.66, 112.276]}
-        scale={13.798}
-      />
-      <mesh
-        geometry={nodes["sculpture-stand-round001"].geometry}
-        material={materials["wood-natural"]}
-        position={[-138.624, 0.422, 43.014]}
-        rotation={[0, 0.191, 0]}
-        scale={13.502}
-      />
-      <mesh
-        geometry={nodes["sculpture-stand-square-big001"].geometry}
-        material={materials["wood-natural"]}
-        position={[-167.798, 0.422, 61.509]}
-        rotation={[0, -0.091, 0]}
-        scale={[24.824, 16.072, 24.824]}
-      />
-      <mesh
-        geometry={nodes["working-desk-workshop005"].geometry}
-        material={materials["wood-dark"]}
-        position={[-111.208, 0.422, 22.179]}
-        scale={7.956}
-      />
-      <mesh
-        geometry={nodes["clay-board001"].geometry}
-        material={nodes["clay-board001"].material}
-        position={[-119.35, 11.373, 39.341]}
-        scale={1.712}
-      />
-      <mesh
-        geometry={nodes.paper001.geometry}
-        material={nodes.paper001.material}
-        position={[-119.334, 10.853, 57.433]}
-        scale={1.712}
-      />
-      <mesh
-        geometry={nodes["clay-in-process-01001"].geometry}
-        material={materials.clay}
-        position={[-111.997, 11.989, 16.784]}
-        scale={1.712}
-      />
-      <mesh
-        geometry={nodes["clay-in-process-02001"].geometry}
-        material={materials.clay}
-        position={[-110.34, 13.165, 21.892]}
-        rotation={[-0.482, -0.017, 0.033]}
-        scale={1.712}
-      />
-      <mesh
-        geometry={nodes["sculpture-tool-01001"].geometry}
-        material={nodes["sculpture-tool-01001"].material}
-        position={[-111.644, 11.082, 5.476]}
-        scale={2.797}
-      />
-      <mesh
-        geometry={nodes["sculpture-tool-02001"].geometry}
-        material={nodes["sculpture-tool-02001"].material}
-        position={[-112.268, 11.057, 8.708]}
-        rotation={[0, -1.571, 0]}
-        scale={0.567}
-      />
-      <mesh
-        geometry={nodes["analog-tv-01-modified-square001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-02-modified-horizontal-01001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-03-modified-horizontal001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-03-modified-vertical-big001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-03-modified-vertical-small001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-04-modified-horizontal001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-05-modified-horizontal001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
-      <mesh
-        geometry={nodes["analog-tv-02-modified-horizontal-02001"].geometry}
-        material={materials["analog-tv-black-matt"]}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      />
+        <group
+          name="analog-tv-shells"
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <mesh
+            name="Mesh006"
+            geometry={nodes.Mesh006.geometry}
+            material={materials["analog-tv-black-matt"]}
+          />
+          <mesh
+            name="Mesh006_1"
+            geometry={nodes.Mesh006_1.geometry}
+            material={materials["cable-black"]}
+          />
+        </group>
 
-      {/* 3D VISUALS TV SCREENS */}
-      <mesh
-        geometry={nodes["analog-tv-01-modified-square-screen001"].geometry}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial map={silkySphereVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={
-          nodes["analog-tv-02-modified-horizontal-screen-01001"].geometry
-        }
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial
-          map={dancingTentacleVideoTexture}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-03-modified-horizontal-screen001"].geometry}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial
-          map={bloomingFlowerVideoTexture}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh
-        geometry={
-          nodes["analog-tv-03-modified-vertical-big-screen001"].geometry
-        }
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial
-          map={beautyOfTimePassingVideoTexture}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh
-        geometry={
-          nodes["analog-tv-03-modified-vertical-small-screen001"].geometry
-        }
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial
-          map={squishyObjectsVideoTexture}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-04-modified-horizontal-screen001"].geometry}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial map={sakuraPetalsVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={nodes["analog-tv-05-modified-horizontal-screen001"].geometry}
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial map={glassPoppingVideoTexture} toneMapped={false} />
-      </mesh>
-      <mesh
-        geometry={
-          nodes["analog-tv-02-modified-horizontal-screen-02001"].geometry
-        }
-        position={[-194.784, 0, 11.666]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-      >
-        <meshBasicMaterial map={sequenceRiverVideoTexture} toneMapped={false} />
-      </mesh>
+        {/* 3D VISUALS TV SCREENS */}
+        <mesh
+          geometry={nodes["analog-tv-01-modified-square-screen001"].geometry}
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial map={silkySphereVideoTexture} toneMapped={false} />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-02-modified-horizontal-screen-01001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={dancingTentacleVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-03-modified-horizontal-screen001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={bloomingFlowerVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-03-modified-vertical-big-screen001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={beautyOfTimePassingVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-03-modified-vertical-small-screen001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={squishyObjectsVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-04-modified-horizontal-screen001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={sakuraPetalsVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-05-modified-horizontal-screen001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={glassPoppingVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
+        <mesh
+          geometry={
+            nodes["analog-tv-02-modified-horizontal-screen-02001"].geometry
+          }
+          position={[-194.784, 0, 11.666]}
+          rotation={[-Math.PI, 0.791, -Math.PI]}
+        >
+          <meshBasicMaterial
+            map={sequenceRiverVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
 
-      <group
-        position={[-156.963, 10.997, 5.021]}
-        rotation={[0, 0.29, 0]}
-        scale={13.422}
-      >
-        <mesh geometry={nodes.Cube329.geometry} material={materials.clay} />
-        <mesh geometry={nodes.Cube329_1.geometry} material={materials.clay} />
-      </group>
-      <mesh
-        geometry={nodes["sequence-river-water001"].geometry}
-        material={materials.clay}
-        position={[-156.963, 15.33, 5.021]}
-        rotation={[0, 0.29, 0]}
-        scale={17.529}
-      />
-      <mesh
-        geometry={nodes["blooming-flower001"].geometry}
-        material={materials.clay}
-        position={[-151.004, 13.152, 113.457]}
-        rotation={[Math.PI / 2, 0, 0.484]}
-        scale={4.661}
-      />
-      <mesh
-        geometry={nodes["silky-sphere-low-planer001"].geometry}
-        material={materials.clay}
-        position={[-139.051, 22.749, 42.957]}
-        rotation={[0, 0.191, 0]}
-        scale={5.537}
-      />
-      <group
-        position={[-166.27, 18.923, 61.62]}
-        rotation={[0, 0.34, 0]}
-        scale={24.149}
-      >
-        <mesh geometry={nodes.Plane109.geometry} material={materials.clay} />
-        <mesh geometry={nodes.Plane109_1.geometry} material={materials.clay} />
-      </group>
-      <mesh
-        geometry={nodes["photo-screen001"].geometry}
-        material={nodes["photo-screen001"].material}
-        position={[-168.374, 14.194, 110.86]}
-        rotation={[Math.PI / 2, Math.PI / 2, 0]}
-        scale={[0.835, 1.179, 0.835]}
-      />
-      <mesh
-        geometry={nodes["photo-area-support001"].geometry}
-        material={nodes["photo-area-support001"].material}
-        position={[-168.374, 37.959, 110.93]}
-        rotation={[Math.PI / 2, -Math.PI / 2, 0]}
-        scale={[-0.418, -24.35, -0.418]}
-      />
-      <mesh
-        geometry={nodes["spotlight-01001"].geometry}
-        material={nodes["spotlight-01001"].material}
-        position={[-116.195, 1.078, 78.643]}
-        rotation={[1.567, -0.001, 0.733]}
-        scale={0.251}
-      />
-      <mesh
-        geometry={nodes["spotlight-02001"].geometry}
-        material={nodes["spotlight-02001"].material}
-        position={[-154.369, 1.078, 148.606]}
-        rotation={[1.575, -0.001, -3.076]}
-        scale={0.251}
-      />
-      <group
-        position={[-95.521, 19.483, 112.243]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={[1.633, 0.544, 1.633]}
-      >
+        <group
+          name="sequence-river-soil001"
+          position={[-156.963, 10.997, 5.021]}
+          rotation={[0, 0.29, 0]}
+          scale={13.422}
+        >
+          <mesh
+            name="Cube329"
+            geometry={nodes.Cube329.geometry}
+            material={materials.clay}
+          />
+          <mesh
+            name="Cube329_1"
+            geometry={nodes.Cube329_1.geometry}
+            material={materials.clay}
+          />
+        </group>
         <mesh
-          geometry={nodes.Cilindro001.geometry}
-          material={materials["Dark grey"]}
+          name="sequence-river-water001"
+          geometry={nodes["sequence-river-water001"].geometry}
+          material={materials.clay}
+          position={[-156.963, 15.33, 5.021]}
+          rotation={[0, 0.29, 0]}
+          scale={17.529}
         />
         <mesh
-          geometry={nodes.Cilindro001_1.geometry}
-          material={materials["Material.004"]}
+          name="blooming-flower001"
+          geometry={nodes["blooming-flower001"].geometry}
+          material={materials.clay}
+          position={[-151.004, 13.152, 113.457]}
+          rotation={[Math.PI / 2, 0, 0.484]}
+          scale={4.661}
         />
         <mesh
-          geometry={nodes.Cilindro001_2.geometry}
-          material={materials["Material.004"]}
+          name="silky-sphere-low-planer001"
+          geometry={nodes["silky-sphere-low-planer001"].geometry}
+          material={materials.clay}
+          position={[-139.051, 22.749, 42.957]}
+          rotation={[0, 0.191, 0]}
+          scale={5.537}
         />
-      </group>
-      <group
-        position={[-91.174, 19.19, 112.227]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={0.017}
-      >
+        <group
+          name="glass-popping-partial001"
+          position={[-166.27, 18.923, 61.62]}
+          rotation={[0, 0.34, 0]}
+          scale={24.149}
+        >
+          <mesh
+            name="Plane109"
+            geometry={nodes.Plane109.geometry}
+            material={materials.clay}
+          />
+          <mesh
+            name="Plane109_1"
+            geometry={nodes.Plane109_1.geometry}
+            material={materials.clay}
+          />
+        </group>
         <mesh
-          geometry={nodes.camera001.geometry}
-          material={materials["Default OBJ.001"]}
+          name="photo-screen001"
+          geometry={nodes["photo-screen001"].geometry}
+          material={nodes["photo-screen001"].material}
+          position={[-168.374, 14.194, 110.86]}
+          rotation={[Math.PI / 2, Math.PI / 2, 0]}
+          scale={[0.835, 1.179, 0.835]}
         />
-        <mesh geometry={nodes.camera001_1.geometry} material={materials.tri} />
-      </group>
-      <mesh
-        geometry={nodes["camera-low-poly-screen"].geometry}
-        material={materials["Dark grey"]}
-        position={[-95.521, 19.483, 112.243]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={[1.633, 0.544, 1.633]}
-      />
-      <mesh
-        geometry={nodes["cable-01"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-02"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-03"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-04"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-05"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-06"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-07"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh
-        geometry={nodes["cable-08"].geometry}
-        material={materials["cable-black"]}
-        position={[-90.552, 13.64, 115.356]}
-        rotation={[-Math.PI, 0, Math.PI / 2]}
-        scale={4.749}
-      />
-      <mesh geometry={nodes.room.geometry} material={nodes.room.material} />
-      <mesh
-        geometry={nodes["picture-frame"].geometry}
-        material={materials["picture-frame"]}
-        position={[14.09, 21.805, -44.241]}
-        scale={1.902}
-      />
-      <mesh
-        geometry={nodes["museum-label"].geometry}
-        material={materials["museum-label"]}
-        position={[-22.343, 17.058, -46.621]}
-        scale={[2.807, 2.807, 4.266]}
-      />
-      <RigidBody type="fixed" colliders="trimesh">
         <mesh
-          geometry={nodes["gallery-architecture-joined"].geometry}
-          material={nodes["gallery-architecture-joined"].material}
-          position={[9.083, -62.632, -117.837]}
-          scale={1.348}
+          name="photo-area-support001"
+          geometry={nodes["photo-area-support001"].geometry}
+          material={nodes["photo-area-support001"].material}
+          position={[-168.374, 37.959, 110.93]}
+          rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+          scale={[-0.418, -24.35, -0.418]}
         />
-      </RigidBody>
+        <mesh
+          name="spotlight-01001"
+          geometry={nodes["spotlight-01001"].geometry}
+          material={materials["dark-grey"]}
+          position={[-116.195, 1.078, 78.643]}
+          rotation={[1.567, -0.001, 0.733]}
+          scale={0.251}
+        />
+        <mesh
+          name="spotlight-02001"
+          geometry={nodes["spotlight-02001"].geometry}
+          material={materials["dark-grey"]}
+          position={[-154.369, 1.078, 148.606]}
+          rotation={[1.575, -0.001, -3.076]}
+          scale={0.251}
+        />
+        <group
+          name="camera-low-poly"
+          position={[-95.521, 19.483, 112.243]}
+          rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+          scale={[1.633, 0.544, 1.633]}
+        >
+          <mesh
+            name="Cilindro001"
+            geometry={nodes.Cilindro001.geometry}
+            material={materials["dark-grey"]}
+          />
+          <mesh
+            name="Cilindro001_1"
+            geometry={nodes.Cilindro001_1.geometry}
+            material={materials["Material.004"]}
+          />
+          <mesh
+            name="Cilindro001_2"
+            geometry={nodes.Cilindro001_2.geometry}
+            material={materials["Material.004"]}
+          />
+        </group>
+        <mesh
+          name="tripod-low-poly001"
+          geometry={nodes["tripod-low-poly001"].geometry}
+          material={materials["dark-grey"]}
+          position={[-91.174, 19.19, 112.227]}
+          rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+          scale={0.017}
+        />
+        <mesh
+          name="camera-low-poly-screen"
+          geometry={nodes["camera-low-poly-screen"].geometry}
+          material={materials["dark-grey"]}
+          position={[-95.521, 19.483, 112.243]}
+          rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+          scale={[1.633, 0.544, 1.633]}
+        />
+        <mesh
+          name="room"
+          geometry={nodes.room.geometry}
+          material={nodes.room.material}
+        />
+        <mesh
+          name="picture-frame"
+          geometry={nodes["picture-frame"].geometry}
+          material={materials["picture-frame"]}
+          position={[14.09, 21.805, -44.241]}
+          scale={1.902}
+        />
 
-      {/* PICTURE FRAME GLASS */}
-      <mesh
-        ref={pictureFrameGlass}
-        position={[13, 22, -45]}
-        scale={[18, 12, 1]}
-        material={waterMaterial}
-      >
-        <planeGeometry args={[3, 3, 512, 512]} />
-      </mesh>
+        {/* PICTURE FRAME GLASS */}
+        <mesh
+          ref={pictureFrameGlass}
+          position={[13, 22, -45]}
+          scale={[18, 12, 1]}
+          material={waterMaterial}
+        >
+          <planeGeometry args={[3, 3, 512, 512]} />
+        </mesh>
 
-      <mesh
-        geometry={nodes["left-hand-low-poly"].geometry}
-        material={materials["human-skin"]}
-        position={[-22.627, 2.115, 43.112]}
-        rotation={[-2.258, -1.194, -2.383]}
-        scale={21.74}
-      />
-      <mesh
-        geometry={nodes["right-hand-low-poly"].geometry}
-        material={materials["human-skin"]}
-        position={[-12.756, -0.55, 0.029]}
-        rotation={[-0.463, -0.963, -0.456]}
-        scale={21.74}
-      />
+        <mesh
+          name="museum-label"
+          geometry={nodes["museum-label"].geometry}
+          material={materials["museum-label"]}
+          position={[-22.343, 17.058, -46.621]}
+          scale={[2.807, 2.807, 4.266]}
+        />
+        <mesh
+          name="left-hand-low-poly"
+          geometry={nodes["left-hand-low-poly"].geometry}
+          material={materials["human-skin"]}
+          position={[-22.627, 2.115, 43.112]}
+          rotation={[-2.258, -1.194, -2.383]}
+          scale={21.74}
+        />
+        <mesh
+          name="right-hand-low-poly"
+          geometry={nodes["right-hand-low-poly"].geometry}
+          material={materials["human-skin"]}
+          position={[-12.756, -0.55, 0.029]}
+          rotation={[-0.463, -0.963, -0.456]}
+          scale={21.74}
+        />
+      </group>
     </group>
   );
 }
