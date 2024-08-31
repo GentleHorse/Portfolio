@@ -5,7 +5,13 @@ Command: npx gltfjsx@6.4.1 ./public/models/test/stage-test.glb
 
 import React, { useEffect, useRef, useMemo } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useGLTF, useVideoTexture, Mask, useMask } from "@react-three/drei";
+import {
+  useGLTF,
+  useVideoTexture,
+  Mask,
+  useMask,
+  MeshDistortMaterial,
+} from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 
@@ -304,7 +310,7 @@ export default function StageTest(props) {
         rotation={[Math.PI / 2, 0, 1.352]}
         scale={[22.903, 17.377, 16.426]}
       >
-        <meshStandardMaterial color="#F8C3CD" {...stencil} />
+        <MeshDistortMaterial  distort={0.5} speed={1} color="#F8C3CD" {...stencil}/>
       </mesh>
       <mesh
         geometry={nodes["tree-leaves-low-poly008"].geometry}
@@ -312,7 +318,7 @@ export default function StageTest(props) {
         rotation={[2.585, -0.595, 0.854]}
         scale={1.382}
       >
-        <meshStandardMaterial color="#F8C3CD" {...stencil} />
+        <MeshDistortMaterial  distort={0.3} speed={1} color="#F8C3CD" {...stencil}/>
       </mesh>
       <mesh
         geometry={nodes["tree-leaves-low-poly009"].geometry}
@@ -320,7 +326,7 @@ export default function StageTest(props) {
         rotation={[2.069, -0.504, -2.562]}
         scale={2.765}
       >
-        <meshStandardMaterial color="#F8C3CD" {...stencil} />
+        <MeshDistortMaterial  distort={0.3} speed={1} color="#F8C3CD" {...stencil}/>
       </mesh>
 
       {/* MASKED - DIGITAL SCENERY*/}
