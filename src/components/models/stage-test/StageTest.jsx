@@ -1172,6 +1172,8 @@ export default function StageTest(props) {
           scale={21.74}
         />
       </group>
+
+
     </group>
   );
 }
