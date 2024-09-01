@@ -168,6 +168,7 @@ export default function StageTest(props) {
   );
   const { actions } = useAnimations(animations, group);
 
+
   /**
    * USEEFFECT - TYPOGRAPHY ANIMATIONS
    */
@@ -189,6 +190,13 @@ export default function StageTest(props) {
     actions?.["typo-C-big-circle.001Action"].play();
     actions?.["typo-C-line-horizontal-bottom.001Action"].play();
     actions?.["typo-C-line-horizontal-top.001Action"].play();
+
+    // Mouse
+    actions?.["mouse.001Action"].play();
+
+    // Chair
+    actions?.["chair-topAction"].play();
+    actions?.["chair-bottomAction"].play();
   }, []);
 
   return (
@@ -198,15 +206,15 @@ export default function StageTest(props) {
           name="glass-brick-window-modified"
           geometry={nodes["glass-brick-window-modified"].geometry}
           material={materials["glass-low-poly-opaque"]}
-          position={[-179.792, 74.039, -259.002]}
+          position={[-141.792, 61.749, -225.774]}
           rotation={[0, 0.647, 0]}
-          scale={1.557}
+          scale={0.914}
         />
         <group
           name="ambience-of-light-single-product"
-          position={[-123.531, 35, -185.844]}
+          position={[-108.758, 38.826, -182.818]}
           rotation={[0.361, 1.186, -0.488]}
-          scale={[5.32, 16.973, 0.76]}
+          scale={[3.124, 9.966, 0.446]}
         >
           <mesh
             name="Cube277"
@@ -231,8 +239,9 @@ export default function StageTest(props) {
         </group>
         <group
           name="ambience-of-light-wall"
-          position={[-181.793, 0, -256.852]}
+          position={[-142.967, 18.276, -224.512]}
           rotation={[0, -0.923, 0]}
+          scale={0.587}
         >
           <mesh
             name="Cube323"
@@ -242,7 +251,7 @@ export default function StageTest(props) {
           <mesh
             name="Cube323_1"
             geometry={nodes.Cube323_1.geometry}
-            material={materials["ambience-of-light-dispersion"]}
+            material={materials["cream-white-matt"]}
           />
         </group>
 
@@ -369,8 +378,8 @@ export default function StageTest(props) {
 
         <group
           name="intervention-in-our-disconnection-models"
-          position={[63.786, 6.996, -148.779]}
-          rotation={[0.134, -0.786, 0.201]}
+          position={[183.149, 6.996, -171.875]}
+          rotation={[1.494, -1.476, 1.599]}
           scale={2.089}
         >
           <mesh
@@ -421,11 +430,6 @@ export default function StageTest(props) {
           <mesh
             name="Cube269_9"
             geometry={nodes.Cube269_9.geometry}
-            material={materials["wood-natural"]}
-          />
-          <mesh
-            name="Cube269_10"
-            geometry={nodes.Cube269_10.geometry}
             material={materials["wood-natural"]}
           />
         </group>
@@ -597,7 +601,6 @@ export default function StageTest(props) {
         />
 
         {/* TYPO - HANGING TEXTILE */}
-
         <mesh
           name="typo-graphic-wood-stick-bottom001"
           geometry={nodes["typo-graphic-wood-stick-bottom001"].geometry}
@@ -651,32 +654,34 @@ export default function StageTest(props) {
           name="working-desk001"
           geometry={nodes["working-desk001"].geometry}
           material={materials["wood-coating-palissandre"]}
-          position={[-33.833, 0.134, -7.815]}
+          position={[-31.465, 0.007, -18.065]}
           rotation={[0, -1.571, 0]}
-          scale={1.476}
+          scale={2.618}
         />
         <mesh
-          name="chair001"
-          geometry={nodes.chair001.geometry}
-          material={nodes.chair001.material}
-          position={[-24.225, 0.134, -9.61]}
-          rotation={[0, -1.229, 0]}
-          scale={10.889}
+          name="chair-top"
+          geometry={nodes["chair-top"].geometry}
+          material={materials["analog-tv-black-matt"]}
+          position={[-13.978, 0.007, -16.447]}
+          rotation={[0, -1.23, 0]}
+          scale={19.309}
         />
-        <mesh
-          name="keyboard001"
-          geometry={nodes.keyboard001.geometry}
-          material={materials.keyboard}
-          position={[-34.599, 9.473, -3.294]}
-          scale={3.085}
-        />
-        <mesh
-          name="monitor001"
-          geometry={nodes.monitor001.geometry}
-          material={materials.monitor}
-          position={[-34.207, 10.519, -2.958]}
-          scale={4.516}
-        />
+        <group
+          name="computer"
+          position={[-32.181, 18.423, -9.452]}
+          scale={8.008}
+        >
+          <mesh
+            name="Cube305"
+            geometry={nodes.Cube305.geometry}
+            material={materials.monitor}
+          />
+          <mesh
+            name="Cube305_1"
+            geometry={nodes.Cube305_1.geometry}
+            material={materials.keyboard}
+          />
+        </group>
         <mesh
           name="monitor-screen-world"
           geometry={nodes["monitor-screen-world"].geometry}
@@ -688,15 +693,15 @@ export default function StageTest(props) {
           name="mouse001"
           geometry={nodes.mouse001.geometry}
           material={materials.mouse}
-          position={[-33.065, 9.473, -3.121]}
+          position={[-30.103, 16.568, -9.742]}
           rotation={[0, 0.301, 0]}
-          scale={3.085}
+          scale={5.47}
         />
         <mesh
           name="wall-hanging-shelf"
           geometry={nodes["wall-hanging-shelf"].geometry}
           material={materials["wood-beech"]}
-          position={[-36.954, 20.706, -28.273]}
+          position={[-36.954, 29.811, -33.63]}
           scale={5.398}
         />
         <mesh
@@ -727,33 +732,33 @@ export default function StageTest(props) {
           name="mesh-marble-race"
           geometry={nodes["mesh-marble-race"].geometry}
           material={materials["foam-board"]}
-          position={[34.949, 1.915, 120.951]}
-          rotation={[Math.PI, -1.325, Math.PI]}
-          scale={4.649}
+          position={[27.694, 4.452, 125.595]}
+          rotation={[2.604, -1.304, 2.535]}
+          scale={4.835}
         />
         <mesh
           name="mesh-object-rotterdam-2024"
           geometry={nodes["mesh-object-rotterdam-2024"].geometry}
           material={materials["foam-board"]}
-          position={[-0.158, 2.773, 200.552]}
-          rotation={[Math.PI, -1.276, Math.PI]}
-          scale={0.296}
+          position={[-2.69, 8.908, 201.701]}
+          rotation={[1.02, -1.278, 1.047]}
+          scale={0.308}
         />
         <mesh
           name="mesh-weather-cereal"
           geometry={nodes["mesh-weather-cereal"].geometry}
           material={materials["foam-board"]}
-          position={[81.08, 8.203, 206.681]}
-          rotation={[-1.781, -0.016, -1.495]}
-          scale={0.455}
+          position={[89.054, 15.512, 215.322]}
+          rotation={[-1.993, -0.109, -2.469]}
+          scale={0.473}
         />
         <mesh
           name="mesh-donuts-universe"
           geometry={nodes["mesh-donuts-universe"].geometry}
           material={materials["foam-board"]}
-          position={[135.92, 11.959, 159.475]}
+          position={[138.849, 18.462, 158.976]}
           rotation={[1.564, -0.209, 1.757]}
-          scale={150.05}
+          scale={156.072}
         />
         <group
           name="three-d-app-modeling-utils"
@@ -797,6 +802,14 @@ export default function StageTest(props) {
             material={materials["pencil-body"]}
           />
         </group>
+        <mesh
+          name="chair-bottom"
+          geometry={nodes["chair-bottom"].geometry}
+          material={materials["dark-grey"]}
+          position={[-13.978, 0.007, -16.447]}
+          rotation={[0, -1.229, 0]}
+          scale={19.309}
+        />
         <mesh
           name="working-desk-workshop003"
           geometry={nodes["working-desk-workshop003"].geometry}
@@ -1172,8 +1185,6 @@ export default function StageTest(props) {
           scale={21.74}
         />
       </group>
-
-
     </group>
   );
 }
