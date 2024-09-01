@@ -1145,7 +1145,7 @@ export default function StageTest(props) {
           scale={[18, 12, 1]}
           material={waterMaterial}
         >
-          <planeGeometry args={[3, 3, 512, 512]} />
+          <planeGeometry args={[3, 3, 128, 128]} />
         </mesh>
 
         <mesh
