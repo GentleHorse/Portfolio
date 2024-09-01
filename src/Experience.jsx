@@ -22,12 +22,18 @@ export default function Experience() {
       <Lights />
       <Background />
 
-      <Environment preset="night" />
+      <Environment
+        background={false}
+        files={"./textures/envMap/kloppenheim_07_puresky_1k.hdr"}
+      />
 
       {/* DEBUG TOOLS */}
       <Perf position="top-right" />
       <axesHelper />
       <OrbitControls makeDefault />
+
+      {/* FOG */}
+      <fog attach="fog" args={["#1C1C1C", 8, 100]} />
 
       {/* PHYSICS SCENE */}
       <Physics debug={false}>
@@ -48,13 +54,13 @@ export default function Experience() {
           <StageTest scale={0.2} />
 
           <mesh
-            scale={[200, 200, 1]}
+            scale={[300, 300, 1]}
             position={[0, -0.5, 0]}
             rotation={[-Math.PI * 0.5, 0, 0]}
           >
             <planeGeometry />
             <MeshReflectorMaterial
-              resolution={2048}
+              resolution={256} // this affects performance a lot!
               blur={[300, 100]}
               mixBlur={1}
               mirror={[0.85]}
@@ -64,7 +70,7 @@ export default function Experience() {
               minDepthThreshold={0.85}
               metalness={0.5}
               roughness={0.7}
-              reflectorOffset={1.0}
+              reflectorOffset={0.2}
             />
           </mesh>
         </group>
