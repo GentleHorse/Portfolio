@@ -12,6 +12,7 @@ import {
   Mask,
   useMask,
   MeshDistortMaterial,
+  Float,
 } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
@@ -158,6 +159,14 @@ export default function StageTest(props) {
   sequenceRiverVideoTexture.wrapT = THREE.RepeatWrapping;
   sequenceRiverVideoTexture.flipY = false;
 
+  const all3DVisualsVideoTexture = useVideoTexture(
+    "./videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
+  );
+
+  all3DVisualsVideoTexture.wrapS = THREE.RepeatWrapping;
+  all3DVisualsVideoTexture.wrapT = THREE.RepeatWrapping;
+  all3DVisualsVideoTexture.flipY = false;
+
   /**
    * MODEL -------------------------------------------------------
    */
@@ -167,7 +176,6 @@ export default function StageTest(props) {
     "./models/test/stage-test.glb"
   );
   const { actions } = useAnimations(animations, group);
-
 
   /**
    * USEEFFECT - TYPOGRAPHY ANIMATIONS
@@ -728,38 +736,71 @@ export default function StageTest(props) {
           rotation={[0, -0.267, 0]}
           scale={[81.879, 14.183, 61.409]}
         />
-        <mesh
-          name="mesh-marble-race"
-          geometry={nodes["mesh-marble-race"].geometry}
-          material={materials["foam-board"]}
-          position={[27.694, 4.452, 125.595]}
-          rotation={[2.604, -1.304, 2.535]}
-          scale={4.835}
-        />
-        <mesh
-          name="mesh-object-rotterdam-2024"
-          geometry={nodes["mesh-object-rotterdam-2024"].geometry}
-          material={materials["foam-board"]}
-          position={[-2.69, 8.908, 201.701]}
-          rotation={[1.02, -1.278, 1.047]}
-          scale={0.308}
-        />
-        <mesh
-          name="mesh-weather-cereal"
-          geometry={nodes["mesh-weather-cereal"].geometry}
-          material={materials["foam-board"]}
-          position={[89.054, 15.512, 215.322]}
-          rotation={[-1.993, -0.109, -2.469]}
-          scale={0.473}
-        />
-        <mesh
-          name="mesh-donuts-universe"
-          geometry={nodes["mesh-donuts-universe"].geometry}
-          material={materials["foam-board"]}
-          position={[138.849, 18.462, 158.976]}
-          rotation={[1.564, -0.209, 1.757]}
-          scale={156.072}
-        />
+
+        {/* 3D APP DEV MODEL MESHES */}
+        <Float
+          speed={0.5}
+          rotationIntensity={0.15}
+          floatIntensity={0.1}
+          floatingRange={[0.1, 0.2]}
+        >
+          <mesh
+            name="mesh-marble-race"
+            geometry={nodes["mesh-marble-race"].geometry}
+            material={materials["foam-board"]}
+            position={[27.694, 4.452, 125.595]}
+            rotation={[2.604, -1.304, 2.535]}
+            scale={4.835}
+          />
+        </Float>
+
+        <Float
+          speed={0.5}
+          rotationIntensity={0.15}
+          floatIntensity={0.1}
+          floatingRange={[0.1, 0.2]}
+        >
+          <mesh
+            name="mesh-object-rotterdam-2024"
+            geometry={nodes["mesh-object-rotterdam-2024"].geometry}
+            material={materials["foam-board"]}
+            position={[-2.69, 8.908, 201.701]}
+            rotation={[1.02, -1.278, 1.047]}
+            scale={0.308}
+          />
+        </Float>
+
+        <Float
+          speed={0.5}
+          rotationIntensity={0.15}
+          floatIntensity={0.1}
+          floatingRange={[0.1, 0.2]}
+        >
+          <mesh
+            name="mesh-weather-cereal"
+            geometry={nodes["mesh-weather-cereal"].geometry}
+            material={materials["foam-board"]}
+            position={[89.054, 15.512, 215.322]}
+            rotation={[-1.993, -0.109, -2.469]}
+            scale={0.473}
+          />
+        </Float>
+        <Float
+          speed={0.5}
+          rotationIntensity={0.15}
+          floatIntensity={0.1}
+          floatingRange={[0.1, 0.2]}
+        >
+          <mesh
+            name="mesh-donuts-universe"
+            geometry={nodes["mesh-donuts-universe"].geometry}
+            material={materials["foam-board"]}
+            position={[138.849, 18.462, 158.976]}
+            rotation={[1.564, -0.209, 1.757]}
+            scale={156.072}
+          />
+        </Float>
+
         <group
           name="three-d-app-modeling-utils"
           position={[197.713, 33.683, 219.971]}
@@ -1100,6 +1141,8 @@ export default function StageTest(props) {
           rotation={[1.575, -0.001, -3.076]}
           scale={0.251}
         />
+
+        {/* CAMERA IN 3D VISUAL STUDIO */}
         <group
           name="camera-low-poly"
           position={[-95.521, 19.483, 112.243]}
@@ -1130,14 +1173,20 @@ export default function StageTest(props) {
           rotation={[Math.PI / 2, 0, -Math.PI / 2]}
           scale={0.017}
         />
+
+        {/* CAMERA SCREEN */}
         <mesh
           name="camera-low-poly-screen"
           geometry={nodes["camera-low-poly-screen"].geometry}
-          material={materials["dark-grey"]}
           position={[-95.521, 19.483, 112.243]}
           rotation={[Math.PI / 2, 0, -Math.PI / 2]}
           scale={[1.633, 0.544, 1.633]}
-        />
+        >
+          <meshBasicMaterial
+            map={all3DVisualsVideoTexture}
+            toneMapped={false}
+          />
+        </mesh>
         <mesh
           name="room"
           geometry={nodes.room.geometry}
