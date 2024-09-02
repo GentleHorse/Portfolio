@@ -30,7 +30,7 @@ export default function LoadingScreen(props) {
       className="w-[100vw] h-[100vh] bg-[#050505] flex flex-col items-end justify-end"
     >
       <div>
-        <p className="w-full h-full bottom-0 right-0 text-[#C1C1C1] text-[80px] font-serif">
+        <p className="w-full h-full bottom-0 right-0 m-4 text-[#C1C1C1] text-[120px] font-cinzel">
           {progress.toFixed(2)} %
         </p>
       </div>

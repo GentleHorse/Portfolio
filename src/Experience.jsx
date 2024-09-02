@@ -36,7 +36,7 @@ export default function Experience() {
       <fog attach="fog" args={["#1C1C1C", 8, 100]} />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
@@ -48,11 +48,12 @@ export default function Experience() {
           <StageCollisionObjects />
 
           {/* PROJECT PAGE PORTALS */}
-          {/* <PortalAreas /> */}
+          <PortalAreas />
 
           {/* STAGE TEST MODEL */}
           <Stage scale={0.2} />
 
+          {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           <mesh
             scale={[300, 300, 1]}
             position={[0, -0.5, 0]}

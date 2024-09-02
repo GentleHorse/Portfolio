@@ -19,6 +19,8 @@ export default {
         'open-sans': ['"Open Sans", sans-serif'],
         'playfair-display': ['"Playfair Display", serif'],
         'eb-garamond': ['"EB Garamond", serif'],
+        'antic-didone': ['"Antic Didone", serif'],
+        'cinzel': ['"Cinzel", serif'],
       }
     },
   },

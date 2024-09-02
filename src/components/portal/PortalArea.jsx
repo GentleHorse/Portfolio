@@ -2,7 +2,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useNavigate } from "react-router-dom";
-import { RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
 import { gameStates, useGameStore } from "../../store/store";
 
@@ -55,10 +55,11 @@ export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
 
       <RigidBody
         type="fixed"
-        scale={4.0}
+        scale={1.0}
         position={[0, 0.1, 0]}
-        rotation={[-Math.PI * 0.5, 0, 0]}
-        onCollisionEnter={() => {
+        // rotation={[-Math.PI * 0.5, 0, 0]}
+        colliders={false}
+        onIntersectionEnter={() => {
           // Chage state from "PLAY" to "MENU"
           setGameState(gameStates.MENU);
 
@@ -70,10 +71,7 @@ export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
           }, redirectWatingSeconds * 1000);
         }}
       >
-        <mesh scale={0.9}>
-          <planeGeometry />
-          <meshNormalMaterial transparent opacity={0.0} />
-        </mesh>
+        <CuboidCollider args={[2.5, 1.5, 2.5]} sensor />
       </RigidBody>
 
       <mesh
