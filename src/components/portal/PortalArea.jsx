@@ -9,7 +9,7 @@ import { gameStates, useGameStore } from "../../store/store";
 import portalVertexShader from "../../shaders/portal/vertex.glsl";
 import portalFragmentShader from "../../shaders/portal/fragment.glsl";
 
-export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
+export default function PortalArea({ redirectWatingSeconds, url, text, ...props }) {
   const navigate = useNavigate();
 
   const portalWall = useRef();
@@ -47,7 +47,7 @@ export default function PortalArea({ redirectWatingSeconds, url, ...props }) {
         <Root>
           <Container flexDirection="column" gap={15}>
             <Text fontWeight="extra-bold" fontSize={40} color="snow">
-              Go to the project page
+              {text}
             </Text>
           </Container>
         </Root>
