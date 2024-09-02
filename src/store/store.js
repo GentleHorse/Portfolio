@@ -5,6 +5,7 @@ import { subscribeWithSelector } from "zustand/middleware";
  * GAME STATES
  */
 export const gameStates = {
+  LOADING: "LOADING",
   MENU: "MENU",
   PLAY: "PLAY",
   RESTART: "RESTART",
@@ -18,7 +19,7 @@ export const useGameStore = create(
     /**
      * GAME STATE - PLAY, MENU
      */
-    gameState: gameStates.MENU,
+    gameState: gameStates.LOADING,
     setGameState: (gameState) => {
       set({ gameState: gameState });
     },

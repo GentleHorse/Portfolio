@@ -9,9 +9,9 @@ import { isBrowser } from "react-device-detect";
 
 import Background from "./components/utilComponents/Background.jsx";
 import Lights from "./components/utilComponents/Lights.jsx";
-import StageTest from "./components/models/stage-test/StageTest.jsx";
+import Stage from "./components/models/stage/Stage.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
-import StageTestCollisionObjects from "./components/models/stage-test/StageTestCollisionObjects.jsx";
+import StageCollisionObjects from "./components/models/stage/StageCollisionObjects.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
 
@@ -45,13 +45,13 @@ export default function Experience() {
           {/* <DesignProjectUI /> */}
 
           {/* STAGE COLLISION OBJECTS */}
-          <StageTestCollisionObjects />
+          <StageCollisionObjects />
 
           {/* PROJECT PAGE PORTALS */}
           {/* <PortalAreas /> */}
 
           {/* STAGE TEST MODEL */}
-          <StageTest scale={0.2} />
+          <Stage scale={0.2} />
 
           <mesh
             scale={[300, 300, 1]}

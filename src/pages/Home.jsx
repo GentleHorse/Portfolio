@@ -5,7 +5,10 @@ import Menu from "../components/menu/Menu.jsx";
 import Experience from "../Experience.jsx";
 import MobileExperience from "../components/mobileExperience/MobileExperience.jsx";
 import HowToControl from "../components/UI/HowToControl.jsx";
-import { useGameStore } from "../store/store.js";
+import { gameStates, useGameStore } from "../store/store.js";
+import { Suspense } from "react";
+import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
+
 
 export default function HomePage() {
   /**
@@ -22,7 +25,7 @@ export default function HomePage() {
       {isBrowser && (
         <>
           {/* The menu for the player control */}
-          <Menu />
+          {gameState !== gameStates.LOADING && <Menu />}
 
           {/* Instruction of how to control the player */}
           {gameState === "PLAY" && <HowToControl />}
@@ -36,10 +39,13 @@ export default function HomePage() {
               position: [0, 1.5, 8],
             }}
           >
-            <Experience />
+            <Suspense fallback={<LoadingScreen waitingTime={0.8} />}>
+              <Experience />
+            </Suspense>
           </Canvas>
         </>
       )}
     </>
   );
 }
+
