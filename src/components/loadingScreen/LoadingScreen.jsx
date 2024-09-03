@@ -14,15 +14,13 @@ export default function LoadingScreen(props) {
   }));
 
   /**
-   * SHOW MANU WINDOW WITH WAITING TIME
+   * SHOW MANU AFTER THE COMPONENT IS DESTROYED
    */
   useEffect(() => {
-    if (progress === 100) {
-      setTimeout(() => {
-        setGameState(gameStates.MENU);
-      }, props.waitingTime * 1000);
-    }
-  }, [progress]);
+    return () => {
+      setGameState(gameStates.MENU);
+    };
+  }, []);
 
   return (
     <Html

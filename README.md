@@ -1,5 +1,11 @@
 # Toshihito Endo's Portfolio
 
+## Local server
+
+```
+npm run dev
+```
+
 ## Dev Note 01 - UV of TV screens inside glb (gltf) models  
 
 In order to play videos inside screen inside glb models, UV should be properly unwrapped, otherwise it cannot play the video in the way you want.
