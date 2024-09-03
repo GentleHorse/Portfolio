@@ -36,11 +36,11 @@ export default function Experience() {
       <fog attach="fog" args={["#1C1C1C", 8, 100]} />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={true}>
+      <Physics debug={false}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
-        <group position={[0, 0, -15]}>
+        <group position={[0, 0, -5]}>
           {/* UI */}
           {/* <DesignProjectUI /> */}
 
@@ -56,7 +56,7 @@ export default function Experience() {
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           <mesh
             scale={[300, 300, 1]}
-            position={[0, -0.5, 0]}
+            position={[0, -0.5, -100]}
             rotation={[-Math.PI * 0.5, 0, 0]}
           >
             <planeGeometry />
