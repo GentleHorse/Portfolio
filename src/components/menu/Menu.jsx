@@ -75,29 +75,34 @@ export default function Menu() {
         className="w-[60vw] h-[60vh] overflow-hidden rounded-2xl bg-[#0B346E75]"
       >
         <section className="w-full h-full flex flex-col items-center justify-between">
+          <p className="my-5 text-slate-50">
+            Welcome!
+            <br />
+            <br />
+            You can explore the world with your keyboard & mouse.
+            <br />
+            <br />
+            WASD/AQSD/arrow keys to move <br />
+            Mouse to change the camera angle <br />
+            Esc key to go back to Menu
+          </p>
           <button
-            className="w-full h-4/5 bg-[#F05E1C85] py-10 rounded-t-xl text-slate-50 uppercase font-serif font-extrabold text-4xl"
+            className="w-full h-2/5 bg-[#09090985] py-10 text-slate-50 uppercase font-serif font-extrabold text-4xl"
             onClick={modalCloseHandler}
           >
             P l a y
           </button>
           <div className="w-full text-slate-50 text-2xl uppercase flex justify-center">
-            <Link
-              to="/about"
-            >
-              <p className="mx-5">About</p>
+            <Link to="/about">
+              <p className="mx-5 font-serif">About</p>
             </Link>
 
-            <Link
-              to="/works"
-            >
-              <p className="mx-5">WORKS</p>
+            <Link to="/works">
+              <p className="mx-5 font-serif">WORKS</p>
             </Link>
 
-            <Link
-              to="/contact"
-            >
-              <p className="mx-5">Contact</p>
+            <Link to="/contact">
+              <p className="mx-5 font-serif">Contact</p>
             </Link>
           </div>
         </section>

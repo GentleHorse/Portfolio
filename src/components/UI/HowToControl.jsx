@@ -6,8 +6,8 @@ export default function HowToControl() {
   return (
     <>
       <section className="fixed flex flex-col justify-between w-[100vw] h-[100vh] z-20">
-        <div className="flex items-center">
-          <img src={escKeyIcon} className="mx-2 w-14 h-14" />
+        <div className="flex items-center mt-8">
+          <img src={escKeyIcon} className="ml-6 mr-2 w-14 h-14" />
           <p className="font-roboto text-slate-50 text-[20px]">
             Go back to Menu
           </p>

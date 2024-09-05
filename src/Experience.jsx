@@ -1,7 +1,9 @@
+import * as THREE from "three";
 import {
   Environment,
   OrbitControls,
   MeshReflectorMaterial,
+  useTexture,
 } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
@@ -16,6 +18,16 @@ import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
 
 export default function Experience() {
+  /**
+   * TEXTURE FOR THE REFLECTIVE FLOOR
+   */
+  const woodPlanksNormalTexture = useTexture(
+    "./textures/wood-planks/Wood_planks_011_normal.jpg"
+  );
+  woodPlanksNormalTexture.wrapS = THREE.RepeatWrapping;
+  woodPlanksNormalTexture.wrapT = THREE.RepeatWrapping;
+  woodPlanksNormalTexture.rotation = Math.PI * 0.5;
+
   return (
     <>
       {/* ENVIRONMENT SET UP */}
@@ -24,7 +36,7 @@ export default function Experience() {
 
       <Environment
         background={false}
-        files={"./textures/envMap/kloppenheim_07_puresky_1k.hdr"}
+        files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
       />
 
       {/* DEBUG TOOLS */}
@@ -71,6 +83,9 @@ export default function Experience() {
               minDepthThreshold={0.85}
               metalness={0.5}
               roughness={0.7}
+              normalMap={woodPlanksNormalTexture}
+              distortion={2.5}
+              distortionMap={woodPlanksNormalTexture}
               reflectorOffset={0.2}
             />
           </mesh>
