@@ -110,6 +110,17 @@ export default function WorksPage() {
               <button
                 className="text-left"
                 onClick={() => {
+                  navigate("/portfolio-website");
+                }}
+              >
+                <p className="font-roboto mb-[5px] text-[20px] text-[#d0e6efb1]">
+                  Portfolio Website
+                </p>
+              </button>
+
+              <button
+                className="text-left"
+                onClick={() => {
                   navigate("/object-rotterdam-2024");
                 }}
               >
@@ -137,6 +148,17 @@ export default function WorksPage() {
               >
                 <p className="font-roboto mb-[5px] text-[20px] text-[#d0e6efb1]">
                   Donuts Universe
+                </p>
+              </button>
+
+              <button
+                className="text-left"
+                onClick={() => {
+                  navigate("/marble-race");
+                }}
+              >
+                <p className="font-roboto mb-[5px] text-[20px] text-[#d0e6efb1]">
+                  Marble Race
                 </p>
               </button>
             </section>

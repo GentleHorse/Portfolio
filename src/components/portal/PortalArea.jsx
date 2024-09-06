@@ -9,10 +9,13 @@ import { gameStates, useGameStore } from "../../store/store";
 import portalVertexShader from "../../shaders/portal/vertex.glsl";
 import portalFragmentShader from "../../shaders/portal/fragment.glsl";
 
-export default function PortalArea({ redirectWatingSeconds, url, text, ...props }) {
+export default function PortalArea({
+  redirectWatingSeconds,
+  url,
+  text = "Visit Project Page",
+  ...props
+}) {
   const navigate = useNavigate();
-
-  const portalWall = useRef();
 
   /**
    * GAME STORE
@@ -26,19 +29,10 @@ export default function PortalArea({ redirectWatingSeconds, url, text, ...props 
   const portalMaterial = new THREE.ShaderMaterial({
     vertexShader: portalVertexShader,
     fragmentShader: portalFragmentShader,
-    uniforms: {
-      uTime: new THREE.Uniform(0.0),
-      uColorStart: new THREE.Uniform(new THREE.Color("#027a00")),
-      uColorEnd: new THREE.Uniform(new THREE.Color("#1b9dee")),
-    },
     side: THREE.DoubleSide,
     wireframe: false,
     depthWrite: false,
     transparent: true,
-  });
-
-  useFrame((state, delta) => {
-    portalWall.current.material.uniforms.uTime.value += delta;
   });
 
   return (
@@ -46,7 +40,7 @@ export default function PortalArea({ redirectWatingSeconds, url, text, ...props 
       <group position={[0, 3, 0]} rotation={[0, 0, 0]}>
         <Root>
           <Container flexDirection="column" gap={15}>
-            <Text fontWeight="extra-bold" fontSize={40} color="snow">
+            <Text fontWeight="extra-bold" fontSize={50} color="snow">
               {text}
             </Text>
           </Container>
@@ -75,13 +69,12 @@ export default function PortalArea({ redirectWatingSeconds, url, text, ...props 
       </RigidBody>
 
       <mesh
-        ref={portalWall}
-        scale={3.0}
+        scale={5.0}
         position={[0, 3.2, 0]}
         rotation={[0, Math.PI, 0]}
         material={portalMaterial}
       >
-        <cylinderGeometry args={[1, 1, 2.5, 16, 1, true]} />
+        <cylinderGeometry args={[1, 0.5, 1.5, 16, 1, true]} />
       </mesh>
     </group>
   );

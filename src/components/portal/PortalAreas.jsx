@@ -7,7 +7,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/ambience-of-light"
-        text="Light and material and space"
+        // text="Light and material and space"
         position={[-15, 0, -35]}
         rotation={[0, Math.PI * 0.2, 0]}
       />
@@ -16,7 +16,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/beauty-of-time-passing"
-        text="A sense of nature with digital relm"
+        // text="A sense of nature with digital realm"
         position={[10, 0, -45]}
         rotation={[0, 0, 0]}
       />
@@ -25,7 +25,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/intervention-in-our-disconnection"
-        text="Creativity starts from edges"
+        // text="Creativity starts from edges"
         position={[45, 0, -20]}
         rotation={[0, -Math.PI * 0.4, 0]}
       />
@@ -34,7 +34,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/masu-typo"
-        text="Typography with no fixed faces"
+        // text="Typography with no fixed faces"
         position={[-60, 0, -110]}
         rotation={[0, 0, 0]}
       />
@@ -43,7 +43,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/comforting-dinner"
-        text="Sequencial activation of our sleeping senses"
+        // text="Sequencial activation of our sleeping senses"
         position={[50, 0, -80]}
         rotation={[0, -Math.PI * 0.4, 0]}
       />
@@ -52,7 +52,7 @@ export default function PortalAreas() {
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/three-d-visuals"
-        text="3D VISUALS"
+        // text="3D VISUALS"
         position={[-30, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       />

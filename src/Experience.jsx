@@ -76,7 +76,7 @@ export default function Experience() {
               resolution={256} // this affects performance a lot!
               blur={[300, 100]}
               mixBlur={1}
-              mirror={[0.85]}
+              mirror={[0.95]}
               color="#C1C1C1"
               mixStrength={2}
               depthScale={1}
