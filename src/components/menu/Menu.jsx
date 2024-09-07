@@ -92,13 +92,17 @@ export default function Menu() {
           >
             P l a y
           </button>
-          <div className="w-full text-slate-50 text-2xl uppercase flex justify-center">
+          <div className="w-full text-slate-50 text-2xl flex justify-center">
+          <Link to="/about">
+              <p className="mx-5 font-serif">About this website</p>
+            </Link>
+
             <Link to="/about">
-              <p className="mx-5 font-serif">About</p>
+              <p className="mx-5 font-serif">Author</p>
             </Link>
 
             <Link to="/works">
-              <p className="mx-5 font-serif">WORKS</p>
+              <p className="mx-5 font-serif">Other works</p>
             </Link>
 
             <Link to="/contact">

@@ -9,6 +9,9 @@ import { gameStates, useGameStore } from "../../store/store";
 import portalVertexShader from "../../shaders/portal/vertex.glsl";
 import portalFragmentShader from "../../shaders/portal/fragment.glsl";
 
+const PORTAL_DOOR_WIDTH = 7.0;
+const PORTAL_DOOR_HEIGHT = 15.0;
+
 export default function PortalArea({
   redirectWatingSeconds,
   url,
@@ -25,7 +28,11 @@ export default function PortalArea({
     setGameState: state.setGameState,
   }));
 
-  // Shader material - portal material
+  // Geometry
+  const portalGeometry = new THREE.PlaneGeometry(1, 1);
+  portalGeometry.translate(0, 0.5, 0);
+
+  // Material - shader material
   const portalMaterial = new THREE.ShaderMaterial({
     vertexShader: portalVertexShader,
     fragmentShader: portalFragmentShader,
@@ -37,12 +44,13 @@ export default function PortalArea({
 
   return (
     <group {...props}>
-      <group position={[0, 3, 0]} rotation={[0, 0, 0]}>
+      <group position={[0, 5, 0]} rotation={[0, 0, 0]}>
         <Root>
-          <Container flexDirection="column" gap={15}>
-            <Text fontWeight="extra-bold" fontSize={50} color="snow">
+          <Container flexDirection="column" gap={15} alignItems="center">
+            <Text fontWeight="extra-bold" fontSize={60} color="snow">
               {text}
             </Text>
+          <Image src="./images/icons/external-link.svg" width={200} marginTop={50} />
           </Container>
         </Root>
       </group>
@@ -69,13 +77,12 @@ export default function PortalArea({
       </RigidBody>
 
       <mesh
-        scale={5.0}
-        position={[0, 3.2, 0]}
+        scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
+        position={[0, 0, 0]}
         rotation={[0, Math.PI, 0]}
+        geometry={portalGeometry}
         material={portalMaterial}
-      >
-        <cylinderGeometry args={[1, 0.5, 1.5, 16, 1, true]} />
-      </mesh>
+      />
     </group>
   );
 }
