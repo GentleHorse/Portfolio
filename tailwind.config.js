@@ -21,6 +21,7 @@ export default {
         'eb-garamond': ['"EB Garamond", serif'],
         'antic-didone': ['"Antic Didone", serif'],
         'cinzel': ['"Cinzel", serif'],
+        'great-vibes': ['"Great Vibes", cursive'],
       }
     },
   },

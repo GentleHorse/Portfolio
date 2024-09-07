@@ -72,10 +72,10 @@ export default function Menu() {
       <Modal
         open={isModalOpen}
         onClose={gameStartHandler}
-        className="w-[60vw] h-[60vh] overflow-hidden rounded-2xl bg-[#0B346E75]"
+        className="w-[60vw] h-[75vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
-        <section className="w-full h-full flex flex-col items-center justify-between">
-          <p className="my-5 text-slate-50">
+        <section className="w-full h-full flex flex-col items-center justify-evenly">
+          <p className="mt-5 text-slate-50 text-md">
             Welcome!
             <br />
             <br />
@@ -85,15 +85,22 @@ export default function Menu() {
             WASD/AQSD/arrow keys to move <br />
             Mouse to change the camera angle <br />
             Esc key to go back to Menu
+            <br />
+            <br />
+            Enjoy !
+          </p>
+          <p className="w-[50%] mb-5 text-right text-slate-50 font-great-vibes text-3xl">
+            Toshihito Endo
           </p>
           <button
-            className="w-full h-2/5 bg-[#09090985] py-10 text-slate-50 uppercase font-serif font-extrabold text-4xl"
+            className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
             onClick={modalCloseHandler}
           >
-            P l a y
+            <p>P l a y</p>
+            <img src="./images/icons/play-triangle.svg" className="w-[50px]" />
           </button>
-          <div className="w-full text-slate-50 text-2xl flex justify-center">
-          <Link to="/about">
+          <div className="w-full text-slate-50 text-xl flex justify-center">
+            <Link to="/about">
               <p className="mx-5 font-serif">About this website</p>
             </Link>
 
