@@ -82,9 +82,9 @@ export default function Menu() {
             You can explore the world with your keyboard & mouse.
             <br />
             <br />
-            WASD/AQSD/arrow keys to move <br />
-            Mouse to change the camera angle <br />
-            Esc key to go back to Menu
+            &gt;&gt; WASD/AQSD/arrow keys to move <br />
+            &gt;&gt; Mouse to change the camera angle <br />
+            &gt;&gt; Esc key to go back to Menu
             <br />
             <br />
             Enjoy !

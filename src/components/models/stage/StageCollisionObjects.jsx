@@ -10,17 +10,17 @@ export default function StageCollisionObjects(props) {
         </RigidBody>
 
         {/* LANDING ROOM */}
-        <RigidBody colliders={false} type="fixed" position={[2, 5, 11]}>
-          <CuboidCollider args={[10, 8, 0.5]} />
+        <RigidBody colliders={false} type="fixed" position={[10, 5, 16]}>
+          <CuboidCollider args={[18, 8, 0.5]} />
         </RigidBody>
 
         <RigidBody
           colliders={false}
           type="fixed"
           rotation={[0, Math.PI * 0.5, 0]}
-          position={[10, 5, 0]}
+          position={[28, 5, 5]}
         >
-          <CuboidCollider args={[12, 8, 0.5]} />
+          <CuboidCollider args={[15, 8, 0.5]} />
         </RigidBody>
 
         <RigidBody
@@ -46,9 +46,9 @@ export default function StageCollisionObjects(props) {
           colliders={false}
           type="fixed"
           rotation={[0, Math.PI * 0.5, 0]}
-          position={[-40, 5, 20]}
+          position={[-40, 5, 25]}
         >
-          <CuboidCollider args={[30, 8, 0.5]} />
+          <CuboidCollider args={[35, 8, 0.5]} />
         </RigidBody>
 
         <RigidBody
@@ -57,14 +57,14 @@ export default function StageCollisionObjects(props) {
           rotation={[0, Math.PI * 0.5, 0]}
           position={[50, 5, 30]}
         >
-          <CuboidCollider args={[20, 8, 0.5]} />
+          <CuboidCollider args={[30, 8, 0.5]} />
         </RigidBody>
 
         <RigidBody
           colliders={false}
           type="fixed"
           rotation={[0, 0, 0]}
-          position={[0, 5, 48]}
+          position={[0, 5, 60]}
         >
           <CuboidCollider args={[50, 8, 0.5]} />
         </RigidBody>
@@ -83,7 +83,7 @@ export default function StageCollisionObjects(props) {
           colliders={false}
           type="fixed"
           rotation={[0, 0, 0]}
-          position={[-52.5, 5, -10]}
+          position={[-47, 5, -10]}
         >
           <CuboidCollider args={[45, 8, 0.5]} />
         </RigidBody>
