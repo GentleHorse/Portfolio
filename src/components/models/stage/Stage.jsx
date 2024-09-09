@@ -216,7 +216,7 @@ export default function Stage(props) {
           name="ambience-of-light-wall"
           geometry={nodes["ambience-of-light-wall"].geometry}
           material={materials["ambience-of-light-dispersion"]}
-          position={[-246.491, -0.57, -300.174]}
+          position={[-152.866, -0.57, -248.229]}
           rotation={[0, -0.923, 0]}
           scale={0.587}
         />
@@ -224,7 +224,7 @@ export default function Stage(props) {
           name="mesh-ambience-of-light"
           geometry={nodes["mesh-ambience-of-light"].geometry}
           material={materials["texture-ambience-of-light"]}
-          position={[-243.653, 43.04, -301.052]}
+          position={[-150.028, 43.04, -249.108]}
           rotation={[0, 0.647, 0]}
           scale={0.618}
         />
@@ -358,7 +358,7 @@ export default function Stage(props) {
             nodes["mesh-intervention-in-our-disconnection-models"].geometry
           }
           material={materials["texture-intervention-in-our-disconnection"]}
-          position={[327.266, 6.996, -298.71]}
+          position={[271.166, 6.996, -373.962]}
           rotation={[2.956, -1.034, 3.087]}
           scale={2.089}
         />
@@ -535,7 +535,7 @@ export default function Stage(props) {
           name="typo-graphic-wood-stick-bottom001"
           geometry={nodes["typo-graphic-wood-stick-bottom001"].geometry}
           material={materials["wood-natural-low-poly"]}
-          position={[-386.878, 14.515, -701.933]}
+          position={[-382.448, 14.515, -639.907]}
           rotation={[-Math.PI, -0.117, Math.PI / 2]}
           scale={[-0.745, -29.292, -0.745]}
         />
@@ -543,7 +543,7 @@ export default function Stage(props) {
           name="typo-graphic-textile001"
           geometry={nodes["typo-graphic-textile001"].geometry}
           material={materials["typo-graphic-textile"]}
-          position={[-386.79, 56.877, -701.943]}
+          position={[-382.36, 56.877, -639.917]}
           rotation={[0, 0.117, Math.PI / 2]}
           scale={1.488}
         />
@@ -551,7 +551,7 @@ export default function Stage(props) {
           name="typo-graphic-wood-stick-top001"
           geometry={nodes["typo-graphic-wood-stick-top001"].geometry}
           material={materials["wood-natural-low-poly"]}
-          position={[-386.878, 99.239, -701.933]}
+          position={[-382.448, 99.239, -639.907]}
           rotation={[-Math.PI, -0.117, Math.PI / 2]}
           scale={[-0.745, -29.292, -0.745]}
         />
@@ -559,8 +559,8 @@ export default function Stage(props) {
         {/* COMFORTING DINNER */}
         <group
           name="mesh-comforting-dinner-cutlery"
-          position={[656.368, 40.635, -649.808]}
-          rotation={[0.309, -1.331, -0.184]}
+          position={[518.716, 40.635, -701.521]}
+          rotation={[0.205, -1.208, -0.293]}
           scale={12.497}
         >
           <mesh
@@ -578,8 +578,8 @@ export default function Stage(props) {
           name="mesh-comforting-dinner-humans"
           geometry={nodes["mesh-comforting-dinner-humans"].geometry}
           material={materials["john-mesh-without-texture"]}
-          position={[241.318, -55.112, -806.765]}
-          rotation={[Math.PI / 2, 0, 0.342]}
+          position={[87.188, -55.112, -804.891]}
+          rotation={[Math.PI / 2, 0, 0.216]}
           scale={198.515}
         />
 
@@ -617,17 +617,18 @@ export default function Stage(props) {
         />
 
         {/* 3D APP DEV MODEL MESHES */}
+        {/* APP FOAM MODELS */}
         <Float
           speed={0.5}
-          rotationIntensity={0.15}
-          floatIntensity={0.1}
-          floatingRange={[0.1, 0.2]}
+          rotationIntensity={0.075}
+          floatIntensity={0.05}
+          floatingRange={[0.05, 0.1]}
         >
           <mesh
             name="mesh-marble-race"
             geometry={nodes["mesh-marble-race"].geometry}
-            material={materials["foam-board"]}
-            position={[27.694, 4.452, 125.595]}
+            material={materials["texture-3d-app-models"]}
+            position={[27.694, 4.452, 156.237]}
             rotation={[2.604, -1.304, 2.535]}
             scale={4.835}
           />
@@ -635,15 +636,15 @@ export default function Stage(props) {
 
         <Float
           speed={0.5}
-          rotationIntensity={0.15}
-          floatIntensity={0.1}
-          floatingRange={[0.1, 0.2]}
+          rotationIntensity={0.075}
+          floatIntensity={0.05}
+          floatingRange={[0.05, 0.1]}
         >
           <mesh
             name="mesh-object-rotterdam-2024"
             geometry={nodes["mesh-object-rotterdam-2024"].geometry}
-            material={materials["foam-board"]}
-            position={[-2.69, 8.908, 201.701]}
+            material={materials["texture-3d-app-models"]}
+            position={[-2.69, 8.908, 232.343]}
             rotation={[1.02, -1.278, 1.047]}
             scale={0.308}
           />
@@ -651,35 +652,37 @@ export default function Stage(props) {
 
         <Float
           speed={0.5}
-          rotationIntensity={0.15}
-          floatIntensity={0.1}
-          floatingRange={[0.1, 0.2]}
+          rotationIntensity={0.075}
+          floatIntensity={0.05}
+          floatingRange={[0.05, 0.1]}
         >
           <mesh
             name="mesh-weather-cereal"
             geometry={nodes["mesh-weather-cereal"].geometry}
-            material={materials["foam-board"]}
-            position={[89.054, 15.512, 215.322]}
+            material={materials["texture-3d-app-models"]}
+            position={[89.054, 15.512, 245.964]}
             rotation={[-1.993, -0.109, -2.469]}
             scale={0.473}
           />
         </Float>
+
         <Float
           speed={0.5}
-          rotationIntensity={0.15}
-          floatIntensity={0.1}
-          floatingRange={[0.1, 0.2]}
+          rotationIntensity={0.075}
+          floatIntensity={0.05}
+          floatingRange={[0.05, 0.1]}
         >
           <mesh
             name="mesh-donuts-universe"
             geometry={nodes["mesh-donuts-universe"].geometry}
-            material={materials["foam-board"]}
-            position={[138.849, 18.462, 158.976]}
+            material={materials["texture-3d-app-models"]}
+            position={[138.849, 18.462, 189.618]}
             rotation={[1.564, -0.209, 1.757]}
             scale={156.072}
           />
         </Float>
 
+        {/* RURLER, CUTTING MAT, KNIFE, PENCIL */}
         <group
           name="three-d-app-modeling-utils"
           position={[197.713, 33.683, 275.362]}
@@ -722,96 +725,88 @@ export default function Stage(props) {
             material={materials["pencil-body"]}
           />
         </group>
+
+        {/* CLAY SCULPTURE STAND & WORKING OBJECTS, TOOLS */}
         <mesh
           name="working-desk-workshop003"
           geometry={nodes["working-desk-workshop003"].geometry}
-          material={materials["wood-natural"]}
+          material={materials["texture-3d-visuals"]}
           position={[-162.351, 0.422, 2.204]}
           rotation={[0, 0.29, 0]}
-          scale={7.956}
         />
         <mesh
           name="working-desk-workshop004"
           geometry={nodes["working-desk-workshop004"].geometry}
-          material={materials["wood-natural"]}
+          material={materials["texture-3d-visuals"]}
           position={[-147.125, 0.422, -2.341]}
           rotation={[0, 0.29, 0]}
-          scale={7.956}
         />
         <mesh
           name="sculpture-stand-square-small001"
           geometry={nodes["sculpture-stand-square-small001"].geometry}
-          material={materials["wood-natural"]}
+          material={materials["texture-3d-visuals"]}
           position={[-149.915, 0.66, 163.018]}
-          scale={13.798}
         />
         <mesh
           name="sculpture-stand-round001"
           geometry={nodes["sculpture-stand-round001"].geometry}
-          material={materials["wood-natural"]}
+          material={materials["texture-3d-visuals"]}
           position={[-136.577, 0.422, 38.24]}
           rotation={[0, 0.191, 0]}
-          scale={13.502}
         />
         <mesh
           name="sculpture-stand-square-big001"
           geometry={nodes["sculpture-stand-square-big001"].geometry}
-          material={materials["wood-natural"]}
+          material={materials["texture-3d-visuals"]}
           position={[-165.752, 0.422, 56.735]}
           rotation={[0, -0.091, 0]}
-          scale={[24.824, 16.072, 24.824]}
         />
         <mesh
           name="working-desk-workshop005"
           geometry={nodes["working-desk-workshop005"].geometry}
-          material={materials["wood-dark"]}
+          material={materials["texture-3d-visuals"]}
           position={[-109.162, 0.422, 17.405]}
-          scale={7.956}
         />
         <mesh
           name="clay-board001"
           geometry={nodes["clay-board001"].geometry}
-          material={nodes["clay-board001"].material}
+          material={materials["texture-3d-visuals"]}
           position={[-117.304, 11.373, 34.567]}
-          scale={1.712}
         />
         <mesh
           name="paper001"
           geometry={nodes.paper001.geometry}
-          material={nodes.paper001.material}
+          material={materials["texture-3d-visuals"]}
           position={[-117.288, 10.853, 52.658]}
-          scale={1.712}
         />
         <mesh
           name="clay-in-process-01001"
           geometry={nodes["clay-in-process-01001"].geometry}
-          material={materials.clay}
+          material={materials["texture-3d-visuals"]}
           position={[-109.951, 11.989, 12.01]}
-          scale={1.712}
         />
         <mesh
           name="clay-in-process-02001"
           geometry={nodes["clay-in-process-02001"].geometry}
-          material={materials.clay}
+          material={materials["texture-3d-visuals"]}
           position={[-108.294, 13.165, 17.118]}
           rotation={[-0.482, -0.017, 0.033]}
-          scale={1.712}
         />
         <mesh
           name="sculpture-tool-01001"
           geometry={nodes["sculpture-tool-01001"].geometry}
-          material={materials["clay-tools"]}
+          material={materials["texture-3d-visuals"]}
           position={[-109.598, 11.082, 0.702]}
-          scale={2.797}
         />
         <mesh
           name="sculpture-tool-02001"
           geometry={nodes["sculpture-tool-02001"].geometry}
-          material={materials["clay-tools"]}
+          material={materials["texture-3d-visuals"]}
           position={[-110.222, 11.057, 3.934]}
           rotation={[0, -1.571, 0]}
-          scale={0.567}
         />
+
+        {/* ANALOG TV SHELLS */}
         <group
           name="analog-tv-shells"
           position={[-194.784, 0, 62.408]}
@@ -826,6 +821,45 @@ export default function Stage(props) {
             name="Mesh006_1"
             geometry={nodes.Mesh006_1.geometry}
             material={materials["cable-black"]}
+          />
+        </group>
+
+        {/* CLAY SCULPTURES */}
+        <mesh
+          name="mesh-equence-river-soil"
+          geometry={nodes["mesh-equence-river-soil"].geometry}
+          material={materials["texture-3d-visuals"]}
+          position={[-154.917, 10.997, 0.247]}
+          rotation={[0, 0.29, 0]}
+        />
+        <mesh
+          name="mesh-blooming-flower"
+          geometry={nodes["mesh-blooming-flower"].geometry}
+          material={materials["texture-3d-visuals"]}
+          position={[-151.004, 13.152, 164.199]}
+          rotation={[Math.PI / 2, 0, 0.484]}
+        />
+        <mesh
+          name="mesh-silky-sphere"
+          geometry={nodes["mesh-silky-sphere"].geometry}
+          material={materials["texture-3d-visuals"]}
+          position={[-137.005, 22.749, 38.183]}
+          rotation={[0, 0.191, 0]}
+        />
+        <group
+          name="mesh-glass-popping"
+          position={[-164.224, 18.923, 56.846]}
+          rotation={[0, 0.34, 0]}
+        >
+          <mesh
+            name="Plane109"
+            geometry={nodes.Plane109.geometry}
+            material={materials["texture-3d-visuals"]}
+          />
+          <mesh
+            name="Plane109_1"
+            geometry={nodes.Plane109_1.geometry}
+            material={materials["texture-3d-visuals"]}
           />
         </group>
 
@@ -930,64 +964,7 @@ export default function Stage(props) {
           />
         </mesh>
 
-        <group
-          name="sequence-river-soil001"
-          position={[-154.917, 10.997, 0.247]}
-          rotation={[0, 0.29, 0]}
-          scale={13.422}
-        >
-          <mesh
-            name="Cube329"
-            geometry={nodes.Cube329.geometry}
-            material={materials.clay}
-          />
-          <mesh
-            name="Cube329_1"
-            geometry={nodes.Cube329_1.geometry}
-            material={materials.clay}
-          />
-        </group>
-        <mesh
-          name="sequence-river-water001"
-          geometry={nodes["sequence-river-water001"].geometry}
-          material={materials.clay}
-          position={[-154.917, 15.33, 0.247]}
-          rotation={[0, 0.29, 0]}
-          scale={17.529}
-        />
-        <mesh
-          name="blooming-flower001"
-          geometry={nodes["blooming-flower001"].geometry}
-          material={materials.clay}
-          position={[-151.004, 13.152, 164.199]}
-          rotation={[Math.PI / 2, 0, 0.484]}
-          scale={4.661}
-        />
-        <mesh
-          name="silky-sphere-low-planer001"
-          geometry={nodes["silky-sphere-low-planer001"].geometry}
-          material={materials.clay}
-          position={[-137.005, 22.749, 38.183]}
-          rotation={[0, 0.191, 0]}
-          scale={5.537}
-        />
-        <group
-          name="glass-popping-partial001"
-          position={[-164.224, 18.923, 56.846]}
-          rotation={[0, 0.34, 0]}
-          scale={24.149}
-        >
-          <mesh
-            name="Plane109"
-            geometry={nodes.Plane109.geometry}
-            material={materials.clay}
-          />
-          <mesh
-            name="Plane109_1"
-            geometry={nodes.Plane109_1.geometry}
-            material={materials.clay}
-          />
-        </group>
+        {/* PHOTO BOOTH */}
         <mesh
           name="photo-screen001"
           geometry={nodes["photo-screen001"].geometry}
@@ -995,14 +972,6 @@ export default function Stage(props) {
           position={[-168.374, 14.194, 161.602]}
           rotation={[Math.PI / 2, Math.PI / 2, 0]}
           scale={[0.835, 1.179, 0.835]}
-        />
-        <mesh
-          name="photo-area-support001"
-          geometry={nodes["photo-area-support001"].geometry}
-          material={nodes["photo-area-support001"].material}
-          position={[-168.374, 37.959, 161.672]}
-          rotation={[Math.PI / 2, -Math.PI / 2, 0]}
-          scale={[-0.418, -24.35, -0.418]}
         />
         <group
           name="spotlight-01001"
@@ -1056,20 +1025,7 @@ export default function Stage(props) {
             geometry={nodes.Cilindro001_1.geometry}
             material={materials["Material.004"]}
           />
-          <mesh
-            name="Cilindro001_2"
-            geometry={nodes.Cilindro001_2.geometry}
-            material={materials["Material.004"]}
-          />
         </group>
-        <mesh
-          name="tripod-low-poly001"
-          geometry={nodes["tripod-low-poly001"].geometry}
-          material={materials["dark-grey"]}
-          position={[-91.174, 19.19, 162.969]}
-          rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-          scale={0.017}
-        />
 
         {/* CAMERA SCREEN */}
         <mesh
@@ -1095,6 +1051,7 @@ export default function Stage(props) {
           <planeGeometry args={[3, 3, 128, 128]} />
         </mesh>
 
+        {/* BOUNDARY WALL */}
         <mesh
           name="boundary-wall"
           geometry={nodes["boundary-wall"].geometry}
@@ -1103,6 +1060,18 @@ export default function Stage(props) {
           rotation={[Math.PI / 2, 0, 0]}
           scale={-25}
         />
+
+        {/* SCREEN FOR PLAYING THE SKY VIDEO */}
+        <mesh
+          name="screen-for-sky-movie"
+          geometry={nodes["screen-for-sky-movie"].geometry}
+          material={nodes["screen-for-sky-movie"].material}
+          position={[153.538, 127.987, 14.466]}
+          rotation={[-Math.PI, 0, 0]}
+          scale={[20.803, 24.55, 71.32]}
+        />
+
+        {/* LANDING ROOM */}
         <mesh
           name="chair-top"
           geometry={nodes["chair-top"].geometry}
@@ -1148,6 +1117,17 @@ export default function Stage(props) {
           geometry={nodes.room.geometry}
           material={materials["texture-room-new"]}
         />
+
+        {/* PLANE FOR THE PORTFOLIO WEBSITE BLUEPRINT IMAGE */}
+        <mesh
+          name="blueprint-portfolio-website"
+          geometry={nodes["blueprint-portfolio-website"].geometry}
+          material={nodes["blueprint-portfolio-website"].material}
+          position={[94.278, 19.056, 37.278]}
+          rotation={[-0.68, 0.569, 0.411]}
+          scale={1.042}
+        />
+
         <mesh
           name="hands-low-poly"
           geometry={nodes["hands-low-poly"].geometry}
