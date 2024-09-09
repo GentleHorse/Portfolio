@@ -16,6 +16,7 @@ import FirstPersonViewControl from "./components/characterControl/firstPersonVie
 import StageCollisionObjects from "./components/models/stage/StageCollisionObjects.jsx";
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
+import { Suspense } from "react";
 
 export default function Experience() {
   /**
@@ -40,7 +41,7 @@ export default function Experience() {
       />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-right" /> */}
+      <Perf position="top-right" />
       {/* <axesHelper /> */}
       <OrbitControls makeDefault />
 

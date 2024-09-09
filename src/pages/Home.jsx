@@ -39,7 +39,7 @@ export default function HomePage() {
               position: [0, 1.5, 8],
             }}
           >
-            <Suspense fallback={<LoadingScreen />}>
+            <Suspense fallback={<LoadingScreen />} >
               <Experience />
             </Suspense>
           </Canvas>

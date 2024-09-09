@@ -8,6 +8,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import {
   useGLTF,
   useAnimations,
+  useTexture,
   useVideoTexture,
   Mask,
   useMask,
@@ -20,6 +21,22 @@ import { Root, Text, Image, Container } from "@react-three/uikit";
 
 import waterVertexShader from "../../../shaders/water/vertex.glsl";
 import waterFragmentShader from "../../../shaders/water/fragment.glsl";
+
+/**
+ * MATERIAL FOR PORTFOLIO WEBSITE BLUEPRINT
+ */
+const portfolioWebsiteBlueprintTexture = new THREE.TextureLoader().load(
+  "./textures/blueprint-portfolio-website/blueprint-portfolio-website.jpg"
+);
+portfolioWebsiteBlueprintTexture.wrapS = THREE.RepeatWrapping;
+portfolioWebsiteBlueprintTexture.wrapT = THREE.RepeatWrapping;
+portfolioWebsiteBlueprintTexture.flipY = false;
+portfolioWebsiteBlueprintTexture.rotation = Math.PI;
+
+const portfolioWebsiteBlueprintMaterial = new THREE.MeshBasicMaterial({
+  toneMapped: false,
+  map: portfolioWebsiteBlueprintTexture,
+});
 
 /**
  * MATERIAL FOR PICTURE FREAME GLASS
@@ -55,16 +72,20 @@ export default function Stage(props) {
    */
   const pictureFrameGlass = useRef();
 
-  useFrame(
-    (state, delta) =>
-      (pictureFrameGlass.current.material.uniforms.uTime.value =
-        state.clock.getElapsedTime())
-  );
+  useFrame((state, delta) => {
+    pictureFrameGlass.current.material.uniforms.uTime.value =
+      state.clock.getElapsedTime();
+  });
 
   /**
    * MASK STENCIL
    */
   const stencil = useMask(1);
+
+  /**
+   * VIDEO FOR SKY
+   */
+  const skyVideoTexture = useVideoTexture("./videos/sky/sky.mov");
 
   /**
    * VIDEOS FOR THE BEAUTY OF TIME PASSING PROJECT
@@ -1065,11 +1086,11 @@ export default function Stage(props) {
         <mesh
           name="screen-for-sky-movie"
           geometry={nodes["screen-for-sky-movie"].geometry}
-          material={nodes["screen-for-sky-movie"].material}
+          // material={nodes["screen-for-sky-movie"].material}
           position={[153.538, 127.987, 14.466]}
-          rotation={[-Math.PI, 0, 0]}
-          scale={[20.803, 24.55, 71.32]}
-        />
+        >
+          <meshBasicMaterial map={skyVideoTexture} toneMapped={false} />
+        </mesh>
 
         {/* LANDING ROOM */}
         <mesh
@@ -1122,10 +1143,9 @@ export default function Stage(props) {
         <mesh
           name="blueprint-portfolio-website"
           geometry={nodes["blueprint-portfolio-website"].geometry}
-          material={nodes["blueprint-portfolio-website"].material}
+          // material={nodes["blueprint-portfolio-website"].material}
+          material={portfolioWebsiteBlueprintMaterial}
           position={[94.278, 19.056, 37.278]}
-          rotation={[-0.68, 0.569, 0.411]}
-          scale={1.042}
         />
 
         <mesh
