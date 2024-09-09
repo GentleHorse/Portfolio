@@ -16,6 +16,7 @@ import {
 } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
+import { Root, Text, Image, Container } from "@react-three/uikit";
 
 import waterVertexShader from "../../../shaders/water/vertex.glsl";
 import waterFragmentShader from "../../../shaders/water/fragment.glsl";
@@ -207,6 +208,8 @@ export default function Stage(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
+      {/* ------- GLB STAGE MODEL ------- */}
+
       <group name="Scene">
         {/* AMBIENCE OF LIGHT */}
         <mesh
@@ -1075,7 +1078,7 @@ export default function Stage(props) {
           position={[-95.521, 19.483, 162.986]}
           rotation={[Math.PI / 2, 0, -Math.PI / 2]}
           scale={[1.633, 0.544, 1.633]}
-          >
+        >
           <meshBasicMaterial
             map={all3DVisualsVideoTexture}
             toneMapped={false}
@@ -1085,7 +1088,7 @@ export default function Stage(props) {
         {/* PICTURE FRAME GLASS */}
         <mesh
           ref={pictureFrameGlass}
-          position={[13, 22, -45]}
+          position={[13, 22, -47]}
           scale={[18, 12, 1]}
           material={waterMaterial}
         >
@@ -1153,6 +1156,49 @@ export default function Stage(props) {
           rotation={[-2.258, -1.194, -2.383]}
           scale={21.74}
         />
+      </group>
+
+      {/* --------- TITLE, TEXT, IMAGE WITH UIKIT -------- */}
+
+      {/* SELF PORTRAIT - IMAGE */}
+      <group scale={3} position={[76, 20, -46.5]} rotation={[0, 0, 0]}>
+        <Root>
+          <Container flexDirection="column" gap={15} alignItems="center">
+            <Image
+              src="./images/portrait/selfportrait.jpg"
+              width={500}
+              marginTop={50}
+            />
+          </Container>
+        </Root>
+      </group>
+
+      {/* SELF PORTRAIT - MUSEUM LABEL */}
+      <group scale={0.6} position={[58.25, 17, -46]} rotation={[0, 0, 0]}>
+        <Root>
+          <Container flexDirection="column" gap={15} alignItems="flex-start">
+            <Text fontWeight="extra-bold" fontSize={60} color="#1C1C1C">
+              Self-Portrait, 2024
+            </Text>
+            <Text fontWeight="medium" fontSize={60} color="#1C1C1C">
+              "Multidisciplinary daydreamer"
+            </Text>
+          </Container>
+        </Root>
+      </group>
+
+      {/* GALLERY - MUSEUM LABEL */}
+      <group scale={0.6} position={[-23.75, 18, -46]} rotation={[0, 0, 0]}>
+        <Root>
+          <Container flexDirection="column" gap={15} alignItems="flex-start">
+            <Text fontWeight="extra-bold" fontSize={60} color="#1C1C1C">
+              A gallery in 2024
+            </Text>
+            <Text fontWeight="medium" fontSize={60} color="#1C1C1C">
+              "Walk and Look"
+            </Text>
+          </Container>
+        </Root>
       </group>
     </group>
   );

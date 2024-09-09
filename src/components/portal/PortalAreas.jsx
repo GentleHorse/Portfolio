@@ -8,7 +8,7 @@ export default function PortalAreas() {
         redirectWatingSeconds={0.5}
         url="/ambience-of-light"
         // text="Light and material and space"
-        position={[-15, 0, -35]}
+        position={[-60, 0, -50]}
         rotation={[0, Math.PI * 0.2, 0]}
       />
 
@@ -17,7 +17,7 @@ export default function PortalAreas() {
         redirectWatingSeconds={0.5}
         url="/beauty-of-time-passing"
         // text="A sense of nature with digital realm"
-        position={[10, 0, -45]}
+        position={[15, 0, -65]}
         rotation={[0, 0, 0]}
       />
 
@@ -57,23 +57,34 @@ export default function PortalAreas() {
         rotation={[0, Math.PI * 0.5, 0]}
       />
 
-
       {/* CONTACT */}
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/contact"
-        text="Contact?"
-        position={[8, 0, 8]}
-        rotation={[0, -Math.PI * 0.5, 0]}
+        text="Contact"
+        scale={0.8}
+        position={[1.5, 0, 15]}
+        rotation={[0, -Math.PI, 0]}
       />
 
       {/* ABOUT */}
       <PortalArea
         redirectWatingSeconds={0.5}
         url="/about"
-        text="Who is this?"
-        position={[8, 0, 0]}
-        rotation={[0, -Math.PI * 0.5, 0]}
+        text="Who made this?"
+        scale={0.8}
+        position={[21.5, 0, -9.25]}
+        rotation={[0, 0, 0]}
+      />
+
+      {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
+      <PortalArea
+        redirectWatingSeconds={0.5}
+        url="/portfolio-website"
+        text="About this website"
+        scale={0.8}
+        position={[12.5, 0, 11]}
+        rotation={[0, -Math.PI * 0.8, 0]}
       />
     </>
   );
