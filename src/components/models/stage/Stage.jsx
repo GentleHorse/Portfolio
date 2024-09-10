@@ -15,7 +15,7 @@ import {
   MeshDistortMaterial,
   Float,
 } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import { Root, Text, Image, Container } from "@react-three/uikit";
 
@@ -639,21 +639,21 @@ export default function Stage(props) {
 
         {/* 3D APP DEV MODEL MESHES */}
         {/* APP FOAM MODELS */}
-        <Float
-          speed={0.5}
-          rotationIntensity={0.075}
-          floatIntensity={0.05}
-          floatingRange={[0.05, 0.1]}
-        >
-          <mesh
-            name="mesh-marble-race"
-            geometry={nodes["mesh-marble-race"].geometry}
-            material={materials["texture-3d-app-models"]}
-            position={[27.694, 4.452, 156.237]}
-            rotation={[2.604, -1.304, 2.535]}
-            scale={4.835}
-          />
-        </Float>
+          <Float
+            speed={0.5}
+            rotationIntensity={0.075}
+            floatIntensity={0.05}
+            floatingRange={[0.05, 0.1]}
+          >
+            <mesh
+              name="mesh-marble-race"
+              geometry={nodes["mesh-marble-race"].geometry}
+              material={materials["texture-3d-app-models"]}
+              position={[27.694, 4.452, 156.237]}
+              rotation={[2.604, -1.304, 2.535]}
+              scale={4.835}
+            />
+          </Float>
 
         <Float
           speed={0.5}
@@ -748,84 +748,89 @@ export default function Stage(props) {
         </group>
 
         {/* CLAY SCULPTURE STAND & WORKING OBJECTS, TOOLS */}
-        <mesh
-          name="working-desk-workshop003"
-          geometry={nodes["working-desk-workshop003"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-162.351, 0.422, 2.204]}
-          rotation={[0, 0.29, 0]}
-        />
-        <mesh
-          name="working-desk-workshop004"
-          geometry={nodes["working-desk-workshop004"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-147.125, 0.422, -2.341]}
-          rotation={[0, 0.29, 0]}
-        />
-        <mesh
-          name="sculpture-stand-square-small001"
-          geometry={nodes["sculpture-stand-square-small001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-149.915, 0.66, 163.018]}
-        />
-        <mesh
-          name="sculpture-stand-round001"
-          geometry={nodes["sculpture-stand-round001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-136.577, 0.422, 38.24]}
-          rotation={[0, 0.191, 0]}
-        />
-        <mesh
-          name="sculpture-stand-square-big001"
-          geometry={nodes["sculpture-stand-square-big001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-165.752, 0.422, 56.735]}
-          rotation={[0, -0.091, 0]}
-        />
-        <mesh
-          name="working-desk-workshop005"
-          geometry={nodes["working-desk-workshop005"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-109.162, 0.422, 17.405]}
-        />
-        <mesh
-          name="clay-board001"
-          geometry={nodes["clay-board001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-117.304, 11.373, 34.567]}
-        />
-        <mesh
-          name="paper001"
-          geometry={nodes.paper001.geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-117.288, 10.853, 52.658]}
-        />
-        <mesh
-          name="clay-in-process-01001"
-          geometry={nodes["clay-in-process-01001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-109.951, 11.989, 12.01]}
-        />
-        <mesh
-          name="clay-in-process-02001"
-          geometry={nodes["clay-in-process-02001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-108.294, 13.165, 17.118]}
-          rotation={[-0.482, -0.017, 0.033]}
-        />
-        <mesh
-          name="sculpture-tool-01001"
-          geometry={nodes["sculpture-tool-01001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-109.598, 11.082, 0.702]}
-        />
-        <mesh
-          name="sculpture-tool-02001"
-          geometry={nodes["sculpture-tool-02001"].geometry}
-          material={materials["texture-3d-visuals"]}
-          position={[-110.222, 11.057, 3.934]}
-          rotation={[0, -1.571, 0]}
-        />
+        <RigidBody type="fixed">
+          <mesh
+            name="working-desk-workshop003"
+            geometry={nodes["working-desk-workshop003"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-162.351, 0.422, 2.204]}
+            rotation={[0, 0.29, 0]}
+          />
+          <mesh
+            name="working-desk-workshop004"
+            geometry={nodes["working-desk-workshop004"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-147.125, 0.422, -2.341]}
+            rotation={[0, 0.29, 0]}
+          />
+          <mesh
+            name="sculpture-stand-square-small001"
+            geometry={nodes["sculpture-stand-square-small001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-149.915, 0.66, 163.018]}
+          />
+          <mesh
+            name="sculpture-stand-round001"
+            geometry={nodes["sculpture-stand-round001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-136.577, 0.422, 38.24]}
+            rotation={[0, 0.191, 0]}
+          />
+          <mesh
+            name="sculpture-stand-square-big001"
+            geometry={nodes["sculpture-stand-square-big001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-165.752, 0.422, 56.735]}
+            rotation={[0, -0.091, 0]}
+          />
+        </RigidBody>
+
+        <RigidBody type="fixed">
+          <mesh
+            name="working-desk-workshop005"
+            geometry={nodes["working-desk-workshop005"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-109.162, 0.422, 17.405]}
+          />
+          <mesh
+            name="clay-board001"
+            geometry={nodes["clay-board001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-117.304, 11.373, 34.567]}
+          />
+          <mesh
+            name="paper001"
+            geometry={nodes.paper001.geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-117.288, 10.853, 52.658]}
+          />
+          <mesh
+            name="clay-in-process-01001"
+            geometry={nodes["clay-in-process-01001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-109.951, 11.989, 12.01]}
+          />
+          <mesh
+            name="clay-in-process-02001"
+            geometry={nodes["clay-in-process-02001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-108.294, 13.165, 17.118]}
+            rotation={[-0.482, -0.017, 0.033]}
+          />
+          <mesh
+            name="sculpture-tool-01001"
+            geometry={nodes["sculpture-tool-01001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-109.598, 11.082, 0.702]}
+          />
+          <mesh
+            name="sculpture-tool-02001"
+            geometry={nodes["sculpture-tool-02001"].geometry}
+            material={materials["texture-3d-visuals"]}
+            position={[-110.222, 11.057, 3.934]}
+            rotation={[0, -1.571, 0]}
+          />
+        </RigidBody>
 
         {/* ANALOG TV SHELLS */}
         <group
@@ -833,11 +838,14 @@ export default function Stage(props) {
           position={[-194.784, 0, 62.408]}
           rotation={[-Math.PI, 0.791, -Math.PI]}
         >
-          <mesh
-            name="Mesh006"
-            geometry={nodes.Mesh006.geometry}
-            material={materials["analog-tv-black-matt"]}
-          />
+          <RigidBody type="fixed" colliders="hull">
+            <mesh
+              name="Mesh006"
+              geometry={nodes.Mesh006.geometry}
+              material={materials["analog-tv-black-matt"]}
+            />
+          </RigidBody>
+
           <mesh
             name="Mesh006_1"
             geometry={nodes.Mesh006_1.geometry}
@@ -1011,6 +1019,7 @@ export default function Stage(props) {
             material={materials["emission-ceiling-light"]}
           />
         </group>
+
         <group
           name="spotlight-02001"
           position={[-154.369, 1.078, 199.349]}

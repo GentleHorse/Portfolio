@@ -5,7 +5,7 @@ export default function PortalAreas() {
     <>
       {/* DESIGN - AMBIENCE OF LIGHT */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/ambience-of-light"
         // text="Light and material and space"
         position={[-60, 0, -50]}
@@ -14,7 +14,7 @@ export default function PortalAreas() {
 
       {/* DESIGN - BEAUTY OF TIME PASSING */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/beauty-of-time-passing"
         // text="A sense of nature with digital realm"
         position={[15, 0, -65]}
@@ -23,7 +23,7 @@ export default function PortalAreas() {
 
       {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/intervention-in-our-disconnection"
         // text="Creativity starts from edges"
         position={[45, 0, -20]}
@@ -32,7 +32,7 @@ export default function PortalAreas() {
 
       {/* DESIGN - MASU TYPO */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/masu-typo"
         // text="Typography with no fixed faces"
         position={[-60, 0, -110]}
@@ -50,16 +50,48 @@ export default function PortalAreas() {
 
       {/* 3D VISUALS */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/three-d-visuals"
-        // text="3D VISUALS"
-        position={[-30, 0, 0]}
+        text="3D VISUALS"
+        position={[-32, 0, 20]}
         rotation={[0, Math.PI * 0.5, 0]}
+      />
+
+      {/* 3D APP DEV - MARBLE RACE */}
+      <PortalArea
+        redirectWatingSeconds={0.1}
+        url="/marble-race"
+        position={[10, 0, 28]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+      />
+
+      {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
+      <PortalArea
+        redirectWatingSeconds={0.1}
+        url="/object-rotterdam-2024"
+        position={[6, 0, 52]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+      />
+
+       {/* 3D APP DEV - WEATHER CEREAL */}
+       <PortalArea
+        redirectWatingSeconds={0.1}
+        url="/weather-cereal"
+        position={[25, 0, 52]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+      />
+
+      {/* 3D APP DEV - DONUTS UNIVERSE */}
+      <PortalArea
+        redirectWatingSeconds={0.1}
+        url="/donuts-universe"
+        position={[32, 0, 32]}
+        rotation={[0, -Math.PI * 0.5, 0]}
       />
 
       {/* CONTACT */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/contact"
         text="Contact"
         scale={0.8}
@@ -69,7 +101,7 @@ export default function PortalAreas() {
 
       {/* ABOUT */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/about"
         text="Who made this?"
         scale={0.8}
@@ -79,7 +111,7 @@ export default function PortalAreas() {
 
       {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
       <PortalArea
-        redirectWatingSeconds={0.5}
+        redirectWatingSeconds={0.1}
         url="/portfolio-website"
         text="About this website"
         scale={0.8}
