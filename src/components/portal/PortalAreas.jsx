@@ -115,7 +115,7 @@ export default function PortalAreas() {
         url="/portfolio-website"
         text="About this website"
         scale={0.8}
-        position={[12.5, 0, 11]}
+        position={[13.5, 0, 12.5]}
         rotation={[0, -Math.PI * 0.8, 0]}
       />
     </>

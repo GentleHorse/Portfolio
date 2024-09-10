@@ -1,6 +1,4 @@
-import { useRef } from "react";
 import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
 import { useNavigate } from "react-router-dom";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
@@ -21,6 +19,21 @@ export default function PortalArea({
   const navigate = useNavigate();
 
   /**
+   * HANDLER - REDIRECT TO ANOTHER PAGE
+   */
+  const redirectHandler = () => {
+    // Chage state from "PLAY" to "MENU"
+    setGameState(gameStates.MENU);
+
+    setTimeout(() => {
+      // Exit Pointer Lock API
+      document.exitPointerLock();
+
+      navigate(url);
+    }, redirectWatingSeconds * 1000);
+  };
+
+  /**
    * GAME STORE
    */
   const { gameState, setGameState } = useGameStore((state) => ({
@@ -28,11 +41,15 @@ export default function PortalArea({
     setGameState: state.setGameState,
   }));
 
-  // Geometry
+  /**
+   * GEOMETRY
+   */
   const portalGeometry = new THREE.PlaneGeometry(1, 1);
   portalGeometry.translate(0, 0.5, 0);
 
-  // Material - shader material
+  /**
+   * MATERIAL - SHADER MATERIAL
+   */
   const portalMaterial = new THREE.ShaderMaterial({
     vertexShader: portalVertexShader,
     fragmentShader: portalFragmentShader,
@@ -43,46 +60,42 @@ export default function PortalArea({
   });
 
   return (
-    <group {...props}>
-      <group position={[0, 5, 0]} rotation={[0, 0, 0]}>
-        <Root>
-          <Container flexDirection="column" gap={15} alignItems="center">
-            <Text fontWeight="extra-bold" fontSize={60} color="snow">
-              {text}
-            </Text>
-          <Image src="./images/icons/external-link.svg" width={200} marginTop={50} />
-          </Container>
-        </Root>
+    <>
+      <group {...props}>
+        <group position={[0, 5, 0]} rotation={[0, 0, 0]}>
+          <Root>
+            <Container flexDirection="column" gap={15} alignItems="center">
+              <Text fontWeight="extra-bold" fontSize={60} color="snow">
+                {text}
+              </Text>
+              <Image
+                src="./images/icons/external-link.svg"
+                width={200}
+                marginTop={50}
+              />
+            </Container>
+          </Root>
+        </group>
+
+        <RigidBody
+          type="fixed"
+          scale={1.0}
+          position={[0, 0.1, 0]}
+          // rotation={[-Math.PI * 0.5, 0, 0]}
+          colliders={false}
+          onIntersectionEnter={redirectHandler}
+        >
+          <CuboidCollider args={[3.0, 1.5, 1.0]} sensor />
+        </RigidBody>
+
+        <mesh
+          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
+          position={[0, 0, 0]}
+          rotation={[0, Math.PI, 0]}
+          geometry={portalGeometry}
+          material={portalMaterial}
+        />
       </group>
-
-      <RigidBody
-        type="fixed"
-        scale={1.0}
-        position={[0, 0.1, 0]}
-        // rotation={[-Math.PI * 0.5, 0, 0]}
-        colliders={false}
-        onIntersectionEnter={() => {
-          // Chage state from "PLAY" to "MENU"
-          setGameState(gameStates.MENU);
-
-          setTimeout(() => {
-            // Exit Pointer Lock API
-            document.exitPointerLock();
-
-            navigate(url);
-          }, redirectWatingSeconds * 1000);
-        }}
-      >
-        <CuboidCollider args={[2.5, 1.5, 2.5]} sensor />
-      </RigidBody>
-
-      <mesh
-        scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI, 0]}
-        geometry={portalGeometry}
-        material={portalMaterial}
-      />
-    </group>
+    </>
   );
 }

@@ -14,9 +14,7 @@ import Lights from "./components/utilComponents/Lights.jsx";
 import Stage from "./components/models/stage/Stage.jsx";
 import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import StageCollisionObjects from "./components/models/stage/StageCollisionObjects.jsx";
-import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
-import { Suspense } from "react";
 import Title from "./components/title/Title.jsx";
 
 export default function Experience() {
@@ -54,18 +52,15 @@ export default function Experience() {
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
-        <group position={[0, 0, -5]}>
-          {/* UI */}
-          {/* <DesignProjectUI /> */}
+        <group position={[-0.0, 0, -5.0]} rotation-y={-Math.PI * 0.25}>
+          {/* STAGE MODEL */}
+          <Stage scale={0.2} />
 
           {/* STAGE COLLISION OBJECTS */}
           <StageCollisionObjects />
 
           {/* PROJECT PAGE PORTALS */}
           <PortalAreas />
-
-          {/* STAGE MODEL */}
-          <Stage scale={0.2} />
 
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           <mesh
