@@ -8,7 +8,7 @@ export default function PortalAreas() {
         redirectWatingSeconds={0.1}
         url="/ambience-of-light"
         // text="Light and material and space"
-        position={[-60, 0, -50]}
+        position={[-40, 0, -40]}
         rotation={[0, Math.PI * 0.2, 0]}
       />
 
@@ -26,7 +26,7 @@ export default function PortalAreas() {
         redirectWatingSeconds={0.1}
         url="/intervention-in-our-disconnection"
         // text="Creativity starts from edges"
-        position={[45, 0, -20]}
+        position={[65, 0, -47.5]}
         rotation={[0, -Math.PI * 0.4, 0]}
       />
 
@@ -36,7 +36,7 @@ export default function PortalAreas() {
         url="/masu-typo"
         // text="Typography with no fixed faces"
         position={[-60, 0, -110]}
-        rotation={[0, 0, 0]}
+        rotation={[0, Math.PI * 0.15, 0]}
       />
 
       {/* DESIGN - COMFORTING DINNER */}
@@ -44,8 +44,8 @@ export default function PortalAreas() {
         redirectWatingSeconds={0.5}
         url="/comforting-dinner"
         // text="Sequencial activation of our sleeping senses"
-        position={[50, 0, -80]}
-        rotation={[0, -Math.PI * 0.4, 0]}
+        position={[55, 0, -120]}
+        rotation={[0, -Math.PI * 0.15, 0]}
       />
 
       {/* 3D VISUALS */}

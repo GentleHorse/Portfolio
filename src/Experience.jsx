@@ -17,6 +17,7 @@ import StageCollisionObjects from "./components/models/stage/StageCollisionObjec
 import DesignProjectUI from "./components/UI/DesignProjectUI.jsx";
 import PortalAreas from "./components/portal/PortalAreas.jsx";
 import { Suspense } from "react";
+import Title from "./components/title/Title.jsx";
 
 export default function Experience() {
   /**
@@ -63,7 +64,7 @@ export default function Experience() {
           {/* PROJECT PAGE PORTALS */}
           <PortalAreas />
 
-          {/* STAGE TEST MODEL */}
+          {/* STAGE MODEL */}
           <Stage scale={0.2} />
 
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}

@@ -639,21 +639,21 @@ export default function Stage(props) {
 
         {/* 3D APP DEV MODEL MESHES */}
         {/* APP FOAM MODELS */}
-          <Float
-            speed={0.5}
-            rotationIntensity={0.075}
-            floatIntensity={0.05}
-            floatingRange={[0.05, 0.1]}
-          >
-            <mesh
-              name="mesh-marble-race"
-              geometry={nodes["mesh-marble-race"].geometry}
-              material={materials["texture-3d-app-models"]}
-              position={[27.694, 4.452, 156.237]}
-              rotation={[2.604, -1.304, 2.535]}
-              scale={4.835}
-            />
-          </Float>
+        <Float
+          speed={0.5}
+          rotationIntensity={0.075}
+          floatIntensity={0.05}
+          floatingRange={[0.05, 0.1]}
+        >
+          <mesh
+            name="mesh-marble-race"
+            geometry={nodes["mesh-marble-race"].geometry}
+            material={materials["texture-3d-app-models"]}
+            position={[27.694, 4.452, 156.237]}
+            rotation={[2.604, -1.304, 2.535]}
+            scale={4.835}
+          />
+        </Float>
 
         <Float
           speed={0.5}
