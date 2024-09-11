@@ -6,13 +6,19 @@
  * Deactivate default long press behaviour (open the context menu) 
  * of touch screen devices 
  */
-* {
-  -webkit-touch-callout: none; /* Safari */
-  -webkit-user-select: none; /* Chrome */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+
+/* Safari */
+/* Chrome */
+/* Firefox */
+/* Internet Explorer/Edge */
+
+/* * {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
   user-select: none;
-}
+} */
 
 html,
 body,

@@ -3,69 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { ScrollControls, Html } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-export default function MobileScene({isExperiencing}) {
+export default function MobileScene({ isExperiencing, mobileOrientation }) {
   const cube = useRef();
-
-  /**
-   * MOBILE CONTROL - SETUP
-   */
-  // THE DEVICE ORIENTATION STATE
-  const [mobileOrientation, setMobileOrientation] = useState({
-    alpha: 0,
-    beta: 0,
-    gamma: 0,
-  });
-
-  // THE DEVICE ORIENTATION INITIATE FUNCTION
-  async function requestDeviceOrientation() {
-    if (
-      typeof DeviceOrientationEvent != "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
-      // iOS 13+
-      try {
-        const permissionState =
-          await DeviceOrientationEvent.requestPermission();
-
-        if (permissionState === "granted") {
-          window.addEventListener("deviceorientation", handleOrientation);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else if ("DeviceOrientationEvent" in window) {
-      // not iOS 13+
-      window.addEventListener("deviceorientation", handleOrientation);
-    } else {
-      // device orientation is not supported
-      alert("not supported");
-    }
-  }
-
-  function handleOrientation(event) {
-    let alpha = event.alpha; // z-axis 0 ~ 360
-    let beta = event.beta / 180; // x-axis -180 ~ 180 ---> -1 ~ 1
-    let gamma = event.gamma / 90; // y-axis -90 ~ 90 ---> -1 ~ 1
-
-    setMobileOrientation({
-      alpha,
-      beta,
-      gamma,
-    });
-  }
-
-  // CALL THE DEVICE ORIENTATION INITIATE FUNCTION
-  useEffect(() => {
-    if (isExperiencing) {
-      requestDeviceOrientation();
-    }
-  }, [isExperiencing]);
-
-  console.log(isExperiencing)
 
   // FOR DEBUGGING
   useFrame(() => {
-    if (mobileOrientation) {
+    if (isExperiencing) {
       console.log(mobileOrientation);
     }
   });
