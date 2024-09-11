@@ -1146,13 +1146,36 @@ export default function Stage(props) {
           geometry={nodes.room.geometry}
           material={materials["texture-room-new"]}
         />
-         <mesh
+        <mesh
           name="software-icons"
           geometry={nodes["software-icons"].geometry}
           material={materials["texutre-software-icons"]}
           position={[-36.979, 27.336, -30.715]}
           rotation={[0, Math.PI / 2, 0]}
         />
+
+        {/* LANDING ROOM ADDED COLLISION OBJECTS */}
+        {/* ARCHITECT WORKING DESK */}
+        <RigidBody
+          type="fixed"
+          scale={[10.0, 5.0, 20.0]}
+          position={[97.5, 5.0, 37.5]}
+          rotation={[0, -Math.PI * 0.28, 0]}
+          colliders={false}
+        >
+          <CuboidCollider args={[1.0, 1.0, 1.0]} />
+        </RigidBody>
+
+         {/* 3D WORKING DESK */}
+         <RigidBody
+          type="fixed"
+          scale={[7.5, 5.0, 20.0]}
+          position={[-25.0, 5.0, -22.5]}
+          rotation={[0, 0, 0]}
+          colliders={false}
+        >
+          <CuboidCollider args={[1.0, 1.0, 1.0]} />
+        </RigidBody>
 
         {/* PLANE FOR THE PORTFOLIO WEBSITE BLUEPRINT IMAGE */}
         <mesh

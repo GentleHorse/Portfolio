@@ -55,7 +55,7 @@ export default function StageCollisionObjects(props) {
           colliders={false}
           type="fixed"
           rotation={[0, Math.PI * 0.5, 0]}
-          position={[50, 5, 30]}
+          position={[35, 5, 30]}
         >
           <CuboidCollider args={[30, 8, 0.5]} />
         </RigidBody>
@@ -76,6 +76,15 @@ export default function StageCollisionObjects(props) {
           position={[20, 5, 20]}
         >
           <CuboidCollider args={[30, 8, 0.5]} />
+        </RigidBody>
+
+        <RigidBody
+          colliders={false}
+          type="fixed"
+          rotation={[0, 0, 0]}
+          position={[-25, 5, 0]}
+        >
+          <CuboidCollider args={[15, 8, 0.5]} />
         </RigidBody>
 
         {/* BOUNDARY - IN BETWEEN */}
