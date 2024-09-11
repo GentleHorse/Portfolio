@@ -1,23 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import { ScrollControls, Html } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-export default function MobileScene() {
+export default function MobileScene({isExperiencing}) {
   const cube = useRef();
-
-  /**
-   * Test - rotate animation
-   */
-  // useFrame((state, delta) => {
-  //   cube.current.rotation.x += delta * 0.2;
-  //   cube.current.rotation.y += delta * 0.3;
-  //   cube.current.rotation.z += delta * 0.4;
-  // });
 
   /**
    * MOBILE CONTROL - SETUP
    */
-
   // THE DEVICE ORIENTATION STATE
   const [mobileOrientation, setMobileOrientation] = useState({
     alpha: 0,
@@ -65,8 +56,12 @@ export default function MobileScene() {
 
   // CALL THE DEVICE ORIENTATION INITIATE FUNCTION
   useEffect(() => {
-    requestDeviceOrientation();
-  }, []);
+    if (isExperiencing) {
+      requestDeviceOrientation();
+    }
+  }, [isExperiencing]);
+
+  console.log(isExperiencing)
 
   // FOR DEBUGGING
   useFrame(() => {
@@ -82,7 +77,6 @@ export default function MobileScene() {
     if (mobileOrientation) {
       cube.current.rotation.x = mobileOrientation.beta * Math.PI * 2;
       cube.current.rotation.y = mobileOrientation.gamma * Math.PI;
-      
     }
   });
 
