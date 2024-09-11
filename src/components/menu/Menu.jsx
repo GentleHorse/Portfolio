@@ -100,7 +100,7 @@ export default function Menu() {
             <img src="./images/icons/play-triangle.svg" className="w-[50px]" />
           </button>
           <div className="w-full text-slate-50 text-xl flex justify-center">
-            <Link to="/about">
+            <Link to="/portfolio-website">
               <p className="mx-5 font-serif">About this website</p>
             </Link>
 
