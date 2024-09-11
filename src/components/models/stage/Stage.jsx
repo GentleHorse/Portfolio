@@ -1096,7 +1096,7 @@ export default function Stage(props) {
           name="screen-for-sky-movie"
           geometry={nodes["screen-for-sky-movie"].geometry}
           // material={nodes["screen-for-sky-movie"].material}
-          position={[153.538, 127.987, 14.466]}
+          position={[153.538, 102.761, 14.466]}
         >
           <meshBasicMaterial map={skyVideoTexture} toneMapped={false} />
         </mesh>
@@ -1138,14 +1138,20 @@ export default function Stage(props) {
           name="room-furniture"
           geometry={nodes["room-furniture"].geometry}
           material={materials["texture-room-furniture"]}
-          position={[95.133, 8.49, 38.318]}
-          rotation={[Math.PI, -0.689, Math.PI]}
-          scale={10.658}
+          position={[-31.465, 0.007, -18.065]}
+          rotation={[0, -1.571, 0]}
         />
         <mesh
           name="room"
           geometry={nodes.room.geometry}
           material={materials["texture-room-new"]}
+        />
+         <mesh
+          name="software-icons"
+          geometry={nodes["software-icons"].geometry}
+          material={materials["texutre-software-icons"]}
+          position={[-36.979, 27.336, -30.715]}
+          rotation={[0, Math.PI / 2, 0]}
         />
 
         {/* PLANE FOR THE PORTFOLIO WEBSITE BLUEPRINT IMAGE */}
