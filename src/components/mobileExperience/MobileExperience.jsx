@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import MobileExperienceCanvas from "./MobileExperienceCanvas.jsx";
+import MobileScene from "./MobileScene.jsx";
 import Header from "../header/Header.jsx";
 
 export default function MobileExperience() {
@@ -27,7 +27,7 @@ export default function MobileExperience() {
           position: [0, 1.5, 8],
         }}
       >
-        <MobileExperienceCanvas />
+        <MobileScene />
       </Canvas>
     </>
   );
