@@ -3,12 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { ScrollControls, Html } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-export default function MobileScene({ isExperiencing, mobileOrientation }) {
+export default function MobileScene({ mobileOrientation }) {
   const cube = useRef();
 
   // FOR DEBUGGING
   useFrame(() => {
-    if (isExperiencing) {
+    if (mobileOrientation) {
       console.log(mobileOrientation);
     }
   });

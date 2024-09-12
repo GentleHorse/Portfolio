@@ -22,6 +22,7 @@ export default {
         'antic-didone': ['"Antic Didone", serif'],
         'cinzel': ['"Cinzel", serif'],
         'great-vibes': ['"Great Vibes", cursive'],
+        'pinyon-script': ['"Pinyon Script", cursive'],
       }
     },
   },

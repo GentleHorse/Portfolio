@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { useProgress, Html } from "@react-three/drei";
 import MobileScene from "./MobileScene.jsx";
 import Header from "../header/Header.jsx";
+import Modal from "../UI/Modal.jsx";
 
 export default function MobileExperience() {
-  // THE USER START EXPERIENCING STATE
-  const [isExperiencing, setIsExperiencing] = useState(false);
+  /**
+   * MODAL STATE
+   */
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   /**
    * MOBILE CONTROL - SETUP
@@ -45,7 +49,7 @@ export default function MobileExperience() {
 
   function handleOrientation(event) {
     let alpha = event.alpha; // z-axis 0 ~ 360
-    let beta = event.beta / 180; // x-axis -180 ~ 180 ---> -1 ~ 1
+    let beta = (event.beta - 45) / 180; // x-axis -180 ~ 180 ---> -1 ~ 1
     let gamma = event.gamma / 90; // y-axis -90 ~ 90 ---> -1 ~ 1
 
     setMobileOrientation({
@@ -57,29 +61,35 @@ export default function MobileExperience() {
 
   return (
     <>
-      <section className="fixed z-30 w-[100vw] h-[100vh]">
-        <Header about works contact />
+      <Header about works contact />
 
-        <div className="w-[80vw] h-full flex flex-col justify-center">
-          <p className="ml-5 text-stone-300">
-            Opps, you seem to visit with a small screen resolution device ....
-          </p>
-          <p className="ml-5 text-stone-300">
-            Please try on a device with a higher screen resolution to enjoy full
-            experience!
-          </p>
+      <Modal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        className="w-[90vw] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+      >
+        <section className="w-full h-full flex flex-col items-center justify-evenly">
+          <div>
+            <p className="mt-3 text-stone-300">
+              We are too used to touch, scroll screens.
+            </p>
+            <p className="mt-3 text-stone-300">
+              Sometimes it's nice to stop them, right?
+            </p>
+          </div>
 
           <button
-            className="mt-10 bg-stone-300"
+            className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
             onClick={() => {
               requestDeviceOrientation();
-              setIsExperiencing(true);
+              setIsModalOpen(false);
             }}
           >
-            Test initiating the device control
+            <p>T i l t</p>
+            <img src="./images/icons/play-triangle.svg" className="w-[50px]" />
           </button>
-        </div>
-      </section>
+        </section>
+      </Modal>
 
       <Canvas
         camera={{
@@ -89,11 +99,25 @@ export default function MobileExperience() {
           position: [0, 1.5, 8],
         }}
       >
-        <MobileScene
-          isExperiencing={isExperiencing}
-          mobileOrientation={mobileOrientation}
-        />
+        <Suspense fallback={<LoadingScreenMobile />}>
+          <MobileScene mobileOrientation={mobileOrientation} />
+        </Suspense>
       </Canvas>
     </>
+  );
+}
+
+function LoadingScreenMobile() {
+  return (
+    <Html
+      center
+      className="w-[100vw] h-[100vh] bg-[#050505] flex flex-col items-end justify-end"
+    >
+      <div>
+        <p className="w-full h-full bottom-0 right-0 m-4 text-[#C1C1C1] text-[80px] font-pinyon-script">
+          {progress.toFixed(0)} %
+        </p>
+      </div>
+    </Html>
   );
 }
