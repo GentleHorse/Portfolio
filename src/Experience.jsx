@@ -22,7 +22,7 @@ export default function Experience() {
    * TEXTURE FOR THE REFLECTIVE FLOOR
    */
   const woodPlanksNormalTexture = useTexture(
-    "./textures/wood-planks/Wood_planks_011_normal.jpg"
+    "./textures/wood-planks/wood-planks-normal.jpg"
   );
   woodPlanksNormalTexture.wrapS = THREE.RepeatWrapping;
   woodPlanksNormalTexture.wrapT = THREE.RepeatWrapping;

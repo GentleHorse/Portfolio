@@ -71,10 +71,10 @@ export default function MobileExperience() {
         <section className="w-full h-full flex flex-col items-center justify-evenly">
           <div>
             <p className="mt-3 text-stone-300">
-              We are too used to touch, scroll screens.
+              Get tired of touching, scrolling?
             </p>
             <p className="mt-3 text-stone-300">
-              Sometimes it's nice to stop them, right?
+              Then just be lazy and tilt.
             </p>
           </div>
 
@@ -108,6 +108,8 @@ export default function MobileExperience() {
 }
 
 function LoadingScreenMobile() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
+
   return (
     <Html
       center
