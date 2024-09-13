@@ -1,11 +1,19 @@
 import { useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useProgress, Html } from "@react-three/drei";
+import { gameStates, useGameStore } from "../../store/store.js";
 import MobileScene from "./MobileScene.jsx";
 import Header from "../header/Header.jsx";
 import Modal from "../UI/Modal.jsx";
 
 export default function MobileExperience() {
+  /**
+   * GAME STORE
+   */
+  const { gameState } = useGameStore((state) => ({
+    gameState: state.gameState,
+  }));
+
   /**
    * MODAL STATE
    */
@@ -61,35 +69,40 @@ export default function MobileExperience() {
 
   return (
     <>
+      {/* HEADER */}
       <Header about works contact />
 
-      <Modal
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        className="w-[90vw] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
-      >
-        <section className="w-full h-full flex flex-col items-center justify-evenly">
-          <div>
-            <p className="mt-3 text-stone-300">
-              Get tired of touching, scrolling?
-            </p>
-            <p className="mt-3 text-stone-300">
-              Then just be lazy and tilt.
-            </p>
-          </div>
+      {/* MOBILE MENU MODAL */}
+      {gameState !== gameStates.LOADING && (
+        <Modal
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          className="w-[90vw] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+        >
+          <section className="w-full h-full flex flex-col items-center justify-evenly">
+            <div>
+              <p className="mt-3 text-stone-300">
+                Get tired of touching, scrolling?
+              </p>
+              <p className="mt-3 text-stone-300">Then just "tilt" to see content!</p>
+            </div>
 
-          <button
-            className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
-            onClick={() => {
-              requestDeviceOrientation();
-              setIsModalOpen(false);
-            }}
-          >
-            <p>T i l t</p>
-            <img src="./images/icons/play-triangle.svg" className="w-[50px]" />
-          </button>
-        </section>
-      </Modal>
+            <button
+              className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
+              onClick={() => {
+                requestDeviceOrientation();
+                setIsModalOpen(false);
+              }}
+            >
+              <p>T i l t</p>
+              <img
+                src="./images/icons/play-triangle.svg"
+                className="w-[50px]"
+              />
+            </button>
+          </section>
+        </Modal>
+      )}
 
       <Canvas
         camera={{
@@ -109,6 +122,19 @@ export default function MobileExperience() {
 
 function LoadingScreenMobile() {
   const { active, progress, errors, item, loaded, total } = useProgress();
+
+  const { setGameState } = useGameStore((state) => ({
+    setGameState: state.setGameState,
+  }));
+
+  /**
+   * SHOW MANU AFTER THE COMPONENT IS DESTROYED
+   */
+  useEffect(() => {
+    return () => {
+      setGameState(gameStates.MENU);
+    };
+  }, []);
 
   return (
     <Html
