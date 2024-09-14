@@ -109,7 +109,7 @@ export default function Menu() {
             </Link>
 
             <Link to="/works">
-              <p className="mx-5 font-serif">Other works</p>
+              <p className="mx-5 font-serif">Works</p>
             </Link>
 
             <Link to="/contact">
