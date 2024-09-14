@@ -6,7 +6,7 @@
 npm run dev
 ```
 
-## Dev Note 01 - UV of TV screens inside glb (gltf) models  
+## Dev Memo 01 - UV of TV screens inside glb (gltf) models  
 
 In order to play videos inside screen inside glb models, UV should be properly unwrapped, otherwise it cannot play the video in the way you want.
 
@@ -33,5 +33,23 @@ import { useVideoTexture } from "@react-three/drei";
     </mesh>
 
     ....
+
+```
+
+## Dev Memo 02 - Upload the rigged animated character
+
+An astronout model is animated using [mixamo](https://www.mixamo.com/#/) and exported as **fbx**. Then it's imported in Blender and exported as **gltf**. To generating the `jsx` code, [online gltf converter](https://gltf.pmnd.rs/) was used.
+
+#### Play an animation
+```
+....
+
+  const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions["Flying"].play();
+  }, []);
+
+....
 
 ```
