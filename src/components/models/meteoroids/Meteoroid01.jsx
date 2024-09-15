@@ -6,14 +6,16 @@ Command: npx gltfjsx@6.4.1 ./public/models/meteoroids/meteoroid_01.glb
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export default function Meteoroid01(props) {
+export default function Meteoroid01({ opacity, ...props }) {
   const { nodes, materials } = useGLTF("./models/meteoroids/meteoroid_01.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
         geometry={nodes.meteoroid_01.geometry}
-        material={materials["plane-white-planet-material"]}
-      />
+        // material={materials["plane-white-planet-material"]}
+      >
+        <meshStandardMaterial color={"#52433D"} opacity={opacity} transparent />
+      </mesh>
     </group>
   );
 }

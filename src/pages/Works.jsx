@@ -1,6 +1,12 @@
 import * as THREE from "three";
-import { useRef } from "react";
-import { Environment, Float, OrbitControls } from "@react-three/drei";
+import { useRef, useMemo } from "react";
+import {
+  Environment,
+  Float,
+  Line,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
@@ -13,21 +19,20 @@ import {
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
-import { Model } from "../components/models/meteoroids/Meteoroid01.jsx";
+import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
+
+const LINE_NB_POINTS = 12000;
 
 export default function WorksPage() {
   return (
     <>
       <Header home about contact />
 
-      <Canvas
-        camera={{
-          position: [0, 0, 5],
-          fov: 30,
-        }}
-      >
-        <Scene />
-        <Experience />
+      <Canvas>
+        <ScrollControls pages={5} damping={0.3}>
+          <Scene />
+          <Experience />
+        </ScrollControls>
       </Canvas>
     </>
   );
@@ -36,25 +41,204 @@ export default function WorksPage() {
 function Scene() {
   return (
     <>
-      <OrbitControls />
+      {/* <OrbitControls enableZoom={false} /> */}
       <axesHelper />
 
       <color attach="background" args={["#1C1C1C"]} />
+      <fog attach="fog" args={["#1C1C1C", 8, 100]} />
+
       <Environment preset="forest" />
     </>
   );
 }
 
 function Experience() {
+  /**
+   * SEMI-TRANSPARENT LINE PATH
+   */
+
+  // Curve itself - a smooth 3d spline curve
+  const curve = useMemo(() => {
+    const curve = new THREE.CatmullRomCurve3(
+      [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, -10),
+        new THREE.Vector3(-2, 0, -20),
+        new THREE.Vector3(-3, 0, -30),
+        new THREE.Vector3(0, 0, -40),
+        new THREE.Vector3(5, 0, -50),
+        new THREE.Vector3(7, 0, -60),
+        new THREE.Vector3(5, 0, -70),
+        new THREE.Vector3(0, 0, -80),
+        new THREE.Vector3(0, 0, -90),
+        new THREE.Vector3(0, 0, -100),
+      ],
+      false,
+      "catmullrom",
+      0.5
+    );
+
+    return curve;
+  }, []);
+
+  // Points - an array of Vector3 points
+  const linePoints = useMemo(() => {
+    const linePoints = curve.getPoints(LINE_NB_POINTS);
+
+    return linePoints;
+  }, [curve]);
+
+  // 2D shape - for extrudeGeometry
+  const shape = useMemo(() => {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, -0.2);
+    shape.lineTo(0, 0.2);
+
+    return shape;
+  }, []);
+
+  /**
+   * REF - CAMERA GROUP
+   */
+  const cameraGroup = useRef();
+
+  /**
+   * REF - ASTRONOUT
+   */
+  const astronout = useRef();
+
+  /**
+   * SCROLL LOGIC
+   *
+   * scroll.offset = current scroll position, between 0 and 1, dampened
+   * only the camera & astronout move along with scrolling
+   * (the line, meteoroids, fog, etc don't move!)
+   */
+  const scroll = useScroll();
+
+  useFrame((state, delta) => {
+    const curPointIndex = Math.min(
+      Math.round(scroll.offset * linePoints.length),
+      linePoints.length - 1
+    );
+    const curPoint = linePoints[curPointIndex];
+    const pointAhead =
+      linePoints[Math.min(curPointIndex + 1, linePoints.length - 1)];
+
+    const xDisplacement = (pointAhead.x - curPoint.x) * 80;
+
+    // Math.PI / 2 ---> LEFT
+    // - Math.PI / 2 ---> RIGHT
+
+    const angleRotation =
+      (xDisplacement < 0 ? 1 : -1) *
+      Math.min(Math.abs(xDisplacement), Math.PI / 3);
+
+    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        astronout.current.rotation.x,
+        astronout.current.rotation.y,
+        angleRotation
+      )
+    );
+
+    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        cameraGroup.current.rotation.x,
+        angleRotation,
+        cameraGroup.current.rotation.z
+      )
+    )
+
+    // Rotate the astronout on z-axis
+    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
+
+    // Rotate the camera on y-axis
+    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
+
+    // Move the camera position
+    cameraGroup.current.position.lerp(curPoint, delta * 24);
+  });
+
   return (
     <>
-      <Float floatIntensity={2} speed={2}>
-        <Astronout
-          rotation={[0, Math.PI, 0]}
-          scale={[0.25, 0.25, 0.25]}
-          position={[0, -0.2, 0]}
-        />
-      </Float>
+      {/* ------- MOVE WITH SCROLL ------- */}
+
+      <group ref={cameraGroup}>
+        {/* CAMERA */}
+        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+
+        {/* ASTRONOUT */}
+        <Float floatIntensity={2} speed={2}>
+          <group ref={astronout}>
+            <Astronout
+              rotation={[Math.PI * 0.15, Math.PI, 0]}
+              scale={[0.25, 0.25, 0.25]}
+              position={[0, -0.5, 0]}
+            />
+          </group>
+        </Float>
+      </group>
+
+      {/* ------- NOT MOVE WITH SCROLL ------- */}
+
+      {/* LINE */}
+      <group position={[0, -2, 0]}>
+        {/* <Line
+          points={linePoints}
+          color={"white"}
+          opacity={0.7}
+          transparent
+          lineWidth={8}
+        /> */}
+        <mesh>
+          <extrudeGeometry
+            args={[
+              shape,
+              {
+                steps: LINE_NB_POINTS,
+                bevelEnabled: false,
+                extrudePath: curve,
+              },
+            ]}
+          />
+          <meshStandardMaterial color={"white"} opacity={0.7} transparent />
+        </mesh>
+      </group>
+
+      {/* METEOROIDS */}
+      <Meteoroid01
+        opacity={0.5}
+        scale={[0.3, 0.3, 0.3]}
+        position={[-2, 1, -3]}
+      />
+      <Meteoroid01
+        opacity={0.5}
+        scale={[0.2, 0.3, 0.4]}
+        position={[1.5, -0.5, -2]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.3, 0.3, 0.4]}
+        rotatiom={[0, Math.PI / 9, 0]}
+        position={[2, -0.1, -2]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.4, 0.4, 0.4]}
+        rotatiom={[0, Math.PI / 9, 0]}
+        position={[1, -0.2, -12]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.5, 0.5, 0.5]}
+        position={[-1, 1, -53]}
+      />
+      <Meteoroid01
+        opacity={0.3}
+        scale={[0.8, 0.8, 0.8]}
+        position={[0, 1, -100]}
+      />
     </>
   );
 }
