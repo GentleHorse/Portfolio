@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { useRef } from "react";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
-
+import { Model } from "../components/models/meteoroids/Meteoroid01.jsx";
 
 export default function WorksPage() {
   return (
@@ -26,30 +26,40 @@ export default function WorksPage() {
           fov: 30,
         }}
       >
-        <color attach="background" args={["#1C1C1C"]} />
-        
-        <OrbitControls />
-        <Background />
-        <Environment preset="forest" />
-
-        <Astronout />
-
-        <mesh>
-          <boxGeometry />
-          <meshNormalMaterial />
-        </mesh>
+        <Scene />
+        <Experience />
       </Canvas>
     </>
   );
 }
 
-function Background(){
-  return <></>
+function Scene() {
+  return (
+    <>
+      <OrbitControls />
+      <axesHelper />
+
+      <color attach="background" args={["#1C1C1C"]} />
+      <Environment preset="forest" />
+    </>
+  );
 }
 
+function Experience() {
+  return (
+    <>
+      <Float floatIntensity={2} speed={2}>
+        <Astronout
+          rotation={[0, Math.PI, 0]}
+          scale={[0.25, 0.25, 0.25]}
+          position={[0, -0.2, 0]}
+        />
+      </Float>
+    </>
+  );
+}
 
 // =====================================================
-
 
 function TextOnlyScrollContents() {
   const navigate = useNavigate();
