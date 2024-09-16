@@ -14,7 +14,7 @@ export default function Meteoroid01({ opacity, ...props }) {
         geometry={nodes.meteoroid_01.geometry}
         // material={materials["plane-white-planet-material"]}
       >
-        <meshStandardMaterial color={"#52433D"} opacity={opacity} transparent />
+        <meshStandardMaterial color={"#52433D"} opacity={opacity} transparent={true} />
       </mesh>
     </group>
   );

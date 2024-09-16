@@ -4,6 +4,7 @@ import {
   Environment,
   Float,
   Line,
+  Loader,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
@@ -20,16 +21,23 @@ import { Link } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
 import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
+import { Perf } from "r3f-perf";
 
+/**
+ * INITIAL PARAM VALUES
+ */
 const LINE_NB_POINTS = 12000;
+const CURVE_DISTANCE = 250;
 
 export default function WorksPage() {
   return (
     <>
       <Header home about contact />
 
+      <Loader />
+
       <Canvas>
-        <ScrollControls pages={5} damping={0.3}>
+        <ScrollControls pages={100} damping={1}>
           <Scene />
           <Experience />
         </ScrollControls>
@@ -41,8 +49,9 @@ export default function WorksPage() {
 function Scene() {
   return (
     <>
-      {/* <OrbitControls enableZoom={false} /> */}
+      {/* <OrbitControls enableZoom={true} /> */}
       <axesHelper />
+      <Perf position="top-left" />
 
       <color attach="background" args={["#1C1C1C"]} />
       <fog attach="fog" args={["#1C1C1C", 8, 100]} />
@@ -62,16 +71,13 @@ function Experience() {
     const curve = new THREE.CatmullRomCurve3(
       [
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 0, -10),
-        new THREE.Vector3(-2, 0, -20),
-        new THREE.Vector3(-3, 0, -30),
-        new THREE.Vector3(0, 0, -40),
-        new THREE.Vector3(5, 0, -50),
-        new THREE.Vector3(7, 0, -60),
-        new THREE.Vector3(5, 0, -70),
-        new THREE.Vector3(0, 0, -80),
-        new THREE.Vector3(0, 0, -90),
-        new THREE.Vector3(0, 0, -100),
+        new THREE.Vector3(0, 0, -CURVE_DISTANCE),
+        new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
+        new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
+        new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
       ],
       false,
       "catmullrom",
@@ -148,7 +154,7 @@ function Experience() {
         angleRotation,
         cameraGroup.current.rotation.z
       )
-    )
+    );
 
     // Rotate the astronout on z-axis
     astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
@@ -160,6 +166,30 @@ function Experience() {
     cameraGroup.current.position.lerp(curPoint, delta * 24);
   });
 
+  /**
+   * TEXT SHARED PROPS
+   */
+
+  const sharedTitleProps = {
+    color: "snow",
+    anchorX: "left",
+    anchorY: "middle",
+    fontSize: 0.52,
+    maxWidth: 2.5,
+    font: "/fonts/DMSerifDisplay-Regular.ttf",
+  };
+  const sharedTextProps = {
+    color: "snow",
+    anchorX: "left",
+    anchorY: "top",
+    fontSize: 0.18,
+    maxWidth: 2.5,
+    letterSpacing: -0.01,
+    lineHeight: 1.2,
+    "material-toneMapped": false,
+    font: "/fonts/shippori-mincho-b1-v21-japanese-regular.woff",
+  };
+
   return (
     <>
       {/* ------- MOVE WITH SCROLL ------- */}
@@ -169,7 +199,7 @@ function Experience() {
         <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
 
         {/* ASTRONOUT */}
-        <Float floatIntensity={2} speed={2}>
+        <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}>
           <group ref={astronout}>
             <Astronout
               rotation={[Math.PI * 0.15, Math.PI, 0]}
@@ -182,8 +212,8 @@ function Experience() {
 
       {/* ------- NOT MOVE WITH SCROLL ------- */}
 
-      {/* LINE */}
-      <group position={[0, -2, 0]}>
+      {/* LINE PATH */}
+      <group position={[0, -2, 0]} visible={true}>
         {/* <Line
           points={linePoints}
           color={"white"}
@@ -206,38 +236,62 @@ function Experience() {
         </mesh>
       </group>
 
+      {/* TEXT */}
+      <group position={[-3, 0, -100]}>
+        <Text {...sharedTextProps}>
+          Welcome to "Works" page! {"\n"}
+          Relax and just let the body float in space!
+        </Text>
+      </group>
+
+      <group position={[-10, 1, -200]}>
+        <Text {...sharedTitleProps}>Design</Text>
+        <Text {...sharedTextProps} position={[0, -0.4, 0]}>
+          Space between objects, elements, matters. {"\n"}
+          What's happening there? {"\n"}
+          What will happen there? {"\n"}
+          What happened there? {"\n"}
+        </Text>
+      </group>
+
       {/* METEOROIDS */}
       <Meteoroid01
         opacity={0.5}
-        scale={[0.3, 0.3, 0.3]}
-        position={[-2, 1, -3]}
+        scale={[1, 1, 1]}
+        position={[-3.5, 1.2, -7]}
       />
       <Meteoroid01
         opacity={0.5}
-        scale={[0.2, 0.3, 0.4]}
-        position={[1.5, -0.5, -2]}
+        scale={[1, 1, 2]}
+        position={[3.5, -1, -10]}
+        rotation={[0, Math.PI, 0]}
       />
       <Meteoroid01
         opacity={0.7}
-        scale={[0.3, 0.3, 0.4]}
-        rotatiom={[0, Math.PI / 9, 0]}
-        position={[2, -0.1, -2]}
+        scale={[1, 1, 1]}
+        position={[-3.5, 0.2, -12]}
+        rotation={[0, Math.PI / 3, 0]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[1, 1, 1]}
+        position={[3.5, 0.2, -12]}
       />
       <Meteoroid01
         opacity={0.7}
         scale={[0.4, 0.4, 0.4]}
-        rotatiom={[0, Math.PI / 9, 0]}
         position={[1, -0.2, -12]}
+        rotation={[0, Math.PI / 9, 0]}
       />
       <Meteoroid01
-        opacity={0.7}
-        scale={[0.5, 0.5, 0.5]}
-        position={[-1, 1, -53]}
+        opacity={0.3}
+        scale={[0.3, 0.5, 2]}
+        position={[-4, -0.5, -53]}
       />
       <Meteoroid01
         opacity={0.3}
         scale={[0.8, 0.8, 0.8]}
-        position={[0, 1, -100]}
+        position={[-1, -1.5, -100]}
       />
     </>
   );

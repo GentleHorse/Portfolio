@@ -31,3 +31,18 @@ body,
   height: 100%;
   background: #1c1c1c;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* TRACK */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.23);
+}
+
+/* HANDLE */
+::-webkit-scrollbar-thumb {
+  background: snow;
+  height: 10%;
+}
