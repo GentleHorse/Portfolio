@@ -32,10 +32,10 @@ const CURVE_PATH_MAX_WIDTH = 10;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = CURVE_DISTANCE / 5.95;
-const SCROLL_PAGES = 20;
-const SCROLL_DAMPING = 0.5;
-const SCROLL_DISTANCE = 5; // the higher, the slower animation gets
+const FRICTION_DISTANCE = (CURVE_DISTANCE / 5.95) * 1.5;
+const SCROLL_PAGES = 10;
+const SCROLL_DAMPING = 0.001; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 4.5; // the higher, the slower animation gets
 
 export default function WorksPage() {
   return (
@@ -124,9 +124,9 @@ function Experience() {
   const textSections = useMemo(() => {
     return [
       {
-        cameraRailDist: -1,
+        cameraRailDist: -0.5,
         position: new THREE.Vector3(
-          curvePoints[1].x - 3,
+          curvePoints[1].x - 1,
           curvePoints[1].y,
           curvePoints[1].z
         ),
@@ -134,9 +134,9 @@ function Experience() {
 Scroll to explore my works!`,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: 0.75,
         position: new THREE.Vector3(
-          curvePoints[2].x + 2,
+          curvePoints[2].x + 0.75,
           curvePoints[2].y,
           curvePoints[2].z
         ),
@@ -148,9 +148,9 @@ What will happen there?
 What happened there?`,
       },
       {
-        cameraRailDist: -1,
+        cameraRailDist: -0.5,
         position: new THREE.Vector3(
-          curvePoints[3].x - 3,
+          curvePoints[3].x - 1,
           curvePoints[3].y,
           curvePoints[3].z
         ),
@@ -161,9 +161,9 @@ it's like making toys with passions & precision.
         `,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: 0.75,
         position: new THREE.Vector3(
-          curvePoints[4].x + 3.5,
+          curvePoints[4].x + 1.75,
           curvePoints[4].y,
           curvePoints[4].z - 12
         ),
@@ -254,6 +254,10 @@ How can you use it?
 
     // Move the camera position (following the curve points)
     cameraGroup.current.position.lerp(curPoint, delta * 24);
+
+    // console.log(lerpedScrollOffset)
+    console.log(scrollOffset);
+    // console.log(scroll.offset)
 
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
