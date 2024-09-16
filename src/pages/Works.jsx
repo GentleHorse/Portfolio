@@ -53,7 +53,7 @@ function Scene() {
   return (
     <>
       {/* <OrbitControls enableZoom={true} /> */}
-      <axesHelper />
+      {/* <axesHelper /> */}
       <Perf position="top-left" />
 
       <color attach="background" args={["#1C1C1C"]} />
@@ -68,20 +68,23 @@ function Experience() {
   /**
    * SEMI-TRANSPARENT LINE PATH
    */
+  const curvePoints = useMemo(() => {
+    return [
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, -CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
+    ];
+  }, []);
 
   // Curve itself - a smooth 3d spline curve
   const curve = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3(
-      [
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-        new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
-        new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
-        new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
-      ],
+      curvePoints,
       false,
       "catmullrom",
       0.5
@@ -104,6 +107,48 @@ function Experience() {
     shape.lineTo(0, 0.008);
 
     return shape;
+  }, []);
+
+  /**
+   * TEXT SECTIONS
+   */
+  const textSections = useMemo(() => {
+    return [
+      {
+        position: new THREE.Vector3(
+          curvePoints[1].x - 3,
+          curvePoints[1].y,
+          curvePoints[1].z
+        ),
+        subtitle: `Welcome to "Works" page!
+Scroll to explore my works!`,
+      },
+      {
+        position: new THREE.Vector3(
+          curvePoints[2].x + 2,
+          curvePoints[2].y,
+          curvePoints[2].z
+        ),
+        title: "Design",
+        subtitle: `Space between objects, elements, matters.
+
+What's happening there?
+What will happen there?
+What happened there?`,
+      },
+      {
+        position: new THREE.Vector3(
+          curvePoints[3].x - 3,
+          curvePoints[3].y,
+          curvePoints[3].z
+        ),
+        title: "App Dev",
+        subtitle: `Developing applications.
+
+it's like making toys with passions & precision.
+        `,
+      },
+    ];
   }, []);
 
   /**
@@ -179,11 +224,11 @@ function Experience() {
     angleDegrees *= 2.4; // stronger angle
 
     // Limit the astronout rotation angle
-    if (angleDegrees < 0){
-      angleDegrees = Math.max(angleDegrees, -ASTRONOUT_MAX_ANGLE)
+    if (angleDegrees < 0) {
+      angleDegrees = Math.max(angleDegrees, -ASTRONOUT_MAX_ANGLE);
     }
-    if (angleDegrees > 0){
-      angleDegrees = Math.min(angleDegrees, ASTRONOUT_MAX_ANGLE)
+    if (angleDegrees > 0) {
+      angleDegrees = Math.min(angleDegrees, ASTRONOUT_MAX_ANGLE);
     }
 
     // Set back the angle
@@ -199,30 +244,6 @@ function Experience() {
 
     astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
   });
-
-  /**
-   * TEXT SHARED PROPS
-   */
-
-  const sharedTitleProps = {
-    color: "snow",
-    anchorX: "left",
-    anchorY: "middle",
-    fontSize: 0.52,
-    maxWidth: 2.5,
-    font: "/fonts/DMSerifDisplay-Regular.ttf",
-  };
-  const sharedTextProps = {
-    color: "snow",
-    anchorX: "left",
-    anchorY: "top",
-    fontSize: 0.18,
-    maxWidth: 2.5,
-    letterSpacing: -0.01,
-    lineHeight: 1.2,
-    "material-toneMapped": false,
-    font: "/fonts/shippori-mincho-b1-v21-japanese-regular.woff",
-  };
 
   return (
     <>
@@ -271,22 +292,9 @@ function Experience() {
       </group>
 
       {/* TEXT */}
-      <group position={[-3, 0, -100]}>
-        <Text {...sharedTextProps}>
-          Welcome to "Works" page! {"\n"}
-          Relax and just let the body float in space!
-        </Text>
-      </group>
-
-      <group position={[-10, 1, -200]}>
-        <Text {...sharedTitleProps}>Design</Text>
-        <Text {...sharedTextProps} position={[0, -0.4, 0]}>
-          Space between objects, elements, matters. {"\n"}
-          What's happening there? {"\n"}
-          What will happen there? {"\n"}
-          What happened there? {"\n"}
-        </Text>
-      </group>
+      {textSections.map((textSection, index) => (
+        <TextSection {...textSection} key={index} />
+      ))}
 
       {/* METEOROIDS */}
       <Meteoroid01 opacity={0.5} scale={[1, 1, 1]} position={[-3.5, 1.2, -7]} />
@@ -319,6 +327,43 @@ function Experience() {
         scale={[0.8, 0.8, 0.8]}
         position={[-1, -1.5, -100]}
       />
+    </>
+  );
+}
+
+function TextSection({ title, subtitle, ...props }) {
+  /**
+   * SHARED PROPS
+   */
+  const sharedTitleProps = {
+    color: "snow",
+    anchorX: "left",
+    anchorY: "bottom",
+    fontSize: 0.52,
+    maxWidth: 2.5,
+    lineHeight: 1,
+    font: "/fonts/DMSerifDisplay-Regular.ttf",
+  };
+  const sharedTextProps = {
+    color: "snow",
+    anchorX: "left",
+    anchorY: "top",
+    fontSize: 0.18,
+    maxWidth: 2.5,
+    letterSpacing: -0.01,
+    lineHeight: 1.2,
+    "material-toneMapped": false,
+    font: "/fonts/shippori-mincho-b1-v21-japanese-regular.woff",
+    position: [0, -0.4, 0],
+  };
+
+  return (
+    <>
+      <group {...props}>
+        {!!title && <Text {...sharedTitleProps}>{title}</Text>}
+
+        <Text {...sharedTextProps}>{subtitle}</Text>
+      </group>
     </>
   );
 }
