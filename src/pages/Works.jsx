@@ -31,6 +31,7 @@ const CURVE_DISTANCE = 250;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
+const FRICTION_DISTANCE = 42;
 
 export default function WorksPage() {
   return (
@@ -115,6 +116,7 @@ function Experience() {
   const textSections = useMemo(() => {
     return [
       {
+        cameraRailDist: -1,
         position: new THREE.Vector3(
           curvePoints[1].x - 3,
           curvePoints[1].y,
@@ -124,6 +126,7 @@ function Experience() {
 Scroll to explore my works!`,
       },
       {
+        cameraRailDist: 1.5,
         position: new THREE.Vector3(
           curvePoints[2].x + 2,
           curvePoints[2].y,
@@ -137,6 +140,7 @@ What will happen there?
 What happened there?`,
       },
       {
+        cameraRailDist: -1,
         position: new THREE.Vector3(
           curvePoints[3].x - 3,
           curvePoints[3].y,
@@ -148,13 +152,27 @@ What happened there?`,
 it's like making toys with passions & precision.
         `,
       },
+      {
+        cameraRailDist: 1.5,
+        position: new THREE.Vector3(
+          curvePoints[4].x + 3.5,
+          curvePoints[4].y,
+          curvePoints[4].z - 12
+        ),
+        title: "Extra",
+        subtitle: `This is extra.
+
+How can you use it?
+        `,
+      },
     ];
   }, []);
 
   /**
-   * REF - CAMERA GROUP
+   * REFS - CAMERA
    */
   const cameraGroup = useRef();
+  const cameraRail = useRef();
 
   /**
    * REF - ASTRONOUT
@@ -182,6 +200,28 @@ it's like making toys with passions & precision.
 
     // Move the camera position (following the curve points)
     cameraGroup.current.position.lerp(curPoint, delta * 24);
+
+    let resetCameraRail = true;
+    // Look to the close text sections
+    textSections.forEach((textSection) => {
+      const distance = textSection.position.distanceTo(
+        cameraGroup.current.position
+      );
+
+      if (distance < FRICTION_DISTANCE) {
+        const targetCameraRailPosition = new THREE.Vector3(
+          (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
+          0,
+          0
+        );
+        cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+        resetCameraRail = false;
+      }
+    });
+    if (resetCameraRail){
+      const targetCameraRailPosition = new THREE.Vector3(0, 0, 0);
+      cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+    }
 
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
@@ -251,7 +291,9 @@ it's like making toys with passions & precision.
 
       <group ref={cameraGroup}>
         {/* CAMERA */}
-        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+        <group ref={cameraRail}>
+          <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+        </group>
 
         {/* ASTRONOUT */}
         <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}>
