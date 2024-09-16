@@ -28,6 +28,7 @@ import { Perf } from "r3f-perf";
  */
 const LINE_NB_POINTS = 12000;
 const CURVE_DISTANCE = 250;
+const CURVE_AHEAD_CAMERA = 0.008;
 
 export default function WorksPage() {
   return (
@@ -123,47 +124,30 @@ function Experience() {
   const scroll = useScroll();
 
   useFrame((state, delta) => {
-    const curPointIndex = Math.min(
-      Math.round(scroll.offset * linePoints.length),
-      linePoints.length - 1
-    );
-    const curPoint = linePoints[curPointIndex];
-    const pointAhead =
-      linePoints[Math.min(curPointIndex + 1, linePoints.length - 1)];
+    const scrollOffset = Math.max(0, scroll.offset);
 
-    const xDisplacement = (pointAhead.x - curPoint.x) * 80;
+    const curPoint = curve.getPoint(scrollOffset);
 
-    // Math.PI / 2 ---> LEFT
-    // - Math.PI / 2 ---> RIGHT
-
-    const angleRotation =
-      (xDisplacement < 0 ? 1 : -1) *
-      Math.min(Math.abs(xDisplacement), Math.PI / 3);
-
-    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
-      new THREE.Euler(
-        astronout.current.rotation.x,
-        astronout.current.rotation.y,
-        angleRotation
-      )
-    );
-
-    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(
-      new THREE.Euler(
-        cameraGroup.current.rotation.x,
-        angleRotation,
-        cameraGroup.current.rotation.z
-      )
-    );
-
-    // Rotate the astronout on z-axis
-    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
-
-    // Rotate the camera on y-axis
-    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
-
-    // Move the camera position
+    // Move the camera position (following the curve points)
     cameraGroup.current.position.lerp(curPoint, delta * 24);
+
+    // Make the group look ahead on the curve
+
+    const lookAtPoint = curve.getPoint(
+      Math.min(scrollOffset + CURVE_AHEAD_CAMERA, 1)
+    );
+
+    const currentLookAt = cameraGroup.current.getWorldDirection(
+      new THREE.Vector3()
+    );
+    const targetLookAt = new THREE.Vector3()
+      .subVectors(curPoint, lookAtPoint)
+      .normalize();
+
+    const lookAt = currentLookAt.lerp(targetLookAt, delta * 24);
+    cameraGroup.current.lookAt(
+      cameraGroup.current.position.clone().add(lookAt)
+    );
   });
 
   /**
@@ -255,11 +239,7 @@ function Experience() {
       </group>
 
       {/* METEOROIDS */}
-      <Meteoroid01
-        opacity={0.5}
-        scale={[1, 1, 1]}
-        position={[-3.5, 1.2, -7]}
-      />
+      <Meteoroid01 opacity={0.5} scale={[1, 1, 1]} position={[-3.5, 1.2, -7]} />
       <Meteoroid01
         opacity={0.5}
         scale={[1, 1, 2]}
@@ -272,11 +252,7 @@ function Experience() {
         position={[-3.5, 0.2, -12]}
         rotation={[0, Math.PI / 3, 0]}
       />
-      <Meteoroid01
-        opacity={0.7}
-        scale={[1, 1, 1]}
-        position={[3.5, 0.2, -12]}
-      />
+      <Meteoroid01 opacity={0.7} scale={[1, 1, 1]} position={[3.5, 0.2, -12]} />
       <Meteoroid01
         opacity={0.7}
         scale={[0.4, 0.4, 0.4]}
