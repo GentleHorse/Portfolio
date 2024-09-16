@@ -26,9 +26,11 @@ import { Perf } from "r3f-perf";
 /**
  * INITIAL PARAM VALUES
  */
-const LINE_NB_POINTS = 12000;
+const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
 const CURVE_AHEAD_CAMERA = 0.008;
+const CURVE_AHEAD_ASTRONOUT = 0.02;
+const ASTRONOUT_MAX_ANGLE = 35;
 
 export default function WorksPage() {
   return (
@@ -98,8 +100,8 @@ function Experience() {
   // 2D shape - for extrudeGeometry
   const shape = useMemo(() => {
     const shape = new THREE.Shape();
-    shape.moveTo(0, -0.2);
-    shape.lineTo(0, 0.2);
+    shape.moveTo(0, -0.008);
+    shape.lineTo(0, 0.008);
 
     return shape;
   }, []);
@@ -117,26 +119,31 @@ function Experience() {
   /**
    * SCROLL LOGIC
    *
-   * scroll.offset = current scroll position, between 0 and 1, dampened
    * only the camera & astronout move along with scrolling
    * (the line, meteoroids, fog, etc don't move!)
    */
   const scroll = useScroll();
 
   useFrame((state, delta) => {
+    /**
+     * CAMERA SCROLL ANIMATION
+     */
+
+    // Get the current scroll position between 0 and 1
     const scrollOffset = Math.max(0, scroll.offset);
 
+    // Get the nearest curve point
     const curPoint = curve.getPoint(scrollOffset);
 
     // Move the camera position (following the curve points)
     cameraGroup.current.position.lerp(curPoint, delta * 24);
 
-    // Make the group look ahead on the curve
-
+    // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
       Math.min(scrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
 
+    // Create the normalized vector between curPoint and lookAtPoint
     const currentLookAt = cameraGroup.current.getWorldDirection(
       new THREE.Vector3()
     );
@@ -144,10 +151,53 @@ function Experience() {
       .subVectors(curPoint, lookAtPoint)
       .normalize();
 
+    // Make the camera group look ahead on the curve
     const lookAt = currentLookAt.lerp(targetLookAt, delta * 24);
     cameraGroup.current.lookAt(
       cameraGroup.current.position.clone().add(lookAt)
     );
+
+    /**
+     * ASTRONOUT SCROLL ANIMATION
+     */
+    const tangent = curve.getTangent(scrollOffset + CURVE_AHEAD_ASTRONOUT);
+
+    const nonLerpLookAt = new THREE.Group();
+    nonLerpLookAt.position.copy(curPoint);
+    nonLerpLookAt.lookAt(nonLerpLookAt.position.clone().add(targetLookAt));
+
+    // applyAxisAngle(axis, angle)
+    tangent.applyAxisAngle(
+      new THREE.Vector3(0, 1, 0),
+      -nonLerpLookAt.rotation.y
+    );
+
+    let angle = Math.atan2(-tangent.z, tangent.x);
+    angle = -Math.PI / 2 + angle;
+
+    let angleDegrees = (angle * 180) / Math.PI;
+    angleDegrees *= 2.4; // stronger angle
+
+    // Limit the astronout rotation angle
+    if (angleDegrees < 0){
+      angleDegrees = Math.max(angleDegrees, -ASTRONOUT_MAX_ANGLE)
+    }
+    if (angleDegrees > 0){
+      angleDegrees = Math.min(angleDegrees, ASTRONOUT_MAX_ANGLE)
+    }
+
+    // Set back the angle
+    angle = (angleDegrees * Math.PI) / 180;
+
+    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        astronout.current.rotation.x,
+        astronout.current.rotation.y,
+        angle
+      )
+    );
+
+    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
   });
 
   /**
@@ -216,7 +266,7 @@ function Experience() {
               },
             ]}
           />
-          <meshStandardMaterial color={"white"} opacity={0.7} transparent />
+          <meshStandardMaterial color={"white"} opacity={1} transparent />
         </mesh>
       </group>
 
