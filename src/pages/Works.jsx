@@ -27,11 +27,15 @@ import { Perf } from "r3f-perf";
  * INITIAL PARAM VALUES
  */
 const LINE_NB_POINTS = 1000;
-const CURVE_DISTANCE = 250;
+const CURVE_DISTANCE = 50;
+const CURVE_PATH_MAX_WIDTH = 10;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 42;
+const FRICTION_DISTANCE = CURVE_DISTANCE / 5.95;
+const SCROLL_PAGES = 20;
+const SCROLL_DAMPING = 0.5;
+const SCROLL_DISTANCE = 5; // the higher, the slower animation gets
 
 export default function WorksPage() {
   return (
@@ -41,7 +45,11 @@ export default function WorksPage() {
       <Loader />
 
       <Canvas>
-        <ScrollControls pages={100} damping={1}>
+        <ScrollControls
+          pages={SCROLL_PAGES}
+          damping={SCROLL_DAMPING}
+          distance={SCROLL_DISTANCE}
+        >
           <Scene />
           <Experience />
         </ScrollControls>
@@ -73,9 +81,9 @@ function Experience() {
     return [
       new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -4 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
@@ -180,13 +188,18 @@ How can you use it?
   const astronout = useRef();
 
   /**
-   * SCROLL LOGIC
+   * USESCROLL - SCROLL
+   * REF - SCROLL
+   */
+  const scroll = useScroll();
+  const lastScroll = useRef(0);
+
+  /**
+   * SCROLL ANIMATION LOGIC
    *
    * only the camera & astronout move along with scrolling
    * (the line, meteoroids, fog, etc don't move!)
    */
-  const scroll = useScroll();
-
   useFrame((state, delta) => {
     /**
      * CAMERA SCROLL ANIMATION
@@ -195,13 +208,12 @@ How can you use it?
     // Get the current scroll position between 0 and 1
     const scrollOffset = Math.max(0, scroll.offset);
 
-    // Get the nearest curve point
-    const curPoint = curve.getPoint(scrollOffset);
+    // For slowing down the scroll animation
+    let friction = 1;
 
-    // Move the camera position (following the curve points)
-    cameraGroup.current.position.lerp(curPoint, delta * 24);
-
+    // For resetting the camera look at to the center
     let resetCameraRail = true;
+
     // Look to the close text sections
     textSections.forEach((textSection) => {
       const distance = textSection.position.distanceTo(
@@ -209,6 +221,7 @@ How can you use it?
       );
 
       if (distance < FRICTION_DISTANCE) {
+        friction = Math.max(distance / FRICTION_DISTANCE, 0.1);
         const targetCameraRailPosition = new THREE.Vector3(
           (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
           0,
@@ -218,14 +231,33 @@ How can you use it?
         resetCameraRail = false;
       }
     });
-    if (resetCameraRail){
+    if (resetCameraRail) {
       const targetCameraRailPosition = new THREE.Vector3(0, 0, 0);
       cameraRail.current.position.lerp(targetCameraRailPosition, delta);
     }
 
+    // Calculate lerped scroll offset
+    let lerpedScrollOffset = THREE.MathUtils.lerp(
+      lastScroll.current,
+      scrollOffset,
+      delta * friction
+    );
+
+    // Protect below 0 and above 1
+    lerpedScrollOffset = Math.min(lerpedScrollOffset, 1);
+    lerpedScrollOffset = Math.max(lerpedScrollOffset, 0);
+
+    lastScroll.current = lerpedScrollOffset;
+
+    // Get the nearest curve point
+    const curPoint = curve.getPoint(lerpedScrollOffset);
+
+    // Move the camera position (following the curve points)
+    cameraGroup.current.position.lerp(curPoint, delta * 24);
+
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
-      Math.min(scrollOffset + CURVE_AHEAD_CAMERA, 1)
+      Math.min(lerpedScrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
 
     // Create the normalized vector between curPoint and lookAtPoint
@@ -245,7 +277,9 @@ How can you use it?
     /**
      * ASTRONOUT SCROLL ANIMATION
      */
-    const tangent = curve.getTangent(scrollOffset + CURVE_AHEAD_ASTRONOUT);
+    const tangent = curve.getTangent(
+      lerpedScrollOffset + CURVE_AHEAD_ASTRONOUT
+    );
 
     const nonLerpLookAt = new THREE.Group();
     nonLerpLookAt.position.copy(curPoint);
