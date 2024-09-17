@@ -27,15 +27,15 @@ import { Perf } from "r3f-perf";
  * INITIAL PARAM VALUES
  */
 const LINE_NB_POINTS = 1000;
-const CURVE_DISTANCE = 50;
-const CURVE_PATH_MAX_WIDTH = 10;
+const CURVE_DISTANCE = 20;
+const CURVE_PATH_MAX_WIDTH = 2.5;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = (CURVE_DISTANCE / 5.95) * 1.5;
-const SCROLL_PAGES = 10;
-const SCROLL_DAMPING = 0.001; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 4.5; // the higher, the slower animation gets
+const SCROLL_PAGES = 5;
+const SCROLL_DAMPING = 0.0005; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 10.0; // the higher, the slower animation gets
 
 export default function WorksPage() {
   return (
@@ -80,13 +80,22 @@ function Experience() {
   const curvePoints = useMemo(() => {
     return [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -3 * CURVE_DISTANCE),
-      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -4 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -10 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -11 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -12 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -15 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -16 * CURVE_DISTANCE),
     ];
   }, []);
 
@@ -124,19 +133,19 @@ function Experience() {
   const textSections = useMemo(() => {
     return [
       {
-        cameraRailDist: -0.5,
+        cameraRailDist: 0,
         position: new THREE.Vector3(
-          curvePoints[1].x - 1,
-          curvePoints[1].y,
-          curvePoints[1].z
+          curvePoints[0].x,
+          curvePoints[0].y + 1.2,
+          curvePoints[0].z - 5
         ),
-        subtitle: `Welcome to "Works" page!
-Scroll to explore my works!`,
+        subTitleAnchorX: "center",
+        subtitle: `Scroll to explore`,
       },
       {
-        cameraRailDist: 0.75,
+        cameraRailDist: 0,
         position: new THREE.Vector3(
-          curvePoints[2].x + 0.75,
+          curvePoints[2].x + 0.5,
           curvePoints[2].y,
           curvePoints[2].z
         ),
@@ -148,30 +157,127 @@ What will happen there?
 What happened there?`,
       },
       {
-        cameraRailDist: -0.5,
+        cameraRailDist: 0,
         position: new THREE.Vector3(
-          curvePoints[3].x - 1,
+          curvePoints[3].x - 3.5,
           curvePoints[3].y,
           curvePoints[3].z
+        ),
+        title: "Ambience of Light",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[4].x - 3.5,
+          curvePoints[4].y,
+          curvePoints[4].z
+        ),
+        title: "Beauty of Time Passing",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[5].x - 3.5,
+          curvePoints[5].y,
+          curvePoints[5].z
+        ),
+        title: "Intervention In Our Disconnection",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[6].x - 3.5,
+          curvePoints[6].y,
+          curvePoints[6].z
+        ),
+        title: "Masu Typo",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[7].x - 3.5,
+          curvePoints[7].y,
+          curvePoints[7].z
+        ),
+        title: "Comforting Dinner",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[8].x - 3.5,
+          curvePoints[8].y,
+          curvePoints[8].z
+        ),
+        title: "3D Visuals",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[10].x + 0.5,
+          curvePoints[10].y,
+          curvePoints[10].z
         ),
         title: "App Dev",
         subtitle: `Developing applications.
 
-it's like making toys with passions & precision.
+It's like making toys with passions & precision.
         `,
       },
       {
-        cameraRailDist: 0.75,
+        cameraRailDist: 0,
         position: new THREE.Vector3(
-          curvePoints[4].x + 1.75,
-          curvePoints[4].y,
-          curvePoints[4].z - 12
+          curvePoints[11].x - 3.5,
+          curvePoints[11].y,
+          curvePoints[11].z
         ),
-        title: "Extra",
-        subtitle: `This is extra.
-
-How can you use it?
-        `,
+        title: "Portfolio Website",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[12].x - 3.5,
+          curvePoints[12].y,
+          curvePoints[12].z
+        ),
+        title: "OBJECT Rotterdam 2024",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[13].x - 3.5,
+          curvePoints[13].y,
+          curvePoints[13].z
+        ),
+        title: "Weather Cereal",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[14].x - 3.5,
+          curvePoints[14].y,
+          curvePoints[14].z
+        ),
+        title: "Donuts Universe",
+        titleMaxWidth: 2.0,
+      },
+      {
+        cameraRailDist: 0,
+        position: new THREE.Vector3(
+          curvePoints[15].x - 3.5,
+          curvePoints[15].y,
+          curvePoints[15].z
+        ),
+        title: "A Ball's on a Roll",
+        titleMaxWidth: 2.0,
       },
     ];
   }, []);
@@ -254,10 +360,6 @@ How can you use it?
 
     // Move the camera position (following the curve points)
     cameraGroup.current.position.lerp(curPoint, delta * 24);
-
-    // console.log(lerpedScrollOffset)
-    console.log(scrollOffset);
-    // console.log(scroll.offset)
 
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
@@ -411,25 +513,33 @@ How can you use it?
   );
 }
 
-function TextSection({ title, subtitle, ...props }) {
+function TextSection({
+  title,
+  titleAnchorX = "left",
+  titleMaxWidth = 2.5,
+  subtitle,
+  subTitleAnchorX = "left",
+  subTitleMaxWidth = 2.5,
+  ...props
+}) {
   /**
    * SHARED PROPS
    */
   const sharedTitleProps = {
     color: "snow",
-    anchorX: "left",
+    anchorX: titleAnchorX,
     anchorY: "bottom",
     fontSize: 0.52,
-    maxWidth: 2.5,
+    maxWidth: titleMaxWidth,
     lineHeight: 1,
     font: "/fonts/DMSerifDisplay-Regular.ttf",
   };
   const sharedTextProps = {
     color: "snow",
-    anchorX: "left",
+    anchorX: subTitleAnchorX,
     anchorY: "top",
     fontSize: 0.18,
-    maxWidth: 2.5,
+    maxWidth: subTitleMaxWidth,
     letterSpacing: -0.01,
     lineHeight: 1.2,
     "material-toneMapped": false,
@@ -442,7 +552,7 @@ function TextSection({ title, subtitle, ...props }) {
       <group {...props}>
         {!!title && <Text {...sharedTitleProps}>{title}</Text>}
 
-        <Text {...sharedTextProps}>{subtitle}</Text>
+        {!!subtitle && <Text {...sharedTextProps}>{subtitle}</Text>}
       </group>
     </>
   );
