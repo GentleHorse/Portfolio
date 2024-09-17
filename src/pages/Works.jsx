@@ -3,6 +3,7 @@ import { useRef, useMemo } from "react";
 import {
   Environment,
   Float,
+  Html,
   Line,
   Loader,
   OrbitControls,
@@ -22,6 +23,12 @@ import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
 import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
 import { Perf } from "r3f-perf";
+
+import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
+import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
+import InterventionInOurDisconnectionThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
+import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
+import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 
 /**
  * INITIAL PARAM VALUES
@@ -165,6 +172,8 @@ What happened there?`,
         ),
         title: "Ambience of Light",
         titleMaxWidth: 2.0,
+        imageUrl: AmbienceOfLightThumbnail,
+        projectPageUrl: "/ambience-of-light",
       },
       {
         cameraRailDist: 0,
@@ -175,6 +184,8 @@ What happened there?`,
         ),
         title: "Beauty of Time Passing",
         titleMaxWidth: 2.0,
+        imageUrl: BeautyOfTimePassingThumbnail,
+        projectPageUrl: "/beauty-of-time-passing",
       },
       {
         cameraRailDist: 0,
@@ -185,6 +196,8 @@ What happened there?`,
         ),
         title: "Intervention In Our Disconnection",
         titleMaxWidth: 2.0,
+        imageUrl: InterventionInOurDisconnectionThumbnail,
+        projectPageUrl: "/intervention-in-our-disconnection",
       },
       {
         cameraRailDist: 0,
@@ -195,6 +208,8 @@ What happened there?`,
         ),
         title: "Masu Typo",
         titleMaxWidth: 2.0,
+        imageUrl: MasuTypoThumbnail,
+        projectPageUrl: "/masu-typo",
       },
       {
         cameraRailDist: 0,
@@ -205,6 +220,8 @@ What happened there?`,
         ),
         title: "Comforting Dinner",
         titleMaxWidth: 2.0,
+        imageUrl: ComfortingDinnerThumbnail,
+        projectPageUrl: "/comforting-dinner",
       },
       {
         cameraRailDist: 0,
@@ -520,8 +537,15 @@ function TextSection({
   subtitle,
   subTitleAnchorX = "left",
   subTitleMaxWidth = 2.5,
+  imageUrl,
+  projectPageUrl,
   ...props
 }) {
+  /**
+   * USENAVIGATE
+   */
+  const navigate = useNavigate();
+
   /**
    * SHARED PROPS
    */
@@ -534,12 +558,24 @@ function TextSection({
     lineHeight: 1,
     font: "/fonts/DMSerifDisplay-Regular.ttf",
   };
-  const sharedTextProps = {
+  const sharedSubtitleProps = {
     color: "snow",
     anchorX: subTitleAnchorX,
     anchorY: "top",
     fontSize: 0.18,
     maxWidth: subTitleMaxWidth,
+    letterSpacing: -0.01,
+    lineHeight: 1.2,
+    "material-toneMapped": false,
+    font: "/fonts/shippori-mincho-b1-v21-japanese-regular.woff",
+    position: [0, -0.4, 0],
+  };
+  const sharedTextProps = {
+    color: "snow",
+    anchorX: "right",
+    anchorY: "top",
+    fontSize: 0.18,
+    maxWidth: 3.0,
     letterSpacing: -0.01,
     lineHeight: 1.2,
     "material-toneMapped": false,
@@ -552,7 +588,23 @@ function TextSection({
       <group {...props}>
         {!!title && <Text {...sharedTitleProps}>{title}</Text>}
 
-        {!!subtitle && <Text {...sharedTextProps}>{subtitle}</Text>}
+        {!!subtitle && <Text {...sharedSubtitleProps}>{subtitle}</Text>}
+
+        {!!imageUrl && (
+          <group position={[3, 0, 0]}>
+            <Image url={imageUrl} scale={[14.4 * 0.25, 9.6 * 0.25, 1]} />
+            <Text
+              {...sharedTextProps}
+              position={[2, -0.5, 0]}
+              onClick={(event) => {
+                event.stopPropagation();
+                navigate(projectPageUrl);
+              }}
+            >
+              Go to Project Page
+            </Text>
+          </group>
+        )}
       </group>
     </>
   );
