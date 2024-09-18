@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { gameStates, useGameStore } from "../../store/store.js";
 import Modal from "../UI/Modal.jsx";
 
+import escKeyIcon from "../../../public/images/icons/esc-key.svg";
+import moveKeysIcon from "../../../public/images/icons/move-keys.svg";
+import mouseIcon from "../../../public/images/icons/mouse.svg";
+
 export default function Menu() {
   /**
    * MODAL STATE
@@ -72,23 +76,35 @@ export default function Menu() {
       <Modal
         open={isModalOpen}
         onClose={gameStartHandler}
-        className="w-[60vw] h-[75vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+        className="w-[850px] h-[75vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
         <section className="w-full h-full flex flex-col items-center justify-evenly">
-          <p className="mt-5 text-slate-50 text-md">
-            Welcome!
-            <br />
-            <br />
-            You can explore the world with your keyboard & mouse.
-            <br />
-            <br />
-            &gt;&gt; WASD/AQSD/arrow keys to move <br />
-            &gt;&gt; Mouse to change the camera angle <br />
-            &gt;&gt; Esc key to go back to Menu
-            <br />
-            <br />
-            Enjoy !
-          </p>
+          <div className="mt-5 text-slate-50 text-md">
+            <div>
+              <p>Welcome to my studio & atelier!</p>
+              <br />
+              <br />
+              You can freely walk and look around with your mouse and keyboard.
+              <br />
+              <div className="flex justify-between">
+                <div className="flex flex-col items-center">
+                  <img src={moveKeysIcon} className="mx-2 w-20 h-20" />
+                  <p className="m-1 text-sm">WASD/AQSD/arrow keys to move</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img src={mouseIcon} className="mx-2 w-14 h-14" />
+                  <p className="m-1 text-sm">
+                    Mouse to change the camera angle
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img src={escKeyIcon} className="ml-6 mr-2 w-14 h-14" />
+                  <p className="m-1 text-sm">Esc key to go back to Menu</p>
+                </div>
+              </div>
+            </div>
+            <p>Enjoy !</p>
+          </div>
           <p className="w-[50%] mb-5 text-right text-slate-50 font-great-vibes text-3xl">
             Toshihito Endo
           </p>
