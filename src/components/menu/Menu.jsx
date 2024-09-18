@@ -76,40 +76,32 @@ export default function Menu() {
       <Modal
         open={isModalOpen}
         onClose={gameStartHandler}
-        className="w-[850px] h-[75vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+        className="w-[800px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
         <section className="w-full h-full flex flex-col items-center justify-evenly">
-          <div className="mt-5 text-slate-50 text-md">
-            <div>
-              <p>Welcome to my studio & atelier!</p>
-              <br />
-              <br />
-              You can freely walk and look around with your mouse and keyboard.
-              <br />
-              <div className="flex justify-between">
-                <div className="flex flex-col items-center">
-                  <img src={moveKeysIcon} className="mx-2 w-20 h-20" />
-                  <p className="m-1 text-sm">WASD/AQSD/arrow keys to move</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <img src={mouseIcon} className="mx-2 w-14 h-14" />
-                  <p className="m-1 text-sm">
-                    Mouse to change the camera angle
-                  </p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <img src={escKeyIcon} className="ml-6 mr-2 w-14 h-14" />
-                  <p className="m-1 text-sm">Esc key to go back to Menu</p>
-                </div>
+          <div className="w-full mt-5 px-[150px] text-slate-50 text-md">
+            <p className="mb-10 text-center text-slate-50 font-great-vibes text-3xl">
+              How to Play
+            </p>
+
+            <div className="flex justify-between mb-10 py-10 border rounded-xl">
+              <div className="mx-4 flex flex-col items-center justify-center">
+                <img src={moveKeysIcon} className="w-20 h-14" />
+                <p className="m-1 text-sm text-center">WASD/AQSD/arrow keys to move</p>
+              </div>
+              <div className="mx-4 flex flex-col items-center justify-center">
+                <img src={mouseIcon} className="w-14 h-14" />
+                <p className="m-1 text-sm text-center">Mouse to change the camera angle</p>
+              </div>
+              <div className="mx-4 flex flex-col items-center justify-center">
+                <img src={escKeyIcon} className="w-14 h-14" />
+                <p className="m-1 text-sm text-center">Esc key to go back to Menu</p>
               </div>
             </div>
-            <p>Enjoy !</p>
           </div>
-          <p className="w-[50%] mb-5 text-right text-slate-50 font-great-vibes text-3xl">
-            Toshihito Endo
-          </p>
+
           <button
-            className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
+            className="px-5 py-5 mb-10 flex justify-evenly items-center w-[200px] h-1/7 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-2xl"
             onClick={modalCloseHandler}
           >
             <p>P l a y</p>
