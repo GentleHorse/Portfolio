@@ -9,6 +9,7 @@ import {
   ScrollControls,
   Environment,
   Loader,
+  OrbitControls,
 } from "@react-three/drei";
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
@@ -41,6 +42,8 @@ export default function AboutPage() {
               position={[0.8, -3, 0]}
               rotation={[Math.PI * -0.1, Math.PI * 0.1, 0]}
             />
+
+            {/* <OrbitControls /> */}
 
             <Environment preset="city" />
 

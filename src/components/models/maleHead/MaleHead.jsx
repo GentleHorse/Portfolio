@@ -5,11 +5,12 @@ Command: npx gltfjsx@6.4.1 ./public/models/male-head/male-head.glb
 
 import React, { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 const HEAD_MOVE_STRENGTH = 0.04;
 const EYE_BALLS_MOVE_STRENGTH = 0.05;
+const BG_PLANE_MOVE_STRENGTH = 0.01;
 
 export default function MaleHead(props) {
   /**
@@ -23,6 +24,8 @@ export default function MaleHead(props) {
   const upperHeadPart = useRef();
   const eyeBallRight = useRef();
   const eyeBallLeft = useRef();
+
+  const bgPlane = useRef();
 
   /**
    * MOUSE POINTER MOVE SETTING
@@ -48,16 +51,70 @@ export default function MaleHead(props) {
 
     eyeBallLeft.current.rotation.y = mouse.x * EYE_BALLS_MOVE_STRENGTH;
     eyeBallLeft.current.rotation.x = mouse.y * EYE_BALLS_MOVE_STRENGTH;
+
+    bgPlane.current.rotation.y = mouse.x * BG_PLANE_MOVE_STRENGTH;
+    bgPlane.current.rotation.x = mouse.y * BG_PLANE_MOVE_STRENGTH;
   });
 
-  return (
-    <group {...props} dispose={null}>
-      {/* ---- MOVE WITH POINTER ---- */}
+  /**
+   * TEXTURE FOR BACKGROUND LOGO PATTERN
+   */
+  const bgLogoPatternTexture = useTexture(
+    "./textures/logo-pattern/logo-pattern-for-roughness-map.jpg"
+  );
 
-      <group ref={upperHeadPart} rotation={[0, 0, 0]}>
-        {/* MALE HEAD TOP */}
+  return (
+    <>
+      <group {...props} dispose={null}>
+        {/* ---- MOVE WITH POINTER ---- */}
+
+        <group ref={upperHeadPart} rotation={[0, 0, 0]}>
+          {/* MALE HEAD TOP */}
+          <mesh
+            geometry={nodes["male-head-top"].geometry}
+            // material={materials["head-skin"]}
+          >
+            <meshStandardMaterial
+              color="#91989F"
+              metalness={0.8}
+              roughness={0.01}
+            />
+          </mesh>
+
+          {/* GLASSES */}
+          <mesh
+            geometry={nodes["glassese-front-frame"].geometry}
+            material={materials["glasses-black"]}
+          />
+          <mesh
+            geometry={nodes["glasses-hinge"].geometry}
+            material={materials["SVGMat-gold"]}
+          />
+          <mesh
+            geometry={nodes["glassese-side-frame"].geometry}
+            material={materials["glasses-black"]}
+          />
+
+          {/* EYES */}
+          <mesh
+            ref={eyeBallRight}
+            geometry={nodes["right-eye"].geometry}
+            material={materials["eye-ball-material"]}
+            position={[-1.115, 6.309, 2.809]}
+          />
+          <mesh
+            ref={eyeBallLeft}
+            geometry={nodes["left-eye"].geometry}
+            material={materials["eye-ball-material"]}
+            position={[1.115, 6.309, 2.809]}
+          />
+        </group>
+
+        {/* ---- FIXED ---- */}
+
+        {/* MALE HEAD NECK */}
         <mesh
-          geometry={nodes["male-head-top"].geometry}
+          geometry={nodes["male-head-neck"].geometry}
           // material={materials["head-skin"]}
         >
           <meshStandardMaterial
@@ -66,50 +123,13 @@ export default function MaleHead(props) {
             roughness={0.01}
           />
         </mesh>
-
-        {/* GLASSES */}
-        <mesh
-          geometry={nodes["glassese-front-frame"].geometry}
-          material={materials["glasses-black"]}
-        />
-        <mesh
-          geometry={nodes["glasses-hinge"].geometry}
-          material={materials["SVGMat-gold"]}
-        />
-        <mesh
-          geometry={nodes["glassese-side-frame"].geometry}
-          material={materials["glasses-black"]}
-        />
-
-        {/* EYES */}
-        <mesh
-          ref={eyeBallRight}
-          geometry={nodes["right-eye"].geometry}
-          material={materials["eye-ball-material"]}
-          position={[-1.115, 6.309, 2.809]}
-        />
-        <mesh
-          ref={eyeBallLeft}
-          geometry={nodes["left-eye"].geometry}
-          material={materials["eye-ball-material"]}
-          position={[1.115, 6.309, 2.809]}
-        />
       </group>
 
-      {/* ---- FIXED ---- */}
-
-      {/* MALE HEAD NECK */}
-      <mesh
-        geometry={nodes["male-head-neck"].geometry}
-        // material={materials["head-skin"]}
-      >
-        <meshStandardMaterial
-          color="#91989F"
-          metalness={0.8}
-          roughness={0.01}
-        />
+      <mesh ref={bgPlane} position={[0, 0, -20]} scale={[20, 20, 1]}>
+        <planeGeometry />
+        <meshStandardMaterial color="#000000" roughnessMap={bgLogoPatternTexture} envMapIntensity={3.0} />
       </mesh>
-    </group>
+    </>
   );
 }
 
