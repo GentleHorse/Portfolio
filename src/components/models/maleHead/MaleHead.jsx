@@ -125,7 +125,7 @@ export default function MaleHead(props) {
         </mesh>
       </group>
 
-      <mesh ref={bgPlane} position={[0, 0, -20]} scale={[20, 20, 1]}>
+      <mesh ref={bgPlane} position={[0, 0, -20]} scale={[30, 30, 1]}>
         <planeGeometry />
         <meshStandardMaterial color="#000000" roughnessMap={bgLogoPatternTexture} envMapIntensity={3.0} />
       </mesh>
