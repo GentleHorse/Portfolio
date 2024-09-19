@@ -52,11 +52,22 @@ export default function MaleHead(props) {
 
   return (
     <group {...props} dispose={null}>
+      {/* ---- MOVE WITH POINTER ---- */}
+
       <group ref={upperHeadPart} rotation={[0, 0, 0]}>
+        {/* MALE HEAD TOP */}
         <mesh
           geometry={nodes["male-head-top"].geometry}
-          material={materials["head-skin"]}
-        />
+          // material={materials["head-skin"]}
+        >
+          <meshStandardMaterial
+            color="#91989F"
+            metalness={0.8}
+            roughness={0.01}
+          />
+        </mesh>
+
+        {/* GLASSES */}
         <mesh
           geometry={nodes["glassese-front-frame"].geometry}
           material={materials["glasses-black"]}
@@ -69,6 +80,8 @@ export default function MaleHead(props) {
           geometry={nodes["glassese-side-frame"].geometry}
           material={materials["glasses-black"]}
         />
+
+        {/* EYES */}
         <mesh
           ref={eyeBallRight}
           geometry={nodes["right-eye"].geometry}
@@ -83,10 +96,19 @@ export default function MaleHead(props) {
         />
       </group>
 
+      {/* ---- FIXED ---- */}
+
+      {/* MALE HEAD NECK */}
       <mesh
         geometry={nodes["male-head-neck"].geometry}
-        material={materials["head-skin"]}
-      />
+        // material={materials["head-skin"]}
+      >
+        <meshStandardMaterial
+          color="#91989F"
+          metalness={0.8}
+          roughness={0.01}
+        />
+      </mesh>
     </group>
   );
 }

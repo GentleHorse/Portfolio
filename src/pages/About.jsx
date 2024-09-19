@@ -13,6 +13,13 @@ import {
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 
+/**
+ * INITIAL PARAM VALUES
+ */
+const SCROLL_PAGES = 6;
+const SCROLL_DAMPING = 0.15;
+const SCROLL_DISTANCE = 0.5;
+
 export default function AboutPage() {
   return (
     <>
@@ -22,12 +29,16 @@ export default function AboutPage() {
 
       <Suspense fallback={null}>
         <Canvas camera={{ position: [0, 0, 20], fov: 15 }}>
-          <ScrollControls damping={0.15} pages={10} distance={0.5}>
+          <ScrollControls
+            pages={SCROLL_PAGES}
+            damping={SCROLL_DAMPING}
+            distance={SCROLL_DISTANCE}
+          >
             {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
             <MaleHead
               scale={0.47}
-              position={[0, -3, 0]}
+              position={[0.8, -3, 0]}
               rotation={[Math.PI * -0.1, Math.PI * 0.1, 0]}
             />
 
@@ -37,73 +48,173 @@ export default function AboutPage() {
 
             <Scroll html>
               {/* DOM contents in here will scroll along */}
-              <h1 className="mt-10 font-permanent-marker mb-[5px] text-[60px] text-[#cbe2fd]">
-                Hello, it's Me, Toshi !
-              </h1>
+              <section className="h-[100vh]">
+                <h1 className="h-full mt-[50vh] ml-10 font-cinzel text-[60px] text-[#ffffff]">
+                  Hello, <br />
+                  it's Me, Toshi !
+                </h1>
+              </section>
 
-              <article
-                className="py-[5%] px-[12%] w-[60vw]"
-                style={{ transform: "translate3d(40vw, 250vh, 0)" }}
-              >
-                <p className="font-roboto text-[#fcfaf2]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  ut massa ultricies, venenatis lorem vitae, mollis urna.
-                  Aliquam quis rutrum orci. Sed sodales, metus vel tempor
-                  fringilla, nibh sapien molestie nisi, in convallis lorem erat
-                  et tortor. In luctus tellus pharetra diam interdum, at
-                  fermentum nibh luctus. Morbi rhoncus mollis enim, vitae rutrum
-                  dui accumsan eu. Cras laoreet sit amet urna quis vulputate.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer venenatis, lectus id dapibus consectetur, dui lacus
-                  viverra libero, eu faucibus ipsum nibh ac ipsum. Ut nunc odio,
-                  blandit vel condimentum ac, tincidunt ut nunc. Duis est dui,
-                  semper sit amet lectus eget, feugiat scelerisque urna. Sed
-                  consequat, arcu sit amet pharetra laoreet, dui mi pellentesque
-                  ante, in tristique orci enim in ipsum. Sed ultrices fermentum
-                  est, quis congue mauris interdum vel. Aliquam id eros in
-                  lectus pulvinar sagittis vitae eu augue. Duis at semper risus,
-                  eu maximus mauris. Proin eget erat ac nisi pharetra placerat.
-                  Vestibulum sit amet euismod ex. Vivamus sagittis pulvinar ante
-                  ac tristique. Morbi convallis, magna in bibendum tempus, nunc
-                  est commodo libero, at rhoncus augue ex nec felis.
-                  Pellentesque condimentum bibendum mi, sit amet sollicitudin
-                  nisl. Ut sem felis, pretium id iaculis vitae, dignissim a
-                  quam. Quisque bibendum lacus sed erat ultrices, ut efficitur
-                  sapien scelerisque. Phasellus orci nibh, convallis vel dolor
-                  at, vulputate consectetur nulla. Duis vehicula orci augue, non
-                  iaculis ipsum fringilla quis. Nullam consectetur, sapien sit
-                  amet tincidunt pretium, lacus lectus ultricies nibh, sit amet
-                  lobortis purus ex at diam. Pellentesque lorem dolor, malesuada
-                  quis accumsan ac, auctor sed est. Nam aliquam sem vitae
-                  sagittis pharetra. Duis volutpat, sapien vitae egestas
-                  lobortis, ipsum nisl aliquam enim, ac ultrices ante erat eu
-                  lorem. Aliquam tempor placerat volutpat. Nullam vitae
-                  tristique arcu. Vivamus magna mauris, faucibus id dapibus ut,
-                  vehicula a dolor. Aliquam tempus sem gravida felis porta
-                  aliquam. Nullam eu diam neque. Nam euismod eleifend mauris a
-                  feugiat. Cras porttitor libero et arcu gravida porttitor. Sed
-                  arcu odio, egestas dignissim sodales sit amet, molestie sit
-                  amet erat. Fusce non turpis diam. Vestibulum a ipsum non nulla
-                  tincidunt cursus. Fusce orci dui, fermentum eget condimentum
-                  eget, viverra vitae odio. Integer sed nisl vitae elit eleifend
-                  egestas eu eget nunc. In efficitur pretium accumsan. Cras
-                  venenatis sollicitudin elit ut suscipit. Duis quis justo urna.
-                  Aliquam venenatis id eros vitae commodo. Suspendisse iaculis
-                  suscipit est nec sagittis. Nullam viverra felis orci. Nam quis
-                  arcu accumsan, luctus lorem vitae, gravida turpis. Integer
-                  gravida, libero et molestie consectetur, tellus quam
-                  pellentesque ipsum, vitae hendrerit ante turpis nec ante.
-                  Morbi dignissim nisi sed erat varius accumsan. Vivamus vitae
-                  egestas nisl, et sodales est. Mauris ac blandit dolor. Ut quis
-                  elit lacus. Integer convallis, justo ac pretium efficitur,
-                  erat magna tincidunt urna, commodo gravida velit purus ut
-                  magna. Nulla ac leo sed ipsum faucibus pulvinar. Duis a
-                  sollicitudin leo, in interdum dolor. Pellentesque ac enim id
-                  ligula finibus consectetur ut ut turpis. Class aptent taciti
-                  sociosqu ad litora torquent per conubia nostra, per inceptos
-                  himenaeos. Vestibulum luctus eleifend justo.
-                </p>
-              </article>
+              <section className="h-[100vh]">
+                <article className="py-[5%] px-[12%] w-[60vw]">
+                  <p className="font-roboto text-[#fcfaf2]">
+                    Toshihito Endo is a designer, creative developer from Japan.
+                    He got a economic bachelor degree in Japan and worked at a
+                    finance and accounting department of a semiconductor
+                    manufacturing company in Japan. After several years he
+                    decide to dive into design feild, and moved to Netherlands.
+                    In 2023, he graduated with a bachelor degree from the Design
+                    Academy Eindhoven.
+                    <br />
+                    <br />
+                    He is always interested in technologies and enjoys learning
+                    new technologies, but at the same time he is concern that
+                    nowadays rapid technological developments make us exhausted
+                    by forcing us to keep it up with demanding never ending
+                    adaptation to it. Most of his design design practices are
+                    somewhere between this posibility and fragility of
+                    technology, and attempts to search for tools, mindsets,
+                    cultures to bridge our lives and technologies in a
+                    harmonical way by connecting human to nature. He believes
+                    that technology is not something "against" nature but
+                    something "co-existing with" nature, and if we learn proper
+                    usage of technology, it definitely helps us to unite with
+                    nature again.
+                  </p>
+                </article>
+              </section>
+
+              <section className="h-[100vh]">
+                <h1 className="ml-10 font-cinzel text-[60px] text-[#ffffff]">
+                  Experiences
+                </h1>
+                <article className="py-[5%] px-[12%] w-[80vw]">
+                  <p className="font-roboto text-[#fcfaf2]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean id lacus massa. Integer vulputate enim vitae leo
+                    pulvinar, ut feugiat ex sodales. Sed ultricies eleifend
+                    dictum. Vestibulum laoreet aliquet odio vel efficitur. Nunc
+                    eget dui a risus lacinia bibendum. Donec pellentesque
+                    aliquam lacus id sagittis. Vestibulum non quam eget mauris
+                    hendrerit mattis id eu ante. Phasellus laoreet tincidunt
+                    pellentesque. Morbi vel aliquet massa. Aliquam imperdiet dui
+                    interdum lectus efficitur rhoncus. Proin aliquam tortor sem,
+                    a rhoncus justo consectetur ut. Pellentesque congue ac diam
+                    vel consectetur. Suspendisse pretium ultricies metus, eget
+                    convallis dui euismod ac. Donec vitae semper ex. Nam vel
+                    vestibulum magna. Phasellus sed vulputate massa. Proin sit
+                    amet commodo leo. Maecenas pulvinar risus eu mauris ornare
+                    porttitor. Ut laoreet gravida lorem, id efficitur eros
+                    pharetra quis. Donec ornare augue et ornare interdum. Sed
+                    porta mollis ipsum at dictum. Vestibulum nec scelerisque
+                    urna. Nunc efficitur placerat efficitur. Curabitur feugiat
+                    eros viverra vehicula imperdiet. Donec condimentum ante a
+                    leo ultrices, et tempus dui pharetra. Aenean hendrerit diam
+                    nisl, vel auctor enim cursus eu. Nullam neque ligula,
+                    viverra sed pretium at, dapibus quis dui. Orci varius
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Vestibulum sed scelerisque odio. Etiam eros
+                    erat, suscipit at augue vitae, sollicitudin cursus turpis.
+                    Morbi venenatis nunc et elit dignissim ornare. Phasellus vel
+                    purus enim. Nunc convallis dignissim tortor. Quisque
+                    pulvinar nec nulla vel dignissim. Morbi id laoreet metus, eu
+                    auctor velit. Orci varius natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Aenean euismod
+                    aliquet maximus. Aliquam congue facilisis leo ac mollis.
+                    Mauris sit amet nisl ac ipsum efficitur varius. Fusce mollis
+                    tempus ipsum, scelerisque feugiat turpis rhoncus vel. In
+                    tortor tortor, convallis ut ligula ac, congue faucibus nibh.
+                  </p>
+                </article>
+              </section>
+
+              <section className="h-[100vh]">
+                <h1 className="ml-10 font-cinzel text-[60px] text-[#ffffff]">
+                  Exhibitions
+                </h1>
+                <article className="py-[5%] px-[12%] w-[80vw]">
+                  <p className="font-roboto text-[#fcfaf2]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean id lacus massa. Integer vulputate enim vitae leo
+                    pulvinar, ut feugiat ex sodales. Sed ultricies eleifend
+                    dictum. Vestibulum laoreet aliquet odio vel efficitur. Nunc
+                    eget dui a risus lacinia bibendum. Donec pellentesque
+                    aliquam lacus id sagittis. Vestibulum non quam eget mauris
+                    hendrerit mattis id eu ante. Phasellus laoreet tincidunt
+                    pellentesque. Morbi vel aliquet massa. Aliquam imperdiet dui
+                    interdum lectus efficitur rhoncus. Proin aliquam tortor sem,
+                    a rhoncus justo consectetur ut. Pellentesque congue ac diam
+                    vel consectetur. Suspendisse pretium ultricies metus, eget
+                    convallis dui euismod ac. Donec vitae semper ex. Nam vel
+                    vestibulum magna. Phasellus sed vulputate massa. Proin sit
+                    amet commodo leo. Maecenas pulvinar risus eu mauris ornare
+                    porttitor. Ut laoreet gravida lorem, id efficitur eros
+                    pharetra quis. Donec ornare augue et ornare interdum. Sed
+                    porta mollis ipsum at dictum. Vestibulum nec scelerisque
+                    urna. Nunc efficitur placerat efficitur. Curabitur feugiat
+                    eros viverra vehicula imperdiet. Donec condimentum ante a
+                    leo ultrices, et tempus dui pharetra. Aenean hendrerit diam
+                    nisl, vel auctor enim cursus eu. Nullam neque ligula,
+                    viverra sed pretium at, dapibus quis dui. Orci varius
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Vestibulum sed scelerisque odio. Etiam eros
+                    erat, suscipit at augue vitae, sollicitudin cursus turpis.
+                    Morbi venenatis nunc et elit dignissim ornare. Phasellus vel
+                    purus enim. Nunc convallis dignissim tortor. Quisque
+                    pulvinar nec nulla vel dignissim. Morbi id laoreet metus, eu
+                    auctor velit. Orci varius natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Aenean euismod
+                    aliquet maximus. Aliquam congue facilisis leo ac mollis.
+                    Mauris sit amet nisl ac ipsum efficitur varius. Fusce mollis
+                    tempus ipsum, scelerisque feugiat turpis rhoncus vel. In
+                    tortor tortor, convallis ut ligula ac, congue faucibus nibh.
+                  </p>
+                </article>
+              </section>
+
+              <section className="h-[100vh]">
+                <h1 className="ml-10 font-cinzel text-[60px] text-[#ffffff]">
+                  Skills
+                </h1>
+                <article className="py-[5%] px-[12%] w-[80vw]">
+                  <p className="font-roboto text-[#fcfaf2]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean id lacus massa. Integer vulputate enim vitae leo
+                    pulvinar, ut feugiat ex sodales. Sed ultricies eleifend
+                    dictum. Vestibulum laoreet aliquet odio vel efficitur. Nunc
+                    eget dui a risus lacinia bibendum. Donec pellentesque
+                    aliquam lacus id sagittis. Vestibulum non quam eget mauris
+                    hendrerit mattis id eu ante. Phasellus laoreet tincidunt
+                    pellentesque. Morbi vel aliquet massa. Aliquam imperdiet dui
+                    interdum lectus efficitur rhoncus. Proin aliquam tortor sem,
+                    a rhoncus justo consectetur ut. Pellentesque congue ac diam
+                    vel consectetur. Suspendisse pretium ultricies metus, eget
+                    convallis dui euismod ac. Donec vitae semper ex. Nam vel
+                    vestibulum magna. Phasellus sed vulputate massa. Proin sit
+                    amet commodo leo. Maecenas pulvinar risus eu mauris ornare
+                    porttitor. Ut laoreet gravida lorem, id efficitur eros
+                    pharetra quis. Donec ornare augue et ornare interdum. Sed
+                    porta mollis ipsum at dictum. Vestibulum nec scelerisque
+                    urna. Nunc efficitur placerat efficitur. Curabitur feugiat
+                    eros viverra vehicula imperdiet. Donec condimentum ante a
+                    leo ultrices, et tempus dui pharetra. Aenean hendrerit diam
+                    nisl, vel auctor enim cursus eu. Nullam neque ligula,
+                    viverra sed pretium at, dapibus quis dui. Orci varius
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Vestibulum sed scelerisque odio. Etiam eros
+                    erat, suscipit at augue vitae, sollicitudin cursus turpis.
+                    Morbi venenatis nunc et elit dignissim ornare. Phasellus vel
+                    purus enim. Nunc convallis dignissim tortor. Quisque
+                    pulvinar nec nulla vel dignissim. Morbi id laoreet metus, eu
+                    auctor velit. Orci varius natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Aenean euismod
+                    aliquet maximus. Aliquam congue facilisis leo ac mollis.
+                    Mauris sit amet nisl ac ipsum efficitur varius. Fusce mollis
+                    tempus ipsum, scelerisque feugiat turpis rhoncus vel. In
+                    tortor tortor, convallis ut ligula ac, congue faucibus nibh.
+                  </p>
+                </article>
+              </section>
             </Scroll>
           </ScrollControls>
         </Canvas>
