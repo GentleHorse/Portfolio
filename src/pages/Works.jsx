@@ -67,7 +67,7 @@ function Experience() {
   /**
    * MONOLITH PARAMS
    */
-  const monolithDistance = 45.0;
+  const monolithDistance = 6.5;
   const monolithPositionsArray = [
     {
       id: "Ambience of Light",
@@ -76,52 +76,52 @@ function Experience() {
     },
     {
       id: "Beauty of Time Passing",
-      position: [0, 0, -1 * monolithDistance],
+      position: [1 * monolithDistance, 0, 0],
       imageUrl: BeautyOfTimePassingThumbnail,
     },
     {
       id: "Intervention In Our Disconnection",
-      position: [0, 0, -2 * monolithDistance],
+      position: [2 * monolithDistance, 0, 0],
       imageUrl: InterventionInOurDisconnectionThumbnail,
     },
     {
       id: "Masu Typo",
-      position: [0, 0, -3 * monolithDistance],
+      position: [3 * monolithDistance, 0, 0],
       imageUrl: MasuTypoThumbnail,
     },
     {
       id: "Comforting Dinner",
-      position: [0, 0, -4 * monolithDistance],
+      position: [4 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "3D Visuals",
-      position: [0, 0, -5 * monolithDistance],
+      position: [5 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Portfolio Website",
-      position: [0, 0, -6 * monolithDistance],
+      position: [6 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "OBJECT Rotterdam 2024",
-      position: [0, 0, -7 * monolithDistance],
+      position: [7 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Weather Cereal",
-      position: [0, 0, -8 * monolithDistance],
+      position: [8 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Donuts Universe",
-      position: [0, 0, -9 * monolithDistance],
+      position: [9 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Marble's on a Roll",
-      position: [0, 0, -10 * monolithDistance],
+      position: [10 * monolithDistance, 0, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
   ];
@@ -158,8 +158,8 @@ function Experience() {
 
   useFrame(() => {
     // Horizontal scroll effect
-    cameraGroup.current.position.z =
-      -(scroll.offset * monolithDistance * monolithPositionsArray.length);
+    cameraGroup.current.position.x =
+      scroll.offset * monolithDistance * monolithPositionsArray.length;
 
     // Orbit control like effect
     if (monolithInputRefs.length === 0) return;
@@ -182,44 +182,37 @@ function Experience() {
       {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
       <group ref={cameraGroup}>
-        <PerspectiveCamera position={[0, 0.5, 0]} fov={15} makeDefault />
+        <PerspectiveCamera position={[0, 0, 20]} fov={15} makeDefault />
       </group>
 
-      <group position={[0, 0, -20]}>
-        {monolithPositionsArray.map((monolith, index) => (
-          <group
-            ref={(element) => (monolithInputRefs.current[index] = element)}
-            key={monolith.id}
-            position={monolith.position}
-          >
-            <group scale={[1.5, 1.5, 1.5]} position={[0, 0.5, 0]}>
-              {/* <Monolith /> */}
-              <Image
-                url={monolith.imageUrl}
-                position={[0.1, 0, 0]}
-                scale={[14.4 * 0.2, 9.6 * 0.2, 1]}
-                toneMapped={false}
-              />
-            </group>
-
-            <Text
-              position={[-2.0, 0, 0.5]}
-              fontSize={0.35}
-              font="./fonts/DMSerifDisplay-Regular.ttf"
-              maxWidth={1.5}
-              anchorX="left"
-            >
-              {monolith.id}
-              <meshBasicMaterial color="#ffffff" toneMapped={false} />
-            </Text>
+      {monolithPositionsArray.map((monolith, index) => (
+        <group
+          ref={(element) => (monolithInputRefs.current[index] = element)}
+          key={monolith.id}
+          position={monolith.position}
+        >
+          <group scale={[1.5, 1.5, 1.5]} position={[0, 0.5, 0]}>
+            {/* <Monolith /> */}
+            <Image url={monolith.imageUrl} position={[0.1, 0, 0]} scale={[14.4 * 0.2, 9.6 * 0.2, 1]} toneMapped={false} />
           </group>
-        ))}
-      </group>
+
+          <Text
+            position={[-2.0, 0, 0.5]}
+            fontSize={0.35}
+            font="./fonts/DMSerifDisplay-Regular.ttf"
+            maxWidth={1.5}
+            anchorX="left"
+          >
+            {monolith.id}
+            <meshBasicMaterial color="#ffffff" toneMapped={false} />
+          </Text>
+        </group>
+      ))}
 
       {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
       <mesh
-        scale={[40, 500, 1]}
-        position={[0, -1.6, -250]}
+        scale={[100, 100, 1]}
+        position={[40, -1.6, 0]}
         rotation={[-Math.PI * 0.5, 0, 0]}
       >
         <planeGeometry />
@@ -446,7 +439,7 @@ function Scene() {
       {/* <axesHelper /> */}
       <Perf position="top-left" />
 
-      <fog attach="fog" args={["#1C1C1C", 8, 35]} />
+      <fog attach="fog" args={["#1C1C1C", 8, 40]} />
       <Environment preset="studio" />
     </>
   );
