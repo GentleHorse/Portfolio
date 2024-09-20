@@ -16,6 +16,7 @@ import {
   Image,
   Scroll,
   ScrollControls,
+  MeshReflectorMaterial,
 } from "@react-three/drei";
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
@@ -64,7 +65,7 @@ function Experience() {
   /**
    * MONOLITH PARAMS
    */
-  const monolithDistance = 3.5;
+  const monolithDistance = 6.5;
   const monolithPositionsArray = [
     {
       id: "design01",
@@ -128,9 +129,14 @@ function Experience() {
   }, []);
 
   /**
-   * REFS - CAMERA
+   * REF - CAMERA
    */
   const cameraGroup = useRef();
+
+  /**
+   * REF - ARRAY REF FOR MONOLITHs
+   */
+  const monolithInputRefs = useRef([]);
 
   /**
    * USESCROLL
@@ -139,11 +145,21 @@ function Experience() {
 
   useFrame(() => {
     // Horizontal scroll effect
-    cameraGroup.current.position.x = scroll.offset * monolithDistance * 10;
+    cameraGroup.current.position.x =
+      scroll.offset * monolithDistance * monolithPositionsArray.length;
 
     // Orbit control like effect
-    cameraGroup.current.rotation.y = mouse.x * 0.01;
-    cameraGroup.current.rotation.x = mouse.y * 0.01;
+    if (monolithInputRefs.length === 0) return;
+
+    for(let i = 0; i < monolithPositionsArray.length; i++){
+      if (
+        scroll.offset >= (i - 0.5) / monolithPositionsArray.length &&
+        scroll.offset < (i + 0.5) / monolithPositionsArray.length
+      ) {
+        monolithInputRefs.current[i].children[0].rotation.y = mouse.x * 0.02;
+        monolithInputRefs.current[i].children[0].rotation.x = mouse.y * 0.02;
+      }  
+    }
   });
 
   return (
@@ -155,7 +171,11 @@ function Experience() {
       </group>
 
       {monolithPositionsArray.map((monolith, index) => (
-        <group key={monolith.id} position={monolith.position}>
+        <group
+          ref={(element) => (monolithInputRefs.current[index] = element)}
+          key={monolith.id}
+          position={monolith.position}
+        >
           <mesh scale={[2, 3, 0.25]}>
             <boxGeometry />
             <meshStandardMaterial
@@ -175,6 +195,30 @@ function Experience() {
           </Text>
         </group>
       ))}
+
+      {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
+      <mesh
+        scale={[100, 100, 1]}
+        position={[0, -1.6, 0]}
+        rotation={[-Math.PI * 0.5, 0, 0]}
+      >
+        <planeGeometry />
+        <MeshReflectorMaterial
+          resolution={256} // this affects performance a lot!
+          blur={[300, 100]}
+          mixBlur={1}
+          mirror={[0.85]}
+          color="#1C1C1C"
+          mixStrength={2}
+          depthScale={1}
+          minDepthThreshold={0.85}
+          metalness={0.5}
+          roughness={0.1}
+          distortion={2.5}
+          reflectorOffset={0.01}
+          envMapIntensity={0.5}
+        />
+      </mesh>
 
       {/* ------------------------------------------------------------------ */}
 
@@ -382,7 +426,7 @@ function Scene() {
       <axesHelper />
       <Perf position="top-left" />
 
-      <Environment preset="city" />
+      <Environment preset="studio" />
     </>
   );
 }
