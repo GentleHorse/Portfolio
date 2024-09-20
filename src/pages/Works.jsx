@@ -21,6 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import { Perf } from "r3f-perf";
+import Monolith from "../components/models/monolith/Monolith.jsx";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
@@ -34,6 +35,7 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
 const SCROLL_PAGES = 10;
 const SCROLL_DAMPING = 0.15;
 const SCROLL_DISTANCE = 0.5;
+const MONOLITH_MOUSE_POINTER_ROTATION_STRENGTH = 0.025;
 
 export default function WorksPage() {
   return (
@@ -151,14 +153,16 @@ function Experience() {
     // Orbit control like effect
     if (monolithInputRefs.length === 0) return;
 
-    for(let i = 0; i < monolithPositionsArray.length; i++){
+    for (let i = 0; i < monolithPositionsArray.length; i++) {
       if (
         scroll.offset >= (i - 0.5) / monolithPositionsArray.length &&
         scroll.offset < (i + 0.5) / monolithPositionsArray.length
       ) {
-        monolithInputRefs.current[i].children[0].rotation.y = mouse.x * 0.02;
-        monolithInputRefs.current[i].children[0].rotation.x = mouse.y * 0.02;
-      }  
+        monolithInputRefs.current[i].children[0].rotation.y =
+          mouse.x * MONOLITH_MOUSE_POINTER_ROTATION_STRENGTH;
+        monolithInputRefs.current[i].children[0].rotation.x =
+          mouse.y * MONOLITH_MOUSE_POINTER_ROTATION_STRENGTH;
+      }
     }
   });
 
@@ -167,7 +171,7 @@ function Experience() {
       {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
       <group ref={cameraGroup}>
-        <PerspectiveCamera position={[0, 0, 20]} fov={15} makeDefault />
+        <PerspectiveCamera position={[0, 0, 20]} fov={18} makeDefault />
       </group>
 
       {monolithPositionsArray.map((monolith, index) => (
@@ -176,24 +180,19 @@ function Experience() {
           key={monolith.id}
           position={monolith.position}
         >
-          <mesh scale={[2, 3, 0.25]}>
-            <boxGeometry />
-            <meshStandardMaterial
-              color="#91989F"
-              metalness={0.8}
-              roughness={0.05}
-            />
-          </mesh>
+          <group scale={[1.5, 1.5, 1.5]} position={[0, 0.5, 0]}>
+            <Monolith />
+          </group>
 
           <Text
-            position={[-1.2, 0, 0.5]}
-            color="#C1C1C1"
+            position={[-2.0, 0, 0.5]}
             fontSize={0.35}
             font="./fonts/DMSerifDisplay-Regular.ttf"
             maxWidth={1.5}
             anchorX="left"
           >
             {monolith.id}
+            <meshBasicMaterial color="#ffffff" toneMapped={false} />
           </Text>
         </group>
       ))}
@@ -428,6 +427,7 @@ function Scene() {
       <axesHelper />
       <Perf position="top-left" />
 
+      <fog attach="fog" args={["#1C1C1C", 8, 50]} />
       <Environment preset="studio" />
     </>
   );
