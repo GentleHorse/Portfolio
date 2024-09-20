@@ -15,19 +15,40 @@ const loader = new THREE.TextureLoader();
 const PLASTER_NORMAL_TEXTURE = loader.load(
   "./textures/plaster/plaster-normal.jpg"
 );
+const WOOD_NORMAL_TEXTURE = loader.load(
+  "./textures/wood-surface/wood-surface-normal-01.jpg"
+);
+const WOOD_DISPLACEMENT_TEXTURE = loader.load(
+  "./textures/wood-surface/wood-surface-displacement-01.jpg"
+);
 
 export default function Monolith(props) {
   const { nodes } = useGLTF("./models/monolith/monolith.glb");
+
+  console.log(nodes);
+
   return (
     <group {...props} dispose={null}>
       <Clone
-        object={nodes["monolith-body"]}
+        object={nodes["monolith-landscape"]}
         inject={
           <meshStandardMaterial
-            color="#91989F"
+            color="#32261E"
             metalness={0.75}
-            roughness={0.2}
-            // roughnessMap={PLASTER_NORMAL_TEXTURE}
+            // roughness={0.2}
+            roughnessMap={WOOD_NORMAL_TEXTURE}
+            // displacementMap={WOOD_DISPLACEMENT_TEXTURE}
+          />
+        }
+      />
+      <Clone
+        object={nodes["logo"]}
+        inject={
+          <meshStandardMaterial
+            color="#B08D57"
+            metalness={0.75}
+            // roughness={0.2}
+            roughnessMap={PLASTER_NORMAL_TEXTURE}
           />
         }
       />

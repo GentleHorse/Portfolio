@@ -182,7 +182,7 @@ function Experience() {
       {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
       <group ref={cameraGroup}>
-        <PerspectiveCamera position={[0, 0, 20]} fov={15} makeDefault />
+        <PerspectiveCamera position={[0, 0.5, 20]} fov={15} makeDefault />
       </group>
 
       {monolithPositionsArray.map((monolith, index) => (
@@ -191,16 +191,16 @@ function Experience() {
           key={monolith.id}
           position={monolith.position}
         >
-          <group scale={[1.5, 1.5, 1.5]} position={[0, 0.5, 0]}>
-            {/* <Monolith /> */}
-            <Image url={monolith.imageUrl} position={[0.1, 0, 0]} scale={[14.4 * 0.2, 9.6 * 0.2, 1]} toneMapped={false} />
+          <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
+            <Monolith scale={[1, 1, 1]} />
+            <Image url={monolith.imageUrl} position={[0.1, 0, 0]} scale={[14.4 * 0.125, 9.6 * 0.125, 1]} toneMapped={false} />
           </group>
 
           <Text
-            position={[-2.0, 0, 0.5]}
-            fontSize={0.35}
+            position={[-2.0, 0.5, 0.5]}
+            fontSize={0.25}
             font="./fonts/DMSerifDisplay-Regular.ttf"
-            maxWidth={1.5}
+            maxWidth={1.0}
             anchorX="left"
           >
             {monolith.id}
@@ -212,7 +212,7 @@ function Experience() {
       {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
       <mesh
         scale={[100, 100, 1]}
-        position={[40, -1.6, 0]}
+        position={[40, -0.6, 0]}
         rotation={[-Math.PI * 0.5, 0, 0]}
       >
         <planeGeometry />
@@ -220,7 +220,7 @@ function Experience() {
           resolution={256} // this affects performance a lot!
           blur={[300, 100]}
           mixBlur={1}
-          mirror={[0.85]}
+          mirror={[0.95]}
           color="#1C1C1C"
           mixStrength={2}
           depthScale={1}
