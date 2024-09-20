@@ -41,7 +41,7 @@ const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = (CURVE_DISTANCE / 5.95) * 1.5;
 const SCROLL_PAGES = 5;
-const SCROLL_DAMPING = 0.0005; // the lower, the slower animation gets
+const SCROLL_DAMPING = 0.00025; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 10.0; // the higher, the slower animation gets
 
 export default function WorksPage() {
@@ -376,7 +376,12 @@ It's like making toys with passions & precision.
     const curPoint = curve.getPoint(lerpedScrollOffset);
 
     // Move the camera position (following the curve points)
-    cameraGroup.current.position.lerp(curPoint, delta * 24);
+    // cameraGroup.current.position.lerp(curPoint, delta * 24);
+    cameraGroup.current.position.set(
+      curPoint.x,
+      curPoint.y,
+      curPoint.z
+    );
 
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
@@ -592,7 +597,12 @@ function TextSection({
 
         {!!imageUrl && (
           <group position={[3, 0, 0]}>
-            <Image url={imageUrl} scale={[14.4 * 0.25, 9.6 * 0.25, 1]} />
+            <Image
+              position={[-0.75, 0, 0]}
+              url={imageUrl}
+              scale={[14.4 * 0.25 * 0.5, 9.6 * 0.25, 1]}
+              toneMapped={false}
+            />
             <Text
               {...sharedTextProps}
               position={[2, -0.5, 0]}
@@ -609,4 +619,3 @@ function TextSection({
     </>
   );
 }
-

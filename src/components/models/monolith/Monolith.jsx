@@ -4,7 +4,17 @@ Command: npx gltfjsx@6.4.1 ./public/models/monolith/monolith.glb
 */
 
 import React from "react";
+import * as THREE from "three";
 import { useGLTF, Clone } from "@react-three/drei";
+
+/**
+ * LOAD NORMAL TEXTURES
+ */
+const loader = new THREE.TextureLoader();
+
+const PLASTER_NORMAL_TEXTURE = loader.load(
+  "./textures/plaster/plaster-normal.jpg"
+);
 
 export default function Monolith(props) {
   const { nodes } = useGLTF("./models/monolith/monolith.glb");
@@ -17,6 +27,7 @@ export default function Monolith(props) {
             color="#91989F"
             metalness={0.75}
             roughness={0.2}
+            // roughnessMap={PLASTER_NORMAL_TEXTURE}
           />
         }
       />
