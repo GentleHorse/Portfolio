@@ -68,47 +68,47 @@ function Experience() {
   const monolithDistance = 6.5;
   const monolithPositionsArray = [
     {
-      id: "design01",
+      id: "Ambience of Light",
       position: [0, 0, 0],
     },
     {
-      id: "design02",
+      id: "Beauty of Time Passing",
       position: [1 * monolithDistance, 0, 0],
     },
     {
-      id: "design03",
+      id: "Intervention In Our Disconnection",
       position: [2 * monolithDistance, 0, 0],
     },
     {
-      id: "design04",
+      id: "Masu Typo",
       position: [3 * monolithDistance, 0, 0],
     },
     {
-      id: "design05",
+      id: "Comforting Dinner",
       position: [4 * monolithDistance, 0, 0],
     },
     {
-      id: "design06",
+      id: "3D Visuals",
       position: [5 * monolithDistance, 0, 0],
     },
     {
-      id: "appDev01",
+      id: "Portfolio Website",
       position: [6 * monolithDistance, 0, 0],
     },
     {
-      id: "appDev02",
+      id: "OBJECT Rotterdam 2024",
       position: [7 * monolithDistance, 0, 0],
     },
     {
-      id: "appDev3",
+      id: "Weather Cereal",
       position: [8 * monolithDistance, 0, 0],
     },
     {
-      id: "appDev04",
+      id: "Donuts Universe",
       position: [9 * monolithDistance, 0, 0],
     },
     {
-      id: "appDev05",
+      id: "Marble's on a Roll",
       position: [10 * monolithDistance, 0, 0],
     },
   ];
@@ -186,10 +186,12 @@ function Experience() {
           </mesh>
 
           <Text
-            position={[0, 0, 0.5]}
+            position={[-1.2, 0, 0.5]}
             color="#C1C1C1"
             fontSize={0.35}
             font="./fonts/DMSerifDisplay-Regular.ttf"
+            maxWidth={1.5}
+            anchorX="left"
           >
             {monolith.id}
           </Text>
