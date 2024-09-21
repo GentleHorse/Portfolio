@@ -8,6 +8,7 @@ import {
   Loader,
   OrbitControls,
   PerspectiveCamera,
+  Sphere,
 } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
@@ -29,6 +30,7 @@ import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__
 import InterventionInOurDisconnectionThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
+import { Gradient, LayerMaterial } from "lamina";
 
 /**
  * INITIAL PARAM VALUES
@@ -74,11 +76,31 @@ export default function WorksPage() {
 function Experience() {
   return (
     <>
+      <Perf position="top-left" />
       <OrbitControls />
+      <Background />
+
       <mesh>
         <boxGeometry />
         <meshNormalMaterial />
       </mesh>
+    </>
+  );
+}
+
+function Background() {
+  return (
+    <>
+      <Environment preset="sunset" />
+      <Sphere scale={[100, 100, 100]} rotation={[0, Math.PI / 2, 0]}>
+        <LayerMaterial
+          lighting="physical"
+          transmission={1}
+          side={THREE.BackSide}
+        >
+          <Gradient colorA={"#356CA1"} colorB={"snow"} axes="y" start={0} end={-0.5}  />
+        </LayerMaterial>
+      </Sphere>
     </>
   );
 }

@@ -32,6 +32,7 @@
     "gltfjsx": "^6.4.1",
     "gsap": "^3.12.5",
     "hamburger-react": "^2.5.1",
+    "lamina": "^1.1.23",
     "latest": "^0.2.0",
     "leva": "^0.9.35",
     "maath": "^0.10.7",
