@@ -33,10 +33,11 @@ export default function Monolith(props) {
         object={nodes["monolith-landscape"]}
         inject={
           <meshStandardMaterial
-            color="#32261E"
+            // color="#32261E"
+            color="#C1C1C1"
             metalness={0.75}
-            // roughness={0.2}
-            roughnessMap={WOOD_NORMAL_TEXTURE}
+            roughness={0.2}
+            // roughnessMap={WOOD_NORMAL_TEXTURE}
             // displacementMap={WOOD_DISPLACEMENT_TEXTURE}
           />
         }

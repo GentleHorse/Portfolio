@@ -52,6 +52,8 @@ export default function WorksPage() {
       <Loader />
 
       <Canvas>
+        <color attach="background" args={["#1C1C1C"]} />
+
         <ScrollControls
           pages={SCROLL_PAGES}
           damping={SCROLL_DAMPING}
@@ -72,7 +74,6 @@ function Scene() {
       {/* <axesHelper /> */}
       <Perf position="top-left" />
 
-      <color attach="background" args={["#1C1C1C"]} />
       <fog attach="fog" args={["#1C1C1C", 8, 100]} />
 
       <Environment preset="forest" />
@@ -377,11 +378,7 @@ It's like making toys with passions & precision.
 
     // Move the camera position (following the curve points)
     // cameraGroup.current.position.lerp(curPoint, delta * 24);
-    cameraGroup.current.position.set(
-      curPoint.x,
-      curPoint.y,
-      curPoint.z
-    );
+    cameraGroup.current.position.set(curPoint.x, curPoint.y, curPoint.z);
 
     // Get the nearest 'look-ahead' curve point
     const lookAtPoint = curve.getPoint(
