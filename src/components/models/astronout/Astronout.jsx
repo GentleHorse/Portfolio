@@ -18,7 +18,7 @@ export default function Astronout(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
+      <group name="Scene" position={[0, -1.0, 0]}>
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
           <group name="astronaut001">
             <skinnedMesh

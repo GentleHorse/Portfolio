@@ -24,13 +24,13 @@ import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
 import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
 import { Perf } from "r3f-perf";
+import { Gradient, LayerMaterial } from "lamina";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 import InterventionInOurDisconnectionThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
-import { Gradient, LayerMaterial } from "lamina";
 
 /**
  * INITIAL PARAM VALUES
@@ -74,16 +74,17 @@ export default function WorksPage() {
 }
 
 function Experience() {
+  const astronout = useRef();
+
   return (
     <>
       <Perf position="top-left" />
       <OrbitControls />
       <Background />
 
-      <mesh>
-        <boxGeometry />
-        <meshNormalMaterial />
-      </mesh>
+      <group ref={astronout}>
+        <Astronout rotation={[0, Math.PI, 0]} />
+      </group>
     </>
   );
 }
@@ -98,7 +99,13 @@ function Background() {
           transmission={1}
           side={THREE.BackSide}
         >
-          <Gradient colorA={"#356CA1"} colorB={"snow"} axes="y" start={0} end={-0.5}  />
+          <Gradient
+            colorA={"#356CA1"}
+            colorB={"snow"}
+            axes="y"
+            start={0}
+            end={-0.5}
+          />
         </LayerMaterial>
       </Sphere>
     </>
