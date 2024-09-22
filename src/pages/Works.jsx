@@ -35,7 +35,7 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
 /**
  * INITIAL PARAM VALUES
  */
-const LINE_NB_POINTS = 1000;
+const LINE_NB_POINTS = 2000;
 const CURVE_DISTANCE = 20;
 const CURVE_PATH_MAX_WIDTH = 2.5;
 const CURVE_AHEAD_CAMERA = 0.008;
@@ -74,7 +74,40 @@ export default function WorksPage() {
 }
 
 function Experience() {
-  const astronout = useRef();
+  const curve = useMemo(() => {
+    const curve = new THREE.CatmullRomCurve3(
+      [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, -10),
+        new THREE.Vector3(-2, 0, -20),
+        new THREE.Vector3(-3, 0, -30),
+        new THREE.Vector3(0, 0, -40),
+        new THREE.Vector3(5, 0, -50),
+        new THREE.Vector3(7, 0, -60),
+        new THREE.Vector3(5, 0, -70),
+        new THREE.Vector3(0, 0, -80),
+        new THREE.Vector3(0, 0, -90),
+        new THREE.Vector3(0, 0, -100),
+      ],
+      false,
+      "catmullrom",
+      0.5
+    );
+
+    return curve;
+  }, []);
+
+  const linePoints = useMemo(() => {
+    return curve.getPoints(LINE_NB_POINTS);
+  }, [curve]);
+
+  const shape = useMemo(() => {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, -0.2);
+    shape.lineTo(0, 0.2);
+
+    return shape;
+  }, [curve]);
 
   return (
     <>
@@ -82,9 +115,68 @@ function Experience() {
       <OrbitControls />
       <Background />
 
-      <group ref={astronout}>
-        <Astronout rotation={[0, Math.PI, 0]} />
+      {/* Astronout */}
+      <Float floatIntensity={2} speed={2}>
+        <Astronout rotation={[0, Math.PI, 0]} scale={[0.5, 0.5, 0.5]} />
+      </Float>
+
+      {/* LINE */}
+      <group position={[0, -2.5, 0]}>
+        {/* <Line
+          points={linePoints}
+          color={"snow"}
+          opacity={0.7}
+          transparent
+          lineWidth={16}
+        /> */}
+        <mesh>
+          <extrudeGeometry
+            args={[
+              shape,
+              {
+                steps: LINE_NB_POINTS,
+                bevelEnabled: false,
+                extrudePath: curve,
+              },
+            ]}
+          />
+          <meshStandardMaterial color={"snow"} opacity={0.65} transparent />
+        </mesh>
       </group>
+
+      {/* Meteoroids */}
+      <Meteoroid01
+        opacity={0.5}
+        scale={[0.3, 0.3, 0.3]}
+        position={[-2, 1, -3]}
+      />
+      <Meteoroid01
+        opacity={0.5}
+        scale={[0.2, 0.3, 0.4]}
+        position={[1.5, -0.5, -2]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.3, 0.3, 0.4]}
+        rotation={[0, Math.PI / 9, 0]}
+        position={[2, -0.2, -2]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.4, 0.4, 0.4]}
+        rotation={[0, Math.PI / 9, 0]}
+        position={[1, -0.2, -12]}
+      />
+      <Meteoroid01
+        opacity={0.7}
+        scale={[0.5, 0.5, 0.5]}
+        position={[-1, 1, -53]}
+      />
+      <Meteoroid01
+        opacity={0.3}
+        scale={[0.8, 0.8, 0.8]}
+        position={[0, 1, -100]}
+      />
     </>
   );
 }
