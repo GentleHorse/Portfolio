@@ -20,11 +20,13 @@ import {
   ScrollControls,
 } from "@react-three/drei";
 import { Link } from "react-router-dom";
+import { Perf } from "r3f-perf";
+import { Gradient, LayerMaterial } from "lamina";
+
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
 import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
-import { Perf } from "r3f-perf";
-import { Gradient, LayerMaterial } from "lamina";
+import Monolith from "../components/models/monolith/Monolith.jsx";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
@@ -42,9 +44,9 @@ const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_ASTRONOUT = 0.02;
 const ASTRONOUT_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = (CURVE_DISTANCE / 5.95) * 1.5;
-const SCROLL_PAGES = 5;
-const SCROLL_DAMPING = 0.00025; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 10.0; // the higher, the slower animation gets
+const SCROLL_PAGES = 10;
+const SCROLL_DAMPING = 0.25; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 2.5; // the higher, the slower animation gets
 
 export default function WorksPage() {
   return (
@@ -74,6 +76,11 @@ export default function WorksPage() {
 }
 
 function Experience() {
+  /**
+   * CURVE PATH
+   */
+
+  // catmullromcurve3
   const curve = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3(
       [
@@ -97,10 +104,12 @@ function Experience() {
     return curve;
   }, []);
 
+  // line points on the curve
   const linePoints = useMemo(() => {
     return curve.getPoints(LINE_NB_POINTS);
   }, [curve]);
 
+  // shape for extrusion of the curve path
   const shape = useMemo(() => {
     const shape = new THREE.Shape();
     shape.moveTo(0, -0.2);
@@ -109,15 +118,130 @@ function Experience() {
     return shape;
   }, [curve]);
 
+  /**
+   * USESCROLL
+   */
+  const scroll = useScroll();
+
+  /**
+   * PROJECT THUMBNAIL GROUP
+   */
+  const projectThumbnailGroup = useRef();
+
+  /**
+   * MONOLITH PARAMS
+   */
+  const initialDistance = 2.5;
+  const imagePosY = -1.0;
+  const monolithDistance = 6.5;
+  const monolithPositionsArray = [
+    {
+      id: "Ambience of Light",
+      position: [initialDistance, imagePosY, 0],
+      imageUrl: AmbienceOfLightThumbnail,
+    },
+    {
+      id: "Beauty of Time Passing",
+      position: [initialDistance + 1 * monolithDistance, imagePosY, 0],
+      imageUrl: BeautyOfTimePassingThumbnail,
+    },
+    {
+      id: "Intervention In Our Disconnection",
+      position: [initialDistance + 2 * monolithDistance, imagePosY, 0],
+      imageUrl: InterventionInOurDisconnectionThumbnail,
+    },
+    {
+      id: "Masu Typo",
+      position: initialDistance + [3 * monolithDistance, imagePosY, 0],
+      imageUrl: MasuTypoThumbnail,
+    },
+    {
+      id: "Comforting Dinner",
+      position: [initialDistance + 4 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "3D Visuals",
+      position: [initialDistance + 5 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Portfolio Website",
+      position: [initialDistance + 6 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "OBJECT Rotterdam 2024",
+      position: [initialDistance + 7 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Weather Cereal",
+      position: [initialDistance + 8 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Donuts Universe",
+      position: [initialDistance + 9 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Marble's on a Roll",
+      position: [initialDistance + 10 * monolithDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+  ];
+
+  /**
+   * PROJECT THUMBNAIL SCROLL LOGIC
+   */
+  useFrame(() => {
+    // Horizontal scroll effect
+    projectThumbnailGroup.current.position.x =
+      -scroll.offset * monolithDistance * monolithPositionsArray.length;
+  });
+
   return (
     <>
       <Perf position="top-left" />
-      <OrbitControls />
+      <OrbitControls enabled={false} />
       <Background />
+
+      {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
+      <group ref={projectThumbnailGroup}>
+        {monolithPositionsArray.map((monolith, index) => (
+          <group
+            // ref={(element) => (monolithInputRefs.current[index] = element)}
+            key={monolith.id}
+            position={monolith.position}
+          >
+            <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
+              {/* <Monolith scale={[1, 1, 1]} /> */}
+              <Image
+                url={monolith.imageUrl}
+                position={[0.1, 0, 0]}
+                scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
+                toneMapped={false}
+              />
+            </group>
+
+            <Text
+              position={[-2.0, 0.5, 0.5]}
+              fontSize={0.25}
+              font="./fonts/DMSerifDisplay-Regular.ttf"
+              maxWidth={1.0}
+              anchorX="left"
+            >
+              {monolith.id}
+              <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            </Text>
+          </group>
+        ))}
+      </group>
 
       {/* Astronout */}
       <Float floatIntensity={2} speed={2}>
-        <Astronout rotation={[0, Math.PI, 0]} scale={[0.5, 0.5, 0.5]} />
+        <Astronout rotation={[0, Math.PI, 0]} scale={[0.5, 0.5, 0.5]} position={[0, 0, -0.8]} />
       </Float>
 
       {/* LINE */}
