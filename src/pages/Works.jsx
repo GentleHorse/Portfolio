@@ -84,7 +84,11 @@ function Experience() {
         new THREE.Vector3(0, 0, -80),
         new THREE.Vector3(0, 0, -90),
         new THREE.Vector3(0, 0, -100),
-
+        new THREE.Vector3(5, 0, -110),
+        new THREE.Vector3(7, 0, -120),
+        new THREE.Vector3(5, 0, -130),
+        new THREE.Vector3(0, 0, -140),
+        new THREE.Vector3(0, 0, -150),
       ],
       false,
       "catmullrom",
@@ -186,7 +190,7 @@ function Experience() {
         <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
 
         {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
-        {/* <ProjectThumbnailImages scroll={scroll} /> */}
+        <ProjectThumbnailImages scroll={scroll} />
 
         {/* ASTRONOUT */}
         <group ref={astronout}>
@@ -293,64 +297,83 @@ function ProjectThumbnailImages({ scroll }) {
   /**
    * PROJECT THUMBNAIL PARAMS
    */
-  const initialDistance = 2.5;
   const imagePosY = -1.0;
   const thumbnailDistance = 6.5;
   const thumbnailPositionsArray = [
     {
+      id: "start",
+      position: [0, imagePosY, 0],
+    },
+    {
+      id: "scroll",
+      position: [1 * thumbnailDistance, imagePosY, 0],
+    },
+    {
+      id: "D E S I G N",
+      position: [2 * thumbnailDistance, imagePosY, 0],
+    },
+    {
       id: "Ambience of Light",
-      position: [initialDistance, imagePosY, 0],
+      position: [3 * thumbnailDistance, imagePosY, 0],
       imageUrl: AmbienceOfLightThumbnail,
     },
     {
       id: "Beauty of Time Passing",
-      position: [initialDistance + 1 * thumbnailDistance, imagePosY, 0],
+      position: [4 * thumbnailDistance, imagePosY, 0],
       imageUrl: BeautyOfTimePassingThumbnail,
     },
     {
       id: "Intervention In Our Disconnection",
-      position: [initialDistance + 2 * thumbnailDistance, imagePosY, 0],
+      position: [5 * thumbnailDistance, imagePosY, 0],
       imageUrl: InterventionInOurDisconnectionThumbnail,
     },
     {
       id: "Masu Typo",
-      position: [initialDistance + 3 * thumbnailDistance, imagePosY, 0],
+      position: [6 * thumbnailDistance, imagePosY, 0],
       imageUrl: MasuTypoThumbnail,
     },
     {
       id: "Comforting Dinner",
-      position: [initialDistance + 4 * thumbnailDistance, imagePosY, 0],
+      position: [7 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "3D Visuals",
-      position: [initialDistance + 5 * thumbnailDistance, imagePosY, 0],
+      position: [8 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
+      id: "W E B  A P P",
+      position: [9 * thumbnailDistance, imagePosY, 0],
+    },
+    {
       id: "Portfolio Website",
-      position: [initialDistance + 6 * thumbnailDistance, imagePosY, 0],
+      position: [10 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "OBJECT Rotterdam 2024",
-      position: [initialDistance + 7 * thumbnailDistance, imagePosY, 0],
+      position: [11 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Weather Cereal",
-      position: [initialDistance + 8 * thumbnailDistance, imagePosY, 0],
+      position: [12 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Donuts Universe",
-      position: [initialDistance + 9 * thumbnailDistance, imagePosY, 0],
+      position: [13 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Marble's on a Roll",
-      position: [initialDistance + 10 * thumbnailDistance, imagePosY, 0],
+      position: [14 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "end",
+      position: [15 * thumbnailDistance, imagePosY, 0],
     },
   ];
 
@@ -372,15 +395,17 @@ function ProjectThumbnailImages({ scroll }) {
             key={thumbnail.id}
             position={thumbnail.position}
           >
-            <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
-              {/* <Monolith scale={[1, 1, 1]} /> */}
-              <Image
-                url={thumbnail.imageUrl}
-                position={[0.1, 0, 0]}
-                scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
-                toneMapped={false}
-              />
-            </group>
+            {!!thumbnail.imageUrl && (
+              <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
+                {/* <Monolith scale={[1, 1, 1]} /> */}
+                <Image
+                  url={thumbnail.imageUrl}
+                  position={[0.1, 0, 0]}
+                  scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
+                  toneMapped={false}
+                />
+              </group>
+            )}
 
             <Text
               position={[-1.0, 0.5, 0.5]}
