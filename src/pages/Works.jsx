@@ -37,13 +37,7 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
 /**
  * INITIAL PARAM VALUES
  */
-const LINE_NB_POINTS = 2000;
-const CURVE_DISTANCE = 20;
-const CURVE_PATH_MAX_WIDTH = 2.5;
-const CURVE_AHEAD_CAMERA = 0.008;
-const CURVE_AHEAD_ASTRONOUT = 0.02;
-const ASTRONOUT_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = (CURVE_DISTANCE / 5.95) * 1.5;
+const LINE_NB_POINTS = 12000;
 const SCROLL_PAGES = 10;
 const SCROLL_DAMPING = 0.25; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 2.5; // the higher, the slower animation gets
@@ -55,12 +49,7 @@ export default function WorksPage() {
 
       <Loader />
 
-      <Canvas
-        camera={{
-          position: [0, 0, 5],
-          fov: 30,
-        }}
-      >
+      <Canvas>
         <color attach="background" args={["#ececec"]} />
 
         <ScrollControls
@@ -95,6 +84,7 @@ function Experience() {
         new THREE.Vector3(0, 0, -80),
         new THREE.Vector3(0, 0, -90),
         new THREE.Vector3(0, 0, -100),
+
       ],
       false,
       "catmullrom",
@@ -104,7 +94,7 @@ function Experience() {
     return curve;
   }, []);
 
-  // line points on the curve
+  // line points on the curve (points num: LINE_NB_POINTS)
   const linePoints = useMemo(() => {
     return curve.getPoints(LINE_NB_POINTS);
   }, [curve]);
@@ -119,27 +109,96 @@ function Experience() {
   }, [curve]);
 
   /**
+   * CAMERA GROUP
+   */
+  const cameraGroup = useRef();
+
+  /**
+   * ASTRONOUT
+   */
+  const astronout = useRef();
+
+  /**
    * USESCROLL
    */
   const scroll = useScroll();
 
+  /**
+   * USEFRAME - SCROLL ANIMATION
+   */
+  useFrame((state, delta) => {
+    // 1. Get the closest point index based on scroll percentage
+    const curPointIndex = Math.min(
+      Math.round(scroll.offset * linePoints.length),
+      linePoints.length - 1
+    );
+
+    // 2. Get the closest point
+    const curPoint = linePoints[curPointIndex];
+
+    // 3. Calculate the second closest point
+    const pointAhead =
+      linePoints[Math.min(curPointIndex + 1, linePoints.length - 1)];
+
+    // 4. Calculate the distance between the current point and the next point
+    const xDisplacement = (pointAhead.x - curPoint.x) * 80;
+
+    // 5. Based on x distance,
+    //    - switch angle rotations (left: +1 | right: -1)
+    //    - limit angle rotations (max Math.PI / 3)
+    const angleRotation =
+      (xDisplacement < 0 ? 1 : -1) *
+      Math.min(Math.abs(xDisplacement), Math.PI / 3);
+
+    // 6. Calculate and apply the astronout rotation on z-axis
+    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        astronout.current.rotation.x,
+        astronout.current.rotation.y,
+        angleRotation
+      )
+    );
+    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
+
+    // 7. Calculate and apply the camera group rotation on y-axis
+    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        cameraGroup.current.rotation.x,
+        angleRotation,
+        cameraGroup.current.rotation.z
+      )
+    );
+    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
+
+    // 8. Lerp the camera group position to the current point
+    cameraGroup.current.position.lerp(curPoint, delta * 20);
+  });
+
   return (
     <>
       <Perf position="top-left" />
-      <OrbitControls enabled={false} />
-      <Background />
+      {/* <OrbitControls enabled={true} enableZoom={false} /> */}
 
-      {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
-      <ProjectThumbnailImages scroll={scroll} />
+      <group ref={cameraGroup}>
+        <Background />
 
-      {/* Astronout */}
-      <Float floatIntensity={2} speed={2}>
-        <Astronout
-          rotation={[0, Math.PI, 0]}
-          scale={[0.5, 0.5, 0.5]}
-          position={[0, 0, -0.8]}
-        />
-      </Float>
+        {/* PERSPECTIVE CAMERA */}
+        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+
+        {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
+        {/* <ProjectThumbnailImages scroll={scroll} /> */}
+
+        {/* ASTRONOUT */}
+        <group ref={astronout}>
+          <Float floatIntensity={2} speed={2}>
+            <Astronout
+              rotation={[0, Math.PI, 0]}
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 0, -0.8]}
+            />
+          </Float>
+        </group>
+      </group>
 
       {/* LINE */}
       <group position={[0, -2.5, 0]}>
