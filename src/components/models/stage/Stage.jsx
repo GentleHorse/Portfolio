@@ -93,15 +93,6 @@ export default function Stage(props) {
   const springVideoTexture = useVideoTexture(
     "./videos/beauty-of-time-passing/spring.mp4"
   );
-  const summerVideoTexture = useVideoTexture(
-    "./videos/beauty-of-time-passing/summer.mp4"
-  );
-  const autumnVideoTexture = useVideoTexture(
-    "./videos/beauty-of-time-passing/autumn.mp4"
-  );
-  const winterVideoTexture = useVideoTexture(
-    "./videos/beauty-of-time-passing/winter.mp4"
-  );
 
   /**
    * VIDEO FOR DIGITAL SCENERY
