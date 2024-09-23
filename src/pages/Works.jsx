@@ -123,84 +123,6 @@ function Experience() {
    */
   const scroll = useScroll();
 
-  /**
-   * PROJECT THUMBNAIL GROUP
-   */
-  const projectThumbnailGroup = useRef();
-
-  /**
-   * MONOLITH PARAMS
-   */
-  const initialDistance = 2.5;
-  const imagePosY = -1.0;
-  const monolithDistance = 6.5;
-  const monolithPositionsArray = [
-    {
-      id: "Ambience of Light",
-      position: [initialDistance, imagePosY, 0],
-      imageUrl: AmbienceOfLightThumbnail,
-    },
-    {
-      id: "Beauty of Time Passing",
-      position: [initialDistance + 1 * monolithDistance, imagePosY, 0],
-      imageUrl: BeautyOfTimePassingThumbnail,
-    },
-    {
-      id: "Intervention In Our Disconnection",
-      position: [initialDistance + 2 * monolithDistance, imagePosY, 0],
-      imageUrl: InterventionInOurDisconnectionThumbnail,
-    },
-    {
-      id: "Masu Typo",
-      position: initialDistance + [3 * monolithDistance, imagePosY, 0],
-      imageUrl: MasuTypoThumbnail,
-    },
-    {
-      id: "Comforting Dinner",
-      position: [initialDistance + 4 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "3D Visuals",
-      position: [initialDistance + 5 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "Portfolio Website",
-      position: [initialDistance + 6 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "OBJECT Rotterdam 2024",
-      position: [initialDistance + 7 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "Weather Cereal",
-      position: [initialDistance + 8 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "Donuts Universe",
-      position: [initialDistance + 9 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "Marble's on a Roll",
-      position: [initialDistance + 10 * monolithDistance, imagePosY, 0],
-      imageUrl: ComfortingDinnerThumbnail,
-    },
-  ];
-
-  /**
-   * PROJECT THUMBNAIL SCROLL LOGIC
-   */
-  useFrame(() => {
-    // Horizontal scroll effect
-    projectThumbnailGroup.current.position.x =
-      -scroll.offset * monolithDistance * monolithPositionsArray.length;
-  });
-
   return (
     <>
       <Perf position="top-left" />
@@ -208,40 +130,15 @@ function Experience() {
       <Background />
 
       {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
-      <group ref={projectThumbnailGroup}>
-        {monolithPositionsArray.map((monolith, index) => (
-          <group
-            // ref={(element) => (monolithInputRefs.current[index] = element)}
-            key={monolith.id}
-            position={monolith.position}
-          >
-            <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
-              {/* <Monolith scale={[1, 1, 1]} /> */}
-              <Image
-                url={monolith.imageUrl}
-                position={[0.1, 0, 0]}
-                scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
-                toneMapped={false}
-              />
-            </group>
-
-            <Text
-              position={[-2.0, 0.5, 0.5]}
-              fontSize={0.25}
-              font="./fonts/DMSerifDisplay-Regular.ttf"
-              maxWidth={1.0}
-              anchorX="left"
-            >
-              {monolith.id}
-              <meshBasicMaterial color="#ffffff" toneMapped={false} />
-            </Text>
-          </group>
-        ))}
-      </group>
+      <ProjectThumbnailImages scroll={scroll} />
 
       {/* Astronout */}
       <Float floatIntensity={2} speed={2}>
-        <Astronout rotation={[0, Math.PI, 0]} scale={[0.5, 0.5, 0.5]} position={[0, 0, -0.8]} />
+        <Astronout
+          rotation={[0, Math.PI, 0]}
+          scale={[0.5, 0.5, 0.5]}
+          position={[0, 0, -0.8]}
+        />
       </Float>
 
       {/* LINE */}
@@ -324,6 +221,121 @@ function Background() {
           />
         </LayerMaterial>
       </Sphere>
+    </>
+  );
+}
+
+function ProjectThumbnailImages({ scroll }) {
+  /**
+   * PROJECT THUMBNAIL GROUP
+   */
+  const projectThumbnailGroup = useRef();
+
+  /**
+   * PROJECT THUMBNAIL PARAMS
+   */
+  const initialDistance = 2.5;
+  const imagePosY = -1.0;
+  const thumbnailDistance = 6.5;
+  const thumbnailPositionsArray = [
+    {
+      id: "Ambience of Light",
+      position: [initialDistance, imagePosY, 0],
+      imageUrl: AmbienceOfLightThumbnail,
+    },
+    {
+      id: "Beauty of Time Passing",
+      position: [initialDistance + 1 * thumbnailDistance, imagePosY, 0],
+      imageUrl: BeautyOfTimePassingThumbnail,
+    },
+    {
+      id: "Intervention In Our Disconnection",
+      position: [initialDistance + 2 * thumbnailDistance, imagePosY, 0],
+      imageUrl: InterventionInOurDisconnectionThumbnail,
+    },
+    {
+      id: "Masu Typo",
+      position: [initialDistance + 3 * thumbnailDistance, imagePosY, 0],
+      imageUrl: MasuTypoThumbnail,
+    },
+    {
+      id: "Comforting Dinner",
+      position: [initialDistance + 4 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "3D Visuals",
+      position: [initialDistance + 5 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Portfolio Website",
+      position: [initialDistance + 6 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "OBJECT Rotterdam 2024",
+      position: [initialDistance + 7 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Weather Cereal",
+      position: [initialDistance + 8 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Donuts Universe",
+      position: [initialDistance + 9 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+    {
+      id: "Marble's on a Roll",
+      position: [initialDistance + 10 * thumbnailDistance, imagePosY, 0],
+      imageUrl: ComfortingDinnerThumbnail,
+    },
+  ];
+
+  /**
+   * PROJECT THUMBNAIL SCROLL LOGIC
+   */
+  useFrame(() => {
+    // Horizontal scroll effect
+    projectThumbnailGroup.current.position.x =
+      -scroll.offset * thumbnailDistance * thumbnailPositionsArray.length;
+  });
+
+  return (
+    <>
+      <group ref={projectThumbnailGroup}>
+        {thumbnailPositionsArray.map((thumbnail, index) => (
+          <group
+            // ref={(element) => (monolithInputRefs.current[index] = element)}
+            key={thumbnail.id}
+            position={thumbnail.position}
+          >
+            <group scale={[1.5, 1.5, 1.5]} position={[0, 1.0, 0]}>
+              {/* <Monolith scale={[1, 1, 1]} /> */}
+              <Image
+                url={thumbnail.imageUrl}
+                position={[0.1, 0, 0]}
+                scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
+                toneMapped={false}
+              />
+            </group>
+
+            <Text
+              position={[-1.0, 0.5, 0.5]}
+              fontSize={0.15}
+              font="./fonts/DMSerifDisplay-Regular.ttf"
+              maxWidth={1.0}
+              anchorX="left"
+            >
+              {thumbnail.id}
+              <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            </Text>
+          </group>
+        ))}
+      </group>
     </>
   );
 }
