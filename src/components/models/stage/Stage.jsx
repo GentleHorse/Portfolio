@@ -14,6 +14,7 @@ import {
   useMask,
   MeshDistortMaterial,
   Float,
+  Text as DreiText,
 } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
@@ -595,7 +596,24 @@ export default function Stage(props) {
           scale={198.515}
         />
 
-        {/* ROOM, 3D APP VISUALS */}
+        {/* LANDING ROOM, 3D APP VISUALS */}
+        <DreiText
+          position={[-39, 22, 62]}
+          rotation={[Math.PI / 8, Math.PI / 2, 0]}
+          font="./fonts/WorldConflictRegular-p26R.woff"
+          fontSize={4.0}
+          maxWidth={45.0}
+          anchorX="center"
+          anchorY="middle"
+          textAlign="center"
+          letterSpacing={0.05}
+          lineHeight={1.05}
+          color="#FFE302"
+          // color="#FF028D"
+        >
+          Works {"\n"} in progress ....
+        </DreiText>
+
         <mesh
           name="monitor-screen-world"
           geometry={nodes["monitor-screen-world"].geometry}
@@ -1072,6 +1090,23 @@ export default function Stage(props) {
           <planeGeometry args={[3, 3, 128, 128]} />
         </mesh>
 
+        <DreiText
+          position={[13, 21, -46]}
+          // rotation={[0, 0, Math.PI * 0.1]}
+          font="./fonts/WorldConflictRegular-p26R.woff"
+          fontSize={5.5}
+          maxWidth={7.0}
+          anchorX="center"
+          anchorY="middle"
+          textAlign="center"
+          letterSpacing={0.15}
+          lineHeight={1.2}
+          // color="#FFE302"
+          color="#FF028D"
+        >
+          Dare to Enter?
+        </DreiText>
+
         {/* BOUNDARY WALL */}
         <mesh
           name="boundary-wall"
@@ -1157,8 +1192,8 @@ export default function Stage(props) {
           <CuboidCollider args={[1.0, 1.0, 1.0]} />
         </RigidBody>
 
-         {/* 3D WORKING DESK */}
-         <RigidBody
+        {/* 3D WORKING DESK */}
+        <RigidBody
           type="fixed"
           scale={[7.5, 5.0, 20.0]}
           position={[-25.0, 5.0, -22.5]}
