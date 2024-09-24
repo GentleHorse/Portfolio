@@ -25,7 +25,7 @@ import { Gradient, LayerMaterial } from "lamina";
 
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
-import Meteoroid01 from "../components/models/meteoroids/Meteoroid01.jsx";
+import Meteoroid from "../components/models/meteoroids/Meteoroid.jsx";
 import Monolith from "../components/models/monolith/Monolith.jsx";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
@@ -34,6 +34,10 @@ import InterventionInOurDisconnectionThumbnail from "../../public/images/design-
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 import gsap from "gsap";
+import {
+  fadeOnBeforeCompile,
+  fadeOnBeforeCompileFlat,
+} from "../utils/fadeMaterial.js";
 
 /**
  * INITIAL PARAM VALUES
@@ -733,13 +737,14 @@ It's like making toys with passions & precision.`,
             opacity={1}
             transparent
             envMapIntensity={2}
+            onBeforeCompile={fadeOnBeforeCompile}
           />
         </mesh>
       </group>
 
       {/* Meteoroids */}
       {meteoroidsArray.map((meteoroid, index) => (
-        <Meteoroid01 key={index} {...meteoroid} />
+        <Meteoroid key={index} {...meteoroid} />
       ))}
     </>
   );
@@ -791,7 +796,6 @@ function TextSection({ title, subtitle, ...props }) {
       <group {...props}>
         {!!title && (
           <Text
-            color="snow"
             anchorX="left"
             anchorY="center"
             fontSize={0.52}
@@ -799,13 +803,15 @@ function TextSection({ title, subtitle, ...props }) {
             font="./fonts/DMSerifDisplay-Regular.ttf"
           >
             {title}
-            <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            <meshStandardMaterial
+              color={"#ffffff"}
+              onBeforeCompile={fadeOnBeforeCompileFlat}
+            />
           </Text>
         )}
 
         {!!subtitle && (
           <Text
-            color="snow"
             anchorX="left"
             anchorY="top"
             position={[-0.8, -0.6, 0]}
@@ -814,7 +820,11 @@ function TextSection({ title, subtitle, ...props }) {
             font="./fonts/Aleo-ExtraLightItalic.ttf"
           >
             {subtitle}
-            <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            <meshStandardMaterial
+              color={"#ffffff"}
+              onBeforeCompile={fadeOnBeforeCompileFlat}
+              envMapIntensity={5.0}
+            />
           </Text>
         )}
       </group>

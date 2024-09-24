@@ -5,8 +5,9 @@ Command: npx gltfjsx@6.4.1 ./public/models/meteoroids/meteoroid_01.glb
 
 import React from "react";
 import { useGLTF } from "@react-three/drei";
+import { fadeOnBeforeCompile } from "../../../utils/fadeMaterial";
 
-export default function Meteoroid01({ opacity, ...props }) {
+export default function Meteoroid({ opacity, ...props }) {
   const { nodes, materials } = useGLTF("./models/meteoroids/meteoroid_01.glb");
   return (
     <group {...props} dispose={null}>
@@ -16,7 +17,7 @@ export default function Meteoroid01({ opacity, ...props }) {
         // material={materials["plane-white-planet-material"]}
       >
         <meshStandardMaterial
-          color={"#C1C1C1"}
+          onBeforeCompile={fadeOnBeforeCompile}
           opacity={opacity}
           transparent={true}
           envMapIntensity={2}
