@@ -37,10 +37,12 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
 /**
  * INITIAL PARAM VALUES
  */
-const LINE_NB_POINTS = 12000;
+const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
 const CURVE_PATH_MAX_WIDTH = 100;
 const CURVE_AHEAD_CAMERA = 0.008; // for the look-at camera point
+const CURVE_AHEAD_ASTRONOUT = 0.002; // for the astronout rotation
+const ASTRONOUT_MAX_ANGLE = 35; // for the astronout rotation
 
 const SCROLL_PAGES = 25;
 const SCROLL_DAMPING = 0.3; // the lower, the slower animation gets
@@ -135,6 +137,10 @@ function Experience() {
    * USEFRAME - SCROLL ANIMATION
    */
   useFrame((state, delta) => {
+    /**
+     * SCROLL ANIMATION - CAMERA
+     */
+
     // 0. Limit the offset value above 0
     const scrollOffset = Math.max(0, scroll.offset);
 
@@ -167,6 +173,52 @@ function Experience() {
       cameraGroup.current.position.clone().add(lookAt)
     );
 
+    /**
+     * SCROLL ANIMATION - ASTRONOUT
+     */
+
+    // 1. Get the tangent of the current curve point with 'CURVE_AHEAD_ASTRONOUT' value
+    const tangent = curve.getTangent(scrollOffset + CURVE_AHEAD_ASTRONOUT);
+
+    // 2. Calculate non-lerp current curve point
+    const nonLerpLookAt = new THREE.Group();
+    nonLerpLookAt.position.copy(curPoint);
+    nonLerpLookAt.lookAt(nonLerpLookAt.position.clone().add(targetLookAt));
+
+    // 3. Update the astronout's tangent based on the non-lerp current look-at vector
+    tangent.applyAxisAngle(
+      new THREE.Vector3(0, 1, 0), // axis - y
+      -nonLerpLookAt.rotation.y // angle
+    );
+
+    // 4. Calculate the rotation angle based on the tangent - zx plane
+    let angle = Math.atan2(-tangent.z, tangent.x);
+    angle -= Math.PI / 2; // adjust the rotation
+
+    // 5. Make the 'angle' rotation effect stronger
+    let angleDegrees = (angle * 180) / Math.PI;
+    angleDegrees *= 2.4; // stronger angle
+
+    // 6. Limit the angle
+    if (angleDegrees < 0) {
+      angleDegrees = Math.max(angleDegrees, -ASTRONOUT_MAX_ANGLE);
+    }
+    if (angleDegrees > 0) {
+      angleDegrees = Math.min(angleDegrees, ASTRONOUT_MAX_ANGLE);
+    }
+
+    // 7. Set back the angle to radians
+    angle = (angleDegrees * Math.PI) / 180;
+
+    // 8. Calculate the quaternion rotation angle and apply it
+    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        astronout.current.rotation.x,
+        astronout.current.rotation.y,
+        angle
+      )
+    );
+    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
   });
 
   return (
