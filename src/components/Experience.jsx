@@ -9,13 +9,13 @@ import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import { isBrowser } from "react-device-detect";
 
-import Background from "./components/utilComponents/Background.jsx";
-import Lights from "./components/utilComponents/Lights.jsx";
-import Stage from "./components/models/stage/Stage.jsx";
-import FirstPersonViewControl from "./components/characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
-import StageCollisionObjects from "./components/models/stage/StageCollisionObjects.jsx";
-import PortalAreas from "./components/portal/PortalAreas.jsx";
-import Title from "./components/title/Title.jsx";
+import Background from "./utilComponents/Background.jsx";
+import Lights from "./utilComponents/Lights.jsx";
+import Stage from "./models/stage/Stage.jsx";
+import FirstPersonViewControl from "./characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
+import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
+import PortalAreas from "./portal/PortalAreas.jsx";
+import Title from "./title/Title.jsx";
 
 export default function Experience() {
   /**

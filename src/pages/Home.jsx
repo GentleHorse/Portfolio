@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
 import { isBrowser, isMobile } from "react-device-detect";
 import Menu from "../components/menu/Menu.jsx";
-import Experience from "../Experience.jsx";
+import Experience from "../components/Experience.jsx";
 import MobileExperience from "../components/mobileExperience/MobileExperience.jsx";
 import HowToControl from "../components/UI/HowToControl.jsx";
 import { gameStates, useGameStore } from "../store/store.js";

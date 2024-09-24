@@ -38,9 +38,13 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
  * INITIAL PARAM VALUES
  */
 const LINE_NB_POINTS = 12000;
-const SCROLL_PAGES = 10;
-const SCROLL_DAMPING = 0.25; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 2.5; // the higher, the slower animation gets
+const CURVE_DISTANCE = 250;
+const CURVE_PATH_MAX_WIDTH = 100;
+const CURVE_AHEAD_CAMERA = 0.008; // for the look-at camera point
+
+const SCROLL_PAGES = 25;
+const SCROLL_DAMPING = 0.3; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 1.5; // the higher, the slower animation gets
 
 export default function WorksPage() {
   return (
@@ -74,21 +78,21 @@ function Experience() {
     const curve = new THREE.CatmullRomCurve3(
       [
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 0, -10),
-        new THREE.Vector3(-2, 0, -20),
-        new THREE.Vector3(-3, 0, -30),
-        new THREE.Vector3(0, 0, -40),
-        new THREE.Vector3(5, 0, -50),
-        new THREE.Vector3(7, 0, -60),
-        new THREE.Vector3(5, 0, -70),
-        new THREE.Vector3(0, 0, -80),
-        new THREE.Vector3(0, 0, -90),
-        new THREE.Vector3(0, 0, -100),
-        new THREE.Vector3(5, 0, -110),
-        new THREE.Vector3(7, 0, -120),
-        new THREE.Vector3(5, 0, -130),
-        new THREE.Vector3(0, 0, -140),
-        new THREE.Vector3(0, 0, -150),
+        new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
+        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -3 * CURVE_DISTANCE),
+        new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -4 * CURVE_DISTANCE),
+        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -5 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
+        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -10 * CURVE_DISTANCE),
+        new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -11 * CURVE_DISTANCE),
+        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -12 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
+        new THREE.Vector3(0, 0, -15 * CURVE_DISTANCE),
       ],
       false,
       "catmullrom",
@@ -131,57 +135,44 @@ function Experience() {
    * USEFRAME - SCROLL ANIMATION
    */
   useFrame((state, delta) => {
-    // 1. Get the closest point index based on scroll percentage
-    const curPointIndex = Math.min(
-      Math.round(scroll.offset * linePoints.length),
-      linePoints.length - 1
+    // 0. Limit the offset value above 0
+    const scrollOffset = Math.max(0, scroll.offset);
+
+    // 1. Get the closest point based on scroll percentage
+    const curPoint = curve.getPoint(scrollOffset);
+
+    // 2. Lerp the camera group position to the current point
+    cameraGroup.current.position.lerp(curPoint, delta * 24);
+
+    // 3. Get the second closest point based on 'CURVE_AHEAD_CAMERA'
+    const lookAtPoint = curve.getPoint(
+      Math.min(scrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
 
-    // 2. Get the closest point
-    const curPoint = linePoints[curPointIndex];
-
-    // 3. Calculate the second closest point
-    const pointAhead =
-      linePoints[Math.min(curPointIndex + 1, linePoints.length - 1)];
-
-    // 4. Calculate the distance between the current point and the next point
-    const xDisplacement = (pointAhead.x - curPoint.x) * 80;
-
-    // 5. Based on x distance,
-    //    - switch angle rotations (left: +1 | right: -1)
-    //    - limit angle rotations (max Math.PI / 3)
-    const angleRotation =
-      (xDisplacement < 0 ? 1 : -1) *
-      Math.min(Math.abs(xDisplacement), Math.PI / 3);
-
-    // 6. Calculate and apply the astronout rotation on z-axis
-    const targetAstronoutQuaternion = new THREE.Quaternion().setFromEuler(
-      new THREE.Euler(
-        astronout.current.rotation.x,
-        astronout.current.rotation.y,
-        angleRotation
-      )
+    // 4. Get the current camera look-at
+    const currentLookAt = cameraGroup.current.getWorldDirection(
+      new THREE.Vector3()
     );
-    astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
 
-    // 7. Calculate and apply the camera group rotation on y-axis
-    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(
-      new THREE.Euler(
-        cameraGroup.current.rotation.x,
-        angleRotation,
-        cameraGroup.current.rotation.z
-      )
+    // 5. Calculate the vector: curPoint - lookAtPoint, and normalize
+    const targetLookAt = new THREE.Vector3()
+      .subVectors(curPoint, lookAtPoint)
+      .normalize();
+
+    // 6. Lerp the current camera look-at to the target look-at
+    const lookAt = currentLookAt.lerp(targetLookAt, delta * 24);
+
+    // 7. Update the camera target
+    cameraGroup.current.lookAt(
+      cameraGroup.current.position.clone().add(lookAt)
     );
-    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
 
-    // 8. Lerp the camera group position to the current point
-    cameraGroup.current.position.lerp(curPoint, delta * 20);
   });
 
   return (
     <>
       <Perf position="top-left" />
-      {/* <OrbitControls enabled={true} enableZoom={false} /> */}
+      {/* <OrbitControls enabled={true} enableZoom={true} /> */}
 
       <group ref={cameraGroup}>
         <Background />
@@ -194,7 +185,7 @@ function Experience() {
 
         {/* ASTRONOUT */}
         <group ref={astronout}>
-          <Float floatIntensity={2} speed={2}>
+          <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}>
             <Astronout
               rotation={[0, Math.PI, 0]}
               scale={[0.5, 0.5, 0.5]}
@@ -202,6 +193,50 @@ function Experience() {
             />
           </Float>
         </group>
+      </group>
+
+      {/* TEXT */}
+      <group position={[-3, 0, -100]}>
+        <Text
+          color="snow"
+          anchorX="left"
+          anchorY="middle"
+          fontSize={0.22}
+          maxWidth={2.5}
+          font="./fonts/Aleo-ExtraLightItalic.ttf"
+        >
+          Welcome! {"\n"}
+          Have a cup of coffee and enjoy!
+        </Text>
+      </group>
+
+      <group position={[-10, 1, -200]}>
+        <Text
+          color="snow"
+          anchorX="left"
+          anchorY="center"
+          fontSize={0.52}
+          maxWidth={2.5}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+        >
+          Design
+        </Text>
+        <Text
+          color="snow"
+          anchorX="left"
+          anchorY="top"
+          position-y={-1.2}
+          fontSize={0.22}
+          maxWidth={2.5}
+          font="./fonts/Aleo-ExtraLightItalic.ttf"
+        >
+          Space between objects, elements, matters. {"\n"}
+          {"\n"}
+          {"\n"}
+          What's happening there?{"\n"}
+          What will happen there?{"\n"}
+          What happened there?
+        </Text>
       </group>
 
       {/* LINE */}
@@ -229,38 +264,29 @@ function Experience() {
       </group>
 
       {/* Meteoroids */}
+      <Meteoroid01 scale={[1, 1, 1.5]} position={[-3.5, 1.2, 7]} />
       <Meteoroid01
-        opacity={0.5}
-        scale={[0.3, 0.3, 0.3]}
-        position={[-2, 1, -3]}
+        scale={[1, 1, 2]}
+        position={[3.5, -1, -10]}
+        rotation-y={Math.PI}
       />
       <Meteoroid01
-        opacity={0.5}
-        scale={[0.2, 0.3, 0.4]}
-        position={[1.5, -0.5, -2]}
+        scale={[1, 1, 1]}
+        position={[-3.5, 0.2, -12]}
+        rotation-y={Math.PI / 3}
       />
       <Meteoroid01
-        opacity={0.7}
-        scale={[0.3, 0.3, 0.4]}
-        rotation={[0, Math.PI / 9, 0]}
-        position={[2, -0.2, -2]}
+        scale={[1, 1, 1]}
+        position={[3.5, 0.2, -12]}
+        rotation-y={Math.PI / 3}
       />
       <Meteoroid01
-        opacity={0.7}
         scale={[0.4, 0.4, 0.4]}
-        rotation={[0, Math.PI / 9, 0]}
         position={[1, -0.2, -12]}
+        rotation-y={Math.PI / 9}
       />
-      <Meteoroid01
-        opacity={0.7}
-        scale={[0.5, 0.5, 0.5]}
-        position={[-1, 1, -53]}
-      />
-      <Meteoroid01
-        opacity={0.3}
-        scale={[0.8, 0.8, 0.8]}
-        position={[0, 1, -100]}
-      />
+      <Meteoroid01 scale={[0.3, 0.5, 2]} position={[-4, -0.5, -53]} />
+      <Meteoroid01 scale={[0.8, 0.8, 0.8]} position={[-1, -1.5, -100]} />
     </>
   );
 }
@@ -298,82 +324,74 @@ function ProjectThumbnailImages({ scroll }) {
    * PROJECT THUMBNAIL PARAMS
    */
   const imagePosY = -1.0;
-  const thumbnailDistance = 6.5;
+  const thumbnailDistance = 5.5;
   const thumbnailPositionsArray = [
     {
-      id: "start",
-      position: [0, imagePosY, 0],
-    },
-    {
-      id: "scroll",
-      position: [1 * thumbnailDistance, imagePosY, 0],
+      id: "Scroll to Start",
+      position: [0 * thumbnailDistance, imagePosY, 0],
     },
     {
       id: "D E S I G N",
-      position: [2 * thumbnailDistance, imagePosY, 0],
+      position: [1 * thumbnailDistance, imagePosY, 0],
     },
     {
       id: "Ambience of Light",
-      position: [3 * thumbnailDistance, imagePosY, 0],
+      position: [2 * thumbnailDistance, imagePosY, 0],
       imageUrl: AmbienceOfLightThumbnail,
     },
     {
       id: "Beauty of Time Passing",
-      position: [4 * thumbnailDistance, imagePosY, 0],
+      position: [3 * thumbnailDistance, imagePosY, 0],
       imageUrl: BeautyOfTimePassingThumbnail,
     },
     {
       id: "Intervention In Our Disconnection",
-      position: [5 * thumbnailDistance, imagePosY, 0],
+      position: [4 * thumbnailDistance, imagePosY, 0],
       imageUrl: InterventionInOurDisconnectionThumbnail,
     },
     {
       id: "Masu Typo",
-      position: [6 * thumbnailDistance, imagePosY, 0],
+      position: [5 * thumbnailDistance, imagePosY, 0],
       imageUrl: MasuTypoThumbnail,
     },
     {
       id: "Comforting Dinner",
-      position: [7 * thumbnailDistance, imagePosY, 0],
+      position: [6 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "3D Visuals",
-      position: [8 * thumbnailDistance, imagePosY, 0],
+      position: [7 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "W E B  A P P",
-      position: [9 * thumbnailDistance, imagePosY, 0],
+      position: [8 * thumbnailDistance, imagePosY, 0],
     },
     {
       id: "Portfolio Website",
-      position: [10 * thumbnailDistance, imagePosY, 0],
+      position: [9 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "OBJECT Rotterdam 2024",
-      position: [11 * thumbnailDistance, imagePosY, 0],
+      position: [10 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Weather Cereal",
-      position: [12 * thumbnailDistance, imagePosY, 0],
+      position: [11 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Donuts Universe",
-      position: [13 * thumbnailDistance, imagePosY, 0],
+      position: [12 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
     },
     {
       id: "Marble's on a Roll",
-      position: [14 * thumbnailDistance, imagePosY, 0],
+      position: [13 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
-    },
-    {
-      id: "end",
-      position: [15 * thumbnailDistance, imagePosY, 0],
     },
   ];
 
