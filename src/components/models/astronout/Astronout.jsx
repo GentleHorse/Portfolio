@@ -24,21 +24,27 @@ export default function Astronout(props) {
             <skinnedMesh
               name="Cube009"
               geometry={nodes.Cube009.geometry}
-              material={materials["material-space-suit-body.001"]}
+              // material={materials["material-space-suit-body.001"]}
               skeleton={nodes.Cube009.skeleton}
-            />
+            >
+              <meshStandardMaterial color="snow" envMapIntensity={2.5} />
+            </skinnedMesh>
             <skinnedMesh
               name="Cube009_1"
               geometry={nodes.Cube009_1.geometry}
-              material={materials["material-space-suit-red-accent.001"]}
+              // material={materials["material-space-suit-red-accent.001"]}
               skeleton={nodes.Cube009_1.skeleton}
-            />
+            >
+              <meshStandardMaterial color="crimson" envMapIntensity={2.5} />
+            </skinnedMesh>
             <skinnedMesh
               name="Cube009_2"
               geometry={nodes.Cube009_2.geometry}
-              material={materials["material-space-suit-face-cover.001"]}
+              // material={materials["material-space-suit-face-cover.001"]}
               skeleton={nodes.Cube009_2.skeleton}
-            />
+            >
+              <meshStandardMaterial color="#1C1C1C" envMapIntensity={2.5} />
+            </skinnedMesh>
           </group>
           <primitive object={nodes.mixamorigHips} />
         </group>

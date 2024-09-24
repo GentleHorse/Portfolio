@@ -38,6 +38,7 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
  * INITIAL PARAM VALUES
  */
 const LINE_NB_POINTS = 1000;
+const LINE_PATH_HALF_WIDTH = 0.08;
 const CURVE_DISTANCE = 250;
 const CURVE_PATH_MAX_WIDTH = 100;
 const CURVE_AHEAD_CAMERA = 0.008; // for the look-at camera point
@@ -112,8 +113,8 @@ function Experience() {
   // shape for extrusion of the curve path
   const shape = useMemo(() => {
     const shape = new THREE.Shape();
-    shape.moveTo(0, -0.2);
-    shape.lineTo(0, 0.2);
+    shape.moveTo(0, -LINE_PATH_HALF_WIDTH);
+    shape.lineTo(0, LINE_PATH_HALF_WIDTH);
 
     return shape;
   }, [curve]);
@@ -311,7 +312,12 @@ function Experience() {
               },
             ]}
           />
-          <meshStandardMaterial color={"snow"} opacity={0.65} transparent />
+          <meshStandardMaterial
+            color={"snow"}
+            opacity={1}
+            transparent
+            envMapIntensity={2}
+          />
         </mesh>
       </group>
 
@@ -344,24 +350,40 @@ function Experience() {
 }
 
 function Background() {
+  // const colorA = "#357CA1";
+  // const colorB = "snow";
+
+  const colorA = "#0923BE";
+  const colorB = "#FFAD30";
+  const start = 0.2;
+  const end = -0.5;
+
   return (
     <>
-      <Environment preset="sunset" />
-      <Sphere scale={[100, 100, 100]} rotation={[0, Math.PI / 2, 0]}>
-        <LayerMaterial
-          lighting="physical"
-          transmission={1}
-          side={THREE.BackSide}
-        >
+      <Sphere scale={[500, 500, 500]} rotation={[0, Math.PI / 2, 0]}>
+        <LayerMaterial color="#ffffff" side={THREE.BackSide}>
           <Gradient
-            colorA={"#356CA1"}
-            colorB={"snow"}
+            colorA={colorA}
+            colorB={colorB}
             axes="y"
-            start={0}
-            end={-0.5}
+            start={start}
+            end={end}
           />
         </LayerMaterial>
       </Sphere>
+      <Environment resolution={256}>
+        <Sphere scale={[100, 100, 100]} rotation={[Math.PI, Math.PI / 2, 0]}>
+          <LayerMaterial color="#ffffff" side={THREE.BackSide}>
+            <Gradient
+              colorA={colorA}
+              colorB={colorB}
+              axes="y"
+              start={start}
+              end={end}
+            />
+          </LayerMaterial>
+        </Sphere>
+      </Environment>
     </>
   );
 }
