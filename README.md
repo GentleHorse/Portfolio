@@ -6,7 +6,7 @@
 npm run dev
 ```
 
-## Dev Memo 01 - UV of TV screens inside glb (gltf) models  
+## Dev Memo 01 - UV of TV screens inside glb (gltf) models
 
 In order to play videos inside screen inside glb models, UV should be properly unwrapped, otherwise it cannot play the video in the way you want.
 
@@ -41,6 +41,7 @@ import { useVideoTexture } from "@react-three/drei";
 An astronout model is animated using [mixamo](https://www.mixamo.com/#/) and exported as **fbx**. Then it's imported in Blender and exported as **gltf**. To generating the `jsx` code, [online gltf converter](https://gltf.pmnd.rs/) was used.
 
 #### Play an animation
+
 ```
 ....
 
@@ -50,6 +51,47 @@ An astronout model is animated using [mixamo](https://www.mixamo.com/#/) and exp
     actions["Flying"].play();
   }, []);
 
+....
+
+```
+
+## Dev Memo 03 - Gradient animation, GSAP x useScroll
+
+The logic of the gradient animation in accordance with the scroll offset value is controlling [paused gsap animation](<https://gsap.com/docs/v3/GSAP/Tween/pause()/>) by [useScroll()](https://drei.docs.pmnd.rs/controls/scroll-controls) with the method of [seek()](<https://gsap.com/docs/v3/GSAP/Timeline/seek()/>) inside [useFrame()](https://r3f.docs.pmnd.rs/api/hooks#useframe).
+
+```
+....
+
+const tl = useRef();
+const backgroundColors = useRef({
+  colorA: "#3535CC",
+  colorB: "#ABAADD",
+});
+
+useLayoutEffect(() => {
+  tl.current = gsap.timeline();
+
+  tl.current.to(backgroundColors.current, {
+    duration: 1.0,
+    colorA: "black",
+    colorB: "snow",
+  });
+
+  tl.current.pause();
+}, []);
+....
+
+```
+
+```
+....
+useFrame((state, delta) => {
+
+  ....
+  tl.current.seek(scrollOffset * tl.current.duration());
+  ....
+
+})
 ....
 
 ```

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useLayoutEffect } from "react";
 import {
   Environment,
   Float,
@@ -33,6 +33,7 @@ import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__
 import InterventionInOurDisconnectionThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
+import gsap from "gsap";
 
 /**
  * INITIAL PARAM VALUES
@@ -168,23 +169,26 @@ It's like making toys with passions & precision.`,
   const astronout = useRef();
 
   /**
-   * USESCROLL
+   * SCROLL, LASTSCROLL
    */
   const scroll = useScroll();
+  const lastScroll = useRef(0);
 
   /**
    * USEFRAME - SCROLL ANIMATION
    */
   useFrame((state, delta) => {
     /**
-     * GENERAL SETUP
+     * GENERAL
      */
 
     // 0. Limit the offset value above 0
     const scrollOffset = Math.max(0, scroll.offset);
 
-    // 1. Silde the camera on x-axis based on the distance to text sections
+    // 1. Declaration & initialization of param
     let resetCameraRail = true;
+
+    // 2. Silde the camera on x-axis based on the distance to text sections
     textSections.forEach((textSection) => {
       const distance = textSection.position.distanceTo(
         new THREE.Vector3(
@@ -205,13 +209,16 @@ It's like making toys with passions & precision.`,
       }
     });
 
-    // 2. Reset the camera rail position (slide on x-axis)
-    if(resetCameraRail){
+    // 3. Reset the camera rail position (slide on x-axis)
+    if (resetCameraRail) {
       const targetCameraRailPosition = new THREE.Vector3(0, 0, 0);
       cameraRail.current.position.lerp(targetCameraRailPosition, delta);
     }
 
-    // 3. Get the closest point based on scroll percentage
+    // 4. Match the gsap duration to the scroll offset value
+    tl.current.seek(scrollOffset * tl.current.duration()); 
+
+    // 5. Get the closest point based on scroll percentage
     const curPoint = curve.getPoint(scrollOffset);
 
     /**
@@ -292,6 +299,37 @@ It's like making toys with passions & precision.`,
     astronout.current.quaternion.slerp(targetAstronoutQuaternion, delta * 2);
   });
 
+  /**
+   * GRADIENT ANIMATION
+   */
+  const tl = useRef();
+  const backgroundColors = useRef({
+    colorA: "#3535CC",
+    colorB: "#ABAADD",
+  });
+
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline();
+
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#6F35CC",
+      colorB: "#FFAD30",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#424242",
+      colorB: "#FFCC00",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#81318B",
+      colorB: "#55AB8F",
+    });
+
+    tl.current.pause();
+  }, []);
+
   return (
     <>
       <Perf position="top-left" />
@@ -299,7 +337,7 @@ It's like making toys with passions & precision.`,
       {/* <OrbitControls enabled={true} enableZoom={true} /> */}
 
       <group ref={cameraGroup}>
-        <Background />
+        <Background backgroundColors={backgroundColors} />
 
         {/* PERSPECTIVE CAMERA */}
         <group ref={cameraRail}>
@@ -311,7 +349,7 @@ It's like making toys with passions & precision.`,
 
         {/* ASTRONOUT */}
         <group ref={astronout}>
-          <Float floatIntensity={1} speed={1.5} rotationIntensity={0.5}>
+          <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
             <Astronout
               rotation={[0, Math.PI, 0]}
               scale={[0.5, 0.5, 0.5]}
@@ -335,7 +373,7 @@ It's like making toys with passions & precision.`,
           transparent
           lineWidth={16}
         /> */}
-        <mesh>
+        <mesh visible={true}>
           <extrudeGeometry
             args={[
               shape,
@@ -383,38 +421,45 @@ It's like making toys with passions & precision.`,
   );
 }
 
-function Background() {
+function Background({ backgroundColors }) {
   // const colorA = "#357CA1";
   // const colorB = "snow";
 
-  const colorA = "#0923BE";
-  const colorB = "#FFAD30";
+  // const colorA = "#0923BE";
+  // const colorB = "#FFAD30";
+
   const start = 0.2;
   const end = -0.5;
+
+  const gradientRef = useRef();
+  const gradientEnvRef = useRef();
+
+  useFrame((state, delta) => {
+    gradientRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    )
+    gradientRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    )
+    gradientEnvRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    )
+    gradientEnvRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    )
+  })
 
   return (
     <>
       <Sphere scale={[500, 500, 500]} rotation={[0, Math.PI / 2, 0]}>
         <LayerMaterial color="#ffffff" side={THREE.BackSide}>
-          <Gradient
-            colorA={colorA}
-            colorB={colorB}
-            axes="y"
-            start={start}
-            end={end}
-          />
+          <Gradient ref={gradientRef} axes="y" start={start} end={end} />
         </LayerMaterial>
       </Sphere>
-      <Environment resolution={256}>
+      <Environment resolution={256} frames={Infinity}>
         <Sphere scale={[100, 100, 100]} rotation={[Math.PI, Math.PI / 2, 0]}>
           <LayerMaterial color="#ffffff" side={THREE.BackSide}>
-            <Gradient
-              colorA={colorA}
-              colorB={colorB}
-              axes="y"
-              start={start}
-              end={end}
-            />
+            <Gradient ref={gradientEnvRef} axes="y" start={start} end={end} />
           </LayerMaterial>
         </Sphere>
       </Environment>
@@ -444,9 +489,9 @@ function TextSection({ title, subtitle, ...props }) {
             color="snow"
             anchorX="left"
             anchorY="top"
-            position-y={-1.2}
-            fontSize={0.22}
-            maxWidth={2.5}
+            position={[-0.8, -0.6, 0]}
+            fontSize={0.32}
+            maxWidth={5.0}
             font="./fonts/Aleo-ExtraLightItalic.ttf"
           >
             {subtitle}
