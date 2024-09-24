@@ -44,6 +44,7 @@ const CURVE_PATH_MAX_WIDTH = 100;
 const CURVE_AHEAD_CAMERA = 0.008; // for the look-at camera point
 const CURVE_AHEAD_ASTRONOUT = 0.002; // for the astronout rotation
 const ASTRONOUT_MAX_ANGLE = 35; // for the astronout rotation
+const FRICTION_DISTANCE = 150;
 
 const SCROLL_PAGES = 25;
 const SCROLL_DAMPING = 0.3; // the lower, the slower animation gets
@@ -129,6 +130,7 @@ function Experience() {
   const textSections = useMemo(() => {
     return [
       {
+        cameraRailDist: 1.5,
         position: new THREE.Vector3(
           curvePoints[1].x + 1.05,
           curvePoints[1].y + 2.5,
@@ -141,6 +143,7 @@ What will happen there?
 What happened there?`,
       },
       {
+        cameraRailDist: 1.5,
         position: new THREE.Vector3(
           curvePoints[8].x + 1.05,
           curvePoints[8].y + 2.5,
@@ -154,9 +157,10 @@ It's like making toys with passions & precision.`,
   }, []);
 
   /**
-   * CAMERA GROUP
+   * CAMERA
    */
   const cameraGroup = useRef();
+  const cameraRail = useRef();
 
   /**
    * ASTRONOUT
@@ -179,7 +183,35 @@ It's like making toys with passions & precision.`,
     // 0. Limit the offset value above 0
     const scrollOffset = Math.max(0, scroll.offset);
 
-    // 1. Get the closest point based on scroll percentage
+    // 1. Silde the camera on x-axis based on the distance to text sections
+    let resetCameraRail = true;
+    textSections.forEach((textSection) => {
+      const distance = textSection.position.distanceTo(
+        new THREE.Vector3(
+          cameraGroup.current.position.x,
+          cameraGroup.current.position.y,
+          cameraGroup.current.position.z
+        )
+      );
+
+      if (distance < FRICTION_DISTANCE) {
+        const targetCameraRailPosition = new THREE.Vector3(
+          (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
+          0,
+          0
+        );
+        cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+        resetCameraRail = false;
+      }
+    });
+
+    // 2. Reset the camera rail position (slide on x-axis)
+    if(resetCameraRail){
+      const targetCameraRailPosition = new THREE.Vector3(0, 0, 0);
+      cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+    }
+
+    // 3. Get the closest point based on scroll percentage
     const curPoint = curve.getPoint(scrollOffset);
 
     /**
@@ -263,13 +295,16 @@ It's like making toys with passions & precision.`,
   return (
     <>
       <Perf position="top-left" />
+      {/* <axesHelper /> */}
       {/* <OrbitControls enabled={true} enableZoom={true} /> */}
 
       <group ref={cameraGroup}>
         <Background />
 
         {/* PERSPECTIVE CAMERA */}
-        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+        <group ref={cameraRail}>
+          <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+        </group>
 
         {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
         <ProjectThumbnailImages scroll={scroll} />
@@ -435,99 +470,99 @@ function ProjectThumbnailImages({ scroll }) {
   const thumbnailDistance = 5.5;
   const thumbnailPositionsArray = [
     {
-      id: "Scroll to Start",
+      id: "Scroll to Start the Journey",
       position: [0 * thumbnailDistance, imagePosY, 0],
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 2.0,
     },
     {
       id: "D E S I G N",
       position: [1 * thumbnailDistance, imagePosY, 0],
       fontSize: 0.75,
-      maxWidth: 5.0
+      maxWidth: 5.0,
     },
     {
       id: "Ambience of Light",
       position: [2 * thumbnailDistance, imagePosY, 0],
       imageUrl: AmbienceOfLightThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Beauty of Time Passing",
       position: [3 * thumbnailDistance, imagePosY, 0],
       imageUrl: BeautyOfTimePassingThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Intervention In Our Disconnection",
       position: [4 * thumbnailDistance, imagePosY, 0],
       imageUrl: InterventionInOurDisconnectionThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Masu Typo",
       position: [5 * thumbnailDistance, imagePosY, 0],
       imageUrl: MasuTypoThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Comforting Dinner",
       position: [6 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "3D Visuals",
       position: [7 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 10.0
+      maxWidth: 10.0,
     },
     {
       id: "W E B  A P P",
       position: [8 * thumbnailDistance, imagePosY, 0],
       fontSize: 0.75,
-      maxWidth: 5.0
+      maxWidth: 5.0,
     },
     {
       id: "Portfolio Website",
       position: [9 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "OBJECT Rotterdam 2024",
       position: [10 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Weather Cereal",
       position: [11 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Donuts Universe",
       position: [12 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
     {
       id: "Marble's on a Roll",
       position: [13 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
       fontSize: 0.15,
-      maxWidth: 1.0
+      maxWidth: 1.0,
     },
   ];
 
