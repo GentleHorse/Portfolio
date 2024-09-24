@@ -27,7 +27,6 @@
     "@react-three/rapier": "^1.3.0",
     "@react-three/uikit": "^0.3.13",
     "caniuse-lite": "^1.0.30001662",
-    "ecctrl": "^1.0.82",
     "framer-motion": "^11.2.6",
     "gltfjsx": "^6.4.1",
     "gsap": "^3.12.5",
