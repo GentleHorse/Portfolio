@@ -38,6 +38,7 @@ import {
   fadeOnBeforeCompile,
   fadeOnBeforeCompileFlat,
 } from "../utils/fadeMaterial.js";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
 
 /**
  * INITIAL PARAM VALUES
@@ -72,6 +73,10 @@ export default function WorksPage() {
         >
           <Experience />
         </ScrollControls>
+
+        <EffectComposer>
+          <Noise opacity={0.08} />
+        </EffectComposer>
       </Canvas>
     </>
   );
@@ -302,39 +307,6 @@ function Experience() {
         ),
         rotation: new THREE.Euler(Math.PI / 4, Math.PI / 6, 0),
       },
-
-      // // 8TH POINT
-      // {
-      //   position: new THREE.Vector3(
-      //     curvePoints[8].x - 3.5,
-      //     curvePoints[8].y - 3.2,
-      //     curvePoints[8].z - 7
-      //   ),
-      // },
-      // {
-      //   position: new THREE.Vector3(
-      //     curvePoints[8].x + 3.5,
-      //     curvePoints[8].y - 4,
-      //     curvePoints[8].z - 10
-      //   ),
-      // },
-      // {
-      //   scale: new THREE.Vector3(4, 4, 4),
-      //   position: new THREE.Vector3(
-      //     curvePoints[8].x - 18,
-      //     curvePoints[8].y + 0.2,
-      //     curvePoints[8].z - 68
-      //   ),
-      //   rotation: new THREE.Euler(-Math.PI / 5, Math.PI / 6, 0),
-      // },
-      // {
-      //   scale: new THREE.Vector3(2.5, 2.5, 2.5),
-      //   position: new THREE.Vector3(
-      //     curvePoints[8].x + 10,
-      //     curvePoints[8].y - 1.2,
-      //     curvePoints[8].z - 52
-      //   ),
-      // },
 
       // 9TH POINT
       {
