@@ -75,28 +75,32 @@ function Experience() {
   /**
    * CURVE PATH
    */
+  const curvePoints = useMemo(() => {
+    const curvePoints = [
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -5 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -10 * CURVE_DISTANCE),
+      new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -11 * CURVE_DISTANCE),
+      new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -12 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
+    ];
+
+    return curvePoints;
+  }, []);
 
   // catmullromcurve3
   const curve = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3(
-      [
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
-        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -3 * CURVE_DISTANCE),
-        new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -4 * CURVE_DISTANCE),
-        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -5 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
-        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -10 * CURVE_DISTANCE),
-        new THREE.Vector3(-CURVE_PATH_MAX_WIDTH, 0, -11 * CURVE_DISTANCE),
-        new THREE.Vector3(CURVE_PATH_MAX_WIDTH, 0, -12 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
-        new THREE.Vector3(0, 0, -15 * CURVE_DISTANCE),
-      ],
+      curvePoints,
       false,
       "catmullrom",
       0.5
@@ -120,6 +124,36 @@ function Experience() {
   }, [curve]);
 
   /**
+   * TEXT SECTION
+   */
+  const textSections = useMemo(() => {
+    return [
+      {
+        position: new THREE.Vector3(
+          curvePoints[1].x + 1.05,
+          curvePoints[1].y + 2.5,
+          curvePoints[1].z
+        ),
+        subtitle: `Space between objects, elements, matters.
+
+What's happening there?
+What will happen there?
+What happened there?`,
+      },
+      {
+        position: new THREE.Vector3(
+          curvePoints[8].x + 1.05,
+          curvePoints[8].y + 2.5,
+          curvePoints[8].z
+        ),
+        subtitle: `Developing applications.
+
+It's like making toys with passions & precision.`,
+      },
+    ];
+  }, []);
+
+  /**
    * CAMERA GROUP
    */
   const cameraGroup = useRef();
@@ -139,7 +173,7 @@ function Experience() {
    */
   useFrame((state, delta) => {
     /**
-     * SCROLL ANIMATION - CAMERA
+     * GENERAL SETUP
      */
 
     // 0. Limit the offset value above 0
@@ -148,28 +182,32 @@ function Experience() {
     // 1. Get the closest point based on scroll percentage
     const curPoint = curve.getPoint(scrollOffset);
 
-    // 2. Lerp the camera group position to the current point
+    /**
+     * SCROLL ANIMATION - CAMERA
+     */
+
+    // 0. Lerp the camera group position to the current point
     cameraGroup.current.position.lerp(curPoint, delta * 24);
 
-    // 3. Get the second closest point based on 'CURVE_AHEAD_CAMERA'
+    // 1. Get the second closest point based on 'CURVE_AHEAD_CAMERA'
     const lookAtPoint = curve.getPoint(
       Math.min(scrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
 
-    // 4. Get the current camera look-at
+    // 2. Get the current camera look-at
     const currentLookAt = cameraGroup.current.getWorldDirection(
       new THREE.Vector3()
     );
 
-    // 5. Calculate the vector: curPoint - lookAtPoint, and normalize
+    // 3. Calculate the vector: curPoint - lookAtPoint, and normalize
     const targetLookAt = new THREE.Vector3()
       .subVectors(curPoint, lookAtPoint)
       .normalize();
 
-    // 6. Lerp the current camera look-at to the target look-at
+    // 4. Lerp the current camera look-at to the target look-at
     const lookAt = currentLookAt.lerp(targetLookAt, delta * 24);
 
-    // 7. Update the camera target
+    // 5. Update the camera target
     cameraGroup.current.lookAt(
       cameraGroup.current.position.clone().add(lookAt)
     );
@@ -249,48 +287,9 @@ function Experience() {
       </group>
 
       {/* TEXT */}
-      <group position={[-3, 0, -100]}>
-        <Text
-          color="snow"
-          anchorX="left"
-          anchorY="middle"
-          fontSize={0.22}
-          maxWidth={2.5}
-          font="./fonts/Aleo-ExtraLightItalic.ttf"
-        >
-          Welcome! {"\n"}
-          Have a cup of coffee and enjoy!
-        </Text>
-      </group>
-
-      <group position={[-10, 1, -200]}>
-        <Text
-          color="snow"
-          anchorX="left"
-          anchorY="center"
-          fontSize={0.52}
-          maxWidth={2.5}
-          font="./fonts/DMSerifDisplay-Regular.ttf"
-        >
-          Design
-        </Text>
-        <Text
-          color="snow"
-          anchorX="left"
-          anchorY="top"
-          position-y={-1.2}
-          fontSize={0.22}
-          maxWidth={2.5}
-          font="./fonts/Aleo-ExtraLightItalic.ttf"
-        >
-          Space between objects, elements, matters. {"\n"}
-          {"\n"}
-          {"\n"}
-          What's happening there?{"\n"}
-          What will happen there?{"\n"}
-          What happened there?
-        </Text>
-      </group>
+      {textSections.map((textSection, index) => (
+        <TextSection {...textSection} key={index} />
+      ))}
 
       {/* LINE */}
       <group position={[0, -2.5, 0]}>
@@ -384,6 +383,41 @@ function Background() {
           </LayerMaterial>
         </Sphere>
       </Environment>
+    </>
+  );
+}
+
+function TextSection({ title, subtitle, ...props }) {
+  return (
+    <>
+      <group {...props}>
+        {!!title && (
+          <Text
+            color="snow"
+            anchorX="left"
+            anchorY="center"
+            fontSize={0.52}
+            maxWidth={2.5}
+            font="./fonts/DMSerifDisplay-Regular.ttf"
+          >
+            {title}
+          </Text>
+        )}
+
+        {!!subtitle && (
+          <Text
+            color="snow"
+            anchorX="left"
+            anchorY="top"
+            position-y={-1.2}
+            fontSize={0.22}
+            maxWidth={2.5}
+            font="./fonts/Aleo-ExtraLightItalic.ttf"
+          >
+            {subtitle}
+          </Text>
+        )}
+      </group>
     </>
   );
 }

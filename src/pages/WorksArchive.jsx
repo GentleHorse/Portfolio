@@ -244,8 +244,7 @@ What happened there?`,
         title: "App Dev",
         subtitle: `Developing applications.
 
-It's like making toys with passions & precision.
-        `,
+It's like making toys with passions & precision.`,
       },
       {
         cameraRailDist: 0,
