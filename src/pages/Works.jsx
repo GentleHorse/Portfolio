@@ -437,69 +437,97 @@ function ProjectThumbnailImages({ scroll }) {
     {
       id: "Scroll to Start",
       position: [0 * thumbnailDistance, imagePosY, 0],
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "D E S I G N",
       position: [1 * thumbnailDistance, imagePosY, 0],
+      fontSize: 0.75,
+      maxWidth: 5.0
     },
     {
       id: "Ambience of Light",
       position: [2 * thumbnailDistance, imagePosY, 0],
       imageUrl: AmbienceOfLightThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Beauty of Time Passing",
       position: [3 * thumbnailDistance, imagePosY, 0],
       imageUrl: BeautyOfTimePassingThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Intervention In Our Disconnection",
       position: [4 * thumbnailDistance, imagePosY, 0],
       imageUrl: InterventionInOurDisconnectionThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Masu Typo",
       position: [5 * thumbnailDistance, imagePosY, 0],
       imageUrl: MasuTypoThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Comforting Dinner",
       position: [6 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "3D Visuals",
       position: [7 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 10.0
     },
     {
       id: "W E B  A P P",
       position: [8 * thumbnailDistance, imagePosY, 0],
+      fontSize: 0.75,
+      maxWidth: 5.0
     },
     {
       id: "Portfolio Website",
       position: [9 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "OBJECT Rotterdam 2024",
       position: [10 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Weather Cereal",
       position: [11 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Donuts Universe",
       position: [12 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
     {
       id: "Marble's on a Roll",
       position: [13 * thumbnailDistance, imagePosY, 0],
       imageUrl: ComfortingDinnerThumbnail,
+      fontSize: 0.15,
+      maxWidth: 1.0
     },
   ];
 
@@ -535,10 +563,11 @@ function ProjectThumbnailImages({ scroll }) {
 
             <Text
               position={[-1.0, 0.5, 0.5]}
-              fontSize={0.15}
+              fontSize={thumbnail.fontSize}
               font="./fonts/DMSerifDisplay-Regular.ttf"
-              maxWidth={1.0}
+              maxWidth={thumbnail.maxWidth}
               anchorX="left"
+              toneMapped={false}
             >
               {thumbnail.id}
               <meshBasicMaterial color="#ffffff" toneMapped={false} />
