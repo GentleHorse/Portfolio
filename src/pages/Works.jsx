@@ -57,6 +57,15 @@ const SCROLL_DAMPING = 0.3; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 1.5; // the higher, the slower animation gets
 
 export default function WorksPage() {
+  const effects = useMemo(
+    () => (
+      <EffectComposer>
+        <Noise opacity={0.08} />
+      </EffectComposer>
+    ),
+    []
+  );
+
   return (
     <>
       <Header home about contact />
@@ -73,10 +82,7 @@ export default function WorksPage() {
         >
           <Experience />
         </ScrollControls>
-
-        <EffectComposer>
-          <Noise opacity={0.08} />
-        </EffectComposer>
+        {effects}
       </Canvas>
     </>
   );
@@ -472,7 +478,7 @@ What happened there?`,
         ),
         subtitle: `Developing applications.
 
-It's like making toys with passions & precision.`,
+It's like making toys with passions & precision in the flow.`,
       },
     ];
   }, []);
@@ -482,6 +488,7 @@ It's like making toys with passions & precision.`,
    */
   const cameraGroup = useRef();
   const cameraRail = useRef();
+  const camera = useRef();
 
   /**
    * ASTRONOUT
@@ -499,9 +506,21 @@ It's like making toys with passions & precision.`,
    */
   useFrame((state, delta) => {
     /**
-     * GENERAL
+     * FOR MOBILE
      */
+    if (window.innerWidth > window.innerHeight) {
+      // LANDSCAPE
+      camera.current.fov = 30;
+      camera.current.position.z = 5;
+    } else {
+      // PORTRAIT
+      camera.current.fov = 80;
+      camera.current.position.z = 2.5;
+    }
 
+    /**
+     * GENERAL FOR SCROLL ANIMATION
+     */
     // 0. Limit the offset value above 0
     const scrollOffset = Math.max(0, scroll.offset);
 
@@ -661,7 +680,7 @@ It's like making toys with passions & precision.`,
 
         {/* PERSPECTIVE CAMERA */}
         <group ref={cameraRail}>
-          <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
+          <PerspectiveCamera ref={camera} makeDefault />
         </group>
 
         {/* HORIZONTAL SCROLL PROJECT THUMBNAILS */}
@@ -814,12 +833,12 @@ function ProjectThumbnailImages({ scroll }) {
    * PROJECT THUMBNAIL PARAMS
    */
   const imagePosY = -1.0;
-  const thumbnailDistance = 5.5;
+  const thumbnailDistance = 4.5;
   const thumbnailPositionsArray = [
     {
       id: "Scroll to Start the Journey",
       position: [0 * thumbnailDistance, imagePosY, 0],
-      fontSize: 0.15,
+      fontSize: 0.1,
       maxWidth: 2.0,
     },
     {
@@ -937,18 +956,18 @@ function ProjectThumbnailImages({ scroll }) {
                 <Image
                   url={thumbnail.imageUrl}
                   position={[0.1, 0, 0]}
-                  scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
+                  scale={[6.2 * 0.125, 9.6 * 0.125, 1]}
                   toneMapped={false}
                 />
               </group>
             )}
 
             <Text
-              position={[-1.0, 0.5, 0.5]}
+              position={[0.0, 0.5, 0.5]}
               fontSize={thumbnail.fontSize}
               font="./fonts/DMSerifDisplay-Regular.ttf"
               maxWidth={thumbnail.maxWidth}
-              anchorX="left"
+              anchorX="center"
               toneMapped={false}
             >
               {thumbnail.id}
