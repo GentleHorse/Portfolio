@@ -39,22 +39,14 @@ import {
   fadeOnBeforeCompileFlat,
 } from "../utils/fadeMaterial.js";
 import { EffectComposer, Noise } from "@react-three/postprocessing";
+import PopTiles from "../components/models/popTiles/PopTiles.jsx";
 
 /**
- * INITIAL PARAM VALUES
+ * INITIAL SCROLLCONTROLS VALUES
  */
-const LINE_NB_POINTS = 1000;
-const LINE_PATH_HALF_WIDTH = 0.08;
-const CURVE_DISTANCE = 250;
-const CURVE_PATH_MAX_WIDTH = 100;
-const CURVE_AHEAD_CAMERA = 0.008; // for the look-at camera point
-const CURVE_AHEAD_ASTRONOUT = 0.002; // for the astronout rotation
-const ASTRONOUT_MAX_ANGLE = 35; // for the astronout rotation
-const FRICTION_DISTANCE = 150;
-
-const SCROLL_PAGES = 25;
-const SCROLL_DAMPING = 0.3; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 1.5; // the higher, the slower animation gets
+const SCROLL_PAGES = 11;
+const SCROLL_DAMPING = 0.1; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 5.0; // the higher, the slower animation gets
 
 export default function WorksPage() {
   const effects = useMemo(
@@ -72,7 +64,12 @@ export default function WorksPage() {
 
       <Loader />
 
-      <Canvas>
+      <Canvas
+        camera={{
+          position: [6, 7, 8],
+          fov: 30,
+        }}
+      >
         <color attach="background" args={["#ececec"]} />
 
         <ScrollControls
@@ -122,54 +119,52 @@ function Experience() {
     const scrollOffset = Math.max(0, scroll.offset);
 
     // Match the gsap duration to the scroll offset value
-    // tl.current.seek(scrollOffset * tl.current.duration());
+    tl.current.seek(scrollOffset * tl.current.duration());
   });
 
   /**
    * GRADIENT ANIMATION
    */
-  // const tl = useRef();
-  // const backgroundColors = useRef({
-  //   colorA: "#3535CC",
-  //   colorB: "#ABAADD",
-  // });
+  const tl = useRef();
+  const backgroundColors = useRef({
+    colorA: "#FFFFFF",
+    colorB: "#C1C1C1",
+  });
 
-  // useLayoutEffect(() => {
-  //   tl.current = gsap.timeline();
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline();
 
-  //   tl.current.to(backgroundColors.current, {
-  //     duration: 1.0,
-  //     colorA: "#6F35CC",
-  //     colorB: "#FFAD30",
-  //   });
-  //   tl.current.to(backgroundColors.current, {
-  //     duration: 1.0,
-  //     colorA: "#424242",
-  //     colorB: "#FFCC00",
-  //   });
-  //   tl.current.to(backgroundColors.current, {
-  //     duration: 1.0,
-  //     colorA: "#81318B",
-  //     colorB: "#55AB8F",
-  //   });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#6F35CC",
+      colorB: "#FFAD30",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#424242",
+      colorB: "#FFCC00",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#81318B",
+      colorB: "#55AB8F",
+    });
 
-  //   tl.current.pause();
-  // }, []);
+    tl.current.pause();
+  }, []);
 
   return (
     <>
       <Perf position="top-left" />
       <axesHelper />
-      <OrbitControls />
+      <OrbitControls enableZoom={false} />
 
       {/* <Background backgroundColors={backgroundColors} /> */}
+      <Environment preset="city" />
 
       {/* <PerspectiveCamera ref={camera} makeDefault /> */}
 
-      <mesh>
-        <boxGeometry />
-        <meshNormalMaterial />
-      </mesh>
+      <PopTiles scroll={scroll} />
     </>
   );
 }
