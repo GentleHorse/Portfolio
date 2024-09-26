@@ -21,24 +21,18 @@ import { Link } from "react-router-dom";
 import { Perf } from "r3f-perf";
 import { Gradient, LayerMaterial } from "lamina";
 import { proxy, useSnapshot } from "valtio";
+import { easing } from "maath";
+import gsap from "gsap";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
 
 import Header from "../components/header/Header.jsx";
-import Astronout from "../components/models/astronout/Astronout.jsx";
-import Meteoroid from "../components/models/meteoroids/Meteoroid.jsx";
-import Monolith from "../components/models/monolith/Monolith.jsx";
+import PopTiles from "../components/models/popTiles/PopTiles.jsx";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 import InterventionInOurDisconnectionThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
-import gsap from "gsap";
-import {
-  fadeOnBeforeCompile,
-  fadeOnBeforeCompileFlat,
-} from "../utils/fadeMaterial.js";
-import { EffectComposer, Noise } from "@react-three/postprocessing";
-import PopTiles from "../components/models/popTiles/PopTiles.jsx";
 
 /**
  * INITIAL SCROLLCONTROLS VALUES
@@ -46,6 +40,69 @@ import PopTiles from "../components/models/popTiles/PopTiles.jsx";
 const SCROLL_PAGES = 5;
 const SCROLL_DAMPING = 0.1; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 5.0; // the higher, the slower animation gets
+
+/**
+ * PROJECTS LIST ARRAY
+ */
+const PROJECTS_LIST_ARRAY = [
+  {
+    id: "d01",
+    title: "Ambience of Light",
+  },
+  {
+    id: "d02",
+    title: "Beauty of Time Passing",
+  },
+  {
+    id: "d03",
+    title: "Intervention in our Disconnection",
+  },
+  {
+    id: "d04",
+    title: "Masu Typo",
+  },
+  {
+    id: "d05",
+    title: "Comforting Dinner",
+  },
+  {
+    id: "d06",
+    title: "3D Visuals",
+  },
+  {
+    id: "a01",
+    title: "Portfolio Website",
+  },
+  {
+    id: "a02",
+    title: "OBJECT Rotterdam 2024",
+  },
+  {
+    id: "a03",
+    title: "Weather Cereal",
+  },
+  {
+    id: "a04",
+    title: "Donuts Universe",
+  },
+  {
+    id: "a05",
+    title: "Marble's on a Roll",
+  },
+];
+
+/**
+ * FOR INDICATOR BAR
+ */
+const geometry = new THREE.CylinderGeometry(0.025, 0.025, 2.5, 16);
+const material = new THREE.MeshStandardMaterial({ color: "crimson" });
+
+/**
+ * PROXY STATE
+ */
+const state = proxy({
+  projects: PROJECTS_LIST_ARRAY,
+});
 
 export default function WorksPage() {
   const effects = useMemo(
@@ -65,7 +122,7 @@ export default function WorksPage() {
 
       <Canvas
         camera={{
-          position: [6, 7, 8],
+          position: [0, 4, 10],
           fov: 30,
         }}
       >
@@ -164,7 +221,10 @@ function Experience() {
       {/* <PerspectiveCamera ref={camera} makeDefault /> */}
 
       <UI scroll={scroll} />
-      <PopTiles scroll={scroll} />
+
+      <group rotation={[0, -Math.PI * 0.2, 0]}>
+        <PopTiles scroll={scroll} />
+      </group>
     </>
   );
 }
@@ -211,20 +271,35 @@ function Background({ backgroundColors }) {
 
 function UI({ scroll }) {
   const { width, height } = useThree((state) => state.viewport);
+  const { projects } = useSnapshot(state);
+  const indicator = useRef();
 
-  console.log(width, height);
-
-  useFrame(() => {
+  useFrame((state, delta) => {
     const scrollOffset = Math.max(0, scroll.offset);
 
-    console.log(scrollOffset);
+    // console.log(scrollOffset);
+
+    indicator.current.children.forEach((child, index) => {
+      const y = scroll.curve(
+        index / projects.length - 1.5 / projects.length,
+        4 / projects.length
+      );
+      easing.damp(child.scale, "y", 0.01 + y / 8, 0.1, delta);
+    });
   });
 
   return (
     <>
-      <Html position={[0, -0.5 * height, 0]}>
-        <div></div>
-      </Html>
+      <group ref={indicator}>
+        {projects.map((_, i) => (
+          <mesh
+            key={i}
+            geometry={geometry}
+            material={material}
+            position={[i * 0.12 - projects.length * 0.06, 0.05, 4]}
+          />
+        ))}
+      </group>
     </>
   );
 }
