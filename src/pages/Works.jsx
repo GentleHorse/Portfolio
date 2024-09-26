@@ -9,19 +9,18 @@ import {
   OrbitControls,
   PerspectiveCamera,
   Sphere,
-} from "@react-three/drei";
-import { useNavigate } from "react-router-dom";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import {
   useScroll,
   Text,
   Image,
   Scroll,
   ScrollControls,
 } from "@react-three/drei";
+import { useNavigate } from "react-router-dom";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Link } from "react-router-dom";
 import { Perf } from "r3f-perf";
 import { Gradient, LayerMaterial } from "lamina";
+import { proxy, useSnapshot } from "valtio";
 
 import Header from "../components/header/Header.jsx";
 import Astronout from "../components/models/astronout/Astronout.jsx";
@@ -44,7 +43,7 @@ import PopTiles from "../components/models/popTiles/PopTiles.jsx";
 /**
  * INITIAL SCROLLCONTROLS VALUES
  */
-const SCROLL_PAGES = 11;
+const SCROLL_PAGES = 5;
 const SCROLL_DAMPING = 0.1; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 5.0; // the higher, the slower animation gets
 
@@ -164,6 +163,7 @@ function Experience() {
 
       {/* <PerspectiveCamera ref={camera} makeDefault /> */}
 
+      <UI scroll={scroll} />
       <PopTiles scroll={scroll} />
     </>
   );
@@ -205,6 +205,26 @@ function Background({ backgroundColors }) {
           </LayerMaterial>
         </Sphere>
       </Environment>
+    </>
+  );
+}
+
+function UI({ scroll }) {
+  const { width, height } = useThree((state) => state.viewport);
+
+  console.log(width, height);
+
+  useFrame(() => {
+    const scrollOffset = Math.max(0, scroll.offset);
+
+    console.log(scrollOffset);
+  });
+
+  return (
+    <>
+      <Html position={[0, -0.5 * height, 0]}>
+        <div></div>
+      </Html>
     </>
   );
 }

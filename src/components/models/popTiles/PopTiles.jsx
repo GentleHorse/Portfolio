@@ -8,6 +8,12 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import gsap from "gsap";
 
+/**
+ * INITIAL POP TILES PARAM VALUES
+ */
+const POPPING_DURATION = 0.75;
+const STAYING_DURATION = 1.0;
+
 export default function PopTiles({ scroll, ...props }) {
   const { nodes, materials } = useGLTF("./models/pop-tiles/pop-tiles.glb ");
 
@@ -20,156 +26,156 @@ export default function PopTiles({ scroll, ...props }) {
     if (popTiles.current.length === 11) {
       // 1. Ambience of Light
       tl.current.to(popTiles.current[0].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[0].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[0].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 2. Beauty of Time Passing
       tl.current.to(popTiles.current[1].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[1].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[1].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 3. Intervention In Our Disconnection
       tl.current.to(popTiles.current[2].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[2].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       
       tl.current.to(popTiles.current[2].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 4.
       tl.current.to(popTiles.current[3].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[3].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[3].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 5.
       tl.current.to(popTiles.current[4].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[4].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[4].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 6.
       tl.current.to(popTiles.current[5].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[5].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[5].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 7.
       tl.current.to(popTiles.current[6].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[6].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[6].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 8.
       tl.current.to(popTiles.current[7].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[7].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[7].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 9.
       tl.current.to(popTiles.current[8].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[8].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[8].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 10.
       tl.current.to(popTiles.current[9].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[9].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[9].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
       // 11.
       tl.current.to(popTiles.current[10].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[10].position, {
-        duration: 1.0,
+        duration: STAYING_DURATION,
         y: 2.5,
       });
       tl.current.to(popTiles.current[10].position, {
-        duration: 1.0,
+        duration: POPPING_DURATION,
         y: 0.0,
       });
 
@@ -183,6 +189,8 @@ export default function PopTiles({ scroll, ...props }) {
     // Match the gsap duration to the scroll offset value
     tl.current.seek(scrollOffset * tl.current.duration());
   });
+
+  
 
   return (
     <group {...props} dispose={null}>
