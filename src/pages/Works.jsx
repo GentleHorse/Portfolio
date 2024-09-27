@@ -95,7 +95,11 @@ const PROJECTS_LIST_ARRAY = [
  * FOR INDICATOR BAR
  */
 const geometry = new THREE.CylinderGeometry(0.025, 0.025, 2.5, 16);
-const material = new THREE.MeshStandardMaterial({ color: "crimson" });
+const material = new THREE.MeshStandardMaterial({
+  color: "#1C1C1C",
+  roughness: 0.125,
+  metalness: 0.65,
+});
 
 /**
  * PROXY STATE
@@ -122,7 +126,7 @@ export default function WorksPage() {
 
       <Canvas
         camera={{
-          position: [0, 4, 10],
+          position: [0, 3.5, 5.5],
           fov: 30,
         }}
       >
@@ -146,6 +150,11 @@ function Experience() {
    * CAMERA
    */
   const camera = useRef();
+
+  /**
+   * Poptiles
+   */
+  const popTitles = useRef();
 
   /**
    * SCROLL
@@ -176,6 +185,14 @@ function Experience() {
 
     // Match the gsap duration to the scroll offset value
     tl.current.seek(scrollOffset * tl.current.duration());
+
+    /**
+     * POPTILE SLIDE ON Z AXIS
+     */
+    popTitles.current.position.lerp(
+      new THREE.Vector3(-0.5, -0.75, 3 * scrollOffset),
+      delta * 12
+    );
   });
 
   /**
@@ -211,19 +228,21 @@ function Experience() {
 
   return (
     <>
-      <Perf position="top-left" />
-      <axesHelper />
+      {/* <Perf position="top-left" /> */}
+      {/* <axesHelper /> */}
       <OrbitControls enableZoom={false} />
 
       {/* <Background backgroundColors={backgroundColors} /> */}
-      <Environment preset="city" />
+      <Environment preset="studio" />
 
       {/* <PerspectiveCamera ref={camera} makeDefault /> */}
 
-      <UI scroll={scroll} />
+      {/* <UI scroll={scroll} /> */}
 
-      <group rotation={[0, -Math.PI * 0.2, 0]}>
-        <PopTiles scroll={scroll} />
+      <group rotation={[0, -Math.PI * 0.1, 0]}>
+        <group ref={popTitles}>
+          <PopTiles scroll={scroll} scale={[1, 1, 1]} />
+        </group>
       </group>
     </>
   );
@@ -253,13 +272,13 @@ function Background({ backgroundColors }) {
 
   return (
     <>
-      <Sphere scale={[500, 500, 500]} rotation={[0, Math.PI / 2, 0]}>
+      <Sphere scale={[50, 50, 50]} rotation={[0, Math.PI / 2, 0]}>
         <LayerMaterial color="#ffffff" side={THREE.BackSide}>
           <Gradient ref={gradientRef} axes="y" start={start} end={end} />
         </LayerMaterial>
       </Sphere>
       <Environment resolution={256} frames={Infinity}>
-        <Sphere scale={[100, 100, 100]} rotation={[Math.PI, Math.PI / 2, 0]}>
+        <Sphere scale={[10, 10, 10]} rotation={[Math.PI, Math.PI / 2, 0]}>
           <LayerMaterial color="#ffffff" side={THREE.BackSide}>
             <Gradient ref={gradientEnvRef} axes="y" start={start} end={end} />
           </LayerMaterial>
@@ -296,7 +315,7 @@ function UI({ scroll }) {
             key={i}
             geometry={geometry}
             material={material}
-            position={[i * 0.12 - projects.length * 0.06, 0.05, 4]}
+            position={[i * 0.12 - projects.length * 0.06, 0.05, 3]}
           />
         ))}
       </group>

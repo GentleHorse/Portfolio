@@ -5,14 +5,39 @@ Command: npx gltfjsx@6.4.1 ./public/models/pop-tiles/pop-tiles.glb
 
 import React, { useRef, useLayoutEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, Image } from "@react-three/drei";
 import gsap from "gsap";
+import * as THREE from "three";
+
+import AmbienceOfLightThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
+import BeautyOfTimePassingThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
+import InterventionInOurDisconnectionThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
+import MasuTypoThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
+import ComfortingDinnerThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 
 /**
  * INITIAL POP TILES PARAM VALUES
  */
-const POPPING_DURATION = 0.75;
+const POPPING_DURATION = 0.45;
 const STAYING_DURATION = 1.0;
+const POPPING_HEIGHT = 2.25;
+
+/**
+ * LOAD NORMAL TEXTURES
+ */
+const loader = new THREE.TextureLoader();
+
+const PLASTER_NORMAL_TEXTURE = loader.load(
+  "./textures/plaster/plaster-normal.jpg"
+);
+
+const GLASS_MATERIAL = new THREE.MeshPhysicalMaterial({
+  color: "#ffffff",
+  roughness: 0.25,
+  transmission: 1,
+  thickness: 0.5,
+  normalMap: PLASTER_NORMAL_TEXTURE,
+});
 
 export default function PopTiles({ scroll, ...props }) {
   const { nodes, materials } = useGLTF("./models/pop-tiles/pop-tiles.glb ");
@@ -21,17 +46,17 @@ export default function PopTiles({ scroll, ...props }) {
   const popTiles = useRef([]);
 
   useLayoutEffect(() => {
-    tl.current = gsap.timeline(); 
+    tl.current = gsap.timeline();
 
     if (popTiles.current.length === 11) {
       // 1. Ambience of Light
       tl.current.to(popTiles.current[0].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[0].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[0].position, {
         duration: POPPING_DURATION,
@@ -41,11 +66,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 2. Beauty of Time Passing
       tl.current.to(popTiles.current[1].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[1].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[1].position, {
         duration: POPPING_DURATION,
@@ -55,13 +80,13 @@ export default function PopTiles({ scroll, ...props }) {
       // 3. Intervention In Our Disconnection
       tl.current.to(popTiles.current[2].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[2].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
-      
+
       tl.current.to(popTiles.current[2].position, {
         duration: POPPING_DURATION,
         y: 0.0,
@@ -70,11 +95,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 4.
       tl.current.to(popTiles.current[3].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[3].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[3].position, {
         duration: POPPING_DURATION,
@@ -84,11 +109,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 5.
       tl.current.to(popTiles.current[4].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[4].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[4].position, {
         duration: POPPING_DURATION,
@@ -98,11 +123,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 6.
       tl.current.to(popTiles.current[5].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[5].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[5].position, {
         duration: POPPING_DURATION,
@@ -112,11 +137,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 7.
       tl.current.to(popTiles.current[6].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[6].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[6].position, {
         duration: POPPING_DURATION,
@@ -126,11 +151,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 8.
       tl.current.to(popTiles.current[7].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[7].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[7].position, {
         duration: POPPING_DURATION,
@@ -140,11 +165,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 9.
       tl.current.to(popTiles.current[8].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[8].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[8].position, {
         duration: POPPING_DURATION,
@@ -154,11 +179,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 10.
       tl.current.to(popTiles.current[9].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[9].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[9].position, {
         duration: POPPING_DURATION,
@@ -168,11 +193,11 @@ export default function PopTiles({ scroll, ...props }) {
       // 11.
       tl.current.to(popTiles.current[10].position, {
         duration: POPPING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[10].position, {
         duration: STAYING_DURATION,
-        y: 2.5,
+        y: POPPING_HEIGHT,
       });
       tl.current.to(popTiles.current[10].position, {
         duration: POPPING_DURATION,
@@ -190,88 +215,168 @@ export default function PopTiles({ scroll, ...props }) {
     tl.current.seek(scrollOffset * tl.current.duration());
   });
 
-  
-
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
-        <mesh
-          ref={(element) => (popTiles.current[0] = element)}
-          name="pop-title-001"
-          geometry={nodes["pop-title-001"].geometry}
-          material={nodes["pop-title-001"].material}
-        />
+        {/* 1. Ambience of Light */}
+        <group ref={(element) => (popTiles.current[0] = element)}>
+          <mesh
+            name="pop-title-001"
+            geometry={nodes["pop-title-001"].geometry}
+            material={GLASS_MATERIAL}
+          ></mesh>
+          <Image
+            url={AmbienceOfLightThumbnail}
+            position={[0, -1.0, 0.125]}
+            scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
+            toneMapped={false}
+          />
+        </group>
+
+        {/* 2. Beauty of Time Passing */}
         <mesh
           ref={(element) => (popTiles.current[1] = element)}
           name="pop-title-002"
           geometry={nodes["pop-title-002"].geometry}
-          material={nodes["pop-title-002"].material}
-        />
+          // material={nodes["pop-title-002"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[2] = element)}
           name="pop-title-003"
           geometry={nodes["pop-title-003"].geometry}
-          material={nodes["pop-title-003"].material}
-        />
+          // material={nodes["pop-title-003"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[3] = element)}
           name="pop-title-004"
           geometry={nodes["pop-title-004"].geometry}
-          material={nodes["pop-title-004"].material}
-        />
+          // material={nodes["pop-title-004"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[4] = element)}
           name="pop-title-005"
           geometry={nodes["pop-title-005"].geometry}
-          material={nodes["pop-title-005"].material}
-        />
+          // material={nodes["pop-title-005"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[5] = element)}
           name="pop-title-006"
           geometry={nodes["pop-title-006"].geometry}
-          material={nodes["pop-title-006"].material}
-        />
+          // material={nodes["pop-title-006"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[6] = element)}
           name="pop-title-007"
           geometry={nodes["pop-title-007"].geometry}
-          material={nodes["pop-title-007"].material}
-        />
+          // material={nodes["pop-title-007"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[7] = element)}
           name="pop-title-008"
           geometry={nodes["pop-title-008"].geometry}
-          material={nodes["pop-title-008"].material}
-        />
+          // material={nodes["pop-title-008"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[8] = element)}
           name="pop-title-009"
           geometry={nodes["pop-title-009"].geometry}
-          material={nodes["pop-title-009"].material}
-        />
+          // material={nodes["pop-title-009"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[9] = element)}
           name="pop-title-010"
           geometry={nodes["pop-title-010"].geometry}
-          material={nodes["pop-title-010"].material}
-        />
+          // material={nodes["pop-title-010"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <mesh
           ref={(element) => (popTiles.current[10] = element)}
           name="pop-title-011"
           geometry={nodes["pop-title-011"].geometry}
-          material={nodes["pop-title-011"].material}
-        />
+          // material={nodes["pop-title-011"].material}
+        >
+          <meshStandardMaterial
+            color="#1C1C1C"
+            roughness={0.1}
+            metalness={0.75}
+          />
+        </mesh>
         <group name="pop-tile-ground">
           <mesh
             name="Cube016"
             geometry={nodes.Cube016.geometry}
-            material={nodes.Cube016.material}
-          />
+            // material={nodes.Cube016.material}
+          >
+            <meshStandardMaterial
+              color="#1C1C1C"
+              roughness={0.15}
+              metalness={0.75}
+            />
+          </mesh>
           <mesh
             name="Cube016_1"
             geometry={nodes.Cube016_1.geometry}
-            material={nodes.Cube016_1.material}
-          />
+            // material={nodes.Cube016_1.material}
+          >
+            <meshStandardMaterial
+              color="#1C1C1C"
+              roughness={0.15}
+              metalness={0.75}
+            />
+          </mesh>
         </group>
       </group>
     </group>
