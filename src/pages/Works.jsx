@@ -125,12 +125,7 @@ export default function WorksPage() {
 
       <Loader />
 
-      <Canvas
-        camera={{
-          position: [0, 3.5, 5.5],
-          fov: 30,
-        }}
-      >
+      <Canvas>
         <color attach="background" args={["#1C1C1C"]} />
         <fog attach="fog" args={["#1C1C1C", 8, 20]} />
 
@@ -166,27 +161,30 @@ function Experience() {
   /**
    * USEFRAME - SCROLL ANIMATION
    */
+  const tl = useRef();
   useFrame((state, delta) => {
     /**
      * FOR MOBILE
      */
-    // if (window.innerWidth > window.innerHeight) {
-    //   // LANDSCAPE
-    //   camera.current.fov = 30;
-    //   camera.current.position.z = 5;
-    // } else {
-    //   // PORTRAIT
-    //   camera.current.fov = 80;
-    //   camera.current.position.z = 2.5;
-    // }
+    if (window.innerWidth > window.innerHeight) {
+      // LANDSCAPE
+      camera.current.fov = 30;
+      camera.current.position.x = 0;
+      camera.current.position.y = 3.5;
+      camera.current.position.z = 5.5;
+    } else {
+      // PORTRAIT
+      camera.current.fov = 80;
+      camera.current.position.x = -1;
+      camera.current.position.y = 0.5;
+      camera.current.position.z = 3.5;
+      camera.current.rotation.y = -Math.PI * 0.05;
+    }
 
     /**
      * BACKGROUND ANIMATION
      */
     const scrollOffset = Math.max(0, scroll.offset);
-
-    // Match the gsap duration to the scroll offset value
-    tl.current.seek(scrollOffset * tl.current.duration());
 
     /**
      * POPTILE SLIDE ON Z AXIS
@@ -197,47 +195,15 @@ function Experience() {
     );
   });
 
-  /**
-   * GRADIENT ANIMATION
-   */
-  const tl = useRef();
-  const backgroundColors = useRef({
-    colorA: "#FFFFFF",
-    colorB: "#C1C1C1",
-  });
-
-  useLayoutEffect(() => {
-    tl.current = gsap.timeline();
-
-    tl.current.to(backgroundColors.current, {
-      duration: 1.0,
-      colorA: "#6F35CC",
-      colorB: "#FFAD30",
-    });
-    tl.current.to(backgroundColors.current, {
-      duration: 1.0,
-      colorA: "#424242",
-      colorB: "#FFCC00",
-    });
-    tl.current.to(backgroundColors.current, {
-      duration: 1.0,
-      colorA: "#81318B",
-      colorB: "#55AB8F",
-    });
-
-    tl.current.pause();
-  }, []);
-
   return (
     <>
-      {/* <Perf position="top-left" /> */}
+      <Perf position="top-left" />
       {/* <axesHelper /> */}
-      <OrbitControls enableZoom={false} />
+      {/* <OrbitControls enableZoom={false} /> */}
 
-      {/* <Background backgroundColors={backgroundColors} /> */}
       <Environment preset="night" />
 
-      {/* <PerspectiveCamera ref={camera} makeDefault /> */}
+      <PerspectiveCamera ref={camera} makeDefault />
 
       {/* <UI scroll={scroll} /> */}
 
@@ -246,46 +212,6 @@ function Experience() {
           <PopTiles scroll={scroll} scale={[1, 1, 1]} />
         </group>
       </group>
-    </>
-  );
-}
-
-function Background({ backgroundColors }) {
-  const start = 0.2;
-  const end = -0.5;
-
-  const gradientRef = useRef();
-  const gradientEnvRef = useRef();
-
-  useFrame((state, delta) => {
-    gradientRef.current.colorA = new THREE.Color(
-      backgroundColors.current.colorA
-    );
-    gradientRef.current.colorB = new THREE.Color(
-      backgroundColors.current.colorB
-    );
-    gradientEnvRef.current.colorA = new THREE.Color(
-      backgroundColors.current.colorA
-    );
-    gradientEnvRef.current.colorB = new THREE.Color(
-      backgroundColors.current.colorB
-    );
-  });
-
-  return (
-    <>
-      <Sphere scale={[50, 50, 50]} rotation={[0, Math.PI / 2, 0]}>
-        <LayerMaterial color="#ffffff" side={THREE.BackSide}>
-          <Gradient ref={gradientRef} axes="y" start={start} end={end} />
-        </LayerMaterial>
-      </Sphere>
-      <Environment resolution={256} frames={Infinity}>
-        <Sphere scale={[10, 10, 10]} rotation={[Math.PI, Math.PI / 2, 0]}>
-          <LayerMaterial color="#ffffff" side={THREE.BackSide}>
-            <Gradient ref={gradientEnvRef} axes="y" start={start} end={end} />
-          </LayerMaterial>
-        </Sphere>
-      </Environment>
     </>
   );
 }
