@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.4.1 ./public/models/pop-tiles/pop-tiles.glb
 
 import React, { useRef, useLayoutEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, useAnimations, Image } from "@react-three/drei";
+import { useGLTF, useAnimations, Image, useTexture } from "@react-three/drei";
 import gsap from "gsap";
 import * as THREE from "three";
 
@@ -30,17 +30,32 @@ const loader = new THREE.TextureLoader();
 const PLASTER_NORMAL_TEXTURE = loader.load(
   "./textures/plaster/plaster-normal.jpg"
 );
+const GLASS_FROSTED_NORMAL_TEXTURE = loader.load(
+  "./textures/glass-frosted/glass-frosted-normal.jpg"
+);
+const WATER_NORMAL_TEXTURE = loader.load("./textures/water/water-normal.jpg");
 
 const GLASS_MATERIAL = new THREE.MeshPhysicalMaterial({
   color: "#ffffff",
-  roughness: 0.25,
+  roughness: 0.05,
+  clearcoat: 0.25,
   transmission: 1,
-  thickness: 0.5,
+  reflectivity: 0.5,
+  thickness: 0.15,
   normalMap: PLASTER_NORMAL_TEXTURE,
 });
 
 export default function PopTiles({ scroll, ...props }) {
+  /**
+   * LOAD THE MODEL
+   */
   const { nodes, materials } = useGLTF("./models/pop-tiles/pop-tiles.glb ");
+
+  /**
+   * LOAD PROJECTS THUMBNAILS
+   */
+  const ambienceOfLightTexture = useTexture(AmbienceOfLightThumbnail);
+  ambienceOfLightTexture.flipY = false;
 
   const tl = useRef();
   const popTiles = useRef([]);
@@ -217,168 +232,209 @@ export default function PopTiles({ scroll, ...props }) {
 
   return (
     <group {...props} dispose={null}>
-      <group name="Scene">
-        {/* 1. Ambience of Light */}
-        <group ref={(element) => (popTiles.current[0] = element)}>
-          <mesh
-            name="pop-title-001"
-            geometry={nodes["pop-title-001"].geometry}
-            material={GLASS_MATERIAL}
-          ></mesh>
-          <Image
-            url={AmbienceOfLightThumbnail}
-            position={[0, -1.0, 0.125]}
-            scale={[14.4 * 0.125, 9.6 * 0.125, 1]}
-            toneMapped={false}
-          />
-        </group>
-
-        {/* 2. Beauty of Time Passing */}
+      {/* 1. Ambience of Light */}
+      <group ref={(element) => (popTiles.current[0] = element)}>
         <mesh
-          ref={(element) => (popTiles.current[1] = element)}
-          name="pop-title-002"
-          geometry={nodes["pop-title-002"].geometry}
-          // material={nodes["pop-title-002"].material}
+          geometry={nodes.Cube005.geometry}
+          // material={materials["pop-tile-top.001"]}
         >
           <meshStandardMaterial
             color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
+            roughness={0.25}
+            metalness={0.85}
+            envMapIntensity={0.15}
           />
         </mesh>
         <mesh
-          ref={(element) => (popTiles.current[2] = element)}
-          name="pop-title-003"
-          geometry={nodes["pop-title-003"].geometry}
-          // material={nodes["pop-title-003"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
+          geometry={nodes.Cube005_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube005_2.geometry} material={GLASS_MATERIAL} />
+        <mesh geometry={nodes["pop-title-001-image"].geometry}>
+          <meshBasicMaterial map={ambienceOfLightTexture} toneMapped={false} />
         </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[3] = element)}
-          name="pop-title-004"
-          geometry={nodes["pop-title-004"].geometry}
-          // material={nodes["pop-title-004"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[4] = element)}
-          name="pop-title-005"
-          geometry={nodes["pop-title-005"].geometry}
-          // material={nodes["pop-title-005"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[5] = element)}
-          name="pop-title-006"
-          geometry={nodes["pop-title-006"].geometry}
-          // material={nodes["pop-title-006"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[6] = element)}
-          name="pop-title-007"
-          geometry={nodes["pop-title-007"].geometry}
-          // material={nodes["pop-title-007"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[7] = element)}
-          name="pop-title-008"
-          geometry={nodes["pop-title-008"].geometry}
-          // material={nodes["pop-title-008"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[8] = element)}
-          name="pop-title-009"
-          geometry={nodes["pop-title-009"].geometry}
-          // material={nodes["pop-title-009"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[9] = element)}
-          name="pop-title-010"
-          geometry={nodes["pop-title-010"].geometry}
-          // material={nodes["pop-title-010"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <mesh
-          ref={(element) => (popTiles.current[10] = element)}
-          name="pop-title-011"
-          geometry={nodes["pop-title-011"].geometry}
-          // material={nodes["pop-title-011"].material}
-        >
-          <meshStandardMaterial
-            color="#1C1C1C"
-            roughness={0.1}
-            metalness={0.75}
-          />
-        </mesh>
-        <group name="pop-tile-ground">
-          <mesh
-            name="Cube016"
-            geometry={nodes.Cube016.geometry}
-            // material={nodes.Cube016.material}
-          >
-            <meshStandardMaterial
-              color="#1C1C1C"
-              roughness={0.15}
-              metalness={0.75}
-            />
-          </mesh>
-          <mesh
-            name="Cube016_1"
-            geometry={nodes.Cube016_1.geometry}
-            // material={nodes.Cube016_1.material}
-          >
-            <meshStandardMaterial
-              color="#1C1C1C"
-              roughness={0.15}
-              metalness={0.75}
-            />
-          </mesh>
-        </group>
       </group>
+
+      {/* 2. Beauty of Time Passing */}
+      <group ref={(element) => (popTiles.current[1] = element)}>
+        <mesh
+          geometry={nodes.Cube023.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube023_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube023_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-002-image"].geometry}
+          material={nodes["pop-title-002-image"].material}
+        />
+      </group>
+
+      {/* 3. Interevention in our Disconnection */}
+      <group ref={(element) => (popTiles.current[2] = element)}>
+        <mesh
+          geometry={nodes.Cube029.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube029_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube029_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-003-image"].geometry}
+          material={nodes["pop-title-003-image"].material}
+        />
+      </group>
+
+      {/* 4. Masu Typo */}
+      <group ref={(element) => (popTiles.current[3] = element)}>
+        <mesh
+          geometry={nodes.Cube035.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube035_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube035_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-004-image"].geometry}
+          material={nodes["pop-title-004-image"].material}
+        />
+      </group>
+
+      {/* 5. Comforting Dinner */}
+      <group ref={(element) => (popTiles.current[4] = element)}>
+        <mesh
+          geometry={nodes.Cube041.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube041_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube041_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-005-image"].geometry}
+          material={nodes["pop-title-005-image"].material}
+        />
+      </group>
+
+      {/* 6. 3D Visuals */}
+      <group ref={(element) => (popTiles.current[5] = element)}>
+        <mesh
+          geometry={nodes.Cube047.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube047_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube047_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-006-image"].geometry}
+          material={nodes["pop-title-006-image"].material}
+        />
+      </group>
+
+      {/* 7. Portfolio Website */}
+      <group ref={(element) => (popTiles.current[6] = element)}>
+        <mesh
+          geometry={nodes.Cube053.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube053_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube053_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-007-image"].geometry}
+          material={nodes["pop-title-007-image"].material}
+        />
+      </group>
+
+      {/* 8. OBJECT Rotterdam 2024 */}
+      <group ref={(element) => (popTiles.current[7] = element)}>
+        <mesh
+          geometry={nodes.Cube059.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube059_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube059_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-008-image"].geometry}
+          material={nodes["pop-title-008-image"].material}
+        />
+      </group>
+
+      {/* 9. Weather Cereal */}
+      <group ref={(element) => (popTiles.current[8] = element)}>
+        <mesh
+          geometry={nodes.Cube065.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+
+        <mesh
+          geometry={nodes.Cube065_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube065_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-009-image"].geometry}
+          material={nodes["pop-title-009-image"].material}
+        />
+      </group>
+
+      {/* 10. Donuts Universe */}
+      <group ref={(element) => (popTiles.current[9] = element)}>
+        <mesh
+          geometry={nodes.Cube071.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube071_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube071_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-010-image"].geometry}
+          material={nodes["pop-title-010-image"].material}
+        />
+      </group>
+
+      {/* 11. Marble's on a Roll */}
+      <group ref={(element) => (popTiles.current[10] = element)}>
+        <mesh
+          geometry={nodes.Cube077.geometry}
+          material={materials["pop-tile-top.001"]}
+        />
+        <mesh
+          geometry={nodes.Cube077_1.geometry}
+          material={materials["pop-tile-hanging-wires"]}
+        />
+        <mesh geometry={nodes.Cube077_2.geometry} material={GLASS_MATERIAL} />
+        <mesh
+          geometry={nodes["pop-title-011-image"].geometry}
+          material={nodes["pop-title-011-image"].material}
+        />
+      </group>
+
+      {/* GROUND */}
+      <mesh
+        geometry={nodes.Cube016.geometry}
+        material={materials["pop-tile-ground"]}
+      />
+      <mesh
+        geometry={nodes.Cube016_1.geometry}
+        material={materials["pop-tile-emission-hole"]}
+      />
     </group>
   );
 }
