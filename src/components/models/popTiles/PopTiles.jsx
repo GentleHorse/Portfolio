@@ -5,7 +5,13 @@ Command: npx gltfjsx@6.4.1 ./public/models/pop-tiles/pop-tiles.glb
 
 import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, useAnimations, Image, useTexture } from "@react-three/drei";
+import {
+  useGLTF,
+  useAnimations,
+  Image,
+  useTexture,
+  Text,
+} from "@react-three/drei";
 import gsap from "gsap";
 import * as THREE from "three";
 
@@ -60,7 +66,7 @@ const GLASS_MATERIAL = new THREE.MeshPhysicalMaterial({
   normalMap: WATER_NORMAL_TEXTURE,
 });
 
-export default function PopTiles({ scroll, ...props }) {
+export default function PopTiles({ scroll, projectListArray, ...props }) {
   /**
    * MOUSE POINTER MOVE SETTING
    */
@@ -288,6 +294,7 @@ export default function PopTiles({ scroll, ...props }) {
     tl.current.seek(scrollOffset * tl.current.duration());
   });
 
+  const projectThumbnailImagesDist = 0.334;
   return (
     <group {...props} dispose={null}>
       {/* 1. Ambience of Light */}
@@ -312,6 +319,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-001-image"].geometry}>
           <meshBasicMaterial map={ambienceOfLightTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[0].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 2. Beauty of Time Passing */}
@@ -335,6 +352,16 @@ export default function PopTiles({ scroll, ...props }) {
             toneMapped={false}
           />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 1]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[1].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 3. Interevention in our Disconnection */}
@@ -358,6 +385,16 @@ export default function PopTiles({ scroll, ...props }) {
             toneMapped={false}
           />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 2]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[2].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 4. Masu Typo */}
@@ -378,6 +415,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-004-image"].geometry}>
           <meshBasicMaterial map={masuTypoTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 3]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[3].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 5. Comforting Dinner */}
@@ -398,6 +445,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-005-image"].geometry}>
           <meshBasicMaterial map={comfortingDinnerTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 4]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[4].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 6. 3D Visuals */}
@@ -418,6 +475,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-006-image"].geometry}>
           <meshBasicMaterial map={threeDVisualTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 5]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[5].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 7. Portfolio Website */}
@@ -438,6 +505,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-007-image"].geometry}>
           <meshBasicMaterial map={portfolioWebsiteTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 6]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[6].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 8. OBJECT Rotterdam 2024 */}
@@ -458,6 +535,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-008-image"].geometry}>
           <meshBasicMaterial map={objectRotterdamTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 7]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[7].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 9. Weather Cereal */}
@@ -479,6 +566,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-009-image"].geometry}>
           <meshBasicMaterial map={weatherCerealTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 8]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[8].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 10. Donuts Universe */}
@@ -499,6 +596,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-010-image"].geometry}>
           <meshBasicMaterial map={donutsUniverseTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 9]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[9].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* 11. Marble's on a Roll */}
@@ -519,6 +626,16 @@ export default function PopTiles({ scroll, ...props }) {
         <mesh geometry={nodes["pop-title-011-image"].geometry}>
           <meshBasicMaterial map={marbleOnARollTexture} toneMapped={false} />
         </mesh>
+        <Text
+          position={[0.8, -1.5, 0.1 - projectThumbnailImagesDist * 10]}
+          fontSize={0.125}
+          font="./fonts/DMSerifDisplay-Regular.ttf"
+          maxWidth={2.0}
+          anchorX="right"
+        >
+          {projectListArray[10].title}
+          <meshBasicMaterial color="#ffffff" toneMapped={false} />
+        </Text>
       </group>
 
       {/* GROUND */}

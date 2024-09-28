@@ -209,7 +209,7 @@ function Experience() {
     <>
       <Perf position="top-left" />
       {/* <axesHelper /> */}
-      {/* <OrbitControls enableZoom={false} /> */}
+      <OrbitControls enableZoom={false} />
 
       <Environment preset="night" />
 
@@ -220,7 +220,11 @@ function Experience() {
         position={isBrowser ? [0, 0, 0] : [0.5, 0, 0]}
       >
         <group ref={popTiles}>
-          <PopTiles scroll={scroll} scale={[1, 1, 1]} />
+          <PopTiles
+            scroll={scroll}
+            projectListArray={PROJECTS_LIST_ARRAY}
+            scale={[1, 1, 1]}
+          />
         </group>
       </group>
     </>
