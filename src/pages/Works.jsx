@@ -24,6 +24,7 @@ import { proxy, useSnapshot } from "valtio";
 import { easing } from "maath";
 import gsap from "gsap";
 import { EffectComposer, Noise, Bloom } from "@react-three/postprocessing";
+import { isMobile, isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
 import PopTiles from "../components/models/popTiles/PopTiles.jsx";
@@ -125,7 +126,19 @@ export default function WorksPage() {
 
       <Loader />
 
-      <Canvas>
+      <Canvas
+        camera={
+          isBrowser
+            ? {
+                fov: 30,
+                position: [0, 3.5, 5.5],
+              }
+            : {
+                fov: 80,
+                position: [0, 0.5, 2.5],
+              }
+        }
+      >
         <color attach="background" args={["#1C1C1C"]} />
         <fog attach="fog" args={["#1C1C1C", 8, 20]} />
 
@@ -146,6 +159,7 @@ function Experience() {
   /**
    * CAMERA
    */
+  const cameraGroup = useRef();
   const camera = useRef();
 
   /**
@@ -163,24 +177,6 @@ function Experience() {
    */
   const tl = useRef();
   useFrame((state, delta) => {
-    /**
-     * FOR MOBILE
-     */
-    if (window.innerWidth > window.innerHeight) {
-      // LANDSCAPE
-      camera.current.fov = 30;
-      camera.current.position.x = 0;
-      camera.current.position.y = 3.5;
-      camera.current.position.z = 5.5;
-    } else {
-      // PORTRAIT
-      camera.current.fov = 80;
-      camera.current.position.x = -1;
-      camera.current.position.y = 0.5;
-      camera.current.position.z = 3.5;
-      camera.current.rotation.y = -Math.PI * 0.05;
-    }
-
     /**
      * BACKGROUND ANIMATION
      */
@@ -203,11 +199,12 @@ function Experience() {
 
       <Environment preset="night" />
 
-      <PerspectiveCamera ref={camera} makeDefault />
-
       {/* <UI scroll={scroll} /> */}
 
-      <group rotation={[0, -Math.PI * 0.1, 0]}>
+      <group
+        rotation={[0, -Math.PI * 0.1, 0]}
+        position={isBrowser ? [0, 0, 0] : [0.5, 0, 0]}
+      >
         <group ref={popTitles}>
           <PopTiles scroll={scroll} scale={[1, 1, 1]} />
         </group>
