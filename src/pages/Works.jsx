@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useMemo, useLayoutEffect } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import {
   Environment,
   Float,
@@ -157,15 +157,24 @@ export default function WorksPage() {
 
 function Experience() {
   /**
-   * CAMERA
+   * MOUSE POINTER MOVE SETTING
    */
-  const cameraGroup = useRef();
-  const camera = useRef();
+  const mouse = new THREE.Vector2();
+
+  useEffect(() => {
+    window.addEventListener("pointermove", (event) => {
+      if (event.isPrimary === false) return;
+
+      // Scale half window side into 1% for mouse movements
+      mouse.x = (event.clientX - window.innerWidth / 2) * 0.02;
+      mouse.y = (event.clientY - window.innerHeight / 2) * 0.02;
+    });
+  }, []);
 
   /**
    * Poptiles
    */
-  const popTitles = useRef();
+  const popTiles = useRef();
 
   /**
    * SCROLL
@@ -185,10 +194,15 @@ function Experience() {
     /**
      * POPTILE SLIDE ON Z AXIS
      */
-    popTitles.current.position.lerp(
+    popTiles.current.position.lerp(
       new THREE.Vector3(-0.5, -0.75, 3 * scrollOffset),
       delta * 12
     );
+
+    /**
+     * ORBIT CONTROL LIKE EFFECT
+     */
+    popTiles.current.rotation.y = mouse.x * 0.004;
   });
 
   return (
@@ -205,7 +219,7 @@ function Experience() {
         rotation={[0, -Math.PI * 0.1, 0]}
         position={isBrowser ? [0, 0, 0] : [0.5, 0, 0]}
       >
-        <group ref={popTitles}>
+        <group ref={popTiles}>
           <PopTiles scroll={scroll} scale={[1, 1, 1]} />
         </group>
       </group>
