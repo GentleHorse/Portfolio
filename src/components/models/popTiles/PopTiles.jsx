@@ -14,6 +14,12 @@ import BeautyOfTimePassingThumbnail from "../../../../public/images/design-proje
 import InterventionInOurDisconnectionThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
+import ThreeDVisualThumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
+import PortfolioWebsiteThumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
+import OBJECRotterdam2024Thumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
+import WeatherCerealThumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
+import DonutsUniverseThumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-donuts-universe.jpg";
+import MarbleOnARollThumbnail from "../../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
 
 /**
  * INITIAL POP TILES PARAM VALUES
@@ -27,22 +33,31 @@ const POPPING_HEIGHT = 2.25;
  */
 const loader = new THREE.TextureLoader();
 
-const PLASTER_NORMAL_TEXTURE = loader.load(
-  "./textures/plaster/plaster-normal.jpg"
-);
-const GLASS_FROSTED_NORMAL_TEXTURE = loader.load(
-  "./textures/glass-frosted/glass-frosted-normal.jpg"
-);
+// TEXTURE - GLASS CASE
 const WATER_NORMAL_TEXTURE = loader.load("./textures/water/water-normal.jpg");
 
+// TEXTURE - TILE TOP
+const METAL_ROUGHNESS_TEXTURE = loader.load(
+  "./textures/metal/Metal_006_roughness.jpg"
+);
+const METAL_NORMAL_TEXTURE = loader.load(
+  "./textures/metal/Metal_006_normal.jpg"
+);
+const METAL_METALNESS_TEXTURE = loader.load(
+  "./textures/metal/Metal_006_metallic.jpg"
+);
+
+/**
+ * MATERIAL - GLASS CASE
+ */
 const GLASS_MATERIAL = new THREE.MeshPhysicalMaterial({
   color: "#ffffff",
   roughness: 0.05,
-  clearcoat: 0.25,
+  clearcoat: 0.75,
   transmission: 1,
-  reflectivity: 0.5,
+  reflectivity: 0.8,
   thickness: 0.15,
-  normalMap: PLASTER_NORMAL_TEXTURE,
+  normalMap: WATER_NORMAL_TEXTURE,
 });
 
 export default function PopTiles({ scroll, ...props }) {
@@ -56,6 +71,28 @@ export default function PopTiles({ scroll, ...props }) {
    */
   const ambienceOfLightTexture = useTexture(AmbienceOfLightThumbnail);
   ambienceOfLightTexture.flipY = false;
+  const beautyOfTimePassingTexture = useTexture(BeautyOfTimePassingThumbnail);
+  beautyOfTimePassingTexture.flipY = false;
+  const interventionInOurDisconnectionTexture = useTexture(
+    InterventionInOurDisconnectionThumbnail
+  );
+  interventionInOurDisconnectionTexture.flipY = false;
+  const masuTypoTexture = useTexture(MasuTypoThumbnail);
+  masuTypoTexture.flipY = false;
+  const comfortingDinnerTexture = useTexture(ComfortingDinnerThumbnail);
+  comfortingDinnerTexture.flipY = false;
+  const threeDVisualTexture = useTexture(ThreeDVisualThumbnail);
+  threeDVisualTexture.flipY = false;
+  const portfolioWebsiteTexture = useTexture(PortfolioWebsiteThumbnail);
+  portfolioWebsiteTexture.flipY = false;
+  const objectRotterdamTexture = useTexture(OBJECRotterdam2024Thumbnail);
+  objectRotterdamTexture.flipY = false;
+  const weatherCerealTexture = useTexture(WeatherCerealThumbnail);
+  weatherCerealTexture.flipY = false;
+  const donutsUniverseTexture = useTexture(DonutsUniverseThumbnail);
+  donutsUniverseTexture.flipY = false;
+  const marbleOnARollTexture = useTexture(MarbleOnARollThumbnail);
+  marbleOnARollTexture.flipY = false;
 
   const tl = useRef();
   const popTiles = useRef([]);
@@ -234,21 +271,22 @@ export default function PopTiles({ scroll, ...props }) {
     <group {...props} dispose={null}>
       {/* 1. Ambience of Light */}
       <group ref={(element) => (popTiles.current[0] = element)}>
-        <mesh
-          geometry={nodes.Cube005.geometry}
-          // material={materials["pop-tile-top.001"]}
-        >
+        <mesh geometry={nodes.Cube005.geometry}>
           <meshStandardMaterial
             color="#1C1C1C"
-            roughness={0.25}
-            metalness={0.85}
-            envMapIntensity={0.15}
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
           />
         </mesh>
-        <mesh
-          geometry={nodes.Cube005_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube005_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube005_2.geometry} material={GLASS_MATERIAL} />
         <mesh geometry={nodes["pop-title-001-image"].geometry}>
           <meshBasicMaterial map={ambienceOfLightTexture} toneMapped={false} />
@@ -261,15 +299,21 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube023.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube023_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube023_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube023_2.geometry} material={GLASS_MATERIAL} />
-        <mesh
-          geometry={nodes["pop-title-002-image"].geometry}
-          material={nodes["pop-title-002-image"].material}
-        />
+        <mesh geometry={nodes["pop-title-002-image"].geometry}>
+          <meshBasicMaterial
+            map={beautyOfTimePassingTexture}
+            toneMapped={false}
+          />
+        </mesh>
       </group>
 
       {/* 3. Interevention in our Disconnection */}
@@ -278,15 +322,21 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube029.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube029_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube029_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube029_2.geometry} material={GLASS_MATERIAL} />
-        <mesh
-          geometry={nodes["pop-title-003-image"].geometry}
-          material={nodes["pop-title-003-image"].material}
-        />
+        <mesh geometry={nodes["pop-title-003-image"].geometry}>
+          <meshBasicMaterial
+            map={interventionInOurDisconnectionTexture}
+            toneMapped={false}
+          />
+        </mesh>
       </group>
 
       {/* 4. Masu Typo */}
@@ -295,15 +345,18 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube035.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube035_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube035_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube035_2.geometry} material={GLASS_MATERIAL} />
-        <mesh
-          geometry={nodes["pop-title-004-image"].geometry}
-          material={nodes["pop-title-004-image"].material}
-        />
+        <mesh geometry={nodes["pop-title-004-image"].geometry}>
+          <meshBasicMaterial map={masuTypoTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 5. Comforting Dinner */}
@@ -312,15 +365,18 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube041.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube041_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube041_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube041_2.geometry} material={GLASS_MATERIAL} />
-        <mesh
-          geometry={nodes["pop-title-005-image"].geometry}
-          material={nodes["pop-title-005-image"].material}
-        />
+        <mesh geometry={nodes["pop-title-005-image"].geometry}>
+          <meshBasicMaterial map={comfortingDinnerTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 6. 3D Visuals */}
@@ -329,15 +385,18 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube047.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube047_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube047_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube047_2.geometry} material={GLASS_MATERIAL} />
-        <mesh
-          geometry={nodes["pop-title-006-image"].geometry}
-          material={nodes["pop-title-006-image"].material}
-        />
+        <mesh geometry={nodes["pop-title-006-image"].geometry}>
+          <meshBasicMaterial map={threeDVisualTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 7. Portfolio Website */}
@@ -346,15 +405,19 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube053.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube053_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube053_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube053_2.geometry} material={GLASS_MATERIAL} />
         <mesh
-          geometry={nodes["pop-title-007-image"].geometry}
-          material={nodes["pop-title-007-image"].material}
-        />
+          geometry={nodes["pop-title-007-image"].geometry}>
+          <meshBasicMaterial map={portfolioWebsiteTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 8. OBJECT Rotterdam 2024 */}
@@ -363,15 +426,19 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube059.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube059_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube059_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube059_2.geometry} material={GLASS_MATERIAL} />
         <mesh
-          geometry={nodes["pop-title-008-image"].geometry}
-          material={nodes["pop-title-008-image"].material}
-        />
+          geometry={nodes["pop-title-008-image"].geometry}>
+          <meshBasicMaterial map={objectRotterdamTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 9. Weather Cereal */}
@@ -381,15 +448,19 @@ export default function PopTiles({ scroll, ...props }) {
           material={materials["pop-tile-top.001"]}
         />
 
-        <mesh
-          geometry={nodes.Cube065_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube065_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube065_2.geometry} material={GLASS_MATERIAL} />
         <mesh
-          geometry={nodes["pop-title-009-image"].geometry}
-          material={nodes["pop-title-009-image"].material}
-        />
+          geometry={nodes["pop-title-009-image"].geometry}>
+          <meshBasicMaterial map={weatherCerealTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 10. Donuts Universe */}
@@ -398,15 +469,19 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube071.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube071_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube071_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube071_2.geometry} material={GLASS_MATERIAL} />
         <mesh
-          geometry={nodes["pop-title-010-image"].geometry}
-          material={nodes["pop-title-010-image"].material}
-        />
+          geometry={nodes["pop-title-010-image"].geometry}>
+          <meshBasicMaterial map={donutsUniverseTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* 11. Marble's on a Roll */}
@@ -415,22 +490,25 @@ export default function PopTiles({ scroll, ...props }) {
           geometry={nodes.Cube077.geometry}
           material={materials["pop-tile-top.001"]}
         />
-        <mesh
-          geometry={nodes.Cube077_1.geometry}
-          material={materials["pop-tile-hanging-wires"]}
-        />
+        <mesh geometry={nodes.Cube077_1.geometry}>
+          <meshStandardMaterial
+            color="#856A00"
+            roughnessMap={METAL_ROUGHNESS_TEXTURE}
+            normalMap={METAL_NORMAL_TEXTURE}
+            metalnessMap={METAL_METALNESS_TEXTURE}
+          />
+        </mesh>
         <mesh geometry={nodes.Cube077_2.geometry} material={GLASS_MATERIAL} />
         <mesh
-          geometry={nodes["pop-title-011-image"].geometry}
-          material={nodes["pop-title-011-image"].material}
-        />
+          geometry={nodes["pop-title-011-image"].geometry}>
+          <meshBasicMaterial map={marbleOnARollTexture} toneMapped={false} />
+        </mesh>
       </group>
 
       {/* GROUND */}
-      <mesh
-        geometry={nodes.Cube016.geometry}
-        material={materials["pop-tile-ground"]}
-      />
+      <mesh geometry={nodes.Cube016.geometry}>
+        <meshStandardMaterial color="#1C1C1C" roughness={0.25} />
+      </mesh>
       <mesh
         geometry={nodes.Cube016_1.geometry}
         material={materials["pop-tile-emission-hole"]}

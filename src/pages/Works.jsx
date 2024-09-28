@@ -23,7 +23,7 @@ import { Gradient, LayerMaterial } from "lamina";
 import { proxy, useSnapshot } from "valtio";
 import { easing } from "maath";
 import gsap from "gsap";
-import { EffectComposer, Noise } from "@react-three/postprocessing";
+import { EffectComposer, Noise, Bloom } from "@react-three/postprocessing";
 
 import Header from "../components/header/Header.jsx";
 import PopTiles from "../components/models/popTiles/PopTiles.jsx";
@@ -112,7 +112,8 @@ export default function WorksPage() {
   const effects = useMemo(
     () => (
       <EffectComposer>
-        <Noise opacity={0.08} />
+        {/* <Noise opacity={0.08} /> */}
+        <Bloom luminanceThreshold={0} luminanceSmoothing={0.5} height={300} />
       </EffectComposer>
     ),
     []
@@ -130,7 +131,8 @@ export default function WorksPage() {
           fov: 30,
         }}
       >
-        <color attach="background" args={["#ececec"]} />
+        <color attach="background" args={["#1C1C1C"]} />
+        <fog attach="fog" args={["#1C1C1C", 8, 20]} />
 
         <ScrollControls
           pages={SCROLL_PAGES}
@@ -139,7 +141,7 @@ export default function WorksPage() {
         >
           <Experience />
         </ScrollControls>
-        {/* {effects} */}
+        {effects}
       </Canvas>
     </>
   );
@@ -233,7 +235,7 @@ function Experience() {
       <OrbitControls enableZoom={false} />
 
       {/* <Background backgroundColors={backgroundColors} /> */}
-      <Environment preset="studio" />
+      <Environment preset="night" />
 
       {/* <PerspectiveCamera ref={camera} makeDefault /> */}
 
