@@ -192,7 +192,7 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
   const w = width < 10 ? 1.5 / 3 : 1 / 3;
 
   const textProps = {
-    position: [-1.5, 0, 0.1],
+    position: [-1.5, 0, 0.25],
     fontSize: 0.25,
     font: "./fonts/DMSerifDisplay-Regular.ttf",
     maxWidth: 2.5,
@@ -222,10 +222,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
         >
           <Image scale={[width * w - m * 2, 5, 1]} url={project.imageUrl} />
           <Text
-            position={textProps.position}
-            fontSize={textProps.fontSize}
+            position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
+            fontSize={isBrowser ? textProps.fontSize : 0.15}
             font={textProps.font}
-            maxWidth={textProps.maxWidth}
+            maxWidth={isBrowser ? textProps.maxWidth : 1.0}
             anchorX={textProps.anchorX}
           >
             {project.title}
