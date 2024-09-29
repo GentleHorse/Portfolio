@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import {
   Environment,
   Float,
@@ -39,14 +39,18 @@ import OBJECRotterdam2024Thumbnail from "../../public/images/app-developments/__
 import WeatherCerealThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 import DonutsUniverseThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-donuts-universe.jpg";
 import MarbleOnARollThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
-import { faLess } from "@fortawesome/free-brands-svg-icons";
 
 /**
- * INITIAL SCROLLCONTROLS VALUES
+ * SCROLL VALUES
  */
-const SCROLL_PAGES = 4;
+const SCROLL_PAGES = 5.25;
 const SCROLL_DAMPING = 0.4; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 1; // the higher, the slower animation gets
+const SCROLL_DISTANCE = 0.5; // the higher, the slower animation gets
+
+/**
+ * PROJECT THUMBNAIL IMAGE VALUES
+ */
+const IMAGE_DIST_STRENGTH = 0.45;
 
 /**
  * PROJECTS LIST ARRAY
@@ -56,56 +60,67 @@ const PROJECTS_LIST_ARRAY = [
     id: "d01",
     title: "Ambience of Light",
     imageUrl: AmbienceOfLightThumbnail,
+    zPos: 0,
   },
   {
     id: "d02",
     title: "Beauty of Time Passing",
     imageUrl: BeautyOfTimePassingThumbnail,
+    zPos: -1,
   },
   {
     id: "d03",
     title: "Intervention in our Disconnection",
     imageUrl: InterventionInOurDisconnectionThumbnail,
+    zPos: 1,
   },
   {
     id: "d04",
     title: "Masu Typo",
     imageUrl: MasuTypoThumbnail,
+    zPos: 0,
   },
   {
     id: "d05",
     title: "Comforting Dinner",
     imageUrl: ComfortingDinnerThumbnail,
+    zPos: -1,
   },
   {
     id: "d06",
     title: "3D Visuals",
     imageUrl: ThreeDVisualThumbnail,
+    zPos: 1,
   },
   {
     id: "a01",
     title: "Portfolio Website",
     imageUrl: PortfolioWebsiteThumbnail,
+    zPos: 0,
   },
   {
     id: "a02",
     title: "OBJECT Rotterdam 2024",
     imageUrl: OBJECRotterdam2024Thumbnail,
+    zPos: -1,
   },
   {
     id: "a03",
     title: "Weather Cereal",
     imageUrl: WeatherCerealThumbnail,
+    zPos: 1,
   },
   {
     id: "a04",
     title: "Donuts Universe",
     imageUrl: DonutsUniverseThumbnail,
+    zPos: 0,
   },
   {
     id: "a05",
     title: "Marble's on a Roll",
     imageUrl: MarbleOnARollThumbnail,
+    zPos: -1,
   },
 ];
 
@@ -157,8 +172,8 @@ export default function WorksPage() {
 function Experience() {
   return (
     <>
-      <Perf position="top-left" />
-      <axesHelper />
+      {/* <Perf position="top-left" /> */}
+      {/* <axesHelper /> */}
       {/* <OrbitControls enableZoom={false} /> */}
 
       <Environment preset="night" />
@@ -166,109 +181,63 @@ function Experience() {
       {/* <UI scroll={scroll} /> */}
 
       <Scroll>
-        <Pages />
+        <ProjectThumbnails />
       </Scroll>
     </>
   );
 }
 
-function Pages() {
-  const { width } = useThree((state) => state.viewport);
-  return (
-    <>
-      <Page
-        position={[-width * 1, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[0].imageUrl,
-          PROJECTS_LIST_ARRAY[1].imageUrl,
-          PROJECTS_LIST_ARRAY[2].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 0, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[3].imageUrl,
-          PROJECTS_LIST_ARRAY[4].imageUrl,
-          PROJECTS_LIST_ARRAY[5].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 1, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[6].imageUrl,
-          PROJECTS_LIST_ARRAY[7].imageUrl,
-          PROJECTS_LIST_ARRAY[8].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 2, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[9].imageUrl,
-          PROJECTS_LIST_ARRAY[10].imageUrl,
-          PROJECTS_LIST_ARRAY[1].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 3, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[2].imageUrl,
-          PROJECTS_LIST_ARRAY[3].imageUrl,
-          PROJECTS_LIST_ARRAY[4].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 4, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[5].imageUrl,
-          PROJECTS_LIST_ARRAY[6].imageUrl,
-          PROJECTS_LIST_ARRAY[7].imageUrl,
-        ]}
-      />
-      <Page
-        position={[width * 4, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[8].imageUrl,
-          PROJECTS_LIST_ARRAY[9].imageUrl,
-          PROJECTS_LIST_ARRAY[10].imageUrl,
-        ]}
-      />
-      <Page
-        position={[-width * 1, 0, 0]}
-        urls={[
-          PROJECTS_LIST_ARRAY[0].imageUrl,
-          PROJECTS_LIST_ARRAY[1].imageUrl,
-          PROJECTS_LIST_ARRAY[2].imageUrl,
-        ]}
-      />
-    </>
-  );
-}
-
-function Page({ m = 0.4, urls, ...props }) {
+function ProjectThumbnails({ m = 0.4, ...props }) {
   const { width } = useThree((state) => state.viewport);
   const w = width < 10 ? 1.5 / 3 : 1 / 3;
+
+  const textProps = {
+    position: [-1.5, 0, 0.1],
+    fontSize: 0.25,
+    font: "./fonts/DMSerifDisplay-Regular.ttf",
+    maxWidth: 2.5,
+    anchorX: "left",
+  };
+
+  /**
+   * MOUSE POINTER SET UP ON HOVER STATE
+   */
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
+
   return (
     <group {...props}>
-      <Image
-        position={[-width * w, 0, -1]}
-        scale={[width * w - m * 2, 5, 1]}
-        url={urls[0]}
-      />
-      <Image
-        position={[0, 0, 0]}
-        scale={[width * w - m * 2, 5, 1]}
-        url={urls[1]}
-      />
-      <Image
-        position={[width * w, 0, 1]}
-        scale={[width * w - m * 2, 5, 1]}
-        url={urls[2]}
-      />
+      {PROJECTS_LIST_ARRAY.map((project, index) => (
+        <group
+          key={project.id}
+          position={[index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]}
+          onPointerOver={(event) => {
+            event.stopPropagation();
+            setHovered(true);
+          }}
+          onPointerOut={() => setHovered(false)}
+        >
+          <Image scale={[width * w - m * 2, 5, 1]} url={project.imageUrl} />
+          <Text
+            position={textProps.position}
+            fontSize={textProps.fontSize}
+            font={textProps.font}
+            maxWidth={textProps.maxWidth}
+            anchorX={textProps.anchorX}
+          >
+            {project.title}
+            <meshBasicMaterial color="#ffffff" toneMapped={false} />
+          </Text>
+        </group>
+      ))}
     </group>
   );
 }
 
-function Image(props) {
+function Image({ ...props }) {
   const ref = useRef();
   const group = useRef();
   const data = useScroll();
@@ -280,16 +249,10 @@ function Image(props) {
       4,
       delta
     );
-    ref.current.material.grayscale = THREE.MathUtils.damp(
-      ref.current.material.grayscale,
-      Math.max(0, 1 - data.delta * 1000),
-      4,
-      delta
-    );
   });
   return (
     <group ref={group}>
-      <ImageImpl ref={ref} {...props} />
+      <ImageImpl ref={ref} {...props} toneMapped={false} />
     </group>
   );
 }
