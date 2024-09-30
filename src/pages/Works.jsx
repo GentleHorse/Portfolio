@@ -209,14 +209,11 @@ function Experience() {
 
   return (
     <>
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
       {/* <axesHelper /> */}
-      <OrbitControls enableZoom={false} />
-
-      <directionalLight args={["0xffffff"]} intensity={5.0} />
+      {/* <OrbitControls enableZoom={false} /> */}
 
       <Background backgroundColors={backgroundColors} />
-      {/* <Environment preset="forest" /> */}
 
       <GlassFocusTorus geometry={GLASS_GEOMETRY} material={GLASS_MATERIAL} />
 

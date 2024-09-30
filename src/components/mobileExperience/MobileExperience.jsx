@@ -81,10 +81,10 @@ export default function MobileExperience() {
         >
           <section className="w-full h-full flex flex-col items-center justify-evenly">
             <div>
-              <p className="mt-3 text-stone-300">
+              <p className="mt-3 text-xl text-stone-300">
                 Get tired of touching, scrolling?
               </p>
-              <p className="mt-3 text-stone-300">Then just "tilt" to see content!</p>
+              <p className="mt-3 text-xl text-stone-300">Let be lazy and "tilt"!</p>
             </div>
 
             <button
