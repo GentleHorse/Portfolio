@@ -60,66 +60,77 @@ const PROJECTS_LIST_ARRAY = [
     id: "d01",
     title: "Ambience of Light",
     imageUrl: AmbienceOfLightThumbnail,
+    projectPageUrl: "/ambience-of-light",
     zPos: 0,
   },
   {
     id: "d02",
     title: "Beauty of Time Passing",
     imageUrl: BeautyOfTimePassingThumbnail,
+    projectPageUrl: "/beauty-of-time-passing",
     zPos: -1,
   },
   {
     id: "d03",
     title: "Intervention in our Disconnection",
     imageUrl: InterventionInOurDisconnectionThumbnail,
+    projectPageUrl: "/intervention-in-our-disconnection",
     zPos: 1,
   },
   {
     id: "d04",
     title: "Masu Typo",
     imageUrl: MasuTypoThumbnail,
+    projectPageUrl: "/masu-typo",
     zPos: 0,
   },
   {
     id: "d05",
     title: "Comforting Dinner",
     imageUrl: ComfortingDinnerThumbnail,
+    projectPageUrl: "/comforting-dinner",
     zPos: -1,
   },
   {
     id: "d06",
     title: "3D Visuals",
     imageUrl: ThreeDVisualThumbnail,
+    projectPageUrl: "/three-d-visuals",
     zPos: 1,
   },
   {
     id: "a01",
     title: "Portfolio Website",
     imageUrl: PortfolioWebsiteThumbnail,
+    projectPageUrl: "/portfolio-website",
     zPos: 0,
   },
   {
     id: "a02",
     title: "OBJECT Rotterdam 2024",
     imageUrl: OBJECRotterdam2024Thumbnail,
+    projectPageUrl: "/object-rotterdam-2024",
     zPos: -1,
   },
   {
     id: "a03",
     title: "Weather Cereal",
     imageUrl: WeatherCerealThumbnail,
+    projectPageUrl: "/weather-cereal",
     zPos: 1,
   },
   {
     id: "a04",
     title: "Donuts Universe",
     imageUrl: DonutsUniverseThumbnail,
+    projectPageUrl: "/donuts-universe",
     zPos: 0,
   },
   {
     id: "a05",
     title: "Marble's on a Roll",
     imageUrl: MarbleOnARollThumbnail,
+    projectPageUrl: "/marble-race",
     zPos: -1,
   },
 ];
@@ -206,6 +217,11 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
   const imageGroups = useRef([]);
 
   /**
+   * NAVIGATE
+   */
+  const navigate = useNavigate();
+
+  /**
    * IMAGE GROUP POSITION SET UP
    */
   const { width } = useThree((state) => state.viewport);
@@ -256,6 +272,7 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
           ref={(element) => (imageGroups.current[index] = element)}
           key={project.id}
           position={[index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]}
+          onClick={() => navigate(project.projectPageUrl)}
           onPointerOver={(event) => {
             event.stopPropagation();
             setHovered(true);
