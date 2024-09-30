@@ -142,6 +142,18 @@ const state = proxy({
 });
 
 /**
+ * MATERIAL - REFLECTIVE SURFACE
+ */
+const REFLECTIVE_MATERIAL = new THREE.MeshPhysicalMaterial({
+  color: "#ffffff",
+  roughness: 0.05,
+  clearcoat: 0.75,
+  transmission: 1,
+  reflectivity: 0.9,
+  thickness: 0.01,
+});
+
+/**
  * COMPONENTS ======================================================
  */
 export default function WorksPage() {
@@ -188,9 +200,20 @@ function Experience() {
 }
 
 function ProjectThumbnails({ m = 0.4, ...props }) {
+  /**
+   * IMAGE GROUP REF
+   */
+  const imageGroups = useRef([]);
+
+  /**
+   * IMAGE GROUP POSITION SET UP
+   */
   const { width } = useThree((state) => state.viewport);
   const w = width < 10 ? 1.5 / 3 : 1 / 3;
 
+  /**
+   * PROJECT TITLE PROPS
+   */
   const textProps = {
     position: [-1.5, 0, 0.25],
     fontSize: 0.25,
@@ -208,17 +231,38 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
     document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 
+  /**
+   * ANIMATION - HOVER ANIMATION
+   */
+  const pointerOverImageGroupAnimationHandler = (index) => {
+    gsap.to(imageGroups.current[index].position, {
+      z: imageGroups.current[index].position.z - 0.5,
+      duration: 1.0,
+    });
+  };
+  const pointerOutImageGroupAnimationHandler = (index) => {
+    gsap.to(imageGroups.current[index].position, {
+      z: imageGroups.current[index].position.z + 0.5,
+      duration: 1.0,
+    });
+  };
+
   return (
     <group {...props}>
       {PROJECTS_LIST_ARRAY.map((project, index) => (
         <group
+          ref={(element) => (imageGroups.current[index] = element)}
           key={project.id}
           position={[index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]}
           onPointerOver={(event) => {
             event.stopPropagation();
             setHovered(true);
+            pointerOverImageGroupAnimationHandler(index);
           }}
-          onPointerOut={() => setHovered(false)}
+          onPointerOut={() => {
+            setHovered(false);
+            pointerOutImageGroupAnimationHandler(index);
+          }}
         >
           <Image scale={[width * w - m * 2, 5, 1]} url={project.imageUrl} />
           <Text
@@ -252,7 +296,13 @@ function Image({ ...props }) {
   });
   return (
     <group ref={group}>
-      <ImageImpl ref={ref} {...props} toneMapped={false} />
+      <ImageImpl
+        ref={ref}
+        {...props}
+        toneMapped={false}
+        opacity={0.7}
+        transparent={true}
+      />
     </group>
   );
 }
