@@ -1,29 +1,24 @@
-import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect, useLayoutEffect } from "react";
+import * as THREE from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Environment,
-  Float,
-  Html,
-  Line,
   Loader,
   OrbitControls,
-  PerspectiveCamera,
   Sphere,
   Text,
-  Preload,
   Image as ImageImpl,
   Scroll,
   useScroll,
   ScrollControls,
+  MeshTransmissionMaterial,
+  useGLTF,
 } from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { Perf } from "r3f-perf";
 import { Gradient, LayerMaterial } from "lamina";
-import { proxy, useSnapshot } from "valtio";
-import { easing } from "maath";
 import gsap from "gsap";
-import { EffectComposer, Noise, Bloom } from "@react-three/postprocessing";
 import { isMobile, isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
@@ -43,8 +38,8 @@ import MarbleOnARollThumbnail from "../../public/images/app-developments/__thumb
 /**
  * SCROLL VALUES
  */
-const SCROLL_PAGES = 5.25;
-const SCROLL_DAMPING = 0.4; // the lower, the slower animation gets
+const SCROLL_PAGES = 5.5;
+const SCROLL_DAMPING = 0.35; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 0.5; // the higher, the slower animation gets
 
 /**
@@ -68,14 +63,14 @@ const PROJECTS_LIST_ARRAY = [
     title: "Beauty of Time Passing",
     imageUrl: BeautyOfTimePassingThumbnail,
     projectPageUrl: "/beauty-of-time-passing",
-    zPos: -1,
+    zPos: 0,
   },
   {
     id: "d03",
     title: "Intervention in our Disconnection",
     imageUrl: InterventionInOurDisconnectionThumbnail,
     projectPageUrl: "/intervention-in-our-disconnection",
-    zPos: 1,
+    zPos: 0,
   },
   {
     id: "d04",
@@ -89,14 +84,14 @@ const PROJECTS_LIST_ARRAY = [
     title: "Comforting Dinner",
     imageUrl: ComfortingDinnerThumbnail,
     projectPageUrl: "/comforting-dinner",
-    zPos: -1,
+    zPos: 0,
   },
   {
     id: "d06",
     title: "3D Visuals",
     imageUrl: ThreeDVisualThumbnail,
     projectPageUrl: "/three-d-visuals",
-    zPos: 1,
+    zPos: 0,
   },
   {
     id: "a01",
@@ -110,14 +105,14 @@ const PROJECTS_LIST_ARRAY = [
     title: "OBJECT Rotterdam 2024",
     imageUrl: OBJECRotterdam2024Thumbnail,
     projectPageUrl: "/object-rotterdam-2024",
-    zPos: -1,
+    zPos: 0,
   },
   {
     id: "a03",
     title: "Weather Cereal",
     imageUrl: WeatherCerealThumbnail,
     projectPageUrl: "/weather-cereal",
-    zPos: 1,
+    zPos: 0,
   },
   {
     id: "a04",
@@ -131,21 +126,9 @@ const PROJECTS_LIST_ARRAY = [
     title: "Marble's on a Roll",
     imageUrl: MarbleOnARollThumbnail,
     projectPageUrl: "/marble-race",
-    zPos: -1,
+    zPos: 0,
   },
 ];
-
-/**
- * MATERIAL - REFLECTIVE SURFACE
- */
-const REFLECTIVE_MATERIAL = new THREE.MeshPhysicalMaterial({
-  color: "#ffffff",
-  roughness: 0.05,
-  clearcoat: 0.75,
-  transmission: 1,
-  reflectivity: 0.9,
-  thickness: 0.01,
-});
 
 /**
  * COMPONENTS ======================================================
@@ -177,12 +160,23 @@ export default function WorksPage() {
 
 function Experience() {
   /**
+   * GLASS GEOMETRY & MATERIAL
+   */
+  const GLASS_GEOMETRY = useMemo(() => {
+    return <torusGeometry args={[2, 0.45]} />;
+  }, []);
+
+  const GLASS_MATERIAL = useMemo(() => {
+    return <MeshTransmissionMaterial backside={false} thickness={2} />;
+  }, []);
+
+  /**
    * SCROLL REF
    */
   const scroll = useScroll();
 
   /**
-   * GRADIENT ANIMATION 
+   * GRADIENT ANIMATION
    */
   const tl = useRef();
   const backgroundColors = useRef({
@@ -215,15 +209,20 @@ function Experience() {
   useFrame((state, delta) => {
     const scrollOffset = Math.max(0, scroll.offset);
     tl.current.seek(scrollOffset * tl.current.duration());
-  })
+  });
 
   return (
     <>
-      {/* <Perf position="top-left" /> */}
+      <Perf position="top-left" />
       {/* <axesHelper /> */}
-      {/* <OrbitControls enableZoom={false} /> */}
+      <OrbitControls enableZoom={false} />
+
+      <directionalLight args={["0xffffff"]} intensity={5.0} />
 
       <Background backgroundColors={backgroundColors} />
+      {/* <Environment preset="forest" /> */}
+
+      <GlassFocusTorus geometry={GLASS_GEOMETRY} material={GLASS_MATERIAL} />
 
       <Scroll>
         <ProjectThumbnails />
@@ -305,7 +304,7 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
             pointerOutImageGroupAnimationHandler(index);
           }}
         >
-          <Image scale={[width * w - m * 2, 5, 1]} url={project.imageUrl} />
+          <Image scale={[width * w - m * 0.2, 5, 1]} url={project.imageUrl} />
           <Text
             position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
             fontSize={isBrowser ? textProps.fontSize : 0.15}
@@ -387,3 +386,32 @@ function Background({ backgroundColors }) {
     </>
   );
 }
+
+function GlassFocusTorus({ geometry, material }) {
+  const { width, height } = useThree((state) => state.viewport);
+
+  const { nodes, materials } = useGLTF(
+    "./models/torus-lens-plane/torus-lens-plane.glb"
+  );
+
+  return (
+    <group>
+      <mesh scale={[height * 0.12, height * 0.12, 1]} position={[0, 0, 2]}>
+        {geometry}
+        {material}
+      </mesh>
+
+      <group dispose={null}>
+        <mesh
+        scale={[height * 0.3, height * 0.3, 1]}
+          position={[0, 0, 2]}
+          geometry={nodes["torus-lens-plane"].geometry}
+        >
+          <meshStandardMaterial color="#1C1C1C" transparent={true} opacity={0.85} />/
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
+useGLTF.preload("./models/torus-lens-plane/torus-lens-plane.glb");
