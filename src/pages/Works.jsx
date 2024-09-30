@@ -141,12 +141,8 @@ export default function WorksPage() {
       <Loader />
 
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
-        {/* <color attach="background" args={["#1C1C1C"]} />
-        <fog attach="fog" args={["#1C1C1C", 8, 20]} /> */}
-
         <ScrollControls
-          infinite={false}
-          horizontal={true}
+          horizontal={isBrowser ? true : false}
           pages={SCROLL_PAGES}
           damping={SCROLL_DAMPING}
           distance={SCROLL_DISTANCE}
@@ -245,7 +241,8 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
   /**
    * IMAGE GROUP POSITION SET UP
    */
-  const { width } = useThree((state) => state.viewport);
+  const { height, width } = useThree((state) => state.viewport);
+  const h = height < 10 ? 1.5 / 3 : 1 / 3;
   const w = width < 10 ? 1.5 / 3 : 1 / 3;
 
   /**
@@ -292,7 +289,11 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
         <group
           ref={(element) => (imageGroups.current[index] = element)}
           key={project.id}
-          position={[index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]}
+          position={
+            isBrowser
+              ? [index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]
+              : [0, -index * height * IMAGE_DIST_STRENGTH, project.zPos]
+          }
           onClick={() => navigate(project.projectPageUrl)}
           onPointerOver={(event) => {
             event.stopPropagation();
@@ -304,7 +305,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
             pointerOutImageGroupAnimationHandler(index);
           }}
         >
-          <Image scale={[width * w - m * 0.2, 5, 1]} url={project.imageUrl} />
+          <Image scale={isBrowser 
+          ? [width * w - m * 0.2, 5, 1]
+          : [5, height * h - m * 1.5, 1]
+            } url={project.imageUrl} />
           <Text
             position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
             fontSize={isBrowser ? textProps.fontSize : 0.15}
@@ -403,11 +407,16 @@ function GlassFocusTorus({ geometry, material }) {
 
       <group dispose={null}>
         <mesh
-        scale={[height * 0.3, height * 0.3, 1]}
+          scale={[height * 0.3, height * 0.3, 1]}
           position={[0, 0, 2]}
           geometry={nodes["torus-lens-plane"].geometry}
         >
-          <meshStandardMaterial color="#1C1C1C" transparent={true} opacity={0.85} />/
+          <meshStandardMaterial
+            color="#1C1C1C"
+            transparent={true}
+            opacity={0.85}
+          />
+          /
         </mesh>
       </group>
     </group>
