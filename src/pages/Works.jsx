@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect, useLayoutEffect } from "react";
 import {
   Environment,
   Float,
@@ -136,23 +136,6 @@ const PROJECTS_LIST_ARRAY = [
 ];
 
 /**
- * FOR INDICATOR BAR
- */
-const geometry = new THREE.CylinderGeometry(0.025, 0.025, 2.5, 16);
-const material = new THREE.MeshStandardMaterial({
-  color: "#1C1C1C",
-  roughness: 0.125,
-  metalness: 0.65,
-});
-
-/**
- * PROXY STATE
- */
-const state = proxy({
-  projects: PROJECTS_LIST_ARRAY,
-});
-
-/**
  * MATERIAL - REFLECTIVE SURFACE
  */
 const REFLECTIVE_MATERIAL = new THREE.MeshPhysicalMaterial({
@@ -193,15 +176,54 @@ export default function WorksPage() {
 }
 
 function Experience() {
+  /**
+   * SCROLL REF
+   */
+  const scroll = useScroll();
+
+  /**
+   * GRADIENT ANIMATION 
+   */
+  const tl = useRef();
+  const backgroundColors = useRef({
+    colorA: "#0F2540",
+    colorB: "#1C1C1C",
+  });
+
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline();
+
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#3C2F41",
+      colorB: "#1C1C1C",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#26453D",
+      colorB: "#1C1C1C",
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1.0,
+      colorA: "#CC543A",
+      colorB: "#1C1C1C",
+    });
+
+    tl.current.pause();
+  }, []);
+
+  useFrame((state, delta) => {
+    const scrollOffset = Math.max(0, scroll.offset);
+    tl.current.seek(scrollOffset * tl.current.duration());
+  })
+
   return (
     <>
       {/* <Perf position="top-left" /> */}
       {/* <axesHelper /> */}
       {/* <OrbitControls enableZoom={false} /> */}
 
-      <Environment preset="night" />
-
-      {/* <UI scroll={scroll} /> */}
+      <Background backgroundColors={backgroundColors} />
 
       <Scroll>
         <ProjectThumbnails />
@@ -319,44 +341,49 @@ function Image({ ...props }) {
         ref={ref}
         {...props}
         toneMapped={false}
-        opacity={0.7}
+        opacity={1.0}
         transparent={true}
       />
     </group>
   );
 }
 
-function UI({ scroll }) {
-  const { width, height } = useThree((state) => state.viewport);
-  const { projects } = useSnapshot(state);
-  const indicator = useRef();
+function Background({ backgroundColors }) {
+  const start = 0.2;
+  const end = -0.5;
+
+  const gradientRef = useRef();
+  const gradientEnvRef = useRef();
 
   useFrame((state, delta) => {
-    const scrollOffset = Math.max(0, scroll.offset);
-
-    // console.log(scrollOffset);
-
-    indicator.current.children.forEach((child, index) => {
-      const y = scroll.curve(
-        index / projects.length - 1.5 / projects.length,
-        4 / projects.length
-      );
-      easing.damp(child.scale, "y", 0.01 + y / 8, 0.1, delta);
-    });
+    gradientRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    );
+    gradientRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    );
+    gradientEnvRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    );
+    gradientEnvRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    );
   });
 
   return (
     <>
-      <group ref={indicator}>
-        {projects.map((_, i) => (
-          <mesh
-            key={i}
-            geometry={geometry}
-            material={material}
-            position={[i * 0.12 - projects.length * 0.06, 0.05, 3]}
-          />
-        ))}
-      </group>
+      <Sphere scale={[500, 500, 500]} rotation={[0, Math.PI / 2, 0]}>
+        <LayerMaterial color="#ffffff" side={THREE.BackSide}>
+          <Gradient ref={gradientRef} axes="y" start={start} end={end} />
+        </LayerMaterial>
+      </Sphere>
+      <Environment resolution={256} frames={Infinity}>
+        <Sphere scale={[100, 100, 100]} rotation={[Math.PI, Math.PI / 2, 0]}>
+          <LayerMaterial color="#ffffff" side={THREE.BackSide}>
+            <Gradient ref={gradientEnvRef} axes="y" start={start} end={end} />
+          </LayerMaterial>
+        </Sphere>
+      </Environment>
     </>
   );
 }
