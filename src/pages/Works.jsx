@@ -238,12 +238,14 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
     gsap.to(imageGroups.current[index].position, {
       z: imageGroups.current[index].position.z - 0.5,
       duration: 1.0,
+      ease: "power2.out",
     });
   };
   const pointerOutImageGroupAnimationHandler = (index) => {
     gsap.to(imageGroups.current[index].position, {
       z: imageGroups.current[index].position.z + 0.5,
       duration: 1.0,
+      ease: "power2.out",
     });
   };
 
