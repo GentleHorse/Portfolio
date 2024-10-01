@@ -2,7 +2,8 @@ import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
+import TileGround from "../models/tileGround/TileGround";
 
 const LERPED_STRENGTH = {
   testCube01: 1.0,
@@ -98,16 +99,13 @@ export default function MobileScene({ mobileOrientation }) {
     <>
       {/* DEBUG TOOLS */}
       {/* <Perf position="top-left" /> */}
+      <OrbitControls />
       <axesHelper args={[0.8]} />
 
       <Environment
         background={true}
         files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
       />
-
-      {/* <Physics debug={true}>
-        <HollowCube mobileOrientation={mobileOrientation} />
-      </Physics> */}
 
       <mesh scale={0.5} ref={testCube01}>
         <boxGeometry />
@@ -123,6 +121,8 @@ export default function MobileScene({ mobileOrientation }) {
         <boxGeometry />
         <meshNormalMaterial wireframe />
       </mesh>
+
+      <TileGround />
     </>
   );
 }
