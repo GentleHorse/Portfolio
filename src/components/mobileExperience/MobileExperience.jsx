@@ -5,6 +5,9 @@ import { gameStates, useGameStore } from "../../store/store.js";
 import MobileScene from "./MobileScene.jsx";
 import Header from "../header/Header.jsx";
 import Modal from "../UI/Modal.jsx";
+import gsap from "gsap";
+
+import tiltIcon from "../../../public/images/icons/tilt.svg";
 
 export default function MobileExperience() {
   /**
@@ -67,6 +70,28 @@ export default function MobileExperience() {
     });
   }
 
+  /**
+   * TILT ICON ROTATION
+   */
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+    if (document.querySelector("#tilt-icon") !== null) {
+      tl.to("#tilt-icon", {
+        rotation: -20,
+        transformOrigin: "right",
+        ease: "none",
+        duration: 1,
+      });
+      tl.to("#tilt-icon", {
+        rotation: 0,
+        transformOrigin: "right",
+        ease: "none",
+        duration: 1,
+      });
+    }
+  }, [gameState]);
+
   return (
     <>
       {/* HEADER */}
@@ -81,24 +106,23 @@ export default function MobileExperience() {
         >
           <section className="w-full h-full flex flex-col items-center justify-evenly">
             <div>
-              <p className="mt-3 text-xl text-stone-300">
-                Get tired of touching, scrolling?
+              <p className="m-6 text-2xl text-stone-300 font-permanent-marker">
+                Get tired of clicking, scrolling?
               </p>
-              <p className="mt-3 text-xl text-stone-300">Let be lazy and "tilt"!</p>
+              <p className="m-6 text-2xl text-stone-300 font-permanent-marker">
+                Then, let's pause for a while!
+              </p>
             </div>
 
             <button
-              className="px-5 py-5 mb-10 flex justify-evenly items-center w-[250px] h-1/5 rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-3xl"
+              className="px-5 py-5 mb-10 flex items-center w-[250px] h-[150px] rounded-full bg-[#09090985] text-slate-50 uppercase font-serif font-extrabold text-2xl"
               onClick={() => {
                 requestDeviceOrientation();
                 setIsModalOpen(false);
               }}
             >
-              <p>T i l t</p>
-              <img
-                src="./images/icons/play-triangle.svg"
-                className="w-[50px]"
-              />
+              <img src={tiltIcon} id="tilt-icon" className="mx-4 w-20 h-20" />
+              <p>T i l t ?</p>
             </button>
           </section>
         </Modal>
@@ -128,7 +152,7 @@ function LoadingScreenMobile() {
   }));
 
   /**
-   * SHOW MANU AFTER THE COMPONENT IS DESTROYED
+   * WHEN THE COMP DESTROYED, CHANGE STATE & CALL REQUEST ORIENTATION
    */
   useEffect(() => {
     return () => {

@@ -9,7 +9,6 @@ import { gameStates, useGameStore } from "../store/store.js";
 import { Suspense } from "react";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
-
 export default function HomePage() {
   /**
    * GAME STORE
@@ -39,7 +38,7 @@ export default function HomePage() {
               position: [0, 1.5, 8],
             }}
           >
-            <Suspense fallback={<LoadingScreen />} >
+            <Suspense fallback={<LoadingScreen />}>
               <Experience />
             </Suspense>
           </Canvas>
@@ -48,4 +47,3 @@ export default function HomePage() {
     </>
   );
 }
-
