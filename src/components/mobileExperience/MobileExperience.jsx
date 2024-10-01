@@ -133,7 +133,7 @@ export default function MobileExperience() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [0, 1.5, 8],
+          position: [7, 9, 8],
         }}
       >
         <Suspense fallback={<LoadingScreenMobile />}>
