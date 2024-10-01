@@ -5,9 +5,9 @@ import { Perf } from "r3f-perf";
 import { Environment } from "@react-three/drei";
 
 const LERPED_STRENGTH = {
-  testCube01: 0.01,
-  testCube02: 0.005,
-  testCube03: 0.001,
+  testCube01: 1.0,
+  testCube02: 0.5,
+  testCube03: 0.1,
 };
 
 let LERPED_MOBILE_ORIENTATION = {
@@ -38,17 +38,19 @@ export default function MobileScene({ mobileOrientation }) {
   }
 
   useFrame((state, delta) => {
+    // delta = approx. 0.006
+
     if (mobileOrientation) {
       // Test cube 01
       LERPED_MOBILE_ORIENTATION.testCube01.BETA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube01.BETA,
         mobileOrientation.beta,
-        LERPED_STRENGTH.testCube01
+        delta * LERPED_STRENGTH.testCube01
       );
       LERPED_MOBILE_ORIENTATION.testCube01.GAMMA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube01.GAMMA,
         mobileOrientation.gamma,
-        LERPED_STRENGTH.testCube01
+        delta * LERPED_STRENGTH.testCube01
       );
 
       testCube01.current.rotation.x =
@@ -60,12 +62,12 @@ export default function MobileScene({ mobileOrientation }) {
       LERPED_MOBILE_ORIENTATION.testCube02.BETA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube02.BETA,
         mobileOrientation.beta,
-        LERPED_STRENGTH.testCube02
+        delta * LERPED_STRENGTH.testCube02
       );
       LERPED_MOBILE_ORIENTATION.testCube02.GAMMA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube02.GAMMA,
         mobileOrientation.gamma,
-        LERPED_STRENGTH.testCube02
+        delta * LERPED_STRENGTH.testCube02
       );
 
       testCube02.current.rotation.x =
@@ -77,12 +79,12 @@ export default function MobileScene({ mobileOrientation }) {
       LERPED_MOBILE_ORIENTATION.testCube03.BETA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube03.BETA,
         mobileOrientation.beta,
-        LERPED_STRENGTH.testCube03
+        delta * LERPED_STRENGTH.testCube03
       );
       LERPED_MOBILE_ORIENTATION.testCube03.GAMMA = lerp(
         LERPED_MOBILE_ORIENTATION.testCube03.GAMMA,
         mobileOrientation.gamma,
-        LERPED_STRENGTH.testCube03
+        delta * LERPED_STRENGTH.testCube03
       );
 
       testCube03.current.rotation.x =
