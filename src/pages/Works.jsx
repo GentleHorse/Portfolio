@@ -38,14 +38,14 @@ import MarbleOnARollThumbnail from "../../public/images/app-developments/__thumb
 /**
  * SCROLL VALUES
  */
-const SCROLL_PAGES = 5.5;
-const SCROLL_DAMPING = 0.35; // the lower, the slower animation gets
-const SCROLL_DISTANCE = 0.5; // the higher, the slower animation gets
+const SCROLL_PAGES = isBrowser ? 7.5 : 5.5;
+const SCROLL_DAMPING = 0.45; // the lower, the slower animation gets
+const SCROLL_DISTANCE = 0.4; // the higher, the slower animation gets
 
 /**
  * PROJECT THUMBNAIL IMAGE VALUES
  */
-const IMAGE_DIST_STRENGTH = 0.45;
+const IMAGE_DIST_STRENGTH = isBrowser ? 0.65 : 0.45;
 
 /**
  * PROJECTS LIST ARRAY
@@ -142,7 +142,7 @@ export default function WorksPage() {
 
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
         <ScrollControls
-          horizontal={isBrowser ? true : false}
+          // horizontal={isBrowser ? true : false}
           pages={SCROLL_PAGES}
           damping={SCROLL_DAMPING}
           distance={SCROLL_DISTANCE}
@@ -286,11 +286,7 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
         <group
           ref={(element) => (imageGroups.current[index] = element)}
           key={project.id}
-          position={
-            isBrowser
-              ? [index * width * IMAGE_DIST_STRENGTH, 0, project.zPos]
-              : [0, -index * height * IMAGE_DIST_STRENGTH, project.zPos]
-          }
+          position={[0, -index * height * IMAGE_DIST_STRENGTH, project.zPos]}
           onClick={() => navigate(project.projectPageUrl)}
           onPointerOver={(event) => {
             event.stopPropagation();
@@ -302,10 +298,7 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
             pointerOutImageGroupAnimationHandler(index);
           }}
         >
-          <Image scale={isBrowser 
-          ? [width * w - m * 0.2, 5, 1]
-          : [5, height * h - m * 1.5, 1]
-            } url={project.imageUrl} />
+          <Image scale={isBrowser ? [7.5, height * h * 1.5 - m * 3.0, 1] : [5, height * h - m * 1.5, 1]} url={project.imageUrl} />
           <Text
             position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
             fontSize={isBrowser ? textProps.fontSize : 0.15}
@@ -397,7 +390,14 @@ function GlassFocusTorus({ geometry, material }) {
 
   return (
     <group>
-      <mesh scale={[height * 0.12, height * 0.12, 1]} position={[0, 0, 2]}>
+      <mesh
+        scale={
+          isBrowser
+            ? [height * 0.16, height * 0.16, 1]
+            : [height * 0.12, height * 0.12, 1]
+        }
+        position={[0, 0, 2]}
+      >
         {geometry}
         {material}
       </mesh>
