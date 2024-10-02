@@ -298,7 +298,14 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
             pointerOutImageGroupAnimationHandler(index);
           }}
         >
-          <Image scale={isBrowser ? [7.5, height * h * 1.5 - m * 3.0, 1] : [5, height * h - m * 1.5, 1]} url={project.imageUrl} />
+          <Image
+            scale={
+              isBrowser
+                ? [7.5, height * h * 1.5 - m * 3.0, 1]
+                : [5, height * h - m * 1.5, 1]
+            }
+            url={project.imageUrl}
+          />
           <Text
             position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
             fontSize={isBrowser ? textProps.fontSize : 0.15}
@@ -413,7 +420,6 @@ function GlassFocusTorus({ geometry, material }) {
             transparent={true}
             opacity={0.85}
           />
-          /
         </mesh>
       </group>
     </group>
