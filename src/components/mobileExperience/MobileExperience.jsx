@@ -60,8 +60,8 @@ export default function MobileExperience() {
 
   function handleOrientation(event) {
     let alpha = event.alpha; // z-axis 0 ~ 360
-    let beta = (event.beta - 45) / 180; // x-axis -180 ~ 180 ---> -1 ~ 1
-    let gamma = event.gamma / 90; // y-axis -90 ~ 90 ---> -1 ~ 1
+    let beta = (event.beta + 180) / 360; // x-axis 0 ~ 360 ---> 0 ~ 1
+    let gamma = (event.gamma + 90) / 180; // y-axis 0 ~ 180 ---> 0 ~ 1
 
     setMobileOrientation({
       alpha,
@@ -133,7 +133,7 @@ export default function MobileExperience() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [7, 9, 8],
+          position: [0, 0, 10],
         }}
       >
         <Suspense fallback={<LoadingScreenMobile />}>
