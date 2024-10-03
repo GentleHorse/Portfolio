@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { useMemo } from "react";
 import {
   Environment,
   OrbitControls,
@@ -15,7 +16,6 @@ import Stage from "./models/stage/Stage.jsx";
 import FirstPersonViewControl from "./characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
 import PortalAreas from "./portal/PortalAreas.jsx";
-import Title from "./title/Title.jsx";
 
 export default function Experience() {
   /**

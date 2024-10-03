@@ -614,6 +614,25 @@ export default function Stage(props) {
           Works {"\n"} in progress ....
         </DreiText>
 
+        <group
+          scale={3.5}
+          position={[-15, 1.5, 25]}
+          rotation={[-Math.PI * 0.5, 0, Math.PI * 0.5]}
+        >
+          <Root>
+            <Container flexDirection="column" gap={15} alignItems="center">
+              <Image
+                src="./images/icons/white-triangle.svg"
+                width={400}
+                marginTop={0}
+              />
+              <Text fontWeight="extra-bold" fontSize={80} color="snow">
+                ENTER
+              </Text>
+            </Container>
+          </Root>
+        </group>
+
         <mesh
           name="monitor-screen-world"
           geometry={nodes["monitor-screen-world"].geometry}
@@ -621,6 +640,7 @@ export default function Stage(props) {
           position={[-34.118, 10.519, -2.916]}
           scale={4.516}
         />
+
         <mesh
           name="monitor-screen-world-pin"
           geometry={nodes["monitor-screen-world-pin"].geometry}
@@ -1094,7 +1114,7 @@ export default function Stage(props) {
           position={[13, 21, -46]}
           // rotation={[0, 0, Math.PI * 0.1]}
           font="./fonts/WorldConflictRegular-p26R.woff"
-          fontSize={5.5}
+          fontSize={4.5}
           maxWidth={7.0}
           anchorX="center"
           anchorY="middle"
@@ -1104,8 +1124,27 @@ export default function Stage(props) {
           // color="#FFE302"
           color="#FF028D"
         >
-          Dare to Enter?
+          Digitalized Physicals are Inside
         </DreiText>
+
+        <group
+          scale={3.5}
+          position={[13, 1.5, -30]}
+          rotation={[-Math.PI * 0.5, 0, 0]}
+        >
+          <Root>
+            <Container flexDirection="column" gap={15} alignItems="center">
+              <Image
+                src="./images/icons/white-triangle.svg"
+                width={400}
+                marginTop={0}
+              />
+              <Text fontWeight="extra-bold" fontSize={80} color="snow">
+                ENTER
+              </Text>
+            </Container>
+          </Root>
+        </group>
 
         {/* BOUNDARY WALL */}
         <mesh
@@ -1256,10 +1295,10 @@ export default function Stage(props) {
         <Root>
           <Container flexDirection="column" gap={15} alignItems="flex-start">
             <Text fontWeight="extra-bold" fontSize={60} color="#1C1C1C">
-              A gallery in 2024
+              A gallery
             </Text>
             <Text fontWeight="medium" fontSize={60} color="#1C1C1C">
-              "Walk and Look"
+              "Walk and Explore"
             </Text>
           </Container>
         </Root>
