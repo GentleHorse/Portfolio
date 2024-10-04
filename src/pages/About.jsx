@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { Suspense, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
