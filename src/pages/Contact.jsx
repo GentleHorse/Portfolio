@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Sphere } from "@react-three/drei";
 import * as THREE from "three";
+import { Gradient, LayerMaterial } from "lamina";
 
 import Header from "../components/header/Header.jsx";
 import Mails from "../components/models/mail/Mails.jsx";
@@ -78,11 +79,43 @@ function ContactExperience() {
   return (
     <>
       {/* <OrbitControls /> */}
-      <Environment preset="city" />
+      {/* <Environment preset="city" /> */}
+      <Background />
 
       <group ref={mails}>
         <Mails />
       </group>
+    </>
+  );
+}
+
+function Background() {
+  return (
+    <>
+      <Sphere scale={[50, 50, 50]} rotation={[0, Math.PI / 2, 0]}>
+        <LayerMaterial color="#ffffff" side={THREE.BackSide}>
+          <Gradient
+            colorA={"#1C1C1C"}
+            colorB={"#C1C1C1"}
+            axes="y"
+            start={0.2}
+            end={-0.5}
+          />
+        </LayerMaterial>
+      </Sphere>
+      <Environment resolution={256} frames={Infinity}>
+        <Sphere scale={[10, 10, 10]} rotation={[Math.PI, Math.PI / 2, 0]}>
+          <LayerMaterial color="#ffffff" side={THREE.BackSide}>
+            <Gradient
+              colorA={"#ffffff"}
+              colorB={"#1C1C1C"}
+              axes="y"
+              start={0.2}
+              end={-0.5}
+            />
+          </LayerMaterial>
+        </Sphere>
+      </Environment>
     </>
   );
 }

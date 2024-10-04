@@ -36,7 +36,7 @@ export default function Header({ home, about, works, contact }) {
             >
               {home && (
                 <Link to="/">
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]">
+                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     Explore
                   </h1>
                 </Link>
@@ -44,7 +44,7 @@ export default function Header({ home, about, works, contact }) {
 
               {about && (
                 <Link to="/about">
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]">
+                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     About
                   </h1>
                 </Link>
@@ -52,7 +52,7 @@ export default function Header({ home, about, works, contact }) {
 
               {works && (
                 <Link to="/works">
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]">
+                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     Works
                   </h1>
                 </Link>
@@ -60,7 +60,7 @@ export default function Header({ home, about, works, contact }) {
 
               {contact && (
                 <Link to="/contact">
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]">
+                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     Contact
                   </h1>
                 </Link>
@@ -73,14 +73,14 @@ export default function Header({ home, about, works, contact }) {
                 >
                   <FontAwesomeIcon
                     icon={faInstagram}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
+                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
                   />
                 </a>
 
                 <a href="https://github.com/GentleHorse" target="_blank">
                   <FontAwesomeIcon
                     icon={faGithub}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
+                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
                   />
                 </a>
 
@@ -90,14 +90,14 @@ export default function Header({ home, about, works, contact }) {
                 >
                   <FontAwesomeIcon
                     icon={faLinkedin}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
+                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
                   />
                 </a>
 
                 <a href="https://x.com/toshihito_endo" target="_blank">
                   <FontAwesomeIcon
                     icon={faXTwitter}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#C1C1C1]"
+                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
                   />
                 </a>
               </div>
