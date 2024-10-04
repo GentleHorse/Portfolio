@@ -1,8 +1,22 @@
 import { useEffect, useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, Sphere } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  Sphere,
+  ScrollControls,
+  Html,
+} from "@react-three/drei";
 import * as THREE from "three";
 import { Gradient, LayerMaterial } from "lamina";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { isMobile, isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
 import Mails from "../components/models/mail/Mails.jsx";
@@ -81,6 +95,67 @@ function ContactExperience() {
       {/* <OrbitControls /> */}
       {/* <Environment preset="city" /> */}
       <Background />
+
+      <Html center className="mt-[30vh] h-[100vh]">
+        <section>
+          <h1
+            className={`ml-[10vw] w-[80vw] font-cinzel ${
+              isBrowser ? "text-[80px]" : "text-[40px]"
+            } text-[#ffffff]`}
+          >
+            Get in touch!
+          </h1>
+          <div className="mt-10 ml-[15vw] w-[80vw]">
+            <p
+              className={`font-serif ${
+                isBrowser ? "text-[60px]" : "text-[20px]"
+              } text-[#ffffff]`}
+            >
+              toshihito.endo@gmail.com
+            </p>
+            <div className="flex gap-5">
+              <a href="https://www.instagram.com/toshiendo3d/" target="_blank">
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  className={`font-roboto mt-[20px] mr-[10px] mb-[5px] ${
+                    isBrowser ? "text-[80px]" : "text-[40px]"
+                  } text-[#FFFFFF]`}
+                />
+              </a>
+
+              <a href="https://github.com/GentleHorse" target="_blank">
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  className={`font-roboto mt-[20px] mr-[10px] mb-[5px] ${
+                    isBrowser ? "text-[80px]" : "text-[40px]"
+                  } text-[#FFFFFF]`}
+                />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/toshihito-endo-a68a82172/"
+                target="_blank"
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className={`font-roboto mt-[20px] mr-[10px] mb-[5px] ${
+                    isBrowser ? "text-[80px]" : "text-[40px]"
+                  } text-[#FFFFFF]`}
+                />
+              </a>
+
+              <a href="https://x.com/toshihito_endo" target="_blank">
+                <FontAwesomeIcon
+                  icon={faXTwitter}
+                  className={`font-roboto mt-[20px] mr-[10px] mb-[5px] ${
+                    isBrowser ? "text-[80px]" : "text-[40px]"
+                  } text-[#FFFFFF]`}
+                />
+              </a>
+            </div>
+          </div>
+        </section>
+      </Html>
 
       <group ref={mails}>
         <Mails />
