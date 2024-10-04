@@ -59,7 +59,7 @@ export default function MobileExperience() {
   }
 
   function handleOrientation(event) {
-    let alpha = event.alpha; // z-axis 0 ~ 360
+    let alpha = event.alpha / 360; // z-axis 0 ~ 360 ---> 0 ~ 1
     let beta = (event.beta + 180) / 360; // x-axis 0 ~ 360 ---> 0 ~ 1
     let gamma = (event.gamma + 90) / 180; // y-axis 0 ~ 180 ---> 0 ~ 1
 
