@@ -1,17 +1,19 @@
 import { useRef } from "react";
-import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 
 import Mail from "./Mail.jsx";
 
 export default function Mails() {
+  /**
+   * INSTANCING MAILS, ANIMATING
+   */
   const mails = useRef([]);
 
   useFrame((state, delta) => {
     for (const mail of mails.current) {
-        mail.rotation.x += delta * 0.03;
-        mail.rotation.y += delta * 0.04;
-        mail.rotation.z += delta * 0.05;
+      mail.rotation.x += delta * 0.03;
+      mail.rotation.y += delta * 0.04;
+      mail.rotation.z += delta * 0.05;
     }
   });
 
