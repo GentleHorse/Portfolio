@@ -78,9 +78,9 @@ export default function MobileScene({ mobileOrientation }) {
       );
 
       mesh01.current.rotation.x =
-        LERPED_MOBILE_ORIENTATION.mesh01.BETA * Math.PI * 2 * 2;
+        Math.sin(LERPED_MOBILE_ORIENTATION.mesh01.BETA) * Math.PI * 2 * 2;
       mesh01.current.rotation.y =
-        LERPED_MOBILE_ORIENTATION.mesh01.GAMMA * Math.PI * 2 * 2;
+        Math.cos(LERPED_MOBILE_ORIENTATION.mesh01.GAMMA) * Math.PI * 2 * 2;
       // mesh01.current.rotation.z =
       //   LERPED_MOBILE_ORIENTATION.mesh01.ALPHA * Math.PI * 2 * 2;
 
@@ -102,9 +102,9 @@ export default function MobileScene({ mobileOrientation }) {
       );
 
       mesh02.current.rotation.x =
-        LERPED_MOBILE_ORIENTATION.mesh02.BETA * Math.PI * 2 * 2;
+        Math.sin(LERPED_MOBILE_ORIENTATION.mesh02.BETA) * Math.PI * 2 * 2;
       mesh02.current.rotation.y =
-        LERPED_MOBILE_ORIENTATION.mesh02.GAMMA * Math.PI * 2 * 2;
+        Math.cos(LERPED_MOBILE_ORIENTATION.mesh02.GAMMA) * Math.PI * 2 * 2;
       // mesh02.current.rotation.z =
       //   LERPED_MOBILE_ORIENTATION.mesh02.ALPHA * Math.PI * 2 * 2;
 
@@ -126,9 +126,9 @@ export default function MobileScene({ mobileOrientation }) {
       );
 
       mesh03.current.rotation.x =
-        LERPED_MOBILE_ORIENTATION.mesh03.BETA * Math.PI * 2 * 2;
+        Math.sin(LERPED_MOBILE_ORIENTATION.mesh03.BETA) * Math.PI * 2 * 2;
       mesh03.current.rotation.y =
-        LERPED_MOBILE_ORIENTATION.mesh03.GAMMA * Math.PI * 2 * 2;
+        Math.cos(LERPED_MOBILE_ORIENTATION.mesh03.GAMMA) * Math.PI * 2 * 2;
       // mesh03.current.rotation.z =
       //   LERPED_MOBILE_ORIENTATION.mesh03.ALPHA * Math.PI * 2 * 2;
 
@@ -150,9 +150,9 @@ export default function MobileScene({ mobileOrientation }) {
       );
 
       mesh04.current.rotation.x =
-        LERPED_MOBILE_ORIENTATION.mesh04.BETA * Math.PI * 2 * 2;
+        Math.sin(LERPED_MOBILE_ORIENTATION.mesh04.BETA) * Math.PI * 2 * 2;
       mesh04.current.rotation.y =
-        LERPED_MOBILE_ORIENTATION.mesh04.GAMMA * Math.PI * 2 * 2;
+        Math.cos(LERPED_MOBILE_ORIENTATION.mesh04.GAMMA) * Math.PI * 2 * 2;
       // mesh04.current.rotation.z =
       //   LERPED_MOBILE_ORIENTATION.mesh04.ALPHA * Math.PI * 2 * 2;
 
@@ -174,9 +174,9 @@ export default function MobileScene({ mobileOrientation }) {
       );
 
       mesh05.current.rotation.x =
-        LERPED_MOBILE_ORIENTATION.mesh05.BETA * Math.PI * 2 * 2;
+        Math.sin(LERPED_MOBILE_ORIENTATION.mesh05.BETA) * Math.PI * 2 * 2;
       mesh05.current.rotation.y =
-        LERPED_MOBILE_ORIENTATION.mesh05.GAMMA * Math.PI * 2 * 2;
+        Math.cos(LERPED_MOBILE_ORIENTATION.mesh05.GAMMA) * Math.PI * 2 * 2;
       // mesh05.current.rotation.z =
       //   LERPED_MOBILE_ORIENTATION.mesh05.ALPHA * Math.PI * 2 * 2;
     }
@@ -194,7 +194,7 @@ export default function MobileScene({ mobileOrientation }) {
         files={"./textures/envMap/kloofendal_48d_partly_cloudy_puresky_1k.hdr"}
       />
 
-      <group position={[0, 0, 0]}>
+      <group position={[0, 0, 0]} scale={1.5}>
         <group ref={mesh01} scale={2.0}>
           <SilkySphere />
         </group>
