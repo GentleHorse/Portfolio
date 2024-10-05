@@ -9,6 +9,7 @@ import gsap from "gsap";
 
 import tiltIcon from "../../../public/images/icons/tilt.svg";
 
+
 export default function MobileExperience() {
   /**
    * GAME STORE
