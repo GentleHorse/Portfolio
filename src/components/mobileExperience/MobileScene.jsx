@@ -72,7 +72,7 @@ export default function MobileScene({ mobileOrientation }) {
   return (
     <>
       {/* DEBUG TOOLS */}
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
       {/* <OrbitControls /> */}
       {/* <axesHelper args={[0.8]} /> */}
 
