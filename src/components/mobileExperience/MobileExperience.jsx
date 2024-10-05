@@ -130,12 +130,12 @@ export default function MobileExperience() {
       )}
 
       <Canvas
-        camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [0, 0, 10],
-        }}
+        // camera={{
+        //   fov: 45,
+        //   near: 0.1,
+        //   far: 200,
+        //   position: [0, 0, 10],
+        // }}
       >
         <Suspense fallback={<LoadingScreenMobile />}>
           <MobileScene mobileOrientation={mobileOrientation} />

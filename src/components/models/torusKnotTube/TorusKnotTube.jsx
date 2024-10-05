@@ -9,7 +9,7 @@ import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 
-export default function TorusKnotTube(props) {
+export default function TorusKnotTube({ ...props }) {
   /**
    * IMPORT MODEL - TORUSKNOT TUBE, BALL
    */
@@ -23,12 +23,12 @@ export default function TorusKnotTube(props) {
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
 
-    const eulerRotation = new THREE.Euler(time, 0, 0);
+    const eulerRotation = new THREE.Euler(time * 0.15, time * 0.2, time * 0.3);
     const quaternionRotation = new THREE.Quaternion();
     quaternionRotation.setFromEuler(eulerRotation);
 
     torusKnotTube.current.setNextKinematicRotation(quaternionRotation);
-  })
+  });
 
   return (
     <group {...props} dispose={null}>
@@ -37,10 +37,7 @@ export default function TorusKnotTube(props) {
         type="kinematicPosition"
         colliders="trimesh"
       >
-        <mesh
-          geometry={nodes["torusknot-tube"].geometry}
-          // material={materials["glass-material"]}
-        >
+        <mesh geometry={nodes["torusknot-tube"].geometry}>
           <MeshTransmissionMaterial backside={false} thickness={2} />
         </mesh>
       </RigidBody>
@@ -49,8 +46,7 @@ export default function TorusKnotTube(props) {
         <mesh
           geometry={nodes["torusknot-ball"].geometry}
           material={materials["metal-material"]}
-          position={[-0.997, 0, 0]}
-          scale={1.895}
+          position={[0.001, 1.004, 0]}
         />
       </RigidBody>
     </group>
