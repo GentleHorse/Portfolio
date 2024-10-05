@@ -17,7 +17,7 @@ export default function Mail(props) {
         object={nodes.mail001}
         inject={
           <meshStandardMaterial
-            color="#FCFAF2"
+            color="#434343"
             roughness={0.01}
             metalness={0.95}
           />

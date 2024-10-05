@@ -17,6 +17,7 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { isMobile, isBrowser } from "react-device-detect";
+import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 
 import Header from "../components/header/Header.jsx";
 import Mails from "../components/models/mail/Mails.jsx";
@@ -96,6 +97,14 @@ function ContactExperience() {
       {/* <Environment preset="city" /> */}
       <Background />
 
+      <EffectComposer disableNormalPass>
+        <DepthOfField
+          focusDistance={0.025}
+          focalLength={0.025}
+          bokehScale={12}
+        />
+      </EffectComposer>
+
       <Html center className="mt-[30vh] h-[100vh]">
         <section>
           <h1
@@ -171,7 +180,7 @@ function Background() {
         <LayerMaterial color="#ffffff" side={THREE.BackSide}>
           <Gradient
             colorA={"#1C1C1C"}
-            colorB={"#C1C1C1"}
+            colorB={"#91989F"}
             axes="y"
             start={0.2}
             end={-0.5}
@@ -182,7 +191,7 @@ function Background() {
         <Sphere scale={[10, 10, 10]} rotation={[Math.PI, Math.PI / 2, 0]}>
           <LayerMaterial color="#ffffff" side={THREE.BackSide}>
             <Gradient
-              colorA={"#ffffff"}
+              colorA={"#C1C1C1"}
               colorB={"#1C1C1C"}
               axes="y"
               start={0.2}

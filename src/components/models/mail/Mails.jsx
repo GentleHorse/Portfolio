@@ -24,9 +24,9 @@ export default function Mails() {
           key={index}
           ref={(element) => (mails.current[index] = element)}
           position={[
-            (Math.random() - 0.5) * 15,
-            (Math.random() - 0.5) * 15,
-            (Math.random() - 0.5) * 15,
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
           ]}
           scale={0.05 + Math.random() * 0.05}
           rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
