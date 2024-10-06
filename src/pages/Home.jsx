@@ -7,6 +7,7 @@ import MobileExperience from "../components/mobileExperience/MobileExperience.js
 import HowToControl from "../components/UI/HowToControl.jsx";
 import { gameStates, useGameStore } from "../store/store.js";
 import { Suspense } from "react";
+import { Preload } from "@react-three/drei";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
 export default function HomePage() {
@@ -40,6 +41,7 @@ export default function HomePage() {
           >
             <Suspense fallback={<LoadingScreen />}>
               <Experience />
+              <Preload all />
             </Suspense>
           </Canvas>
         </>
