@@ -33,7 +33,7 @@ export default function HomePage() {
           <Leva collapsed={true} />
           <Canvas
             camera={{
-              fov: 60,
+              fov: 80,
               near: 0.1,
               far: 200,
               position: [0, 1.5, 8],
