@@ -11,6 +11,8 @@ import {
 
 import Header from "../../components/header/Header.jsx";
 
+import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
+
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
 import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
 import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
@@ -22,157 +24,179 @@ export default function AmbienceOfLightPage() {
   return (
     <>
       <Header home about works contact />
-      
-      <Canvas camera={{ position: [0, 0, 20], fov: 15 }}>
-        <ScrollControls damping={0.15} pages={10} distance={0.5}>
-          {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
 
-          {/* <TestCube scale={1.5} position={[0, 0, -2]} /> */}
+      <section className="mt-[148px] mx-[240px]">
+        <h1 className="mb-[42px] font-serif text-[64px] text-[#C1C1C1]">
+          Ambience of Light
+        </h1>
+        <img
+          src={AmbienceOfLightHeroImage}
+          alt="Ambience of Light Hero Image"
+          className="mb-[70px] w-full h-[500px] object-cover"
+        />
+        <div className="flex">
+          <div className="flex-none w-[235px]">
+            <p className="mb-[26px] text-[16px] text-[#C1C1C1]">2024</p>
+            <p className="text-[16px] text-[#C1C1C1]">Product Design</p>
+          </div>
 
-          <Scroll>
-            {/* Canvas contents in here will scroll along */}
+          <p className="mb-[72px] grow text-[20px] text-[#C1C1C1]">
+            The "Ambience of Light" is a lighting product that utilises
+            industrial glass blocks, originally designed to capture daylight, to
+            create a distinctive and atmospheric lighting experience in any
+            space.
+          </p>
+        </div>
+        <div className="flex gap-4">
+          <p className="text-[14px] text-[#C1C1C1]">#perception of space</p>
+          <p className="text-[14px] text-[#C1C1C1]">#in praise of shadows</p>
+          <p className="text-[14px] text-[#C1C1C1]">
+            #blur boundaries in space
+          </p>
+        </div>
+      </section>
 
-            <Typography />
-            <ProjectImages />
-          </Scroll>
+      <section className="mt-[87px]">
+        <img
+          src={AmbienceOfLightImage01}
+          className="w-full h-[540px] object-cover"
+        />
+      </section>
 
-          <Scroll html>
-            {/* DOM contents in here will scroll along */}
+      <section className="my-[124px] mx-[240px]">
+        <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          CHALLENGE
+        </p>
+        <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          Lack of daylight and limited designs
+        </p>
+        <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          Industrial glass blocks were originally invented to bring daylight
+          into domestic and commercial spaces comfortably. Their
+          light-transmitting and diffusing properties filter sunlight into
+          beautiful reflections, creating a unique atmosphere indoors. However,
+          their modularity limits architectural applications, and without
+          daylight, the desired atmosphere fails to emerge. The challenge then
+          became: how can we recreate this atmosphere using glass blocks without
+          relying on daylight?
+        </p>
+      </section>
 
-            <article
-              className="py-[5%] px-[12%] w-[60vw]"
-              style={{ transform: "translate3d(40vw, 250vh, 0)" }}
-            >
-              <p className="font-roboto text-[#fcfaf2]">
-                In his earlier work, "Beauty of Time Passing" (2023), the
-                designer ambitiously sought to illuminate indoor spaces by
-                integrating data-driven weather landscapes and innovative light
-                manipulation. By using glass bricks, known for their reflective
-                qualities, he created a harmonious connection between the
-                interior environment and the natural world, resulting in a
-                sophisticated, nature-inspired ambiance. Now, with his latest
-                project, "Ambience of Light," he continues with the same
-                overarching goal but shifts his approach to make the project
-                more accessible. This time, he focuses on the raw, pure
-                qualities of materials like wood and glass, along with
-                intangible elements like light reflections and dispersions. By
-                carefully selecting and arranging these components, he crafts a
-                much stronger design language. The simplified structure of this
-                project also highlights the direct influences of the designer's
-                Japanese cultural heritage and his personal interpretation of
-                it. This thoughtful approach not only enhances the aesthetic
-                appeal but also makes the project more relatable and meaningful
-                to a broader audience.
-              </p>
-            </article>
+      <section className="mt-[87px] mx-[240px]">
+        <img
+          src={AmbienceOfLightHeroImage}
+          className="w-full h-auto object-cover"
+        />
+      </section>
 
-            <article
-              className="py-[5%] px-[12%] w-[60vw]"
-              style={{ transform: "translate3d(0vw, 325vh, 0)" }}
-            >
-              <p className="font-roboto text-[#fcfaf2]">
-                This project was presented at OBJECT Rotterdam 2024 (Feb 2 - 4,
-                2024, HAKA-gebouw, Vierhavensstraat 40, 3029 BE Rotterdam).
-              </p>
-            </article>
-          </Scroll>
-        </ScrollControls>
-      </Canvas>
+      <section className="my-[124px] mx-[240px]">
+        <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          APPROACH
+        </p>
+        <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          A unique atmosphere with the Japanese traditional lamp
+        </p>
+        <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          Before electric lighting, people in Japan used "Andon" lamps, made
+          from paper stretched over bamboo, wood, or metal frames, to illuminate
+          spaces. The paper gently diffused light from a single source, creating
+          a soft, warm glow that fostered a calm and inviting atmosphere.
+          Inspired by this traditional design, "Ambience of Light" follows the
+          same principle to recreate a similar warmth. By using a single light
+          source, it captures the subtle and soothing illumination of Andon
+          lamps, blending tradition with modernity to create a cosy, ambient
+          glow in contemporary spaces.
+        </p>
+      </section>
+
+      <section className="mt-[87px] mx-[240px]">
+        <img
+          src={AmbienceOfLightHeroImage}
+          className="w-full h-auto object-cover"
+        />
+      </section>
+
+      <section className="my-[124px] mx-[240px]">
+        <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          Reshape our perception of darkness in space
+        </p>
+        <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          During the Edo period, people relied on oil lamps and candles as light
+          sources for Andon lamps, resulting in typically dark living spaces. In
+          his 1933 essay "In Praise of Shadows," Junichiro Tanizaki observed
+          that individuals of that era embraced this warm darkness, using it to
+          discover their own aesthetics by dissolving the boundaries between
+          objects and the surrounding shadows. This blending of light and dark
+          created an intimate atmosphere. Inspired by this idea, the product
+          features dimmable lighting and carefully selected wood colors,
+          allowing users to actively manipulate the interplay of light and
+          darkness, enhancing the ambiance of their spaces.
+        </p>
+      </section>
+
+      <section className="mt-[87px] mx-[240px]">
+        <img
+          src={AmbienceOfLightHeroImage}
+          className="w-full h-auto object-cover"
+        />
+      </section>
+
+      <section className="my-[124px] mx-[240px]">
+        <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          OUTCOME
+        </p>
+        <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          Modular lighting products with playful compositions
+        </p>
+        <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          Daylight varies throughout the day, week, and across seasons,
+          influencing the way light interacts with architectural installations.
+          Using glass bricks, the same setup can produce a range of light
+          reflections, resulting in distinct ambiances within a space. To
+          replicate this beautiful effect in the absence of natural light, the
+          "Ambience of Light" product is designed with modular components. This
+          modularity enables users to create various compositions, allowing them
+          to manipulate light reflections and craft different atmospheres. As a
+          result, individuals can enjoy a dynamic, ever-changing ambiance that
+          mirrors the natural variations of daylight, enriching their indoor
+          environments.
+        </p>
+      </section>
+
+      <section className="mt-[87px] mx-[240px]">
+        <img
+          src={AmbienceOfLightHeroImage}
+          className="w-full h-auto object-cover"
+        />
+      </section>
+
+      <section className="my-[124px] mx-[240px]">
+        <div className="w-full flex">
+          <hr className="mb-[60px] mx-56 flex-grow border-[#C1C1C1]" />
+        </div>
+      </section>
+
+      <section className="mt-[87px] mx-[240px]">
+        <div className="relative w-full flex flex-col items-center">
+          <img
+            src={AmbienceOfLightHeroImage}
+            className="w-2/5 h-auto object-cover opacity-50"
+          />
+          <p className="absolute top-1/2 text-[18px] text-[#C1C1C1]">
+            Explore the next project
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-[87px] pb-[80px] mx-[240px]">
+        <div className="relative w-full flex flex-col items-center">
+          <div className="w-[175px] h-[175px] bg-[#C1C1C1] rounded-full"/>
+
+          <p className="absolute font-roboto top-[80px] text-[14px] text-[#1C1C1C]">
+           Back to overview
+          </p>
+        </div>
+      </section>
     </>
   );
 }
-
-function Typography() {
-  const state = useThree();
-  const { width, height } = state.viewport.getCurrentViewport(
-    state.camera,
-    [0, 0, 12]
-  );
-  const shared = {
-    font: "/fonts/shippori-mincho-b1-v21-japanese-800.woff",
-    fontSize: 0.6,
-    letterSpacing: -0.1,
-    color: "white",
-  };
-
-  return (
-    <>
-      <Text
-        anchorX="left"
-        position={[-width / 2.25, -height * 0.1, 12]}
-        {...shared}
-      >
-        AMBIENCE
-        <meshBasicMaterial color="white" toneMapped={false} />
-      </Text>
-      <Text anchorX="center" position={[0, -height * 0.8, 12]} {...shared}>
-        OF
-        <meshBasicMaterial color="white" toneMapped={false} />
-      </Text>
-      <Text
-        anchorX="right"
-        position={[width / 2.5, -height * 1.5, 12]}
-        {...shared}
-      >
-        LIGHT
-        <meshBasicMaterial color="white" toneMapped={false} />
-      </Text>
-    </>
-  );
-}
-
-function ProjectImages() {
-  const state = useThree();
-  const { width, height } = state.viewport.getCurrentViewport(
-    state.camera,
-    [0, 0, 12]
-  );
-
-  return (
-    <>
-      <Image
-        url={AmbienceOfLightImage13}
-        scale={[14.4 * 0.5, 9.6 * 0.5, 1]}
-        position={[-width / 1.5, 0, -5]}
-      />
-
-      <Image
-        url={AmbienceOfLightImage07}
-        scale={[14.4 * 0.5, 9.6 * 0.5, 1]}
-        position={[width / 2.5, -height * 2.5, -1]}
-      />
-
-      <Image
-        url={AmbienceOfLightImage11}
-        scale={[14.4 * 0.5, 9.6 * 0.5, 1]}
-        position={[-width / 1.5, -height * 5, -10]}
-      />
-
-      <Image
-        url={AmbienceOfLightImage01}
-        scale={[14.4 * 0.5, 9.6 * 0.5, 1]}
-        position={[0, -height * 8, 1]}
-      />
-    </>
-  );
-}
-
-function TestCube(props) {
-  const testCube = useRef();
-
-  const scroll = useScroll();
-
-  useFrame((state, delta) => {
-    testCube.current.rotation.y = Math.PI * 2 * scroll.offset;
-  });
-
-  return (
-    <mesh {...props} ref={testCube}>
-      <boxGeometry />
-      <meshNormalMaterial />
-    </mesh>
-  );
-}
-
-// Reference
-// https://codesandbox.io/p/sandbox/scrollcontrols-and-lens-refraction-2n98yj?file=%2Fsrc%2FApp.js%3A7%2C32

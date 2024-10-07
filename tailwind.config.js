@@ -23,6 +23,7 @@ export default {
         'cinzel': ['"Cinzel", serif'],
         'great-vibes': ['"Great Vibes", cursive'],
         'pinyon-script': ['"Pinyon Script", cursive'],
+        'montserrat': ['"Montserrat", sans-serif'],
       }
     },
   },
