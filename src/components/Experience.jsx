@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { useMemo } from "react";
 import {
   Environment,
   OrbitControls,
@@ -9,6 +8,7 @@ import {
 import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import { isBrowser } from "react-device-detect";
+import { gameStates, useGameStore } from "../store/store.js";
 
 import Background from "./utilComponents/Background.jsx";
 import Lights from "./utilComponents/Lights.jsx";
@@ -18,6 +18,13 @@ import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
 import PortalAreas from "./portal/PortalAreas.jsx";
 
 export default function Experience() {
+  /**
+   * GAME STORE
+   */
+  const { gameState } = useGameStore((state) => ({
+    gameState: state.gameState,
+  }));
+
   /**
    * TEXTURE FOR THE REFLECTIVE FLOOR
    */
@@ -60,7 +67,7 @@ export default function Experience() {
           <StageCollisionObjects />
 
           {/* PROJECT PAGE PORTALS */}
-          <PortalAreas />
+          {gameState !== gameStates.LOADING && <PortalAreas />}
 
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           <mesh

@@ -120,7 +120,7 @@ export default function PortalArea({
         {/* COLLISION BODY */}
         <RigidBody
           type="fixed"
-          scale={1.0}
+          scale={[1.0, 5.0, 1.0]}
           position={[0, 0.1, 0]}
           // rotation={[-Math.PI * 0.5, 0, 0]}
           colliders={false}

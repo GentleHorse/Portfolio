@@ -18,7 +18,8 @@ export default function PortalAreas() {
   return (
     <>
       <group position-y={GATE_POSITION_Y}>
-        <group position-y={-1.0}>          {/* DESIGN - AMBIENCE OF LIGHT */}
+        <group position-y={-1.0}>
+          {/* DESIGN - AMBIENCE OF LIGHT */}
           <PortalArea
             redirectWatingSeconds={0.1}
             url="/ambience-of-light"
