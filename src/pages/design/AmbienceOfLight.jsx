@@ -11,6 +11,8 @@ import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibi
 import AmbienceOfLightImage07 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-07.jpg";
 import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-11.jpg";
 import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
+import AmbienceOfLightImage14 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-14.jpg";
+import AmbienceOfLightImage15 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-15.jpg";
 
 export default function AmbienceOfLightPage() {
   /**
@@ -124,7 +126,7 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] mx-[240px]">
           <img
-            src={AmbienceOfLightHeroImage}
+            src={AmbienceOfLightImage11}
             className="w-full h-auto object-cover"
           />
         </section>
@@ -149,12 +151,14 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section className="mt-[87px] mx-[240px]">
-          <img
-            src={AmbienceOfLightHeroImage}
-            className="w-full h-auto object-cover"
-          />
+          <div className="grid grid-cols-3 gap-6">
+            <img
+              src={AmbienceOfLightImage15}
+              className="col-span-2 object-cover h-full"
+            />
+            <img src={AmbienceOfLightImage07} className="object-cover h-full" />
+          </div>
         </section>
-
         <section id="outcome" className="my-[124px] mx-[240px]">
           <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
@@ -191,7 +195,10 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section className="mt-[87px] mx-[240px]">
-          <Link to="/beauty-of-time-passing" className="relative w-full flex flex-col items-center">
+          <Link
+            to="/beauty-of-time-passing"
+            className="relative w-full flex flex-col items-center"
+          >
             <img
               src={BeautyOfTimePassingHeroImage}
               className="w-2/5 h-auto object-cover opacity-50"
@@ -204,7 +211,11 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section className="mt-[87px] pb-[80px] mx-[240px]">
-          <Link to="works" className="relative w-full flex flex-col items-center">
+          <Link
+            to="works"
+            className="relative w-full flex flex-col items-center"
+            reloadDocument={true}
+          >
             <div className="w-[175px] h-[175px] bg-[#C1C1C1] rounded-full" />
 
             <p className="absolute font-roboto top-[80px] text-[14px] text-[#1C1C1C]">
