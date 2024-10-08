@@ -598,9 +598,9 @@ export default function Stage(props) {
 
         {/* LANDING ROOM, 3D APP VISUALS */}
         <DreiText
-          position={[-39, 22, 62]}
-          rotation={[Math.PI / 8, Math.PI / 2, 0]}
-          font="./fonts/WorldConflictRegular-p26R.woff"
+          position={[-39, 18, 25]}
+          rotation={[0, Math.PI / 2, 0]}
+          font="./fonts/shippori-mincho-b1-v21-japanese-regular.woff"
           fontSize={4.0}
           maxWidth={45.0}
           anchorX="center"
@@ -608,10 +608,10 @@ export default function Stage(props) {
           textAlign="center"
           letterSpacing={0.05}
           lineHeight={1.05}
-          color="#FFE302"
+          color="#FFFFFF"
           // color="#FF028D"
         >
-          Works {"\n"} in progress ....
+          Working {"\n"} Studio
         </DreiText>
 
         <group
@@ -1113,7 +1113,7 @@ export default function Stage(props) {
         <DreiText
           position={[13, 21, -46]}
           // rotation={[0, 0, Math.PI * 0.1]}
-          font="./fonts/WorldConflictRegular-p26R.woff"
+          font="./fonts/shippori-mincho-b1-v21-japanese-regular.woff"
           fontSize={4.5}
           maxWidth={7.0}
           anchorX="center"
@@ -1122,9 +1122,9 @@ export default function Stage(props) {
           letterSpacing={0.15}
           lineHeight={1.2}
           // color="#FFE302"
-          color="#FF028D"
+          color="#FFFFFF"
         >
-          Digitalized Physicals are Inside
+          Design Gallery
         </DreiText>
 
         <group

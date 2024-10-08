@@ -3,6 +3,7 @@ import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 
 import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
+import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
 import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
@@ -38,7 +39,7 @@ export default function AmbienceOfLightPage() {
 
       <div id="page">
         <section id="intro" className="mt-[148px] mx-[240px]">
-          <h1 className="mb-[42px] font-serif text-[64px] text-[#C1C1C1]">
+          <h1 className="mb-[42px] font-serif text-[72px] text-[#C1C1C1]">
             Ambience of Light
           </h1>
           <img
@@ -47,12 +48,12 @@ export default function AmbienceOfLightPage() {
             className="mb-[70px] w-full h-[500px] object-cover"
           />
           <div className="flex">
-            <div className="flex-none w-[235px]">
-              <p className="mb-[26px] text-[16px] text-[#C1C1C1]">2024</p>
-              <p className="text-[16px] text-[#C1C1C1]">Product Design</p>
+            <div className="flex-none w-[350px]">
+              <p className="mb-[26px] text-[24px] text-[#C1C1C1]">2024</p>
+              <p className="text-[24px] text-[#C1C1C1]">Product Design</p>
             </div>
 
-            <p className="mb-[72px] grow text-[20px] text-[#C1C1C1]">
+            <p className="mb-[72px] grow text-[28px] text-[#C1C1C1]">
               The "Ambience of Light" is a lighting product that utilises
               industrial glass blocks, originally designed to capture daylight,
               to create a distinctive and atmospheric lighting experience in any
@@ -60,9 +61,9 @@ export default function AmbienceOfLightPage() {
             </p>
           </div>
           <div className="flex gap-4">
-            <p className="text-[14px] text-[#C1C1C1]">#perception of space</p>
-            <p className="text-[14px] text-[#C1C1C1]">#in praise of shadows</p>
-            <p className="text-[14px] text-[#C1C1C1]">
+            <p className="text-[20px] text-[#C1C1C1]">#perception of space</p>
+            <p className="text-[20px] text-[#C1C1C1]">#in praise of shadows</p>
+            <p className="text-[20px] text-[#C1C1C1]">
               #blur boundaries in space
             </p>
           </div>
@@ -76,13 +77,13 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section id="challenge" className="my-[124px] mx-[240px]">
-          <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             CHALLENGE
           </p>
-          <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Lack of daylight and limited designs
           </p>
-          <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
             Industrial glass blocks were originally invented to bring daylight
             into domestic and commercial spaces comfortably. Their
             light-transmitting and diffusing properties filter sunlight into
@@ -102,13 +103,13 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section id="approach" className="my-[124px] mx-[240px]">
-          <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
-          <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             A unique atmosphere with the Japanese traditional lamp
           </p>
-          <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
             Before electric lighting, people in Japan used "Andon" lamps, made
             from paper stretched over bamboo, wood, or metal frames, to
             illuminate spaces. The paper gently diffused light from a single
@@ -129,10 +130,10 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section className="my-[124px] mx-[240px]">
-          <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Reshape our perception of darkness in space
           </p>
-          <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
             During the Edo period, people relied on oil lamps and candles as
             light sources for Andon lamps, resulting in typically dark living
             spaces. In his 1933 essay "In Praise of Shadows," Junichiro Tanizaki
@@ -155,13 +156,13 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section id="outcome" className="my-[124px] mx-[240px]">
-          <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>
-          <p className="mb-[45px] font-bold text-[20px] text-[#C1C1C1]">
+          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Modular lighting products with playful compositions
           </p>
-          <p className="mb-[125px] text-[16px] text-[#C1C1C1]">
+          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
             Daylight varies throughout the day, week, and across seasons,
             influencing the way light interacts with architectural
             installations. Using glass bricks, the same setup can produce a
@@ -190,25 +191,26 @@ export default function AmbienceOfLightPage() {
         </section>
 
         <section className="mt-[87px] mx-[240px]">
-          <div className="relative w-full flex flex-col items-center">
+          <Link to="/beauty-of-time-passing" className="relative w-full flex flex-col items-center">
             <img
-              src={AmbienceOfLightHeroImage}
+              src={BeautyOfTimePassingHeroImage}
               className="w-2/5 h-auto object-cover opacity-50"
             />
+
             <p className="absolute top-1/2 text-[18px] text-[#C1C1C1]">
               Explore the next project
             </p>
-          </div>
+          </Link>
         </section>
 
         <section className="mt-[87px] pb-[80px] mx-[240px]">
-          <div className="relative w-full flex flex-col items-center">
+          <Link to="works" className="relative w-full flex flex-col items-center">
             <div className="w-[175px] h-[175px] bg-[#C1C1C1] rounded-full" />
 
             <p className="absolute font-roboto top-[80px] text-[14px] text-[#1C1C1C]">
               Back to overview
             </p>
-          </div>
+          </Link>
         </section>
       </div>
     </>

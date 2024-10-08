@@ -108,19 +108,19 @@ export default function Menu() {
             <img src="./images/icons/play-triangle.svg" className="w-[50px]" />
           </button>
           <div className="w-full text-slate-50 text-xl flex justify-center">
-            <Link to="/portfolio-website">
+            <Link to="/portfolio-website" reloadDocument={true}>
               <p className="mx-5 font-serif">About this website</p>
             </Link>
 
-            <Link to="/about">
+            <Link to="/about" reloadDocument={true}>
               <p className="mx-5 font-serif">Author</p>
             </Link>
 
-            <Link to="/works">
+            <Link to="/works" reloadDocument={true}>
               <p className="mx-5 font-serif">Works</p>
             </Link>
 
-            <Link to="/contact">
+            <Link to="/contact" reloadDocument={true}>
               <p className="mx-5 font-serif">Contact</p>
             </Link>
           </div>
