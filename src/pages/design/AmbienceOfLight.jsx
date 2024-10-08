@@ -1,5 +1,6 @@
 import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
+import { Link } from "react-router-dom";
 
 import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 
@@ -11,13 +12,17 @@ import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibi
 import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
 
 export default function AmbienceOfLightPage() {
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+
   // Initialize Lenis
   const lenis = new Lenis();
 
   // Listen for the scroll event and log the event data
-  lenis.on("scroll", (e) => {
-    console.log(e);
-  });
+  // lenis.on("scroll", (e) => {
+  //   console.log(e);
+  // });
 
   // Use requestAnimationFrame to continuously update the scroll
   function raf(time) {
@@ -31,8 +36,10 @@ export default function AmbienceOfLightPage() {
     <>
       <Header home about works contact />
 
+      <SectionIndicator />
+
       <div id="page">
-        <section className="mt-[148px] mx-[240px]">
+        <section id="intro" className="mt-[148px] mx-[240px]">
           <h1 className="mb-[42px] font-serif text-[64px] text-[#C1C1C1]">
             Ambience of Light
           </h1>
@@ -70,7 +77,7 @@ export default function AmbienceOfLightPage() {
           />
         </section>
 
-        <section className="my-[124px] mx-[240px]">
+        <section id="challenge" className="my-[124px] mx-[240px]">
           <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
             CHALLENGE
           </p>
@@ -96,7 +103,7 @@ export default function AmbienceOfLightPage() {
           />
         </section>
 
-        <section className="my-[124px] mx-[240px]">
+        <section id="approach" className="my-[124px] mx-[240px]">
           <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
@@ -149,7 +156,7 @@ export default function AmbienceOfLightPage() {
           />
         </section>
 
-        <section className="my-[124px] mx-[240px]">
+        <section id="outcome" className="my-[124px] mx-[240px]">
           <p className="mb-[14px] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>
@@ -205,6 +212,39 @@ export default function AmbienceOfLightPage() {
             </p>
           </div>
         </section>
+      </div>
+    </>
+  );
+}
+
+function SectionIndicator() {
+  return (
+    <>
+      <div className="fixed h-[100vh] flex flex-col justify-center ml-5">
+        <a
+          href="/ambience-of-light/#intro"
+          className="flex items-center gap-2 my-3"
+        >
+          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
+          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Intro</p>
+        </a>
+
+        <a href="/ambience-of-light/#challenge" className="flex items-center gap-2 my-3">
+          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
+          <p className="font-montserrat text-[12px] text-[#C1C1C1]">
+            Challenge
+          </p>
+        </a>
+
+        <a href="/ambience-of-light/#approach" className="flex items-center gap-2 my-3">
+          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
+          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Approach</p>
+        </a>
+
+        <a href="/ambience-of-light/#outcome" className="flex items-center gap-2 my-3">
+          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
+          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Outcome</p>
+        </a>
       </div>
     </>
   );
