@@ -36,8 +36,6 @@ export default function AmbienceOfLightPage() {
     <>
       <Header home about works contact />
 
-      <SectionIndicator />
-
       <div id="page">
         <section id="intro" className="mt-[148px] mx-[240px]">
           <h1 className="mb-[42px] font-serif text-[64px] text-[#C1C1C1]">
@@ -212,39 +210,6 @@ export default function AmbienceOfLightPage() {
             </p>
           </div>
         </section>
-      </div>
-    </>
-  );
-}
-
-function SectionIndicator() {
-  return (
-    <>
-      <div className="fixed h-[100vh] flex flex-col justify-center ml-5">
-        <a
-          href="/ambience-of-light/#intro"
-          className="flex items-center gap-2 my-3"
-        >
-          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
-          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Intro</p>
-        </a>
-
-        <a href="/ambience-of-light/#challenge" className="flex items-center gap-2 my-3">
-          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
-          <p className="font-montserrat text-[12px] text-[#C1C1C1]">
-            Challenge
-          </p>
-        </a>
-
-        <a href="/ambience-of-light/#approach" className="flex items-center gap-2 my-3">
-          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
-          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Approach</p>
-        </a>
-
-        <a href="/ambience-of-light/#outcome" className="flex items-center gap-2 my-3">
-          <div className="w-[10px] h-[10px] bg-[#C1C1C1] rounded-full" />
-          <p className="font-montserrat text-[12px] text-[#C1C1C1]">Outcome</p>
-        </a>
       </div>
     </>
   );

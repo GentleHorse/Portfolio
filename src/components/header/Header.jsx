@@ -35,7 +35,7 @@ export default function Header({ home, about, works, contact }) {
               transition={{ duration: 0.2 }}
             >
               {home && (
-                <Link to="/">
+                <Link to="/" reloadDocument={false}>
                   <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     Explore
                   </h1>
@@ -43,7 +43,7 @@ export default function Header({ home, about, works, contact }) {
               )}
 
               {about && (
-                <Link to="/about">
+                <Link to="/about" reloadDocument={false}>
                   <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     About
                   </h1>
@@ -51,7 +51,7 @@ export default function Header({ home, about, works, contact }) {
               )}
 
               {works && (
-                <Link to="/works">
+                <Link to="/works" reloadDocument={false}>
                   <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
                     Works
                   </h1>

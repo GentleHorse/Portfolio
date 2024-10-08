@@ -10,6 +10,7 @@ import {
   Loader,
   OrbitControls,
 } from "@react-three/drei";
+
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 
