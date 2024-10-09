@@ -6,13 +6,11 @@ import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__t
 import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
-import AmbienceOfLightImage02 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-02.jpg";
-import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
+import AmbienceOfLightImage03 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-03.jpg";
 import AmbienceOfLightImage07 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-07.jpg";
 import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-11.jpg";
-import AmbienceOfLightImage13 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-13.jpg";
-import AmbienceOfLightImage14 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-14.jpg";
 import AmbienceOfLightImage15 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-15.jpg";
+import AmbienceOfLightImage16 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-16.png";
 
 export default function AmbienceOfLightPage() {
   /**
@@ -159,6 +157,7 @@ export default function AmbienceOfLightPage() {
             <img src={AmbienceOfLightImage07} className="object-cover h-full" />
           </div>
         </section>
+
         <section id="outcome" className="my-[124px] mx-[240px]">
           <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
@@ -183,10 +182,44 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] mx-[240px]">
           <img
+            src={AmbienceOfLightImage16}
+            className="w-full h-auto object-cover"
+          />
+        </section>
+
+        <section className="mt-[87px] mx-[240px]">
+          <img
             src={AmbienceOfLightHeroImage}
             className="w-full h-auto object-cover"
           />
         </section>
+
+        <section className="my-[124px] mx-[240px]">
+          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+            OBJECT Rotterdam 2024
+          </p>
+          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+            This project "Ambience of Light" was presented at presented at {""}
+            <a href="https://objectrotterdam.com/" target="_blank" className="font-bold text-white">
+              OBJECT Rotterdam 2024
+            </a>
+            {""} (Feb 2 - 4, 2024, HAKA-gebouw, Vierhavensstraat 40, 3029 BE
+            Rotterdam).
+          </p>
+        </section>
+
+        <section className="mt-[87px] w-[100vw]">
+          <img
+            src={AmbienceOfLightImage01}
+            className="sticky top-0 w-full h-auto object-cover"
+          />
+          <img
+            src={AmbienceOfLightImage03}
+            className="sticky top-0 w-full h-auto object-cover"
+          />
+        </section>
+
+        {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
         <section className="my-[124px] mx-[240px]">
           <div className="w-full flex">
@@ -212,7 +245,7 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] pb-[80px] mx-[240px]">
           <Link
-            to="works"
+            to="/works"
             className="relative w-full flex flex-col items-center"
             reloadDocument={true}
           >
