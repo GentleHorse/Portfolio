@@ -27,7 +27,7 @@ import waterFragmentShader from "../../../shaders/water/fragment.glsl";
  * MATERIAL FOR PORTFOLIO WEBSITE BLUEPRINT
  */
 const portfolioWebsiteBlueprintTexture = new THREE.TextureLoader().load(
-  "./textures/blueprint-portfolio-website/blueprint-portfolio-website.jpg"
+  "/textures/blueprint-portfolio-website/blueprint-portfolio-website.jpg"
 );
 portfolioWebsiteBlueprintTexture.wrapS = THREE.RepeatWrapping;
 portfolioWebsiteBlueprintTexture.wrapT = THREE.RepeatWrapping;
@@ -86,20 +86,20 @@ export default function Stage(props) {
   /**
    * VIDEO FOR SKY
    */
-  const skyVideoTexture = useVideoTexture("./videos/sky/sky.mov");
+  const skyVideoTexture = useVideoTexture("/videos/sky/sky.mov");
 
   /**
    * VIDEOS FOR THE BEAUTY OF TIME PASSING PROJECT
    */
   const springVideoTexture = useVideoTexture(
-    "./videos/beauty-of-time-passing/spring.mp4"
+    "/videos/beauty-of-time-passing/spring.mp4"
   );
 
   /**
    * VIDEO FOR DIGITAL SCENERY
    */
   const binaryNumbersBackgroundVideo = useVideoTexture(
-    "./videos/beauty-of-time-passing/binary-numbers-resize-40perc.mp4"
+    "/videos/beauty-of-time-passing/binary-numbers-resize-40perc.mp4"
   );
   binaryNumbersBackgroundVideo.wrapS = THREE.RepeatWrapping;
   binaryNumbersBackgroundVideo.wrapT = THREE.RepeatWrapping;
@@ -110,7 +110,7 @@ export default function Stage(props) {
    * VIDEOS FOR THE 3D VIDUALS
    */
   const silkySphereVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Silkey_Sphere.mp4"
+    "/videos/three-d-visuals/Silkey_Sphere.mp4"
   );
 
   silkySphereVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -118,7 +118,7 @@ export default function Stage(props) {
   silkySphereVideoTexture.flipY = false;
 
   const bloomingFlowerVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Blooming_Flower.mp4"
+    "/videos/three-d-visuals/Blooming_Flower.mp4"
   );
 
   bloomingFlowerVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -126,7 +126,7 @@ export default function Stage(props) {
   bloomingFlowerVideoTexture.flipY = false;
 
   const dancingTentacleVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Dancing_Tentacles.mp4"
+    "/videos/three-d-visuals/Dancing_Tentacles.mp4"
   );
 
   dancingTentacleVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -134,7 +134,7 @@ export default function Stage(props) {
   dancingTentacleVideoTexture.flipY = false;
 
   const glassPoppingVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Glass_Popping.mp4"
+    "/videos/three-d-visuals/Glass_Popping.mp4"
   );
 
   glassPoppingVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -142,7 +142,7 @@ export default function Stage(props) {
   glassPoppingVideoTexture.flipY = false;
 
   const beautyOfTimePassingVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Beauty_Of_Time_Passing.mp4"
+    "/videos/three-d-visuals/Beauty_Of_Time_Passing.mp4"
   );
 
   beautyOfTimePassingVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -150,7 +150,7 @@ export default function Stage(props) {
   beautyOfTimePassingVideoTexture.flipY = false;
 
   const sakuraPetalsVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Sakura_Petals.mp4"
+    "/videos/three-d-visuals/Sakura_Petals.mp4"
   );
 
   sakuraPetalsVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -158,7 +158,7 @@ export default function Stage(props) {
   sakuraPetalsVideoTexture.flipY = false;
 
   const squishyObjectsVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Squishy_Objects.mp4"
+    "/videos/three-d-visuals/Squishy_Objects.mp4"
   );
 
   squishyObjectsVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -166,7 +166,7 @@ export default function Stage(props) {
   squishyObjectsVideoTexture.flipY = false;
 
   const sequenceRiverVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/Sequence_River.mp4"
+    "/videos/three-d-visuals/Sequence_River.mp4"
   );
 
   sequenceRiverVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -174,7 +174,7 @@ export default function Stage(props) {
   sequenceRiverVideoTexture.flipY = false;
 
   const all3DVisualsVideoTexture = useVideoTexture(
-    "./videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
+    "/videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
   );
 
   all3DVisualsVideoTexture.wrapS = THREE.RepeatWrapping;
@@ -186,7 +186,7 @@ export default function Stage(props) {
    */
 
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("./models/stage/stage.glb");
+  const { nodes, materials, animations } = useGLTF("/models/stage/stage.glb");
   const { actions } = useAnimations(animations, group);
 
   /**
@@ -1307,4 +1307,4 @@ export default function Stage(props) {
   );
 }
 
-useGLTF.preload("./models/stage/stage.glb");
+useGLTF.preload("/models/stage/stage.glb");

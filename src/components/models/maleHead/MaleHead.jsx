@@ -16,7 +16,7 @@ export default function MaleHead(props) {
   /**
    * LOAD THE MODEL
    */
-  const { nodes, materials } = useGLTF("./models/male-head/male-head.glb");
+  const { nodes, materials } = useGLTF("/models/male-head/male-head.glb");
 
   /**
    * REF - UPPER HEAD, EYE BALLS
@@ -133,4 +133,4 @@ export default function MaleHead(props) {
   );
 }
 
-useGLTF.preload("./models/male-head/male-head.glb");
+useGLTF.preload("/models/male-head/male-head.glb");

@@ -7,7 +7,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function PortalGate(props) {
-  const { nodes, materials } = useGLTF("./models/portal-gate/portal-gate.glb ");
+  const { nodes, materials } = useGLTF("/models/portal-gate/portal-gate.glb ");
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -20,4 +20,4 @@ export default function PortalGate(props) {
   );
 }
 
-useGLTF.preload("./models/portal-gate/portal-gate.glb ");
+useGLTF.preload("/models/portal-gate/portal-gate.glb ");

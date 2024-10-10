@@ -1,6 +1,7 @@
 import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
+import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 
 import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
@@ -26,12 +27,16 @@ export default function BeautyOfTimePassingPage() {
 
   requestAnimationFrame(raf);
 
+  
+
   return (
     <>
       <Header home about works contact />
 
+      <SectionIndicator />
+
       <div id="page">
-        <section id="intro" className="mt-[148px] mx-[240px]">
+        <section id="intro" className="pt-[148px] mx-[240px]">
           <h1 className="mb-[42px] font-serif text-[72px] text-[#C1C1C1]">
             Beauty of Time Passing
           </h1>
@@ -69,7 +74,7 @@ export default function BeautyOfTimePassingPage() {
           />
         </section>
 
-        <section id="challenge" className="my-[124px] mx-[240px]">
+        <section id="challenge" className="py-[124px] mx-[240px]">
           <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             CHALLENGE
           </p>
@@ -97,7 +102,7 @@ export default function BeautyOfTimePassingPage() {
           />
         </section>
 
-        <section id="approach" className="my-[124px] mx-[240px]">
+        <section id="approach" className="py-[124px] mx-[240px]">
           <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
@@ -156,7 +161,7 @@ export default function BeautyOfTimePassingPage() {
           </div>
         </section>
 
-        <section id="outcome" className="my-[124px] mx-[240px]">
+        <section id="outcome" className="py-[124px] mx-[240px]">
           <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>

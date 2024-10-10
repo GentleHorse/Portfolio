@@ -13,7 +13,7 @@ export default function TorusKnotTube({ ...props }) {
   /**
    * IMPORT MODEL - TORUSKNOT TUBE, BALL
    */
-  const { nodes, materials } = useGLTF("./models/torusknot/torusknot.glb ");
+  const { nodes, materials } = useGLTF("/models/torusknot/torusknot.glb ");
 
   /**
    * ANIMATION
@@ -53,4 +53,4 @@ export default function TorusKnotTube({ ...props }) {
   );
 }
 
-useGLTF.preload("./models/torusknot/torusknot.glb ");
+useGLTF.preload("/models/torusknot/torusknot.glb ");

@@ -392,7 +392,7 @@ function GlassFocusTorus({ geometry, material }) {
   const { width, height } = useThree((state) => state.viewport);
 
   const { nodes, materials } = useGLTF(
-    "./models/torus-lens-plane/torus-lens-plane.glb"
+    "/models/torus-lens-plane/torus-lens-plane.glb"
   );
 
   return (
@@ -426,4 +426,4 @@ function GlassFocusTorus({ geometry, material }) {
   );
 }
 
-useGLTF.preload("./models/torus-lens-plane/torus-lens-plane.glb");
+useGLTF.preload("/models/torus-lens-plane/torus-lens-plane.glb");

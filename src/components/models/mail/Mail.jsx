@@ -10,7 +10,7 @@ import { useGLTF, Clone } from "@react-three/drei";
  * Use "<Clone>" instead of "<mesh>" for populating multiple times
  */
 export default function Mail(props) {
-  const { nodes, materials } = useGLTF("./models/mail/mail.glb");
+  const { nodes, materials } = useGLTF("/models/mail/mail.glb");
   return (
     <group {...props} dispose={null}>
       <Clone
@@ -27,4 +27,4 @@ export default function Mail(props) {
   );
 }
 
-useGLTF.preload("./models/mail/mail.glb");
+useGLTF.preload("/models/mail/mail.glb");
