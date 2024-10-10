@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
@@ -18,19 +18,45 @@ export default function AmbienceOfLightPage() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
    */
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis();
 
-  // Initialize Lenis
-  const lenis = new Lenis();
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  // Use requestAnimationFrame to continuously update the scroll
-  function raf(time) {
-    lenis.raf(time);
     requestAnimationFrame(raf);
-  }
+  }, []);
 
-  requestAnimationFrame(raf);
-
-  const intro = useRef();
+  /**
+   * SCROLL ELEMENT APPEAR ANIMATION
+   */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-element");
+          } 
+          else {
+            entry.target.classList.remove("show-element");
+          }
+        });
+      },
+      {
+        rootMargin: "0px",
+        threshold: [0, 0.1, 1],
+      }
+    );
+  
+    const tags = document.querySelectorAll(".hidden-element");
+    tags.forEach((tag) => {
+      observer.observe(tag);
+    });
+  }, [])
   
 
   return (
@@ -39,9 +65,11 @@ export default function AmbienceOfLightPage() {
 
       <SectionIndicator />
 
+      {/* ----- INTRO ----- */}
+
       <div id="page">
         <section name="intro" className="pt-[148px] mx-[240px]">
-          <h1 className="mb-[42px] font-serif text-[72px] text-[#C1C1C1]">
+          <h1 className="project-title mb-[42px] font-serif text-[72px] text-[#C1C1C1]">
             Ambience of Light
           </h1>
           <img
@@ -78,14 +106,16 @@ export default function AmbienceOfLightPage() {
           />
         </section>
 
+        {/* ----- CHALLENGE ----- */}
+
         <section name="challenge" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             CHALLENGE
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Lack of daylight and limited designs
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Industrial glass blocks were originally invented to bring daylight
             into domestic and commercial spaces comfortably. Their
             light-transmitting and diffusing properties filter sunlight into
@@ -100,18 +130,20 @@ export default function AmbienceOfLightPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={AmbienceOfLightHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
+        {/* ----- APPROACH ----- */}
+
         <section name="approach" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             A unique atmosphere with the Japanese traditional lamp
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Before electric lighting, people in Japan used "Andon" lamps, made
             from paper stretched over bamboo, wood, or metal frames, to
             illuminate spaces. The paper gently diffused light from a single
@@ -127,15 +159,15 @@ export default function AmbienceOfLightPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={AmbienceOfLightImage11}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="my-[124px] mx-[240px]">
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Reshape our perception of darkness in space
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             During the Edo period, people relied on oil lamps and candles as
             light sources for Andon lamps, resulting in typically dark living
             spaces. In his 1933 essay "In Praise of Shadows," Junichiro Tanizaki
@@ -154,20 +186,22 @@ export default function AmbienceOfLightPage() {
           <div className="grid grid-cols-3 gap-6">
             <img
               src={AmbienceOfLightImage15}
-              className="col-span-2 object-cover h-full"
+              className="hidden-element grid-images col-span-2 object-cover h-full"
             />
-            <img src={AmbienceOfLightImage07} className="object-cover h-full" />
+            <img src={AmbienceOfLightImage07} className="hidden-element grid-images object-cover h-full" />
           </div>
         </section>
 
+        {/* ----- OUTCOME ----- */}
+
         <section name="outcome" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Modular lighting products with playful compositions
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Daylight varies throughout the day, week, and across seasons,
             influencing the way light interacts with architectural
             installations. Using glass bricks, the same setup can produce a
@@ -185,27 +219,27 @@ export default function AmbienceOfLightPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={AmbienceOfLightImage16}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="mt-[87px] mx-[240px]">
           <img
             src={AmbienceOfLightHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="my-[124px] mx-[240px]">
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             OBJECT Rotterdam 2024
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             This project "Ambience of Light" was presented at presented at {""}
             <a
               href="https://objectrotterdam.com/"
               target="_blank"
-              className="font-bold text-white"
+              className="hidden-element font-bold text-white"
             >
               OBJECT Rotterdam 2024
             </a>

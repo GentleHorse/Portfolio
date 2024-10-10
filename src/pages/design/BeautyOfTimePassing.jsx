@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
@@ -15,25 +16,52 @@ export default function BeautyOfTimePassingPage() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
    */
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis();
 
-  // Initialize Lenis
-  const lenis = new Lenis();
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  // Use requestAnimationFrame to continuously update the scroll
-  function raf(time) {
-    lenis.raf(time);
     requestAnimationFrame(raf);
-  }
+  }, []);
 
-  requestAnimationFrame(raf);
+  /**
+   * SCROLL ELEMENT APPEAR ANIMATION
+   */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-element");
+          } else {
+            entry.target.classList.remove("show-element");
+          }
+        });
+      },
+      {
+        rootMargin: "0px",
+        threshold: [0, 0.1, 1],
+      }
+    );
 
-  
+    const tags = document.querySelectorAll(".hidden-element");
+    tags.forEach((tag) => {
+      observer.observe(tag);
+    });
+  }, []);
 
   return (
     <>
       <Header home about works contact />
 
       <SectionIndicator />
+
+      {/* ----- INTRO ----- */}
 
       <div id="page">
         <section id="intro" className="pt-[148px] mx-[240px]">
@@ -74,14 +102,16 @@ export default function BeautyOfTimePassingPage() {
           />
         </section>
 
+        {/* ----- CHALLENGE ----- */}
+
         <section id="challenge" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             CHALLENGE
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Challenge topic summary sentence
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
             eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
@@ -98,18 +128,20 @@ export default function BeautyOfTimePassingPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={BeautyOfTimePassingHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
+        {/* ----- APPROACH ----- */}
+
         <section id="approach" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Approach topic summary sentence 01
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
             eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
@@ -126,15 +158,15 @@ export default function BeautyOfTimePassingPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={BeautyOfTimePassingHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="my-[124px] mx-[240px]">
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Approach topic summary sentence 02
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
             eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
@@ -152,23 +184,25 @@ export default function BeautyOfTimePassingPage() {
           <div className="grid grid-cols-3 gap-6">
             <img
               src={BeautyOfTimePassingHeroImage}
-              className="col-span-2 object-cover h-full"
+              className="hidden-element grid-images col-span-2 object-cover h-full"
             />
             <img
               src={BeautyOfTimePassingHeroImage}
-              className="object-cover h-full"
+              className="hidden-element grid-images object-cover h-full"
             />
           </div>
         </section>
 
+        {/* ----- OUTCOME ----- */}
+
         <section id="outcome" className="py-[124px] mx-[240px]">
-          <p className="mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[18x] font-montserrat text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Outcome topic summary sentence 01
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
             eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
@@ -185,22 +219,22 @@ export default function BeautyOfTimePassingPage() {
         <section className="mt-[87px] mx-[240px]">
           <img
             src={BeautyOfTimePassingHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="mt-[87px] mx-[240px]">
           <img
             src={AmbienceOfLightHeroImage}
-            className="w-full h-auto object-cover"
+            className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         <section className="my-[124px] mx-[240px]">
-          <p className="mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[45px] font-bold text-[24px] text-[#C1C1C1]">
             Outcome topic summary sentence 01
           </p>
-          <p className="mb-[125px] text-[22px] text-[#C1C1C1]">
+          <p className="hidden-element mb-[125px] text-[22px] text-[#C1C1C1]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
             eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
