@@ -105,7 +105,7 @@ function ContactExperience() {
         />
       </EffectComposer>
 
-      <Html center className="mt-[30vh] h-[100vh]">
+      <Html zIndexRange={[10, 0]} center className="mt-[30vh] h-[100vh]">
         <section>
           <h1
             className={`ml-[10vw] w-[80vw] font-cinzel ${

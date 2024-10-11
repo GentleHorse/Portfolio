@@ -16,7 +16,7 @@ export default function Header({ home, about, works, contact }) {
 
   return (
     <header
-      className={`fixed right-0 text-right pt-5 pr-5 z-10  ${
+      className={`fixed right-0 text-right pt-5 pr-5 z-50  ${
         isMenuOpen &&
         !isBrowser &&
         "overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
