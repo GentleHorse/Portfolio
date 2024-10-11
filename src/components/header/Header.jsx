@@ -9,12 +9,19 @@ import {
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { isBrowser } from "react-device-detect";
 
 export default function Header({ home, about, works, contact }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed right-1 text-right mt-5 mr-5 z-10">
+    <header
+      className={`fixed right-0 text-right pt-5 pr-5 z-10  ${
+        isMenuOpen &&
+        !isBrowser &&
+        "overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+      }`}
+    >
       <section>
         <div className="w-full flex justify-end">
           <Hamburger
@@ -33,10 +40,17 @@ export default function Header({ home, about, works, contact }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className={`${!!isBrowser ? "" : "pl-10 w-[100vw] h-[100vh]"}`}
             >
               {home && (
                 <Link to="/" reloadDocument={true}>
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
+                  <h1
+                    className={`font-serif ${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "text-center my-[35px] text-[25px]"
+                    } text-[#FFFFFF]`}
+                  >
                     Explore
                   </h1>
                 </Link>
@@ -44,7 +58,14 @@ export default function Header({ home, about, works, contact }) {
 
               {about && (
                 <Link to="/about" reloadDocument={true}>
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
+                  <h1
+                    className={`font-serif ${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "text-center my-[35px] text-[25px]"
+                    } text-[#FFFFFF]`}
+                  >
+                    {" "}
                     About
                   </h1>
                 </Link>
@@ -52,7 +73,14 @@ export default function Header({ home, about, works, contact }) {
 
               {works && (
                 <Link to="/works" reloadDocument={true}>
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
+                  <h1
+                    className={`font-serif ${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "text-center my-[35px] text-[25px]"
+                    } text-[#FFFFFF]`}
+                  >
+                    {" "}
                     Works
                   </h1>
                 </Link>
@@ -60,27 +88,46 @@ export default function Header({ home, about, works, contact }) {
 
               {contact && (
                 <Link to="/contact">
-                  <h1 className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]">
+                  <h1
+                    className={`font-serif ${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "text-center my-[35px] text-[25px]"
+                    } text-[#FFFFFF]`}
+                  >
+                    {" "}
                     Contact
                   </h1>
                 </Link>
               )}
 
-              <div className="flex flex-col">
+              <div
+                className={`flex ${
+                  isBrowser ? "flex-col" : "mt-20 flex-row justify-center"
+                }`}
+              >
                 <a
                   href="https://www.instagram.com/toshiendo3d/"
                   target="_blank"
                 >
                   <FontAwesomeIcon
                     icon={faInstagram}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
+                    className={`${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "mx-2 text-[40px]"
+                    } text-[#FFFFFF]`}
                   />
                 </a>
 
                 <a href="https://github.com/GentleHorse" target="_blank">
                   <FontAwesomeIcon
                     icon={faGithub}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
+                    className={`${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "mx-2 text-[40px]"
+                    } text-[#FFFFFF]`}
                   />
                 </a>
 
@@ -90,14 +137,22 @@ export default function Header({ home, about, works, contact }) {
                 >
                   <FontAwesomeIcon
                     icon={faLinkedin}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
+                    className={`${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "mx-2 text-[40px]"
+                    } text-[#FFFFFF]`}
                   />
                 </a>
 
                 <a href="https://x.com/toshihito_endo" target="_blank">
                   <FontAwesomeIcon
                     icon={faXTwitter}
-                    className="font-roboto mt-[20px] mr-[10px] mb-[5px] text-[20px] text-[#FFFFFF]"
+                    className={`${
+                      isBrowser
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        : "mx-2 text-[40px]"
+                    } text-[#FFFFFF]`}
                   />
                 </a>
               </div>
