@@ -307,10 +307,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
             url={project.imageUrl}
           />
           <Text
-            position={isBrowser ? textProps.position : [-0.5, 0, 0.25]}
-            fontSize={isBrowser ? textProps.fontSize : 0.15}
+            position={isBrowser ? textProps.position : [-1.5, 0.6, 0.25]}
+            fontSize={isBrowser ? textProps.fontSize : 0.35}
             font={textProps.font}
-            maxWidth={isBrowser ? textProps.maxWidth : 1.0}
+            maxWidth={isBrowser ? textProps.maxWidth : 2.0}
             anchorX={textProps.anchorX}
           >
             {project.title}
@@ -341,7 +341,7 @@ function Image({ ...props }) {
         ref={ref}
         {...props}
         toneMapped={false}
-        opacity={1.0}
+        opacity={0.85}
         transparent={true}
       />
     </group>

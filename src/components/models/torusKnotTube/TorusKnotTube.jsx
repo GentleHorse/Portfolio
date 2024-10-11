@@ -38,7 +38,7 @@ export default function TorusKnotTube({ ...props }) {
         colliders="trimesh"
       >
         <mesh geometry={nodes["torusknot-tube"].geometry}>
-          <MeshTransmissionMaterial backside={false} thickness={2} />
+          <MeshTransmissionMaterial backside={true} thickness={2} />
         </mesh>
       </RigidBody>
 

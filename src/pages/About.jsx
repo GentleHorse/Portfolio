@@ -10,6 +10,7 @@ import {
   Loader,
   OrbitControls,
 } from "@react-three/drei";
+import { isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
@@ -20,6 +21,9 @@ import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 const SCROLL_PAGES = 6;
 const SCROLL_DAMPING = 0.15;
 const SCROLL_DISTANCE = 0.5;
+const CAMERA_FOV = isBrowser ? 15 : 40;
+const CAMERA_POSITION = isBrowser ? [0, 0, 20] : [0, 0, 8];
+const HEAD_POSITION = isBrowser ? [0.8, -3, 0] : [0.15, -3.25, 0];
 
 export default function AboutPage() {
   return (
@@ -29,7 +33,7 @@ export default function AboutPage() {
       <Loader />
 
       <Suspense fallback={null}>
-        <Canvas camera={{ position: [0, 0, 20], fov: 15 }}>
+        <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
           <ScrollControls
             pages={SCROLL_PAGES}
             damping={SCROLL_DAMPING}
@@ -39,7 +43,7 @@ export default function AboutPage() {
 
             <MaleHead
               scale={0.47}
-              position={[0.8, -3, 0]}
+              position={HEAD_POSITION}
               rotation={[Math.PI * -0.1, Math.PI * 0.1, 0]}
             />
 
