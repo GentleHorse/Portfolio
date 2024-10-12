@@ -83,23 +83,25 @@ export default function BeautyOfTimePassingPage() {
                 2023
               </p>
               <p className="mb-[20px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
-                Installation
+                Light Installation <br /> + Web Application
               </p>
             </div>
 
             <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              tempus ante eget lacus lobortis tempor. Quisque nisi ante,
-              suscipit id lorem sed, posuere posuere leo. Nullam nulla ligula,
-              euismod non dapibus quis, aliquet ac quam. Nullam sed auctor eros.
-              Pellentesque scelerisque, lectus sed tristique rutrum, augue risus
-              cursus nulla, sed.
+              "The Beauty of Time Passing" is a light installation that brings
+              people closer to nature by displaying dynamically changing,
+              digitally reproduced abstracted natural scenes. These scenes
+              reflect unpredictable weather conditions, creating a visually
+              pleasing, ever-evolving experience that mirrors nature’s constant
+              change.
             </p>
           </div>
           <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 01</p>
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 02</p>
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 03</p>
+            <p className="text-[12px] text-[#C1C1C1]">
+              #embrace unpredictability of nature
+            </p>
+            <p className="text-[12px] text-[#C1C1C1]">#touch point to nature</p>
+            <p className="text-[12px] text-[#C1C1C1]">#painting with lights</p>
           </div>
         </section>
 
@@ -120,19 +122,20 @@ export default function BeautyOfTimePassingPage() {
             CHALLENGE
           </p>
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Challenge topic summary sentence
+            Technology gets us closer to nature
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
-            eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
-            Sed lacinia, eros tincidunt bibendum vehicula, nisl sapien varius
-            enim, eu blandit augue lectus vel justo. Nulla rutrum volutpat ante
-            sed tincidunt. Praesent a mi ultrices magna vestibulum sagittis non
-            ac diam. Pellentesque vitae bibendum magna. Vivamus libero diam,
-            semper et auctor quis, interdum eget magna. Nam ut odio eu sapien
-            pellentesque viverra sed a risus. Morbi at metus sed nunc luctus
-            vulputate nec id arcu. Vivamus imperdiet commodo est
+            In today's fast-paced world, technological advancements are
+            relentless, making our lives increasingly convenient and leading to
+            more time spent in front of digital screens. As a result, our
+            connection to nature diminishes, creating a disconnect between our
+            modern lives and the natural environment. This reliance on
+            technology can create a barrier to experiencing the beauty of the
+            natural world. However, technology has the potential to bridge this
+            gap. By drawing inspiration from how ancient Japanese cultures
+            harmonised with nature within their architectural spaces, we can
+            leverage modern innovations to foster a deeper connection to the
+            natural environment, enriching our lives and well-being.
           </p>
         </section>
 
@@ -150,19 +153,21 @@ export default function BeautyOfTimePassingPage() {
             APPROACH
           </p>
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Approach topic summary sentence 01
+            The “window” where nature’s magnificence merges with interiors
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
-            eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
-            Sed lacinia, eros tincidunt bibendum vehicula, nisl sapien varius
-            enim, eu blandit augue lectus vel justo. Nulla rutrum volutpat ante
-            sed tincidunt. Praesent a mi ultrices magna vestibulum sagittis non
-            ac diam. Pellentesque vitae bibendum magna. Vivamus libero diam,
-            semper et auctor quis, interdum eget magna. Nam ut odio eu sapien
-            pellentesque viverra sed a risus. Morbi at metus sed nunc luctus
-            vulputate nec id arcu. Vivamus imperdiet commodo est
+            In traditional Japanese temples, windows often frame outdoor
+            scenery, allowing natural light to illuminate dark interiors while
+            reflecting a deep respect for nature. These windows symbolise the
+            belief that humans are an integral part of the natural world, not
+            separate from it. This seamless connection between outdoor
+            environments and indoor spaces creates an inviting, natural
+            ambiance. As a Japanese designer residing in the Western world, the
+            designer recognized that the light reflections created by window
+            glass bricks can serve a similar purpose. By mimicking the role of
+            traditional picture windows, glass bricks foster a sense of
+            connection to nature, enhancing the overall ambiance of contemporary
+            spaces.
           </p>
         </section>
 
@@ -175,19 +180,14 @@ export default function BeautyOfTimePassingPage() {
 
         <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Approach topic summary sentence 02
+            Projecting 3D rendered digital sceneries
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
-            eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
-            Sed lacinia, eros tincidunt bibendum vehicula, nisl sapien varius
-            enim, eu blandit augue lectus vel justo. Nulla rutrum volutpat ante
-            sed tincidunt. Praesent a mi ultrices magna vestibulum sagittis non
-            ac diam. Pellentesque vitae bibendum magna. Vivamus libero diam,
-            semper et auctor quis, interdum eget magna. Nam ut odio eu sapien
-            pellentesque viverra sed a risus. Morbi at metus sed nunc luctus
-            vulputate nec id arcu. Vivamus imperdiet commodo est
+            To brighten dim indoor architectural spaces while simultaneously
+            integrating natural landscapes, 3D-rendered animations of nature are
+            continuously displayed and projected onto the glass bricks. This
+            technique enhances the environment by creating a dynamic interplay
+            of light and imagery, fostering a connection with nature.
           </p>
         </section>
 
@@ -204,6 +204,58 @@ export default function BeautyOfTimePassingPage() {
           </div>
         </section>
 
+        <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            “Realistic” moving visuals and dynamic changes
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            Various stimuli, including scent and tactile sensations, can evoke a
+            "sense of nature" in people, but moving visuals are among the most
+            powerful elements in creating this connection. To achieve realistic
+            moving visuals, 3D nature scenes were developed using Houdini, the
+            industry-standard software for visual effects and physics
+            simulations. These scenes are enhanced by transitioning through the
+            seasons, from spring to winter, captured in approximately 30-second
+            looping animations. This technique adds dynamism to the visuals,
+            allowing viewers to experience the beauty of nature's cycles in a
+            captivating way, fostering a deeper emotional connection to the
+            natural world.
+          </p>
+        </section>
+
+        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+          <img
+            src={BeautyOfTimePassingHeroImage}
+            className="hidden-element w-full h-auto object-cover"
+          />
+        </section>
+
+        <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            Embracing unpredictable aspects of nature
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            Getting closer to nature involves acknowledging its uncontrollable
+            elements and incorporating them into our daily lives. For instance,
+            sudden rain showers are often seen as annoying inconveniences in
+            many cultures, but Japanese ukiyo-e artists, like Hiroshige Utagawa,
+            embraced them as atmospheric, character-filled themes for their
+            prints. Similarly, "The Beauty of Time Passing" adopts this
+            perspective through technology. The 3D nature scenes in this
+            installation respond to real weather data, allowing elements like
+            humidity to influence their appearance. On highly humid days, for
+            example, the visuals become blurred, mirroring the natural world and
+            fostering a deeper connection to its unpredictable beauty.
+          </p>
+        </section>
+
+        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+          <img
+            src={BeautyOfTimePassingHeroImage}
+            className="hidden-element w-full h-auto object-cover"
+          />
+        </section>
+
         {/* ----- OUTCOME ----- */}
 
         <section name="outcome" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
@@ -211,19 +263,18 @@ export default function BeautyOfTimePassingPage() {
             OUTCOME
           </p>
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Outcome topic summary sentence 01
+            Light installation worked with the web application
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
-            eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
-            Sed lacinia, eros tincidunt bibendum vehicula, nisl sapien varius
-            enim, eu blandit augue lectus vel justo. Nulla rutrum volutpat ante
-            sed tincidunt. Praesent a mi ultrices magna vestibulum sagittis non
-            ac diam. Pellentesque vitae bibendum magna. Vivamus libero diam,
-            semper et auctor quis, interdum eget magna. Nam ut odio eu sapien
-            pellentesque viverra sed a risus. Morbi at metus sed nunc luctus
-            vulputate nec id arcu. Vivamus imperdiet commodo est
+            The "Beauty of Time Passing" project comprises two distinct
+            components: a web application that displays weather-reflected 3D
+            nature scenes and a physical installation designed to create an
+            engaging visual momentum experience. The web application, developed
+            using React and WebGL (three.js), enables dynamic interactions with
+            the natural visuals based on real weather data. This innovative
+            project was showcased at the Design Academy Eindhoven Graduation
+            Show during Dutch Design Week (DDW) from October 21 to 29, 2023, at
+            Heuvel Galerie, located in Eindhoven.
           </p>
         </section>
 
@@ -239,24 +290,6 @@ export default function BeautyOfTimePassingPage() {
             src={AmbienceOfLightHeroImage}
             className="hidden-element w-full h-auto object-cover"
           />
-        </section>
-
-        <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
-          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Outcome topic summary sentence 01
-          </p>
-          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            mauris felis, vehicula sed mauris non, luctus vehicula enim. Proin
-            eget blandit ex. Ut at malesuada mauris, sit amet faucibus lacus.
-            Sed lacinia, eros tincidunt bibendum vehicula, nisl sapien varius
-            enim, eu blandit augue lectus vel justo. Nulla rutrum volutpat ante
-            sed tincidunt. Praesent a mi ultrices magna vestibulum sagittis non
-            ac diam. Pellentesque vitae bibendum magna. Vivamus libero diam,
-            semper et auctor quis, interdum eget magna. Nam ut odio eu sapien
-            pellentesque viverra sed a risus. Morbi at metus sed nunc luctus
-            vulputate nec id arcu. Vivamus imperdiet commodo est
-          </p>
         </section>
 
         {!!isBrowser && (
@@ -296,6 +329,15 @@ export default function BeautyOfTimePassingPage() {
             </section>
           </>
         )}
+
+        <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            Press
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            The "Beauty of Time Passing" project was featured in Design Milk.
+          </p>
+        </section>
 
         {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
