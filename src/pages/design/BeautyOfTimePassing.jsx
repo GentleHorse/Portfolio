@@ -106,7 +106,7 @@ export default function BeautyOfTimePassingPage() {
         <section className="mt-[87px]">
           <img
             src={BeautyOfTimePassingImage13}
-            className="w-full h-[270px] xl:h-[540px] object-cover"
+            className="w-full h-[270px] xl:h-[720px] object-cover"
           />
         </section>
 
@@ -114,7 +114,7 @@ export default function BeautyOfTimePassingPage() {
 
         <section
           name="challenge"
-          className="py-[124px] mx-[10vw] xl:mx-[240px]"
+          className="pt-[124px] mx-[10vw] xl:mx-[240px]"
         >
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             CHALLENGE
@@ -145,7 +145,7 @@ export default function BeautyOfTimePassingPage() {
 
         {/* ----- APPROACH ----- */}
 
-        <section name="approach" className="py-[124px] mx-[10vw] xl:mx-[240px]">
+        <section name="approach" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
@@ -206,7 +206,7 @@ export default function BeautyOfTimePassingPage() {
 
         {/* ----- OUTCOME ----- */}
 
-        <section name="outcome" className="py-[124px] mx-[10vw] xl:mx-[240px]">
+        <section name="outcome" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>

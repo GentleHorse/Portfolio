@@ -10,10 +10,15 @@ import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects
 
 import AmbienceOfLightImage01 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-01.jpg";
 import AmbienceOfLightImage03 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-03.jpg";
+import AmbienceOfLightImage06 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-06.jpg";
 import AmbienceOfLightImage07 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-07.jpg";
+import AmbienceOfLightImage10 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-10.jpg";
 import AmbienceOfLightImage11 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-11.jpg";
 import AmbienceOfLightImage15 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-15.jpg";
 import AmbienceOfLightImage16 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-16.png";
+import AmbienceOfLightImage17 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-17.jpg";
+import AmbienceOfLightImage19 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-19.jpg";
+
 
 export default function AmbienceOfLightPage() {
   /**
@@ -108,7 +113,7 @@ export default function AmbienceOfLightPage() {
         <section className="mt-[87px]">
           <img
             src={AmbienceOfLightImage01}
-            className="w-full h-[270px] xl:h-[540px] object-cover"
+            className="w-full h-[270px] xl:h-[720px] object-cover"
           />
         </section>
 
@@ -116,7 +121,7 @@ export default function AmbienceOfLightPage() {
 
         <section
           name="challenge"
-          className="py-[124px] mx-[10vw] xl:mx-[240px]"
+          className="pt-[124px] mx-[10vw] xl:mx-[240px]"
         >
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             CHALLENGE
@@ -138,14 +143,14 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
           <img
-            src={AmbienceOfLightHeroImage}
+            src={AmbienceOfLightImage17}
             className="hidden-element w-full h-auto object-cover"
           />
         </section>
 
         {/* ----- APPROACH ----- */}
 
-        <section name="approach" className="py-[124px] mx-[10vw] xl:mx-[240px]">
+        <section name="approach" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             APPROACH
           </p>
@@ -167,7 +172,11 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
           <img
-            src={AmbienceOfLightImage11}
+            src={AmbienceOfLightImage19}
+            className="hidden-element mx-auto mb-14 xl:mb-56 w-auto h-[240px]  xl:h-[720px] object-cover"
+          />
+          <img
+            src={AmbienceOfLightImage07}
             className="hidden-element w-full h-auto object-cover"
           />
         </section>
@@ -191,22 +200,23 @@ export default function AmbienceOfLightPage() {
           </p>
         </section>
 
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <div className="grid grid-cols-3 gap-6">
-            <img
-              src={AmbienceOfLightImage15}
-              className="hidden-element grid-images col-span-2 object-cover h-full"
-            />
-            <img
-              src={AmbienceOfLightImage07}
-              className="hidden-element grid-images object-cover h-full"
-            />
-          </div>
+        <section className="my-[87px] mx-[10vw] xl:mx-[240px]">
+          <img
+            src={AmbienceOfLightImage15}
+            className="hidden-element w-full h-auto object-cover"
+          />
+        </section>
+
+        <section className="my-[87px] mx-[10vw] xl:mx-[240px]">
+          <img
+            src={AmbienceOfLightImage06}
+            className="hidden-element w-full h-auto object-cover"
+          />
         </section>
 
         {/* ----- OUTCOME ----- */}
 
-        <section name="outcome" className="py-[124px] mx-[10vw] xl:mx-[240px]">
+        <section name="outcome" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
           <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
             OUTCOME
           </p>
@@ -228,7 +238,7 @@ export default function AmbienceOfLightPage() {
           </p>
         </section>
 
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+        <section className="my-[87px] mx-[10vw] xl:mx-[240px]">
           <img
             src={AmbienceOfLightImage16}
             className="hidden-element w-full h-auto object-cover"
@@ -237,7 +247,14 @@ export default function AmbienceOfLightPage() {
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
           <img
-            src={AmbienceOfLightHeroImage}
+            src={AmbienceOfLightImage10}
+            className="hidden-element w-full h-auto object-cover"
+          />
+        </section>
+
+        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+          <img
+            src={AmbienceOfLightImage11}
             className="hidden-element w-full h-auto object-cover"
           />
         </section>
