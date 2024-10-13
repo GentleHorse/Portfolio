@@ -4,7 +4,8 @@ Command: npx gltfjsx@6.4.1 ./public/models/portal-gate/portal-gate.glb
 */
 
 import React from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, MeshWobbleMaterial } from "@react-three/drei";
+import { MeshStandardMaterial } from "three";
 
 export default function PortalGate(props) {
   const { nodes, materials } = useGLTF("/models/portal-gate/portal-gate.glb ");
@@ -14,7 +15,8 @@ export default function PortalGate(props) {
         geometry={nodes["portal-gate"].geometry}
         // material={materials["portal-gate-material"]}
       >
-        <meshBasicMaterial />
+        {/* <meshBasicMaterial /> */}
+        <meshStandardMaterial color="#434343" roughness={0.1} metalness={0.95} />
       </mesh>
     </group>
   );

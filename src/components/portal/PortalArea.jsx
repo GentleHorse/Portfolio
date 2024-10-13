@@ -11,7 +11,7 @@ import portalVertexShader from "../../shaders/portal/vertex.glsl";
 import portalFragmentShader from "../../shaders/portal/fragment.glsl";
 
 const PORTAL_DOOR_WIDTH = 7.0;
-const PORTAL_DOOR_HEIGHT = 15.0;
+const PORTAL_DOOR_HEIGHT = 21.5;
 
 export default function PortalArea({
   redirectWatingSeconds,
@@ -67,7 +67,7 @@ export default function PortalArea({
     <>
       <group {...props}>
         {/* TEXT */}
-        <group position={[0, 5, 0]} rotation={[0, 0, 0]}>
+        <group position={[0, 6, 0]} rotation={[0, 0, 0]}>
           <Root>
             <Container flexDirection="column" gap={15} alignItems="center">
               <Text fontWeight="extra-bold" fontSize={60} color="snow">
@@ -98,7 +98,7 @@ export default function PortalArea({
 
         {/* GATE MESHES */}
         <mesh
-          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
+          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT * 0.7, 1.0]}
           position={[0, 0, 0]}
           rotation={[0, Math.PI, 0]}
           geometry={portalGeometry}
@@ -115,7 +115,7 @@ export default function PortalArea({
           />
         )}
 
-        <PortalGate scale={[5.5, 5.0, 10.0]} position={[0, 0, -0.25]} />
+        <PortalGate scale={[5.5, 6.0, 10.0]} position={[0, 0, -0.25]} />
 
         {/* COLLISION BODY */}
         <RigidBody
