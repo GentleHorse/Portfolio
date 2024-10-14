@@ -66,6 +66,14 @@ body,
   transition-delay: 350ms;
 }
 
+.grid-images:nth-child(3) {
+  transition-delay: 700ms;
+}
+
+.grid-images:nth-child(4) {
+  transition-delay: 1050ms;
+}
+
 /* .scroll-animated-element.in-view {
   border: 10px solid red; 
 } */

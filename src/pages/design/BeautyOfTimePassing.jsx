@@ -13,20 +13,25 @@ import BeautyOfTimePassingImage02 from "../../../public/images/design-projects/b
 import BeautyOfTimePassingImage03 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-03.jpg";
 import BeautyOfTimePassingImage13 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-13.jpg";
 import BeautyOfTimePassingImage14 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-14.jpg";
-// import BeautyOfTimePassingImage15 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-15.jpg";
-// import BeautyOfTimePassingImage16 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-16.jpg";
-// import BeautyOfTimePassingImage17 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-17.jpg";
-// import BeautyOfTimePassingImage18 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-18.jpg";
-// import BeautyOfTimePassingImage19 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-19.jpg";
-// import BeautyOfTimePassingImage20 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-20.jpg";
-// import BeautyOfTimePassingImage21 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-21.jpg";
-// import BeautyOfTimePassingImage22 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-22.jpg";
-// import BeautyOfTimePassingImage23 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-23.jpg";
+import BeautyOfTimePassingImage15 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-15.jpg";
+import BeautyOfTimePassingImage16 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-16.jpg";
+import BeautyOfTimePassingImage17 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-17.jpg";
+import BeautyOfTimePassingImage18 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-18.jpg";
+import BeautyOfTimePassingImage19 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-19.jpg";
+import BeautyOfTimePassingImage20 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-20.jpg";
+import BeautyOfTimePassingImage21 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-21.jpg";
+import BeautyOfTimePassingImage22 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-22.jpg";
+import BeautyOfTimePassingImage23 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-23.jpg";
 import BeautyOfTimePassingImage24 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-24.jpg";
 
-// import BeautyOfTimePassingVideo02 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-02.mp4";
-// import BeautyOfTimePassingVideo03 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-03.mp4";
-// import BeautyOfTimePassingVideo04 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-04.mp4";
+import BeautyOfTimePassingVideo01 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-01.mp4";
+import BeautyOfTimePassingVideo02 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-02.mp4";
+import BeautyOfTimePassingVideo03 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-03.mp4";
+import BeautyOfTimePassingVideo04 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-04.mp4";
+import BeautyOfTimePassingVideo05 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-05.mp4";
+import BeautyOfTimePassingVideo06 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-06.mp4";
+import BeautyOfTimePassingVideo07 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-07.mp4";
+import BeautyOfTimePassingVideo08 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-08.mp4";
 
 export default function BeautyOfTimePassingPage() {
   /**
@@ -186,7 +191,7 @@ export default function BeautyOfTimePassingPage() {
             environments and indoor spaces creates an inviting, natural
             ambiance. As a Japanese designer residing in the Western world, the
             designer recognized that the light reflections created by window
-            glass bricks can serve a similar purpose. By mimicking the role of
+            glass bricks can serve a similar purpose. Inspired by the role of
             traditional picture windows, glass bricks foster a sense of
             connection to nature, enhancing the overall ambiance of contemporary
             spaces.
@@ -194,17 +199,17 @@ export default function BeautyOfTimePassingPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <img
+          <img
             src={BeautyOfTimePassingImage15}
             className="hidden-element w-full h-auto object-cover"
-          /> */}
+          />
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <img
+          <img
             src={BeautyOfTimePassingImage16}
             className="hidden-element w-full h-auto object-cover"
-          /> */}
+          />
         </section>
 
         <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
@@ -221,20 +226,20 @@ export default function BeautyOfTimePassingPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-6">
             <img
-              src={BeautyOfTimePassingImage18}
+              src={BeautyOfTimePassingImage17}
               className="hidden-element grid-images object-cover h-[250px] xl:h-full"
             />
             <img
-              src={BeautyOfTimePassingImage17}
+              src={BeautyOfTimePassingImage18}
               className="hidden-element grid-images object-cover h-[250px] xl:h-full"
             />
             <img
               src={BeautyOfTimePassingImage01}
               className="hidden-element grid-images object-cover h-[250px] xl:h-full"
             />
-          </div> */}
+          </div>
         </section>
 
         <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
@@ -257,18 +262,18 @@ export default function BeautyOfTimePassingPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <video
+          <video
             className="hidden-element mx-auto h-[70vh] xl:h-[85vh] object-cover"
             autoPlay
             loop
             muted
           >
-            <source src={BeautyOfTimePassingVideo02} type="video/mp4" />
-          </video> */}
+            <source src={BeautyOfTimePassingVideo01} type="video/mp4" />
+          </video>
         </section>
 
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <div className="grid grid-cols-4 gap-4">
+        <section className="mt-[87px] mx-[10vw] xl:mx-[200px]">
+          <div className="grid grid-cols-4 gap-4">
             <img
               src={BeautyOfTimePassingImage19}
               className="hidden-element grid-images object-cover h-[250px] xl:h-full"
@@ -285,7 +290,7 @@ export default function BeautyOfTimePassingPage() {
               src={BeautyOfTimePassingImage22}
               className="hidden-element grid-images object-cover h-[250px] xl:h-full"
             />
-          </div> */}
+          </div>
         </section>
 
         <section className="my-[124px] mx-[10vw] xl:mx-[240px]">
@@ -308,21 +313,21 @@ export default function BeautyOfTimePassingPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <img
+          <img
             src={BeautyOfTimePassingImage23}
             className="hidden-element mx-auto w-1/2 xl:w-1/3 h-auto object-cover"
-          /> */}
+          />
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          {/* <video
+          <video
             className="hidden-element mx-auto h-[60vh] xl:h-[75vh] object-fit"
             autoPlay
             loop
             muted
           >
-            <source src={BeautyOfTimePassingVideo03} type="video/mp4" />
-          </video> */}
+            <source src={BeautyOfTimePassingVideo02} type="video/mp4" />
+          </video>
         </section>
 
         {/* ----- OUTCOME ----- */}
@@ -347,21 +352,98 @@ export default function BeautyOfTimePassingPage() {
           </p>
         </section>
 
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={BeautyOfTimePassingImage01}
-            className="hidden-element mx-auto w-[60vw] xl:w-[40vw] object-cover"
-          />
+        <section className="mt-[120px] mb-[240px] mx-[10vw] xl:mx-[240px]">
+          <video
+            className="hidden-element mx-auto h-[70vh] xl:h-[90vh] object-cover"
+            autoPlay
+            loop
+            muted
+          >
+            <source src={BeautyOfTimePassingVideo03} type="video/mp4" />
+          </video>
         </section>
 
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={BeautyOfTimePassingImage03}
-            className="hidden-element mx-auto w-[60vw] xl:w-[40vw] object-cover"
-          />
+        {!!isBrowser && (
+          <section className="mt-[240px] mb-[120px] w-[100vw]">
+            <div className="grid grid-cols-2 gap-0">
+              <img
+                src={BeautyOfTimePassingImage01}
+                className="hidden-element grid-images object-cover h-full"
+              />
+              <img
+                src={BeautyOfTimePassingImage03}
+                className="hidden-element grid-images object-cover h-full"
+              />
+            </div>
+          </section>
+        )}
+
+        {!!isMobile && (
+          <>
+            <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+              <img
+                src={BeautyOfTimePassingImage01}
+                className="hidden-element w-full h-auto object-cover"
+              />
+            </section>
+
+            <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+              <img
+                src={BeautyOfTimePassingImage03}
+                className="hidden-element w-full h-auto object-cover"
+              />
+            </section>
+          </>
+        )}
+
+        <section className="mt-[240px] mx-[10vw] xl:mx-[200px]">
+          <div className="grid grid-cols-2 grid-rows-2 gap-10">
+            <video
+              className="hidden-element grid-images object-cover w-full h-full"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={BeautyOfTimePassingVideo05} type="video/mp4" />
+            </video>
+            <video
+              className="hidden-element grid-images object-cover w-full h-full"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={BeautyOfTimePassingVideo06} type="video/mp4" />
+            </video>
+            <video
+              className="hidden-element grid-images object-cover w-full h-full"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={BeautyOfTimePassingVideo07} type="video/mp4" />
+            </video>
+            <video
+              className="hidden-element grid-images object-cover w-full h-full"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={BeautyOfTimePassingVideo08} type="video/mp4" />
+            </video>
+          </div>
         </section>
 
-        <section className="mt-[120px] xl:mt-[240px] mx-[10vw] xl:mx-[240px]">
+        <section className="mt-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            Virtual visit to the project at DDW 2023
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[32px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            With the below app, you can enter this light installation inside the
+            3D environment.
+          </p>
+        </section>
+
+        <section className="mt-[64px] xl:mt-[18px] mx-[10vw] xl:mx-[240px]">
           <div
             className={`${
               hover ? "cursor-pointer" : ""
@@ -377,19 +459,17 @@ export default function BeautyOfTimePassingPage() {
           >
             {!!hover && (
               <div className="absolute top-0 flex justify-center items-center z-20 w-full h-full bg-stone-50/35">
-                <h1 className="text-white text-[20px]">
-                  Virtual visit of Beauty of Time Passing project in DDW 2023
-                </h1>
+                <h1 className="text-white text-[20px]">Open the application</h1>
               </div>
             )}
-            {/* <video
-              className="hidden-element  object-cover w-full h-full"
+            <video
+              className="hidden-element object-cover w-full h-full"
               autoPlay
               loop
               muted
             >
               <source src={BeautyOfTimePassingVideo04} type="video/mp4" />
-            </video> */}
+            </video>
           </div>
         </section>
 
