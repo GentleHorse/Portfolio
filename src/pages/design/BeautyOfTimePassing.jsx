@@ -267,6 +267,7 @@ export default function BeautyOfTimePassingPage() {
             autoPlay
             loop
             muted
+            playsInline
           >
             <source src={BeautyOfTimePassingVideo01} type="video/mp4" />
           </video>
@@ -325,6 +326,7 @@ export default function BeautyOfTimePassingPage() {
             autoPlay
             loop
             muted
+            playsInline
           >
             <source src={BeautyOfTimePassingVideo02} type="video/mp4" />
           </video>
@@ -358,6 +360,7 @@ export default function BeautyOfTimePassingPage() {
             autoPlay
             loop
             muted
+            playsInline
           >
             <source src={BeautyOfTimePassingVideo03} type="video/mp4" />
           </video>
@@ -403,6 +406,7 @@ export default function BeautyOfTimePassingPage() {
               autoPlay
               loop
               muted
+              playsInline
             >
               <source src={BeautyOfTimePassingVideo05} type="video/mp4" />
             </video>
@@ -411,6 +415,7 @@ export default function BeautyOfTimePassingPage() {
               autoPlay
               loop
               muted
+              playsInline
             >
               <source src={BeautyOfTimePassingVideo06} type="video/mp4" />
             </video>
@@ -419,6 +424,7 @@ export default function BeautyOfTimePassingPage() {
               autoPlay
               loop
               muted
+              playsInline
             >
               <source src={BeautyOfTimePassingVideo07} type="video/mp4" />
             </video>
@@ -427,6 +433,7 @@ export default function BeautyOfTimePassingPage() {
               autoPlay
               loop
               muted
+              playsInline
             >
               <source src={BeautyOfTimePassingVideo08} type="video/mp4" />
             </video>
@@ -467,6 +474,7 @@ export default function BeautyOfTimePassingPage() {
               autoPlay
               loop
               muted
+              playsInline
             >
               <source src={BeautyOfTimePassingVideo04} type="video/mp4" />
             </video>
