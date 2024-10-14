@@ -400,7 +400,11 @@ export default function BeautyOfTimePassingPage() {
         )}
 
         <section className="mt-[240px] mx-[10vw] xl:mx-[200px]">
-          <div className="grid grid-cols-2 grid-rows-2 gap-10">
+          <div
+            className={`grid ${
+              isBrowser ? "grid-cols-2 grid-rows-2" : "grid-rows-4"
+            } gap-10`}
+          >
             <video
               className="hidden-element grid-images object-cover w-full h-full"
               autoPlay
