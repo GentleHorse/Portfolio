@@ -9,7 +9,6 @@ import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects
 import InterventionInOurDisconnectionHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 
 import BeautyOfTimePassingImage01 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-01.jpg";
-import BeautyOfTimePassingImage02 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-02.jpg";
 import BeautyOfTimePassingImage03 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-03.jpg";
 import BeautyOfTimePassingImage13 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-13.jpg";
 import BeautyOfTimePassingImage14 from "../../../public/images/design-projects/beauty-of-time-passing/beauty-of-time-passing-image-14.jpg";
