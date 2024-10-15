@@ -1,9 +1,15 @@
-import { useRef, useMemo, useState, useEffect, useLayoutEffect } from "react";
+import {
+  useRef,
+  useMemo,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  Suspense,
+} from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Environment,
-  Loader,
   OrbitControls,
   Sphere,
   Text,
@@ -22,6 +28,7 @@ import gsap from "gsap";
 import { isMobile, isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
+import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
 import AmbienceOfLightThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
@@ -138,17 +145,17 @@ export default function WorksPage() {
     <>
       <Header home about contact />
 
-      <Loader />
-
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
-        <ScrollControls
-          // horizontal={isBrowser ? true : false}
-          pages={SCROLL_PAGES}
-          damping={SCROLL_DAMPING}
-          distance={SCROLL_DISTANCE}
-        >
-          <Experience />
-        </ScrollControls>
+        <Suspense fallback={<LoadingScreen />}>
+          <ScrollControls
+            // horizontal={isBrowser ? true : false}
+            pages={SCROLL_PAGES}
+            damping={SCROLL_DAMPING}
+            distance={SCROLL_DISTANCE}
+          >
+            <Experience />
+          </ScrollControls>
+        </Suspense>
       </Canvas>
     </>
   );

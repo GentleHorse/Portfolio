@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   Environment,
@@ -21,6 +21,7 @@ import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 
 import Header from "../components/header/Header.jsx";
 import Mails from "../components/models/mail/Mails.jsx";
+import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
 const LERPED_STRENGTH = {
   X: 0.5,
@@ -43,7 +44,9 @@ export default function ContactPage() {
           position: [0, 0, 20],
         }}
       >
-        <ContactExperience />
+        <Suspense fallback={<LoadingScreen />}>
+          <ContactExperience />
+        </Suspense>
       </Canvas>
     </>
   );

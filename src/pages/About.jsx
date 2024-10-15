@@ -14,6 +14,7 @@ import { isBrowser } from "react-device-detect";
 
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
+import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
 /**
  * INITIAL PARAM VALUES
@@ -30,10 +31,8 @@ export default function AboutPage() {
     <>
       <Header home works contact />
 
-      <Loader />
-
-      <Suspense fallback={null}>
-        <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
+      <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
+        <Suspense fallback={<LoadingScreen />}>
           <ScrollControls
             pages={SCROLL_PAGES}
             damping={SCROLL_DAMPING}
@@ -224,8 +223,8 @@ export default function AboutPage() {
               </section>
             </Scroll>
           </ScrollControls>
-        </Canvas>
-      </Suspense>
+        </Suspense>
+      </Canvas>
     </>
   );
 }
