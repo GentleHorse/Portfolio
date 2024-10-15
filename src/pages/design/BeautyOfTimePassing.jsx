@@ -533,6 +533,7 @@ export default function BeautyOfTimePassingPage() {
           <Link
             to="/intervention-in-our-disconnection"
             className="relative w-full flex flex-col items-center"
+            reloadDocument={true}
           >
             <img
               src={InterventionInOurDisconnectionHeroImage}
