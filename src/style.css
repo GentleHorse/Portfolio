@@ -63,18 +63,48 @@ body,
 }
 
 .grid-images:nth-child(2) {
-  transition-delay: 350ms;
+  transition-delay: 150ms;
 }
 
 .grid-images:nth-child(3) {
-  transition-delay: 700ms;
+  transition-delay: 300ms;
 }
 
 .grid-images:nth-child(4) {
+  transition-delay: 450ms;
+}
+.grid-images:nth-child(5) {
+  transition-delay: 600ms;
+}
+
+.grid-images:nth-child(6) {
+  transition-delay: 750ms;
+}
+
+.grid-images:nth-child(7) {
+  transition-delay: 900ms;
+}
+
+.grid-images:nth-child(8) {
   transition-delay: 1050ms;
+}
+
+.grid-images:nth-child(9) {
+  transition-delay: 1200ms;
+}
+
+.grid-images:nth-child(10) {
+  transition-delay: 1350ms;
+}
+
+.grid-images:nth-child(11) {
+  transition-delay: 1500ms;
+}
+
+.grid-images:nth-child(12) {
+  transition-delay: 1650ms;
 }
 
 /* .scroll-animated-element.in-view {
   border: 10px solid red; 
 } */
-

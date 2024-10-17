@@ -121,11 +121,11 @@ export default function BeautyOfTimePassingPage() {
             </p>
           </div>
           <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-            <p className="text-[12px] text-[#C1C1C1]">
+            <p className="text-[14px] text-[#C1C1C1]">
               #embrace unpredictability of nature
             </p>
-            <p className="text-[12px] text-[#C1C1C1]">#touch point to nature</p>
-            <p className="text-[12px] text-[#C1C1C1]">
+            <p className="text-[14px] text-[#C1C1C1]">#touch point to nature</p>
+            <p className="text-[14px] text-[#C1C1C1]">
               #lighting through sceneries
             </p>
           </div>

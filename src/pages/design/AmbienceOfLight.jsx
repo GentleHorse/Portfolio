@@ -102,9 +102,9 @@ export default function AmbienceOfLightPage() {
             </p>
           </div>
           <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-            <p className="text-[12px] text-[#C1C1C1]">#perception of space</p>
-            <p className="text-[12px] text-[#C1C1C1]">#in praise of shadows</p>
-            <p className="text-[12px] text-[#C1C1C1]">
+            <p className="text-[14px] text-[#C1C1C1]">#perception of space</p>
+            <p className="text-[14px] text-[#C1C1C1]">#in praise of shadows</p>
+            <p className="text-[14px] text-[#C1C1C1]">
               #blur boundaries in space
             </p>
           </div>
