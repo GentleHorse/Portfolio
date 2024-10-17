@@ -113,7 +113,7 @@ export default function InterventionInOurDisconnectionPage() {
             </div>
 
             <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-              The “Intervention in our Disconnection” is a unique book holder
+              “Intervention in our Disconnection” is a unique book holder
               that celebrates the beauty of discarded industrial materials.
               Inspired by traditional Japanese craftsmanship, it encourages
               individuals to reconnect with raw materials, highlighting their

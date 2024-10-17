@@ -112,7 +112,7 @@ export default function BeautyOfTimePassingPage() {
             </div>
 
             <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-              "The Beauty of Time Passing" is a light installation that brings
+              "Beauty of Time Passing" is a light installation that brings
               people closer to nature by displaying dynamically changing,
               digitally reproduced abstracted natural scenes. These scenes
               reflect unpredictable weather conditions, creating a visually

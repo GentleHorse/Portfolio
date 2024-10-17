@@ -91,9 +91,9 @@ export default function ComfortingDinnerPage() {
             </p>
           </div>
           <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 01</p>
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 02</p>
-            <p className="text-[12px] text-[#C1C1C1]">#keyword 03</p>
+            <p className="text-[14px] text-[#C1C1C1]">#keyword 01</p>
+            <p className="text-[14px] text-[#C1C1C1]">#keyword 02</p>
+            <p className="text-[14px] text-[#C1C1C1]">#keyword 03</p>
           </div>
         </section>
 

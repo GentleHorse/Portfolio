@@ -95,7 +95,7 @@ export default function AmbienceOfLightPage() {
             </div>
 
             <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-              The "Ambience of Light" is a lighting product that utilises
+              "Ambience of Light" is a lighting product that utilises
               industrial glass blocks, originally designed to capture daylight,
               to create a distinctive and atmospheric lighting experience in any
               space.
