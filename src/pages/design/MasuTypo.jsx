@@ -164,14 +164,14 @@ export default function MasuTypoPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <div className="grid grid-cols-3 gap-1 xl:gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-3 grid-rows-2 xl:grid-rows-1 gap-10 xl:gap-5">
             <img
               src={MasuTypoImage01}
-              className="hidden-element grid-images col-span-2 my-auto h-4/5 object-cover"
+              className="hidden-element grid-images xl:col-span-2 my-auto mx-auto xl:h-4/5 object-cover"
             />
             <img
               src={MasuTypoImage02}
-              className="hidden-element grid-images object-cover"
+              className="hidden-element grid-images mx-auto w-4/5 xl:w-full object-cover"
             />
           </div>
         </section>
@@ -200,9 +200,9 @@ export default function MasuTypoPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 grid-rows-1 gap-5">
             <video
-              className="hidden-element grid-images  object-cover"
+              className="hidden-element grid-images object-cover"
               autoPlay
               loop
               muted
@@ -211,7 +211,7 @@ export default function MasuTypoPage() {
               <source src={MasuTypoVideo01} type="video/mp4" />
             </video>
             <video
-              className="hidden-element grid-images  object-cover"
+              className="hidden-element grid-images object-cover"
               autoPlay
               loop
               muted
@@ -242,14 +242,14 @@ export default function MasuTypoPage() {
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 xl:grid-cols-2 grid-rows-2 xl:grid-rows-1 gap-5">
             <img
               src={MasuTypoImage08}
-              className="hidden-element grid-images object-cover"
+              className="hidden-element grid-images mx-auto w-4/5 xl:w-full object-cover"
             />
             <img
               src={MasuTypoImage09}
-              className="hidden-element grid-images object-cover"
+              className="hidden-element grid-images mx-auto w-4/5 xl:w-full object-cover"
             />
           </div>
         </section>
@@ -361,19 +361,19 @@ export default function MasuTypoPage() {
           <div className="grid grid-cols-2 grid-rows-2 gap-0">
             <img
               src={MasuTypoImage03}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={MasuTypoImage04}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={MasuTypoImage05}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={MasuTypoImage06}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
           </div>
         </section>

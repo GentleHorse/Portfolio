@@ -65,7 +65,7 @@ export default function ComfortingDinnerPage() {
           className="pt-[76px] xl:pt-[148px] mx-[10vw] xl:mx-[240px]"
         >
           <h1 className="project-title mb-[21px] xl:mb-[42px] font-serif text-[36px] xl:text-[72px] text-[#C1C1C1]">
-            Intervention in our Disconnection
+            Comforting Dinner
           </h1>
           <img
             src={ComfortingDinnerHeroImage}
@@ -75,10 +75,10 @@ export default function ComfortingDinnerPage() {
           <div className="flex flex-col xl:flex-row">
             <div className="flex-none w-auto xl:w-[350px]">
               <p className="mb-[4px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
-                yyyy
+                2020
               </p>
               <p className="mb-[20px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
-                Category Name
+                Product Design
               </p>
             </div>
 

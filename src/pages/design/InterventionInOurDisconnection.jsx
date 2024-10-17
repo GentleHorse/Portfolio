@@ -311,35 +311,35 @@ export default function InterventionInOurDisconnectionPage() {
           <div className="grid grid-cols-2 grid-rows-4 gap-0">
             <img
               src={InterventionInOurDisconnectionImage01}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage24}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage19}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage18}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage21}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage20}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage22}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
             <img
               src={InterventionInOurDisconnectionImage23}
-              className="hidden-element grid-images object-cover h-full"
+              className="hidden-element grid-images object-cover h-[180px] xl:h-full"
             />
           </div>
         </section>
