@@ -72,7 +72,7 @@ export default function Menu() {
   }, []);
 
   /**
-   * CONTENT PAGE STATE, HANDLER ARRAY
+   * CONTENT PAGE STATE, HANDLERS, ARRAY
    */
   const [contentPage, setContentPage] = useState(0);
   const contentPageIncrementHandler = () => {
@@ -97,18 +97,28 @@ export default function Menu() {
       id: "c1",
       content: (
         <section className="flex flex-col items-center">
-          <div className="w-full mt-5 px-[120px] text-slate-50 text-md">
+          <div className="w-full mt-5 px-[100px] text-slate-50 text-md">
             <p className="mb-10 text-center text-slate-50 font-serif text-3xl">
               Welcome!
             </p>
 
             <div>
               <p className="my-5 text-slate-50 font-montserrat text-xl">
-                This is the gallery for my physical design works and the working
-                studio for my 3D digital works.
+                Here, you can freely walk around my "Design Gallery" and
+                "Working Studio" spaces with your mouse and keyboard keys.
               </p>
-              <p className="my-5 text-slate-50 font-montserrat text-xl">
-                You can freely walk around with your mouse and keyboard keys.
+              <p className="mt-12 text-slate-50 font-bold text-[22px]">
+                The Design Gallery
+              </p>
+              <p className="mt-2 mb-5 text-slate-50 font-montserrat text-xl">
+                You can see digitally translated physical projects.
+              </p>
+              <p className="mt-5 text-slate-50 font-bold text-[22px]">
+                The Working Studio
+              </p>
+              <p className="mt-2 mb-5 text-slate-50 font-montserrat text-xl">
+                You can see 3D visuals are created like shaping clays and 3D web
+                applications are created like making architecture models.
               </p>
             </div>
           </div>
@@ -184,11 +194,11 @@ export default function Menu() {
       content: (
         <section className="flex flex-col items-center">
           <div className="w-full mt-5 px-[120px] text-slate-50 text-md">
-            <p className="mb-10 text-center text-slate-50 font-serif text-3xl">
+            <p className="mt-10 text-center text-slate-50 font-serif text-3xl">
               Portal for explore more
             </p>
 
-            <div className="flex justify-between gap-8 mb-10 py-10">
+            <div className="flex justify-between gap-8 mb-10 pt-10">
               <div>
                 <p className="mb-5 font-montserrat text-md">
                   There are "portals" in this space.
@@ -197,9 +207,7 @@ export default function Menu() {
                   If you feel like knowing more about the project, you can visit
                   individual project pages by entering this "portal" gate.
                 </p>
-                <p className="font-great-vibes text-4xl">
-                  Enjoy!
-                </p>
+                <p className="font-great-vibes text-4xl">Enjoy!</p>
               </div>
 
               <img src="./images/menu/portal-gate.jpg" className="h-[300px]" />
