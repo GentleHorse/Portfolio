@@ -8,6 +8,22 @@ import SectionIndicator from "../../components/sectionIndicator/SectionIndicator
 import ComfortingDinnerHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 import ThreeDVisualsHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
 
+import ComfortingDinnerImage01 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-01.jpg";
+import ComfortingDinnerImage02 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-02.jpg";
+import ComfortingDinnerImage03 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-03.jpg";
+import ComfortingDinnerImage04 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-04.jpg";
+import ComfortingDinnerImage05 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-05.jpg";
+import ComfortingDinnerImage06 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-06.jpg";
+import ComfortingDinnerImage07 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-07.jpg";
+import ComfortingDinnerImage08 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-08.jpg";
+import ComfortingDinnerImage09 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-09.jpg";
+import ComfortingDinnerImage10 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-10.jpg";
+import ComfortingDinnerImage11 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-11.jpg";
+import ComfortingDinnerImage12 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-12.jpg";
+import ComfortingDinnerImage13 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-13.jpg";
+import ComfortingDinnerImage14 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-14.jpg";
+import ComfortingDinnerImage15 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-15.jpg";
+
 export default function ComfortingDinnerPage() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
@@ -83,23 +99,34 @@ export default function ComfortingDinnerPage() {
             </div>
 
             <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et
-              turpis ut quam semper tincidunt non eget erat. Quisque lobortis
-              blandit felis nec venenatis. Aenean ac ornare justo. Morbi eget
-              massa ornare, sodales augue nec, molestie diam. Nullam et mattis
-              purus. Aliquam eu erat quis massa suscipit sodales nec in.
+              Designed to engage the senses and enhance dining ambiance,
+              "Comforting Dinner" is a unique tableware collection. In
+              collaboration with Korean designer{" "}
+              <a
+                href="https://studiokyungmilee.com/"
+                target="_blank"
+                className="font-bold"
+              >
+                Kyungmi Lee
+              </a>
+              , the project seeks to create a comfortable, enriched food
+              experience through atmosphere and thoughtful design.
             </p>
           </div>
           <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-            <p className="text-[14px] text-[#C1C1C1]">#keyword 01</p>
-            <p className="text-[14px] text-[#C1C1C1]">#keyword 02</p>
-            <p className="text-[14px] text-[#C1C1C1]">#keyword 03</p>
+            <p className="text-[14px] text-[#C1C1C1]">#tactile tableware</p>
+            <p className="text-[14px] text-[#C1C1C1]">
+              #multi-sensory experience
+            </p>
+            <p className="text-[14px] text-[#C1C1C1]">
+              #cosy asian dining culture
+            </p>
           </div>
         </section>
 
         <section className="mt-[87px]">
           <img
-            src={ComfortingDinnerHeroImage}
+            src={ComfortingDinnerImage01}
             className="w-full h-[270px] xl:h-[720px] object-cover"
           />
         </section>
@@ -114,27 +141,26 @@ export default function ComfortingDinnerPage() {
             CHALLENGE
           </p>
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Here's the "challenge" title sentence
+            Multi-sensory tableware for a comforting atmosphere
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
-            ipsum id mi congue viverra. Nunc velit magna, pulvinar quis porta
-            et, ullamcorper in metus. Vestibulum molestie consequat ante, in
-            euismod lacus tristique scelerisque. Phasellus vel finibus odio, sit
-            amet rutrum risus. Nunc sit amet venenatis mauris. Nulla congue a
-            nibh aliquam pretium. Cras eu velit ut ex condimentum lacinia. Etiam
-            interdum sem id ligula dignissim, sed accumsan elit egestas. Vivamus
-            non lacus ante. Praesent tempor dignissim lobortis. Aliquam sed leo
-            justo. Nunc lectus nibh, mollis scelerisque eleifend volutpat,
-            feugiat vitae elit. Proin fringilla diam id ipsum aliquet, quis
-            scelerisque.
+            Having a meal engages all the senses—touch, sound, smell, sight, and
+            taste—creating a rich, comforting atmosphere that enhances the
+            dining experience. These sensory interactions often evoke personal
+            memories and emotions, making the moment feel even more special.
+            Tableware designed to stimulate the senses gradually, tailored to
+            specific dishes, further enhances this experience. By thoughtfully
+            opening up each sense through its form and function, such tableware
+            can create warm, inviting dinner settings. It transforms an ordinary
+            meal into a multi-sensory, memorable experience, fostering
+            connection and comfort around the dining table.
           </p>
         </section>
 
         <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
           <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element w-full h-auto object-cover"
+            src={ComfortingDinnerImage02}
+            className="hidden-element mx-auto w-2/3 xl:w-1/2 h-auto object-cover"
           />
         </section>
 
@@ -145,87 +171,36 @@ export default function ComfortingDinnerPage() {
             APPROACH
           </p>
           <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Here's the "approach" title sentence
+            Specially crafted for fusion dishes
           </p>
           <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
-            ipsum id mi congue viverra. Nunc velit magna, pulvinar quis porta
-            et, ullamcorper in metus. Vestibulum molestie consequat ante, in
-            euismod lacus tristique scelerisque. Phasellus vel finibus odio, sit
-            amet rutrum risus. Nunc sit amet venenatis mauris. Nulla congue a
-            nibh aliquam pretium. Cras eu velit ut ex condimentum lacinia. Etiam
-            interdum sem id ligula dignissim, sed accumsan elit egestas. Vivamus
-            non lacus ante. Praesent tempor dignissim lobortis. Aliquam sed leo
-            justo. Nunc lectus nibh, mollis scelerisque eleifend volutpat,
-            feugiat vitae elit. Proin fringilla diam id ipsum aliquet, quis
-            scelerisque.
+            While designing tableware, the designers realised that their food
+            experiences shared similar atmospheres, rooted in their respective
+            cultural dishes, which also showed notable similarities. Inspired by
+            this, they decided to create fusion dishes, each paired with
+            custom-designed tableware. The first fusion dish combined Japan’s
+            savoury egg custard (<i>Chawan-mushi</i>) with Korea’s (
+            <i>Gyeran-jjim</i>). The second merged Japan’s soybean paste soup (
+            <i>Miso soup</i>) with Korea’s (<i>Jjigae</i>), and the third fused
+            Japan’s savoury pancake (<i>Okonomiyaki</i>) with Korea’s (
+            <i>Jeon</i>). Each piece of tableware was crafted specifically for
+            these fusion dishes, enhancing both the culinary and cultural
+            experience at the table.
           </p>
-        </section>
-
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element mx-auto mb-14 xl:mb-56 w-auto h-[240px]  xl:h-[720px] object-cover"
-          />
-          <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element w-full h-auto object-cover"
-          />
-        </section>
-
-        {/* ----- OUTCOME ----- */}
-
-        <section name="outcome" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
-          <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
-            OUTCOME
-          </p>
-          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-            Here's the "outcome" title sentence
-          </p>
-          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
-            ipsum id mi congue viverra. Nunc velit magna, pulvinar quis porta
-            et, ullamcorper in metus. Vestibulum molestie consequat ante, in
-            euismod lacus tristique scelerisque. Phasellus vel finibus odio, sit
-            amet rutrum risus. Nunc sit amet venenatis mauris. Nulla congue a
-            nibh aliquam pretium. Cras eu velit ut ex condimentum lacinia. Etiam
-            interdum sem id ligula dignissim, sed accumsan elit egestas. Vivamus
-            non lacus ante. Praesent tempor dignissim lobortis. Aliquam sed leo
-            justo. Nunc lectus nibh, mollis scelerisque eleifend volutpat,
-            feugiat vitae elit. Proin fringilla diam id ipsum aliquet, quis
-            scelerisque.
-          </p>
-        </section>
-
-        <section className="my-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element w-full h-auto object-cover"
-          />
-        </section>
-
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element w-full h-auto object-cover"
-          />
-        </section>
-
-        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-          <img
-            src={ComfortingDinnerHeroImage}
-            className="hidden-element w-full h-auto object-cover"
-          />
         </section>
 
         {!!isBrowser && (
           <section className="mt-[87px] w-[100vw]">
             <img
-              src={ComfortingDinnerHeroImage}
+              src={ComfortingDinnerImage03}
               className="sticky top-0 w-full h-auto object-cover"
             />
             <img
-              src={ComfortingDinnerHeroImage}
+              src={ComfortingDinnerImage04}
+              className="sticky top-0 w-full h-auto object-cover"
+            />
+            <img
+              src={ComfortingDinnerImage05}
               className="sticky top-0 w-full h-auto object-cover"
             />
           </section>
@@ -235,18 +210,144 @@ export default function ComfortingDinnerPage() {
           <>
             <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
               <img
-                src={ComfortingDinnerHeroImage}
+                src={ComfortingDinnerImage03}
                 className="hidden-element w-full h-auto object-cover"
               />
             </section>
             <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
               <img
-                src={ComfortingDinnerHeroImage}
+                src={ComfortingDinnerImage04}
+                className="hidden-element w-full h-auto object-cover"
+              />
+            </section>
+            <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+              <img
+                src={ComfortingDinnerImage05}
                 className="hidden-element w-full h-auto object-cover"
               />
             </section>
           </>
         )}
+
+        <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            Stimulate senses one by one thought interactions
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            Their ceramic pieces convey personal stories in an inviting way,
+            designed to engage users’ senses individually—touch, smell, and
+            sound. By doing so, the designers create a welcoming environment,
+            turning ordinary moments into memorable food experiences,
+            encouraging users to embrace and savour each element of the
+            interaction.
+          </p>
+        </section>
+
+        <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+          <div className="grid grid-cols-3 gap-6">
+            <img
+              src={ComfortingDinnerImage06}
+              className="hidden-element grid-images object-cover h-[120px] xl:h-full"
+            />
+            <img
+              src={ComfortingDinnerImage07}
+              className="hidden-element grid-images object-cover h-[120px] xl:h-full"
+            />
+            <img
+              src={ComfortingDinnerImage08}
+              className="hidden-element grid-images object-cover h-[120px] xl:h-full"
+            />
+          </div>
+        </section>
+
+        {/* ----- OUTCOME ----- */}
+
+        <section name="outcome" className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+          <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
+            OUTCOME
+          </p>
+          <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+            Tactile tableware
+          </p>
+          <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+            Designed for tactile interaction, each piece of tableware is
+            carefully shaped to fit comfortably in the hand, encouraging users
+            to connect with the objects in a more active, intentional way.{" "}
+            <br /> <br />
+            This project was exhibited at Dutch Design Week 2020.
+          </p>
+        </section>
+
+        <section className="mt-[87px]">
+          <div className="grid grid-cols-3 gap-0">
+            <img
+              src={ComfortingDinnerImage09}
+              className="hidden-element grid-images object-cover h-[320px] xl:h-full"
+            />
+            <img
+              src={ComfortingDinnerImage10}
+              className="hidden-element grid-images object-cover h-[320px] xl:h-full"
+            />
+            <img
+              src={ComfortingDinnerImage11}
+              className="hidden-element grid-images object-cover h-[320px] xl:h-full"
+            />
+          </div>
+        </section>
+
+        <section>
+          <div className="grid grid-cols-2 gap-0">
+            <img
+              src={ComfortingDinnerImage12}
+              className="hidden-element grid-images object-cover h-[320px] xl:h-full"
+            />
+            <img
+              src={ComfortingDinnerImage13}
+              className="hidden-element grid-images object-cover h-[320px] xl:h-full"
+            />
+          </div>
+        </section>
+
+        <section className="mb-[180px]">
+          <img
+            src={ComfortingDinnerImage15}
+            className="hidden-element w-full h-auto object-cover"
+          />
+          <img
+            src={ComfortingDinnerImage14}
+            className="hidden-element w-full h-auto object-cover"
+          />
+        </section>
+
+        <section>
+          {/* <iframe
+            src="https://player.vimeo.com/video/471709121?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            width="1280"
+            height="720"
+            allow="fullscreen"
+            allowFullScreen
+            className="mx-auto"
+          /> */}
+          {isBrowser ? (
+            <iframe
+              title="vimeo-player"
+              src="https://player.vimeo.com/video/471709121?h=b8610a8d47"
+              width="1280"
+              height="720"
+              allowFullScreen
+              className="mx-auto"
+            ></iframe>
+          ) : (
+            <iframe
+              title="vimeo-player"
+              src="https://player.vimeo.com/video/471709121?h=b8610a8d47"
+              width="320"
+              height="180"
+              allowFullScreen
+              className="mx-auto"
+            ></iframe>
+          )}
+        </section>
 
         {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
@@ -290,4 +391,3 @@ export default function ComfortingDinnerPage() {
     </>
   );
 }
-
