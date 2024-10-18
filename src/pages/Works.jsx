@@ -19,6 +19,8 @@ import {
   ScrollControls,
   MeshTransmissionMaterial,
   useGLTF,
+  useProgress,
+  Html
 } from "@react-three/drei";
 
 import { useNavigate } from "react-router-dom";
@@ -141,12 +143,18 @@ const PROJECTS_LIST_ARRAY = [
  * COMPONENTS ======================================================
  */
 export default function WorksPage() {
+  const loadingScreenComponent = isBrowser ? (
+    <LoadingScreen />
+  ) : (
+    <LoadingScreenMobile />
+  );
+
   return (
     <>
       <Header home about contact />
 
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
-        <Suspense fallback={<LoadingScreen />}>
+        <Suspense fallback={loadingScreenComponent}>
           <ScrollControls
             // horizontal={isBrowser ? true : false}
             pages={SCROLL_PAGES}
@@ -430,6 +438,23 @@ function GlassFocusTorus({ geometry, material }) {
         </mesh>
       </group>
     </group>
+  );
+}
+
+function LoadingScreenMobile() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
+
+  return (
+    <Html
+      center
+      className="w-[100vw] h-[100vh] bg-[#050505] flex flex-col items-end justify-end"
+    >
+      <div>
+        <p className="w-full h-full bottom-0 right-0 m-4 text-[#C1C1C1] text-[80px] font-pinyon-script">
+          {progress.toFixed(0)} %
+        </p>
+      </div>
+    </Html>
   );
 }
 

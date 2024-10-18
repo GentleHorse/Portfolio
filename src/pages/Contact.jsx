@@ -6,6 +6,7 @@ import {
   Sphere,
   ScrollControls,
   Html,
+  useProgress,
 } from "@react-three/drei";
 import * as THREE from "three";
 import { Gradient, LayerMaterial } from "lamina";
@@ -34,6 +35,12 @@ let LERPED_MOUSE_MOVEMENTS = {
 };
 
 export default function ContactPage() {
+  const loadingScreenComponent = isBrowser ? (
+    <LoadingScreen />
+  ) : (
+    <LoadingScreenMobile />
+  );
+
   return (
     <>
       <Header home about works />
@@ -44,7 +51,7 @@ export default function ContactPage() {
           position: [0, 0, 20],
         }}
       >
-        <Suspense fallback={<LoadingScreen />}>
+        <Suspense fallback={loadingScreenComponent}>
           <ContactExperience />
         </Suspense>
       </Canvas>
@@ -204,5 +211,22 @@ function Background() {
         </Sphere>
       </Environment>
     </>
+  );
+}
+
+function LoadingScreenMobile() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
+
+  return (
+    <Html
+      center
+      className="w-[100vw] h-[100vh] bg-[#050505] flex flex-col items-end justify-end"
+    >
+      <div>
+        <p className="w-full h-full bottom-0 right-0 m-4 text-[#C1C1C1] text-[80px] font-pinyon-script">
+          {progress.toFixed(0)} %
+        </p>
+      </div>
+    </Html>
   );
 }
