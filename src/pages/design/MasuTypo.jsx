@@ -484,7 +484,7 @@ export default function MasuTypoPage() {
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 
-              <p className="absolute top-1/2 text-[12px] xl:text-[18px] text-[#C1C1C1]">
+              <p className="absolute top-[45%] text-[12px] xl:text-[18px] text-[#C1C1C1]">
                 Explore the next project
               </p>
             </Link>
