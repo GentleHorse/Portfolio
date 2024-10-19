@@ -1,9 +1,11 @@
-import { useRef, useEffect } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { useRef, useEffect, useState, Suspense } from "react";
+import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+
+import "lenis/dist/lenis.css";
 
 import MasuTypoHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
@@ -26,8 +28,89 @@ import MasuTypoVideo01 from "../../../public/videos/masu-typo/masu-typo-01.mp4";
 import MasuTypoVideo02 from "../../../public/videos/masu-typo/masu-typo-02.mp4";
 import MasuTypoVideo03 from "../../../public/videos/masu-typo/masu-typo-03.mp4";
 import MasuTypoVideo04 from "../../../public/videos/masu-typo/masu-typo-04.mp4";
+import { SuspendingImage } from "@react-three/uikit";
+
+const IMAGES_ARRAY = [
+  MasuTypoImage01,
+  MasuTypoImage02,
+  MasuTypoImage03,
+  MasuTypoImage04,
+  MasuTypoImage05,
+  MasuTypoImage06,
+  MasuTypoImage07,
+  MasuTypoImage08,
+  MasuTypoImage09,
+  MasuTypoImage10,
+  MasuTypoImage11,
+  MasuTypoImage12,
+  MasuTypoImage13,
+];
+
+const VIDEOS_ARRAY = [
+  MasuTypoVideo01,
+  MasuTypoVideo02,
+  MasuTypoVideo03,
+  MasuTypoVideo04,
+];
 
 export default function MasuTypoPage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * VIDEOS ARRAY
+   */
+  const [videosArray, setVideosArray] = useState([]);
+
+  useEffect(() => {
+    setVideosArray((prevVideosArray) => {
+      const newVideosArray = [...prevVideosArray];
+      VIDEOS_ARRAY.forEach((video) => {
+        newVideosArray.push(video);
+      });
+
+      return newVideosArray;
+    });
+  }, []);
+
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+  const [loadedStatus, setLoadedStatus] = useState(false);
+
+  useEffect(() => {
+    setLoadedStatus(document.readyState === "complete");
+    console.log("LoadedStauts: ", loadedStatus);
+
+    if (imagesArray.length === 13 && videosArray.length === 4) {
+      // Initialize Lenis
+      const lenis = new Lenis();
+
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      console.log(`Set Lenis`);
+    }
+  });
+
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
    */
@@ -56,11 +139,11 @@ export default function MasuTypoPage() {
 
   return (
     <>
-      <ReactLenis root>
-        <Header home about works contact />
+      <Header home about works contact />
 
-        {!!isBrowser && <SectionIndicator />}
+      {!!isBrowser && <SectionIndicator />}
 
+      <Suspense>
         <div id="page">
           {/* ----- INTRO ----- */}
 
@@ -421,7 +504,7 @@ export default function MasuTypoPage() {
             </Link>
           </section>
         </div>
-      </ReactLenis>
+      </Suspense>
     </>
   );
 }

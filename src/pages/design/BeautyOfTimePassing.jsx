@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { Suspense, useEffect, useState } from "react";
+import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+
+import "lenis/dist/lenis.css";
 
 import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 import InterventionInOurDisconnectionHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
@@ -31,8 +33,94 @@ import BeautyOfTimePassingVideo05 from "../../../public/videos/beauty-of-time-pa
 import BeautyOfTimePassingVideo06 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-06.mp4";
 import BeautyOfTimePassingVideo07 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-07.mp4";
 import BeautyOfTimePassingVideo08 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-08.mp4";
+import { SuspendingImage } from "@react-three/uikit";
+
+const IMAGES_ARRAY = [
+  BeautyOfTimePassingImage01,
+  BeautyOfTimePassingImage03,
+  BeautyOfTimePassingImage13,
+  BeautyOfTimePassingImage14,
+  BeautyOfTimePassingImage15,
+  BeautyOfTimePassingImage16,
+  BeautyOfTimePassingImage17,
+  BeautyOfTimePassingImage18,
+  BeautyOfTimePassingImage19,
+  BeautyOfTimePassingImage20,
+  BeautyOfTimePassingImage21,
+  BeautyOfTimePassingImage22,
+  BeautyOfTimePassingImage23,
+  BeautyOfTimePassingImage24,
+];
+
+const VIDEOS_ARRAY = [
+  BeautyOfTimePassingVideo01,
+  BeautyOfTimePassingVideo02,
+  BeautyOfTimePassingVideo03,
+  BeautyOfTimePassingVideo04,
+  BeautyOfTimePassingVideo05,
+  BeautyOfTimePassingVideo06,
+  BeautyOfTimePassingVideo07,
+  BeautyOfTimePassingVideo08,
+];
 
 export default function BeautyOfTimePassingPage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * VIDEOS ARRAY
+   */
+  const [videosArray, setVideosArray] = useState([]);
+
+  useEffect(() => {
+    setVideosArray((prevVideosArray) => {
+      const newVideosArray = [...prevVideosArray];
+      VIDEOS_ARRAY.forEach((video) => {
+        newVideosArray.push(video);
+      });
+
+      return newVideosArray;
+    });
+  }, []);
+
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+  const [loadedStatus, setLoadedStatus] = useState(false);
+
+  useEffect(() => {
+    setLoadedStatus(document.readyState === "complete");
+    console.log("LoadedStauts: ", loadedStatus);
+
+    if (imagesArray.length === 14 && videosArray.length === 8) {
+      // Initialize Lenis
+      const lenis = new Lenis();
+
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      console.log(`Set Lenis`);
+    }
+  });
+
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
    */
@@ -66,11 +154,11 @@ export default function BeautyOfTimePassingPage() {
 
   return (
     <>
-      <ReactLenis root>
-        <Header home about works contact />
+      <Header home about works contact />
 
-        {!!isBrowser && <SectionIndicator />}
+      {!!isBrowser && <SectionIndicator />}
 
+      <Suspense>
         <div id="page">
           {/* ----- INTRO ----- */}
 
@@ -557,7 +645,7 @@ export default function BeautyOfTimePassingPage() {
             </Link>
           </section>
         </div>
-      </ReactLenis>
+      </Suspense>
     </>
   );
 }

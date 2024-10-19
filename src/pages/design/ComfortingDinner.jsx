@@ -1,9 +1,11 @@
-import { useRef, useEffect } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { useRef, useEffect, useState, Suspense } from "react";
+import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+
+import "lenis/dist/lenis.css";
 
 import ComfortingDinnerHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 import ThreeDVisualsHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
@@ -24,7 +26,66 @@ import ComfortingDinnerImage13 from "../../../public/images/design-projects/comf
 import ComfortingDinnerImage14 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-14.jpg";
 import ComfortingDinnerImage15 from "../../../public/images/design-projects/comforting-dinner/comforting-dinner-image-15.jpg";
 
+const IMAGES_ARRAY = [
+  ComfortingDinnerImage01,
+  ComfortingDinnerImage02,
+  ComfortingDinnerImage03,
+  ComfortingDinnerImage04,
+  ComfortingDinnerImage05,
+  ComfortingDinnerImage06,
+  ComfortingDinnerImage07,
+  ComfortingDinnerImage08,
+  ComfortingDinnerImage09,
+  ComfortingDinnerImage10,
+  ComfortingDinnerImage11,
+  ComfortingDinnerImage12,
+  ComfortingDinnerImage13,
+  ComfortingDinnerImage14,
+  ComfortingDinnerImage15,
+];
+
 export default function ComfortingDinnerPage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+  const [loadedStatus, setLoadedStatus] = useState(false);
+
+  useEffect(() => {
+    setLoadedStatus(document.readyState === "complete");
+    console.log("LoadedStauts: ", loadedStatus);
+
+    if (imagesArray.length === 15) {
+      // Initialize Lenis
+      const lenis = new Lenis();
+
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      console.log(`Set Lenis`);
+    }
+  });
+
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
    */
@@ -53,11 +114,11 @@ export default function ComfortingDinnerPage() {
 
   return (
     <>
-      <ReactLenis root>
-        <Header home about works contact />
+      <Header home about works contact />
 
-        {!!isBrowser && <SectionIndicator />}
+      {!!isBrowser && <SectionIndicator />}
 
+      <Suspense>
         <div id="page">
           {/* ----- INTRO ----- */}
 
@@ -379,7 +440,7 @@ export default function ComfortingDinnerPage() {
             </Link>
           </section>
         </div>
-      </ReactLenis>
+      </Suspense>
     </>
   );
 }

@@ -1,9 +1,11 @@
-import { useRef, useEffect } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { useRef, useEffect, useState, Suspense } from "react";
+import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+
+import "lenis/dist/lenis.css";
 
 import InterventionInOurDisconnectionHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
 import MasuTypoHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
@@ -38,7 +40,96 @@ import InterventionInOurDisconnectionImage27 from "../../../public/images/design
 
 import InterventionInOurDisconnectionVideo01 from "../../../public/videos/intervention-in-our-disconnection/intervention-in-our-disconnection-01.mp4";
 
+const IMAGES_ARRAY = [
+  InterventionInOurDisconnectionImage01,
+  InterventionInOurDisconnectionImage02,
+  InterventionInOurDisconnectionImage03,
+  InterventionInOurDisconnectionImage04,
+  InterventionInOurDisconnectionImage05,
+  InterventionInOurDisconnectionImage06,
+  InterventionInOurDisconnectionImage07,
+  InterventionInOurDisconnectionImage08,
+  InterventionInOurDisconnectionImage09,
+  InterventionInOurDisconnectionImage10,
+  InterventionInOurDisconnectionImage11,
+  InterventionInOurDisconnectionImage12,
+  InterventionInOurDisconnectionImage13,
+  InterventionInOurDisconnectionImage14,
+  InterventionInOurDisconnectionImage15,
+  InterventionInOurDisconnectionImage16,
+  InterventionInOurDisconnectionImage17,
+  InterventionInOurDisconnectionImage18,
+  InterventionInOurDisconnectionImage19,
+  InterventionInOurDisconnectionImage20,
+  InterventionInOurDisconnectionImage21,
+  InterventionInOurDisconnectionImage22,
+  InterventionInOurDisconnectionImage23,
+  InterventionInOurDisconnectionImage24,
+  InterventionInOurDisconnectionImage25,
+  InterventionInOurDisconnectionImage26,
+  InterventionInOurDisconnectionImage27,
+];
+
+const VIDEOS_ARRAY = [InterventionInOurDisconnectionVideo01];
+
 export default function InterventionInOurDisconnectionPage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * VIDEOS ARRAY
+   */
+  const [videosArray, setVideosArray] = useState([]);
+
+  useEffect(() => {
+    setVideosArray((prevVideosArray) => {
+      const newVideosArray = [...prevVideosArray];
+      VIDEOS_ARRAY.forEach((video) => {
+        newVideosArray.push(video);
+      });
+
+      return newVideosArray;
+    });
+  }, []);
+
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+  const [loadedStatus, setLoadedStatus] = useState(false);
+
+  useEffect(() => {
+    setLoadedStatus(document.readyState === "complete");
+    console.log("LoadedStauts: ", loadedStatus);
+
+    if (imagesArray.length === 27 && videosArray.length === 1) {
+      // Initialize Lenis
+      const lenis = new Lenis();
+
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      console.log(`Set Lenis`);
+    }
+  }, [imagesArray, videosArray]);
+
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
    */
@@ -67,11 +158,11 @@ export default function InterventionInOurDisconnectionPage() {
 
   return (
     <>
-      <ReactLenis root>
-        <Header home about works contact />
+      <Header home about works contact />
 
-        {!!isBrowser && <SectionIndicator />}
+      {!!isBrowser && <SectionIndicator />}
 
+      <Suspense>
         <div id="page">
           {/* ----- INTRO ----- */}
 
@@ -464,7 +555,7 @@ export default function InterventionInOurDisconnectionPage() {
             </Link>
           </section>
         </div>
-      </ReactLenis>
+      </Suspense>
     </>
   );
 }

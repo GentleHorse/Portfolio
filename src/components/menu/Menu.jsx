@@ -195,7 +195,7 @@ export default function Menu() {
         <section className="flex flex-col items-center">
           <div className="w-full mt-5 px-[120px] text-slate-50 text-md">
             <p className="mt-10 text-center text-slate-50 font-serif text-3xl">
-              Portal for explore more
+              Enter "portal" to explore more
             </p>
 
             <div className="flex justify-between gap-8 mb-10 pt-10">

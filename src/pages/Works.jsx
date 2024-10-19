@@ -20,7 +20,7 @@ import {
   MeshTransmissionMaterial,
   useGLTF,
   useProgress,
-  Html
+  Html,
 } from "@react-three/drei";
 
 import { useNavigate } from "react-router-dom";

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { Suspense, useEffect, useState } from "react";
+import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+
+import "lenis/dist/lenis.css";
 
 import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 import BeautyOfTimePassingHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
@@ -19,7 +21,61 @@ import AmbienceOfLightImage16 from "../../../public/images/design-projects/amibi
 import AmbienceOfLightImage17 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-17.jpg";
 import AmbienceOfLightImage19 from "../../../public/images/design-projects/amibience-of-light/ambience-of-light-image-19.jpg";
 
+const IMAGES_ARRAY = [
+  AmbienceOfLightImage01,
+  AmbienceOfLightImage03,
+  AmbienceOfLightImage06,
+  AmbienceOfLightImage07,
+  AmbienceOfLightImage10,
+  AmbienceOfLightImage11,
+  AmbienceOfLightImage15,
+  AmbienceOfLightImage16,
+  AmbienceOfLightImage17,
+  AmbienceOfLightImage19,
+];
+
 export default function AmbienceOfLightPage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
+   */
+  const [loadedStatus, setLoadedStatus] = useState(false);
+
+  useEffect(() => {
+    setLoadedStatus(document.readyState === "complete");
+    console.log("LoadedStauts: ", loadedStatus);
+
+    if (imagesArray.length === 10) {
+      // Initialize Lenis
+      const lenis = new Lenis();
+
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      console.log(`Set Lenis`);
+    }
+  });
+
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
    */
@@ -48,11 +104,11 @@ export default function AmbienceOfLightPage() {
 
   return (
     <>
-      <ReactLenis root>
-        <Header home about works contact />
+      <Header home about works contact />
 
-        {!!isBrowser && <SectionIndicator />}
+      {!!isBrowser && <SectionIndicator />}
 
+      <Suspense>
         <div id="page">
           {/* ----- INTRO ----- */}
 
@@ -341,7 +397,7 @@ export default function AmbienceOfLightPage() {
             </Link>
           </section>
         </div>
-      </ReactLenis>
+      </Suspense>
     </>
   );
 }
