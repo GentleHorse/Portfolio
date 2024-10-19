@@ -33,7 +33,6 @@ import BeautyOfTimePassingVideo05 from "../../../public/videos/beauty-of-time-pa
 import BeautyOfTimePassingVideo06 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-06.mp4";
 import BeautyOfTimePassingVideo07 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-07.mp4";
 import BeautyOfTimePassingVideo08 from "../../../public/videos/beauty-of-time-passing/beauty-of-time-passing-08.mp4";
-import { SuspendingImage } from "@react-three/uikit";
 
 const IMAGES_ARRAY = [
   BeautyOfTimePassingImage01,
