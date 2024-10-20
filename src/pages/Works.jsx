@@ -261,10 +261,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
    * PROJECT TITLE PROPS
    */
   const textProps = {
-    position: [-2.0, -1.25, 0.25],
-    fontSize: 0.45,
+    position: [-2.0, 0.0, 3.0],
+    fontSize: 0.4,
     font: "./fonts/DMSerifDisplay-Regular.ttf",
-    maxWidth: 4.5,
+    maxWidth: 3.5,
     anchorX: "left",
   };
 
