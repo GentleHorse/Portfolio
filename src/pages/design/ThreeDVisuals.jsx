@@ -138,17 +138,17 @@ export default function ThreeDVisualsPage() {
           </section>
 
           <section className="grid grid-rows-3 grid-flow-col">
-            <video className="object-cover" autoPlay loop muted playsInline>
+            <video className="w-[50vw] h-auto object-cover" autoPlay loop muted playsInline>
               <source src={ThreeDVisualVideo03} type="video/mp4" />
             </video>
-            <video className="object-cover" autoPlay loop muted playsInline>
+            <video className="w-[50vw] h-auto object-cover" autoPlay loop muted playsInline>
               <source src={ThreeDVisualVideo04} type="video/mp4" />
             </video>
-            <video className="object-cover" autoPlay loop muted playsInline>
+            <video className="w-[50vw] h-auto object-cover" autoPlay loop muted playsInline>
               <source src={ThreeDVisualVideo05} type="video/mp4" />
             </video>
             <video
-              className="row-span-3 h-full object-cover"
+              className="row-span-3 w-[50vw] h-full object-cover"
               autoPlay
               loop
               muted
