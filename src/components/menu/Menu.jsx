@@ -96,29 +96,23 @@ export default function Menu() {
     {
       id: "c1",
       content: (
-        <section className="flex flex-col items-center">
-          <div className="w-full mt-5 px-[100px] text-slate-50 text-md">
-            <p className="mb-10 text-center text-slate-50 font-serif text-3xl">
-              Welcome!
+        <section className="flex flex-col items-center h-full justify-evenly">
+          <div className="w-full mt-16 px-[80px] text-slate-50">
+            <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
+              Welcome to my "unshaped" portfolio!
             </p>
 
-            <div>
-              <p className="my-5 text-slate-50 font-montserrat text-xl">
-                Here, you can freely walk around my "Design Gallery" and
-                "Working Studio" spaces with your mouse and keyboard keys.
+            <div className="mb-10">
+              <p className="my-5 text-slate-50 font-light text-2xl">
+                Design is communication, and while organization and clarity are
+                essential for understanding, I often enjoy the curiosity sparked
+                by a bit of chaos.
               </p>
-              <p className="mt-12 text-slate-50 font-bold text-[22px]">
-                The Design Gallery
-              </p>
-              <p className="mt-2 mb-5 text-slate-50 font-montserrat text-xl">
-                You can see digitally translated physical projects.
-              </p>
-              <p className="mt-5 text-slate-50 font-bold text-[22px]">
-                The Working Studio
-              </p>
-              <p className="mt-2 mb-5 text-slate-50 font-montserrat text-xl">
-                You can see 3D visuals are created like shaping clays and 3D web
-                applications are created like making architecture models.
+
+              <p className="my-5 text-slate-50 font-light text-2xl">
+                In this virtual world, some projects may appear disorganized or
+                altered, without descriptions, inviting you to explore and feel
+                them rather than simply understand them.
               </p>
             </div>
           </div>
@@ -136,13 +130,13 @@ export default function Menu() {
     {
       id: "c2",
       content: (
-        <section className="flex flex-col items-center">
-          <div className="w-full mt-5 px-[120px] text-slate-50 text-md">
-            <p className="mb-10 text-center text-slate-50 font-serif text-3xl">
-              How to Play
+        <section className="flex flex-col items-center h-full justify-evenly">
+          <div className="w-full mt-16 px-[120px] text-slate-50 text-md">
+            <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
+              How to play
             </p>
 
-            <div className="flex justify-between mb-10 py-12 border rounded-xl">
+            <div className="flex justify-between mb-10 py-20 border rounded-xl">
               <div className="mx-4 flex flex-col items-center justify-center">
                 <img src={moveKeysIcon} className="w-20 h-16" />
                 <p className="m-1 font-montserrat text-md text-center">
@@ -192,22 +186,22 @@ export default function Menu() {
     {
       id: "c3",
       content: (
-        <section className="flex flex-col items-center">
-          <div className="w-full mt-5 px-[120px] text-slate-50 text-md">
-            <p className="mt-10 text-center text-slate-50 font-serif text-3xl">
+        <section className="flex flex-col items-center h-full justify-evenly">
+          <div className="w-full mt-10 px-[120px] text-slate-50 text-md">
+            <p className="my-10 text-center text-slate-50 font-serif text-4xl">
               Enter "portal" to explore more
             </p>
 
-            <div className="flex justify-between gap-8 mb-10 pt-10">
+            <div className="flex justify-between gap-12 mb-10 pt-10">
               <div>
-                <p className="mb-5 font-montserrat text-md">
+                <p className="mb-5 font-light text-2xl">
                   There are "portals" in this space.
                 </p>
-                <p className="mb-24 font-montserrat text-md">
+                <p className="mb-24 font-light text-2xl">
                   If you feel like knowing more about the project, you can visit
                   individual project pages by entering this "portal" gate.
                 </p>
-                <p className="font-great-vibes text-4xl">Enjoy!</p>
+                <p className="font-great-vibes text-4xl">E n j o y !</p>
               </div>
 
               <img src="./images/menu/portal-gate.jpg" className="h-[300px]" />
@@ -246,20 +240,16 @@ export default function Menu() {
       <Modal
         open={isModalOpen}
         onClose={gameStartHandler}
-        className="w-[800px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+        className="w-[1000px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
-        <section className="w-full h-full flex flex-col items-center justify-evenly">
+        <section className="w-auto h-full grid grid-cols-6 items-start">
           {/* MAIN SECTION */}
-          {contentsArray[contentPage].content}
+          <div className="h-full col-span-5">{contentsArray[contentPage].content}</div>
 
           {/* LINKS FOOTER */}
-          <div className="w-full text-slate-50 text-xl flex justify-center">
-            <Link to="/portfolio-website" reloadDocument={true}>
-              <p className="mx-5 font-serif">About this website</p>
-            </Link>
-
+          <div className="mt-[200px] text-slate-50 text-xl flex flex-col gap-10 justify-start">
             <Link to="/about" reloadDocument={true}>
-              <p className="mx-5 font-serif">Author</p>
+              <p className="mx-5 font-serif">About</p>
             </Link>
 
             <Link to="/works" reloadDocument={true}>
