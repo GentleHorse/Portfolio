@@ -2,11 +2,9 @@ import { Suspense, useEffect, useState } from "react";
 import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
-import { isBrowser, isMobile } from "react-device-detect";
 
 import "lenis/dist/lenis.css";
 
-import ThreeDVisualsHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
 import PortfolioWebsiteHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
 
 import ThreeDVisualVideo01 from "../../../public/videos/three-d-visuals/project-page/three-d-visuals-01.mp4";
