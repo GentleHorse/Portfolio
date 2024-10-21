@@ -601,7 +601,7 @@ export default function Stage(props) {
           position={[-39, 18, 25]}
           rotation={[0, Math.PI / 2, 0]}
           font="./fonts/shippori-mincho-b1-v21-japanese-regular.woff"
-          fontSize={4.0}
+          fontSize={3.0}
           maxWidth={45.0}
           anchorX="center"
           anchorY="middle"
@@ -611,7 +611,7 @@ export default function Stage(props) {
           color="#FFFFFF"
           // color="#FF028D"
         >
-          Working {"\n"} Studio
+          Space for {"\n"} Digital Works
         </DreiText>
 
         <group
@@ -1114,8 +1114,8 @@ export default function Stage(props) {
           position={[13, 21, -46]}
           // rotation={[0, 0, Math.PI * 0.1]}
           font="./fonts/shippori-mincho-b1-v21-japanese-regular.woff"
-          fontSize={4.5}
-          maxWidth={7.0}
+          fontSize={3.5}
+          maxWidth={50.0}
           anchorX="center"
           anchorY="middle"
           textAlign="center"
@@ -1124,7 +1124,7 @@ export default function Stage(props) {
           // color="#FFE302"
           color="#FFFFFF"
         >
-          Design Gallery
+          Space for {"\n"} Design Objects
         </DreiText>
 
         <group
