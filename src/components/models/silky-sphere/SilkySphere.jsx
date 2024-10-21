@@ -18,7 +18,7 @@ export default function SilkySphere(props) {
    * MATERIAL
    */
   const GLASS_MATERIAL = useMemo(() => {
-    return <MeshTransmissionMaterial backside={false} thickness={2} />;
+    return <MeshTransmissionMaterial backside={false} thickness={1.5} />;
   }, []);
   return (
     <group {...props} dispose={null}>

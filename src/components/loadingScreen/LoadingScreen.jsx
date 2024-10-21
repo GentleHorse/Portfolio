@@ -1,6 +1,10 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { gameStates, useGameStore } from "../../store/store.js";
-import { useProgress, Html} from "@react-three/drei";
+import { useProgress, Html, Environment } from "@react-three/drei";
+
+import LoadingRing from "../models/loadingRing/LoadingRing.jsx";
+import SilkySphere from "../models/silky-sphere/SilkySphere.jsx";
+import { useFrame } from "@react-three/fiber";
 
 export default function LoadingScreen(props) {
   const { active, progress, errors, item, loaded, total } = useProgress();
@@ -22,14 +26,55 @@ export default function LoadingScreen(props) {
     };
   }, []);
 
+  /**
+   * Loading rotation animation
+   */
+  const loadingRing01 = useRef();
+  const loadingRing02 = useRef();
+  const loadingRing03 = useRef();
+  const glassSphere = useRef();
+  useFrame((state, delta) => {
+    loadingRing01.current.rotation.y = state.clock.getElapsedTime() * 0.45;
+    loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.25;
+
+    loadingRing02.current.rotation.y = state.clock.getElapsedTime() * 0.45;
+    loadingRing02.current.rotation.x = state.clock.getElapsedTime() * -0.25;
+
+    loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.45;
+    loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.35;
+
+    glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.35;
+    glassSphere.current.rotation.z = state.clock.getElapsedTime() * -0.25;
+  })
+
   return (
     <>
-      <Html
-        center
-        className="w-[100vw] h-[100vh] bg-[#050505] flex flex-col items-end justify-end"
-      >
-        <div>
-          <p className="w-full h-full bottom-0 right-0 m-4 text-[#C1C1C1] text-[170px] font-pinyon-script">
+      <Environment
+        background={false}
+        files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
+      />
+
+      <group scale={3.25}>
+        <group ref={loadingRing01}>
+          <LoadingRing />
+        </group>
+
+        <group ref={loadingRing02} scale={1.2}>
+          <LoadingRing />
+        </group>
+
+        <group ref={loadingRing03} scale={1.4}>
+          <LoadingRing />
+        </group>
+
+        <group ref={glassSphere} scale={0.9}>
+          <SilkySphere />
+        </group>
+      </group>
+
+      <Html center className="w-[100vw] h-[100vh]">
+        <div className="w-full h-full flex flex-col items-end justify-end">
+          <p className="bottom-0 right-0 m-4 text-[#C1C1C1] text-[170px] font-pinyon-script">
             {progress.toFixed(2)} %
           </p>
         </div>
