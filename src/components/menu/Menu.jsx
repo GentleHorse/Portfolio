@@ -77,12 +77,7 @@ export default function Menu() {
   const [contentPage, setContentPage] = useState(0);
   const contentPageIncrementHandler = () => {
     setContentPage((prevContentPageNum) => {
-      if (prevContentPageNum === 2) {
-        prevContentPageNum = 0;
-      } else {
-        prevContentPageNum += 1;
-      }
-
+      prevContentPageNum += 1;
       return prevContentPageNum;
     });
   };
@@ -99,20 +94,23 @@ export default function Menu() {
         <section className="flex flex-col items-center h-full justify-evenly">
           <div className="w-full mt-16 px-[80px] text-slate-50">
             <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
-              Welcome to my "unshaped" portfolio!
+              Welcome to my atelier!
             </p>
 
             <div className="mb-10">
               <p className="my-5 text-slate-50 font-light text-2xl">
-                Design is communication, and while organization and clarity are
-                essential for understanding, I often enjoy the curiosity sparked
-                by a bit of chaos.
+                I enjoy visiting museums, but I prefer exploring ateliers
+                because they allow me to sense the person behind the art and
+                design works. In these spaces, I might find unfinished,
+                unlabeled, or uncategorized pieces that spark my curiosity and
+                reveal more about the creator than completed works alone.
               </p>
 
               <p className="my-5 text-slate-50 font-light text-2xl">
-                In this virtual world, some projects may appear disorganized or
-                altered, without descriptions, inviting you to explore and feel
-                them rather than simply understand them.
+                Similarly, my atelier embraces a bit of chaos. Some projects may
+                seem disorganized or altered, lacking clear descriptions,
+                encouraging you to engage with and feel them, rather than just
+                comprehend them.
               </p>
             </div>
           </div>
@@ -242,22 +240,24 @@ export default function Menu() {
         onClose={gameStartHandler}
         className="w-[1000px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
-        <section className="w-auto h-full grid grid-cols-6 items-start">
+        <section className="w-auto h-full grid grid-cols-7 items-start">
           {/* MAIN SECTION */}
-          <div className="h-full col-span-5">{contentsArray[contentPage].content}</div>
+          <div className="h-full col-span-6">
+            {contentsArray[contentPage].content}
+          </div>
 
           {/* LINKS FOOTER */}
           <div className="mt-[200px] text-slate-50 text-xl flex flex-col gap-10 justify-start">
             <Link to="/about" reloadDocument={true}>
-              <p className="mx-5 font-serif">About</p>
+              <p className="font-serif">About</p>
             </Link>
 
             <Link to="/works" reloadDocument={true}>
-              <p className="mx-5 font-serif">Works</p>
+              <p className="font-serif">Works</p>
             </Link>
 
             <Link to="/contact" reloadDocument={true}>
-              <p className="mx-5 font-serif">Contact</p>
+              <p className="font-serif">Contact</p>
             </Link>
           </div>
         </section>
