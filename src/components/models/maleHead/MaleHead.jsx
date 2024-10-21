@@ -97,7 +97,7 @@ export default function MaleHead(props) {
             // material={materials["head-skin"]}
           >
             <meshStandardMaterial
-              color="#91989F"
+              color="#656765"
               metalness={0.8}
               roughness={0.01}
             />
@@ -140,7 +140,7 @@ export default function MaleHead(props) {
           // material={materials["head-skin"]}
         >
           <meshStandardMaterial
-            color="#91989F"
+            color="#656765"
             metalness={0.8}
             roughness={0.01}
           />

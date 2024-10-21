@@ -43,8 +43,8 @@ export default function LoadingScreen(props) {
     loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.45;
     loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.35;
 
-    glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.35;
-    glassSphere.current.rotation.z = state.clock.getElapsedTime() * -0.25;
+    glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.75;
+    glassSphere.current.rotation.z = state.clock.getElapsedTime() * -0.55;
   })
 
   return (
@@ -60,11 +60,11 @@ export default function LoadingScreen(props) {
         </group>
 
         <group ref={loadingRing02} scale={1.2}>
-          <LoadingRing />
+          <LoadingRing rotation={[Math.PI * 0.25, 0, 0]} />
         </group>
 
         <group ref={loadingRing03} scale={1.4}>
-          <LoadingRing />
+          <LoadingRing rotation={[Math.PI * 0.5, 0, 0]} />
         </group>
 
         <group ref={glassSphere} scale={0.9}>
