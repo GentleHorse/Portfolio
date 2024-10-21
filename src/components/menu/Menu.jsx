@@ -131,7 +131,7 @@ export default function Menu() {
         <section className="flex flex-col items-center h-full justify-evenly">
           <div className="w-full mt-16 px-[120px] text-slate-50 text-md">
             <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
-              How to play
+              How to walk the atelier
             </p>
 
             <div className="flex justify-between mb-10 py-20 border rounded-xl">
@@ -187,7 +187,7 @@ export default function Menu() {
         <section className="flex flex-col items-center h-full justify-evenly">
           <div className="w-full mt-10 px-[120px] text-slate-50 text-md">
             <p className="my-10 text-center text-slate-50 font-serif text-4xl">
-              Enter "portal" to explore more
+              "Portal" to explore more
             </p>
 
             <div className="flex justify-between gap-12 mb-10 pt-10">

@@ -10,7 +10,14 @@ import * as THREE from "three";
 
 const HEAD_MOVE_STRENGTH = 0.04;
 const EYE_BALLS_MOVE_STRENGTH = 0.05;
-const BG_PLANE_MOVE_STRENGTH = 0.01;
+const BG_PLANE_MOVE_STRENGTH = 0.02;
+const BG_PLANE_LERP_STERNGTH = 0.9;
+
+let LERPED_BG_PLANE_ORIENTATION = {
+  X: 0,
+  Y: 0,
+  Z: 0,
+};
 
 export default function MaleHead(props) {
   /**
@@ -42,6 +49,10 @@ export default function MaleHead(props) {
     });
   }, []);
 
+  function lerp(a, b, alpha) {
+    return a + alpha * (b - a);
+  }
+
   useFrame((state, delta) => {
     upperHeadPart.current.rotation.y = mouse.x * HEAD_MOVE_STRENGTH;
     upperHeadPart.current.rotation.x = mouse.y * HEAD_MOVE_STRENGTH;
@@ -52,8 +63,19 @@ export default function MaleHead(props) {
     eyeBallLeft.current.rotation.y = mouse.x * EYE_BALLS_MOVE_STRENGTH;
     eyeBallLeft.current.rotation.x = mouse.y * EYE_BALLS_MOVE_STRENGTH;
 
-    bgPlane.current.rotation.y = mouse.x * BG_PLANE_MOVE_STRENGTH;
-    bgPlane.current.rotation.x = mouse.y * BG_PLANE_MOVE_STRENGTH;
+    LERPED_BG_PLANE_ORIENTATION.Y = lerp(
+      LERPED_BG_PLANE_ORIENTATION.Y,
+      (bgPlane.current.rotation.y = mouse.x * BG_PLANE_MOVE_STRENGTH),
+      delta * BG_PLANE_LERP_STERNGTH
+    );
+    bgPlane.current.rotation.y = LERPED_BG_PLANE_ORIENTATION.Y;
+    
+    LERPED_BG_PLANE_ORIENTATION.X = lerp(
+      LERPED_BG_PLANE_ORIENTATION.X,
+      (bgPlane.current.rotation.x = mouse.y * BG_PLANE_MOVE_STRENGTH),
+      delta * BG_PLANE_LERP_STERNGTH
+    );
+    bgPlane.current.rotation.x = LERPED_BG_PLANE_ORIENTATION.X;
   });
 
   /**
@@ -127,7 +149,11 @@ export default function MaleHead(props) {
 
       <mesh ref={bgPlane} position={[0, 0, -20]} scale={[30, 30, 1]}>
         <planeGeometry />
-        <meshStandardMaterial color="#000000" roughnessMap={bgLogoPatternTexture} envMapIntensity={3.0} />
+        <meshStandardMaterial
+          color="#000000"
+          roughnessMap={bgLogoPatternTexture}
+          envMapIntensity={3.0}
+        />
       </mesh>
     </>
   );
