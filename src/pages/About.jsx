@@ -18,6 +18,7 @@ import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
+
 /**
  * INITIAL PARAM VALUES
  */
@@ -254,19 +255,3 @@ function LoadingScreenMobile() {
   );
 }
 
-function TestCube(props) {
-  const testCube = useRef();
-
-  const scroll = useScroll();
-
-  useFrame((state, delta) => {
-    testCube.current.rotation.y = Math.PI * 2 * scroll.offset;
-  });
-
-  return (
-    <mesh {...props} ref={testCube}>
-      <boxGeometry />
-      <meshNormalMaterial />
-    </mesh>
-  );
-}
