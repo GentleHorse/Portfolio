@@ -54,7 +54,7 @@ export default function LoadingScreen(props) {
         files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
       />
 
-      <group scale={3.25}>
+      <group scale={2.0}>
         <group ref={loadingRing01}>
           <LoadingRing />
         </group>

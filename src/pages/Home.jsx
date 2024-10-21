@@ -39,7 +39,13 @@ export default function HomePage() {
               position: [0, 1.5, 8],
             }}
           >
-            <Suspense fallback={<LoadingScreen />}>
+            <Suspense
+              fallback={
+                <group scale={1.75}>
+                  <LoadingScreen />
+                </group>
+              }
+            >
               <Experience />
               <Preload all />
             </Suspense>
