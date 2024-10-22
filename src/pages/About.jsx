@@ -18,12 +18,12 @@ import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 /**
  * INITIAL PARAM VALUES
  */
-const SCROLL_PAGES = 6;
+const SCROLL_PAGES = 6.5;
 const SCROLL_DAMPING = 0.35;
 const SCROLL_DISTANCE = 0.5;
 const CAMERA_FOV = isBrowser ? 15 : 40;
 const CAMERA_POSITION = isBrowser ? [0, 0, 20] : [0, 0, 8];
-const HEAD_POSITION = isBrowser ? [1.2, -3, 0] : [0.7, -3.5, 0.2];
+const HEAD_POSITION = isBrowser ? [1.2, -3, 0] : [1.25, -2.7, 1.25];
 const MALEHEAD_ROTATION = isBrowser
   ? [0, 0, 0]
   : [0, -Math.PI * 0.1, Math.PI * 0.025];
@@ -75,21 +75,21 @@ export default function AboutPage() {
 
               {/* --- PAGE 01 --------------------------------------- */}
               <section className="h-[100vh]">
-                <h1 className="h-full mt-[50vh] ml-10 xl:ml-20 font-serif text-[80px] xl:text-[120px] text-[#ffffff]">
+                <h1 className="h-full mt-[20vh] xl:mt-[50vh] ml-10 xl:ml-20 font-serif text-[80px] xl:text-[120px] text-[#ffffff]">
                   Hello, <br />
-                  it's Me, Toshi !
+                  Call me Toshi !
                 </h1>
               </section>
 
               {/* --- PAGE 02 --------------------------------------- */}
               <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
                 <article className="py-[5%] px-[6%] xl:px-[12%]">
-                  <h1 className="mb-10 font-serif text-[30px] xl:text-[40px] text-[#ffffff]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
                     Designer with developer’s perspective <br />
                     Developer with designer’s experience
                   </h1>
 
-                  <p className="font-light text-[20px] xl:text-[25px] text-[#ffffff]">
+                  <p className="font-light text-[12px] xl:text-[25px] text-[#ffffff]">
                     I was born and raised in Japan. I pursued my passion for
                     design at Design Academy Eindhoven in the Netherlands
                     studying product and 3D design, and through my graduation
@@ -121,11 +121,11 @@ export default function AboutPage() {
               {/* --- PAGE 03 --------------------------------------- */}
               <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
                 <article className="py-[5%] px-[6%] xl:px-[12%]">
-                  <h1 className="mb-10 font-serif text-[30px] xl:text-[40px] text-[#ffffff]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
                     Design to stimulate curiosity
                   </h1>
 
-                  <p className="font-light text-[20px] xl:text-[25px] text-[#ffffff]">
+                  <p className="font-light text-[12px] xl:text-[25px] text-[#ffffff]">
                     Before moving to the Netherlands to study design, I gained
                     several years of experience in Japan’s finance and
                     accounting industry. Analysing costs and expenses with
@@ -145,11 +145,11 @@ export default function AboutPage() {
               {/* --- PAGE 04 --------------------------------------- */}
               <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
                 <article className="py-[5%] px-[6%] xl:px-[12%]">
-                  <h1 className="mb-10 font-serif text-[30px] xl:text-[40px] text-[#ffffff]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
                     Gratifying interactions like physical products
                   </h1>
 
-                  <p className="font-light text-[20px] xl:text-[25px] text-[#ffffff]">
+                  <p className="font-light text-[12px] xl:text-[25px] text-[#ffffff]">
                     Most of my design work centres on creating interactions that
                     evoke emotions and shift perspectives in meaningful ways.
                     These interactions frequently occur in physical spaces,
@@ -168,72 +168,130 @@ export default function AboutPage() {
               {/* --- PAGE 05 --------------------------------------- */}
               <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
                 <article className="py-[5%] px-[6%] xl:px-[12%]">
-                  <h1 className="mb-10 font-serif text-[30px] xl:text-[40px] text-[#ffffff]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
                     Skills
                   </h1>
 
-                  <div className="flex flex-col">
-                    <div className="mb-4 flex flex-row">
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Blender
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Houdini
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Unreal Engine 5
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Rhinoceros 3d
-                      </p>
-                    </div>
+                  <div className="grid grid-cols-2 xl:grid-cols-3">
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Blender
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Houdini
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Unreal Engine 5
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Rhinoceros 3d
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Adobe Creative Suite
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Figma
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Webflow
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      HTML
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      CSS
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      JavaScript
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      C++
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      three.js
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      React
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      React Three Fiber
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      GSAP
+                    </p>
+                    <p className="inline text-center mx-4 my-2 xl:px-2 py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#ffffff] border-2 rounded-full">
+                      Tailwind CSS
+                    </p>
+                  </div>
+                </article>
+              </section>
 
-                    <div className="mb-4 flex flex-row">
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Adobe Creative Suite
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Figma
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Webflow
-                      </p>
-                    </div>
+              {/* --- PAGE 06 --------------------------------------- */}
+              <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
+                <article className="py-[5%] pl-[6%] xl:pl-[12%]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
+                    Experiences
+                  </h1>
 
-                    <div className="mb-4 flex flex-row">
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        HTML
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        CSS
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        JavaScript
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        C++
-                      </p>
+                  <div className="flex flex-row gap-10">
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Dec 2023 - now</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Aug 2022</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2022 - Jul 2022</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jul 2019 - Jul 2019</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jan 2017 - Mar 2017</p>
                     </div>
-
-                    <div className="mb-4 flex flex-row">
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        three.js
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        React
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        React Three Fiber
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        GSAP
-                      </p>
-                      <p className="inline mx-1 px-2 xl:px-4 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[20px] text-[#ffffff] border-2 rounded-full">
-                        Tailwind CSS
-                      </p>
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Designer & developer at Studio Toshihito Endo</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Production assisant at MONO Japan Craft Fair</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Experience design intern at Random Studio</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Assistant product designer at PLANE co.,ltd</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Assistant graphic designer at MOZU co.,ltd</p>
                     </div>
                   </div>
                 </article>
+
+                <article className="py-[5%] pl-[6%] xl:pl-[12%]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
+                    Exhibitions
+                  </h1>
+
+                  <div className="flex flex-row gap-10">
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2024</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Oct 2023</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jan 2022</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Mar 2021 - Aug 2021</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Oct 2020</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2020</p>
+                    </div>
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">OBJECT Rotterdam 2024 (Rotterdam, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Design Academy Graduation show at DDW 2023 (Eindhoven, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Moonshot: Exit Strategy" (Eindhoven, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Een nieuwe lente, een nieuwe vass" at National Glasmuseum (Leerdam, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Spooning, A Dinner for Two" at DDW 2020 (Eindhoven, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Synthmania WORM Expo 2020 (Rotterdam, NL)</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="py-[5%] pl-[6%] xl:pl-[12%]">
+                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
+                    Educations
+                  </h1>
+
+                  <div className="flex flex-row gap-10">
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">2018 - 2023</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">2009 - 2013</p>
+                    </div>
+                    <div>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Design Academy Eindhoven, Man & Communication (Eindhoven, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Keio University, Faculty of Economics (Tokyo, JP)</p>
+                    </div>
+                  </div>
+                </article>
+
               </section>
             </Scroll>
           </ScrollControls>
