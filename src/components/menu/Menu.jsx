@@ -7,6 +7,7 @@ import escKeyIcon from "../../../public/images/icons/esc-key.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys.svg";
 import mouseIcon from "../../../public/images/icons/mouse.svg";
 import arrowIcon from "../../../public/images/icons/directional-arrow-up.svg";
+import whiteLogoicon from "../../../public/images/icons/logo-white.svg";
 
 export default function Menu() {
   /**
@@ -241,28 +242,34 @@ export default function Menu() {
         onClose={gameStartHandler}
         className="w-[1000px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
-        <section className="w-auto h-full grid grid-cols-7 items-start">
+        <section className="relative overflow-hidden w-auto h-full grid grid-cols-7 items-start">
           {/* MAIN SECTION */}
           <div className="h-full col-span-6">
             {contentsArray[contentPage].content}
           </div>
 
           {/* LINKS FOOTER */}
-          <div className="mt-[200px] text-slate-50 text-xl flex flex-col gap-10 justify-start">
-            <Link to="/about" reloadDocument={true}>
-              <p className="font-serif">About</p>
-              
+          <div className="mt-[70px] text-slate-50 text-xl flex flex-col gap-7 justify-end">
+            <Link to="/about" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+              <p className="font-serif text-xl">About</p>
+              <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
 
-            <Link to="/works" reloadDocument={true}>
-              <p className="font-serif">Works</p>
+            <Link to="/works" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+              <p className="font-serif text-xl">Works</p>
+              <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
 
-            <Link to="/contact" reloadDocument={true}>
-              <p className="font-serif">Contact</p>
+            <Link to="/contact" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+              <p className="font-serif text-xl">Contact</p>
+              <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
           </div>
+
+          <img src={whiteLogoicon} className="absolute bottom-10 right-12 w-[50px] h-[50px]" />
         </section>
+
+        
       </Modal>
     </>
   );
