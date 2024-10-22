@@ -275,6 +275,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "pointer" : "auto";
+
+    return () => {
+      document.body.style.cursor = "auto";
+    };
   }, [hovered]);
 
   /**
@@ -302,7 +306,10 @@ function ProjectThumbnails({ m = 0.4, ...props }) {
           ref={(element) => (imageGroups.current[index] = element)}
           key={project.id}
           position={[0, -index * height * IMAGE_DIST_STRENGTH, project.zPos]}
-          onClick={() => navigate(project.projectPageUrl)}
+          onClick={() => {
+            setHovered(false);
+            navigate(project.projectPageUrl);
+          }}
           onPointerOver={(event) => {
             event.stopPropagation();
             setHovered(true);

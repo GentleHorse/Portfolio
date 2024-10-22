@@ -250,26 +250,39 @@ export default function Menu() {
 
           {/* LINKS FOOTER */}
           <div className="mt-[70px] text-slate-50 text-xl flex flex-col gap-7 justify-end">
-            <Link to="/about" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+            <Link
+              to="/about"
+              reloadDocument={true}
+              className="mr-12 flex flex-row items-center justify-end"
+            >
               <p className="font-serif text-xl">About</p>
               <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
 
-            <Link to="/works" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+            <Link
+              to="/works"
+              reloadDocument={true}
+              className="mr-12 flex flex-row items-center justify-end"
+            >
               <p className="font-serif text-xl">Works</p>
               <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
 
-            <Link to="/contact" reloadDocument={true} className="mr-12 flex flex-row items-center justify-end">
+            <Link
+              to="/contact"
+              reloadDocument={true}
+              className="mr-12 flex flex-row items-center justify-end"
+            >
               <p className="font-serif text-xl">Contact</p>
               <img src={arrowIcon} className="ml-2 w-6 h-6" />
             </Link>
           </div>
 
-          <img src={whiteLogoicon} className="absolute bottom-10 right-12 w-[50px] h-[50px]" />
+          <img
+            src={whiteLogoicon}
+            className="absolute bottom-10 right-12 w-[50px] h-[50px]"
+          />
         </section>
-
-        
       </Modal>
     </>
   );
