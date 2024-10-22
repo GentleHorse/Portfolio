@@ -6,6 +6,7 @@ import Modal from "../UI/Modal.jsx";
 import escKeyIcon from "../../../public/images/icons/esc-key.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys.svg";
 import mouseIcon from "../../../public/images/icons/mouse.svg";
+import arrowIcon from "../../../public/images/icons/directional-arrow-up.svg";
 
 export default function Menu() {
   /**
@@ -250,6 +251,7 @@ export default function Menu() {
           <div className="mt-[200px] text-slate-50 text-xl flex flex-col gap-10 justify-start">
             <Link to="/about" reloadDocument={true}>
               <p className="font-serif">About</p>
+              
             </Link>
 
             <Link to="/works" reloadDocument={true}>

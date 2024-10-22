@@ -14,7 +14,7 @@ export default function LoadingRing(props) {
   useEffect(() => {
     if (ring){
       ring.current.material.transparent = true;
-      ring.current.material.depthTest = false;
+      ring.current.material.depthTest = true;
     }
   }, [])
 
