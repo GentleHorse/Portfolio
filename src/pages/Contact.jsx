@@ -133,7 +133,7 @@ function ContactExperience() {
               toshihito.endo@gmail.com
             </p>
             <div className="flex gap-5">
-              <a href="https://www.instagram.com/toshiendo3d/" target="_blank">
+              <a href="https://www.instagram.com/toshihitoendo/" target="_blank">
                 <FontAwesomeIcon
                   icon={faInstagram}
                   className={`font-roboto mt-[20px] mr-[10px] mb-[5px] ${
