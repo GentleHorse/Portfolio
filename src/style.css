@@ -111,6 +111,55 @@ canvas {
   transition-delay: 1650ms;
 }
 
-/* .scroll-animated-element.in-view {
-  border: 10px solid red; 
-} */
+.grid-images:nth-child(13) {
+  transition-delay: 1800ms;
+}
+
+
+.color-bar:nth-child(2) {
+  transition-delay: calc(50ms*1);
+}
+
+.color-bar:nth-child(3) {
+  transition-delay: calc(50ms*2);
+}
+
+.color-bar:nth-child(4) {
+  transition-delay: calc(50ms*3);
+}
+
+.color-bar:nth-child(5) {
+  transition-delay: calc(50ms*4);
+}
+
+.color-bar:nth-child(6) {
+  transition-delay: calc(50ms*5);
+}
+
+.color-bar:nth-child(7) {
+  transition-delay: calc(50ms*6);
+}
+
+.color-bar:nth-child(8) {
+  transition-delay: calc(50ms*7);
+}
+
+.color-bar:nth-child(9) {
+  transition-delay: calc(50ms*8);
+}
+
+.color-bar:nth-child(10) {
+  transition-delay: calc(50ms*9);
+}
+
+.color-bar:nth-child(11) {
+  transition-delay: calc(50ms*10);
+}
+
+.color-bar:nth-child(12) {
+  transition-delay: calc(50ms*11);
+}
+
+.color-bar:nth-child(13) {
+  transition-delay: calc(50ms*12);
+}

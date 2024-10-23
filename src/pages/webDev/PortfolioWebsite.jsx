@@ -17,6 +17,15 @@ import PortfolioWebsiteImage04 from "../../../public/images/app-developments/por
 import PortfolioWebsiteImage05 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-05.jpg";
 import PortfolioWebsiteImage06 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-06.jpg";
 import PortfolioWebsiteImage07 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-07.jpg";
+import PortfolioWebsiteImage08 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-08.jpg";
+import PortfolioWebsiteImage09 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-09.jpg";
+import PortfolioWebsiteImage10 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-10.jpg";
+import PortfolioWebsiteImage11 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-11.jpg";
+import PortfolioWebsiteImage12 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-12.jpg";
+import PortfolioWebsiteImage13 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-13.jpg";
+import PortfolioWebsiteImage14 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-14.jpg";
+import PortfolioWebsiteImage15 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-15.jpg";
+import PortfolioWebsiteImage16 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-16.jpg";
 
 import PortfolioWebsiteVideo01 from "../../../public/videos/portfolio-website/portfolio-website-01.mp4";
 import PortfolioWebsiteVideo02 from "../../../public/videos/portfolio-website/portfolio-website-02.mp4";
@@ -26,6 +35,8 @@ import PortfolioWebsiteVideo05 from "../../../public/videos/portfolio-website/po
 import PortfolioWebsiteVideo06 from "../../../public/videos/portfolio-website/portfolio-website-06.mp4";
 import PortfolioWebsiteVideo07 from "../../../public/videos/portfolio-website/portfolio-website-07.mp4";
 import PortfolioWebsiteVideo08 from "../../../public/videos/portfolio-website/portfolio-website-08.mp4";
+import PortfolioWebsiteVideo09 from "../../../public/videos/portfolio-website/portfolio-website-09.mp4";
+import PortfolioWebsiteVideo10 from "../../../public/videos/portfolio-website/portfolio-website-10.mp4";
 
 export default function PortfolioWebsitePage() {
   /**
@@ -335,7 +346,7 @@ export default function PortfolioWebsitePage() {
 
           <section className="mt-[124px] pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              Make use of devices’ sensory features
+              Sensory-driven experiences crafted uniquely for different devices
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[60px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
               People use electronic devices like laptops and smartphones daily,
@@ -343,11 +354,12 @@ export default function PortfolioWebsitePage() {
               overlooked due to their familiarity. The mouse, touchpad, or a
               smartphone’s gyroscope can be utilised to dynamically control
               camera angles in a 3D immersive scene, creating an engaging and
-              exciting experience.
+              exciting device-specific experiences leveraging distinct sensory
+              functionalities.
             </p>
           </section>
 
-          <section className="mt-[120px] mb-[120px] mx-[10vw] xl:mx-[240px] grid grid-cols-2">
+          <section className="mt-[60px] xl:mt-[120px] mb-[60px] xl:mb-[120px] mx-[10vw] xl:mx-[240px] grid grid-cols-2">
             <img
               src={PortfolioWebsiteImage06}
               className="hidden-element grid-images w-[70%] mx-auto my-auto object-cover"
@@ -358,7 +370,7 @@ export default function PortfolioWebsitePage() {
             />
           </section>
 
-          <section className="my-[240px] mx-[10vw] xl:mx-[240px]">
+          <section className="my-[80px] xl:my-[240px] mx-[10vw] xl:mx-[240px]">
             <div className="w-[80%] mx-auto my-32">
               <video
                 className="hidden-element grid-images w-full object-cover"
@@ -369,10 +381,13 @@ export default function PortfolioWebsitePage() {
               >
                 <source src={PortfolioWebsiteVideo07} type="video/mp4" />
               </video>
+              <p className="mt-2 text-center w-full z-20 text-[#C1C1C1] text-[12px] xl:text-[14px]">
+                The 3D scene controlled by a computer mouse, touchpad
+              </p>
             </div>
           </section>
 
-          <section className="my-[240px] mx-[10vw] xl:mx-[240px]">
+          <section className="my-[80px] xl:my-[240px] mx-[30vw] xl:mx-[240px]">
             <video
               className="hidden-element grid-images mx-auto h-full object-cover"
               autoPlay
@@ -382,6 +397,9 @@ export default function PortfolioWebsitePage() {
             >
               <source src={PortfolioWebsiteVideo08} type="video/mp4" />
             </video>
+            <p className="mt-2 text-center w-full z-20 text-[#C1C1C1] text-[12px] xl:text-[14px]">
+              The 3D scene controlled by a smartphone's gyroscope
+            </p>
           </section>
 
           <section className="mt-[124px] pt-[124px] mx-[10vw] xl:mx-[240px]">
@@ -398,6 +416,60 @@ export default function PortfolioWebsitePage() {
             </p>
           </section>
 
+          <section className="relative my-[80px] xl:my-[120px] mx-[10vw] xl:mx-[240px]">
+            <div className="flex flex-row w-full gap-1 xl:gap-5">
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#000000]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#050505]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#090909]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#1C1C1C]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#656765]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#565d75]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#91989F]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#C1C1C1]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#FFFFFF]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#0F2540]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#3C2F41]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#26453D]" />
+              <div className="hidden-element color-bar w-[30px] xl:w-[100px] h-[100px] xl:h-[300px] border rounded-xl bg-[#CC543A]" />
+            </div>
+          </section>
+
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] grid grid-cols-2 gap-6">
+            <video
+              className="hidden-element grid-images w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={PortfolioWebsiteVideo09} type="video/mp4" />
+            </video>
+            <video
+              className="hidden-element grid-images w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={PortfolioWebsiteVideo10} type="video/mp4" />
+            </video>
+          </section>
+
+          <section className="mt-[60px] xl:mt-[120px] mb-[60px] xl:mb-[120px] mx-[10vw] xl:mx-[240px] grid grid-cols-3">
+            <img
+              src={PortfolioWebsiteImage08}
+              className="hidden-element grid-images mx-auto my-auto object-cover"
+            />
+            <img
+              src={PortfolioWebsiteImage09}
+              className="hidden-element grid-images mx-auto my-auto object-cover"
+            />
+            <img
+              src={PortfolioWebsiteImage10}
+              className="hidden-element grid-images mx-auto my-auto object-cover"
+            />
+          </section>
+
           {/* ----- OUTCOME ----- */}
 
           <section
@@ -408,26 +480,72 @@ export default function PortfolioWebsitePage() {
               OUTCOME
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              "OUTCOME" sentence is here.
+              Playful multi-page portfolio website
             </p>
-            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              a posuere lacus. Nunc iaculis maximus est sit amet gravida. Duis
-              lacinia, risus nec imperdiet porta, eros libero tristique eros,
-              quis laoreet dui sem vel velit. Pellentesque finibus efficitur
-              facilisis. Duis gravida pellentesque nisl sed ultricies. Sed ac
-              erat eget nibh consectetur rutrum a nec turpis. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Maecenas at ligula magna.
-              Aenean eu ipsum tempor, tincidunt nisi id, feugiat risus
+            <p className="hidden-element mb-[20px] xl:mb-[40px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              The designer meticulously crafted nearly all 3D models and
+              integrated them into a dynamic, realistic web environment using
+              Three.js and the Rapier physics engine. The frontend technologies
+              include React, Three.js, Rapier, GSAP, Zustand, Tailwind CSS, and
+              Lenis, while the backend is powered by Vercel.
             </p>
+            <button
+              className="hidden-element mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
+              onClick={() =>
+                window.location.replace("https://toshihito-endo.com/")
+              }
+            >
+              <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[14px] xl:text-[20px] text-[#C1C1C1] hover:text-[#ffffff]">
+                Launch Project
+              </p>
+            </button>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-            <img
-              src={PortfolioWebsiteHeroImage}
-              className="hidden-element w-full h-auto object-cover"
-            />
-          </section>
+          {!!isBrowser && (
+            <section className="mt-[87px] w-[100vw]">
+              <img
+                src={PortfolioWebsiteImage11}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={PortfolioWebsiteImage12}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={PortfolioWebsiteImage13}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={PortfolioWebsiteImage14}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={PortfolioWebsiteImage15}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={PortfolioWebsiteImage16}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+            </section>
+          )}
+
+          {!!isMobile && (
+            <>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteHeroImage}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteHeroImage}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+            </>
+          )}
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
