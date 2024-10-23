@@ -10,7 +10,6 @@ import "lenis/dist/lenis.css";
 import ObjectRotterdam2024HeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
-
 export default function ObjectRotterdam2024Page() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
@@ -100,6 +99,33 @@ export default function ObjectRotterdam2024Page() {
                   <br /> + 3D Design
                   <br /> + Web Development
                 </p>
+
+                <div className="mt-10 xl:mt-20 mb-16 xl:mb-10 mr-10 flex flex-col items-start gap-10 xl:gap-14">
+                  <button
+                    className=""
+                    onClick={() =>
+                      window.open(
+                        "https://object-rotterdam-2024-floor-plan.vercel.app/"
+                      )
+                    }
+                  >
+                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                      Launch "Floor Planning"
+                    </p>
+                  </button>
+                  <button
+                    className=""
+                    onClick={() =>
+                      window.open(
+                        "https://object-rotterdam-2024-digital-archive.vercel.app/"
+                      )
+                    }
+                  >
+                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-2 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                      Launch "Digital Archive"
+                    </p>
+                  </button>
+                </div>
               </div>
 
               <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
