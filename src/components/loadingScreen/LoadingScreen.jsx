@@ -33,18 +33,18 @@ export default function LoadingScreen(props) {
   const loadingRing02 = useRef();
   const loadingRing03 = useRef();
   const glassSphere = useRef();
+  
   useFrame((state, delta) => {
-    loadingRing01.current.rotation.x = state.clock.getElapsedTime() * -0.35;
-    loadingRing01.current.rotation.y = state.clock.getElapsedTime() * 0.75;
-    loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.15;
+    loadingRing01.current.rotation.x = state.clock.getElapsedTime() * -0.3;
+    loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.4;
 
-    loadingRing02.current.rotation.x = state.clock.getElapsedTime() * 0.25;
-    loadingRing02.current.rotation.y = state.clock.getElapsedTime() * -0.75;
-    loadingRing02.current.rotation.z = state.clock.getElapsedTime() * 0.15;
+    loadingRing02.current.rotation.x = state.clock.getElapsedTime() * 0.4;
+    loadingRing02.current.rotation.y = state.clock.getElapsedTime() * -0.5;
+    loadingRing02.current.rotation.z = state.clock.getElapsedTime() * 0.3;
 
-    loadingRing03.current.rotation.x = state.clock.getElapsedTime() * -0.15;
-    loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.75;
-    loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.05;
+    loadingRing03.current.rotation.x = state.clock.getElapsedTime() * -0.2;
+    loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.4;
+    loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.3;
 
     glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.25;
     glassSphere.current.rotation.x = state.clock.getElapsedTime() * -0.55;
@@ -63,14 +63,14 @@ export default function LoadingScreen(props) {
         </group>
 
         <group ref={loadingRing02} scale={1.2}>
-          <LoadingRing rotation={[Math.PI * 0.25, 0, 0]} />
+          <LoadingRing />
         </group>
 
         <group ref={loadingRing03} scale={1.4}>
-          <LoadingRing rotation={[Math.PI * 0.5, 0, 0]} />
+          <LoadingRing />
         </group>
 
-        <group ref={glassSphere} scale={0.9}>
+        <group ref={glassSphere} scale={0.75}>
           <SilkySphere />
         </group>
       </group>

@@ -5,6 +5,7 @@ Command: npx gltfjsx@6.4.1 ./public/models/loading-ring/loading-ring.glb
 
 import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 export default function LoadingRing(props) {
   const { nodes, materials } = useGLTF("/models/loading-ring/loading-ring.glb");
@@ -17,6 +18,10 @@ export default function LoadingRing(props) {
       ring.current.material.depthTest = true;
     }
   }, [])
+
+  useFrame((state, delta) => {
+    ring.current.rotation.y += delta * 1.25;
+  })
 
   return (
     <group {...props} dispose={null}>
