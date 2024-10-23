@@ -34,17 +34,20 @@ export default function LoadingScreen(props) {
   const loadingRing03 = useRef();
   const glassSphere = useRef();
   useFrame((state, delta) => {
-    loadingRing01.current.rotation.y = state.clock.getElapsedTime() * 0.45;
-    loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.25;
+    loadingRing01.current.rotation.x = state.clock.getElapsedTime() * -0.35;
+    loadingRing01.current.rotation.y = state.clock.getElapsedTime() * 0.75;
+    loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.15;
 
-    loadingRing02.current.rotation.y = state.clock.getElapsedTime() * 0.45;
-    loadingRing02.current.rotation.x = state.clock.getElapsedTime() * -0.25;
+    loadingRing02.current.rotation.x = state.clock.getElapsedTime() * 0.25;
+    loadingRing02.current.rotation.y = state.clock.getElapsedTime() * -0.75;
+    loadingRing02.current.rotation.z = state.clock.getElapsedTime() * 0.15;
 
-    loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.45;
-    loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.35;
+    loadingRing03.current.rotation.x = state.clock.getElapsedTime() * -0.15;
+    loadingRing03.current.rotation.y = state.clock.getElapsedTime() * 0.75;
+    loadingRing03.current.rotation.z = state.clock.getElapsedTime() * -0.05;
 
-    glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.75;
-    glassSphere.current.rotation.z = state.clock.getElapsedTime() * -0.55;
+    glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.25;
+    glassSphere.current.rotation.x = state.clock.getElapsedTime() * -0.55;
   })
 
   return (
