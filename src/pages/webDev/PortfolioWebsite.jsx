@@ -38,7 +38,72 @@ import PortfolioWebsiteVideo08 from "../../../public/videos/portfolio-website/po
 import PortfolioWebsiteVideo09 from "../../../public/videos/portfolio-website/portfolio-website-09.mp4";
 import PortfolioWebsiteVideo10 from "../../../public/videos/portfolio-website/portfolio-website-10.mp4";
 
+const IMAGES_ARRAY = [
+  PortfolioWebsiteImage01,
+  PortfolioWebsiteImage02,
+  PortfolioWebsiteImage03,
+  PortfolioWebsiteImage04,
+  PortfolioWebsiteImage05,
+  PortfolioWebsiteImage06,
+  PortfolioWebsiteImage07,
+  PortfolioWebsiteImage08,
+  PortfolioWebsiteImage09,
+  PortfolioWebsiteImage10,
+  PortfolioWebsiteImage11,
+  PortfolioWebsiteImage12,
+  PortfolioWebsiteImage13,
+  PortfolioWebsiteImage14,
+  PortfolioWebsiteImage15,
+  PortfolioWebsiteImage16,
+];
+
+const VIDEOS_ARRAY = [
+  PortfolioWebsiteVideo01,
+  PortfolioWebsiteVideo02,
+  PortfolioWebsiteVideo03,
+  PortfolioWebsiteVideo04,
+  PortfolioWebsiteVideo05,
+  PortfolioWebsiteVideo06,
+  PortfolioWebsiteVideo07,
+  PortfolioWebsiteVideo08,
+  PortfolioWebsiteVideo09,
+  PortfolioWebsiteVideo10,
+];
+
 export default function PortfolioWebsitePage() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * VIDEOS ARRAY
+   */
+  const [videosArray, setVideosArray] = useState([]);
+
+  useEffect(() => {
+    setVideosArray((prevVideosArray) => {
+      const newVideosArray = [...prevVideosArray];
+      VIDEOS_ARRAY.forEach((video) => {
+        newVideosArray.push(video);
+      });
+
+      return newVideosArray;
+    });
+  }, []);
+
+
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
    */
@@ -48,7 +113,7 @@ export default function PortfolioWebsitePage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    // if (imagesArray.length === 14 && videosArray.length === 8) {
+    if (imagesArray.length === 16 && videosArray.length === 10) {
     // Initialize Lenis
     const lenis = new Lenis();
 
@@ -61,7 +126,7 @@ export default function PortfolioWebsitePage() {
     requestAnimationFrame(raf);
 
     console.log(`Set Lenis`);
-    // }
+    }
   });
 
   /**
