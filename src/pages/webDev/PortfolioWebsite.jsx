@@ -510,7 +510,7 @@ export default function PortfolioWebsitePage() {
               <source src={PortfolioWebsiteVideo09} type="video/mp4" />
             </video>
             <video
-              className="hidden-element grid-images w-full object-cover"
+              className="hidden-element grid-images w-[50%] xl:w-full object-cover"
               autoPlay
               loop
               muted
@@ -599,16 +599,41 @@ export default function PortfolioWebsitePage() {
             <>
               <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
                 <img
-                  src={PortfolioWebsiteHeroImage}
+                  src={PortfolioWebsiteImage11}
                   className="hidden-element w-full h-auto object-cover"
                 />
               </section>
               <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
                 <img
-                  src={PortfolioWebsiteHeroImage}
+                  src={PortfolioWebsiteImage12}
                   className="hidden-element w-full h-auto object-cover"
                 />
               </section>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteImage13}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteImage14}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteImage15}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+              <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+                <img
+                  src={PortfolioWebsiteImage16}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+
             </>
           )}
 
