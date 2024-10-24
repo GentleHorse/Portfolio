@@ -103,7 +103,6 @@ export default function PortfolioWebsitePage() {
     });
   }, []);
 
-
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
    */
@@ -114,18 +113,18 @@ export default function PortfolioWebsitePage() {
     console.log("LoadedStauts: ", loadedStatus);
 
     if (imagesArray.length === 16 && videosArray.length === 10) {
-    // Initialize Lenis
-    const lenis = new Lenis();
+      // Initialize Lenis
+      const lenis = new Lenis();
 
-    // Use requestAnimationFrame to continuously update the scroll
-    function raf(time) {
-      lenis.raf(time);
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
-    }
 
-    requestAnimationFrame(raf);
-
-    console.log(`Set Lenis`);
+      console.log(`Set Lenis`);
     }
   });
 
@@ -446,13 +445,13 @@ export default function PortfolioWebsitePage() {
               >
                 <source src={PortfolioWebsiteVideo07} type="video/mp4" />
               </video>
-              <p className="mt-2 text-center w-full z-20 text-[#C1C1C1] text-[12px] xl:text-[14px]">
+              <p className="mt-2 text-center w-full text-[#C1C1C1] text-[12px] xl:text-[14px]">
                 The 3D scene controlled by a computer mouse, touchpad
               </p>
             </div>
           </section>
 
-          <section className="my-[80px] xl:my-[240px] mx-[30vw] xl:mx-[240px]">
+          <section className="my-[80px] xl:my-[240px] mx-10 xl:mx-[240px] h-[350px]">
             <video
               className="hidden-element grid-images mx-auto h-full object-cover"
               autoPlay
@@ -462,7 +461,7 @@ export default function PortfolioWebsitePage() {
             >
               <source src={PortfolioWebsiteVideo08} type="video/mp4" />
             </video>
-            <p className="mt-2 text-center w-full z-20 text-[#C1C1C1] text-[12px] xl:text-[14px]">
+            <p className="mt-2 text-center w-full text-[#C1C1C1] text-[12px] xl:text-[14px]">
               The 3D scene controlled by a smartphone's gyroscope
             </p>
           </section>
@@ -510,7 +509,7 @@ export default function PortfolioWebsitePage() {
               <source src={PortfolioWebsiteVideo09} type="video/mp4" />
             </video>
             <video
-              className="hidden-element grid-images w-[50%] xl:w-full object-cover"
+              className="hidden-element grid-images w-full object-cover"
               autoPlay
               loop
               muted
@@ -633,7 +632,6 @@ export default function PortfolioWebsitePage() {
                   className="hidden-element w-full h-auto object-cover"
                 />
               </section>
-
             </>
           )}
 
@@ -668,11 +666,11 @@ export default function PortfolioWebsitePage() {
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
-              <div className="w-[120px] xl:w-[175px] h-[100px] xl:h-[175px] bg-[#C1C1C1] rounded-full" />
-
-              <p className="absolute font-roboto top-[44px] xl:top-[80px] text-[10px] xl:text-[14px] text-[#1C1C1C]">
-                Back to overview
-              </p>
+              <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#C1C1C1] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
+                <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
+                  Back to "Works"
+                </p>
+              </div>
             </Link>
           </section>
         </div>

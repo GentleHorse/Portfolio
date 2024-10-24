@@ -121,7 +121,7 @@ export default function ObjectRotterdam2024Page() {
                       )
                     }
                   >
-                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-2 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
                       Launch "Digital Archive"
                     </p>
                   </button>
@@ -275,11 +275,11 @@ export default function ObjectRotterdam2024Page() {
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
-              <div className="w-[120px] xl:w-[175px] h-[100px] xl:h-[175px] bg-[#C1C1C1] rounded-full" />
-
-              <p className="absolute font-roboto top-[44px] xl:top-[80px] text-[10px] xl:text-[14px] text-[#1C1C1C]">
-                Back to overview
-              </p>
+              <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#C1C1C1] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
+                <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
+                  Back to "Works"
+                </p>
+              </div>
             </Link>
           </section>
         </div>
