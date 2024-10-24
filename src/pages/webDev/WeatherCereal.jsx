@@ -121,7 +121,7 @@ export default function WeatherCerealPage() {
             </h1>
             <img
               src={WeatherCerealHeroImage}
-              alt="Ambience of Light Hero Image"
+              alt="Weather Cereal Hero Image"
               className="mb-[25px] xl:mb-[70px] w-full h-[200px] xl:h-[500px] object-cover"
             />
             <div className="flex flex-col xl:flex-row">
