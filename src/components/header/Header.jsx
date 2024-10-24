@@ -51,7 +51,7 @@ export default function Header({ home, about, works, contact }) {
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
-                    Explore
+                    {isBrowser ? "Atelier" : "Explore"}
                   </h1>
                 </Link>
               )}

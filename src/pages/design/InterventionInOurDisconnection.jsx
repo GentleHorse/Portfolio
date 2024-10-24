@@ -542,17 +542,44 @@ export default function InterventionInOurDisconnectionPage() {
           </section>
 
           <section className="mt-[87px] pb-[80px] mx-[5vw] xl:mx-[240px]">
-            <Link
-              to="/works"
-              className="relative w-full flex flex-col items-center"
-              reloadDocument={true}
-            >
-              <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#C1C1C1] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
-                <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
-                  Back to "Works"
-                </p>
+            {isBrowser ? (
+              <div className="w-full flex flex-row justify-center gap-12">
+                <Link
+                  to="/"
+                  className="relative flex flex-col items-center"
+                  reloadDocument={true}
+                >
+                  <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#CC543A] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
+                    <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
+                      Back to "Atelier"
+                    </p>
+                  </div>
+                </Link>
+                <Link
+                  to="/works"
+                  className="relative flex flex-col items-center"
+                  reloadDocument={true}
+                >
+                  <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#0F2540] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
+                    <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
+                      Back to "Works"
+                    </p>
+                  </div>
+                </Link>
               </div>
-            </Link>
+            ) : (
+              <Link
+                to="/works"
+                className="relative w-full flex flex-col items-center"
+                reloadDocument={true}
+              >
+                <div className="w-[120px] xl:w-[175px] h-[120px] xl:h-[175px] border hover:bg-[#C1C1C1] rounded-full text-[#C1C1C1] hover:text-[#FFFFFF]">
+                  <p className="absolute w-[120px] xl:w-[175px] text-center font-roboto top-[55px] xl:top-[78px] text-[12px] xl:text-[18px] ">
+                    Back to "Works"
+                  </p>
+                </div>
+              </Link>
+            )}
           </section>
         </div>
       </Suspense>
