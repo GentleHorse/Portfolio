@@ -9,6 +9,8 @@ import "lenis/dist/lenis.css";
 import MarbleOnARollHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
 import AmbienceOfLightHeroImage from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
 
+import MarbleOnARollVideo01 from "../../../public/videos/marble-on-a-roll/marble-on-a-roll-01.mp4";
+
 export default function MarbleRacePage() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
@@ -19,7 +21,7 @@ export default function MarbleRacePage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    // if (videosArray.length === 9) {
+    if (MarbleOnARollVideo01) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -32,7 +34,7 @@ export default function MarbleRacePage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
-    // }
+    }
   });
 
   /**
@@ -71,14 +73,64 @@ export default function MarbleRacePage() {
             <h1 className="project-title mb-[21px] xl:mb-[42px] font-serif text-[36px] xl:text-[72px] text-[#C1C1C1]">
               Marble's on a Roll
             </h1>
+
+            <img
+              src={MarbleOnARollHeroImage}
+              alt="Marble on a Roll Hero Image"
+              className="mb-[25px] xl:mb-[70px] w-full h-[200px] xl:h-[500px] object-cover"
+            />
+            <div className="flex flex-col xl:flex-row">
+              <div className="flex-none w-auto xl:w-[350px]">
+                <p className="mb-[4px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
+                  2023
+                </p>
+                <div>
+                  <p className="mb-[20px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
+                    Web Development
+                  </p>
+                  <button
+                    className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
+                    onClick={() =>
+                      window.open(
+                        "https://create-a-game-with-r3f-mocha.vercel.app/"
+                      )
+                    }
+                  >
+                    <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                      Launch Project
+                    </p>
+                  </button>
+                </div>
+              </div>
+
+              <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
+                "Marble's on a Roll" is a straightforward 3D game that
+                challenges players to guide the marble to the finish line as
+                quickly as they can.
+              </p>
+            </div>
             <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-              <p className="text-[14px] text-[#C1C1C1]">#software01</p>
-              <p className="text-[14px] text-[#C1C1C1]">#software02</p>
-              <p className="text-[14px] text-[#C1C1C1]">#software03</p>
+              <p className="text-[14px] text-[#C1C1C1]">
+                #immersive fun 3D experience
+              </p>
+              <p className="text-[14px] text-[#C1C1C1]">#material research</p>
+              <p className="text-[14px] text-[#C1C1C1]">#threejs journey</p>
             </div>
           </section>
 
-
+          <section className="mt-[120px] mb-[240px] mx-[10vw] xl:mx-[240px]">
+            <div className="mx-auto w-full xl:w-[70%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={MarbleOnARollVideo01} type="video/mp4" />
+              </video>
+            </div>
+          </section>
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
@@ -104,7 +156,6 @@ export default function MarbleRacePage() {
               </p>
             </Link>
           </section>
-
 
           <section className="mt-[87px] pb-[80px] mx-[5vw] xl:mx-[240px]">
             {isBrowser ? (
