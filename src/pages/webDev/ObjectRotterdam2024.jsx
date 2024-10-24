@@ -32,7 +32,62 @@ import ObjectRotterdamImage18 from "../../../public/images/app-developments/obje
 import ObjectRotterdamVideo01 from "../../../public/videos/object-rotterdam/object-rotterdam-01.mp4";
 import ObjectRotterdamVideo02 from "../../../public/videos/object-rotterdam/object-rotterdam-02.mp4";
 
+const IMAGES_ARRAY = [
+  ObjectRotterdamImage01,
+  ObjectRotterdamImage02,
+  ObjectRotterdamImage03,
+  ObjectRotterdamImage04,
+  ObjectRotterdamImage05,
+  ObjectRotterdamImage06,
+  ObjectRotterdamImage07,
+  ObjectRotterdamImage08,
+  ObjectRotterdamImage09,
+  ObjectRotterdamImage10,
+  ObjectRotterdamImage11,
+  ObjectRotterdamImage12,
+  ObjectRotterdamImage13,
+  ObjectRotterdamImage14,
+  ObjectRotterdamImage15,
+  ObjectRotterdamImage16,
+  ObjectRotterdamImage17,
+  ObjectRotterdamImage18,
+];
+
+const VIDEOS_ARRAY = [ObjectRotterdamVideo01, ObjectRotterdamVideo02];
+
 export default function ObjectRotterdam2024Page() {
+  /**
+   * IMAGES ARRAY
+   */
+  const [imagesArray, setImagesArray] = useState([]);
+
+  useEffect(() => {
+    setImagesArray((prevImagesArray) => {
+      const newImagesArray = [...prevImagesArray];
+      IMAGES_ARRAY.forEach((image) => {
+        newImagesArray.push(image);
+      });
+
+      return newImagesArray;
+    });
+  }, []);
+
+  /**
+   * VIDEOS ARRAY
+   */
+  const [videosArray, setVideosArray] = useState([]);
+
+  useEffect(() => {
+    setVideosArray((prevVideosArray) => {
+      const newVideosArray = [...prevVideosArray];
+      VIDEOS_ARRAY.forEach((video) => {
+        newVideosArray.push(video);
+      });
+
+      return newVideosArray;
+    });
+  }, []);
+
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
    */
@@ -42,7 +97,7 @@ export default function ObjectRotterdam2024Page() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    // if (imagesArray.length === 14 && videosArray.length === 8) {
+    if (imagesArray.length === 18 && videosArray.length === 2) {
     // Initialize Lenis
     const lenis = new Lenis();
 
@@ -55,7 +110,7 @@ export default function ObjectRotterdam2024Page() {
     requestAnimationFrame(raf);
 
     console.log(`Set Lenis`);
-    // }
+    }
   });
 
   /**
