@@ -451,7 +451,7 @@ export default function PortfolioWebsitePage() {
             </div>
           </section>
 
-          <section className="my-[80px] xl:my-[240px] mx-10 xl:mx-[240px] h-[350px]">
+          <section className="my-[80px] xl:my-[240px] mx-10 xl:mx-[240px] h-[350px] xl:h-[600px]">
             <video
               className="hidden-element grid-images mx-auto h-full object-cover"
               autoPlay

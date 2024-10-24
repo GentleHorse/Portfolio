@@ -10,6 +10,28 @@ import "lenis/dist/lenis.css";
 import ObjectRotterdam2024HeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
+import ObjectRotterdamImage01 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-01.jpg";
+import ObjectRotterdamImage02 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-02.jpg";
+import ObjectRotterdamImage03 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-03.jpg";
+import ObjectRotterdamImage04 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-04.jpg";
+import ObjectRotterdamImage05 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-05.jpg";
+import ObjectRotterdamImage06 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-06.jpg";
+import ObjectRotterdamImage07 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-07.jpg";
+import ObjectRotterdamImage08 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-08.jpg";
+import ObjectRotterdamImage09 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-09.jpg";
+import ObjectRotterdamImage10 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-10.jpg";
+import ObjectRotterdamImage11 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-11.jpg";
+import ObjectRotterdamImage12 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-12.jpg";
+import ObjectRotterdamImage13 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-13.jpg";
+import ObjectRotterdamImage14 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-14.jpg";
+import ObjectRotterdamImage15 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-15.jpg";
+import ObjectRotterdamImage16 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-16.jpg";
+import ObjectRotterdamImage17 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-17.jpg";
+import ObjectRotterdamImage18 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-18.jpg";
+
+import ObjectRotterdamVideo01 from "../../../public/videos/object-rotterdam/object-rotterdam-01.mp4";
+import ObjectRotterdamVideo02 from "../../../public/videos/object-rotterdam/object-rotterdam-02.mp4";
+
 export default function ObjectRotterdam2024Page() {
   /**
    * MOMENTUM SMOOTH SCROLLING - LENIS SETUP
@@ -99,54 +121,59 @@ export default function ObjectRotterdam2024Page() {
                   <br /> + 3D Design
                   <br /> + Web Development
                 </p>
-
-                <div className="mt-10 xl:mt-20 mb-16 xl:mb-10 mr-10 flex flex-col items-start gap-10 xl:gap-14">
-                  <button
-                    className=""
-                    onClick={() =>
-                      window.open(
-                        "https://object-rotterdam-2024-floor-plan.vercel.app/"
-                      )
-                    }
-                  >
-                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                      Launch "Floor Planning"
-                    </p>
-                  </button>
-                  <button
-                    className=""
-                    onClick={() =>
-                      window.open(
-                        "https://object-rotterdam-2024-digital-archive.vercel.app/"
-                      )
-                    }
-                  >
-                    <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                      Launch "Digital Archive"
-                    </p>
-                  </button>
-                </div>
               </div>
 
               <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                cursus risus et est rhoncus tincidunt. Sed iaculis mattis enim,
-                ac pellentesque est varius at. Phasellus viverra facilisis
-                tellus, et dignissim turpis malesuada eu. Nam erat augue,
-                tincidunt sed mauris ut, aliquam mattis quam. Aenean tincidunt
-                ac risus in porttitor. Etiam.
+                The designer created two applications for the Object Rotterdam
+                exhibition (February 2-4, 2024, at HAKA-gebouw) while showcasing
+                his work as an exhibitor. One application is a 3D web platform
+                that allows participants to experiment with their exhibition
+                floor plans, while the other focuses on digitally archiving the
+                exhibition in 3D.
               </p>
             </div>
+
+            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-start gap-10 xl:gap-4">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://object-rotterdam-2024-floor-plan.vercel.app/"
+                  )
+                }
+              >
+                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                  Launch "Floor Planning"
+                </p>
+              </button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://object-rotterdam-2024-digital-archive.vercel.app/"
+                  )
+                }
+              >
+                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                  Launch "Digital Archive"
+                </p>
+              </button>
+            </div>
+
             <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-              <p className="text-[14px] text-[#C1C1C1]">#keyword 01</p>
-              <p className="text-[14px] text-[#C1C1C1]">#keyword 02</p>
-              <p className="text-[14px] text-[#C1C1C1]">#keyword 03</p>
+              <p className="text-[14px] text-[#C1C1C1]">
+                #interactive 3D floor planning platform
+              </p>
+              <p className="text-[14px] text-[#C1C1C1]">
+                #3D digital archiving
+              </p>
+              <p className="text-[14px] text-[#C1C1C1]">
+                #include people without 3D background
+              </p>
             </div>
           </section>
 
           <section className="mt-[87px]">
             <img
-              src={ObjectRotterdam2024HeroImage}
+              src={ObjectRotterdamImage01}
               className="w-full h-[270px] xl:h-[720px] object-cover"
             />
           </section>
@@ -161,25 +188,33 @@ export default function ObjectRotterdam2024Page() {
               CHALLENGE
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              "CHALLENGE" sentence is here.
+              3D scene for "sitting, thinking, and working together"
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              a posuere lacus. Nunc iaculis maximus est sit amet gravida. Duis
-              lacinia, risus nec imperdiet porta, eros libero tristique eros,
-              quis laoreet dui sem vel velit. Pellentesque finibus efficitur
-              facilisis. Duis gravida pellentesque nisl sed ultricies. Sed ac
-              erat eget nibh consectetur rutrum a nec turpis. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Maecenas at ligula magna.
-              Aenean eu ipsum tempor, tincidunt nisi id, feugiat risus
+              The designer consistently notices a gap between off-site planning
+              and the on-site experience of exhibitions and commercial events.
+              While reproducing spaces using 3D software is a common solution,
+              it can often feel overwhelming and discourage usage. By utilising
+              WebGL and web-based technologies, he envisions creating 3D scenes
+              that are more interactive, engaging, and accessible. This approach
+              not only bridges the gap between virtual and real spaces but also
+              fosters remote collaboration, encouraging people to "sit, think,
+              and work together" easily, whether with or without 3D backgrounds.
             </p>
           </section>
 
           <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-            <img
-              src={ObjectRotterdam2024HeroImage}
-              className="hidden-element mx-auto w-2/3 xl:w-1/2 h-auto object-cover"
-            />
+            <div className="mx-auto w-[70%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={ObjectRotterdamVideo01} type="video/mp4" />
+              </video>
+            </div>
           </section>
 
           {/* ----- APPROACH ----- */}
@@ -192,25 +227,130 @@ export default function ObjectRotterdam2024Page() {
               APPROACH
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              "APPROACH" sentence is here.
+              Detailed but optimised reproduction
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              a posuere lacus. Nunc iaculis maximus est sit amet gravida. Duis
-              lacinia, risus nec imperdiet porta, eros libero tristique eros,
-              quis laoreet dui sem vel velit. Pellentesque finibus efficitur
-              facilisis. Duis gravida pellentesque nisl sed ultricies. Sed ac
-              erat eget nibh consectetur rutrum a nec turpis. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Maecenas at ligula magna.
-              Aenean eu ipsum tempor, tincidunt nisi id, feugiat risus
+              This 3D application was developed to aid in planning a shared
+              exhibition space for participants, including the designer. It
+              needed to be tangible and precise to provide a “sense of the
+              actual site.” The exhibition space and participants' artworks were
+              faithfully recreated using 3D software, with item dimensions
+              accurately reflecting real-world measurements. Afterward, the
+              models were optimised for the web environment to ensure smooth
+              performance without compromising visual fidelity, allowing
+              participants to experience a realistic and detailed preview of the
+              exhibition.
             </p>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-10">
             <img
-              src={ObjectRotterdam2024HeroImage}
+              src={ObjectRotterdamImage02}
               className="hidden-element w-full h-auto object-cover"
             />
+            <img
+              src={ObjectRotterdamImage03}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={ObjectRotterdamImage04}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={ObjectRotterdamImage05}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={ObjectRotterdamImage06}
+              className="hidden-element w-full h-auto object-cover"
+            />
+          </section>
+
+          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+            <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+              Speed up communication, involve participants
+            </p>
+            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              One drawback of relying solely on 3D-rendered images for planning
+              is the time it takes to communicate between 3D visualizers and
+              those less familiar with creating 3D spaces. To address this, the
+              web application allows participants to freely adjust compositions
+              and layouts of art and design items, enabling them to test floor
+              plans in real-time. This approach streamlines the process while
+              preserving the “sense of the actual site,” encouraging interactive
+              and collaborative experimentation.
+            </p>
+          </section>
+
+          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px]">
+            <div className="mx-auto w-[70%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={ObjectRotterdamVideo02} type="video/mp4" />
+              </video>
+            </div>
+          </section>
+
+          <section className="mt-[120px] mx-[10vw] xl:mx-[240px] flex flex-col gap-32">
+            <img
+              src={ObjectRotterdamImage07}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={ObjectRotterdamImage08}
+              className="hidden-element w-full h-auto object-cover"
+            />
+          </section>
+
+          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+            <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+              Immersive 3D digital documentation
+            </p>
+            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              Each time he participates in exhibitions, he captures images and
+              videos to document the experience. This serves two purposes:
+              sharing the event with those unable to attend and gathering
+              inspiration for future projects. However, he often finds that
+              traditional documentation lacks the depth, mood, and atmosphere of
+              the actual space. This realisation motivated him to develop a 3D
+              explorable digital reproduction, allowing for a more immersive and
+              accurate representation of the exhibition space, based on his
+              visual records.
+            </p>
+          </section>
+
+          <section className="mt-[120px] mb-[120px] w-[100vw]">
+            <div className="grid grid-cols-2 grid-rows-3 gap-0">
+              <img
+                src={ObjectRotterdamImage09}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+              <img
+                src={ObjectRotterdamImage10}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+              <img
+                src={ObjectRotterdamImage11}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+              <img
+                src={ObjectRotterdamImage12}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+              <img
+                src={ObjectRotterdamImage13}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+              <img
+                src={ObjectRotterdamImage14}
+                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
+              />
+            </div>
           </section>
 
           {/* ----- OUTCOME ----- */}
@@ -223,26 +363,86 @@ export default function ObjectRotterdam2024Page() {
               OUTCOME
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              "OUTCOME" sentence is here.
+              One for floor planning, one for digital archiving
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              a posuere lacus. Nunc iaculis maximus est sit amet gravida. Duis
-              lacinia, risus nec imperdiet porta, eros libero tristique eros,
-              quis laoreet dui sem vel velit. Pellentesque finibus efficitur
-              facilisis. Duis gravida pellentesque nisl sed ultricies. Sed ac
-              erat eget nibh consectetur rutrum a nec turpis. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Maecenas at ligula magna.
-              Aenean eu ipsum tempor, tincidunt nisi id, feugiat risus
+              The designer ended up creating two applications. One facilitates
+              collaboration with two other designers, enabling discussions on
+              sharing and designing the exhibition space. The second app serves
+              to archive the exhibition in 3D, capturing its layout while adding
+              mood and atmosphere, preserving the experience beyond the event
+              itself.
             </p>
+
+            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-start gap-10 xl:gap-4">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://object-rotterdam-2024-floor-plan.vercel.app/"
+                  )
+                }
+              >
+                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                  Launch "Floor Planning"
+                </p>
+              </button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://object-rotterdam-2024-digital-archive.vercel.app/"
+                  )
+                }
+              >
+                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                  Launch "Digital Archive"
+                </p>
+              </button>
+            </div>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-            <img
-              src={ObjectRotterdam2024HeroImage}
-              className="hidden-element w-full h-auto object-cover"
-            />
-          </section>
+          {!!isBrowser && (
+            <section className="mt-[87px] w-[100vw]">
+              <img
+                src={ObjectRotterdamImage15}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={ObjectRotterdamImage16}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={ObjectRotterdamImage17}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+              <img
+                src={ObjectRotterdamImage18}
+                className="sticky top-0 w-full h-auto object-cover"
+              />
+            </section>
+          )}
+
+          {!!isMobile && (
+            <>
+              <section className="mt-[87px] mx-[10vw] flex flex-col gap-12">
+                <img
+                  src={ObjectRotterdamImage15}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+                <img
+                  src={ObjectRotterdamImage16}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+                <img
+                  src={ObjectRotterdamImage17}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+                <img
+                  src={ObjectRotterdamImage18}
+                  className="hidden-element w-full h-auto object-cover"
+                />
+              </section>
+            </>
+          )}
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
