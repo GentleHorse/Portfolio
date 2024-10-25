@@ -33,8 +33,8 @@ export function useMouseCapture() {
       document.pointerLockElement === document.body ||
       document.mozPointerLockElement === document.body
     ) {
-      mouse.x += event.movementX;
-      mouse.y += event.movementY;
+      mouse.x += event.movementX * 0.45;
+      mouse.y += event.movementY * 0.45;
     } 
   };
 
@@ -67,7 +67,7 @@ export function useMouseCapture() {
       document.removeEventListener("mousemove", mouseMovementHandler);
       document.removeEventListener("click", capture);
     };
-  });
+  }, []);
 
   /**
    * RETURN
