@@ -5,7 +5,7 @@ export default function StageCollisionObjects(props) {
     <>
       <group {...props}>
         {/* GROUND */}
-        <RigidBody colliders={false} type="fixed" position={[0, 0.5, -50]}>
+        <RigidBody colliders={false} type="fixed" position={[0, 0.5, -50]} friction={0.5}>
           <CuboidCollider args={[100, 0.5, 120]} />
         </RigidBody>
 

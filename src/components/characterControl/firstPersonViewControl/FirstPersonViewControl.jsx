@@ -15,7 +15,7 @@ const INITIAL_POSITION = [0, 3, 0];
  * INITIAL PARAMS
  */
 const MOVE_STRENGTH = 3.0;
-const MOVE_VELOCITY = 4.0;
+const MOVE_VELOCITY = 5.0;
 const INITIAL_CHARACTER_POSITION = INITIAL_POSITION;
 const INITIAL_CAMERA_POSITION = { x: 0, y: 3.5, z: 0 };
 
@@ -28,7 +28,11 @@ export default function FirstPersonViewControl() {
 
   return (
     <>
-      <Player walk={MOVE_VELOCITY} jump={5} input={() => getInput(keyboard, mouse)} />
+      <Player
+        walk={MOVE_VELOCITY}
+        jump={5}
+        input={() => getInput(keyboard, mouse)}
+      />
     </>
   );
 }
@@ -74,8 +78,6 @@ function Player({
   jump = 4, // Default jump force for the player
   input = () => ({ move: [0, 0, 0], look: [0, 0] }), // Function to get the player input
 }) {
-
-
   const body = useRef(null); // Ref to RigidBody API
   const mesh = useRef(); // Ref to the 3D mesh
   const { scene, camera } = useThree();
@@ -84,7 +86,7 @@ function Player({
   let theta = 0; // Vertical angle of the camera's orientation
 
   // Declare reusable, non-persistant variables
-  const speed = new THREE.Vector3(walk / 2, jump, walk);
+  const speed = new THREE.Vector3(walk, jump, walk); // x: leftward / rightward,  y: jump, z: forward / backward
   const offset = new THREE.Vector3(0, 0, 0);
   const gaze = new THREE.Quaternion();
   const yaw = new THREE.Quaternion();
@@ -150,7 +152,7 @@ function Player({
         lockRotations // Lock rotations to prevent unwanted rotations during physics simulation
         position={INITIAL_CHARACTER_POSITION}
         linearDamping={3}
-        angularDamping={0.1}
+        angularDamping={1.5}
         friction={0.5}
         restitution={0.2}
         colliders={false}
