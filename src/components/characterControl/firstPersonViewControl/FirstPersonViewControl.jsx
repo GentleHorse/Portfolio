@@ -14,8 +14,9 @@ const INITIAL_POSITION = [0, 3, 0];
 /**
  * INITIAL PARAMS
  */
-const MOVE_STRENGTH = 3.0;
+const MOVE_STRENGTH = 5.0;
 const MOVE_VELOCITY = 5.0;
+const MAX_MOVE_VELOCITY = 4.5;
 const INITIAL_CHARACTER_POSITION = INITIAL_POSITION;
 const INITIAL_CAMERA_POSITION = { x: 0, y: 3.5, z: 0 };
 
@@ -135,6 +136,10 @@ function Player({
 
     body.current.applyImpulse(offset, true);
 
+    if (move[0] === 0 && move[2] === 0) {
+      body.current.setLinvel(new THREE.Vector3(0, 0, 0), true);
+    }
+
     const newPosition = new THREE.Vector3(position.x, position.y, position.z);
     camera.position.lerp(
       newPosition.add(cameraOffset.clone().applyQuaternion(yaw)),
@@ -151,8 +156,8 @@ function Player({
         name="player"
         lockRotations // Lock rotations to prevent unwanted rotations during physics simulation
         position={INITIAL_CHARACTER_POSITION}
-        linearDamping={3}
-        angularDamping={1.5}
+        linearDamping={5.0}
+        angularDamping={3.0}
         friction={0.5}
         restitution={0.2}
         colliders={false}
