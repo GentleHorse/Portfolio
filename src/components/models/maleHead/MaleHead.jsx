@@ -8,10 +8,17 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-const HEAD_MOVE_STRENGTH = 0.04;
-const EYE_BALLS_MOVE_STRENGTH = 0.05;
+const HEAD_MOVE_STRENGTH = 0.06;
+const EYE_BALLS_MOVE_STRENGTH = 1.25;
+const HEAD_LERP_STRENGTH = 1.65;
 const BG_PLANE_MOVE_STRENGTH = 0.02;
 const BG_PLANE_LERP_STERNGTH = 0.9;
+
+let LERPED_HEAD_ORIENTATION = {
+  X: 0,
+  Y: 0,
+  Z: 0,
+};
 
 let LERPED_BG_PLANE_ORIENTATION = {
   X: 0,
@@ -47,35 +54,50 @@ export default function MaleHead(props) {
       mouse.x = (event.clientX - window.innerWidth / 2) * 0.02;
       mouse.y = (event.clientY - window.innerHeight / 2) * 0.02;
     });
-  }, []);
+  });
 
   function lerp(a, b, alpha) {
     return a + alpha * (b - a);
   }
 
   useFrame((state, delta) => {
-    upperHeadPart.current.rotation.y = mouse.x * HEAD_MOVE_STRENGTH;
-    upperHeadPart.current.rotation.x = mouse.y * HEAD_MOVE_STRENGTH;
-
-    eyeBallRight.current.rotation.y = mouse.x * EYE_BALLS_MOVE_STRENGTH;
-    eyeBallRight.current.rotation.x = mouse.y * EYE_BALLS_MOVE_STRENGTH;
-
-    eyeBallLeft.current.rotation.y = mouse.x * EYE_BALLS_MOVE_STRENGTH;
-    eyeBallLeft.current.rotation.x = mouse.y * EYE_BALLS_MOVE_STRENGTH;
-
     LERPED_BG_PLANE_ORIENTATION.Y = lerp(
       LERPED_BG_PLANE_ORIENTATION.Y,
       (bgPlane.current.rotation.y = mouse.x * BG_PLANE_MOVE_STRENGTH),
       delta * BG_PLANE_LERP_STERNGTH
     );
-    bgPlane.current.rotation.y = LERPED_BG_PLANE_ORIENTATION.Y;
-    
     LERPED_BG_PLANE_ORIENTATION.X = lerp(
       LERPED_BG_PLANE_ORIENTATION.X,
       (bgPlane.current.rotation.x = mouse.y * BG_PLANE_MOVE_STRENGTH),
       delta * BG_PLANE_LERP_STERNGTH
     );
+
+    LERPED_HEAD_ORIENTATION.Y = lerp(
+      LERPED_HEAD_ORIENTATION.Y,
+      (bgPlane.current.rotation.y = mouse.x * HEAD_MOVE_STRENGTH),
+      delta * HEAD_LERP_STRENGTH
+    );
+    LERPED_HEAD_ORIENTATION.X = lerp(
+      LERPED_HEAD_ORIENTATION.X,
+      (bgPlane.current.rotation.x = mouse.y * HEAD_MOVE_STRENGTH),
+      delta * HEAD_LERP_STRENGTH
+    );
+
+    bgPlane.current.rotation.y = LERPED_BG_PLANE_ORIENTATION.Y;
     bgPlane.current.rotation.x = LERPED_BG_PLANE_ORIENTATION.X;
+
+    upperHeadPart.current.rotation.y = LERPED_HEAD_ORIENTATION.Y;
+    upperHeadPart.current.rotation.x = LERPED_HEAD_ORIENTATION.X;
+
+    eyeBallRight.current.rotation.y =
+      LERPED_HEAD_ORIENTATION.Y * EYE_BALLS_MOVE_STRENGTH;
+    eyeBallRight.current.rotation.x =
+      LERPED_HEAD_ORIENTATION.X * EYE_BALLS_MOVE_STRENGTH;
+
+    eyeBallLeft.current.rotation.y =
+      LERPED_HEAD_ORIENTATION.Y * EYE_BALLS_MOVE_STRENGTH;
+    eyeBallLeft.current.rotation.x =
+      LERPED_HEAD_ORIENTATION.X * EYE_BALLS_MOVE_STRENGTH;
   });
 
   /**

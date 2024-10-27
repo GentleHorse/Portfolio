@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Scroll,
@@ -14,6 +14,9 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import MaleHead from "../components/models/maleHead/MaleHead.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
+
+import BeautyOfTimePassingHeroImage from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
+import ObjectRotterdam2024HeroImage from "../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
 
 /**
  * INITIAL PARAM VALUES
@@ -41,7 +44,49 @@ export default function AboutPage() {
   /**
    * NAVIGATE
    */
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  /**
+   * Hover state
+   */
+  const [hoverTextsArray, setHoverTextsArray] = useState([
+    {
+      id: "beautyOfTimePassing",
+      isHover: false,
+    },
+    {
+      id: "objectRotterdam2024",
+      isHover: false,
+    },
+  ]);
+
+  const hoverStartTextsHandler = (text) => {
+    setHoverTextsArray((prevHoverTextsArray) => {
+      const newHoverTextsArray = [...prevHoverTextsArray];
+      const textId = hoverTextsArray.findIndex(
+        (textObj) => textObj.id === text
+      );
+      newHoverTextsArray[textId].isHover = true;
+
+      console.log("hover starts: ", newHoverTextsArray[textId].id);
+
+      return newHoverTextsArray;
+    });
+  };
+
+  const hoverEndTextsHandler = (text) => {
+    setHoverTextsArray((prevHoverTextsArray) => {
+      const newHoverTextsArray = [...prevHoverTextsArray];
+      const textId = hoverTextsArray.findIndex(
+        (textObj) => textObj.id === text
+      );
+      newHoverTextsArray[textId].isHover = false;
+
+      console.log("hover ends: ", newHoverTextsArray[textId].id);
+
+      return newHoverTextsArray;
+    });
+  };
 
   return (
     <>
@@ -82,38 +127,38 @@ export default function AboutPage() {
               </section>
 
               {/* --- PAGE 02 --------------------------------------- */}
-              <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
-                <article className="py-[5%] px-[6%] xl:px-[12%]">
-                  <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
-                    Designer with developer’s perspective <br />
-                    Developer with designer’s experience
-                  </h1>
-
-                  <p className="font-light text-[12px] xl:text-[25px] text-[#ffffff]">
-                    I was born and raised in Japan. I pursued my passion for
-                    design at Design Academy Eindhoven in the Netherlands
-                    studying product and 3D design, and through my graduation
-                    project,{" "}
+              <section className="h-[100vh] w-[100vw]">
+                <article className="relative py-[5%] px-[6%] xl:px-[12%]">
+                  <p className="mb-10 font-open-sans text-[20px] xl:text-[45px] text-[#C1C1C1]">
+                    I am a Japanese designer and developer, a graduate of Design
+                    Academy Eindhoven (Netherlands), where I created the project{" "}
                     <a
-                      className="font-bold hover:cursor-pointer"
-                      onClick={() => navigate("/beauty-of-time-passing")}
+                      className="font-bold hover:cursor-pointer text-[#FFFFFF]"
+                      onClick={() => window.open("https://toshihito-endo.com/beauty-of-time-passing")}
+                      onMouseEnter={() =>
+                        hoverStartTextsHandler("beautyOfTimePassing")
+                      }
+                      onMouseLeave={() =>
+                        hoverEndTextsHandler("beautyOfTimePassing")
+                      }
                     >
                       "Beauty of Time Passing"
                     </a>
-                    , I discovered my interest in web development. This journey
-                    led me to further explore the digital realm. In 2024, I
-                    participated in the OBJECT Rotterdam exhibition as a
-                    designer, where I created a{" "}
+                    . My work focuses on uniting design and development, as seen
+                    in projects like{" "}
                     <a
-                      className="font-bold hover:cursor-pointer"
-                      onClick={() => navigate("/object-rotterdam-2024")}
+                      className="font-bold hover:cursor-pointer text-[#FFFFFF]"
+                      onClick={() => window.open("https://toshihito-endo.com/object-rotterdam-2024")}
+                      onMouseEnter={() =>
+                        hoverStartTextsHandler("objectRotterdam2024")
+                      }
+                      onMouseLeave={() =>
+                        hoverEndTextsHandler("objectRotterdam2024")
+                      }
                     >
-                      "3D interactive tool"
+                      "OBJECT Rotterdam 2024"
                     </a>{" "}
-                    for fellow designers sharing the space. This experience
-                    transformed my perspective, blending my design expertise
-                    with web development, and opened up new possibilities for me
-                    as both a designer and developer.
+                    and this website.
                   </p>
                 </article>
               </section>
@@ -234,18 +279,38 @@ export default function AboutPage() {
 
                   <div className="flex flex-row gap-10">
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Dec 2023 - now</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Aug 2022</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2022 - Jul 2022</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jul 2019 - Jul 2019</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jan 2017 - Mar 2017</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Dec 2023 - now
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Aug 2022
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Feb 2022 - Jul 2022
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Jul 2019 - Jul 2019
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Jan 2017 - Mar 2017
+                      </p>
                     </div>
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Designer & developer at Studio Toshihito Endo</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Production assisant at MONO Japan Craft Fair</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Experience design intern at Random Studio</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Assistant product designer at PLANE co.,ltd</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Assistant graphic designer at MOZU co.,ltd</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Designer & developer at Studio Toshihito Endo
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Production assisant at MONO Japan Craft Fair
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Experience design intern at Random Studio
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Assistant product designer at PLANE co.,ltd
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Assistant graphic designer at MOZU co.,ltd
+                      </p>
                     </div>
                   </div>
                 </article>
@@ -257,20 +322,46 @@ export default function AboutPage() {
 
                   <div className="flex flex-row gap-10">
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2024</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Oct 2023</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Jan 2022</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Mar 2021 - Aug 2021</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Oct 2020</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Feb 2020</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Feb 2024
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Oct 2023
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Jan 2022
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Mar 2021 - Aug 2021
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Oct 2020
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Feb 2020
+                      </p>
                     </div>
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">OBJECT Rotterdam 2024 (Rotterdam, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Design Academy Graduation show at DDW 2023 (Eindhoven, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Moonshot: Exit Strategy" (Eindhoven, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Een nieuwe lente, een nieuwe vass" at National Glasmuseum (Leerdam, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">"Spooning, A Dinner for Two" at DDW 2020 (Eindhoven, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Synthmania WORM Expo 2020 (Rotterdam, NL)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        OBJECT Rotterdam 2024 (Rotterdam, NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Design Academy Graduation show at DDW 2023 (Eindhoven,
+                        NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        "Moonshot: Exit Strategy" (Eindhoven, NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        "Een nieuwe lente, een nieuwe vass" at National
+                        Glasmuseum (Leerdam, NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        "Spooning, A Dinner for Two" at DDW 2020 (Eindhoven, NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Synthmania WORM Expo 2020 (Rotterdam, NL)
+                      </p>
                     </div>
                   </div>
                 </article>
@@ -282,16 +373,24 @@ export default function AboutPage() {
 
                   <div className="flex flex-row gap-10">
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">2018 - 2023</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">2009 - 2013</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        2018 - 2023
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        2009 - 2013
+                      </p>
                     </div>
                     <div>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Design Academy Eindhoven, Man & Communication (Eindhoven, NL)</p>
-                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">Keio University, Faculty of Economics (Tokyo, JP)</p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Design Academy Eindhoven, Man & Communication
+                        (Eindhoven, NL)
+                      </p>
+                      <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
+                        Keio University, Faculty of Economics (Tokyo, JP)
+                      </p>
                     </div>
                   </div>
                 </article>
-
               </section>
             </Scroll>
           </ScrollControls>
