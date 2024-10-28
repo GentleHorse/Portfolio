@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Scroll,
@@ -134,7 +134,11 @@ export default function AboutPage() {
                     Academy Eindhoven (Netherlands), where I created the project{" "}
                     <a
                       className="font-bold hover:cursor-pointer text-[#FFFFFF]"
-                      onClick={() => window.open("https://toshihito-endo.com/beauty-of-time-passing")}
+                      onClick={() =>
+                        window.open(
+                          "https://toshihito-endo.com/beauty-of-time-passing"
+                        )
+                      }
                       onMouseEnter={() =>
                         hoverStartTextsHandler("beautyOfTimePassing")
                       }
@@ -148,7 +152,11 @@ export default function AboutPage() {
                     in projects like{" "}
                     <a
                       className="font-bold hover:cursor-pointer text-[#FFFFFF]"
-                      onClick={() => window.open("https://toshihito-endo.com/object-rotterdam-2024")}
+                      onClick={() =>
+                        window.open(
+                          "https://toshihito-endo.com/object-rotterdam-2024"
+                        )
+                      }
                       onMouseEnter={() =>
                         hoverStartTextsHandler("objectRotterdam2024")
                       }
@@ -160,6 +168,20 @@ export default function AboutPage() {
                     </a>{" "}
                     and this website.
                   </p>
+
+                  {!!hoverTextsArray[0].isHover && (
+                    <img
+                      src={BeautyOfTimePassingHeroImage}
+                      className="absolute top-[-10vh] left-[40vw]  w-[450px] h-[300px] object-cover"
+                    />
+                  )}
+
+                  {!!hoverTextsArray[1].isHover && (
+                    <img
+                      src={ObjectRotterdam2024HeroImage}
+                      className="absolute top-[40vh] left-[10vw]  w-[450px] h-[300px] object-cover"
+                    />
+                  )}
                 </article>
               </section>
 
