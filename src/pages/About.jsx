@@ -224,14 +224,14 @@ function AboutPageExperience() {
             </h1>
           </section>
 
-          {/* --- PAGE 02 --------------------------------------- */}
-          <section className="h-[100vh] w-[100vw]">
-            <article className="relative py-[5%] px-[3%] xl:px-[6%] mx-[3%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
+          {/* --- PAGE 02 - 03 --------------------------------------- */}
+          <section className="h-[200vh] w-[100vw]">
+            <article className="relative py-[10%] px-[6%] xl:px-[12%] backdrop-blur-md bg-[#C1C1C1]/15">
               <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
                 I am a Japanese designer and developer, a graduate of Design
                 Academy Eindhoven (Netherlands), where I created the project{" "}
                 <a
-                  className="font-bold hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open(
                       "https://toshihito-endo.com/beauty-of-time-passing"
@@ -249,7 +249,7 @@ function AboutPageExperience() {
                 . My work focuses on uniting design and development, as seen in
                 projects like{" "}
                 <a
-                  className="font-bold hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open(
                       "https://toshihito-endo.com/object-rotterdam-2024"
@@ -273,7 +273,7 @@ function AboutPageExperience() {
                   hoverTextsArray[0].isHover
                     ? "show-thumbnail"
                     : "hidden-thumbnail"
-                } absolute top-[-5vh] left-[20vw] w-[450px] h-[300px] object-cover`}
+                } absolute top-[5%] left-[20%] w-[450px] h-[300px] object-cover`}
               />
 
               <img
@@ -282,20 +282,15 @@ function AboutPageExperience() {
                   hoverTextsArray[1].isHover
                     ? "show-thumbnail"
                     : "hidden-thumbnail"
-                } absolute top-[55vh] right-[20vw] w-[450px] h-[300px] object-cover`}
+                } absolute top-[45%] right-[20%] w-[450px] h-[300px] object-cover`}
               />
-            </article>
-          </section>
 
-          {/* --- PAGE 03 --------------------------------------- */}
-          <section className="h-[100vh] w-[100vw]">
-            <article className="relative py-[5%] px-[3%] xl:px-[6%] mx-[3%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
               <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
                 In my product design education, I’ve become passionate about how
                 subtle details in products can create emotionally resonant
                 interactions, as demonstrated in{" "}
                 <a
-                  className="font-bold hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open("https://toshihito-endo.com/comforting-dinner")
                   }
@@ -316,7 +311,7 @@ function AboutPageExperience() {
                   hoverTextsArray[2].isHover
                     ? "show-thumbnail"
                     : "hidden-thumbnail"
-                } absolute top-[35vh] right-[10vw] w-[450px] h-[300px] object-cover`}
+                } absolute top-[75%] right-[15%] w-[450px] h-[300px] object-cover`}
               />
             </article>
           </section>
@@ -324,15 +319,16 @@ function AboutPageExperience() {
           {/* --- PAGE 04 --------------------------------------- */}
           <section className="h-[100vh] w-[100vw]">
             <article className="py-[5%] px-[3%] xl:px-[6%] mx-[3%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
-              <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
-                Skills
-              </h1>
-
               <div className="w-full grid grid-cols-4 xl:grid-cols-5 gap-6 xl:gap-12">
                 {SKILL_ICONS_ARRAY.map((skill, index) => (
                   <div key={index} className="mb-5 flex flex-col items-center">
-                    <img src={skill.image} className="mx-5 mb-2 w-8 h-8 xl:w-20 xl:h-20" />
-                    <p className="font-roboto text-[7.5px] xl:text-xl text-[#FFFFFF]">{skill.title}</p>
+                    <img
+                      src={skill.image}
+                      className="mx-5 mb-2 w-8 h-8 xl:w-20 xl:h-20"
+                    />
+                    <p className="font-roboto text-[7.5px] xl:text-xl text-[#FFFFFF]">
+                      {skill.title}
+                    </p>
                   </div>
                 ))}
               </div>
