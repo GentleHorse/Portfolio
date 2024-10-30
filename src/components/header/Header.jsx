@@ -64,7 +64,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -78,7 +78,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -93,7 +93,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -108,7 +108,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -131,7 +131,7 @@ export default function Header({ home, about, works, contact }) {
                     icon={faInstagram}
                     className={`${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "mx-2 text-[40px]"
                     } text-[#FFFFFF]`}
                   />
@@ -142,7 +142,7 @@ export default function Header({ home, about, works, contact }) {
                     icon={faGithub}
                     className={`${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "mx-2 text-[40px]"
                     } text-[#FFFFFF]`}
                   />
@@ -156,7 +156,7 @@ export default function Header({ home, about, works, contact }) {
                     icon={faLinkedin}
                     className={`${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "mx-2 text-[40px]"
                     } text-[#FFFFFF]`}
                   />
@@ -167,7 +167,7 @@ export default function Header({ home, about, works, contact }) {
                     icon={faXTwitter}
                     className={`${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[20px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
                         : "mx-2 text-[40px]"
                     } text-[#FFFFFF]`}
                   />
