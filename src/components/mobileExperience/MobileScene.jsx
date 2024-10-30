@@ -17,7 +17,7 @@ let LERPED_MOBILE_ORIENTATION = {
   GAMMA: 0,
 };
 
-const CAMERA_ANIM_STRENGTH = 2.0;
+const CAMERA_ANIM_STRENGTH = 6.0;
 
 export default function MobileScene({ mobileOrientation }) {
   /**
