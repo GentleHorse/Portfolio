@@ -9,7 +9,7 @@ import {
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { isBrowser } from "react-device-detect";
+import { isBrowser, isMobile } from "react-device-detect";
 
 import whiteLogoicon from "../../../public/images/icons/logo-white.svg";
 
@@ -25,12 +25,8 @@ export default function Header({ home, about, works, contact }) {
       }`}
     >
       <section>
-        <div
-          className={`w-full flex ${
-            isBrowser ? "justify-between" : "justify-end"
-          }`}
-        >
-          {isBrowser && (
+        {!!isBrowser && (
+          <div className="w-full flex justify-between">
             <Link
               to="/"
               reloadDocument={true}
@@ -38,17 +34,30 @@ export default function Header({ home, about, works, contact }) {
             >
               <img src={whiteLogoicon} className="w-[50px] h-[50px]" />
             </Link>
-          )}
 
-          <Hamburger
-            className="mr-0"
-            size={isBrowser ? "40" : "28"}
-            direction="right"
-            color="#fcfaf2"
-            toggled={isMenuOpen}
-            toggle={setIsMenuOpen}
-          />
-        </div>
+            <Hamburger
+              className="mr-0"
+              size={40}
+              direction="right"
+              color="#fcfaf2"
+              toggled={isMenuOpen}
+              toggle={setIsMenuOpen}
+            />
+          </div>
+        )}
+
+        {!!isMobile && (
+          <div className="w-full flex justify-end">
+            <Hamburger
+              className="mr-0"
+              size={28}
+              direction="right"
+              color="#fcfaf2"
+              toggled={isMenuOpen}
+              toggle={setIsMenuOpen}
+            />
+          </div>
+        )}
 
         <AnimatePresence>
           {isMenuOpen && (
@@ -57,7 +66,7 @@ export default function Header({ home, about, works, contact }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className={`${!!isBrowser ? "" : "pl-10 w-[100vw] h-[100vh]"}`}
+              className={`${!!isBrowser ? "" : "w-[100vw] h-[100vh]"}`}
             >
               {home && (
                 <Link to="/" reloadDocument={true}>
