@@ -17,6 +17,7 @@ import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 import BeautyOfTimePassingHeroImage from "../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
 import ObjectRotterdam2024HeroImage from "../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
 import ComfortingDinnerHeroImage from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
+import PortfolioWebsiteHeroImage from "../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
 
 // -------------------------------------
 
@@ -160,6 +161,10 @@ function AboutPageExperience() {
       id: "comfortingDinner",
       isHover: false,
     },
+    {
+      id: "portfolioWebsite",
+      isHover: false,
+    },
   ]);
 
   const hoverStartTextsHandler = (text) => {
@@ -225,8 +230,8 @@ function AboutPageExperience() {
           </section>
 
           {/* --- PAGE 02 - 03 --------------------------------------- */}
-          <section className="h-[200vh] w-[100vw]">
-            <article className="relative py-[10%] px-[6%] xl:px-[12%] backdrop-blur-md bg-[#C1C1C1]/15">
+          <section className="h-[160vh] xl:h-[200vh] w-[100vw]">
+            <article className="relative py-[15%] xl:py-[10%] px-[10%] xl:px-[12%] backdrop-blur-md bg-[#C1C1C1]/15">
               <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
                 I am a Japanese designer and developer, a graduate of Design
                 Academy Eindhoven (Netherlands), where I created the project{" "}
@@ -264,7 +269,20 @@ function AboutPageExperience() {
                 >
                   "OBJECT Rotterdam 2024"
                 </a>{" "}
-                and this website.
+                and{" "}
+                <a
+                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
+                  onClick={() =>
+                    window.open("https://toshihito-endo.com/portfolio-website")
+                  }
+                  onMouseEnter={() =>
+                    hoverStartTextsHandler("portfolioWebsite")
+                  }
+                  onMouseLeave={() => hoverEndTextsHandler("portfolioWebsite")}
+                >
+                  this portfolio website
+                </a>
+                .
               </p>
 
               <img
@@ -273,7 +291,7 @@ function AboutPageExperience() {
                   hoverTextsArray[0].isHover
                     ? "show-thumbnail"
                     : "hidden-thumbnail"
-                } absolute top-[5%] left-[20%] w-[450px] h-[300px] object-cover`}
+                } absolute top-[3%] left-[20%] w-[450px] h-[300px] object-cover`}
               />
 
               <img
@@ -282,7 +300,16 @@ function AboutPageExperience() {
                   hoverTextsArray[1].isHover
                     ? "show-thumbnail"
                     : "hidden-thumbnail"
-                } absolute top-[45%] right-[20%] w-[450px] h-[300px] object-cover`}
+                } absolute top-[45%] right-[10%] w-[450px] h-[300px] object-cover`}
+              />
+
+              <img
+                src={PortfolioWebsiteHeroImage}
+                className={`${
+                  hoverTextsArray[3].isHover
+                    ? "show-thumbnail"
+                    : "hidden-thumbnail"
+                } absolute top-[50%] left-[15%] w-[450px] h-[300px] object-cover`}
               />
 
               <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
@@ -317,16 +344,16 @@ function AboutPageExperience() {
           </section>
 
           {/* --- PAGE 04 --------------------------------------- */}
-          <section className="h-[100vh] w-[100vw]">
-            <article className="py-[5%] px-[3%] xl:px-[6%] mx-[3%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
-              <div className="w-full grid grid-cols-4 xl:grid-cols-5 gap-6 xl:gap-12">
+          <section className="h-[120vh] xl:h-[100vh] w-[100vw]">
+            <article className="px-[3%] xl:px-[6%] py-[10%] xl:py-[5%]  mx-[7%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
+              <div className="w-full grid grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-12">
                 {SKILL_ICONS_ARRAY.map((skill, index) => (
                   <div key={index} className="mb-5 flex flex-col items-center">
                     <img
                       src={skill.image}
-                      className="mx-5 mb-2 w-8 h-8 xl:w-20 xl:h-20"
+                      className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
                     />
-                    <p className="font-roboto text-[7.5px] xl:text-xl text-[#FFFFFF]">
+                    <p className="font-roboto text-[8px] xl:text-xl text-[#FFFFFF]">
                       {skill.title}
                     </p>
                   </div>
