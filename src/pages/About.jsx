@@ -121,6 +121,84 @@ const SKILL_ICONS_ARRAY = [
   },
 ];
 
+// -------------------------------------------
+
+const LANGUAGES_ICONS_ARRAY = [
+  {
+    title: "HTML",
+    image: HtmlIcon,
+  },
+  {
+    title: "CSS",
+    image: CSSIcon,
+  },
+  {
+    title: "JavaScript",
+    image: JavaScriptIcon,
+  },
+  {
+    title: "C++",
+    image: CPlusPlusIcon,
+  },
+];
+
+const LIBRARIES_ICONS_ARRAY = [
+  {
+    title: "React",
+    image: ReactIcon,
+  },
+  {
+    title: "Three.js",
+    image: ThreeJsIcon,
+  },
+  {
+    title: "React Three Fiber",
+    image: PmndrsIcon,
+  },
+  {
+    title: "GSAP",
+    image: GSAPIcon,
+  },
+  {
+    title: "Tailwind CSS",
+    image: TailwindCSSIcon,
+  },
+];
+
+const THREE_D_ICONS_ARRAY = [
+  {
+    title: "Blender",
+    image: BlenderIcon,
+  },
+  {
+    title: "Houdini",
+    image: HoudiniIcon,
+  },
+  {
+    title: "Unreal Engine",
+    image: UnrealEngineIcon,
+  },
+  {
+    title: "Rhinoceros 3D",
+    image: RhinocerosIcon,
+  },
+];
+
+const UI_UX_ICONS_ARRAY = [
+  {
+    title: "Figma",
+    image: FigmaIcon,
+  },
+  {
+    title: "Webflow",
+    image: WebflowIcon,
+  },
+  {
+    title: "Adobe CC",
+    image: AdobeCreativeCloudIcon,
+  },
+];
+
 export default function AboutPage() {
   /**
    * LOADING SCREEN
@@ -236,7 +314,7 @@ function AboutPageExperience() {
                 I am a Japanese designer and developer, a graduate of Design
                 Academy Eindhoven (Netherlands), where I created the project{" "}
                 <a
-                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open(
                       "https://toshihito-endo.com/beauty-of-time-passing"
@@ -254,7 +332,7 @@ function AboutPageExperience() {
                 . My work focuses on uniting design and development, as seen in
                 projects like{" "}
                 <a
-                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open(
                       "https://toshihito-endo.com/object-rotterdam-2024"
@@ -271,7 +349,7 @@ function AboutPageExperience() {
                 </a>{" "}
                 and{" "}
                 <a
-                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open("https://toshihito-endo.com/portfolio-website")
                   }
@@ -317,7 +395,7 @@ function AboutPageExperience() {
                 subtle details in products can create emotionally resonant
                 interactions, as demonstrated in{" "}
                 <a
-                  className="font-bold hover:font-open-sans bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
+                  className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
                   onClick={() =>
                     window.open("https://toshihito-endo.com/comforting-dinner")
                   }
@@ -344,23 +422,127 @@ function AboutPageExperience() {
           </section>
 
           {/* --- PAGE 04 --------------------------------------- */}
-          <section className="h-[120vh] xl:h-[100vh] w-[100vw]">
-            <article className="px-[3%] xl:px-[6%] py-[10%] xl:py-[5%]  mx-[7%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
-              <div className="w-full grid grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-12">
-                {SKILL_ICONS_ARRAY.map((skill, index) => (
-                  <div key={index} className="mb-5 flex flex-col items-center">
-                    <img
-                      src={skill.image}
-                      className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
-                    />
-                    <p className="font-roboto text-[8px] xl:text-xl text-[#FFFFFF]">
-                      {skill.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </article>
-          </section>
+
+          {!!isBrowser && (
+            <section className="h-[100vh] w-[100vw]">
+              <article className="py-[10%] xl:py-[2.5%] backdrop-blur-md bg-[#C1C1C1]/15 divide-y divide-[#C1C1C1]/65">
+                {/* LANGUAGES */}
+                <div className="ml-5 py-8 flex flex-row">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                    languages
+                  </h1>
+                  <ul className="flex flex-row gap-5 items-start">
+                    {LANGUAGES_ICONS_ARRAY.map((language, index) => (
+                      <li
+                        key={index}
+                        className="w-[8.5vw] flex flex-col items-center"
+                      >
+                        <img
+                          src={language.image}
+                          className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
+                        />
+                        <p className="font-roboto text-[8px] xl:text-[16px] text-[#FFFFFF]">
+                          {language.title}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* LIBRARIES */}
+                <div className="ml-5 py-8 flex flex-row">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                    library
+                  </h1>
+                  <ul className="flex flex-row gap-5 items-start">
+                    {LIBRARIES_ICONS_ARRAY.map((library, index) => (
+                      <li
+                        key={index}
+                        className="w-[8.5vw] flex flex-col items-center"
+                      >
+                        <img
+                          src={library.image}
+                          className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
+                        />
+                        <p className="font-roboto text-[8px] xl:text-[16px] text-[#FFFFFF]">
+                          {library.title}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 3D */}
+                <div className="ml-5 py-8 flex flex-row">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                    3D
+                  </h1>
+                  <ul className="flex flex-row gap-5 items-start">
+                    {THREE_D_ICONS_ARRAY.map((threeD, index) => (
+                      <li
+                        key={index}
+                        className="w-[8.5vw] flex flex-col items-center"
+                      >
+                        <img
+                          src={threeD.image}
+                          className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
+                        />
+                        <p className="font-roboto text-[8px] xl:text-[16px] text-[#FFFFFF]">
+                          {threeD.title}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* UI/UX */}
+                <div className="ml-5 py-8 flex flex-row">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                    UI / UX
+                  </h1>
+                  <ul className="flex flex-row gap-5 items-start">
+                    {UI_UX_ICONS_ARRAY.map((uiUx, index) => (
+                      <li
+                        key={index}
+                        className="w-[8.5vw] flex flex-col items-center"
+                      >
+                        <img
+                          src={uiUx.image}
+                          className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
+                        />
+                        <p className="font-roboto text-[8px] xl:text-[16px] text-[#FFFFFF]">
+                          {uiUx.title}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </section>
+          )}
+
+          {!!isMobile && (
+            <section className="h-[120vh] xl:h-[100vh] w-[100vw]">
+              <article className="px-[3%] xl:px-[6%] py-[10%] xl:py-[5%] mx-[7%] xl:mx-[6%] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15">
+                <div className="w-full grid grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-12">
+                  {SKILL_ICONS_ARRAY.map((skill, index) => (
+                    <div
+                      key={index}
+                      className="mb-5 flex flex-col items-center"
+                    >
+                      <img
+                        src={skill.image}
+                        className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
+                      />
+                      <p className="font-roboto text-[8px] xl:text-xl text-[#FFFFFF]">
+                        {skill.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </section>
+          )}
 
           {/* --- PAGE 05 --------------------------------------- */}
           <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
