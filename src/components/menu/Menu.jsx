@@ -7,7 +7,7 @@ import escKeyIcon from "../../../public/images/icons/esc-key.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys.svg";
 import mouseIcon from "../../../public/images/icons/mouse.svg";
 import arrowIcon from "../../../public/images/icons/directional-arrow-up.svg";
-import whiteLogoicon from "../../../public/images/icons/logo-white.svg";
+import selfPortraitImage from "../../../public/images/portrait/selfportrait.jpg";
 
 export default function Menu() {
   /**
@@ -251,15 +251,6 @@ export default function Menu() {
           {/* LINKS FOOTER */}
           <div className="mt-[70px] text-slate-50 text-xl flex flex-col gap-7 justify-end">
             <Link
-              to="/about"
-              reloadDocument={true}
-              className="mr-12 flex flex-row items-center justify-end"
-            >
-              <p className="font-serif text-xl">About</p>
-              <img src={arrowIcon} className="ml-2 w-6 h-6" />
-            </Link>
-
-            <Link
               to="/works"
               reloadDocument={true}
               className="mr-12 flex flex-row items-center justify-end"
@@ -278,10 +269,16 @@ export default function Menu() {
             </Link>
           </div>
 
-          <img
-            src={whiteLogoicon}
-            className="absolute bottom-10 right-12 w-[50px] h-[50px]"
-          />
+          <Link
+            to="/about"
+            reloadDocument={true}
+            className="mr-12 flex flex-row items-center justify-end"
+          >
+            <img
+              src={selfPortraitImage}
+              className="absolute bottom-12 right-12 w-[180px] h-[180px] rounded-full hover:cursor-pointer"
+            />
+          </Link>
         </section>
       </Modal>
     </>

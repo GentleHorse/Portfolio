@@ -11,21 +11,38 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { isBrowser } from "react-device-detect";
 
+import whiteLogoicon from "../../../public/images/icons/logo-white.svg";
+
 export default function Header({ home, about, works, contact }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header
-      className={`fixed right-0 text-right pt-5 pr-5 z-50  ${
+      className={`fixed right-0 w-[100vw] text-right pt-5 pr-5 xl:pt-12 xl:pr-12 z-50  ${
         isMenuOpen &&
         !isBrowser &&
         "overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       }`}
     >
       <section>
-        <div className="w-full flex justify-end">
+        <div
+          className={`w-full flex ${
+            isBrowser ? "justify-between" : "justify-end"
+          }`}
+        >
+          {isBrowser && (
+            <Link
+              to="/"
+              reloadDocument={true}
+              className="pl-12 hover:cursor-pointer"
+            >
+              <img src={whiteLogoicon} className="w-[50px] h-[50px]" />
+            </Link>
+          )}
+
           <Hamburger
             className="mr-0"
+            size={isBrowser ? "40" : "28"}
             direction="right"
             color="#fcfaf2"
             toggled={isMenuOpen}
