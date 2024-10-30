@@ -118,15 +118,15 @@ function ContactExperience() {
       <Html zIndexRange={[10, 0]} center className="mt-[30vh] h-[100vh]">
         <section>
           <h1
-            className={`ml-[10vw] w-[80vw] font-cinzel ${
-              isBrowser ? "text-[80px]" : "text-[40px]"
+            className={`ml-[10vw] w-[80vw] font-permanent-marker ${
+              isBrowser ? "text-[120px]" : "text-[40px]"
             } text-[#ffffff]`}
           >
-            Get in touch!
+            Get in touch !
           </h1>
           <div className="mt-10 ml-[15vw] w-[80vw]">
             <p
-              className={`font-serif ${
+              className={`mb-7 font-serif ${
                 isBrowser ? "text-[60px]" : "text-[20px]"
               } text-[#ffffff]`}
             >
