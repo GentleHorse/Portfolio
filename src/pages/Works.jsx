@@ -28,6 +28,7 @@ import { Perf } from "r3f-perf";
 import { Gradient, LayerMaterial } from "lamina";
 import gsap from "gsap";
 import { isMobile, isBrowser } from "react-device-detect";
+import { gameStates, useGameStore } from "../store/store.js";
 
 import Header from "../components/header/Header.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
@@ -143,20 +144,62 @@ const PROJECTS_LIST_ARRAY = [
  * COMPONENTS ======================================================
  */
 export default function WorksPage() {
+  /**
+   * GAME STORE
+   */
+  const { gameState } = useGameStore((state) => ({
+    gameState: state.gameState,
+  }));
+
+  /**
+   * LOADING SCREEN - BROWSER, MOBILE
+   */
   const loadingScreenComponent = isBrowser ? (
     <LoadingScreen />
   ) : (
     <LoadingScreenMobile />
   );
 
+  /**
+   * SCROLL ICON ANIMATION
+   */
+  useEffect(() => {
+    const tl = gsap.timeline({repeat: -1, repeatDelay: 3.5});
+
+    if (document.querySelector("#mouseWheel") !== null){
+      tl.to("#mouseWheel", {
+        y: 25,
+        ease: "none",
+        duration: 1.5,
+      })
+      tl.to("#mouseWheel", {
+        y: 0,
+        ease: "none",
+        duration: 1.5,
+      })
+    }
+  }, [gameState]);
+
   return (
     <>
       <Header home about contact />
 
+      {gameState === gameStates.MENU && (
+        <div className="fixed bottom-14 w-[100vw] z-10">
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center w-[45px] h-[85px] border-solid border-4 border-[#FFFFFF]/65 rounded-full">
+              <div
+                id="mouseWheel"
+                className="mt-2 w-[25px] h-[25px] border-solid border-4 border-[#FFFFFF]/65 bg-[#FFFFFF]/35 rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
         <Suspense fallback={loadingScreenComponent}>
           <ScrollControls
-            // horizontal={isBrowser ? true : false}
             pages={SCROLL_PAGES}
             damping={SCROLL_DAMPING}
             distance={SCROLL_DISTANCE}
