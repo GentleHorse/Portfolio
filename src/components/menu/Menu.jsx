@@ -278,6 +278,9 @@ export default function Menu() {
               src={selfPortraitImage}
               className="absolute bottom-12 right-12 w-[180px] h-[180px] rounded-full hover:cursor-pointer"
             />
+            <p className="absolute bottom-14 right-6 font-permanent-marker text-[#D0104C] text-xl">
+              Wanna know about me?
+            </p>
           </Link>
         </section>
       </Modal>
