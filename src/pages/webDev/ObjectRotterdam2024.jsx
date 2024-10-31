@@ -98,18 +98,18 @@ export default function ObjectRotterdam2024Page() {
     console.log("LoadedStauts: ", loadedStatus);
 
     if (imagesArray.length === 18 && videosArray.length === 2) {
-    // Initialize Lenis
-    const lenis = new Lenis();
+      // Initialize Lenis
+      const lenis = new Lenis();
 
-    // Use requestAnimationFrame to continuously update the scroll
-    function raf(time) {
-      lenis.raf(time);
+      // Use requestAnimationFrame to continuously update the scroll
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
-    }
 
-    requestAnimationFrame(raf);
-
-    console.log(`Set Lenis`);
+      console.log(`Set Lenis`);
     }
   });
 
@@ -180,10 +180,17 @@ export default function ObjectRotterdam2024Page() {
 
               <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
                 The designer created two applications for the Object Rotterdam
-                exhibition (February 2-4, 2024, at HAKA-gebouw) while showcasing
-                his work as an exhibitor. One application is a 3D web platform
-                that allows participants to experiment with their exhibition
-                floor plans, while the other focuses on digitally archiving the
+                exhibition (February 2-4, 2024, at HAKA-gebouw) while{" "}
+                <a
+                  href="https://toshihito-endo.com/ambience-of-light"
+                  target="_blank"
+                  className="font-bold text-[#FFFFFF]"
+                >
+                  showcasing his work
+                </a>{" "}
+                as an exhibitor. One application is a 3D web platform that
+                allows participants to experiment with their exhibition floor
+                plans, while the other focuses on digitally archiving the
                 exhibition in 3D.
               </p>
             </div>
