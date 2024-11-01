@@ -41,7 +41,7 @@ import WebflowIcon from "../../public/images/icons/skills/webflow.svg";
 /**
  * INITIAL PARAM VALUES
  */
-const SCROLL_PAGES = isBrowser ? 8 : 9;
+const SCROLL_PAGES = isBrowser ? 8.5 : 7.5;
 const SCROLL_DAMPING = 0.285;
 const SCROLL_DISTANCE = 0.5;
 const CAMERA_FOV = isBrowser ? 15 : 40;
