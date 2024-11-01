@@ -62,48 +62,6 @@ const IMAGE_DIST_STRENGTH = isBrowser ? 0.65 : 0.45;
  */
 const PROJECTS_LIST_ARRAY = [
   {
-    id: "d01",
-    title: "Ambience of Light",
-    imageUrl: AmbienceOfLightThumbnail,
-    projectPageUrl: "/ambience-of-light",
-    zPos: 0,
-  },
-  {
-    id: "d02",
-    title: "Beauty of Time Passing",
-    imageUrl: BeautyOfTimePassingThumbnail,
-    projectPageUrl: "/beauty-of-time-passing",
-    zPos: 0,
-  },
-  {
-    id: "d03",
-    title: "Intervention in our Disconnection",
-    imageUrl: InterventionInOurDisconnectionThumbnail,
-    projectPageUrl: "/intervention-in-our-disconnection",
-    zPos: 0,
-  },
-  {
-    id: "d04",
-    title: "Masu Typo",
-    imageUrl: MasuTypoThumbnail,
-    projectPageUrl: "/masu-typo",
-    zPos: 0,
-  },
-  {
-    id: "d05",
-    title: "Comforting Dinner",
-    imageUrl: ComfortingDinnerThumbnail,
-    projectPageUrl: "/comforting-dinner",
-    zPos: 0,
-  },
-  {
-    id: "d06",
-    title: "3D Visuals",
-    imageUrl: ThreeDVisualThumbnail,
-    projectPageUrl: "/three-d-visuals",
-    zPos: 0,
-  },
-  {
     id: "a01",
     title: "Portfolio Website",
     imageUrl: PortfolioWebsiteThumbnail,
@@ -118,6 +76,20 @@ const PROJECTS_LIST_ARRAY = [
     zPos: 0,
   },
   {
+    id: "d02",
+    title: "Beauty of Time Passing",
+    imageUrl: BeautyOfTimePassingThumbnail,
+    projectPageUrl: "/beauty-of-time-passing",
+    zPos: 0,
+  },
+  {
+    id: "d06",
+    title: "3D Visuals",
+    imageUrl: ThreeDVisualThumbnail,
+    projectPageUrl: "/three-d-visuals",
+    zPos: 0,
+  },
+  {
     id: "a03",
     title: "Weather Cereal",
     imageUrl: WeatherCerealThumbnail,
@@ -129,6 +101,34 @@ const PROJECTS_LIST_ARRAY = [
     title: "Donuts Universe",
     imageUrl: DonutsUniverseThumbnail,
     projectPageUrl: "/donuts-universe",
+    zPos: 0,
+  },
+  {
+    id: "d04",
+    title: "Masu Typo",
+    imageUrl: MasuTypoThumbnail,
+    projectPageUrl: "/masu-typo",
+    zPos: 0,
+  },
+  {
+    id: "d03",
+    title: "Intervention in our Disconnection",
+    imageUrl: InterventionInOurDisconnectionThumbnail,
+    projectPageUrl: "/intervention-in-our-disconnection",
+    zPos: 0,
+  },
+  {
+    id: "d05",
+    title: "Comforting Dinner",
+    imageUrl: ComfortingDinnerThumbnail,
+    projectPageUrl: "/comforting-dinner",
+    zPos: 0,
+  },
+  {
+    id: "d01",
+    title: "Ambience of Light",
+    imageUrl: AmbienceOfLightThumbnail,
+    projectPageUrl: "/ambience-of-light",
     zPos: 0,
   },
   {
@@ -164,19 +164,19 @@ export default function WorksPage() {
    * SCROLL ICON ANIMATION
    */
   useEffect(() => {
-    const tl = gsap.timeline({repeat: -1, repeatDelay: 3.5});
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 3.5 });
 
-    if (document.querySelector("#mouseWheel") !== null){
+    if (document.querySelector("#mouseWheel") !== null) {
       tl.to("#mouseWheel", {
         y: 25,
         ease: "none",
         duration: 1.5,
-      })
+      });
       tl.to("#mouseWheel", {
         y: 0,
         ease: "none",
         duration: 1.5,
-      })
+      });
     }
   }, [gameState]);
 
