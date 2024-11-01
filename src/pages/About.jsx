@@ -41,7 +41,7 @@ import WebflowIcon from "../../public/images/icons/skills/webflow.svg";
 /**
  * INITIAL PARAM VALUES
  */
-const SCROLL_PAGES = 5.5;
+const SCROLL_PAGES = isBrowser ? 8 : 7;
 const SCROLL_DAMPING = 0.285;
 const SCROLL_DISTANCE = 0.5;
 const CAMERA_FOV = isBrowser ? 15 : 40;
@@ -121,8 +121,6 @@ const SKILL_ICONS_ARRAY = [
   },
 ];
 
-// -------------------------------------------
-
 const LANGUAGES_ICONS_ARRAY = [
   {
     title: "HTML",
@@ -196,6 +194,90 @@ const UI_UX_ICONS_ARRAY = [
   {
     title: "Adobe CC",
     image: AdobeCreativeCloudIcon,
+  },
+];
+
+const EXPERIENCES_ARRAY = [
+  {
+    when: "Dec 2023 - now",
+    entity: "Studio Toshihito Endo (Eindhoven, NL)",
+    postition: "Designer, Developer",
+    description:
+      "As a designer in self-employment, I design objects for exhibitions while applying my skills to developing 3D web applications.",
+  },
+  {
+    when: "Aug 2022",
+    entity: "MONO JAPAN (Rotterdam, NL)",
+    postition: "Production Manager",
+    description:
+      "As a production manager, I managed the entire production process for the 5th edition of MONO JAPAN - Japanese Craft & Design Fair (September 2-4, 2022). This involved coordinating closely with the MONO Japan team, external designers, and exhibition participants, including artists, designers, and companies from Japan and managing the entire events during the exhibition days.",
+  },
+  {
+    when: "Feb 2022 - Jul 2022",
+    entity: "Random Studio (Amsterdam, NL)",
+    postition: "Experience Design Intern",
+    description:
+      "During the 6 months internship, I was involved in several spatial interactive design projects for luxury brands such as Boucheron and Dom Perignon. I joined in the concept phase of the project to propose design ideas with 3D spatial visualisation, and also joined in the design phase to make physical prototypes for the actual site and helped them make the graphical presentation documents for clients.",
+  },
+  {
+    when: "Jul 2019 - Aug 2019",
+    entity: "PLANE co.,ltd (Tokyo, JP)",
+    postition: "Product Design Intern",
+    description:
+      "As a product design intern, I collaborated closely with the designer to assist in creating physical prototypes for industrial products. Additionally, I conducted research and contributed ideas to explore new possibilities for a traditional Japanese washi paper brand, helping to innovate and expand its potential applications in modern design.",
+  },
+  {
+    when: "Jan 2017 - Mar 2017",
+    entity: "MOZU co.,ltd (Tokyo, JP)",
+    postition: "Assistant Graphic Designer",
+    description:
+      "As an assistant graphic designer, I worked closely with the designer to assist in designing and creating the graphical elements for product catalogues, advertisement materials.",
+  },
+  {
+    when: "Apr 2016 - Dec 2016",
+    entity: "Candeo Hospitality Management,Inc. (Tokyo, JP)",
+    postition: "Concierge + Design",
+    description:
+      "As a hotel concierge, I helped guests by providing personalised services such as booking reservations, arranging transportation, and recommending local attractions. In addition to this, I designed the infographics and local restaurant map.",
+  },
+];
+
+const EXHIBITIONS_ARRAY = [
+  {
+    date: "Feb 2024",
+    title: "OBJECT Rotterdam 2024 (Rotterdam, NL)",
+  },
+  {
+    date: "Oct 2023",
+    title: "Design Academy Graduation show at DDW 2023 (Eindhoven, NL)",
+  },
+  {
+    date: "Jan 2022",
+    title: "'Moonshot: Exit Strategy' (Eindhoven, NL)",
+  },
+  {
+    date: "Mar 2021 - Aug 2021",
+    title:
+      "'Een nieuwe lente, een nieuwe vass' at National Glasmuseum (Leerdam, NL)",
+  },
+  {
+    date: "Oct 2020",
+    title: "'Spooning, A Dinner for Two' at DDW 2020 (Eindhoven, NL)",
+  },
+  {
+    date: "Feb 2020",
+    title: "Synthmania WORM Expo 2020 (Rotterdam, NL)",
+  },
+];
+
+const EDUCATION_ARRAY = [
+  {
+    year: "2018 - 2023",
+    institute: "Design Academy Eindhoven, Man & Communication (Eindhoven, NL)",
+  },
+  {
+    year: "2009 - 2013",
+    institute: "Keio University, Faculty of Economics (Tokyo, JP)",
   },
 ];
 
@@ -544,125 +626,75 @@ function AboutPageExperience() {
             </section>
           )}
 
-          {/* --- PAGE 05 --------------------------------------- */}
-          <section className="h-[100vh] w-[100vw] xl:w-[60vw]">
+          {/* --- PAGE 05, 06 --------------------------------------- */}
+          <section className="h-[200vh] w-[100vw]">
             <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-              <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
+              <h1 className="mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
                 Experiences
               </h1>
 
-              <div className="flex flex-row gap-10">
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Dec 2023 - now
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Aug 2022
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Feb 2022 - Jul 2022
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Jul 2019 - Jul 2019
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Jan 2017 - Mar 2017
-                  </p>
-                </div>
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Designer & developer at Studio Toshihito Endo
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Production assisant at MONO Japan Craft Fair
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Experience design intern at Random Studio
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Assistant product designer at PLANE co.,ltd
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Assistant graphic designer at MOZU co.,ltd
-                  </p>
-                </div>
-              </div>
+              <ul>
+                {EXPERIENCES_ARRAY.map((experience, index) => (
+                  <li key={index} className="my-6 xl:my-20">
+                    <div className="flex flex-row items-center gap-4 xl:gap-8">
+                      <p className="font-bold text-[8.5px] xl:text-[24px] text-[#ffffff]">
+                        {experience.when}
+                      </p>
+                      <p className="font-open-sans text-[8.5px] xl:text-[26px] text-[#ffffff]">
+                        {experience.postition}
+                      </p>
+                    </div>
+
+                    <div className="w-[300px] xl:w-[700px] mt-2 xl:mt-6 px-4 xl:px-6 pt-4 xl:pt-6 pb-6 xl:pb-10 rounded-xl backdrop-blur-md bg-[#C1C1C1]/15 ">
+                      <p className="mb-2 xl:mb-4 font-light text-[8.5px] xl:text-[22px] text-[#ffffff]">
+                        {experience.entity}
+                      </p>
+
+                      <p className="font-light text-[8.5px] xl:text-[18.5px] text-[#ffffff]">
+                        {experience.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </article>
 
             <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-              <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
+              <h1 className="mb-6 xl:mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
                 Exhibitions
               </h1>
 
-              <div className="flex flex-row gap-10">
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Feb 2024
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Oct 2023
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Jan 2022
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Mar 2021 - Aug 2021
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Oct 2020
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Feb 2020
-                  </p>
-                </div>
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    OBJECT Rotterdam 2024 (Rotterdam, NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Design Academy Graduation show at DDW 2023 (Eindhoven, NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    "Moonshot: Exit Strategy" (Eindhoven, NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    "Een nieuwe lente, een nieuwe vass" at National Glasmuseum
-                    (Leerdam, NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    "Spooning, A Dinner for Two" at DDW 2020 (Eindhoven, NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Synthmania WORM Expo 2020 (Rotterdam, NL)
-                  </p>
-                </div>
-              </div>
+              <ul>
+                {EXHIBITIONS_ARRAY.map((exhibition, index) => (
+                  <li key={index} className="mb-2 flex flex-col xl:flex-row">
+                    <p className="w-[250px] font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                      {exhibition.date}
+                    </p>
+                    <p className="flex-none font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                      {exhibition.title}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </article>
 
             <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-              <h1 className="mb-10 font-serif text-[25px] xl:text-[40px] text-[#ffffff]">
-                Educations
+            <h1 className="mb-6 xl:mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
+                Education
               </h1>
 
-              <div className="flex flex-row gap-10">
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    2018 - 2023
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    2009 - 2013
-                  </p>
-                </div>
-                <div>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Design Academy Eindhoven, Man & Communication (Eindhoven,
-                    NL)
-                  </p>
-                  <p className="font-light text-[8.5px] xl:text-[17px] text-[#ffffff]">
-                    Keio University, Faculty of Economics (Tokyo, JP)
-                  </p>
-                </div>
-              </div>
+              <ul>
+                {EDUCATION_ARRAY.map((education, index) => (
+                  <li key={index} className="mb-2 flex flex-col xl:flex-row">
+                    <p className="w-[250px] font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                      {education.year}
+                    </p>
+                    <p className="flex-none font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                      {education.institute}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </article>
           </section>
         </Scroll>
