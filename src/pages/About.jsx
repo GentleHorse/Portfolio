@@ -41,7 +41,7 @@ import WebflowIcon from "../../public/images/icons/skills/webflow.svg";
 /**
  * INITIAL PARAM VALUES
  */
-const SCROLL_PAGES = isBrowser ? 8 : 7;
+const SCROLL_PAGES = isBrowser ? 8 : 9;
 const SCROLL_DAMPING = 0.285;
 const SCROLL_DISTANCE = 0.5;
 const CAMERA_FOV = isBrowser ? 15 : 40;
@@ -612,11 +612,8 @@ function AboutPageExperience() {
                       key={index}
                       className="mb-5 flex flex-col items-center"
                     >
-                      <img
-                        src={skill.image}
-                        className="mx-5 mb-2 w-14 h-14 xl:w-20 xl:h-20"
-                      />
-                      <p className="font-roboto text-[8px] xl:text-xl text-[#FFFFFF]">
+                      <img src={skill.image} className="mx-5 mb-2 w-14 h-14" />
+                      <p className="font-roboto text-[10px] text-[#FFFFFF]">
                         {skill.title}
                       </p>
                     </div>
@@ -628,29 +625,29 @@ function AboutPageExperience() {
 
           {/* --- PAGE 05, 06 --------------------------------------- */}
           <section className="h-[200vh] w-[100vw]">
-            <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-              <h1 className="mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
+            <article className="py-[5%] pl-[0%] xl:pl-[12%]">
+              <h1 className="text-center xl:text-left mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
                 Experiences
               </h1>
 
               <ul>
                 {EXPERIENCES_ARRAY.map((experience, index) => (
                   <li key={index} className="my-6 xl:my-20">
-                    <div className="flex flex-row items-center gap-4 xl:gap-8">
-                      <p className="font-bold text-[8.5px] xl:text-[24px] text-[#ffffff]">
+                    <div className="flex flex-col xl:flex-row items-center gap-2 xl:gap-8">
+                      <p className="font-bold text-[12px] xl:text-[24px] text-[#ffffff]">
                         {experience.when}
                       </p>
-                      <p className="font-open-sans text-[8.5px] xl:text-[26px] text-[#ffffff]">
+                      <p className="font-open-sans text-[15px] xl:text-[26px] text-[#ffffff]">
                         {experience.postition}
                       </p>
                     </div>
 
-                    <div className="w-[300px] xl:w-[700px] mt-2 xl:mt-6 px-4 xl:px-6 pt-4 xl:pt-6 pb-6 xl:pb-10 rounded-xl backdrop-blur-md bg-[#C1C1C1]/15 ">
-                      <p className="mb-2 xl:mb-4 font-light text-[8.5px] xl:text-[22px] text-[#ffffff]">
+                    <div className="w-[300px] xl:w-[700px] mx-auto xl:mx-0 mt-2 xl:mt-6 px-4 xl:px-6 pt-4 xl:pt-6 pb-6 xl:pb-10 rounded-xl backdrop-blur-md bg-[#C1C1C1]/15 ">
+                      <p className="mb-2 xl:mb-4 font-light text-[12.5px] xl:text-[22px] text-[#ffffff]">
                         {experience.entity}
                       </p>
 
-                      <p className="font-light text-[8.5px] xl:text-[18.5px] text-[#ffffff]">
+                      <p className="font-light text-[11.5px] xl:text-[18.5px] text-[#ffffff]">
                         {experience.description}
                       </p>
                     </div>
@@ -659,18 +656,21 @@ function AboutPageExperience() {
               </ul>
             </article>
 
-            <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-              <h1 className="mb-6 xl:mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
+            <article className="py-[5%] pl-[0%] xl:pl-[12%]">
+              <h1 className="text-center xl:text-left mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
                 Exhibitions
               </h1>
 
               <ul>
                 {EXHIBITIONS_ARRAY.map((exhibition, index) => (
-                  <li key={index} className="mb-2 flex flex-col xl:flex-row">
-                    <p className="w-[250px] font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                  <li
+                    key={index}
+                    className="mb-4 xl:mb-2 flex flex-col xl:flex-row items-center xl:items-start"
+                  >
+                    <p className="text-center xl:text-left  w-[250px] font-light text-[11.5px] xl:text-[20px] text-[#ffffff]">
                       {exhibition.date}
                     </p>
-                    <p className="flex-none font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                    <p className="flex-none font-light text-[11.5px] xl:text-[20px] text-[#ffffff]">
                       {exhibition.title}
                     </p>
                   </li>
@@ -678,18 +678,21 @@ function AboutPageExperience() {
               </ul>
             </article>
 
-            <article className="py-[5%] pl-[6%] xl:pl-[12%]">
-            <h1 className="mb-6 xl:mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
+            <article className="py-[5%] pl-[0%] xl:pl-[12%]">
+              <h1 className="text-center xl:text-left mb-10 font-serif text-[25px] xl:text-[80px] text-[#ffffff]">
                 Education
               </h1>
 
               <ul>
                 {EDUCATION_ARRAY.map((education, index) => (
-                  <li key={index} className="mb-2 flex flex-col xl:flex-row">
-                    <p className="w-[250px] font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                  <li
+                    key={index}
+                    className="mb-4 xl:mb-2 flex flex-col xl:flex-row items-center xl:items-start"
+                  >
+                    <p className="text-center xl:text-left  w-[250px] font-light text-[11.5px] xl:text-[20px] text-[#ffffff]">
                       {education.year}
                     </p>
-                    <p className="flex-none font-light text-[10px] xl:text-[20px] text-[#ffffff]">
+                    <p className="flex-none font-light text-[11.5px] xl:text-[20px] text-[#ffffff]">
                       {education.institute}
                     </p>
                   </li>
