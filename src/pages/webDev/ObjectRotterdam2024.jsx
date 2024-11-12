@@ -118,7 +118,7 @@ export default function ObjectRotterdam2024Page() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, [imagesArray, videosArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

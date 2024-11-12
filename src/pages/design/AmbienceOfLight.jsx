@@ -81,7 +81,7 @@ export default function AmbienceOfLightPage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, [imagesArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

@@ -91,7 +91,7 @@ export default function ComfortingDinnerPage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, [imagesArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

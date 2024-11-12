@@ -90,7 +90,7 @@ export default function DonutsUniversePage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }), [videosArray];
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

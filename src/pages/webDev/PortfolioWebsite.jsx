@@ -133,7 +133,7 @@ export default function PortfolioWebsitePage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, [imagesArray, videosArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

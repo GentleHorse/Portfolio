@@ -77,7 +77,7 @@ export default function ThreeDVisualsPage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, [videosArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

@@ -42,7 +42,7 @@ export default function MarbleRacePage() {
 
       console.log("Reset and destroy Lenis");
     }
-  });
+  }, []);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION

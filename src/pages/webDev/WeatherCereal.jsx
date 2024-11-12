@@ -68,18 +68,18 @@ export default function WeatherCerealPage() {
     console.log("LoadedStauts: ", loadedStatus);
 
     // if (imagesArray.length === 4 & videosArray.length === 1) {
-      // Initialize Lenis
-      const lenis = new Lenis();
+    // Initialize Lenis
+    const lenis = new Lenis();
 
-      // Use requestAnimationFrame to continuously update the scroll
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
+    }
 
-      console.log(`Set Lenis`);
+    requestAnimationFrame(raf);
+
+    console.log(`Set Lenis`);
     // }
 
     return () => {
@@ -87,8 +87,8 @@ export default function WeatherCerealPage() {
       lenis.destroy();
 
       console.log("Reset and destroy Lenis");
-    }
-  });
+    };
+  }, [imagesArray, videosArray]);
 
   /**
    * SCROLL ELEMENT APPEAR ANIMATION
