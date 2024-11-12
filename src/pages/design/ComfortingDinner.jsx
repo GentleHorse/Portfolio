@@ -70,7 +70,7 @@ export default function ComfortingDinnerPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 15) {
+    // if (imagesArray.length === 15) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -83,6 +83,13 @@ export default function ComfortingDinnerPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

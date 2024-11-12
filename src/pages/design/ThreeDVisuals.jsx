@@ -56,7 +56,7 @@ export default function ThreeDVisualsPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (videosArray.length === 9) {
+    // if (videosArray.length === 9) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -69,6 +69,13 @@ export default function ThreeDVisualsPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

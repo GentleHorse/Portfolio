@@ -60,7 +60,7 @@ export default function AmbienceOfLightPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 10) {
+    // if (imagesArray.length === 10) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -72,7 +72,14 @@ export default function AmbienceOfLightPage() {
 
       requestAnimationFrame(raf);
 
-      console.log(`Set Lenis`);
+      console.log("Set Lenis");
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

@@ -114,7 +114,7 @@ export default function InterventionInOurDisconnectionPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 27 && videosArray.length === 1) {
+    // if (imagesArray.length === 27 && videosArray.length === 1) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -127,6 +127,13 @@ export default function InterventionInOurDisconnectionPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   }, [imagesArray, videosArray]);
 

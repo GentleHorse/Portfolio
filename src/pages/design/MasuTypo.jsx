@@ -95,7 +95,7 @@ export default function MasuTypoPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 13 && videosArray.length === 4) {
+    // if (imagesArray.length === 13 && videosArray.length === 4) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -108,6 +108,13 @@ export default function MasuTypoPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

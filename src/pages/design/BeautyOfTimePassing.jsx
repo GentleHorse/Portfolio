@@ -104,7 +104,7 @@ export default function BeautyOfTimePassingPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 14 && videosArray.length === 8) {
+    // if (imagesArray.length === 14 && videosArray.length === 8) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -117,6 +117,13 @@ export default function BeautyOfTimePassingPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

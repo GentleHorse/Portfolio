@@ -97,7 +97,7 @@ export default function ObjectRotterdam2024Page() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 18 && videosArray.length === 2) {
+    // if (imagesArray.length === 18 && videosArray.length === 2) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -110,6 +110,13 @@ export default function ObjectRotterdam2024Page() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

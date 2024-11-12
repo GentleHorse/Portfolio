@@ -112,7 +112,7 @@ export default function PortfolioWebsitePage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 16 && videosArray.length === 10) {
+    // if (imagesArray.length === 16 && videosArray.length === 10) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -125,6 +125,13 @@ export default function PortfolioWebsitePage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

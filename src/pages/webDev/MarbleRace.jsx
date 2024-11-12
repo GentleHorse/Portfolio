@@ -21,7 +21,7 @@ export default function MarbleRacePage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (MarbleOnARollVideo01) {
+    // if (MarbleOnARollVideo01) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -34,6 +34,13 @@ export default function MarbleRacePage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 

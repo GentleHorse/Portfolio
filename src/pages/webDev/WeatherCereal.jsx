@@ -67,7 +67,7 @@ export default function WeatherCerealPage() {
     setLoadedStatus(document.readyState === "complete");
     console.log("LoadedStauts: ", loadedStatus);
 
-    if (imagesArray.length === 4 & videosArray.length === 1) {
+    // if (imagesArray.length === 4 & videosArray.length === 1) {
       // Initialize Lenis
       const lenis = new Lenis();
 
@@ -80,6 +80,13 @@ export default function WeatherCerealPage() {
       requestAnimationFrame(raf);
 
       console.log(`Set Lenis`);
+    // }
+
+    return () => {
+      lenis.scrollTo(100);
+      lenis.destroy();
+
+      console.log("Reset and destroy Lenis");
     }
   });
 
