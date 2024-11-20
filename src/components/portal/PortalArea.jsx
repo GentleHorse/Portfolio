@@ -18,6 +18,8 @@ export default function PortalArea({
   url,
   projectUrl,
   text = "Visit Project Page",
+  isDoorFrame = true,
+  isDoorGradient = true,
   ...props
 }) {
   const navigate = useNavigate();
@@ -81,7 +83,7 @@ export default function PortalArea({
             </Container>
           </Root>
         </group>
-        <group position={[0, 1.0, 3.5]} rotation={[-Math.PI * 0.5, 0, 0]}>
+        <group position={[0, -2.0, 5.5]} rotation={[-Math.PI * 0.5, 0, 0]}>
           <Root>
             <Container flexDirection="column" gap={15} alignItems="center">
               <Image
@@ -97,25 +99,26 @@ export default function PortalArea({
         </group>
 
         {/* GATE MESHES */}
-        <mesh
-          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT * 0.7, 1.0]}
-          position={[0, 0, 0]}
+        {!!isDoorGradient && <mesh
+          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
+          position={[0, -2.0, 0]}
           rotation={[0, Math.PI, 0]}
           geometry={portalGeometry}
           material={portalMaterial}
-        />
+        />}
         {!!projectUrl && (
           <DreiImage
             url={projectUrl}
-            position={[0, 4.5, -0.5]}
-            scale={[PORTAL_DOOR_WIDTH * 0.995, PORTAL_DOOR_HEIGHT * 0.7, 1]}
+            position={[0, 5.5, -0.5]}
+            scale={[PORTAL_DOOR_WIDTH * 0.995, PORTAL_DOOR_HEIGHT * 0.65, 1]}
             toneMapped={false}
             opacity={0.4}
             transparent={true}
           />
         )}
 
-        <PortalGate scale={[5.5, 6.0, 10.0]} position={[0, 0, -0.25]} />
+
+        {!!isDoorFrame && <PortalGate scale={[1.0, 1.0, 1.0]} position={[0, -2.0, -0.25]} />}
 
         {/* COLLISION BODY */}
         <RigidBody

@@ -70,7 +70,7 @@ export default function Experience() {
           {gameState !== gameStates.LOADING && <PortalAreas />}
 
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
-          <mesh
+          {/* <mesh
             scale={[300, 300, 1]}
             position={[0, -0.7, -100]}
             rotation={[-Math.PI * 0.5, 0, 0]}
@@ -92,7 +92,7 @@ export default function Experience() {
               distortionMap={woodPlanksNormalTexture}
               reflectorOffset={0.2}
             />
-          </mesh>
+          </mesh> */}
         </group>
       </Physics>
     </>

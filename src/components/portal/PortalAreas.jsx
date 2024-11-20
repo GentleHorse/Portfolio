@@ -65,57 +65,61 @@ export default function PortalAreas() {
           />
         </group>
 
-        {/* 3D VISUALS */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/three-d-visuals"
-          projectUrl={ThreeDVisualThumbnail}
-          text="3D VISUALS"
-          position={[-32, 0, 20]}
-          rotation={[0, Math.PI * 0.5, 0]}
-        />
+        <group position-y={1.5}>
+          {/* 3D VISUALS */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/three-d-visuals"
+            projectUrl={ThreeDVisualThumbnail}
+            text="3D VISUALS"
+            position={[-32, 0, 20]}
+            rotation={[0, Math.PI * 0.5, 0]}
+          />
 
-        {/* 3D APP DEV - MARBLE RACE */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/marble-race"
-          projectUrl={MarbleOnARollThumbnail}
-          position={[10, 0, 28]}
-          rotation={[0, -Math.PI * 0.5, 0]}
-        />
+          {/* 3D APP DEV - MARBLE RACE */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/marble-race"
+            projectUrl={MarbleOnARollThumbnail}
+            position={[10, 0, 28]}
+            rotation={[0, -Math.PI * 0.5, 0]}
+          />
 
-        {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/object-rotterdam-2024"
-          projectUrl={OBJECRotterdam2024Thumbnail}
-          position={[6, 0, 52]}
-          rotation={[0, -Math.PI * 0.5, 0]}
-        />
+          {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/object-rotterdam-2024"
+            projectUrl={OBJECRotterdam2024Thumbnail}
+            position={[6, 0, 52]}
+            rotation={[0, -Math.PI * 0.5, 0]}
+          />
 
-        {/* 3D APP DEV - WEATHER CEREAL */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/weather-cereal"
-          projectUrl={WeatherCerealThumbnail}
-          position={[25, 0, 52]}
-          rotation={[0, -Math.PI * 0.5, 0]}
-        />
+          {/* 3D APP DEV - WEATHER CEREAL */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/weather-cereal"
+            projectUrl={WeatherCerealThumbnail}
+            position={[25, 0, 52]}
+            rotation={[0, -Math.PI * 0.5, 0]}
+          />
 
-        {/* 3D APP DEV - DONUTS UNIVERSE */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/donuts-universe"
-          projectUrl={DonutsUniverseThumbnail}
-          position={[32, 0, 32]}
-          rotation={[0, -Math.PI * 0.5, 0]}
-        />
+          {/* 3D APP DEV - DONUTS UNIVERSE */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/donuts-universe"
+            projectUrl={DonutsUniverseThumbnail}
+            position={[32, 0, 32]}
+            rotation={[0, -Math.PI * 0.5, 0]}
+          />
+        </group>
 
         {/* CONTACT */}
         <PortalArea
           redirectWatingSeconds={0.1}
           url="/contact"
           text="Contact"
+          isDoorFrame={false}
+          isDoorGradient={false}
           scale={0.8}
           position={[1.5, 0, 15]}
           rotation={[0, -Math.PI, 0]}
@@ -126,6 +130,8 @@ export default function PortalAreas() {
           redirectWatingSeconds={0.1}
           url="/about"
           text="Who made this?"
+          isDoorFrame={false}
+          isDoorGradient={false}
           scale={0.8}
           position={[21.5, 0, -8.5]}
           rotation={[0, 0, 0]}
@@ -136,6 +142,8 @@ export default function PortalAreas() {
           redirectWatingSeconds={0.1}
           url="/portfolio-website"
           text="About this website"
+          isDoorFrame={false}
+          isDoorGradient={false}
           scale={0.8}
           position={[13.5, 0, 12.5]}
           rotation={[0, -Math.PI * 0.8, 0]}
