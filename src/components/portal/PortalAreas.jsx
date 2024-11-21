@@ -18,7 +18,7 @@ export default function PortalAreas() {
   return (
     <>
       <group position-y={GATE_POSITION_Y}>
-        <group position-y={-1.0}>
+        <group position-y={1.5}>
           {/* DESIGN - AMBIENCE OF LIGHT */}
           <PortalArea
             redirectWatingSeconds={0.1}
@@ -81,8 +81,8 @@ export default function PortalAreas() {
             redirectWatingSeconds={0.1}
             url="/marble-race"
             projectUrl={MarbleOnARollThumbnail}
-            position={[10, 0, 28]}
-            rotation={[0, -Math.PI * 0.5, 0]}
+            position={[10, 0, 25]}
+            rotation={[0, -Math.PI * 0.25, 0]}
           />
 
           {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
@@ -90,8 +90,8 @@ export default function PortalAreas() {
             redirectWatingSeconds={0.1}
             url="/object-rotterdam-2024"
             projectUrl={OBJECRotterdam2024Thumbnail}
-            position={[6, 0, 52]}
-            rotation={[0, -Math.PI * 0.5, 0]}
+            position={[6, 0, 55]}
+            rotation={[0, -Math.PI * 0.75, 0]}
           />
 
           {/* 3D APP DEV - WEATHER CEREAL */}
@@ -113,41 +113,43 @@ export default function PortalAreas() {
           />
         </group>
 
-        {/* CONTACT */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/contact"
-          text="Contact"
-          isDoorFrame={false}
-          isDoorGradient={false}
-          scale={0.8}
-          position={[1.5, 0, 15]}
-          rotation={[0, -Math.PI, 0]}
-        />
+        <group position-y={1.5}>
+          {/* CONTACT */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/contact"
+            text="Contact"
+            isDoorFrame={true}
+            isDoorGradient={true}
+            scale={0.8}
+            position={[1.5, 0, 15]}
+            rotation={[0, -Math.PI, 0]}
+          />
 
-        {/* ABOUT */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/about"
-          text="Who made this?"
-          isDoorFrame={false}
-          isDoorGradient={false}
-          scale={0.8}
-          position={[21.5, 0, -8.5]}
-          rotation={[0, 0, 0]}
-        />
+          {/* ABOUT */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/about"
+            text="Who made this?"
+            isDoorFrame={true}
+            isDoorGradient={true}
+            scale={0.8}
+            position={[21.5, 0, -8.5]}
+            rotation={[0, 0, 0]}
+          />
 
-        {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
-        <PortalArea
-          redirectWatingSeconds={0.1}
-          url="/portfolio-website"
-          text="About this website"
-          isDoorFrame={false}
-          isDoorGradient={false}
-          scale={0.8}
-          position={[13.5, 0, 12.5]}
-          rotation={[0, -Math.PI * 0.8, 0]}
-        />
+          {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
+          <PortalArea
+            redirectWatingSeconds={0.1}
+            url="/portfolio-website"
+            text="About this website"
+            isDoorFrame={true}
+            isDoorGradient={true}
+            scale={0.8}
+            position={[13.5, 0, 12.5]}
+            rotation={[0, -Math.PI * 0.8, 0]}
+          />
+        </group>
       </group>
     </>
   );

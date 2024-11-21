@@ -47,7 +47,7 @@ export default function Experience() {
       />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-right" /> */}
+      <Perf position="top-right" />
       {/* <axesHelper /> */}
       {/* <OrbitControls makeDefault /> */}
 
@@ -72,7 +72,7 @@ export default function Experience() {
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           <mesh
             scale={[300, 300, 1]}
-            position={[0, -1.5, -100]}
+            position={[0, -0.7, -100]}
             rotation={[-Math.PI * 0.5, 0, 0]}
           >
             <planeGeometry />
@@ -81,7 +81,7 @@ export default function Experience() {
               blur={[300, 100]}
               mixBlur={1}
               mirror={[0.95]}
-              color="#C1C1C1"
+              color="#FFFFFF"
               mixStrength={2}
               depthScale={1}
               minDepthThreshold={0.85}
