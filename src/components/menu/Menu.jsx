@@ -28,7 +28,11 @@ export default function Menu() {
    */
   const modalCloseHandler = () => {
     setIsModalOpen(false);
-    document.body.requestPointerLock();
+
+    // Wait 0.5sec for avoiding an error
+    setTimeout(() => {
+      document.body.requestPointerLock();
+    }, 500);
   };
 
   /**
@@ -37,7 +41,11 @@ export default function Menu() {
   const gameStartHandler = () => {
     setIsModalOpen(false);
     setGameState(gameStates.PLAY);
-    document.body.requestPointerLock();
+
+    // Wait 0.5sec for avoiding an error
+    setTimeout(() => {
+      document.body.requestPointerLock();
+    }, 500);
   };
 
   /**
@@ -189,22 +197,19 @@ export default function Menu() {
         <section className="flex flex-col items-center h-full justify-evenly">
           <div className="w-full mt-10 px-[120px] text-slate-50 text-md">
             <p className="my-10 text-center text-slate-50 font-serif text-4xl">
-              "Portal" to explore more
+              Individual project pages
             </p>
 
             <div className="flex justify-between gap-12 mb-10 pt-10">
               <div>
-                <p className="mb-5 font-light text-2xl">
-                  There are "portals" in this space.
-                </p>
                 <p className="mb-24 font-light text-2xl">
                   If you feel like knowing more about the project, you can visit
-                  individual project pages by entering this "portal" gate.
+                  individual project pages by pressing the 'Enter' key.
                 </p>
                 <p className="font-great-vibes text-4xl">E n j o y !</p>
               </div>
 
-              <img src="./images/menu/portal-gate.jpg" className="h-[300px]" />
+              <img src="./images/menu/portal-enter.jpg" className="h-[200px]" />
             </div>
           </div>
 

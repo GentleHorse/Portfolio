@@ -1,44 +1,19 @@
 import * as THREE from "three";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
 import { gameStates, useGameStore } from "../../store/store";
-import { Image as DreiImage } from "@react-three/drei";
-
-import PortalGate from "../models/portal-gate/PortalGate.jsx";
-
-import portalVertexShader from "../../shaders/portal/vertex.glsl";
-import portalFragmentShader from "../../shaders/portal/fragment.glsl";
-
-const PORTAL_DOOR_WIDTH = 7.0;
-const PORTAL_DOOR_HEIGHT = 21.5;
+import { Image as DreiImage, useKeyboardControls } from "@react-three/drei";
 
 export default function PortalArea({
-  redirectWatingSeconds,
-  url,
+  scale,
+  position,
+  rotation,
   projectUrl,
-  text = "Visit Project Page",
-  isDoorFrame = true,
-  isDoorGradient = true,
-  ...props
+  message,
+  text = "Go to the project page"
 }) {
-  const navigate = useNavigate();
-
-  /**
-   * HANDLER - REDIRECT TO ANOTHER PAGE
-   */
-  const redirectHandler = () => {
-    // Chage state from "PLAY" to "MENU"
-    setGameState(gameStates.MENU);
-
-    setTimeout(() => {
-      // Exit Pointer Lock API
-      document.exitPointerLock();
-
-      navigate(url);
-    }, redirectWatingSeconds * 1000);
-  };
-
   /**
    * GAME STORE
    */
@@ -48,89 +23,106 @@ export default function PortalArea({
   }));
 
   /**
-   * GEOMETRY
+   * NAVIGATE
    */
-  const portalGeometry = new THREE.PlaneGeometry(1, 1);
-  portalGeometry.translate(0, 0.5, 0);
+  const navigate = useNavigate();
 
   /**
-   * MATERIAL - SHADER MATERIAL
+   * KEYBOARD CONTROLS
    */
-  const portalMaterial = new THREE.ShaderMaterial({
-    vertexShader: portalVertexShader,
-    fragmentShader: portalFragmentShader,
-    side: THREE.DoubleSide,
-    wireframe: false,
-    depthWrite: false,
-    transparent: true,
-  });
+  const [subscribeKeys, getKeys] = useKeyboardControls();
+
+  /**
+   * PROJECT-URL STATE
+   */
+  const [curProjectUrl, setCurProjectUrl] = useState(null);
+
+  /**
+   * ENTER KEY ICON STATE
+   */
+  const [showEnterKey, setShowEnterKey] = useState(false);
+
+  /**
+   * REDIRECT TO INDIVIDUAL PROJECT PAGES
+   */
+  useEffect(() => {
+    const unsubscribeEnter = subscribeKeys(
+      (state) => state.enter,
+      (value) => {
+        if (value) {
+          redirectHandler();
+        }
+      }
+    );
+
+    return () => {
+      unsubscribeEnter();
+    };
+  }, [curProjectUrl]);
+
+  const redirectHandler = () => {
+    if (curProjectUrl !== null) {
+      // Chage state from "PLAY" to "MENU"
+      setGameState(gameStates.MENU);
+
+      // Exit Pointer Lock API
+      document.exitPointerLock();
+
+      // Redirect
+      navigate(curProjectUrl);
+
+      // Reset the current project url
+      setCurProjectUrl(null);
+      console.log("reset proj url");
+
+      // Reset the enter key state
+      setShowEnterKey(false);
+      console.log("hide enter key icon");
+    }
+  };
 
   return (
     <>
-      <group {...props}>
-        {/* TEXT */}
-        <group position={[0, 6, 0]} rotation={[0, 0, 0]}>
-          <Root>
-            <Container flexDirection="column" gap={15} alignItems="center">
-              <Text fontWeight="extra-bold" fontSize={60} color="snow">
-                {text}
-              </Text>
-              <Image
-                src="./images/icons/external-link.svg"
-                width={200}
-                marginTop={50}
-              />
-            </Container>
-          </Root>
-        </group>
-        <group position={[0, -2.0, 5.5]} rotation={[-Math.PI * 0.5, 0, 0]}>
-          <Root>
-            <Container flexDirection="column" gap={15} alignItems="center">
-              <Image
-                src="./images/icons/white-triangle.svg"
-                width={400}
-                marginTop={0}
-              />
-              <Text fontWeight="extra-bold" fontSize={80} color="snow">
-                ENTER
-              </Text>
-            </Container>
-          </Root>
-        </group>
-
-        {/* GATE MESHES */}
-        {!!isDoorGradient && <mesh
-          scale={[PORTAL_DOOR_WIDTH, PORTAL_DOOR_HEIGHT, 1.0]}
-          position={[0, -2.0, 0]}
-          rotation={[0, Math.PI, 0]}
-          geometry={portalGeometry}
-          material={portalMaterial}
-        />}
-        {!!projectUrl && (
-          <DreiImage
-            url={projectUrl}
-            position={[0, 5.5, -0.5]}
-            scale={[PORTAL_DOOR_WIDTH * 0.995, PORTAL_DOOR_HEIGHT * 0.65, 1]}
-            toneMapped={false}
-            opacity={0.4}
-            transparent={true}
-          />
+      <group scale={scale} position={position} rotation={rotation}>
+        {/* ENTER KEY */}
+        {!!showEnterKey && (
+          <group position={[0, 4, 0]}>
+            <Root>
+              <Container flexDirection="column" gap={15} alignItems="center">
+                <Text fontWeight="extra-bold" fontSize={60} color="white">
+                  {text}
+                </Text>
+                <Image
+                  src="./images/icons/enter-key.svg"
+                  width={250}
+                  marginTop={50}
+                />
+              </Container>
+            </Root>
+          </group>
         )}
 
+        {/* COLLISION */}
+        <group position={[0, 0, 7]}>
+          <RigidBody
+            type="fixed"
+            colliders={false}
+            onIntersectionEnter={() => {
+              setCurProjectUrl(projectUrl);
+              console.log(message);
 
-        {!!isDoorFrame && <PortalGate scale={[1.0, 1.0, 1.0]} position={[0, -2.0, -0.25]} />}
+              setShowEnterKey(true);
+            }}
+            onIntersectionExit={() => {
+              setCurProjectUrl(null);
+              console.log("Reset the curProjectUrl");
 
-        {/* COLLISION BODY */}
-        <RigidBody
-          type="fixed"
-          scale={[1.0, 5.0, 1.0]}
-          position={[0, 0.1, 0]}
-          // rotation={[-Math.PI * 0.5, 0, 0]}
-          colliders={false}
-          onIntersectionEnter={redirectHandler}
-        >
-          <CuboidCollider args={[3.0, 1.5, 1.0]} sensor />
-        </RigidBody>
+              setShowEnterKey(false);
+            }}
+          >
+            <CuboidCollider args={[10.0, 1.5, 10.0]} sensor />
+          </RigidBody>
+        </group>
       </group>
     </>
   );
