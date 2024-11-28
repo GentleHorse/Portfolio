@@ -7,7 +7,7 @@ import MobileExperience from "../components/mobileExperience/MobileExperience.js
 import HowToControl from "../components/UI/HowToControl.jsx";
 import { gameStates, useGameStore } from "../store/store.js";
 import { Suspense } from "react";
-import { Preload } from "@react-three/drei";
+import { Preload, KeyboardControls } from "@react-three/drei";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
 
 export default function HomePage() {
@@ -17,6 +17,24 @@ export default function HomePage() {
   const { gameState } = useGameStore((state) => ({
     gameState: state.gameState,
   }));
+
+  /**
+   * Keyboard control preset
+   */
+  const keyboardMap = [
+    { name: "forward", keys: ["ArrowUp", "KeyW"] },
+    { name: "backward", keys: ["ArrowDown", "KeyS"] },
+    { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+    { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+    { name: "jump", keys: ["Space"] },
+    { name: "run", keys: ["Shift"] },
+    { name: "enter", keys: ["Enter"] },
+    // Optional animation key map
+    { name: "action1", keys: ["1"] },
+    { name: "action2", keys: ["2"] },
+    { name: "action3", keys: ["3"] },
+    { name: "action4", keys: ["KeyF"] },
+  ];
 
   return (
     <>
@@ -31,25 +49,28 @@ export default function HomePage() {
           {gameState === "PLAY" && <HowToControl />}
 
           <Leva collapsed={true} />
-          <Canvas
-            camera={{
-              fov: 60,
-              near: 0.1,
-              far: 200,
-              position: [0, 1.5, 8],
-            }}
-          >
-            <Suspense
-              fallback={
-                <group scale={1.75}>
-                  <LoadingScreen />
-                </group>
-              }
+
+          <KeyboardControls map={keyboardMap}>
+            <Canvas
+              camera={{
+                fov: 60,
+                near: 0.1,
+                far: 200,
+                position: [0, 1.5, 8],
+              }}
             >
-              <Experience />
-              <Preload all />
-            </Suspense>
-          </Canvas>
+              <Suspense
+                fallback={
+                  <group scale={1.75}>
+                    <LoadingScreen />
+                  </group>
+                }
+              >
+                <Experience />
+                <Preload all />
+              </Suspense>
+            </Canvas>
+          </KeyboardControls>
         </>
       )}
     </>

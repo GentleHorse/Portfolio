@@ -1,17 +1,5 @@
 import PortalArea from "./PortalArea.jsx";
 
-import AmbienceOfLightThumbnail from "../../../public/images/design-projects/__thumbnail-images/thumbnail-ambience-of-light.jpg";
-import BeautyOfTimePassingThumbnail from "../../../public/images/design-projects/__thumbnail-images/thumbnail-beauty-of-time-passing.jpg";
-import InterventionInOurDisconnectionThumbnail from "../../../public/images/design-projects/__thumbnail-images/thumbnail-intervention-in-our-disconnection.jpg";
-import MasuTypoThumbnail from "../../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
-import ComfortingDinnerThumbnail from "../../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
-import ThreeDVisualThumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
-import PortfolioWebsiteThumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
-import OBJECRotterdam2024Thumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
-import WeatherCerealThumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
-import DonutsUniverseThumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-donuts-universe.jpg";
-import MarbleOnARollThumbnail from "../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
-
 const GATE_POSITION_Y = -0.5;
 
 export default function PortalAreas() {
@@ -21,133 +9,116 @@ export default function PortalAreas() {
         <group position-y={1.5}>
           {/* DESIGN - AMBIENCE OF LIGHT */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/ambience-of-light"
-            projectUrl={AmbienceOfLightThumbnail}
-            position={[-40, 0, -40]}
+            scale={[1.0, 1.0, 1.0]}
+            position={[-30, 0, -40]}
             rotation={[0, Math.PI * 0.2, 0]}
+            projectUrl={"/ambience-of-light"}
+            message={"Set URL: Ambience of Light"}
           />
 
           {/* DESIGN - BEAUTY OF TIME PASSING */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/beauty-of-time-passing"
-            projectUrl={BeautyOfTimePassingThumbnail}
-            position={[15, 0, -65]}
+            scale={[1.0, 1.0, 1.0]}
+            position={[2.5, 0, -65]}
             rotation={[0, 0, 0]}
+            projectUrl={"/beauty-of-time-passing"}
+            message={"Set URL: Beauty of Time Passing"}
           />
 
           {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/intervention-in-our-disconnection"
-            projectUrl={InterventionInOurDisconnectionThumbnail}
-            position={[65, 0, -47.5]}
+            scale={[2.0, 2.0, 2.0]}
+            position={[65, 0, -70]}
             rotation={[0, -Math.PI * 0.4, 0]}
+            projectUrl={"/intervention-in-our-disconnection"}
+            message={"Set URL: Intervention in our Disconnection"}
           />
 
           {/* DESIGN - MASU TYPO */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/masu-typo"
-            projectUrl={MasuTypoThumbnail}
-            position={[-60, 0, -110]}
+            scale={[2.0, 2.0, 2.0]}
+            position={[-60, 0, -120]}
             rotation={[0, Math.PI * 0.15, 0]}
+            projectUrl={"/masu-typo"}
+            message={"Set URL: Masu Typo"}
           />
 
           {/* DESIGN - COMFORTING DINNER */}
           <PortalArea
-            redirectWatingSeconds={0.5}
-            url="/comforting-dinner"
-            projectUrl={ComfortingDinnerThumbnail}
-            position={[55, 0, -120]}
+            scale={[4.0, 4.0, 2.0]}
+            position={[55, 0, -140]}
             rotation={[0, -Math.PI * 0.15, 0]}
+            projectUrl={"/comforting-dinner"}
+            message={"Set URL: Comforting Dinner"}
           />
         </group>
 
         <group position-y={1.5}>
           {/* 3D VISUALS */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/three-d-visuals"
-            projectUrl={ThreeDVisualThumbnail}
-            text="3D VISUALS"
-            position={[-32, 0, 20]}
-            rotation={[0, Math.PI * 0.5, 0]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[-20, 0, 47.5]}
+            rotation={[0, -Math.PI, 0]}
+            projectUrl={"/three-d-visuals"}
+            message={"Set URL: 3D Visuals"}
           />
 
           {/* 3D APP DEV - MARBLE RACE */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/marble-race"
-            projectUrl={MarbleOnARollThumbnail}
-            position={[10, 0, 25]}
-            rotation={[0, -Math.PI * 0.25, 0]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[5, 0, 30]}
+            rotation={[0, -Math.PI * 0.5, 0]}
+            projectUrl={"/marble-race"}
+            message={"Set URL: Marble's on a Roll"}
           />
 
           {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/object-rotterdam-2024"
-            projectUrl={OBJECRotterdam2024Thumbnail}
-            position={[6, 0, 55]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[-5, 0, 45]}
             rotation={[0, -Math.PI * 0.75, 0]}
+            projectUrl={"/object-rotterdam-2024"}
+            message={"Set URL: OBJECT Rotterdam 2024"}
           />
 
           {/* 3D APP DEV - WEATHER CEREAL */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/weather-cereal"
-            projectUrl={WeatherCerealThumbnail}
-            position={[25, 0, 52]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[15, 0, 50]}
             rotation={[0, -Math.PI * 0.5, 0]}
+            projectUrl={"/weather-cereal"}
+            message={"Set URL: Weather Cereal"}
           />
 
           {/* 3D APP DEV - DONUTS UNIVERSE */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/donuts-universe"
-            projectUrl={DonutsUniverseThumbnail}
-            position={[32, 0, 32]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[25, 0, 35]}
             rotation={[0, -Math.PI * 0.5, 0]}
+            projectUrl={"/donuts-universe"}
+            message={"Set URL: Donuts Universe"}
           />
         </group>
 
         <group position-y={1.5}>
-          {/* CONTACT */}
-          <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/contact"
-            text="Contact"
-            isDoorFrame={true}
-            isDoorGradient={true}
-            scale={0.8}
-            position={[1.5, 0, 15]}
-            rotation={[0, -Math.PI, 0]}
-          />
-
           {/* ABOUT */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/about"
-            text="Who made this?"
-            isDoorFrame={true}
-            isDoorGradient={true}
-            scale={0.8}
-            position={[21.5, 0, -8.5]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[15, 0, -8.5]}
             rotation={[0, 0, 0]}
+            projectUrl={"/about"}
+            message={"Set URL: About"}
+            text="Who made this?"
           />
 
           {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
           <PortalArea
-            redirectWatingSeconds={0.1}
-            url="/portfolio-website"
-            text="About this website"
-            isDoorFrame={true}
-            isDoorGradient={true}
-            scale={0.8}
-            position={[13.5, 0, 12.5]}
+            scale={[0.5, 0.5, 0.5]}
+            position={[15, 1.5, 12.5]}
             rotation={[0, -Math.PI * 0.8, 0]}
+            projectUrl={"/portfolio-website"}
+            message={"Set URL: Portfolio Website"}
+            text="About this 'atelier'"
           />
         </group>
       </group>
