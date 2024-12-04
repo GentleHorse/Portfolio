@@ -47,7 +47,7 @@ export default function Experience() {
       />
 
       {/* DEBUG TOOLS */}
-      <Perf position="top-right" />
+      {/* <Perf position="top-right" /> */}
       {/* <axesHelper /> */}
       {/* <OrbitControls makeDefault /> */}
 

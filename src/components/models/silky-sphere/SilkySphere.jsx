@@ -18,15 +18,16 @@ export default function SilkySphere(props) {
    * MATERIAL
    */
   const GLASS_MATERIAL = useMemo(() => {
-    return <MeshTransmissionMaterial backside={false} thickness={1.5} />;
+    return <MeshTransmissionMaterial flatShading={true} backside={false} thickness={1.5} />;
   }, []);
 
   return (
     <group {...props} dispose={null}>
       <mesh
-        geometry={nodes.Cube001.geometry}
+        // geometry={nodes.Cube001.geometry}
         // material={materials["Material.001"]}
       >
+        <icosahedronGeometry args={[0.95, 0]} />
         {GLASS_MATERIAL}
       </mesh>
     </group>
