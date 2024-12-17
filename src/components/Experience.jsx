@@ -5,7 +5,7 @@ import {
   MeshReflectorMaterial,
   useTexture,
 } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody, CuboidCollider } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import { isBrowser } from "react-device-detect";
 import { gameStates, useGameStore } from "../store/store.js";
@@ -13,6 +13,7 @@ import { gameStates, useGameStore } from "../store/store.js";
 import Background from "./utilComponents/Background.jsx";
 import Lights from "./utilComponents/Lights.jsx";
 import Stage from "./models/stage/Stage.jsx";
+import NewAtelier from "./models/newAtelier/NewAtelier.jsx";
 import FirstPersonViewControl from "./characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
 import PortalAreas from "./portal/PortalAreas.jsx";
@@ -47,7 +48,7 @@ export default function Experience() {
       />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-right" /> */}
+      <Perf position="top-right" />
       {/* <axesHelper /> */}
       {/* <OrbitControls makeDefault /> */}
 
@@ -55,22 +56,33 @@ export default function Experience() {
       <fog attach="fog" args={["#1C1C1C", 8, 100]} />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
         <group position={[-0.0, 0, -5.0]} rotation-y={-Math.PI * 0.25}>
-          {/* STAGE MODEL */}
-          <Stage scale={0.2} />
+          {/* OLD STAGE MODEL */}
+          {/* <Stage scale={0.2} /> */}
+          {/* <StageCollisionObjects /> */}
 
-          {/* STAGE COLLISION OBJECTS */}
-          <StageCollisionObjects />
+          {/* New Atelier */}
+          <NewAtelier scale={0.2} />
+
+          {/* TEST GROUND COLLISION */}
+          <RigidBody
+            colliders={false}
+            type="fixed"
+            position={[0, 0.5, -50]}
+            friction={0.5}
+          >
+            <CuboidCollider args={[100, 0.5, 120]} />
+          </RigidBody>
 
           {/* PROJECT PAGE PORTALS */}
-          {gameState !== gameStates.LOADING && <PortalAreas />}
+          {/* {gameState !== gameStates.LOADING && <PortalAreas />} */}
 
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
-          <mesh
+          {/* <mesh
             scale={[300, 300, 1]}
             position={[0, -0.7, -100]}
             rotation={[-Math.PI * 0.5, 0, 0]}
@@ -92,7 +104,7 @@ export default function Experience() {
               distortionMap={woodPlanksNormalTexture}
               reflectorOffset={0.2}
             />
-          </mesh>
+          </mesh> */}
         </group>
       </Physics>
     </>
