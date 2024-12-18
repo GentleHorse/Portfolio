@@ -24,23 +24,26 @@ export default function Menu() {
   }));
 
   /**
-   * HANDLER - THE MENU GETS CLOSED WITH THE "PLAY" BUTTON
+   * HANDLER
+   *  - CLOSED THE MENU MODAL
+   *  - BY PRESSING THE "PLAY" BUTTON
    */
   const modalCloseHandler = () => {
     setIsModalOpen(false);
-
-    // Wait 0.5sec for avoiding an error
-    setTimeout(() => {
-      document.body.requestPointerLock();
-    }, 500);
   };
 
   /**
-   * HANDLER - THE MENU GETS CLOSED WITH THE "ESCAPE" KEY
+   * HANDLER
+   *  - IT'S CALLED WHEN THE MENU GETS CLOSED
+   *  - BY PRESSING THE "PLAY" BUTTON
+   *  - OR
+   *  - BY PRESSING THE "ESCAPE" KEY
    */
   const gameStartHandler = () => {
     setIsModalOpen(false);
     setGameState(gameStates.PLAY);
+
+    console.log("game state handler called");
 
     // Wait 0.5sec for avoiding an error
     setTimeout(() => {
@@ -244,7 +247,7 @@ export default function Menu() {
     <>
       <Modal
         open={isModalOpen}
-        onClose={gameStartHandler}
+        onClose={gameStartHandler} // Called when the menu modal gets closed
         className="w-[1000px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
         <section className="relative overflow-hidden w-auto h-full grid grid-cols-7 items-start">
