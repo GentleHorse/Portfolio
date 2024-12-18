@@ -48,12 +48,12 @@ export default function Experience() {
       />
 
       {/* DEBUG TOOLS */}
-      <Perf position="top-right" />
+      <Perf position="top-left" />
       {/* <axesHelper /> */}
       {/* <OrbitControls makeDefault /> */}
 
       {/* FOG */}
-      <fog attach="fog" args={["#1C1C1C", 8, 100]} />
+      {/* <fog attach="fog" args={["#1C1C1C", 8, 100]} /> */}
 
       {/* PHYSICS SCENE */}
       <Physics debug={true}>

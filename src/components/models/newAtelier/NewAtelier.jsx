@@ -8,7 +8,11 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function NewAtelier(props) {
+  /**
+   * IMPORT THE NEW ATELIER MODEL
+   */
   const { nodes, materials } = useGLTF("/models/new-atelier/new-atelier.glb");
+
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -77,8 +81,8 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["icon-instagram"].geometry}
         material={materials["instagram-icon"]}
-        position={[74.217, 9.568, 54.326]}
-        rotation={[Math.PI / 2, 0, 2.96]}
+        position={[67.74, 9.568, 54.164]}
+        rotation={[Math.PI / 2, 0, 3.076]}
         scale={[7.14, 3.262, 7.14]}
       />
       <mesh
@@ -91,15 +95,15 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["icon-github"].geometry}
         material={materials["github-icon"]}
-        position={[113.719, 9.568, 47.15]}
-        rotation={[Math.PI / 2, 0, 2.96]}
+        position={[118.577, 9.568, 46.34]}
+        rotation={[Math.PI / 2, 0, 3.126]}
         scale={[7.14, 3.262, 7.14]}
       />
       <mesh
         geometry={nodes["icon-linkedin"].geometry}
         material={materials["linkedin-icon"]}
-        position={[54.714, 9.568, 57.924]}
-        rotation={[Math.PI / 2, 0, 2.96]}
+        position={[42.8, 9.568, 59.024]}
+        rotation={[Math.PI / 2, 0, 3.049]}
         scale={[7.14, 3.262, 7.14]}
       />
       <mesh
@@ -1067,86 +1071,86 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["typo-alphabet-a"].geometry}
         material={nodes["typo-alphabet-a"].material}
-        position={[336.797, 2.936, -136.197]}
+        position={[325.16, 2.956, -136.516]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes["typo-alphabet-b"].geometry}
         material={nodes["typo-alphabet-b"].material}
-        position={[354.805, 2.936, -118.258]}
+        position={[350.51, 2.956, -111.264]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes["typo-alphabet-c"].geometry}
         material={nodes["typo-alphabet-c"].material}
-        position={[372.107, 2.936, -101.023]}
+        position={[374.865, 2.956, -87.002]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes["typo-hiragana-a"].geometry}
         material={nodes["typo-hiragana-a"].material}
-        position={[358.757, 2.769, -169.63]}
+        position={[356.073, 23.146, -183.577]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes["typo-hiragana-i"].geometry}
         material={nodes["typo-hiragana-i"].material}
-        position={[376.765, 2.769, -151.691]}
+        position={[381.422, 23.146, -158.325]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes["typo-hiragana-u"].geometry}
         material={nodes["typo-hiragana-u"].material}
-        position={[394.068, 2.769, -134.455]}
+        position={[405.778, 23.146, -134.063]}
         rotation={[Math.PI / 2, 0, 0.783]}
-        scale={223.974}
+        scale={315.279}
       />
       <mesh
         geometry={nodes.Cube037.geometry}
         material={nodes.Cube037.material}
-        position={[336.766, 3.087, -136.228]}
+        position={[325.117, 3.168, -136.559]}
         rotation={[0, -0.783, 0]}
-        scale={[9.503, 9.503, 3.342]}
+        scale={[13.378, 13.378, 4.704]}
       />
       <mesh
         geometry={nodes.Cube038.geometry}
         material={nodes.Cube038.material}
-        position={[354.739, 3.087, -118.323]}
+        position={[350.417, 3.168, -111.355]}
         rotation={[0, -0.783, 0]}
-        scale={[9.503, 9.503, 3.342]}
+        scale={[13.378, 13.378, 4.704]}
       />
       <mesh
         geometry={nodes.Cube039.geometry}
         material={nodes.Cube039.material}
-        position={[371.871, 3.087, -101.258]}
+        position={[374.532, 3.168, -87.334]}
         rotation={[0, -0.783, 0]}
-        scale={[9.503, 9.503, 3.342]}
+        scale={[13.378, 13.378, 4.704]}
       />
       <mesh
         geometry={nodes.Cube040.geometry}
         material={nodes.Cube040.material}
-        position={[358.116, 2.758, -170.268]}
+        position={[355.17, 23.13, -184.476]}
         rotation={[0, -0.783, 0]}
-        scale={9.503}
+        scale={13.378}
       />
       <mesh
         geometry={nodes.Cube041.geometry}
         material={nodes.Cube041.material}
-        position={[376.09, 2.758, -152.364]}
+        position={[380.471, 23.13, -159.273]}
         rotation={[0, -0.783, 0]}
-        scale={9.503}
+        scale={13.378}
       />
       <mesh
         geometry={nodes.Cube042.geometry}
         material={nodes.Cube042.material}
-        position={[393.221, 2.758, -135.299]}
+        position={[404.586, 23.13, -135.251]}
         rotation={[0, -0.783, 0]}
-        scale={9.503}
+        scale={13.378}
       />
       <group
         position={[624.509, 40.635, -570.968]}
@@ -1172,34 +1176,34 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["mesh-donuts-universe001"].geometry}
         material={materials["texture-3d-app-models"]}
-        position={[147.271, 18.462, 189.767]}
+        position={[177.35, 22.416, 147.464]}
         rotation={[1.564, -0.209, 1.757]}
-        scale={156.072}
+        scale={336.887}
       />
       <mesh
         geometry={nodes["mesh-marble-race001"].geometry}
         material={materials["texture-3d-app-models"]}
-        position={[36.116, 4.452, 156.386]}
+        position={[184.117, 0.049, 242.512]}
         rotation={[2.604, -1.304, 2.535]}
-        scale={4.835}
+        scale={7.72}
       />
       <mesh
         geometry={nodes["mesh-object-rotterdam-2024001"].geometry}
         material={materials["texture-3d-app-models"]}
-        position={[5.732, 8.908, 232.492]}
-        rotation={[1.02, -1.278, 1.047]}
-        scale={0.308}
+        position={[68.792, -1.853, 246.752]}
+        rotation={[2.623, -1.052, 2.728]}
+        scale={0.589}
       />
       <mesh
         geometry={nodes["mesh-weather-cereal001"].geometry}
         material={materials["texture-3d-app-models"]}
-        position={[97.476, 15.512, 246.113]}
-        rotation={[-1.993, -0.109, -2.469]}
-        scale={0.473}
+        position={[47.778, 17.707, 143.283]}
+        rotation={[-1.645, -0.429, -1.312]}
+        scale={0.97}
       />
       <group
-        position={[206.135, 33.683, 220.121]}
-        rotation={[-0.184, -0.583, 0.831]}
+        position={[244.225, 33.683, 138.385]}
+        rotation={[0.587, -0.66, 0.899]}
         scale={[7.888, 5.92, 5.92]}
       >
         <mesh geometry={nodes.Plane095.geometry} material={materials.frame} />
@@ -1209,56 +1213,56 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["foam-board-01001"].geometry}
         material={materials["foam-board"]}
-        position={[250.629, -1.835, 161.348]}
+        position={[290.724, -1.835, 169.94]}
         rotation={[0, 0, -0.084]}
         scale={[0.99, 1.03, 1.03]}
       />
       <mesh
         geometry={nodes["foam-board-02001"].geometry}
         material={materials["foam-board"]}
-        position={[246.148, -2.003, 169.665]}
+        position={[286.243, -2.003, 178.257]}
         rotation={[0, 0, -0.084]}
         scale={[0.99, 1.03, 1.03]}
       />
       <mesh
         geometry={nodes["foam-board-03001"].geometry}
         material={materials["foam-board"]}
-        position={[240.909, -1.835, 161.348]}
+        position={[281.004, -1.835, 169.94]}
         rotation={[0, 0, -0.084]}
         scale={[0.869, 0.905, 0.905]}
       />
       <mesh
         geometry={nodes.ruler001.geometry}
         material={materials["metal-ruler-material"]}
-        position={[203.617, 29.567, 225.894]}
-        rotation={[-0.112, -0.065, 0.68]}
+        position={[136.602, -26.862, 208.997]}
+        rotation={[-0.004, -0.08, 0.367]}
         scale={5.462}
       />
       <mesh
         geometry={nodes["pencil-body-01001"].geometry}
         material={materials["pencil-body-metal"]}
-        position={[208.165, 25.316, 201.721]}
-        rotation={[2.226, 0.846, -1.565]}
+        position={[115.132, 6.352, 122.46]}
+        rotation={[1.887, 1.102, -2.459]}
         scale={2.325}
       />
       <mesh
         geometry={nodes["pencil-body-02001"].geometry}
         material={materials["pencil-body"]}
-        position={[208.068, 25.23, 201.654]}
-        rotation={[2.226, 0.846, -1.565]}
+        position={[115.091, 6.239, 122.541]}
+        rotation={[1.887, 1.102, -2.459]}
         scale={2.325}
       />
       <mesh
         geometry={nodes["cutting-mat001"].geometry}
         material={materials["cutting-mat-material"]}
-        position={[180.134, 73.729, 233.547]}
-        rotation={[0, -0.267, 0]}
-        scale={[81.879, 14.183, 61.409]}
+        position={[202.329, 73.729, 238.559]}
+        rotation={[0.02, -0.297, 0.185]}
+        scale={[104.433, 18.09, 78.325]}
       />
       <group
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       >
         <mesh
           geometry={nodes.Mesh023.geometry}
@@ -1272,78 +1276,78 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["analog-tv-01-modified-square-screen002"].geometry}
         material={materials["analog-tv-01-modified-square-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={
           nodes["analog-tv-02-modified-horizontal-screen-01002"].geometry
         }
         material={materials["analog-tv-02-modified-horizontal-screen-01"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={
           nodes["analog-tv-02-modified-horizontal-screen-02002"].geometry
         }
         material={materials["analog-tv-02-modified-horizontal-screen-02"]}
-        position={[-211.903, -2.026, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -15.754, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={nodes["analog-tv-03-modified-horizontal-screen002"].geometry}
         material={materials["analog-tv-03-modified-horizontal-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={
           nodes["analog-tv-03-modified-vertical-big-screen002"].geometry
         }
         material={materials["analog-tv-03-modified-vertical-big-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={
           nodes["analog-tv-03-modified-vertical-small-screen002"].geometry
         }
         material={materials["analog-tv-03-modified-vertical-small-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={nodes["analog-tv-04-modified-horizontal-screen002"].geometry}
         material={materials["analog-tv-04-modified-horizontal-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={nodes["analog-tv-05-modified-horizontal-screen002"].geometry}
         material={materials["analog-tv-05-modified-horizontal-screen"]}
-        position={[-211.903, -0.542, 13.579]}
-        rotation={[-Math.PI, 0.791, -Math.PI]}
-        scale={1.314}
+        position={[-240.884, -13.857, -45.239]}
+        rotation={[-Math.PI, 0.731, -Math.PI]}
+        scale={1.68}
       />
       <mesh
         geometry={nodes["photo-screen002"].geometry}
         material={nodes["photo-screen002"].material}
-        position={[-177.194, 18.112, 143.943]}
+        position={[-171.018, 14.1, 158.56]}
         rotation={[Math.PI / 2, Math.PI / 2, 0]}
-        scale={[1.097, 1.55, 1.097]}
+        scale={[1.626, 2.297, 1.626]}
       />
       <group
-        position={[-108.618, 0.875, 101.603]}
-        rotation={[1.567, -0.001, 0.733]}
-        scale={0.33}
+        position={[-89.625, -5.863, 113.734]}
+        rotation={[1.567, 0, 0.478]}
+        scale={0.465}
       >
         <mesh
           geometry={nodes.Box03005.geometry}
@@ -1355,9 +1359,9 @@ export default function NewAtelier(props) {
         />
       </group>
       <group
-        position={[-158.789, 0.875, 193.551]}
+        position={[-150.436, -5.863, 214.335]}
         rotation={[1.575, -0.001, -3.076]}
-        scale={0.33}
+        scale={0.465}
       >
         <mesh
           geometry={nodes.Box03006.geometry}
@@ -1369,9 +1373,9 @@ export default function NewAtelier(props) {
         />
       </group>
       <group
-        position={[-81.448, 25.063, 145.762]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={[2.147, 0.716, 2.147]}
+        position={[-53.961, 18.877, 152.448]}
+        rotation={[Math.PI / 2, 0, -1.574]}
+        scale={[4.456, 1.485, 4.456]}
       >
         <mesh
           geometry={nodes.Cilindro003.geometry}
@@ -1385,53 +1389,53 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["camera-low-poly-screen001"].geometry}
         material={materials["dark-grey"]}
-        position={[-81.448, 25.063, 145.762]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={[2.147, 0.716, 2.147]}
+        position={[-53.961, 18.877, 152.448]}
+        rotation={[Math.PI / 2, 0, -1.574]}
+        scale={[4.456, 1.485, 4.456]}
       />
       <mesh
         geometry={nodes["mesh-blooming-flower001"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-154.366, 16.744, 147.356]}
+        position={[-137.178, 12.071, 163.62]}
         rotation={[Math.PI / 2, 0, 0.484]}
-        scale={1.314}
+        scale={1.948}
       />
       <mesh
         geometry={nodes["sculpture-stand-square-small002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-152.934, 0.325, 145.804]}
-        scale={1.314}
+        position={[-135.057, -12.267, 161.319]}
+        scale={1.948}
       />
       <mesh
         geometry={nodes["clay-board002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-98.012, 14.406, 47.991]}
-        scale={1.314}
+        position={[-106.727, 9.001, 45.406]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["clay-in-process-01002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-88.349, 15.215, 18.345]}
-        scale={1.314}
+        position={[-94.935, 9.989, 9.227]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["clay-in-process-02002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-86.171, 16.76, 25.059]}
+        position={[-92.277, 11.874, 17.42]}
         rotation={[-0.482, -0.017, 0.033]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["mesh-equence-river-soil001"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-144.433, 13.911, 4.805]}
+        position={[-171.134, 8.397, 14.181]}
         rotation={[0, 0.29, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <group
-        position={[-151.476, 24.328, 63.584]}
+        position={[-158.251, 21.11, 75.175]}
         rotation={[0, 0.34, 0]}
-        scale={1.314}
+        scale={1.604}
       >
         <mesh
           geometry={nodes.Plane096.geometry}
@@ -1445,62 +1449,62 @@ export default function NewAtelier(props) {
       <mesh
         geometry={nodes["mesh-silky-sphere001"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-121.423, 29.356, 54.337]}
+        position={[-129.928, 27.246, 64.486]}
         rotation={[0, 0.191, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes.paper002.geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-97.991, 13.722, 71.768]}
-        scale={1.314}
+        position={[-106.701, 8.167, 74.422]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["sculpture-stand-round002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-120.862, 0.012, 54.411]}
+        position={[-129.242, -8.564, 64.577]}
         rotation={[0, 0.191, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["sculpture-stand-square-big002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-153.484, 0.012, 63.439]}
+        position={[-160.701, -8.564, 74.997]}
         rotation={[0, -0.091, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["sculpture-tool-01002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-87.885, 14.023, 3.485]}
-        scale={1.314}
+        position={[-94.368, 8.534, -8.909]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["sculpture-tool-02002"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-88.705, 13.99, 7.733]}
-        rotation={[0, -Math.PI / 2, 0]}
-        scale={1.314}
+        position={[-95.368, 8.493, -3.725]}
+        rotation={[0, -1.571, 0]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["working-desk-workshop006"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-154.204, 0.012, 7.377]}
+        position={[-183.058, -8.564, 17.321]}
         rotation={[0, 0.29, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["working-desk-workshop007"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-134.193, 0.012, 1.404]}
+        position={[-158.638, -8.564, 10.031]}
         rotation={[0, 0.29, 0]}
-        scale={1.314}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["working-desk-workshop008"].geometry}
         material={materials["texture-3d-visuals"]}
-        position={[-87.312, 0.012, 25.436]}
-        scale={1.314}
+        position={[-93.669, -8.564, 17.88]}
+        scale={1.604}
       />
       <mesh
         geometry={nodes["virtual-grid"].geometry}
