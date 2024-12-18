@@ -43,7 +43,7 @@ export default function Experience() {
       <Background />
 
       <Environment
-        background={false}
+        background={true}
         files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
       />
 
