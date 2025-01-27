@@ -17,6 +17,7 @@ import NewAtelier from "./models/newAtelier/NewAtelier.jsx";
 import FirstPersonViewControl from "./characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
 import PortalAreas from "./portal/PortalAreas.jsx";
+import { NewAtelierMono } from "./models/newAtelier/NewAtelierMono.jsx";
 
 export default function Experience() {
   /**
@@ -66,7 +67,8 @@ export default function Experience() {
           {/* <StageCollisionObjects /> */}
 
           {/* New Atelier */}
-          <NewAtelier scale={0.2} />
+          <NewAtelier scale={2.0} />
+          {/* <NewAtelierMono scale={0.2} /> */}
 
           {/* TEST GROUND COLLISION */}
           <RigidBody
@@ -84,7 +86,7 @@ export default function Experience() {
           {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
           {/* <mesh
             scale={[300, 300, 1]}
-            position={[0, -0.7, -100]}
+            position={[0, -1.5, -100]}
             rotation={[-Math.PI * 0.5, 0, 0]}
           >
             <planeGeometry />
@@ -93,7 +95,9 @@ export default function Experience() {
               blur={[300, 100]}
               mixBlur={1}
               mirror={[0.95]}
-              color="#FFFFFF"
+              color="#81C7D4"
+              opacity={0.5}
+              transparent={true}
               mixStrength={2}
               depthScale={1}
               minDepthThreshold={0.85}
