@@ -61,7 +61,7 @@ export default function Experience() {
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
-        <group position={[-0.0, 0, -5.0]} rotation-y={-Math.PI * 0.25}>
+        <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
           {/* OLD STAGE MODEL */}
           {/* <Stage scale={0.2} /> */}
           {/* <StageCollisionObjects /> */}
