@@ -1,10 +1,5 @@
 import * as THREE from "three";
-import {
-  Environment,
-  OrbitControls,
-  MeshReflectorMaterial,
-  useTexture,
-} from "@react-three/drei";
+import { Environment, OrbitControls, useTexture } from "@react-three/drei";
 import { Physics, RigidBody, CuboidCollider } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import { isBrowser } from "react-device-detect";
@@ -12,12 +7,10 @@ import { gameStates, useGameStore } from "../store/store.js";
 
 import Background from "./utilComponents/Background.jsx";
 import Lights from "./utilComponents/Lights.jsx";
-import Stage from "./models/stage/Stage.jsx";
 import NewAtelier from "./models/newAtelier/NewAtelier.jsx";
 import FirstPersonViewControl from "./characterControl/firstPersonViewControl/FirstPersonViewControl.jsx";
 import StageCollisionObjects from "./models/stage/StageCollisionObjects.jsx";
 import PortalAreas from "./portal/PortalAreas.jsx";
-import { NewAtelierMono } from "./models/newAtelier/NewAtelierMono.jsx";
 
 export default function Experience() {
   /**
@@ -41,12 +34,12 @@ export default function Experience() {
     <>
       {/* ENVIRONMENT SET UP */}
       <Lights />
-      <Background />
+      <Background color="#C1C1C1" />
 
-      <Environment
+      {/* <Environment
         background={true}
         files={"./textures/envMap/kloppenheim_07_puresky_1k_small.hdr"}
-      />
+      /> */}
 
       {/* DEBUG TOOLS */}
       <Perf position="top-left" />
@@ -54,21 +47,17 @@ export default function Experience() {
       {/* <OrbitControls makeDefault /> */}
 
       {/* FOG */}
-      {/* <fog attach="fog" args={["#1C1C1C", 8, 100]} /> */}
+      <fog attach="fog" args={["#C1C1C1", 8, 50]} />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={true}>
+      <Physics debug={false}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
         <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
-          {/* OLD STAGE MODEL */}
-          {/* <Stage scale={0.2} /> */}
-          {/* <StageCollisionObjects /> */}
-
           {/* New Atelier */}
           <NewAtelier scale={2.0} />
-          {/* <NewAtelierMono scale={0.2} /> */}
+          {/* <StageCollisionObjects /> */}
 
           {/* TEST GROUND COLLISION */}
           <RigidBody
@@ -82,33 +71,6 @@ export default function Experience() {
 
           {/* PROJECT PAGE PORTALS */}
           {/* {gameState !== gameStates.LOADING && <PortalAreas />} */}
-
-          {/* REFLECTIVE FLOOR FOR DESIGN WORKS */}
-          {/* <mesh
-            scale={[300, 300, 1]}
-            position={[0, -1.5, -100]}
-            rotation={[-Math.PI * 0.5, 0, 0]}
-          >
-            <planeGeometry />
-            <MeshReflectorMaterial
-              resolution={256} // this affects performance a lot!
-              blur={[300, 100]}
-              mixBlur={1}
-              mirror={[0.95]}
-              color="#81C7D4"
-              opacity={0.5}
-              transparent={true}
-              mixStrength={2}
-              depthScale={1}
-              minDepthThreshold={0.85}
-              metalness={0.5}
-              roughness={0.7}
-              normalMap={woodPlanksNormalTexture}
-              distortion={2.5}
-              distortionMap={woodPlanksNormalTexture}
-              reflectorOffset={0.2}
-            />
-          </mesh> */}
         </group>
       </Physics>
     </>
