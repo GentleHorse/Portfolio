@@ -50,7 +50,7 @@ export default function Experience() {
       <fog attach="fog" args={["#C1C1C1", 8, 50]} />
 
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 
