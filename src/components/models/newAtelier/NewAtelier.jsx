@@ -5,6 +5,7 @@ Command: npx gltfjsx@6.4.1 ./public/models/new-atelier/new-atelier.glb
 
 import React from "react";
 import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
@@ -100,6 +101,13 @@ export default function NewAtelier(props) {
   const objectRotterdam2024VideoMaterial02 = new THREE.MeshBasicMaterial({
     map: objectRotterdam2024VideoTexture02,
     toneMapped: false,
+  });
+
+  /**
+   * TIME
+   */
+  useFrame((state, delta) => {
+    holographicMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
   });
 
   return (
@@ -654,8 +662,7 @@ export default function NewAtelier(props) {
       </group>
       <mesh
         geometry={nodes["photo-camera-screen"].geometry}
-        // material={materials["photo-camera-screen"]}
-        material={all3DVisualsVideoMaterial}
+        material={materials["photo-camera-screen"]}
         position={[-16.086, 1.327, 4.768]}
       />
       <group
@@ -733,15 +740,13 @@ export default function NewAtelier(props) {
       />
       <mesh
         geometry={nodes["analog-tv-screen-04"].geometry}
-        // material={materials["analog-tc-emission-material"]}
-        material={objectRotterdam2024VideoMaterial01}
+        material={materials["analog-tc-emission-material"]}
         position={[-33.542, 1.715, 9.234]}
         rotation={[-1.811, 1.088, 0.269]}
       />
       <mesh
         geometry={nodes["analog-tv-screen-01"].geometry}
-        // material={materials["analog-tc-emission-material"]}
-        material={objectRotterdam2024VideoMaterial02}
+        material={materials["analog-tc-emission-material"]}
         position={[-34.454, 4.644, 6.47]}
         rotation={[-0.14, 0.766, 0]}
       />
@@ -2200,12 +2205,13 @@ export default function NewAtelier(props) {
       </group>
       <group position={[17.845, 2.072, 17.376]} rotation={[0, -0.663, 0]}>
         <mesh
-          geometry={nodes["float-particles007"].geometry}
+          geometry={nodes["float-particles001"].geometry}
           // material={materials["beauty-of-time-passing-holographic"]}
           material={holographicMaterial}
+          scale={1.25}
         />
         <mesh
-          geometry={nodes["float-particles007_1"].geometry}
+          geometry={nodes["float-particles001_1"].geometry}
           material={materials["beauty-of-time-passing-glass"]}
         />
       </group>
