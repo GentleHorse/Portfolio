@@ -4,8 +4,11 @@ Command: npx gltfjsx@6.4.1 ./public/models/new-atelier/new-atelier.glb
 */
 
 import React from "react";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
+
+import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
+import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
 
 export default function NewAtelier(props) {
   /**
@@ -26,12 +29,78 @@ export default function NewAtelier(props) {
     transparent: true,
     opacity: 0.35,
   });
-  const beautyOfTimePassingHoloGraMaterial = new THREE.MeshStandardMaterial({
-    color: "#00FF00",
+
+  /**
+   * HOLOGRAPHIC MATERIAL
+   */
+  const holographicMaterial = new THREE.ShaderMaterial({
+    vertexShader: holographicVertexShader,
+    fragmentShader: holographicFragmentShader,
+    uniforms: {
+      uTime: new THREE.Uniform(0),
+      uStripesFrequency: new THREE.Uniform(20.0),
+      uStripesSpeed: new THREE.Uniform(0.1),
+      uStripesStrength: new THREE.Uniform(2.0),
+      uFresnelStrength: new THREE.Uniform(2.0),
+      uFalloffStrength: new THREE.Uniform(0.8),
+      uGlitchScale: new THREE.Uniform(0.25),
+      uGlitchFrequency: new THREE.Uniform(0.3),
+      uColor: new THREE.Uniform(new THREE.Color("#00ff00")),
+    },
     transparent: true,
-    opacity: 0.35,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
   });
 
+  /**
+   *　VIDEO SCREENS
+   */
+  const springVideoTexture = useVideoTexture(
+    "/videos/beauty-of-time-passing/spring.mp4"
+  );
+  // springVideoTexture.wrapS = THREE.RepeatWrapping;
+  // springVideoTexture.wrapT = THREE.RepeatWrapping;
+  springVideoTexture.repeat.set(1, 0.075);
+
+  const beautyOfTimePassingVideoMaterial = new THREE.MeshBasicMaterial({
+    map: springVideoTexture,
+    toneMapped: false,
+  });
+
+  const all3DVisualsVideoTexture = useVideoTexture(
+    "/videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
+  );
+  all3DVisualsVideoTexture.wrapS = THREE.RepeatWrapping;
+  all3DVisualsVideoTexture.wrapT = THREE.RepeatWrapping;
+  all3DVisualsVideoTexture.flipY = false;
+
+  const all3DVisualsVideoMaterial = new THREE.MeshBasicMaterial({
+    map: all3DVisualsVideoTexture,
+    toneMapped: false,
+  });
+
+  const objectRotterdam2024VideoTexture01 = useVideoTexture(
+    "videos/object-rotterdam/object-rotterdam-01.mp4"
+  );
+  objectRotterdam2024VideoTexture01.wrapS = THREE.RepeatWrapping;
+  objectRotterdam2024VideoTexture01.wrapT = THREE.RepeatWrapping;
+  objectRotterdam2024VideoTexture01.flipY = false;
+  const objectRotterdam2024VideoMaterial01 = new THREE.MeshBasicMaterial({
+    map: objectRotterdam2024VideoTexture01,
+    toneMapped: false,
+  });
+
+  const objectRotterdam2024VideoTexture02 = useVideoTexture(
+    "videos/object-rotterdam/object-rotterdam-02.mp4"
+  );
+  objectRotterdam2024VideoTexture02.wrapS = THREE.RepeatWrapping;
+  objectRotterdam2024VideoTexture02.wrapT = THREE.RepeatWrapping;
+  objectRotterdam2024VideoTexture02.flipY = false;
+  const objectRotterdam2024VideoMaterial02 = new THREE.MeshBasicMaterial({
+    map: objectRotterdam2024VideoTexture02,
+    toneMapped: false,
+  });
 
   return (
     <group {...props} dispose={null}>
@@ -323,8 +392,7 @@ export default function NewAtelier(props) {
       />
       <mesh
         geometry={nodes["tokonoma-essential-oil-bottles"].geometry}
-        // material={materials["tokonoma-essential-oil-bottles"]}
-        material={essentialOilGlassBottle}
+        material={materials["tokonoma-essential-oil-bottles"]}
         position={[-3.726, 0.392, -3.41]}
         rotation={[0, -1.571, 0]}
       />
@@ -586,9 +654,9 @@ export default function NewAtelier(props) {
       </group>
       <mesh
         geometry={nodes["photo-camera-screen"].geometry}
-        material={materials["photo-camera-screen"]}
+        // material={materials["photo-camera-screen"]}
+        material={all3DVisualsVideoMaterial}
         position={[-16.086, 1.327, 4.768]}
-        rotation={[1.487, -0.125, -2.161]}
       />
       <group
         position={[-16.086, 1.327, 4.768]}
@@ -665,13 +733,15 @@ export default function NewAtelier(props) {
       />
       <mesh
         geometry={nodes["analog-tv-screen-04"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        // material={materials["analog-tc-emission-material"]}
+        material={objectRotterdam2024VideoMaterial01}
         position={[-33.542, 1.715, 9.234]}
         rotation={[-1.811, 1.088, 0.269]}
       />
       <mesh
         geometry={nodes["analog-tv-screen-01"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        // material={materials["analog-tc-emission-material"]}
+        material={objectRotterdam2024VideoMaterial02}
         position={[-34.454, 4.644, 6.47]}
         rotation={[-0.14, 0.766, 0]}
       />
@@ -776,8 +846,7 @@ export default function NewAtelier(props) {
       <group position={[-1.905, 1.193, 33.893]}>
         <mesh
           geometry={nodes.cocktail.geometry}
-          // material={materials["local-cuisine-glass"]}
-          material={localCuisineCocktailGalss}
+          material={materials["local-cuisine-glass"]}
         />
         <mesh
           geometry={nodes.cocktail_1.geometry}
@@ -2133,7 +2202,7 @@ export default function NewAtelier(props) {
         <mesh
           geometry={nodes["float-particles007"].geometry}
           // material={materials["beauty-of-time-passing-holographic"]}
-          material={beautyOfTimePassingHoloGraMaterial}
+          material={holographicMaterial}
         />
         <mesh
           geometry={nodes["float-particles007_1"].geometry}
