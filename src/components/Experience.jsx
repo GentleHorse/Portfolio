@@ -20,16 +20,6 @@ export default function Experience() {
     gameState: state.gameState,
   }));
 
-  /**
-   * TEXTURE FOR THE REFLECTIVE FLOOR
-   */
-  const woodPlanksNormalTexture = useTexture(
-    "./textures/wood-planks/wood-planks-normal.jpg"
-  );
-  woodPlanksNormalTexture.wrapS = THREE.RepeatWrapping;
-  woodPlanksNormalTexture.wrapT = THREE.RepeatWrapping;
-  woodPlanksNormalTexture.rotation = Math.PI * 0.5;
-
   return (
     <>
       {/* ENVIRONMENT SET UP */}
@@ -47,7 +37,7 @@ export default function Experience() {
       {/* <OrbitControls makeDefault /> */}
 
       {/* FOG */}
-      <fog attach="fog" args={["#C1C1C1", 8, 50]} />
+      <fog attach="fog" args={["#C1C1C1", 8, 80]} />
 
       {/* PHYSICS SCENE */}
       <Physics debug={true}>
