@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.4.1 ./public/models/new-atelier/new-atelier.glb
 import React from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
 import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
@@ -32,7 +32,30 @@ export default function NewAtelier(props) {
   });
 
   /**
-   * HOLOGRAPHIC MATERIAL
+   * MATERIAL | PAINTING IMAGES
+   */
+  const mondorianPainting = useTexture("/textures/paintings/mondorian.jpg");
+  mondorianPainting.colorSpace = THREE.SRGBColorSpace;
+  const mondorianPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: mondorianPainting,
+    toneMapped: false,
+  });
+  const pieterClaeszPainting = useTexture("/textures/paintings/pieter-claesz.jpg");
+  pieterClaeszPainting.colorSpace = THREE.SRGBColorSpace;
+  const pieterClaeszPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: pieterClaeszPainting,
+    toneMapped: false,
+  });
+  const kuniyoshiUtagawaPainting = useTexture("/textures/paintings/kuniyoshi-utagawa.jpg");
+  kuniyoshiUtagawaPainting.colorSpace = THREE.SRGBColorSpace;
+  const kuniyoshiUtagawaPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: kuniyoshiUtagawaPainting,
+    toneMapped: false,
+  });
+
+
+  /**
+   * MATERIAL | HOLOGRAPHIC
    */
   const holographicMaterial = new THREE.ShaderMaterial({
     vertexShader: holographicVertexShader,
@@ -55,32 +78,34 @@ export default function NewAtelier(props) {
   });
 
   /**
-   *　VIDEO SCREENS
+   *　MATERIAL | VIDEO SCREEN
    */
+
+   // Beauty of time passing
   const springVideoTexture = useVideoTexture(
     "/videos/beauty-of-time-passing/spring.mp4"
   );
-  // springVideoTexture.wrapS = THREE.RepeatWrapping;
-  // springVideoTexture.wrapT = THREE.RepeatWrapping;
+  springVideoTexture.wrapS = THREE.RepeatWrapping;
+  springVideoTexture.wrapT = THREE.RepeatWrapping;
   springVideoTexture.repeat.set(1, 0.075);
-
   const beautyOfTimePassingVideoMaterial = new THREE.MeshBasicMaterial({
     map: springVideoTexture,
     toneMapped: false,
   });
 
+  // Camera screen in the virtual area
   const all3DVisualsVideoTexture = useVideoTexture(
     "/videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
   );
   all3DVisualsVideoTexture.wrapS = THREE.RepeatWrapping;
   all3DVisualsVideoTexture.wrapT = THREE.RepeatWrapping;
   all3DVisualsVideoTexture.flipY = false;
-
   const all3DVisualsVideoMaterial = new THREE.MeshBasicMaterial({
     map: all3DVisualsVideoTexture,
     toneMapped: false,
   });
 
+  // OBJECT Rotterdam 2024
   const objectRotterdam2024VideoTexture01 = useVideoTexture(
     "videos/object-rotterdam/object-rotterdam-01.mp4"
   );
@@ -93,13 +118,105 @@ export default function NewAtelier(props) {
   });
 
   const objectRotterdam2024VideoTexture02 = useVideoTexture(
-    "videos/object-rotterdam/object-rotterdam-02.mp4"
+    "videos/object-rotterdam/object-rotterdam-03.mp4"
   );
   objectRotterdam2024VideoTexture02.wrapS = THREE.RepeatWrapping;
   objectRotterdam2024VideoTexture02.wrapT = THREE.RepeatWrapping;
   objectRotterdam2024VideoTexture02.flipY = false;
   const objectRotterdam2024VideoMaterial02 = new THREE.MeshBasicMaterial({
     map: objectRotterdam2024VideoTexture02,
+    toneMapped: false,
+  });
+
+  // Portfolio website 
+  const portfolioWebsiteVideoTexture01 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-01.mp4"
+  );
+  portfolioWebsiteVideoTexture01.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture01.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture01.flipY = false;
+  const portfolioWebsiteVideoMaterial01 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture01,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture02 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-02.mp4"
+  );
+  portfolioWebsiteVideoTexture02.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture02.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture02.flipY = false;
+  const portfolioWebsiteVideoMaterial02 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture02,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture03 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-08-cropped.mp4"
+  );
+  portfolioWebsiteVideoTexture03.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture03.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture03.flipY = false;
+  const portfolioWebsiteVideoMaterial03 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture03,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture04 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-03.mp4"
+  );
+  portfolioWebsiteVideoTexture04.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture04.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture04.flipY = false;
+  const portfolioWebsiteVideoMaterial04 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture04,
+    toneMapped: false,
+  });
+
+  // Nul sez creafted de markt
+  const nulZesCraftedDeMarktVideoTexture01 = useVideoTexture(
+    "videos/nul-zes-crafted-de-markt/crafted-de-markt-01.mp4"
+  );
+  nulZesCraftedDeMarktVideoTexture01.wrapS = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture01.wrapT = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture01.flipY = false;
+  const nulZesCraftedDeMarktVideoMaterial01 = new THREE.MeshBasicMaterial({
+    map: nulZesCraftedDeMarktVideoTexture01,
+    toneMapped: false,
+  });
+
+  const nulZesCraftedDeMarktVideoTexture02 = useVideoTexture(
+    "videos/nul-zes-crafted-de-markt/crafted-de-markt-02.mp4"
+  );
+  nulZesCraftedDeMarktVideoTexture02.wrapS = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture02.wrapT = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture02.flipY = false;
+  const nulZesCraftedDeMarktVideoMaterial02 = new THREE.MeshBasicMaterial({
+    map: nulZesCraftedDeMarktVideoTexture02,
+    toneMapped: false,
+  });
+
+  // Weather cereal
+  const weatherCerealVideoTexture = useVideoTexture(
+    "/videos/weather-cereal/weather-cereal-01.mp4"
+  );
+  weatherCerealVideoTexture.wrapS = THREE.RepeatWrapping;
+  weatherCerealVideoTexture.wrapT = THREE.RepeatWrapping;
+  weatherCerealVideoTexture.flipY = false;
+  const weatherCerealVideoMaterial = new THREE.MeshBasicMaterial({
+    map: weatherCerealVideoTexture,
+    toneMapped: false,
+  });
+
+  // Marble on a roll
+  const marbleOnARollVideoTexture = useVideoTexture(
+    "/videos/marble-on-a-roll/marble-on-a-roll-01-portrait.mp4"
+  );
+  marbleOnARollVideoTexture.wrapS = THREE.RepeatWrapping;
+  marbleOnARollVideoTexture.wrapT = THREE.RepeatWrapping;
+  marbleOnARollVideoTexture.flipY = false;
+  const marbleOnARollVideoMaterial = new THREE.MeshBasicMaterial({
+    map: marbleOnARollVideoTexture,
     toneMapped: false,
   });
 
@@ -112,2233 +229,2239 @@ export default function NewAtelier(props) {
 
   return (
     <group {...props} dispose={null}>
-      <group position={[-1.741, 1.281, 2.729]} rotation={[0, -0.321, 0]}>
+      <group name="coffee-cup001" position={[-1.741, 1.281, 2.729]}>
         <mesh
+          name="Cylinder233"
           geometry={nodes.Cylinder233.geometry}
           material={materials["coffee-cup-body"]}
         />
         <mesh
+          name="Cylinder233_1"
           geometry={nodes.Cylinder233_1.geometry}
           material={materials["coffee-cup-liquid"]}
         />
       </group>
       <mesh
+        name="side-table-low"
         geometry={nodes["side-table-low"].geometry}
         material={materials["side-table-low"]}
         position={[-2.59, 0.529, 2.77]}
-        rotation={[0, Math.PI / 2, 0]}
       />
       <mesh
+        name="side-table-high"
         geometry={nodes["side-table-high"].geometry}
         material={materials["side-table-high"]}
         position={[-1.701, 0.348, 2.757]}
-        rotation={[0, Math.PI / 2, 0]}
       />
-      <group position={[-2.56, 0.841, 2.836]} rotation={[1.812, 0.072, 0.284]}>
+      <group name="headphone" position={[-2.56, 0.841, 2.836]}>
         <mesh
+          name="Headphones"
           geometry={nodes.Headphones.geometry}
           material={materials["headphone-body"]}
         />
         <mesh
+          name="Headphones_1"
           geometry={nodes.Headphones_1.geometry}
           material={materials["headphone-handle"]}
         />
         <mesh
+          name="Headphones_2"
           geometry={nodes.Headphones_2.geometry}
           material={materials["headphone-speaker"]}
         />
       </group>
-      <group position={[-2.476, 0.853, 2.706]} rotation={[0, 0.386, 0]}>
+      <group name="smartphone" position={[-2.476, 0.853, 2.706]}>
         <mesh
+          name="Cube839"
           geometry={nodes.Cube839.geometry}
           material={materials["smartphone-body"]}
         />
         <mesh
+          name="Cube839_1"
           geometry={nodes.Cube839_1.geometry}
           material={materials["smartphone-screen"]}
         />
       </group>
-      <group
-        position={[-2.711, 0.843, 2.674]}
-        rotation={[Math.PI / 2, 0, -2.64]}
-      >
+      <group name="wallet" position={[-2.711, 0.843, 2.674]}>
         <mesh
+          name="pouch_01"
           geometry={nodes.pouch_01.geometry}
           material={materials["wallet-body"]}
         />
         <mesh
+          name="pouch_01_1"
           geometry={nodes.pouch_01_1.geometry}
           material={materials["wallet-button"]}
         />
       </group>
       <mesh
+        name="pc-body"
         geometry={nodes["pc-body"].geometry}
         material={materials["pc-body"]}
         position={[-4.903, 0.22, 0.132]}
       />
       <mesh
+        name="pc-screen-top"
         geometry={nodes["pc-screen-top"].geometry}
         material={materials["pc-screens"]}
         position={[-4.261, 1.644, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
       <mesh
+        name="pc-screen-bottom"
         geometry={nodes["pc-screen-bottom"].geometry}
         material={materials["pc-screens"]}
         position={[-4.261, 0.278, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
-      <group position={[-5.053, 2.358, 0.12]}>
+      <group name="pc-browser" position={[-5.053, 2.358, 0.12]}>
         <mesh
+          name="Cube819"
           geometry={nodes.Cube819.geometry}
           material={materials["pc-browser-body"]}
         />
         <mesh
+          name="Cube819_1"
           geometry={nodes.Cube819_1.geometry}
           material={materials["pc-browser-search-box"]}
         />
         <mesh
+          name="Cube819_2"
           geometry={nodes.Cube819_2.geometry}
           material={materials["pc-browser-icons"]}
         />
       </group>
-      <group
-        position={[-4.838, 0.377, 0.94]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-      >
+      <group name="icon-windows" position={[-4.838, 0.377, 0.94]}>
         <mesh
+          name="Curve"
           geometry={nodes.Curve.geometry}
           material={materials["icon-windows-red"]}
         />
         <mesh
+          name="Curve_1"
           geometry={nodes.Curve_1.geometry}
           material={materials["icon-windows-green"]}
         />
         <mesh
+          name="Curve_2"
           geometry={nodes.Curve_2.geometry}
           material={materials["icon-windows-blue"]}
         />
         <mesh
+          name="Curve_3"
           geometry={nodes.Curve_3.geometry}
           material={materials["icon-windows-yellow"]}
         />
       </group>
-      <group position={[-4.837, 0.461, -0.374]} rotation={[0, Math.PI / 2, 0]}>
+      <group name="icon-blender002" position={[-4.837, 0.461, -0.374]}>
         <mesh
+          name="Curve018"
           geometry={nodes.Curve018.geometry}
           material={materials["icon-blender-outer"]}
         />
         <mesh
+          name="Curve018_1"
           geometry={nodes.Curve018_1.geometry}
           material={materials["icon-blender-inner"]}
         />
       </group>
-      <group
-        position={[-4.838, 0.377, 0.561]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-      >
+      <group name="icon-chrome" position={[-4.838, 0.377, 0.561]}>
         <mesh
+          name="Curve014"
           geometry={nodes.Curve014.geometry}
           material={materials["icon-chrome-green"]}
         />
         <mesh
+          name="Curve014_1"
           geometry={nodes.Curve014_1.geometry}
           material={materials["icon-chrome-red"]}
         />
         <mesh
+          name="Curve014_2"
           geometry={nodes.Curve014_2.geometry}
           material={materials["icon-chrome-yellow"]}
         />
         <mesh
+          name="Curve014_3"
           geometry={nodes.Curve014_3.geometry}
           material={materials["icon-chrome-blue"]}
         />
       </group>
       <mesh
+        name="icon-folder"
         geometry={nodes["icon-folder"].geometry}
         material={materials["icon-folder"]}
         position={[-4.838, 0.375, 0.144]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
       />
       <mesh
+        name="icon-visual-code"
         geometry={nodes["icon-visual-code"].geometry}
         material={materials["icon-visual-studio-code"]}
         position={[-4.838, 0.377, -0.645]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
       />
-      <group
-        position={[-3.758, 0.198, 0.448]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-      >
+      <group name="pc-keyboard" position={[-3.758, 0.198, 0.448]}>
         <mesh
+          name="Mesh005"
           geometry={nodes.Mesh005.geometry}
           material={materials["pc-keyboard-key"]}
         />
         <mesh
+          name="Mesh005_1"
           geometry={nodes.Mesh005_1.geometry}
           material={materials["pc-keyboard-body"]}
         />
       </group>
-      <group position={[-3.101, 0.232, -1.736]} rotation={[0, -0.282, 0]}>
+      <group name="pc-mouse" position={[-3.101, 0.232, -1.736]}>
         <mesh
+          name="Plane098"
           geometry={nodes.Plane098.geometry}
           material={materials["pc-mouse-pad"]}
         />
         <mesh
+          name="Plane098_1"
           geometry={nodes.Plane098_1.geometry}
           material={materials["pc-mouse-body"]}
         />
         <mesh
+          name="Plane098_2"
           geometry={nodes.Plane098_2.geometry}
           material={materials["pc-mouse-wheel"]}
         />
       </group>
       <mesh
+        name="tokonoma-floor"
         geometry={nodes["tokonoma-floor"].geometry}
         material={materials["tokonoma-floor"]}
         position={[-2.996, 0, -3.486]}
       />
-      <group position={[-2.217, 0.388, -3.645]}>
+      <group name="tokonoma-drawer" position={[-2.217, 0.388, -3.645]}>
         <mesh
+          name="Cube248"
           geometry={nodes.Cube248.geometry}
           material={materials["tokonoma-drawer-body"]}
         />
         <mesh
+          name="Cube248_1"
           geometry={nodes.Cube248_1.geometry}
           material={materials["tokonoma-drawer-doors"]}
         />
       </group>
       <mesh
+        name="tokonoma-shelf"
         geometry={nodes["tokonoma-shelf"].geometry}
         material={materials["tokonoma-shelf"]}
         position={[-1.676, 1.702, -3.816]}
       />
       <mesh
+        name="icon-html001"
         geometry={nodes["icon-html001"].geometry}
         material={materials["icon-html"]}
         position={[-3.007, 2.182, -3.617]}
       />
       <mesh
+        name="icon-css001"
         geometry={nodes["icon-css001"].geometry}
         material={materials["icon-css"]}
         position={[-2.54, 2.205, -3.617]}
       />
       <mesh
+        name="icon-javascript001"
         geometry={nodes["icon-javascript001"].geometry}
         material={materials["icon-javascript"]}
         position={[-1.831, 1.983, -3.627]}
       />
       <mesh
+        name="icon-react001"
         geometry={nodes["icon-react001"].geometry}
         material={materials["icon-react"]}
         position={[-1.331, 1.989, -3.627]}
       />
       <mesh
+        name="icon-three-js001"
         geometry={nodes["icon-three-js001"].geometry}
         material={materials["icon-three-js"]}
         position={[-3.057, 1.156, -3.463]}
       />
-      <group position={[-2.481, 1.105, -3.463]}>
+      <group name="icon-blender001" position={[-2.481, 1.105, -3.463]}>
         <mesh
+          name="Curve051"
           geometry={nodes.Curve051.geometry}
           material={materials["icon-blender-outer"]}
         />
         <mesh
+          name="Curve051_1"
           geometry={nodes.Curve051_1.geometry}
           material={materials["icon-blender-inner"]}
         />
       </group>
       <mesh
+        name="icon-houdini001"
         geometry={nodes["icon-houdini001"].geometry}
         material={materials["icon-houdini"]}
         position={[-1.96, 1.12, -3.463]}
       />
       <mesh
+        name="icon-unreal-engine001"
         geometry={nodes["icon-unreal-engine001"].geometry}
         material={materials["icon-unreal-engine"]}
         position={[-1.474, 1.125, -3.463]}
       />
       <mesh
+        name="tokonoma-lavender-vase"
         geometry={nodes["tokonoma-lavender-vase"].geometry}
         material={materials["tokonoma-lavender-vase"]}
         position={[-4.199, 1.312, -4.009]}
       />
       <mesh
+        name="tokonoma-lavender-stem"
         geometry={nodes["tokonoma-lavender-stem"].geometry}
         material={materials["tokonoma-lavender-stem"]}
         position={[-4.271, 1.98, -3.909]}
-        rotation={[0.185, 0.031, 0.166]}
       />
       <mesh
+        name="tokonoma-lavender-flower"
         geometry={nodes["tokonoma-lavender-flower"].geometry}
         material={materials["tokonoma-lavender-flower"]}
         position={[-4.27, 1.847, -3.941]}
-        rotation={[0.185, 0.031, 0.166]}
       />
       <mesh
+        name="tokonoma-lavender-oil"
         geometry={nodes["tokonoma-lavender-oil"].geometry}
         material={materials["tokonoma-lavender-oil"]}
         position={[-3.98, 0.404, -3.666]}
-        rotation={[0, -1.571, 0]}
       />
       <mesh
+        name="tokonoma-frankincense-pot"
         geometry={nodes["tokonoma-frankincense-pot"].geometry}
         material={materials["tokonoma-frankincense-pot"]}
         position={[-4.258, 0.361, -3.287]}
       />
       <mesh
+        name="tokonoma-frankincense-stones"
         geometry={nodes["tokonoma-frankincense-stones"].geometry}
         material={materials["tokonoma-frankincense-stones"]}
         position={[-4.444, 0.388, -2.903]}
-        rotation={[Math.PI / 2, 0, -0.107]}
       />
       <mesh
+        name="tokonoma-frankincense-oil"
         geometry={nodes["tokonoma-frankincense-oil"].geometry}
         material={materials["tokonoma-frankincense-oil"]}
         position={[-3.726, 0.392, -3.41]}
-        rotation={[0, -1.571, 0]}
       />
       <mesh
+        name="tokonoma-essential-oil-bottles"
         geometry={nodes["tokonoma-essential-oil-bottles"].geometry}
         material={materials["tokonoma-essential-oil-bottles"]}
         position={[-3.726, 0.392, -3.41]}
-        rotation={[0, -1.571, 0]}
       />
       <mesh
+        name="tokonoma-essential-oil-caps"
         geometry={nodes["tokonoma-essential-oil-caps"].geometry}
         material={materials["tokonoma-essential-oil-caps"]}
         position={[-3.98, 0.404, -3.666]}
-        rotation={[0, -1.571, 0]}
       />
-      <group position={[1.511, 1.37, -1.843]} rotation={[-Math.PI, 0, 0]}>
+      <group name="workshop-wood-machines" position={[1.511, 1.37, -1.843]}>
         <mesh
+          name="Cube251"
           geometry={nodes.Cube251.geometry}
           material={materials["wood-machine-blade"]}
         />
         <mesh
+          name="Cube251_1"
           geometry={nodes.Cube251_1.geometry}
           material={materials["wood-machine-body-dark-grey"]}
         />
         <mesh
+          name="Cube251_2"
           geometry={nodes.Cube251_2.geometry}
           material={materials["wood-machine-body-grey"]}
         />
         <mesh
+          name="Cube251_3"
           geometry={nodes.Cube251_3.geometry}
           material={materials["wood-machine-body-red"]}
         />
         <mesh
+          name="Cube251_4"
           geometry={nodes.Cube251_4.geometry}
           material={materials["wood-machine-stainless"]}
         />
         <mesh
+          name="Cube251_5"
           geometry={nodes.Cube251_5.geometry}
           material={materials["wood-machine-handle"]}
         />
         <mesh
+          name="Cube251_6"
           geometry={nodes.Cube251_6.geometry}
           material={materials["wood-machine-body-yellow"]}
         />
         <mesh
+          name="Cube251_7"
           geometry={nodes.Cube251_7.geometry}
           material={materials["wood-machine-body-blue"]}
         />
       </group>
       <mesh
+        name="workshop-tables"
         geometry={nodes["workshop-tables"].geometry}
         material={materials["workshop-tables"]}
         position={[4.513, 0.077, 1.597]}
       />
       <mesh
+        name="workshop-wall-shelf"
         geometry={nodes["workshop-wall-shelf"].geometry}
         material={materials["workshop-wall-shelf"]}
         position={[4.773, 1.751, 1.597]}
       />
-      <group position={[4.755, 2.735, 1.786]} rotation={[0, Math.PI / 2, 0]}>
+      <group name="workshop-tools" position={[4.706, 2.503, 0.788]}>
         <mesh
-          geometry={nodes.Hand_saw_1.geometry}
-          material={materials["workshop-tools-metal"]}
-        />
-        <mesh
-          geometry={nodes.Hand_saw_2.geometry}
-          material={materials["workshop-tools-plastic"]}
-        />
-      </group>
-      <mesh
-        geometry={nodes.wooden_mallet.geometry}
-        material={materials["workshop-tools-wood"]}
-        position={[4.643, 2.293, 2.261]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-      />
-      <group
-        position={[4.706, 2.503, 0.788]}
-        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-      >
-        <mesh
+          name="Cube845"
           geometry={nodes.Cube845.geometry}
           material={materials["workshop-tools-metal"]}
         />
         <mesh
+          name="Cube845_1"
           geometry={nodes.Cube845_1.geometry}
           material={materials["workshop-tools-wood"]}
         />
-      </group>
-      <group
-        position={[4.706, 2.503, 1.06]}
-        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-      >
         <mesh
-          geometry={nodes.Cube846.geometry}
-          material={materials["workshop-tools-metal"]}
-        />
-        <mesh
-          geometry={nodes.Cube846_1.geometry}
-          material={materials["workshop-tools-wood"]}
-        />
-      </group>
-      <group
-        position={[4.706, 2.503, 1.329]}
-        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-      >
-        <mesh
-          geometry={nodes.Cube847.geometry}
-          material={materials["workshop-tools-metal"]}
-        />
-        <mesh
-          geometry={nodes.Cube847_1.geometry}
-          material={materials["workshop-tools-wood"]}
+          name="Cube845_2"
+          geometry={nodes.Cube845_2.geometry}
+          material={materials["workshop-tools-plastic"]}
         />
       </group>
       <mesh
+        name="workshop-material-wood"
         geometry={nodes["workshop-material-wood"].geometry}
         material={materials["workshop-material-wood"]}
         position={[4.583, 0.191, 1.695]}
-        rotation={[0, 0.015, 0]}
       />
       <mesh
+        name="workshop-material-foam-boards"
         geometry={nodes["workshop-material-foam-boards"].geometry}
         material={materials["workshop-material-foam-boards"]}
         position={[2.523, 1.126, 0.66]}
-        rotation={[0, 0.056, 0]}
       />
       <mesh
+        name="workshop-cardboard-box"
         geometry={nodes["workshop-cardboard-box"].geometry}
         material={materials["workshop-cardboard-box"]}
         position={[1.668, 0.146, 0.807]}
-        rotation={[Math.PI / 2, 0, 0.18]}
       />
-      <group position={[1.845, 1.08, 0.623]} rotation={[0, 1.152, 0]}>
+      <group name="workshop-drawing-tools" position={[1.845, 1.08, 0.623]}>
         <mesh
+          name="Cube413"
           geometry={nodes.Cube413.geometry}
           material={materials["workshop-drawing-tools-paper"]}
         />
         <mesh
+          name="Cube413_1"
           geometry={nodes.Cube413_1.geometry}
           material={materials["workshop-drawing-tools-white"]}
         />
         <mesh
+          name="Cube413_2"
           geometry={nodes.Cube413_2.geometry}
           material={materials["workshop-drawing-tools-black"]}
         />
         <mesh
+          name="Cube413_3"
           geometry={nodes.Cube413_3.geometry}
           material={materials["workshop-drawing-tools-book-cover"]}
         />
         <mesh
+          name="Cube413_4"
           geometry={nodes.Cube413_4.geometry}
           material={materials["workshop-drawing-tools-mat-black"]}
         />
       </group>
-      <group position={[2.437, 1.127, 0.441]}>
+      <group name="workshop-modelling-tools" position={[2.437, 1.127, 0.441]}>
         <mesh
+          name="Plane033"
           geometry={nodes.Plane033.geometry}
           material={materials["workshop-modelling-tools-yellow"]}
         />
         <mesh
+          name="Plane033_1"
           geometry={nodes.Plane033_1.geometry}
           material={materials["workshop-modelling-tools-green"]}
         />
         <mesh
+          name="Plane033_2"
           geometry={nodes.Plane033_2.geometry}
           material={materials["workshop-modelling-tools-silver"]}
         />
         <mesh
+          name="Plane033_3"
           geometry={nodes.Plane033_3.geometry}
           material={materials["workshop-modelling-tools-black"]}
         />
         <mesh
+          name="Plane033_4"
           geometry={nodes.Plane033_4.geometry}
           material={materials["workshop-modelling-tools-red"]}
         />
       </group>
-      <group
-        position={[4.49, 0.915, 2.325]}
-        rotation={[-Math.PI, 0.184, -Math.PI]}
-      >
+      <group name="workshop-foam-bord-models" position={[4.49, 0.915, 2.325]}>
         <mesh
+          name="Cube385"
           geometry={nodes.Cube385.geometry}
           material={materials["workshop-foam-bord-models"]}
         />
         <mesh
+          name="Cube385_1"
           geometry={nodes.Cube385_1.geometry}
           material={materials["texture-3d-app-models"]}
         />
       </group>
       <mesh
+        name="atelier-wood-beams"
         geometry={nodes["atelier-wood-beams"].geometry}
         material={materials["aterlier-wood-beams"]}
         position={[-4.994, 2.809, 0.183]}
       />
       <mesh
+        name="atelier-plaster-wall"
         geometry={nodes["atelier-plaster-wall"].geometry}
         material={materials["atelier-plaster-wall"]}
         position={[-1.05, 3.024, 0.183]}
       />
       <mesh
+        name="atelier-stone-wall"
         geometry={nodes["atelier-stone-wall"].geometry}
         material={materials["aterlier-stone-wall"]}
         position={[4.873, 0.328, -0.166]}
-        rotation={[1.95, 1.569, -1.952]}
       />
       <mesh
+        name="atelier-wood-floor"
         geometry={nodes["atelier-wood-floor"].geometry}
         material={materials["atelier-wood-floor"]}
         position={[-2.702, 0.174, -2.564]}
-        scale={[1, 1, 1.05]}
       />
       <mesh
+        name="atelier-concrete-floor"
         geometry={nodes["atelier-concrete-floor"].geometry}
         material={materials["atelier-concrete-floor"]}
         position={[2.065, 0, 0.226]}
       />
       <mesh
+        name="atelier-roof"
         geometry={nodes["atelier-roof"].geometry}
         material={materials["atelier-roof"]}
         position={[1.205, 4.017, 0.513]}
       />
       <mesh
+        name="atelier-engawa"
         geometry={nodes["atelier-engawa"].geometry}
         material={materials["atelier-engawa"]}
         position={[-0.352, -0.062, 4.332]}
       />
       <mesh
+        name="clay-models"
         geometry={nodes["clay-models"].geometry}
         material={materials["clay-models"]}
         position={[-24.336, 1.13, -2.956]}
-        rotation={[0, -0.098, 0]}
       />
-      <group
-        position={[-19.004, 1.345, -4.451]}
-        rotation={[1.419, 0.242, 0.694]}
-        scale={1.652}
-      >
+      <group name="clay-tools" position={[-19.004, 1.345, -4.451]}>
         <mesh
+          name="Cube405"
           geometry={nodes.Cube405.geometry}
           material={materials["clay-tools-sculpting"]}
         />
         <mesh
+          name="Cube405_1"
           geometry={nodes.Cube405_1.geometry}
           material={materials["clay-tools-board"]}
         />
       </group>
       <mesh
+        name="sculpture-stands"
         geometry={nodes["sculpture-stands"].geometry}
         material={materials["sculpture-stands"]}
         position={[-18.165, -0.39, 6.05]}
-        rotation={[0, 0.581, 0]}
       />
-      <group
-        position={[-17.656, -0.115, 3.271]}
-        rotation={[1.567, 0.002, -0.103]}
-      >
+      <group name="photo-spotlights" position={[-17.656, -0.115, 3.271]}>
         <mesh
+          name="Box03005"
           geometry={nodes.Box03005.geometry}
           material={materials["photo-spotlights-body"]}
         />
         <mesh
+          name="Box03005_1"
           geometry={nodes.Box03005_1.geometry}
           material={materials["photo-spotlights-emission"]}
         />
       </group>
       <mesh
+        name="photo-camera-screen"
         geometry={nodes["photo-camera-screen"].geometry}
-        material={materials["photo-camera-screen"]}
+        material={all3DVisualsVideoMaterial}
         position={[-16.086, 1.327, 4.768]}
       />
-      <group
-        position={[-16.086, 1.327, 4.768]}
-        rotation={[1.487, -0.125, -2.161]}
-      >
+      <group name="photo-camera-body" position={[-16.086, 1.327, 4.768]}>
         <mesh
+          name="Cilindro001"
           geometry={nodes.Cilindro001.geometry}
           material={materials["photo-camera-body"]}
         />
         <mesh
+          name="Cilindro001_1"
           geometry={nodes.Cilindro001_1.geometry}
           material={materials["photo-camera-lens"]}
         />
       </group>
       <mesh
+        name="photo-booth"
         geometry={nodes["photo-booth"].geometry}
         material={materials["photo-booth"]}
         position={[-19.522, 0.742, 6.799]}
-        rotation={[Math.PI, 0.99, -Math.PI / 2]}
       />
       <mesh
+        name="analog-tv-shells"
         geometry={nodes["analog-tv-shells"].geometry}
         material={materials["analog-tv-shells"]}
         position={[-34.637, 1.218, 2.092]}
-        rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-06"
         geometry={nodes["analog-tv-screen-06"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={portfolioWebsiteVideoMaterial03}
         position={[-33.847, 1.596, 2.223]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-07"
         geometry={nodes["analog-tv-screen-07"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={portfolioWebsiteVideoMaterial04}
         position={[-34.1, 1.552, -0.649]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-02"
         geometry={nodes["analog-tv-screen-02"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={portfolioWebsiteVideoMaterial01}
         position={[-34.401, 4.038, 1.456]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-b"
         geometry={nodes["analog-tv-screen-b"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={marbleOnARollVideoMaterial}
         position={[-34.403, 2.413, -8.095]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-a"
         geometry={nodes["analog-tv-screen-a"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={nulZesCraftedDeMarktVideoMaterial02}
         position={[-35.05, 4.446, -5.44]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-08"
         geometry={nodes["analog-tv-screen-08"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={weatherCerealVideoMaterial}
         position={[-34.422, 1.754, -3.928]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-03"
         geometry={nodes["analog-tv-screen-03"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={nulZesCraftedDeMarktVideoMaterial01}
         position={[-34.414, 3.978, -2.014]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-05"
         geometry={nodes["analog-tv-screen-05"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={portfolioWebsiteVideoMaterial02}
         position={[-33.709, 1.552, 5.056]}
         rotation={[0, 1.103, 0]}
       />
       <mesh
+        name="analog-tv-screen-04"
         geometry={nodes["analog-tv-screen-04"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={objectRotterdam2024VideoMaterial01}
         position={[-33.542, 1.715, 9.234]}
         rotation={[-1.811, 1.088, 0.269]}
       />
       <mesh
+        name="analog-tv-screen-01"
         geometry={nodes["analog-tv-screen-01"].geometry}
-        material={materials["analog-tc-emission-material"]}
+        material={objectRotterdam2024VideoMaterial02}
         position={[-34.454, 4.644, 6.47]}
         rotation={[-0.14, 0.766, 0]}
       />
-      <group position={[-5.164, 0, 20.099]} rotation={[0, -1.571, 0]}>
+      <group name="virtual-grid" position={[-5.164, 0, 20.099]}>
         <mesh
+          name="Plane012"
           geometry={nodes.Plane012.geometry}
           material={materials["virtual-grid-white"]}
         />
         <mesh
+          name="Plane012_1"
           geometry={nodes.Plane012_1.geometry}
           material={materials["virtual-grid-red"]}
         />
         <mesh
+          name="Plane012_2"
           geometry={nodes.Plane012_2.geometry}
           material={materials["virtual-grid-green"]}
         />
       </group>
       <mesh
+        name="void-space"
         geometry={nodes["void-space"].geometry}
         material={materials["void-space"]}
         position={[-26.522, 2.795, 0.162]}
       />
       <mesh
+        name="poduims"
         geometry={nodes.poduims.geometry}
         material={materials.podiums}
         position={[2.448, 0, 39.513]}
-        rotation={[0, Math.PI / 2, 0]}
       />
-      <group position={[3.888, 2.665, 25.878]} rotation={[0, 0.5, 0]}>
+      <group name="human-head" position={[3.888, 2.665, 25.878]}>
         <mesh
+          name="Sphere018"
           geometry={nodes.Sphere018.geometry}
           material={materials["human-head-brain-shell"]}
         />
         <mesh
+          name="Sphere018_1"
           geometry={nodes.Sphere018_1.geometry}
           material={materials["human-head-brain-metal"]}
         />
         <mesh
+          name="Sphere018_2"
           geometry={nodes.Sphere018_2.geometry}
           material={materials["human-head-skin"]}
         />
         <mesh
+          name="Sphere018_3"
           geometry={nodes.Sphere018_3.geometry}
           material={materials["human-head-lips"]}
         />
         <mesh
+          name="Sphere018_4"
           geometry={nodes.Sphere018_4.geometry}
           material={materials["human-head-eyes-white"]}
         />
         <mesh
+          name="Sphere018_5"
           geometry={nodes.Sphere018_5.geometry}
           material={materials["human-head-bone"]}
         />
         <mesh
+          name="Sphere018_6"
           geometry={nodes.Sphere018_6.geometry}
           material={materials["human-head-glasses"]}
         />
         <mesh
+          name="Sphere018_7"
           geometry={nodes.Sphere018_7.geometry}
           material={materials["human-head-chemical-base"]}
         />
         <mesh
+          name="Sphere018_8"
           geometry={nodes.Sphere018_8.geometry}
           material={materials["human-head-chemical"]}
         />
         <mesh
+          name="Sphere018_9"
           geometry={nodes.Sphere018_9.geometry}
           material={materials["human-head-eyes-brown"]}
         />
       </group>
-      <group position={[-2.05, 1.395, 27.376]} rotation={[0, 0.929, 0]}>
+      <group name="accounting-graph" position={[-2.05, 1.395, 27.376]}>
         <mesh
+          name="Cube533"
           geometry={nodes.Cube533.geometry}
           material={materials["accounting-graph-blue"]}
         />
         <mesh
+          name="Cube533_1"
           geometry={nodes.Cube533_1.geometry}
           material={materials["accounting-graph-red"]}
         />
         <mesh
+          name="Cube533_2"
           geometry={nodes.Cube533_2.geometry}
           material={materials["accounting-graph-grey"]}
         />
       </group>
-      <group
-        position={[-2.145, 0.615, 27.068]}
-        rotation={[-0.349, 0.614, 0.49]}
-      >
+      <group name="acounting-calculator" position={[-2.145, 0.615, 27.068]}>
         <mesh
+          name="Cube532"
           geometry={nodes.Cube532.geometry}
           material={materials["accounting-calculator-body"]}
         />
         <mesh
+          name="Cube532_1"
           geometry={nodes.Cube532_1.geometry}
           material={materials["accounting-calculator-screen"]}
         />
         <mesh
+          name="Cube532_2"
           geometry={nodes.Cube532_2.geometry}
           material={materials["accounting-calculator-buttons"]}
         />
       </group>
-      <group position={[-1.905, 1.193, 33.893]}>
+      <group name="local-cuisine" position={[-1.905, 1.193, 33.893]}>
         <mesh
+          name="cocktail"
           geometry={nodes.cocktail.geometry}
           material={materials["local-cuisine-glass"]}
         />
         <mesh
+          name="cocktail_1"
           geometry={nodes.cocktail_1.geometry}
           material={materials["local-cuisine-cocktail"]}
         />
         <mesh
+          name="cocktail_2"
           geometry={nodes.cocktail_2.geometry}
           material={materials["local-cuisine-orange"]}
         />
         <mesh
+          name="cocktail_3"
           geometry={nodes.cocktail_3.geometry}
           material={materials["local-cuisine-cherry"]}
         />
         <mesh
+          name="cocktail_4"
           geometry={nodes.cocktail_4.geometry}
           material={materials["local-cuisine-pot"]}
         />
         <mesh
+          name="cocktail_5"
           geometry={nodes.cocktail_5.geometry}
           material={materials["local-cuisine-stew"]}
         />
         <mesh
+          name="cocktail_6"
           geometry={nodes.cocktail_6.geometry}
           material={materials["local-cuisine-carrot"]}
         />
         <mesh
+          name="cocktail_7"
           geometry={nodes.cocktail_7.geometry}
           material={materials["local-cuisine-meat"]}
         />
         <mesh
+          name="cocktail_8"
           geometry={nodes.cocktail_8.geometry}
           material={materials["local-cuisine-fish"]}
         />
         <mesh
+          name="cocktail_9"
           geometry={nodes.cocktail_9.geometry}
           material={materials["local-cuisine-sake-white"]}
         />
         <mesh
+          name="cocktail_10"
           geometry={nodes.cocktail_10.geometry}
           material={materials["local-cuisine-sake-blue"]}
         />
         <mesh
+          name="cocktail_11"
           geometry={nodes.cocktail_11.geometry}
           material={materials["local-cuisine-sushi-rice"]}
         />
         <mesh
+          name="cocktail_12"
           geometry={nodes.cocktail_12.geometry}
           material={materials["local-cuisine-sushi-seaweed"]}
         />
         <mesh
+          name="cocktail_13"
           geometry={nodes.cocktail_13.geometry}
           material={materials["local-cuisine-sushi-tuna"]}
         />
         <mesh
+          name="cocktail_14"
           geometry={nodes.cocktail_14.geometry}
           material={materials["local-cuisine-sushi-salmon"]}
         />
         <mesh
+          name="cocktail_15"
           geometry={nodes.cocktail_15.geometry}
           material={materials["local-cuisine-sushi-squid"]}
         />
         <mesh
+          name="cocktail_16"
           geometry={nodes.cocktail_16.geometry}
           material={materials["local-cuisine-sushi-board"]}
         />
         <mesh
+          name="cocktail_17"
           geometry={nodes.cocktail_17.geometry}
           material={materials["local-cuisine-map"]}
         />
         <mesh
+          name="cocktail_18"
           geometry={nodes.cocktail_18.geometry}
           material={materials["local-cuisine-icon"]}
         />
       </group>
-      <group
-        position={[4.284, 0.041, 34.026]}
-        rotation={[Math.PI / 2, 0, 2.326]}
-      >
+      <group name="piano" position={[4.284, 0.041, 34.026]}>
         <mesh
+          name="black_keys001"
           geometry={nodes.black_keys001.geometry}
           material={materials["piano-keyboard-black"]}
         />
         <mesh
+          name="black_keys001_1"
           geometry={nodes.black_keys001_1.geometry}
           material={materials["piano-brass"]}
         />
         <mesh
+          name="black_keys001_2"
           geometry={nodes.black_keys001_2.geometry}
           material={materials["piano-keyboard-white"]}
         />
         <mesh
+          name="black_keys001_3"
           geometry={nodes.black_keys001_3.geometry}
           material={materials["piano-body-shell"]}
         />
         <mesh
+          name="black_keys001_4"
           geometry={nodes.black_keys001_4.geometry}
           material={materials["piano-body-inner"]}
         />
         <mesh
+          name="black_keys001_5"
           geometry={nodes.black_keys001_5.geometry}
           material={materials["piano-metal"]}
         />
         <mesh
+          name="black_keys001_6"
           geometry={nodes.black_keys001_6.geometry}
           material={materials["piano-chair-glossy"]}
         />
         <mesh
+          name="black_keys001_7"
           geometry={nodes.black_keys001_7.geometry}
           material={materials["piano-chair-mat"]}
         />
       </group>
-      <group position={[2.713, 0.615, 39.293]} rotation={[0, 0.131, 0]}>
+      <group name="hiking" position={[2.713, 0.615, 39.293]}>
         <mesh
+          name="Mesh019"
           geometry={nodes.Mesh019.geometry}
           material={materials["hiking-shoes-bottom"]}
         />
         <mesh
+          name="Mesh019_1"
           geometry={nodes.Mesh019_1.geometry}
           material={materials["hiking-shoes-body"]}
         />
         <mesh
+          name="Mesh019_2"
           geometry={nodes.Mesh019_2.geometry}
           material={materials["hiking-shoes-threads"]}
         />
         <mesh
+          name="Mesh019_3"
           geometry={nodes.Mesh019_3.geometry}
           material={materials["hiking-sakura"]}
         />
         <mesh
+          name="Mesh019_4"
           geometry={nodes.Mesh019_4.geometry}
           material={materials["hiking-tree-stem"]}
         />
         <mesh
+          name="Mesh019_5"
           geometry={nodes.Mesh019_5.geometry}
           material={materials["hiking-mountain"]}
         />
         <mesh
+          name="Mesh019_6"
           geometry={nodes.Mesh019_6.geometry}
           material={materials["hiking-origiri-rice"]}
         />
         <mesh
+          name="Mesh019_7"
           geometry={nodes.Mesh019_7.geometry}
           material={materials["hiking-onigiri-seaweed"]}
         />
         <mesh
+          name="Mesh019_8"
           geometry={nodes.Mesh019_8.geometry}
           material={materials["hiking-water-bottle-metal"]}
         />
         <mesh
+          name="Mesh019_9"
           geometry={nodes.Mesh019_9.geometry}
           material={materials["hiking-water-bottle-plastic"]}
         />
       </group>
-      <group position={[0.804, 1.652, 41.189]}>
+      <group name="japan-map" position={[0.804, 1.652, 41.189]}>
         <mesh
+          name="Cylinder078"
           geometry={nodes.Cylinder078.geometry}
           material={materials["japan-map-pin"]}
         />
         <mesh
+          name="Cylinder078_1"
           geometry={nodes.Cylinder078_1.geometry}
           material={materials["japan-map-texts"]}
         />
         <mesh
+          name="Cylinder078_2"
           geometry={nodes.Cylinder078_2.geometry}
           material={materials["japan-map-island"]}
         />
       </group>
-      <group position={[7.625, 0.945, 31.028]}>
+      <group name="super-nintendo" position={[7.625, 0.945, 31.028]}>
         <mesh
+          name="Cylinder083"
           geometry={nodes.Cylinder083.geometry}
           material={materials["super-nintendo-button-green"]}
         />
         <mesh
+          name="Cylinder083_1"
           geometry={nodes.Cylinder083_1.geometry}
           material={materials["super-nintendo-body"]}
         />
         <mesh
+          name="Cylinder083_2"
           geometry={nodes.Cylinder083_2.geometry}
           material={materials["super-nintendo-button-grey"]}
         />
         <mesh
+          name="Cylinder083_3"
           geometry={nodes.Cylinder083_3.geometry}
           material={materials["super-nintendo-button-blue"]}
         />
         <mesh
+          name="Cylinder083_4"
           geometry={nodes.Cylinder083_4.geometry}
           material={materials["super-nintendo-button-yellow"]}
         />
         <mesh
+          name="Cylinder083_5"
           geometry={nodes.Cylinder083_5.geometry}
           material={materials["super-nintendo-button-red"]}
         />
       </group>
-      <group position={[8.577, 0.837, 31.47]}>
+      <group name="lego-block" position={[8.577, 0.837, 31.47]}>
         <mesh
+          name="Cube925"
           geometry={nodes.Cube925.geometry}
           material={materials["lego-block-green"]}
         />
         <mesh
+          name="Cube925_1"
           geometry={nodes.Cube925_1.geometry}
           material={materials["lego-block-red"]}
         />
         <mesh
+          name="Cube925_2"
           geometry={nodes.Cube925_2.geometry}
           material={materials["lego-block-yellow"]}
         />
       </group>
-      <group position={[10.844, 1.057, 36.065]}>
+      <group name="choir" position={[10.844, 1.057, 36.065]}>
         <mesh
+          name="Cylinder001"
           geometry={nodes.Cylinder001.geometry}
           material={materials["choir-ring-blue"]}
         />
         <mesh
+          name="Cylinder001_1"
           geometry={nodes.Cylinder001_1.geometry}
           material={materials["choir-ring-red"]}
         />
         <mesh
+          name="Cylinder001_2"
           geometry={nodes.Cylinder001_2.geometry}
           material={materials["choir-ring-pink"]}
         />
         <mesh
+          name="Cylinder001_3"
           geometry={nodes.Cylinder001_3.geometry}
           material={materials["choir-ring-black"]}
         />
         <mesh
+          name="Cylinder001_4"
           geometry={nodes.Cylinder001_4.geometry}
           material={materials["choir-body"]}
         />
         <mesh
+          name="Cylinder001_5"
           geometry={nodes.Cylinder001_5.geometry}
           material={materials["choir-head"]}
         />
         <mesh
+          name="Cylinder001_6"
           geometry={nodes.Cylinder001_6.geometry}
           material={materials["choir-musical-notes"]}
         />
       </group>
       <mesh
-        geometry={nodes.Plane044.geometry}
-        material={nodes.Plane044.material}
-        position={[17.713, 1.755, 41.913]}
-        rotation={[Math.PI, 0, Math.PI]}
-      />
-      <mesh
-        geometry={nodes.Plane045.geometry}
-        material={nodes.Plane045.material}
-        position={[17.713, 2.332, 41.913]}
-        rotation={[Math.PI, 0, Math.PI]}
-      />
-      <mesh
-        geometry={nodes.Plane046.geometry}
-        material={nodes.Plane046.material}
-        position={[17.713, 2.897, 41.913]}
-        rotation={[Math.PI, 0, Math.PI]}
-      />
-      <mesh
+        name="Cube539"
         geometry={nodes.Cube539.geometry}
         material={materials["books-wall"]}
         position={[16.798, 1.656, 41.868]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube540"
         geometry={nodes.Cube540.geometry}
         material={materials["books-wall"]}
         position={[16.71, 1.656, 41.85]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube541"
         geometry={nodes.Cube541.geometry}
         material={materials["books-wall"]}
         position={[16.623, 1.656, 41.851]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube542"
         geometry={nodes.Cube542.geometry}
         material={materials["books-wall"]}
         position={[16.533, 1.656, 41.85]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube543"
         geometry={nodes.Cube543.geometry}
         material={materials["books-wall"]}
         position={[16.443, 1.656, 41.911]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube544"
         geometry={nodes.Cube544.geometry}
         material={materials["books-wall"]}
         position={[16.354, 1.656, 41.936]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube545"
         geometry={nodes.Cube545.geometry}
         material={materials["books-wall"]}
         position={[18.109, 1.656, 41.847]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube546"
         geometry={nodes.Cube546.geometry}
         material={materials["books-wall"]}
         position={[18.021, 1.656, 41.889]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube547"
         geometry={nodes.Cube547.geometry}
         material={materials["books-wall"]}
         position={[17.932, 1.656, 41.88]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube548"
         geometry={nodes.Cube548.geometry}
         material={materials["books-wall"]}
         position={[17.845, 1.656, 41.894]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube549"
         geometry={nodes.Cube549.geometry}
         material={materials["books-wall"]}
         position={[17.756, 1.656, 41.89]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube550"
         geometry={nodes.Cube550.geometry}
         material={materials["books-wall"]}
         position={[17.666, 1.656, 41.883]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube551"
         geometry={nodes.Cube551.geometry}
         material={materials["books-wall"]}
         position={[17.579, 1.656, 41.947]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube552"
         geometry={nodes.Cube552.geometry}
         material={materials["books-wall"]}
         position={[17.491, 1.656, 41.883]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube553"
         geometry={nodes.Cube553.geometry}
         material={materials["books-wall"]}
         position={[17.404, 1.656, 41.937]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube554"
         geometry={nodes.Cube554.geometry}
         material={materials["books-wall"]}
         position={[17.306, 1.656, 41.933]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.974, 1]}
       />
       <mesh
+        name="Cube555"
         geometry={nodes.Cube555.geometry}
         material={materials["books-wall"]}
         position={[17.225, 1.656, 41.916]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube556"
         geometry={nodes.Cube556.geometry}
         material={materials["books-wall"]}
         position={[17.175, 1.656, 41.858]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube557"
         geometry={nodes.Cube557.geometry}
         material={materials["books-wall"]}
         position={[17.129, 1.656, 41.898]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube558"
         geometry={nodes.Cube558.geometry}
         material={materials["books-wall"]}
         position={[17.059, 1.656, 41.954]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube559"
         geometry={nodes.Cube559.geometry}
         material={materials["books-wall"]}
         position={[16.975, 1.656, 41.885]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube560"
         geometry={nodes.Cube560.geometry}
         material={materials["books-wall"]}
         position={[16.887, 1.656, 41.883]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube561"
         geometry={nodes.Cube561.geometry}
         material={materials["books-wall"]}
         position={[18.104, 1.079, 41.953]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube562"
         geometry={nodes.Cube562.geometry}
         material={materials["books-wall"]}
         position={[18.016, 1.079, 41.9]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube563"
         geometry={nodes.Cube563.geometry}
         material={materials["books-wall"]}
         position={[17.928, 1.079, 41.949]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube564"
         geometry={nodes.Cube564.geometry}
         material={materials["books-wall"]}
         position={[17.839, 1.079, 41.86]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube565"
         geometry={nodes.Cube565.geometry}
         material={materials["books-wall"]}
         position={[17.749, 1.079, 41.857]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube566"
         geometry={nodes.Cube566.geometry}
         material={materials["books-wall"]}
         position={[17.659, 1.079, 41.881]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube567"
         geometry={nodes.Cube567.geometry}
         material={materials["books-wall"]}
         position={[17.572, 1.079, 41.846]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube568"
         geometry={nodes.Cube568.geometry}
         material={materials["books-wall"]}
         position={[17.484, 1.079, 41.914]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube569"
         geometry={nodes.Cube569.geometry}
         material={materials["books-wall"]}
         position={[17.395, 1.079, 41.918]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube570"
         geometry={nodes.Cube570.geometry}
         material={materials["books-wall"]}
         position={[17.307, 1.079, 41.902]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube571"
         geometry={nodes.Cube571.geometry}
         material={materials["books-wall"]}
         position={[17.218, 1.079, 41.947]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube572"
         geometry={nodes.Cube572.geometry}
         material={materials["books-wall"]}
         position={[17.129, 1.079, 41.923]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube573"
         geometry={nodes.Cube573.geometry}
         material={materials["books-wall"]}
         position={[17.042, 1.079, 41.949]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube574"
         geometry={nodes.Cube574.geometry}
         material={materials["books-wall"]}
         position={[16.954, 1.079, 41.878]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube575"
         geometry={nodes.Cube575.geometry}
         material={materials["books-wall"]}
         position={[16.867, 1.079, 41.855]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube576"
         geometry={nodes.Cube576.geometry}
         material={materials["books-wall"]}
         position={[16.768, 1.079, 41.845]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.974, 1]}
       />
       <mesh
+        name="Cube577"
         geometry={nodes.Cube577.geometry}
         material={materials["books-wall"]}
         position={[16.688, 1.079, 41.941]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube578"
         geometry={nodes.Cube578.geometry}
         material={materials["books-wall"]}
         position={[16.638, 1.079, 41.879]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube579"
         geometry={nodes.Cube579.geometry}
         material={materials["books-wall"]}
         position={[16.592, 1.079, 41.941]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube580"
         geometry={nodes.Cube580.geometry}
         material={materials["books-wall"]}
         position={[16.521, 1.079, 41.855]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube581"
         geometry={nodes.Cube581.geometry}
         material={materials["books-wall"]}
         position={[16.438, 1.079, 41.88]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube582"
         geometry={nodes.Cube582.geometry}
         material={materials["books-wall"]}
         position={[16.35, 1.079, 41.84]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube583"
         geometry={nodes.Cube583.geometry}
         material={materials["books-wall"]}
         position={[17.789, 2.238, 41.912]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube584"
         geometry={nodes.Cube584.geometry}
         material={materials["books-wall"]}
         position={[17.702, 2.238, 41.951]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube585"
         geometry={nodes.Cube585.geometry}
         material={materials["books-wall"]}
         position={[17.614, 2.238, 41.925]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube586"
         geometry={nodes.Cube586.geometry}
         material={materials["books-wall"]}
         position={[17.525, 2.238, 41.941]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube587"
         geometry={nodes.Cube587.geometry}
         material={materials["books-wall"]}
         position={[17.435, 2.238, 41.885]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube588"
         geometry={nodes.Cube588.geometry}
         material={materials["books-wall"]}
         position={[17.345, 2.238, 41.886]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube589"
         geometry={nodes.Cube589.geometry}
         material={materials["books-wall"]}
         position={[17.257, 2.238, 41.85]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube590"
         geometry={nodes.Cube590.geometry}
         material={materials["books-wall"]}
         position={[17.17, 2.238, 41.865]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube591"
         geometry={nodes.Cube591.geometry}
         material={materials["books-wall"]}
         position={[17.081, 2.238, 41.851]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube592"
         geometry={nodes.Cube592.geometry}
         material={materials["books-wall"]}
         position={[16.993, 2.238, 41.875]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube593"
         geometry={nodes.Cube593.geometry}
         material={materials["books-wall"]}
         position={[16.904, 2.238, 41.947]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube594"
         geometry={nodes.Cube594.geometry}
         material={materials["books-wall"]}
         position={[16.814, 2.238, 41.872]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube595"
         geometry={nodes.Cube595.geometry}
         material={materials["books-wall"]}
         position={[16.728, 2.238, 41.951]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube596"
         geometry={nodes.Cube596.geometry}
         material={materials["books-wall"]}
         position={[16.64, 2.238, 41.956]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube597"
         geometry={nodes.Cube597.geometry}
         material={materials["books-wall"]}
         position={[16.553, 2.238, 41.916]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube598"
         geometry={nodes.Cube598.geometry}
         material={materials["books-wall"]}
         position={[16.454, 2.238, 41.889]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.974, 1]}
       />
       <mesh
+        name="Cube599"
         geometry={nodes.Cube599.geometry}
         material={materials["books-wall"]}
         position={[17.953, 2.238, 41.909]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube600"
         geometry={nodes.Cube600.geometry}
         material={materials["books-wall"]}
         position={[17.903, 2.238, 41.942]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube601"
         geometry={nodes.Cube601.geometry}
         material={materials["books-wall"]}
         position={[17.857, 2.238, 41.909]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube602"
         geometry={nodes.Cube602.geometry}
         material={materials["books-wall"]}
         position={[16.352, 2.238, 41.892]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube603"
         geometry={nodes.Cube603.geometry}
         material={materials["books-wall"]}
         position={[17.701, 2.802, 41.847]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.92, 1]}
       />
       <mesh
+        name="Cube604"
         geometry={nodes.Cube604.geometry}
         material={materials["books-wall"]}
         position={[17.613, 2.802, 41.958]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.897, 1]}
       />
       <mesh
+        name="Cube605"
         geometry={nodes.Cube605.geometry}
         material={materials["books-wall"]}
         position={[17.525, 2.802, 41.868]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube606"
         geometry={nodes.Cube606.geometry}
         material={materials["books-wall"]}
         position={[17.436, 2.802, 41.896]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.007, 1]}
       />
       <mesh
+        name="Cube607"
         geometry={nodes.Cube607.geometry}
         material={materials["books-wall"]}
         position={[17.346, 2.802, 41.955]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube608"
         geometry={nodes.Cube608.geometry}
         material={materials["books-wall"]}
         position={[17.256, 2.802, 41.924]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.92, 1]}
       />
       <mesh
+        name="Cube609"
         geometry={nodes.Cube609.geometry}
         material={materials["books-wall"]}
         position={[17.169, 2.802, 41.865]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.897, 1]}
       />
       <mesh
+        name="Cube610"
         geometry={nodes.Cube610.geometry}
         material={materials["books-wall"]}
         position={[17.081, 2.802, 41.879]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube611"
         geometry={nodes.Cube611.geometry}
         material={materials["books-wall"]}
         position={[16.992, 2.802, 41.923]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube612"
         geometry={nodes.Cube612.geometry}
         material={materials["books-wall"]}
         position={[16.904, 2.802, 41.951]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube613"
         geometry={nodes.Cube613.geometry}
         material={materials["books-wall"]}
         position={[16.816, 2.802, 41.854]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.007, 1]}
       />
       <mesh
+        name="Cube614"
         geometry={nodes.Cube614.geometry}
         material={materials["books-wall"]}
         position={[16.726, 2.802, 41.939]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube615"
         geometry={nodes.Cube615.geometry}
         material={materials["books-wall"]}
         position={[16.639, 2.802, 41.906]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.92, 1]}
       />
       <mesh
+        name="Cube616"
         geometry={nodes.Cube616.geometry}
         material={materials["books-wall"]}
         position={[16.551, 2.802, 41.953]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.897, 1]}
       />
       <mesh
+        name="Cube617"
         geometry={nodes.Cube617.geometry}
         material={materials["books-wall"]}
         position={[16.464, 2.802, 41.886]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube618"
         geometry={nodes.Cube618.geometry}
         material={materials["books-wall"]}
         position={[16.366, 2.802, 41.844]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.897, 1]}
       />
       <mesh
+        name="Cube619"
         geometry={nodes.Cube619.geometry}
         material={materials["books-wall"]}
         position={[18.125, 2.802, 41.954]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.045, 1]}
       />
       <mesh
+        name="Cube620"
         geometry={nodes.Cube620.geometry}
         material={materials["books-wall"]}
         position={[18.075, 2.802, 41.849]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.045, 1]}
       />
       <mesh
+        name="Cube621"
         geometry={nodes.Cube621.geometry}
         material={materials["books-wall"]}
         position={[18.029, 2.802, 41.956]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.045, 1]}
       />
       <mesh
+        name="Cube622"
         geometry={nodes.Cube622.geometry}
         material={materials["books-wall"]}
         position={[17.958, 2.802, 41.922]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube623"
         geometry={nodes.Cube623.geometry}
         material={materials["books-wall"]}
         position={[17.875, 2.802, 41.872]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube624"
         geometry={nodes.Cube624.geometry}
         material={materials["books-wall"]}
         position={[17.787, 2.802, 41.909]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube625"
         geometry={nodes.Cube625.geometry}
         material={materials["books-wall"]}
         position={[18.096, 2.238, 41.9]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube626"
         geometry={nodes.Cube626.geometry}
         material={materials["books-wall"]}
         position={[18.046, 2.238, 41.935]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube627"
         geometry={nodes.Cube627.geometry}
         material={materials["books-wall"]}
         position={[18, 2.238, 41.947]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube639"
         geometry={nodes.Cube639.geometry}
         material={materials["books-wall"]}
         position={[18.645, 1.656, 41.944]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube641"
         geometry={nodes.Cube641.geometry}
         material={materials["books-wall"]}
         position={[18.557, 1.656, 41.859]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube642"
         geometry={nodes.Cube642.geometry}
         material={materials["books-wall"]}
         position={[18.47, 1.656, 41.893]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube643"
         geometry={nodes.Cube643.geometry}
         material={materials["books-wall"]}
         position={[18.38, 1.656, 41.867]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube644"
         geometry={nodes.Cube644.geometry}
         material={materials["books-wall"]}
         position={[18.29, 1.656, 41.917]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube645"
         geometry={nodes.Cube645.geometry}
         material={materials["books-wall"]}
         position={[18.201, 1.656, 41.958]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube656"
         geometry={nodes.Cube656.geometry}
         material={materials["books-wall"]}
         position={[19.091, 1.656, 41.928]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube657"
         geometry={nodes.Cube657.geometry}
         material={materials["books-wall"]}
         position={[19.042, 1.656, 41.844]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube658"
         geometry={nodes.Cube658.geometry}
         material={materials["books-wall"]}
         position={[18.995, 1.656, 41.894]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube659"
         geometry={nodes.Cube659.geometry}
         material={materials["books-wall"]}
         position={[18.918, 1.656, 41.951]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.229, 0.974, 1]}
       />
       <mesh
+        name="Cube660"
         geometry={nodes.Cube660.geometry}
         material={materials["books-wall"]}
         position={[18.822, 1.656, 41.92]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube661"
         geometry={nodes.Cube661.geometry}
         material={materials["books-wall"]}
         position={[18.734, 1.656, 41.904]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube672"
         geometry={nodes.Cube672.geometry}
         material={materials["books-wall"]}
         position={[19.12, 1.079, 41.871]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube673"
         geometry={nodes.Cube673.geometry}
         material={materials["books-wall"]}
         position={[19.03, 1.079, 41.865]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube674"
         geometry={nodes.Cube674.geometry}
         material={materials["books-wall"]}
         position={[18.943, 1.079, 41.887]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube675"
         geometry={nodes.Cube675.geometry}
         material={materials["books-wall"]}
         position={[18.855, 1.079, 41.941]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube676"
         geometry={nodes.Cube676.geometry}
         material={materials["books-wall"]}
         position={[18.768, 1.079, 41.851]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube677"
         geometry={nodes.Cube677.geometry}
         material={materials["books-wall"]}
         position={[18.67, 1.079, 41.911]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.974, 1]}
       />
       <mesh
+        name="Cube678"
         geometry={nodes.Cube678.geometry}
         material={materials["books-wall"]}
         position={[18.535, 1.079, 41.877]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube679"
         geometry={nodes.Cube679.geometry}
         material={materials["books-wall"]}
         position={[18.485, 1.079, 41.843]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube680"
         geometry={nodes.Cube680.geometry}
         material={materials["books-wall"]}
         position={[18.439, 1.079, 41.869]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube681"
         geometry={nodes.Cube681.geometry}
         material={materials["books-wall"]}
         position={[18.368, 1.079, 41.887]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube682"
         geometry={nodes.Cube682.geometry}
         material={materials["books-wall"]}
         position={[18.285, 1.079, 41.845]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube683"
         geometry={nodes.Cube683.geometry}
         material={materials["books-wall"]}
         position={[18.197, 1.079, 41.939]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube690"
         geometry={nodes.Cube690.geometry}
         material={materials["books-wall"]}
         position={[19.113, 2.238, 41.925]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.212, 0.974, 1]}
       />
       <mesh
+        name="Cube691"
         geometry={nodes.Cube691.geometry}
         material={materials["books-wall"]}
         position={[19.017, 2.238, 41.865]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube692"
         geometry={nodes.Cube692.geometry}
         material={materials["books-wall"]}
         position={[18.928, 2.238, 41.845]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube693"
         geometry={nodes.Cube693.geometry}
         material={materials["books-wall"]}
         position={[18.84, 2.238, 41.877]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube694"
         geometry={nodes.Cube694.geometry}
         material={materials["books-wall"]}
         position={[18.751, 2.238, 41.848]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.095, 1]}
       />
       <mesh
+        name="Cube695"
         geometry={nodes.Cube695.geometry}
         material={materials["books-wall"]}
         position={[18.661, 2.238, 41.939]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube696"
         geometry={nodes.Cube696.geometry}
         material={materials["books-wall"]}
         position={[18.575, 2.238, 41.948]}
-        rotation={[Math.PI, 0, Math.PI]}
       />
       <mesh
+        name="Cube697"
         geometry={nodes.Cube697.geometry}
         material={materials["books-wall"]}
         position={[18.487, 2.238, 41.853]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube698"
         geometry={nodes.Cube698.geometry}
         material={materials["books-wall"]}
         position={[18.399, 2.238, 41.896]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.028, 1]}
       />
       <mesh
+        name="Cube699"
         geometry={nodes.Cube699.geometry}
         material={materials["books-wall"]}
         position={[18.301, 2.238, 41.848]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.974, 1]}
       />
       <mesh
+        name="Cube703"
         geometry={nodes.Cube703.geometry}
         material={materials["books-wall"]}
         position={[18.199, 2.238, 41.888]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.974, 1]}
       />
       <mesh
+        name="Cube709"
         geometry={nodes.Cube709.geometry}
         material={materials["books-wall"]}
         position={[19.122, 2.802, 41.953]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.92, 1]}
       />
       <mesh
+        name="Cube710"
         geometry={nodes.Cube710.geometry}
         material={materials["books-wall"]}
         position={[19.026, 2.802, 41.949]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.234, 0.897, 1]}
       />
       <mesh
+        name="Cube711"
         geometry={nodes.Cube711.geometry}
         material={materials["books-wall"]}
         position={[18.928, 2.802, 41.839]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube712"
         geometry={nodes.Cube712.geometry}
         material={materials["books-wall"]}
         position={[18.839, 2.802, 41.861]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube713"
         geometry={nodes.Cube713.geometry}
         material={materials["books-wall"]}
         position={[18.751, 2.802, 41.902]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube714"
         geometry={nodes.Cube714.geometry}
         material={materials["books-wall"]}
         position={[18.662, 2.802, 41.905]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 1.007, 1]}
       />
       <mesh
+        name="Cube715"
         geometry={nodes.Cube715.geometry}
         material={materials["books-wall"]}
         position={[18.572, 2.802, 41.957]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube716"
         geometry={nodes.Cube716.geometry}
         material={materials["books-wall"]}
         position={[18.486, 2.802, 41.874]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.92, 1]}
       />
       <mesh
+        name="Cube717"
         geometry={nodes.Cube717.geometry}
         material={materials["books-wall"]}
         position={[18.398, 2.802, 41.892]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.897, 1]}
       />
       <mesh
+        name="Cube718"
         geometry={nodes.Cube718.geometry}
         material={materials["books-wall"]}
         position={[18.311, 2.802, 41.917]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1, 0.946, 1]}
       />
       <mesh
+        name="Cube719"
         geometry={nodes.Cube719.geometry}
         material={materials["books-wall"]}
         position={[18.212, 2.802, 41.949]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[1.277, 0.897, 1]}
       />
       <mesh
+        name="Cube646"
         geometry={nodes.Cube646.geometry}
         material={materials["books-wall"]}
         position={[19.141, 1.656, 41.919]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube647"
         geometry={nodes.Cube647.geometry}
         material={materials["books-wall"]}
         position={[18.584, 1.079, 41.94]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.543, 1.095, 1]}
       />
       <mesh
+        name="Cube648"
         geometry={nodes.Cube648.geometry}
         material={materials["books-wall"]}
         position={[18.137, 2.238, 41.846]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[0.415, 1.095, 1]}
       />
       <mesh
-        geometry={nodes.Cube628.geometry}
-        material={nodes.Cube628.material}
-        position={[20.751, 1.034, 38.902]}
-      />
-      <mesh
+        name="Cube001"
         geometry={nodes.Cube001.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube002"
         geometry={nodes.Cube002.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube003"
         geometry={nodes.Cube003.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube004"
         geometry={nodes.Cube004.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube005"
         geometry={nodes.Cube005.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube006"
         geometry={nodes.Cube006.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube007"
         geometry={nodes.Cube007.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube008"
         geometry={nodes.Cube008.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube009"
         geometry={nodes.Cube009.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube010"
         geometry={nodes.Cube010.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube011"
         geometry={nodes.Cube011.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="Cube012"
         geometry={nodes.Cube012.geometry}
         material={materials["books-wall"]}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
+        name="painting-frame"
         geometry={nodes["painting-frame"].geometry}
         material={materials["painting-frame"]}
-        position={[9.141, 1.418, 41.185]}
-        scale={[1, 1, 1.782]}
+        position={[9.598, 1.643, 41.219]}
       />
       <mesh
+        name="painting-image-01"
         geometry={nodes["painting-image-01"].geometry}
-        material={nodes["painting-image-01"].material}
-        position={[9.141, 1.418, 41.185]}
-        scale={[1, 1, 1.782]}
+        material={mondorianPaintingMaterial}
+        position={[13.027, 2.323, 41.23]}
       />
       <mesh
+        name="painting-image-02"
         geometry={nodes["painting-image-02"].geometry}
-        material={nodes["painting-image-02"].material}
-        position={[9.141, 1.418, 41.185]}
-        scale={[1, 1, 1.782]}
+        material={pieterClaeszPaintingMaterial}
+        position={[10.301, 3.545, 41.219]}
       />
       <mesh
+        name="painting-image-03"
         geometry={nodes["painting-image-03"].geometry}
-        material={nodes["painting-image-03"].material}
-        position={[9.141, 1.418, 41.185]}
-        scale={[1, 1, 1.782]}
+        material={kuniyoshiUtagawaPaintingMaterial}
+        position={[9.598, 1.643, 41.219]}
       />
       <mesh
+        name="interactive-wall-frames"
         geometry={nodes["interactive-wall-frames"].geometry}
         material={materials["interactive-wall-frames"]}
         position={[-4.403, -0.002, 17.582]}
       />
       <mesh
+        name="interactive-wall-screen"
         geometry={nodes["interactive-wall-screen"].geometry}
         material={nodes["interactive-wall-screen"].material}
         position={[-4.771, -0.081, 16.835]}
         rotation={[0, 0, -Math.PI / 2]}
       />
-      <group position={[-0.448, 2.157, 16.31]} rotation={[1.571, 0, Math.PI]}>
+      <group name="museum-building-walls" position={[-0.448, 2.157, 16.31]}>
         <mesh
+          name="Text002"
           geometry={nodes.Text002.geometry}
           material={materials["museum-building-walls"]}
         />
         <mesh
+          name="Text002_1"
           geometry={nodes.Text002_1.geometry}
           material={materials["museum-building-name"]}
         />
       </group>
       <mesh
+        name="museum-building-roof"
         geometry={nodes["museum-building-roof"].geometry}
         material={materials["museum-building-roof"]}
         position={[8.376, 4.889, 28.867]}
       />
       <mesh
+        name="museum-building-floor"
         geometry={nodes["museum-building-floor"].geometry}
         material={materials["museum-building-floor"]}
         position={[8.376, -0.265, 28.867]}
       />
       <mesh
+        name="museum-building-windows"
         geometry={nodes["museum-building-windows"].geometry}
         material={materials["museum-building-windows"]}
         position={[0, 0.056, 0]}
       />
-      <group position={[23.99, 0.278, 7.446]}>
+      <group name="ambience-of-light" position={[23.99, 0.278, 7.446]}>
         <mesh
+          name="Cube221"
           geometry={nodes.Cube221.geometry}
           material={materials["ambience-of-light-wood-dark"]}
         />
         <mesh
+          name="Cube221_1"
           geometry={nodes.Cube221_1.geometry}
           material={materials["ambience-of-light-wood-light"]}
         />
         <mesh
+          name="Cube221_2"
           geometry={nodes.Cube221_2.geometry}
           material={materials["ambience-of-light-lamp"]}
         />
         <mesh
+          name="Cube221_3"
           geometry={nodes.Cube221_3.geometry}
           material={materials["ambience-of-light-glass"]}
         />
       </group>
-      <group position={[17.845, 2.072, 17.376]} rotation={[0, -0.663, 0]}>
+      <group
+        name="beauty-of-time-passing-glass-block"
+        position={[17.845, 2.072, 17.376]}
+      >
         <mesh
-          geometry={nodes["float-particles001"].geometry}
-          // material={materials["beauty-of-time-passing-holographic"]}
-          material={holographicMaterial}
-          scale={1.25}
+          name="float-particles002"
+          geometry={nodes["float-particles002"].geometry}
+          material={materials["beauty-of-time-passing-holographic"]}
         />
         <mesh
-          geometry={nodes["float-particles001_1"].geometry}
+          name="float-particles002_1"
+          geometry={nodes["float-particles002_1"].geometry}
           material={materials["beauty-of-time-passing-glass"]}
         />
       </group>
       <mesh
+        name="beauty-of-time-passing-scenery"
+        geometry={nodes["beauty-of-time-passing-scenery"].geometry}
+        material={holographicMaterial}
+        position={[17.845, 2.072, 17.376]}
+        rotation={[0, -0.663, 0]}
+      />
+      <mesh
+        name="beauty-of-time-passing-screen"
         geometry={nodes["beauty-of-time-passing-screen"].geometry}
-        material={nodes["beauty-of-time-passing-screen"].material}
+        material={beautyOfTimePassingVideoMaterial}
         position={[17.078, 0.103, 17.31]}
         rotation={[0, -0.663, 0]}
       />
-      <group position={[27.925, -0.226, 26.436]}>
+      <group
+        name="intervention-in-our-disconnection"
+        position={[27.925, -0.226, 26.436]}
+      >
         <mesh
+          name="Cube364"
           geometry={nodes.Cube364.geometry}
           material={materials["intervention-in-our-disconnection-wood-greyish"]}
         />
         <mesh
+          name="Cube364_1"
           geometry={nodes.Cube364_1.geometry}
           material={materials["intervention-in-our-disconnection-marble-black"]}
         />
         <mesh
+          name="Cube364_2"
           geometry={nodes.Cube364_2.geometry}
           material={materials["intervention-in-our-disconnection-marble-white"]}
         />
         <mesh
+          name="Cube364_3"
           geometry={nodes.Cube364_3.geometry}
           material={
             materials["intervention-in-our-disconnection-marble-beige-light"]
           }
         />
         <mesh
+          name="Cube364_4"
           geometry={nodes.Cube364_4.geometry}
           material={
             materials["intervention-in-our-disconnection-marble-beige-dark"]
           }
         />
         <mesh
+          name="Cube364_5"
           geometry={nodes.Cube364_5.geometry}
           material={materials["intervention-in-our-disconnection-marble-brown"]}
         />
         <mesh
+          name="Cube364_6"
           geometry={nodes.Cube364_6.geometry}
           material={materials["intervention-in-our-disconnection-stone"]}
         />
         <mesh
+          name="Cube364_7"
           geometry={nodes.Cube364_7.geometry}
           material={materials["intervention-in-our-disconnection-wood-redish"]}
         />
         <mesh
+          name="Cube364_8"
           geometry={nodes.Cube364_8.geometry}
           material={materials["intervention-in-our-disconnection-wood-redish"]}
         />
         <mesh
+          name="Cube364_9"
           geometry={nodes.Cube364_9.geometry}
           material={materials["intervention-in-our-disconnection-wood-redish"]}
         />
       </group>
-      <group position={[39.875, 0.806, 23.334]}>
+      <group name="masu-typo" position={[39.875, 0.806, 23.334]}>
         <mesh
+          name="Cube006_1"
           geometry={nodes.Cube006_1.geometry}
           material={materials["masu-typo-white"]}
         />
         <mesh
+          name="Cube006_2"
           geometry={nodes.Cube006_2.geometry}
           material={materials["masu-typo-black"]}
         />
       </group>
-      <group position={[30.062, -2.57, -7.894]}>
+      <group name="comforting-dinner" position={[30.062, -2.57, -7.894]}>
         <mesh
+          name="John003"
           geometry={nodes.John003.geometry}
           material={materials["comforing-dinner-human"]}
         />
         <mesh
+          name="John003_1"
           geometry={nodes.John003_1.geometry}
           material={materials["comforting-dinner-ceramic-white"]}
         />
         <mesh
+          name="John003_2"
           geometry={nodes.John003_2.geometry}
           material={materials["comforting-dinner-ceramic-black"]}
         />
       </group>
-      <group position={[40.506, 2.497, 33.149]} rotation={[0, -0.242, 0]}>
+      <group name="post-box" position={[40.506, 2.497, 33.149]}>
         <mesh
+          name="Cube102"
           geometry={nodes.Cube102.geometry}
           material={materials["post-box-mail"]}
         />
         <mesh
+          name="Cube102_1"
           geometry={nodes.Cube102_1.geometry}
           material={materials["post-box-body"]}
         />
         <mesh
+          name="Cube102_2"
           geometry={nodes.Cube102_2.geometry}
           material={materials["post-box-base"]}
         />
         <mesh
+          name="Cube102_3"
           geometry={nodes.Cube102_3.geometry}
           material={materials["post-box-icon"]}
         />
       </group>
       <mesh
+        name="icon-instagram"
         geometry={nodes["icon-instagram"].geometry}
         material={materials["instagram-icon"]}
         position={[36.642, 1.391, 35.992]}
-        rotation={[Math.PI / 2, 0, 2.328]}
       />
       <mesh
+        name="icon-x"
         geometry={nodes["icon-x"].geometry}
         material={materials["x-icon"]}
         position={[38.708, 1.391, 33.539]}
-        rotation={[Math.PI / 2, 0, 2.212]}
       />
       <mesh
+        name="icon-github"
         geometry={nodes["icon-github"].geometry}
         material={materials["github-icon"]}
         position={[40.513, 1.391, 31.11]}
-        rotation={[Math.PI / 2, 0, 2.378]}
       />
       <mesh
+        name="icon-linkedin"
         geometry={nodes["icon-linkedin"].geometry}
         material={materials["linkedin-icon"]}
         position={[34.826, 1.391, 38.478]}
-        rotation={[Math.PI / 2, 0, 2.302]}
       />
       <mesh
+        name="ground"
         geometry={nodes.ground.geometry}
         material={nodes.ground.material}
         position={[16.79, -0.301, 17.001]}
       />
       <mesh
+        name="outer-fence"
         geometry={nodes["outer-fence"].geometry}
         material={nodes["outer-fence"].material}
         position={[6.483, 0, 5.58]}
