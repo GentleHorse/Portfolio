@@ -48,7 +48,30 @@ export default function NewAtelier(props) {
   });
 
   /**
-   * HOLOGRAPHIC MATERIAL
+   * MATERIAL | PAINTING IMAGES
+   */
+  const mondorianPainting = useTexture("/textures/paintings/mondorian.jpg");
+  mondorianPainting.colorSpace = THREE.SRGBColorSpace;
+  const mondorianPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: mondorianPainting,
+    toneMapped: false,
+  });
+  const pieterClaeszPainting = useTexture("/textures/paintings/pieter-claesz.jpg");
+  pieterClaeszPainting.colorSpace = THREE.SRGBColorSpace;
+  const pieterClaeszPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: pieterClaeszPainting,
+    toneMapped: false,
+  });
+  const kuniyoshiUtagawaPainting = useTexture("/textures/paintings/kuniyoshi-utagawa.jpg");
+  kuniyoshiUtagawaPainting.colorSpace = THREE.SRGBColorSpace;
+  const kuniyoshiUtagawaPaintingMaterial = new THREE.MeshBasicMaterial({
+    map: kuniyoshiUtagawaPainting,
+    toneMapped: false,
+  });
+
+
+  /**
+   * MATERIAL | HOLOGRAPHIC
    */
   const holographicMaterial = new THREE.ShaderMaterial({
     vertexShader: holographicVertexShader,
@@ -71,32 +94,34 @@ export default function NewAtelier(props) {
   });
 
   /**
-   *　VIDEO SCREENS
+   *　MATERIAL | VIDEO SCREEN
    */
+
+   // Beauty of time passing
   const springVideoTexture = useVideoTexture(
     "/videos/beauty-of-time-passing/spring.mp4"
   );
-  // springVideoTexture.wrapS = THREE.RepeatWrapping;
-  // springVideoTexture.wrapT = THREE.RepeatWrapping;
+  springVideoTexture.wrapS = THREE.RepeatWrapping;
+  springVideoTexture.wrapT = THREE.RepeatWrapping;
   springVideoTexture.repeat.set(1, 0.075);
-
   const beautyOfTimePassingVideoMaterial = new THREE.MeshBasicMaterial({
     map: springVideoTexture,
     toneMapped: false,
   });
 
+  // Camera screen in the virtual area
   const all3DVisualsVideoTexture = useVideoTexture(
     "/videos/three-d-visuals/all-visuals-for-camera-screen.mp4"
   );
   all3DVisualsVideoTexture.wrapS = THREE.RepeatWrapping;
   all3DVisualsVideoTexture.wrapT = THREE.RepeatWrapping;
   all3DVisualsVideoTexture.flipY = false;
-
   const all3DVisualsVideoMaterial = new THREE.MeshBasicMaterial({
     map: all3DVisualsVideoTexture,
     toneMapped: false,
   });
 
+  // OBJECT Rotterdam 2024
   const objectRotterdam2024VideoTexture01 = useVideoTexture(
     "videos/object-rotterdam/object-rotterdam-01.mp4"
   );
@@ -109,13 +134,105 @@ export default function NewAtelier(props) {
   });
 
   const objectRotterdam2024VideoTexture02 = useVideoTexture(
-    "videos/object-rotterdam/object-rotterdam-02.mp4"
+    "videos/object-rotterdam/object-rotterdam-03.mp4"
   );
   objectRotterdam2024VideoTexture02.wrapS = THREE.RepeatWrapping;
   objectRotterdam2024VideoTexture02.wrapT = THREE.RepeatWrapping;
   objectRotterdam2024VideoTexture02.flipY = false;
   const objectRotterdam2024VideoMaterial02 = new THREE.MeshBasicMaterial({
     map: objectRotterdam2024VideoTexture02,
+    toneMapped: false,
+  });
+
+  // Portfolio website 
+  const portfolioWebsiteVideoTexture01 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-01.mp4"
+  );
+  portfolioWebsiteVideoTexture01.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture01.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture01.flipY = false;
+  const portfolioWebsiteVideoMaterial01 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture01,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture02 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-02.mp4"
+  );
+  portfolioWebsiteVideoTexture02.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture02.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture02.flipY = false;
+  const portfolioWebsiteVideoMaterial02 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture02,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture03 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-08-cropped.mp4"
+  );
+  portfolioWebsiteVideoTexture03.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture03.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture03.flipY = false;
+  const portfolioWebsiteVideoMaterial03 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture03,
+    toneMapped: false,
+  });
+
+  const portfolioWebsiteVideoTexture04 = useVideoTexture(
+    "videos/portfolio-website/portfolio-website-03.mp4"
+  );
+  portfolioWebsiteVideoTexture04.wrapS = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture04.wrapT = THREE.RepeatWrapping;
+  portfolioWebsiteVideoTexture04.flipY = false;
+  const portfolioWebsiteVideoMaterial04 = new THREE.MeshBasicMaterial({
+    map: portfolioWebsiteVideoTexture04,
+    toneMapped: false,
+  });
+
+  // Nul sez creafted de markt
+  const nulZesCraftedDeMarktVideoTexture01 = useVideoTexture(
+    "videos/nul-zes-crafted-de-markt/crafted-de-markt-01.mp4"
+  );
+  nulZesCraftedDeMarktVideoTexture01.wrapS = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture01.wrapT = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture01.flipY = false;
+  const nulZesCraftedDeMarktVideoMaterial01 = new THREE.MeshBasicMaterial({
+    map: nulZesCraftedDeMarktVideoTexture01,
+    toneMapped: false,
+  });
+
+  const nulZesCraftedDeMarktVideoTexture02 = useVideoTexture(
+    "videos/nul-zes-crafted-de-markt/crafted-de-markt-02.mp4"
+  );
+  nulZesCraftedDeMarktVideoTexture02.wrapS = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture02.wrapT = THREE.RepeatWrapping;
+  nulZesCraftedDeMarktVideoTexture02.flipY = false;
+  const nulZesCraftedDeMarktVideoMaterial02 = new THREE.MeshBasicMaterial({
+    map: nulZesCraftedDeMarktVideoTexture02,
+    toneMapped: false,
+  });
+
+  // Weather cereal
+  const weatherCerealVideoTexture = useVideoTexture(
+    "/videos/weather-cereal/weather-cereal-01.mp4"
+  );
+  weatherCerealVideoTexture.wrapS = THREE.RepeatWrapping;
+  weatherCerealVideoTexture.wrapT = THREE.RepeatWrapping;
+  weatherCerealVideoTexture.flipY = false;
+  const weatherCerealVideoMaterial = new THREE.MeshBasicMaterial({
+    map: weatherCerealVideoTexture,
+    toneMapped: false,
+  });
+
+  // Marble on a roll
+  const marbleOnARollVideoTexture = useVideoTexture(
+    "/videos/marble-on-a-roll/marble-on-a-roll-01-portrait.mp4"
+  );
+  marbleOnARollVideoTexture.wrapS = THREE.RepeatWrapping;
+  marbleOnARollVideoTexture.wrapT = THREE.RepeatWrapping;
+  marbleOnARollVideoTexture.flipY = false;
+  const marbleOnARollVideoMaterial = new THREE.MeshBasicMaterial({
+    map: marbleOnARollVideoTexture,
     toneMapped: false,
   });
 
