@@ -460,16 +460,16 @@ export default function NewAtelier(props) {
       <mesh name="Cube010" geometry={nodes.Cube010.geometry} material={newAtelierMaterial} position={[20.676, 1.064, 37.453]} />
       <mesh name="Cube011" geometry={nodes.Cube011.geometry} material={newAtelierMaterial} position={[20.676, 1.064, 37.453]} />
       <mesh name="Cube012" geometry={nodes.Cube012.geometry} material={newAtelierMaterial} position={[20.676, 1.064, 37.453]} />
-      <mesh name="painting-frame" geometry={nodes['painting-frame'].geometry} material={newAtelierMaterial} position={[9.598, 1.643, 41.219]} />
-      <mesh name="interactive-wall-screen" geometry={nodes['interactive-wall-screen'].geometry} material={newAtelierMaterial} position={[-4.771, -0.081, 16.835]} rotation={[0, 0, -Math.PI / 2]} />
-      <mesh name="interactive-wall-frames" geometry={nodes['interactive-wall-frames'].geometry} material={newAtelierMaterial} position={[-4.403, -0.002, 17.582]} />
-      <mesh name="museum-building-walls" geometry={nodes['museum-building-walls'].geometry} material={newAtelierMaterial} position={[-0.448, 2.157, 16.31]} />
       <mesh name="painting-image-01" geometry={nodes['painting-image-01'].geometry} material={newAtelierMaterial} position={[13.027, 2.323, 41.23]} />
       <mesh name="painting-image-02" geometry={nodes['painting-image-02'].geometry} material={newAtelierMaterial} position={[10.301, 3.545, 41.219]} />
       <mesh name="painting-image-03" geometry={nodes['painting-image-03'].geometry} material={newAtelierMaterial} position={[9.598, 1.643, 41.219]} />
+      <mesh name="interactive-wall-screen" geometry={nodes['interactive-wall-screen'].geometry} material={newAtelierMaterial} position={[-4.771, -0.081, 16.835]} rotation={[0, 0, -Math.PI / 2]} />
+      <mesh name="painting-frame" geometry={nodes['painting-frame'].geometry} material={newAtelierMaterial} position={[9.598, 1.643, 41.219]} />
+      <mesh name="interactive-wall-frames" geometry={nodes['interactive-wall-frames'].geometry} material={newAtelierMaterial} position={[-4.403, -0.002, 17.582]} />
+      <mesh name="museum-building-windows" geometry={nodes['museum-building-windows'].geometry} material={newAtelierMaterial} position={[0, 0.056, 0]} />
+      <mesh name="museum-building-walls" geometry={nodes['museum-building-walls'].geometry} material={newAtelierMaterial} position={[-0.448, 2.157, 16.31]} />
       <mesh name="museum-building-roof" geometry={nodes['museum-building-roof'].geometry} material={newAtelierMaterial} position={[8.376, 4.889, 28.867]} />
       <mesh name="museum-building-floor" geometry={nodes['museum-building-floor'].geometry} material={newAtelierMaterial} position={[8.376, -0.265, 28.867]} />
-      <mesh name="museum-building-windows" geometry={nodes['museum-building-windows'].geometry} material={newAtelierMaterial} position={[0, 0.056, 0]} />
       <mesh name="clay-models" geometry={nodes['clay-models'].geometry} material={newAtelierMaterial} position={[-24.336, 1.13, -2.956]} />
       <mesh name="clay-tools" geometry={nodes['clay-tools'].geometry} material={newAtelierMaterial} position={[-19.004, 1.345, -4.451]} />
       <mesh name="sculpture-stands" geometry={nodes['sculpture-stands'].geometry} material={newAtelierMaterial} position={[-18.165, -0.39, 6.05]} />
@@ -494,14 +494,14 @@ export default function NewAtelier(props) {
       <mesh name="beauty-of-time-passing-glass-block" geometry={nodes['beauty-of-time-passing-glass-block'].geometry} material={newAtelierMaterial} position={[17.845, 2.072, 17.376]} />
       <mesh name="beauty-of-time-passing-scenery" geometry={nodes['beauty-of-time-passing-scenery'].geometry} material={newAtelierMaterial} position={[17.845, 2.072, 17.376]} rotation={[0, -0.663, 0]} />
       <mesh name="beauty-of-time-passing-screen" geometry={nodes['beauty-of-time-passing-screen'].geometry} material={newAtelierMaterial} position={[17.078, 0.103, 17.31]} rotation={[0, -0.663, 0]} />
-      <mesh name="intervention-in-our-disconnection" geometry={nodes['intervention-in-our-disconnection'].geometry} material={newAtelierMaterial} position={[27.925, -0.226, 26.436]} />
+      <mesh name="intervention-in-our-disconnection" geometry={nodes['intervention-in-our-disconnection'].geometry} material={newAtelierMaterial} position={[27.618, -0.226, 28.363]} />
       <mesh name="masu-typo" geometry={nodes['masu-typo'].geometry} material={newAtelierMaterial} position={[39.875, 0.806, 23.334]} />
       <mesh name="comforting-dinner" geometry={nodes['comforting-dinner'].geometry} material={newAtelierMaterial} position={[30.062, -2.57, -7.894]} />
-      <mesh name="post-box" geometry={nodes['post-box'].geometry} material={newAtelierMaterial} position={[40.506, 2.497, 33.149]} />
-      <mesh name="icon-instagram" geometry={nodes['icon-instagram'].geometry} material={newAtelierMaterial} position={[36.642, 1.391, 35.992]} />
-      <mesh name="icon-x" geometry={nodes['icon-x'].geometry} material={newAtelierMaterial} position={[38.708, 1.391, 33.539]} />
-      <mesh name="icon-github" geometry={nodes['icon-github'].geometry} material={newAtelierMaterial} position={[40.513, 1.391, 31.11]} />
-      <mesh name="icon-linkedin" geometry={nodes['icon-linkedin'].geometry} material={newAtelierMaterial} position={[34.826, 1.391, 38.478]} />
+      <mesh name="post-box" geometry={nodes['post-box'].geometry} material={newAtelierMaterial} position={[42.608, 2.497, 34.568]} />
+      <mesh name="icon-instagram" geometry={nodes['icon-instagram'].geometry} material={newAtelierMaterial} position={[38.743, 1.391, 37.411]} />
+      <mesh name="icon-x" geometry={nodes['icon-x'].geometry} material={newAtelierMaterial} position={[40.81, 1.391, 34.957]} />
+      <mesh name="icon-github" geometry={nodes['icon-github'].geometry} material={newAtelierMaterial} position={[42.615, 1.391, 32.528]} />
+      <mesh name="icon-linkedin" geometry={nodes['icon-linkedin'].geometry} material={newAtelierMaterial} position={[36.928, 1.391, 39.896]} />
       <mesh name="ground" geometry={nodes.ground.geometry} material={newAtelierMaterial} position={[16.79, -0.301, 17.001]} />
       <mesh name="outer-fence" geometry={nodes['outer-fence'].geometry} material={newAtelierMaterial} position={[6.483, 0, 5.58]} />
     </group>
