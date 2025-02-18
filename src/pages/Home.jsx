@@ -48,7 +48,19 @@ export default function HomePage() {
           {/* Instruction of how to control the player */}
           {gameState === "PLAY" && <HowToControl />}
 
-          <Leva collapsed={true} />
+          <div
+            style={{
+              width: 350,
+              position: "absolute",
+              right: 0,
+              top: 0,
+              zIndex: 100,
+              opacity: 0.75,
+              fontSize: 10
+            }}
+          >
+            <Leva collapsed={false} fill />
+          </div>
 
           <KeyboardControls map={keyboardMap}>
             <Canvas
