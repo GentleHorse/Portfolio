@@ -43,7 +43,7 @@ export default function HomePage() {
       {isBrowser && (
         <>
           {/* The menu for the player control */}
-          {/* {gameState !== gameStates.LOADING && <Menu />} */}
+          {gameState !== gameStates.LOADING && <Menu />}
 
           {/* Instruction of how to control the player */}
           {gameState === "PLAY" && <HowToControl />}
