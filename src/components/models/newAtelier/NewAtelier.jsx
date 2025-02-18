@@ -25,7 +25,7 @@ export default function NewAtelier(props) {
   /**
    * MATERIAL | MODEL UV
    */
-  const newAtelierTexture = useTexture("./textures/new-atelier/baked03.jpg");
+  const newAtelierTexture = useTexture("./textures/new-atelier/baked03-1024.jpg");
   newAtelierTexture.flipY = false;
   newAtelierTexture.colorSpace = THREE.SRGBColorSpace;
   const newAtelierMaterial = new THREE.MeshBasicMaterial({
