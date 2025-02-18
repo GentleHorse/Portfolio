@@ -62,6 +62,7 @@ export default function Menu() {
       console.log("The pointer is locked");
     } else {
       console.log("The pointer is not locked");
+
       setIsModalOpen(true);
       setGameState(gameStates.MENU);
     }
