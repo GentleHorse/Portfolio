@@ -6,6 +6,33 @@
 npm run dev
 ```
 
+## Debug the 3D 'atelier' model
+
+In order to debug the 3D atelier model for changing objects, modifying collision objects, or adding shader new animations, etc, you need to temporarly deactivate the first person view control. So in these cases, comment codes in `Home.jsx` and `Experience.jsx` and activate `<Perf>`, `<axesHelper />`, `<OrbitControls makeDefault />`.
+
+#### Home.jsx
+
+```
+
+  {/* {gameState !== gameStates.LOADING && <Menu />} */}
+
+```
+
+
+#### Experience.jsx
+
+```
+
+  {/* {isBrowser && <FirstPersonViewControl />} */}
+
+  ....
+
+      <Perf position="top-left" />
+      <axesHelper />
+      <OrbitControls makeDefault />
+
+```
+
 ## Dev Memo 01 - UV of TV screens inside glb (gltf) models
 
 In order to play videos inside screen inside glb models, UV should be properly unwrapped, otherwise it cannot play the video in the way you want.

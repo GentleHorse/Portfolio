@@ -4,8 +4,10 @@ Command: npx gltfjsx@6.4.1 ./public/models/new-atelier/new-atelier.glb
 */
 
 /**
- * material=\{.*?\}
- * material={newAtelierMaterial}
+ * REPLACE WITH UV MATERIAL
+ * 
+ * FROM: material=\{.*?\}
+ * TO:   material={atelierMaterial}
  */
 
 import React from "react";
@@ -16,7 +18,7 @@ import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
 import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
 
-export default function NewAtelier(props) {
+export default function Atelier(props) {
   /**
    * IMPORT THE NEW ATELIER MODEL
    */
@@ -25,19 +27,19 @@ export default function NewAtelier(props) {
   /**
    * MATERIAL | MODEL UV
    */
-  const newAtelierTexture = useTexture("./textures/new-atelier/baked03-1024.jpg");
-  newAtelierTexture.flipY = false;
-  newAtelierTexture.colorSpace = THREE.SRGBColorSpace;
-  const newAtelierMaterial = new THREE.MeshBasicMaterial({
-    map: newAtelierTexture,
+  const atelierTexture = useTexture("./textures/new-atelier/baked03-1024.jpg");
+  atelierTexture.flipY = false;
+  atelierTexture.colorSpace = THREE.SRGBColorSpace;
+  const atelierMaterial = new THREE.MeshBasicMaterial({
+    map: atelierTexture,
     toneMapped: false,
   });
 
   /**
-   * MATERIAL | VIRTUAL VOID SPACE
+   * MATERIAL | VIRTUAL SPACE
    */
   const virtualVoidSpaceMaterial = new THREE.MeshBasicMaterial({
-    color: "#C1C1C1",
+    color: "#1C1C1C",
   });
 
   /**
@@ -255,1293 +257,1293 @@ export default function NewAtelier(props) {
       <mesh
         name="atelier-wood-floor"
         geometry={nodes["atelier-wood-floor"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.702, 0.174, -2.564]}
       />
       <mesh
         name="atelier-engawa"
         geometry={nodes["atelier-engawa"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-0.352, -0.062, 4.332]}
       />
       <mesh
         name="atelier-wood-beams"
         geometry={nodes["atelier-wood-beams"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.994, 2.809, 0.183]}
       />
       <mesh
         name="atelier-plaster-wall"
         geometry={nodes["atelier-plaster-wall"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.05, 3.024, 0.183]}
       />
       <mesh
         name="atelier-stone-wall"
         geometry={nodes["atelier-stone-wall"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.873, 0.328, -0.166]}
       />
       <mesh
         name="atelier-concrete-floor"
         geometry={nodes["atelier-concrete-floor"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[2.065, 0, 0.226]}
       />
       <mesh
         name="atelier-roof"
         geometry={nodes["atelier-roof"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[1.205, 4.017, 0.513]}
       />
       <mesh
         name="coffee-cup001"
         geometry={nodes["coffee-cup001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.741, 1.281, 2.729]}
       />
       <mesh
         name="side-table-low"
         geometry={nodes["side-table-low"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.59, 0.529, 2.77]}
       />
       <mesh
         name="side-table-high"
         geometry={nodes["side-table-high"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.701, 0.348, 2.757]}
       />
       <mesh
         name="headphone"
         geometry={nodes.headphone.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.56, 0.841, 2.836]}
       />
       <mesh
         name="smartphone"
         geometry={nodes.smartphone.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.476, 0.853, 2.706]}
       />
       <mesh
         name="wallet"
         geometry={nodes.wallet.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.711, 0.843, 2.674]}
       />
       <mesh
         name="pc-screen-top"
         geometry={nodes["pc-screen-top"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.261, 1.644, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
       <mesh
         name="pc-screen-bottom"
         geometry={nodes["pc-screen-bottom"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.261, 0.278, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
       <mesh
         name="pc-body"
         geometry={nodes["pc-body"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.903, 0.22, 0.132]}
       />
       <mesh
         name="pc-browser"
         geometry={nodes["pc-browser"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-5.053, 2.358, 0.12]}
       />
       <mesh
         name="icon-windows"
         geometry={nodes["icon-windows"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.838, 0.377, 0.94]}
       />
       <mesh
         name="icon-blender002"
         geometry={nodes["icon-blender002"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.837, 0.461, -0.374]}
       />
       <mesh
         name="icon-chrome"
         geometry={nodes["icon-chrome"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.838, 0.377, 0.561]}
       />
       <mesh
         name="icon-folder"
         geometry={nodes["icon-folder"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.838, 0.375, 0.144]}
       />
       <mesh
         name="icon-visual-code"
         geometry={nodes["icon-visual-code"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.838, 0.377, -0.645]}
       />
       <mesh
         name="pc-keyboard"
         geometry={nodes["pc-keyboard"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.758, 0.198, 0.448]}
       />
       <mesh
         name="pc-mouse"
         geometry={nodes["pc-mouse"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.101, 0.232, -1.736]}
       />
       <mesh
         name="tokonoma-floor"
         geometry={nodes["tokonoma-floor"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.996, 0, -3.486]}
       />
       <mesh
         name="tokonoma-drawer"
         geometry={nodes["tokonoma-drawer"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.217, 0.388, -3.645]}
       />
       <mesh
         name="tokonoma-shelf"
         geometry={nodes["tokonoma-shelf"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.676, 1.702, -3.816]}
       />
       <mesh
         name="icon-html001"
         geometry={nodes["icon-html001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.007, 2.182, -3.617]}
       />
       <mesh
         name="icon-css001"
         geometry={nodes["icon-css001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.54, 2.205, -3.617]}
       />
       <mesh
         name="icon-javascript001"
         geometry={nodes["icon-javascript001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.831, 1.983, -3.627]}
       />
       <mesh
         name="icon-react001"
         geometry={nodes["icon-react001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.331, 1.989, -3.627]}
       />
       <mesh
         name="icon-three-js001"
         geometry={nodes["icon-three-js001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.057, 1.156, -3.463]}
       />
       <mesh
         name="icon-blender001"
         geometry={nodes["icon-blender001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.481, 1.105, -3.463]}
       />
       <mesh
         name="icon-houdini001"
         geometry={nodes["icon-houdini001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.96, 1.12, -3.463]}
       />
       <mesh
         name="icon-unreal-engine001"
         geometry={nodes["icon-unreal-engine001"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.474, 1.125, -3.463]}
       />
       <mesh
         name="tokonoma-lavender-vase"
         geometry={nodes["tokonoma-lavender-vase"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.199, 1.312, -4.009]}
       />
       <mesh
         name="tokonoma-lavender-stem"
         geometry={nodes["tokonoma-lavender-stem"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.271, 1.98, -3.909]}
       />
       <mesh
         name="tokonoma-lavender-flower"
         geometry={nodes["tokonoma-lavender-flower"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.27, 1.847, -3.941]}
       />
       <mesh
         name="tokonoma-lavender-oil"
         geometry={nodes["tokonoma-lavender-oil"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.98, 0.404, -3.666]}
       />
       <mesh
         name="tokonoma-frankincense-pot"
         geometry={nodes["tokonoma-frankincense-pot"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.258, 0.361, -3.287]}
       />
       <mesh
         name="tokonoma-frankincense-stones"
         geometry={nodes["tokonoma-frankincense-stones"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.444, 0.388, -2.903]}
       />
       <mesh
         name="tokonoma-frankincense-oil"
         geometry={nodes["tokonoma-frankincense-oil"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.726, 0.392, -3.41]}
       />
       <mesh
         name="tokonoma-essential-oil-caps"
         geometry={nodes["tokonoma-essential-oil-caps"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.98, 0.404, -3.666]}
       />
       <mesh
         name="tokonoma-essential-oil-bottles"
         geometry={nodes["tokonoma-essential-oil-bottles"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-3.726, 0.392, -3.41]}
       />
       <mesh
         name="workshop-wood-machines"
         geometry={nodes["workshop-wood-machines"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[1.511, 1.37, -1.843]}
       />
       <mesh
         name="workshop-tables"
         geometry={nodes["workshop-tables"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.513, 0.077, 1.597]}
       />
       <mesh
         name="workshop-wall-shelf"
         geometry={nodes["workshop-wall-shelf"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.773, 1.751, 1.597]}
       />
       <mesh
         name="workshop-tools"
         geometry={nodes["workshop-tools"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.706, 2.503, 0.788]}
       />
       <mesh
         name="workshop-material-wood"
         geometry={nodes["workshop-material-wood"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.583, 0.191, 1.695]}
       />
       <mesh
         name="workshop-material-foam-boards"
         geometry={nodes["workshop-material-foam-boards"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[2.523, 1.126, 0.66]}
       />
       <mesh
         name="workshop-cardboard-box"
         geometry={nodes["workshop-cardboard-box"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[1.668, 0.146, 0.807]}
       />
       <mesh
         name="workshop-drawing-tools"
         geometry={nodes["workshop-drawing-tools"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[1.845, 1.101, 0.623]}
       />
       <mesh
         name="workshop-modelling-tools"
         geometry={nodes["workshop-modelling-tools"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[2.437, 1.127, 0.441]}
       />
       <mesh
         name="workshop-foam-bord-models"
         geometry={nodes["workshop-foam-bord-models"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.49, 0.915, 2.325]}
       />
       <mesh
         name="poduims"
         geometry={nodes.poduims.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[2.448, 0, 39.513]}
       />
       <mesh
         name="human-head"
         geometry={nodes["human-head"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[3.888, 2.665, 25.878]}
       />
       <mesh
         name="accounting-graph"
         geometry={nodes["accounting-graph"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.05, 1.395, 27.376]}
       />
       <mesh
         name="acounting-calculator"
         geometry={nodes["acounting-calculator"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-2.145, 0.615, 27.068]}
       />
       <mesh
         name="local-cuisine"
         geometry={nodes["local-cuisine"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-1.905, 1.193, 33.893]}
       />
       <mesh
         name="piano"
         geometry={nodes.piano.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[4.284, 0.041, 34.026]}
       />
       <mesh
         name="hiking"
         geometry={nodes.hiking.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[2.713, 0.615, 39.293]}
       />
       <mesh
         name="japan-map"
         geometry={nodes["japan-map"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[0.804, 1.652, 41.189]}
       />
       <mesh
         name="super-nintendo"
         geometry={nodes["super-nintendo"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[7.625, 0.945, 31.028]}
       />
       <mesh
         name="lego-block"
         geometry={nodes["lego-block"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[8.577, 0.837, 31.47]}
       />
       <mesh
         name="choir"
         geometry={nodes.choir.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[10.844, 1.057, 36.065]}
       />
       <mesh
         name="Cube539"
         geometry={nodes.Cube539.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.798, 1.656, 41.868]}
       />
       <mesh
         name="Cube540"
         geometry={nodes.Cube540.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.71, 1.656, 41.85]}
       />
       <mesh
         name="Cube541"
         geometry={nodes.Cube541.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.623, 1.656, 41.851]}
       />
       <mesh
         name="Cube542"
         geometry={nodes.Cube542.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.533, 1.656, 41.85]}
       />
       <mesh
         name="Cube543"
         geometry={nodes.Cube543.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.443, 1.656, 41.911]}
       />
       <mesh
         name="Cube544"
         geometry={nodes.Cube544.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.354, 1.656, 41.936]}
       />
       <mesh
         name="Cube545"
         geometry={nodes.Cube545.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.109, 1.656, 41.847]}
       />
       <mesh
         name="Cube546"
         geometry={nodes.Cube546.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.021, 1.656, 41.889]}
       />
       <mesh
         name="Cube547"
         geometry={nodes.Cube547.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.932, 1.656, 41.88]}
       />
       <mesh
         name="Cube548"
         geometry={nodes.Cube548.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.845, 1.656, 41.894]}
       />
       <mesh
         name="Cube549"
         geometry={nodes.Cube549.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.756, 1.656, 41.89]}
       />
       <mesh
         name="Cube550"
         geometry={nodes.Cube550.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.666, 1.656, 41.883]}
       />
       <mesh
         name="Cube551"
         geometry={nodes.Cube551.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.579, 1.656, 41.947]}
       />
       <mesh
         name="Cube552"
         geometry={nodes.Cube552.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.491, 1.656, 41.883]}
       />
       <mesh
         name="Cube553"
         geometry={nodes.Cube553.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.404, 1.656, 41.937]}
       />
       <mesh
         name="Cube554"
         geometry={nodes.Cube554.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.306, 1.656, 41.933]}
       />
       <mesh
         name="Cube555"
         geometry={nodes.Cube555.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.225, 1.656, 41.916]}
       />
       <mesh
         name="Cube556"
         geometry={nodes.Cube556.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.175, 1.656, 41.858]}
       />
       <mesh
         name="Cube557"
         geometry={nodes.Cube557.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.129, 1.656, 41.898]}
       />
       <mesh
         name="Cube558"
         geometry={nodes.Cube558.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.059, 1.656, 41.954]}
       />
       <mesh
         name="Cube559"
         geometry={nodes.Cube559.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.975, 1.656, 41.885]}
       />
       <mesh
         name="Cube560"
         geometry={nodes.Cube560.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.887, 1.656, 41.883]}
       />
       <mesh
         name="Cube561"
         geometry={nodes.Cube561.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.104, 1.079, 41.953]}
       />
       <mesh
         name="Cube562"
         geometry={nodes.Cube562.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.016, 1.079, 41.9]}
       />
       <mesh
         name="Cube563"
         geometry={nodes.Cube563.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.928, 1.079, 41.949]}
       />
       <mesh
         name="Cube564"
         geometry={nodes.Cube564.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.839, 1.079, 41.86]}
       />
       <mesh
         name="Cube565"
         geometry={nodes.Cube565.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.749, 1.079, 41.857]}
       />
       <mesh
         name="Cube566"
         geometry={nodes.Cube566.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.659, 1.079, 41.881]}
       />
       <mesh
         name="Cube567"
         geometry={nodes.Cube567.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.572, 1.079, 41.846]}
       />
       <mesh
         name="Cube568"
         geometry={nodes.Cube568.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.484, 1.079, 41.914]}
       />
       <mesh
         name="Cube569"
         geometry={nodes.Cube569.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.395, 1.079, 41.918]}
       />
       <mesh
         name="Cube570"
         geometry={nodes.Cube570.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.307, 1.079, 41.902]}
       />
       <mesh
         name="Cube571"
         geometry={nodes.Cube571.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.218, 1.079, 41.947]}
       />
       <mesh
         name="Cube572"
         geometry={nodes.Cube572.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.129, 1.079, 41.923]}
       />
       <mesh
         name="Cube573"
         geometry={nodes.Cube573.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.042, 1.079, 41.949]}
       />
       <mesh
         name="Cube574"
         geometry={nodes.Cube574.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.954, 1.079, 41.878]}
       />
       <mesh
         name="Cube575"
         geometry={nodes.Cube575.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.867, 1.079, 41.855]}
       />
       <mesh
         name="Cube576"
         geometry={nodes.Cube576.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.768, 1.079, 41.845]}
       />
       <mesh
         name="Cube577"
         geometry={nodes.Cube577.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.688, 1.079, 41.941]}
       />
       <mesh
         name="Cube578"
         geometry={nodes.Cube578.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.638, 1.079, 41.879]}
       />
       <mesh
         name="Cube579"
         geometry={nodes.Cube579.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.592, 1.079, 41.941]}
       />
       <mesh
         name="Cube580"
         geometry={nodes.Cube580.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.521, 1.079, 41.855]}
       />
       <mesh
         name="Cube581"
         geometry={nodes.Cube581.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.438, 1.079, 41.88]}
       />
       <mesh
         name="Cube582"
         geometry={nodes.Cube582.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.35, 1.079, 41.84]}
       />
       <mesh
         name="Cube583"
         geometry={nodes.Cube583.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.789, 2.238, 41.912]}
       />
       <mesh
         name="Cube584"
         geometry={nodes.Cube584.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.702, 2.238, 41.951]}
       />
       <mesh
         name="Cube585"
         geometry={nodes.Cube585.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.614, 2.238, 41.925]}
       />
       <mesh
         name="Cube586"
         geometry={nodes.Cube586.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.525, 2.238, 41.941]}
       />
       <mesh
         name="Cube587"
         geometry={nodes.Cube587.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.435, 2.238, 41.885]}
       />
       <mesh
         name="Cube588"
         geometry={nodes.Cube588.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.345, 2.238, 41.886]}
       />
       <mesh
         name="Cube589"
         geometry={nodes.Cube589.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.257, 2.238, 41.85]}
       />
       <mesh
         name="Cube590"
         geometry={nodes.Cube590.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.17, 2.238, 41.865]}
       />
       <mesh
         name="Cube591"
         geometry={nodes.Cube591.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.081, 2.238, 41.851]}
       />
       <mesh
         name="Cube592"
         geometry={nodes.Cube592.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.993, 2.238, 41.875]}
       />
       <mesh
         name="Cube593"
         geometry={nodes.Cube593.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.904, 2.238, 41.947]}
       />
       <mesh
         name="Cube594"
         geometry={nodes.Cube594.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.814, 2.238, 41.872]}
       />
       <mesh
         name="Cube595"
         geometry={nodes.Cube595.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.728, 2.238, 41.951]}
       />
       <mesh
         name="Cube596"
         geometry={nodes.Cube596.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.64, 2.238, 41.956]}
       />
       <mesh
         name="Cube597"
         geometry={nodes.Cube597.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.553, 2.238, 41.916]}
       />
       <mesh
         name="Cube598"
         geometry={nodes.Cube598.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.454, 2.238, 41.889]}
       />
       <mesh
         name="Cube599"
         geometry={nodes.Cube599.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.953, 2.238, 41.909]}
       />
       <mesh
         name="Cube600"
         geometry={nodes.Cube600.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.903, 2.238, 41.942]}
       />
       <mesh
         name="Cube601"
         geometry={nodes.Cube601.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.857, 2.238, 41.909]}
       />
       <mesh
         name="Cube602"
         geometry={nodes.Cube602.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.352, 2.238, 41.892]}
       />
       <mesh
         name="Cube603"
         geometry={nodes.Cube603.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.701, 2.802, 41.847]}
       />
       <mesh
         name="Cube604"
         geometry={nodes.Cube604.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.613, 2.802, 41.958]}
       />
       <mesh
         name="Cube605"
         geometry={nodes.Cube605.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.525, 2.802, 41.868]}
       />
       <mesh
         name="Cube606"
         geometry={nodes.Cube606.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.436, 2.802, 41.896]}
       />
       <mesh
         name="Cube607"
         geometry={nodes.Cube607.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.346, 2.802, 41.955]}
       />
       <mesh
         name="Cube608"
         geometry={nodes.Cube608.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.256, 2.802, 41.924]}
       />
       <mesh
         name="Cube609"
         geometry={nodes.Cube609.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.169, 2.802, 41.865]}
       />
       <mesh
         name="Cube610"
         geometry={nodes.Cube610.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.081, 2.802, 41.879]}
       />
       <mesh
         name="Cube611"
         geometry={nodes.Cube611.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.992, 2.802, 41.923]}
       />
       <mesh
         name="Cube612"
         geometry={nodes.Cube612.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.904, 2.802, 41.951]}
       />
       <mesh
         name="Cube613"
         geometry={nodes.Cube613.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.816, 2.802, 41.854]}
       />
       <mesh
         name="Cube614"
         geometry={nodes.Cube614.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.726, 2.802, 41.939]}
       />
       <mesh
         name="Cube615"
         geometry={nodes.Cube615.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.639, 2.802, 41.906]}
       />
       <mesh
         name="Cube616"
         geometry={nodes.Cube616.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.551, 2.802, 41.953]}
       />
       <mesh
         name="Cube617"
         geometry={nodes.Cube617.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.464, 2.802, 41.886]}
       />
       <mesh
         name="Cube618"
         geometry={nodes.Cube618.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[16.366, 2.802, 41.844]}
       />
       <mesh
         name="Cube619"
         geometry={nodes.Cube619.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.125, 2.802, 41.954]}
       />
       <mesh
         name="Cube620"
         geometry={nodes.Cube620.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.075, 2.802, 41.849]}
       />
       <mesh
         name="Cube621"
         geometry={nodes.Cube621.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.029, 2.802, 41.956]}
       />
       <mesh
         name="Cube622"
         geometry={nodes.Cube622.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.958, 2.802, 41.922]}
       />
       <mesh
         name="Cube623"
         geometry={nodes.Cube623.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.875, 2.802, 41.872]}
       />
       <mesh
         name="Cube624"
         geometry={nodes.Cube624.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.787, 2.802, 41.909]}
       />
       <mesh
         name="Cube625"
         geometry={nodes.Cube625.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.096, 2.238, 41.9]}
       />
       <mesh
         name="Cube626"
         geometry={nodes.Cube626.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.046, 2.238, 41.935]}
       />
       <mesh
         name="Cube627"
         geometry={nodes.Cube627.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18, 2.238, 41.947]}
       />
       <mesh
         name="Cube639"
         geometry={nodes.Cube639.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.645, 1.656, 41.944]}
       />
       <mesh
         name="Cube641"
         geometry={nodes.Cube641.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.557, 1.656, 41.859]}
       />
       <mesh
         name="Cube642"
         geometry={nodes.Cube642.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.47, 1.656, 41.893]}
       />
       <mesh
         name="Cube643"
         geometry={nodes.Cube643.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.38, 1.656, 41.867]}
       />
       <mesh
         name="Cube644"
         geometry={nodes.Cube644.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.29, 1.656, 41.917]}
       />
       <mesh
         name="Cube645"
         geometry={nodes.Cube645.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.201, 1.656, 41.958]}
       />
       <mesh
         name="Cube656"
         geometry={nodes.Cube656.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.091, 1.656, 41.928]}
       />
       <mesh
         name="Cube657"
         geometry={nodes.Cube657.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.042, 1.656, 41.844]}
       />
       <mesh
         name="Cube658"
         geometry={nodes.Cube658.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.995, 1.656, 41.894]}
       />
       <mesh
         name="Cube659"
         geometry={nodes.Cube659.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.918, 1.656, 41.951]}
       />
       <mesh
         name="Cube660"
         geometry={nodes.Cube660.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.822, 1.656, 41.92]}
       />
       <mesh
         name="Cube661"
         geometry={nodes.Cube661.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.734, 1.656, 41.904]}
       />
       <mesh
         name="Cube672"
         geometry={nodes.Cube672.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.12, 1.079, 41.871]}
       />
       <mesh
         name="Cube673"
         geometry={nodes.Cube673.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.03, 1.079, 41.865]}
       />
       <mesh
         name="Cube674"
         geometry={nodes.Cube674.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.943, 1.079, 41.887]}
       />
       <mesh
         name="Cube675"
         geometry={nodes.Cube675.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.855, 1.079, 41.941]}
       />
       <mesh
         name="Cube676"
         geometry={nodes.Cube676.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.768, 1.079, 41.851]}
       />
       <mesh
         name="Cube677"
         geometry={nodes.Cube677.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.67, 1.079, 41.911]}
       />
       <mesh
         name="Cube678"
         geometry={nodes.Cube678.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.535, 1.079, 41.877]}
       />
       <mesh
         name="Cube679"
         geometry={nodes.Cube679.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.485, 1.079, 41.843]}
       />
       <mesh
         name="Cube680"
         geometry={nodes.Cube680.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.439, 1.079, 41.869]}
       />
       <mesh
         name="Cube681"
         geometry={nodes.Cube681.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.368, 1.079, 41.887]}
       />
       <mesh
         name="Cube682"
         geometry={nodes.Cube682.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.285, 1.079, 41.845]}
       />
       <mesh
         name="Cube683"
         geometry={nodes.Cube683.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.197, 1.079, 41.939]}
       />
       <mesh
         name="Cube690"
         geometry={nodes.Cube690.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.113, 2.238, 41.925]}
       />
       <mesh
         name="Cube691"
         geometry={nodes.Cube691.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.017, 2.238, 41.865]}
       />
       <mesh
         name="Cube692"
         geometry={nodes.Cube692.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.928, 2.238, 41.845]}
       />
       <mesh
         name="Cube693"
         geometry={nodes.Cube693.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.84, 2.238, 41.877]}
       />
       <mesh
         name="Cube694"
         geometry={nodes.Cube694.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.751, 2.238, 41.848]}
       />
       <mesh
         name="Cube695"
         geometry={nodes.Cube695.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.661, 2.238, 41.939]}
       />
       <mesh
         name="Cube696"
         geometry={nodes.Cube696.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.575, 2.238, 41.948]}
       />
       <mesh
         name="Cube697"
         geometry={nodes.Cube697.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.487, 2.238, 41.853]}
       />
       <mesh
         name="Cube698"
         geometry={nodes.Cube698.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.399, 2.238, 41.896]}
       />
       <mesh
         name="Cube699"
         geometry={nodes.Cube699.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.301, 2.238, 41.848]}
       />
       <mesh
         name="Cube703"
         geometry={nodes.Cube703.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.199, 2.238, 41.888]}
       />
       <mesh
         name="Cube709"
         geometry={nodes.Cube709.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.122, 2.802, 41.953]}
       />
       <mesh
         name="Cube710"
         geometry={nodes.Cube710.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.026, 2.802, 41.949]}
       />
       <mesh
         name="Cube711"
         geometry={nodes.Cube711.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.928, 2.802, 41.839]}
       />
       <mesh
         name="Cube712"
         geometry={nodes.Cube712.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.839, 2.802, 41.861]}
       />
       <mesh
         name="Cube713"
         geometry={nodes.Cube713.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.751, 2.802, 41.902]}
       />
       <mesh
         name="Cube714"
         geometry={nodes.Cube714.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.662, 2.802, 41.905]}
       />
       <mesh
         name="Cube715"
         geometry={nodes.Cube715.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.572, 2.802, 41.957]}
       />
       <mesh
         name="Cube716"
         geometry={nodes.Cube716.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.486, 2.802, 41.874]}
       />
       <mesh
         name="Cube717"
         geometry={nodes.Cube717.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.398, 2.802, 41.892]}
       />
       <mesh
         name="Cube718"
         geometry={nodes.Cube718.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.311, 2.802, 41.917]}
       />
       <mesh
         name="Cube719"
         geometry={nodes.Cube719.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.212, 2.802, 41.949]}
       />
       <mesh
         name="Cube646"
         geometry={nodes.Cube646.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[19.141, 1.656, 41.919]}
       />
       <mesh
         name="Cube647"
         geometry={nodes.Cube647.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.584, 1.079, 41.94]}
       />
       <mesh
         name="Cube648"
         geometry={nodes.Cube648.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[18.137, 2.238, 41.846]}
       />
       <mesh
         name="Cube001"
         geometry={nodes.Cube001.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube002"
         geometry={nodes.Cube002.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube003"
         geometry={nodes.Cube003.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube004"
         geometry={nodes.Cube004.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube005"
         geometry={nodes.Cube005.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube006"
         geometry={nodes.Cube006.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube007"
         geometry={nodes.Cube007.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube008"
         geometry={nodes.Cube008.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube009"
         geometry={nodes.Cube009.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube010"
         geometry={nodes.Cube010.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube011"
         geometry={nodes.Cube011.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
         name="Cube012"
         geometry={nodes.Cube012.geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[20.676, 1.064, 37.453]}
       />
       <mesh
@@ -1565,74 +1567,74 @@ export default function NewAtelier(props) {
       <mesh
         name="interactive-wall-screen"
         geometry={nodes["interactive-wall-screen"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.771, -0.081, 16.835]}
         rotation={[0, 0, -Math.PI / 2]}
       />
       <mesh
         name="painting-frame"
         geometry={nodes["painting-frame"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[9.598, 1.643, 41.219]}
       />
       <mesh
         name="interactive-wall-frames"
         geometry={nodes["interactive-wall-frames"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-4.403, -0.002, 17.582]}
       />
       <mesh
         name="museum-building-windows"
         geometry={nodes["museum-building-windows"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[0, 0.056, 0]}
       />
       <mesh
         name="museum-building-walls"
         geometry={nodes["museum-building-walls"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-0.448, 2.157, 16.31]}
       />
       <mesh
         name="museum-building-roof"
         geometry={nodes["museum-building-roof"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[8.376, 4.889, 28.867]}
       />
       <mesh
         name="museum-building-floor"
         geometry={nodes["museum-building-floor"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[8.376, -0.265, 28.867]}
       />
       <mesh
         name="clay-models"
         geometry={nodes["clay-models"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-24.336, 1.13, -2.956]}
       />
       <mesh
         name="clay-tools"
         geometry={nodes["clay-tools"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-19.004, 1.345, -4.451]}
       />
       <mesh
         name="sculpture-stands"
         geometry={nodes["sculpture-stands"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-18.165, -0.39, 6.05]}
       />
       <mesh
         name="photo-booth"
         geometry={nodes["photo-booth"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-19.522, 0.742, 6.799]}
       />
       <mesh
         name="photo-spotlights"
         geometry={nodes["photo-spotlights"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-17.656, -0.115, 3.271]}
       />
       <mesh
@@ -1644,13 +1646,13 @@ export default function NewAtelier(props) {
       <mesh
         name="photo-camera-body"
         geometry={nodes["photo-camera-body"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-16.086, 1.327, 4.768]}
       />
       <mesh
         name="analog-tv-shells"
         geometry={nodes["analog-tv-shells"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-34.637, 1.218, 2.092]}
       />
       <mesh
@@ -1726,7 +1728,7 @@ export default function NewAtelier(props) {
       <mesh
         name="virtual-grid"
         geometry={nodes["virtual-grid"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[-5.164, 0, 20.099]}
       />
       <mesh
@@ -1738,13 +1740,13 @@ export default function NewAtelier(props) {
       <mesh
         name="ambience-of-light"
         geometry={nodes["ambience-of-light"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[23.99, 0.278, 7.446]}
       />
       <mesh
         name="beauty-of-time-passing-glass-block"
         geometry={nodes["beauty-of-time-passing-glass-block"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[17.845, 2.072, 17.376]}
       />
       <mesh
@@ -1764,49 +1766,49 @@ export default function NewAtelier(props) {
       <mesh
         name="intervention-in-our-disconnection"
         geometry={nodes["intervention-in-our-disconnection"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[27.618, -0.226, 28.363]}
       />
       <mesh
         name="masu-typo"
         geometry={nodes["masu-typo"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[39.875, 0.806, 23.334]}
       />
       <mesh
         name="comforting-dinner"
         geometry={nodes["comforting-dinner"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[30.062, -2.57, -7.894]}
       />
       <mesh
         name="post-box"
         geometry={nodes["post-box"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[42.608, 2.497, 34.568]}
       />
       <mesh
         name="icon-instagram"
         geometry={nodes["icon-instagram"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[38.743, 1.391, 37.411]}
       />
       <mesh
         name="icon-x"
         geometry={nodes["icon-x"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[40.81, 1.391, 34.957]}
       />
       <mesh
         name="icon-github"
         geometry={nodes["icon-github"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[42.615, 1.391, 32.528]}
       />
       <mesh
         name="icon-linkedin"
         geometry={nodes["icon-linkedin"].geometry}
-        material={newAtelierMaterial}
+        material={atelierMaterial}
         position={[36.928, 1.391, 39.896]}
       />
       <mesh
