@@ -26,15 +26,15 @@ export default function Experience() {
       <Background color="#C1C1C1" />
 
       {/* DEBUG TOOLS */}
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" />
       <axesHelper />
-      <OrbitControls makeDefault />
+      <OrbitControls makeDefault /> */}
 
       {/* FOG */}
       {/* <fog attach="fog" args={["#C1C1C1", 8, 80]} /> */}
 
       {/* PHYSICS SCENE */}
-      <Physics debug={true}>
+      <Physics debug={false}>
         {/* CONTROLS */}
         {isBrowser && <FirstPersonViewControl />}
 

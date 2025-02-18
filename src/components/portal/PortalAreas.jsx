@@ -2,8 +2,12 @@ import PortalArea from "./PortalArea.jsx";
 import CollisionObject from "../utilComponents/CollisionObject.jsx";
 
 export default function PortalAreas() {
+
   return (
     <group>
+      {/* DEBUG - POSITION, ROTATION */}
+      {/* <CollisionObject /> */}
+
       {/* DESIGN - AMBIENCE OF LIGHT */}
       <PortalArea
         position={[38, 0, 15]}
@@ -119,7 +123,7 @@ export default function PortalAreas() {
         text="Nul Zes Crafted de Markt"
         textHeight={4.0}
         textDistance={7.0}
-        message={"Set URL: Nul Zes Crafted de Markt"}
+        message={"Set URL: Outside URL - Nul Zes Crafted de Markt"}
       />
 
       {/* 3D APP DEV - WEATHER CEREAL */}
@@ -148,7 +152,7 @@ export default function PortalAreas() {
         message={"Set URL: Marble's on a Roll"}
       />
 
-      {/* ABOUT */}
+      {/* ABOUT ME */}
       <PortalArea
         position={[5.5, 0.1, 48.0]}
         rotation={[0, Math.PI * 1.15, 0]}
@@ -156,11 +160,75 @@ export default function PortalAreas() {
         collisionObjDepth={1.0}
         projectUrl={"/about"}
         text="Who made this?"
-        textHeight={2.5}
+        textHeight={3.5}
         textDistance={2.0}
         fontSize={30}
         enterIconWidth={100}
         message={"Set URL: About"}
+      />
+
+      {/* SOCIAL MEDIA ICON - GITHUB */}
+      <PortalArea
+        position={[82.5, 0, 62.5]}
+        rotation={[0, -Math.PI * 0.75, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        isOutsideUrl={true}
+        projectUrl={"https://github.com/GentleHorse"}
+        text="GitHub"
+        textHeight={3.5}
+        textDistance={2.0}
+        fontSize={30}
+        enterIconWidth={100}
+        message={"Set URL: Outside URL - GitHub"}
+      />
+
+      {/* SOCIAL MEDIA ICON - X */}
+      <PortalArea
+        position={[78.0, 0, 67.5]}
+        rotation={[0, -Math.PI * 0.70, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        isOutsideUrl={true}
+        projectUrl={"https://x.com/toshihito_endo"}
+        text="X"
+        textHeight={3.5}
+        textDistance={2.0}
+        fontSize={30}
+        enterIconWidth={100}
+        message={"Set URL: Outside URL - X"}
+      />
+
+      {/* SOCIAL MEDIA ICON - INSTAGRAM */}
+      <PortalArea
+        position={[75.0, 0, 72.5]}
+        rotation={[0, -Math.PI * 0.725, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        isOutsideUrl={true}
+        projectUrl={"https://www.instagram.com/toshihitoendo/"}
+        text="Instagram"
+        textHeight={3.5}
+        textDistance={2.0}
+        fontSize={30}
+        enterIconWidth={100}
+        message={"Set URL: Outside URL - Instagram"}
+      />
+
+      {/* SOCIAL MEDIA ICON - LINKEDIN */}
+      <PortalArea
+        position={[71.5, 0, 77.5]}
+        rotation={[0, -Math.PI * 0.75, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        isOutsideUrl={true}
+        projectUrl={"https://www.linkedin.com/in/toshihito-endo-a68a82172/"}
+        text="LinkedIn"
+        textHeight={3.5}
+        textDistance={2.0}
+        fontSize={30}
+        enterIconWidth={100}
+        message={"Set URL: Outside URL - LinkedIn"}
       />
     </group>
   );
