@@ -7,12 +7,19 @@ import { gameStates, useGameStore } from "../../store/store";
 import { Image as DreiImage, useKeyboardControls } from "@react-three/drei";
 
 export default function PortalArea({
-  scale,
   position,
   rotation,
+  collisionObjWidth = 3.0,
+  collisionObjHeight = 1.0,
+  collisionObjDepth = 3.0,
+  isOutsideUrl = false,
   projectUrl,
   message,
-  text = "Go to the project page"
+  text = "Go to the project page",
+  textHeight = 5.0,
+  textDistance = 8.0,
+  fontSize = 60.0,
+  enterIconWidth = 250.0,
 }) {
   /**
    * GAME STORE
@@ -69,7 +76,12 @@ export default function PortalArea({
       document.exitPointerLock();
 
       // Redirect
-      navigate(curProjectUrl);
+      if (!isOutsideUrl) {
+        navigate(curProjectUrl);
+      }
+      if (isOutsideUrl) {
+        window.open(curProjectUrl);
+      }
 
       // Reset the current project url
       setCurProjectUrl(null);
@@ -83,18 +95,42 @@ export default function PortalArea({
 
   return (
     <>
-      <group scale={scale} position={position} rotation={rotation}>
-        {/* ENTER KEY */}
+      <group position={position} rotation={rotation}>
+        {/* INFO ICON */}
+        {!showEnterKey && (
+          <>
+            <mesh
+              position-y={0.05}
+              scale={[collisionObjWidth * 2, collisionObjDepth * 2, 1.0]}
+              rotation-x={-Math.PI * 0.5}
+            >
+              <planeGeometry />
+              <meshBasicMaterial />
+            </mesh>
+
+            <mesh position-y={3} scale={[0.5, 2.0, 1]}>
+              <planeGeometry />
+              <meshBasicMaterial />
+            </mesh>
+
+            <mesh position-y={1.5} scale={[0.5, 0.5, 1]}>
+              <planeGeometry />
+              <meshBasicMaterial />
+            </mesh>
+          </>
+        )}
+
+        {/* TEXT & ENTER KEY ICON */}
         {!!showEnterKey && (
-          <group position={[0, 4, 0]}>
+          <group position={[0, textHeight, -1 * textDistance]}>
             <Root>
               <Container flexDirection="column" gap={15} alignItems="center">
-                <Text fontWeight="extra-bold" fontSize={60} color="white">
+                <Text fontWeight="extra-bold" fontSize={fontSize} color="white">
                   {text}
                 </Text>
                 <Image
                   src="./images/icons/enter-key.svg"
-                  width={250}
+                  width={enterIconWidth}
                   marginTop={50}
                 />
               </Container>
@@ -103,26 +139,28 @@ export default function PortalArea({
         )}
 
         {/* COLLISION */}
-        <group position={[0, 0, 7]}>
-          <RigidBody
-            type="fixed"
-            colliders={false}
-            onIntersectionEnter={() => {
-              setCurProjectUrl(projectUrl);
-              console.log(message);
+        <RigidBody
+          type="fixed"
+          colliders={false}
+          onIntersectionEnter={() => {
+            setCurProjectUrl(projectUrl);
+            console.log(message);
 
-              setShowEnterKey(true);
-            }}
-            onIntersectionExit={() => {
-              setCurProjectUrl(null);
-              console.log("Reset the curProjectUrl");
+            setShowEnterKey(true);
+          }}
+          onIntersectionExit={() => {
+            setCurProjectUrl(null);
+            console.log("Reset the curProjectUrl");
 
-              setShowEnterKey(false);
-            }}
-          >
-            <CuboidCollider args={[10.0, 1.5, 10.0]} sensor />
-          </RigidBody>
-        </group>
+            setShowEnterKey(false);
+          }}
+        >
+          <CuboidCollider
+            position={[0, collisionObjHeight, 0]}
+            args={[collisionObjWidth, collisionObjHeight, collisionObjDepth]}
+            sensor
+          />
+        </RigidBody>
       </group>
     </>
   );

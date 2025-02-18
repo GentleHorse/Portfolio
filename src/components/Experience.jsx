@@ -42,6 +42,7 @@ export default function Experience() {
 
           <Atelier scale={2.0} />
           <AtelierCollisionObjects />
+          <PortalAreas />
 
           {/* PROJECT PAGE PORTALS */}
           {/* {gameState !== gameStates.LOADING && <PortalAreas />} */}

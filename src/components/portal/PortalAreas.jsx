@@ -1,127 +1,167 @@
 import PortalArea from "./PortalArea.jsx";
-
-const GATE_POSITION_Y = -0.5;
+import CollisionObject from "../utilComponents/CollisionObject.jsx";
 
 export default function PortalAreas() {
   return (
-    <>
-      <group position-y={GATE_POSITION_Y}>
-        <group position-y={1.5}>
-          {/* DESIGN - AMBIENCE OF LIGHT */}
-          <PortalArea
-            scale={[1.0, 1.0, 1.0]}
-            position={[-30, 0, -40]}
-            rotation={[0, Math.PI * 0.2, 0]}
-            projectUrl={"/ambience-of-light"}
-            message={"Set URL: Ambience of Light"}
-          />
+    <group>
+      {/* DESIGN - AMBIENCE OF LIGHT */}
+      <PortalArea
+        position={[38, 0, 15]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/ambience-of-light"}
+        text="Ambience of Light"
+        textHeight={5.0}
+        textDistance={8.0}
+        message={"Set URL: Ambience of Light"}
+      />
 
-          {/* DESIGN - BEAUTY OF TIME PASSING */}
-          <PortalArea
-            scale={[1.0, 1.0, 1.0]}
-            position={[2.5, 0, -65]}
-            rotation={[0, 0, 0]}
-            projectUrl={"/beauty-of-time-passing"}
-            message={"Set URL: Beauty of Time Passing"}
-          />
+      {/* DESIGN - BEAUTY OF TIME PASSING */}
+      <PortalArea
+        position={[32, 0, 40]}
+        rotation={[0, -Math.PI * 0.35, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/beauty-of-time-passing"}
+        text="Beauty of Time Passing"
+        textHeight={5.0}
+        textDistance={8.0}
+        message={"Set URL: Beauty of Time Passing"}
+      />
 
-          {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
-          <PortalArea
-            scale={[2.0, 2.0, 2.0]}
-            position={[65, 0, -70]}
-            rotation={[0, -Math.PI * 0.4, 0]}
-            projectUrl={"/intervention-in-our-disconnection"}
-            message={"Set URL: Intervention in our Disconnection"}
-          />
+      {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
+      <PortalArea
+        position={[48, 0, 52.5]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/intervention-in-our-disconnection"}
+        text="Intervention in our Disconnection"
+        textHeight={5.0}
+        textDistance={8.0}
+        message={"Set URL: Intervention in our Disconnection"}
+      />
 
-          {/* DESIGN - MASU TYPO */}
-          <PortalArea
-            scale={[2.0, 2.0, 2.0]}
-            position={[-60, 0, -120]}
-            rotation={[0, Math.PI * 0.15, 0]}
-            projectUrl={"/masu-typo"}
-            message={"Set URL: Masu Typo"}
-          />
+      {/* DESIGN - MASU TYPO */}
+      <PortalArea
+        position={[75, 0, 37.5]}
+        rotation={[0, -Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/masu-typo"}
+        text="Masu Typo"
+        textHeight={5.0}
+        textDistance={8.0}
+        message={"Set URL: Masu Typo"}
+      />
 
-          {/* DESIGN - COMFORTING DINNER */}
-          <PortalArea
-            scale={[4.0, 4.0, 2.0]}
-            position={[55, 0, -140]}
-            rotation={[0, -Math.PI * 0.15, 0]}
-            projectUrl={"/comforting-dinner"}
-            message={"Set URL: Comforting Dinner"}
-          />
-        </group>
+      {/* DESIGN - COMFORTING DINNER */}
+      <PortalArea
+        position={[65, 0, 6.25]}
+        rotation={[0, -Math.PI * 0.25, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/comforting-dinner"}
+        text="Comforting Dinner"
+        textHeight={5.0}
+        textDistance={8.0}
+        message={"Set URL: Comforting Dinner"}
+      />
 
-        <group position-y={1.5}>
-          {/* 3D VISUALS */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[-20, 0, 47.5]}
-            rotation={[0, -Math.PI, 0]}
-            projectUrl={"/three-d-visuals"}
-            message={"Set URL: 3D Visuals"}
-          />
+      {/* 3D VISUALS */}
+      <PortalArea
+        position={[-35.0, 0, 3.75]}
+        rotation={[0, Math.PI * 0.65, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/three-d-visuals"}
+        text="3D Motion Visuals"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: 3D Visuals"}
+      />
 
-          {/* 3D APP DEV - MARBLE RACE */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[5, 0, 30]}
-            rotation={[0, -Math.PI * 0.5, 0]}
-            projectUrl={"/marble-race"}
-            message={"Set URL: Marble's on a Roll"}
-          />
+      {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
+      <PortalArea
+        position={[-60.0, 0, 14.0]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/object-rotterdam-2024"}
+        text="OBJECT Rotterdam 2024"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: OBJECT Rotterdam 2024"}
+      />
 
-          {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[-5, 0, 45]}
-            rotation={[0, -Math.PI * 0.75, 0]}
-            projectUrl={"/object-rotterdam-2024"}
-            message={"Set URL: OBJECT Rotterdam 2024"}
-          />
+      {/* 3D APP DEV - PORTFOLIO WEBSITE */}
+      <PortalArea
+        position={[-60.0, 0, 5.0]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/portfolio-website"}
+        text="Portfolio Website"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: Portfolio Website"}
+      />
 
-          {/* 3D APP DEV - WEATHER CEREAL */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[15, 0, 50]}
-            rotation={[0, -Math.PI * 0.5, 0]}
-            projectUrl={"/weather-cereal"}
-            message={"Set URL: Weather Cereal"}
-          />
+      {/* 3D APP DEV - NUL ZES CRAFT DE MARKT */}
+      <PortalArea
+        position={[-60.0, 0, -3.5]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        isOutsideUrl={true}
+        projectUrl={"https://nul-zes-crafted-de-markt-promo.vercel.app/"}
+        text="Nul Zes Crafted de Markt"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: Nul Zes Crafted de Markt"}
+      />
 
-          {/* 3D APP DEV - DONUTS UNIVERSE */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[25, 0, 35]}
-            rotation={[0, -Math.PI * 0.5, 0]}
-            projectUrl={"/donuts-universe"}
-            message={"Set URL: Donuts Universe"}
-          />
-        </group>
+      {/* 3D APP DEV - WEATHER CEREAL */}
+      <PortalArea
+        position={[-60.0, 0, -9.0]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/weather-cereal"}
+        text="Weather Cereal"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: Weather Cereal"}
+      />
 
-        <group position-y={1.5}>
-          {/* ABOUT */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[15, 0, -8.5]}
-            rotation={[0, 0, 0]}
-            projectUrl={"/about"}
-            message={"Set URL: About"}
-            text="Who made this?"
-          />
+      {/* 3D APP DEV - MARBLE ON A ROLL */}
+      <PortalArea
+        position={[-60.0, 0, -15.0]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/marble-race"}
+        text="Marble's on a Roll"
+        textHeight={4.0}
+        textDistance={7.0}
+        message={"Set URL: Marble's on a Roll"}
+      />
 
-          {/* PORTFOLIO WEBSITE DESCRIPTION PAGE */}
-          <PortalArea
-            scale={[0.5, 0.5, 0.5]}
-            position={[15, 1.5, 12.5]}
-            rotation={[0, -Math.PI * 0.8, 0]}
-            projectUrl={"/portfolio-website"}
-            message={"Set URL: Portfolio Website"}
-            text="About this 'atelier'"
-          />
-        </group>
-      </group>
-    </>
+      {/* ABOUT */}
+      <PortalArea
+        position={[5.5, 0.1, 48.0]}
+        rotation={[0, Math.PI * 1.15, 0]}
+        collisionObjWidth={1.0}
+        collisionObjDepth={1.0}
+        projectUrl={"/about"}
+        text="Who made this?"
+        textHeight={2.5}
+        textDistance={2.0}
+        fontSize={30}
+        enterIconWidth={100}
+        message={"Set URL: About"}
+      />
+    </group>
   );
 }

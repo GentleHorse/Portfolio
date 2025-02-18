@@ -1,28 +1,8 @@
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import CollisionObject from "../../utilComponents/CollisionObject.jsx";
-
-/**
-
-      <RigidBody
-        colliders={false}
-        type="fixed"
-        position={[0, 0, 0]}
-        rotation={[0, 0, 0]}
-        friction={0.5}
-      >
-        <CuboidCollider
-          position={[0, 1.0, 0]} // Touch its bottom on the ground
-          args={[1.0, 1.0, 1.0]}
-        />
-      </RigidBody>
-
- */
 
 export default function AtelierCollisionObjects() {
   return (
     <>
-      <CollisionObject collisionObjectName="test object" />
-
       {/* --- ATELIER, WORKSHOP AREA  -------------------------- */}
 
       {/* Boundary - tokonoma side */}
@@ -308,7 +288,6 @@ export default function AtelierCollisionObjects() {
           args={[27.5, 5.0, 1.0]}
         />
       </RigidBody>
-
 
       {/* --- GARDEN AREA -------------------------------------- */}
 
