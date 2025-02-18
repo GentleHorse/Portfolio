@@ -36,7 +36,7 @@ export default function Experience() {
       {/* PHYSICS SCENE */}
       <Physics debug={true}>
         {/* CONTROLS */}
-        {isBrowser && <FirstPersonViewControl />}
+        {/* {isBrowser && <FirstPersonViewControl />} */}
 
         <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
 
