@@ -125,7 +125,51 @@ export default function AtelierCollisionObjects() {
 
       {/* --- VIRTUAL AREA ------------------------------------- */}
 
+      {/* Boundary - analog TV side */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-64, 0, 4.5]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 8, 0]} // Touch its bottom on the ground
+          args={[0.5, 8.0, 37.5]}
+        />
+      </RigidBody>
+
+      {/* Boundary - clay side */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-37.5, 0, -30]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 8, 0]} // Touch its bottom on the ground
+          args={[30.0, 8.0, 1.0]}
+        />
+      </RigidBody>
+
+      {/* Boundary - photo booth */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-37.5, 0, 32.5]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 8, 0]} // Touch its bottom on the ground
+          args={[30.0, 8.0, 1.0]}
+        />
+      </RigidBody>
+
       {/* --- MUSEUM AREA -------------------------------------- */}
+
+      
 
       {/* --- GARDEN AREA -------------------------------------- */}
 
