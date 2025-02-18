@@ -11,7 +11,7 @@ import CollisionObject from "../../utilComponents/CollisionObject.jsx";
         friction={0.5}
       >
         <CuboidCollider
-          position={[0, 0, 0]} // Touch its bottom on the ground
+          position={[0, 1.0, 0]} // Touch its bottom on the ground
           args={[1.0, 1.0, 1.0]}
         />
       </RigidBody>
@@ -21,7 +21,7 @@ import CollisionObject from "../../utilComponents/CollisionObject.jsx";
 export default function AtelierCollisionObjects() {
   return (
     <>
-      {/* <CollisionObject collisionObjectName="test object" /> */}
+      <CollisionObject collisionObjectName="test object" />
 
       {/* --- ATELIER, WORKSHOP AREA  -------------------------- */}
 
@@ -169,7 +169,146 @@ export default function AtelierCollisionObjects() {
 
       {/* --- MUSEUM AREA -------------------------------------- */}
 
-      
+      {/* Building - entrance */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-5, 0, 32.5]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 5, 0]} // Touch its bottom on the ground
+          args={[4.5, 5.0, 1.0]}
+        />
+      </RigidBody>
+
+      {/* Building - magazine wall */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[41, 0, 78]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 5.0, 0]} // Touch its bottom on the ground
+          args={[1.0, 5.0, 5.75]}
+        />
+      </RigidBody>
+
+      {/* Human head */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[7.5, 0, 51.5]}
+        rotation={[0, (Math.PI * 1) / 6.75, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.75, 3.0, 2.75]}
+        />
+      </RigidBody>
+
+      {/* Accounting */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-3.5, 0, 54.5]}
+        rotation={[0, (Math.PI * 1) / 3.5, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.25, 3.0, 2.25]}
+        />
+      </RigidBody>
+
+      {/* Local cuisine */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[-3.0, 0, 66.5]}
+        rotation={[0, (Math.PI * 1) / 3.5, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.75, 3.0, 2.75]}
+        />
+      </RigidBody>
+
+      {/* Piano */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[8.75, 0, 68]}
+        rotation={[0, (Math.PI * 1) / 4, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.0, 3.0, 2.75]}
+        />
+      </RigidBody>
+
+      {/* SNES & LEGO */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[15.5, 0, 61.0]}
+        rotation={[0, (-Math.PI * 1) / 15, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.5, 3.0, 2.5]}
+        />
+      </RigidBody>
+
+      {/* Hiking */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[5.0, 0, 79.0]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3, 0]} // Touch its bottom on the ground
+          args={[9.0, 3.0, 3.0]}
+        />
+      </RigidBody>
+
+      {/* Choir */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[22.5, 0, 71.0]}
+        rotation={[0, (-Math.PI * 1) / 6.5, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 3.0, 0]} // Touch its bottom on the ground
+          args={[2.5, 3.0, 2.5]}
+        />
+      </RigidBody>
+
+      {/* Art paintings & books */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position={[15.0, 0, 81.0]}
+        rotation={[0, 0, 0]}
+        friction={0.5}
+      >
+        <CuboidCollider
+          position={[0, 5, 0]} // Touch its bottom on the ground
+          args={[27.5, 5.0, 1.0]}
+        />
+      </RigidBody>
+
 
       {/* --- GARDEN AREA -------------------------------------- */}
 
