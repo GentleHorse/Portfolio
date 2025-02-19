@@ -17,10 +17,14 @@ import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 import CustomShaderMaterial from "three-custom-shader-material/vanilla";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
+import CollisionObject from "../../utilComponents/CollisionObject";
+
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
 import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
 import wobbleVertexShader from "../../../shaders/wobble/vertex.glsl";
 import wobbleFragmentShader from "../../../shaders/wobble/fragment.glsl";
+import lightDispersionVertexShader from "../../../shaders/lightDispersion/vertex.glsl";
+import lightDispersionFragmentShader from "../../../shaders/lightDispersion/fragment.glsl";
 
 export default function Atelier(props) {
   /**
@@ -50,11 +54,11 @@ export default function Atelier(props) {
    * MATERIAL | ENVIRONMENT
    */
   const groundMaterial = new THREE.MeshBasicMaterial({
-    color: "#C1C1C1",
+    color: "#1C1C1C",
   });
 
   const fenceMaterial = new THREE.MeshBasicMaterial({
-    color: "#C1C1C1",
+    color: "#1C1C1C",
   });
 
   /**
@@ -81,7 +85,36 @@ export default function Atelier(props) {
   });
 
   /**
-   * MATERIAL | INTERACTIVE WALL SCREEN
+   * GEOMETRY & MATERIAL | LIGHT DISPERSION
+   */
+  let lightDispersionGeometry = new THREE.PlaneGeometry(1, 1, 64 * 2, 16 * 2);
+  lightDispersionGeometry.translate(-0.5, 0, 0); // Set the origin to the bottom of the square plane
+  lightDispersionGeometry.scale(4.0, 4.0, 1.5);
+
+  const perlinTexture = useTexture("/textures/noise/melt-2.png");
+  perlinTexture.wrapS = THREE.RepeatWrapping;
+  perlinTexture.wrapT = THREE.RepeatWrapping;
+
+  const lightDispersionMaterial = new THREE.ShaderMaterial({
+    vertexShader: lightDispersionVertexShader,
+    fragmentShader: lightDispersionFragmentShader,
+    wireframe: false,
+    uniforms: {
+      uTime: new THREE.Uniform(0),
+      uPerlinTexture: new THREE.Uniform(perlinTexture),
+      uSmokeColorRed: new THREE.Uniform(1.0),
+      uSmokeColorGreen: new THREE.Uniform(0.4),
+      uSmokeColorBlue: new THREE.Uniform(1.0),
+      uSmokeCurveStrength: new THREE.Uniform(2.0),
+      uWindSpeed: new THREE.Uniform(0.0),
+    },
+    side: THREE.DoubleSide,
+    transparent: true,
+    depthWrite: false,
+  });
+
+  /**
+   * GEOMETRY & MATERIAL | INTERACTIVE WALL SCREEN
    */
   let interactiveScreenGeometry = new THREE.CylinderGeometry(
     1,
@@ -113,7 +146,7 @@ export default function Atelier(props) {
     new THREE.Color("#FFFFFF")
   );
   interactiveScreenWallMaterialUnifroms.uColorB = new THREE.Uniform(
-    new THREE.Color("#1C1C1C")
+    new THREE.Color("#F8F4E6")
   );
   interactiveScreenWallMaterialUnifroms.uTipThreshold = new THREE.Uniform(0.85);
 
@@ -126,8 +159,8 @@ export default function Atelier(props) {
     silent: true,
 
     // MeshPhysicalMaterial
-    metalness: 0,
-    roughness: 0.5,
+    metalness: 0.0,
+    roughness: 0.12,
     color: "#ffffff",
     transmission: 0.0,
     ior: 4.003,
@@ -323,10 +356,51 @@ export default function Atelier(props) {
     holographicMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
     interactiveScreenWallMaterialUnifroms.uTime.value =
       state.clock.getElapsedTime();
+    lightDispersionMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
   });
 
   return (
     <group {...props} dispose={null}>
+      {/* Custom object | light dispersion - Beauty of Time Passing */}
+      <group
+        scale={1.5}
+        position={[16.5, 2.5, 17.0]}
+        rotation={[0, -Math.PI * 0.075, 0]}
+      >
+        <mesh
+          rotation={[0, 0, 0]}
+          position={[0, 0, 0]}
+          geometry={lightDispersionGeometry}
+          material={lightDispersionMaterial}
+        />
+        <mesh
+          rotation={[0, 0, 0]}
+          position={[0, 0.25, 0.25]}
+          geometry={lightDispersionGeometry}
+          material={lightDispersionMaterial}
+        />
+        <mesh
+          rotation={[0, 0, 0]}
+          position={[0, 0.1, 0.5]}
+          geometry={lightDispersionGeometry}
+          material={lightDispersionMaterial}
+        />
+      </group>
+
+      {/* Custom Object | interactive wall screen */}
+      <mesh
+        scale={[0.5, 1.25, 1.75]}
+        position={[-5.0, 2.5, 29.25]}
+        rotation={[Math.PI * 0.5, 0.0, 0.0]}
+        geometry={interactiveScreenGeometry}
+        material={interactiveScreenMaterial}
+        customDepthMaterial={interactiveScreenDepthMaterial}
+        receiveShadow={true}
+        castShadow={true}
+      />
+
+      {/* ---------- !!! PASTE JSXTIFY CODE BELOW HERE !!! ---------- */}
+
       <mesh
         name="atelier-wood-floor"
         geometry={nodes["atelier-wood-floor"].geometry}
@@ -1644,18 +1718,6 @@ export default function Atelier(props) {
         position={[-4.771, -0.081, 16.835]}
         rotation={[0, 0, -Math.PI / 2]}
       /> */}
-
-      {/* Custom interactive wall screen */}
-      <mesh
-        scale={[0.5, 1.25, 1.75]}
-        position={[-5.0, 2.5, 29.25]}
-        rotation={[Math.PI * 0.5, 0.0, 0.0]}
-        geometry={interactiveScreenGeometry}
-        material={interactiveScreenMaterial}
-        customDepthMaterial={interactiveScreenDepthMaterial}
-        receiveShadow={true}
-        castShadow={true}
-      />
 
       <mesh
         name="painting-frame"

@@ -24,21 +24,21 @@ export default function Experience() {
     <>
       {/* ENVIRONMENT SET UP */}
       <Lights />
-      <Background color="#C1C1C1" />
+      <Background color="#1C1C1C" />
 
       {/* DEBUG TOOLS */}
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" />
       <axesHelper />
-      <OrbitControls makeDefault />
+      <OrbitControls makeDefault /> */}
 
       {/* FOG */}
-      {/* <fog attach="fog" args={["#C1C1C1", 8, 80]} /> */}
+      <fog attach="fog" args={["#1C1C1C", 8, 80]} />
 
 
       {/* PHYSICS SCENE */}
-      <Physics debug={true}>
+      <Physics debug={false}>
         {/* CONTROLS */}
-        {/* {isBrowser && <FirstPersonViewControl />} */}
+        {isBrowser && <FirstPersonViewControl />}
 
         <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
           <Atelier scale={2.0} />
