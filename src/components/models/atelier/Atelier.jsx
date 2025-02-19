@@ -17,8 +17,6 @@ import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 import CustomShaderMaterial from "three-custom-shader-material/vanilla";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
-import CollisionObject from "../../utilComponents/CollisionObject";
-
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
 import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
 import wobbleVertexShader from "../../../shaders/wobble/vertex.glsl";
@@ -437,12 +435,12 @@ export default function Atelier(props) {
         material={atelierMaterial}
         position={[2.065, 0, 0.226]}
       />
-      {/* <mesh
+      <mesh
         name="atelier-roof"
         geometry={nodes["atelier-roof"].geometry}
         material={atelierMaterial}
         position={[1.205, 4.017, 0.513]}
-      /> */}
+      />
       <mesh
         name="coffee-cup001"
         geometry={nodes["coffee-cup001"].geometry}
@@ -1743,12 +1741,12 @@ export default function Atelier(props) {
         material={atelierMaterial}
         position={[-0.448, 2.157, 16.31]}
       />
-      {/* <mesh
+      <mesh
         name="museum-building-roof"
         geometry={nodes["museum-building-roof"].geometry}
         material={atelierMaterial}
         position={[8.376, 4.889, 28.867]}
-      /> */}
+      />
       <mesh
         name="museum-building-floor"
         geometry={nodes["museum-building-floor"].geometry}

@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";

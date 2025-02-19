@@ -42,7 +42,7 @@ export default function PortalAreas() {
         title="Intervention in our Disconnection"
         titleHeight={3.5}
         titleDistance={7.0}
-        text="Marble stone Upcylcing project, collaborated with the local company"
+        text="Marble stone upcylcing project, collaborated with the local company"
         textFontSize={20}
         message={"Set URL: Intervention in our Disconnection"}
       />
