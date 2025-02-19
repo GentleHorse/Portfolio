@@ -1,3 +1,4 @@
+
 import { OrbitControls } from "@react-three/drei";
 import { Physics, RigidBody, CuboidCollider } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
@@ -26,20 +27,20 @@ export default function Experience() {
       <Background color="#C1C1C1" />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-left" />
+      <Perf position="top-left" />
       <axesHelper />
-      <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* FOG */}
       {/* <fog attach="fog" args={["#C1C1C1", 8, 80]} /> */}
 
+
       {/* PHYSICS SCENE */}
-      <Physics debug={false}>
+      <Physics debug={true}>
         {/* CONTROLS */}
-        {isBrowser && <FirstPersonViewControl />}
+        {/* {isBrowser && <FirstPersonViewControl />} */}
 
         <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
-
           <Atelier scale={2.0} />
           <AtelierCollisionObjects />
           <PortalAreas />

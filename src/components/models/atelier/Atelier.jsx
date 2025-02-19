@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.4.1 ./public/models/new-atelier/new-atelier.glb
 
 /**
  * REPLACE WITH UV MATERIAL
- * 
+ *
  * FROM: material=\{.*?\}
  * TO:   material={atelierMaterial}
  */
@@ -14,9 +14,13 @@ import React from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
+import CustomShaderMaterial from "three-custom-shader-material/vanilla";
+import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
 import holographicVertexShader from "../../../shaders/holographic/vertex.glsl";
 import holographicFragmentShader from "../../../shaders/holographic/fragment.glsl";
+import wobbleVertexShader from "../../../shaders/wobble/vertex.glsl";
+import wobbleFragmentShader from "../../../shaders/wobble/fragment.glsl";
 
 export default function Atelier(props) {
   /**
@@ -74,6 +78,73 @@ export default function Atelier(props) {
     side: THREE.DoubleSide,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
+  });
+
+  /**
+   * MATERIAL | INTERACTIVE WALL SCREEN
+   */
+  let interactiveScreenGeometry = new THREE.CylinderGeometry(
+    1,
+    1,
+    20,
+    32,
+    240,
+    80
+  );
+  interactiveScreenGeometry = mergeVertices(interactiveScreenGeometry);
+  interactiveScreenGeometry.computeTangents();
+
+  const interactiveScreenWallMaterialUnifroms = {};
+  interactiveScreenWallMaterialUnifroms.uTime = new THREE.Uniform(0);
+  interactiveScreenWallMaterialUnifroms.uPositionFrequency = new THREE.Uniform(
+    0.12
+  );
+  interactiveScreenWallMaterialUnifroms.uTimeFrequency = new THREE.Uniform(
+    0.087
+  );
+  interactiveScreenWallMaterialUnifroms.uStrength = new THREE.Uniform(0.541);
+  interactiveScreenWallMaterialUnifroms.uWarpPositionFrequency =
+    new THREE.Uniform(0.325);
+  interactiveScreenWallMaterialUnifroms.uWarpTimeFrequency = new THREE.Uniform(
+    0.12
+  );
+  interactiveScreenWallMaterialUnifroms.uWarpStrength = new THREE.Uniform(1.7);
+  interactiveScreenWallMaterialUnifroms.uColorA = new THREE.Uniform(
+    new THREE.Color("#FFFFFF")
+  );
+  interactiveScreenWallMaterialUnifroms.uColorB = new THREE.Uniform(
+    new THREE.Color("#1C1C1C")
+  );
+  interactiveScreenWallMaterialUnifroms.uTipThreshold = new THREE.Uniform(0.85);
+
+  const interactiveScreenMaterial = new CustomShaderMaterial({
+    // CSM
+    baseMaterial: THREE.MeshPhysicalMaterial,
+    vertexShader: wobbleVertexShader,
+    fragmentShader: wobbleFragmentShader,
+    uniforms: interactiveScreenWallMaterialUnifroms,
+    silent: true,
+
+    // MeshPhysicalMaterial
+    metalness: 0,
+    roughness: 0.5,
+    color: "#ffffff",
+    transmission: 0.0,
+    ior: 4.003,
+    thickness: 0.569,
+    transparent: false,
+    wireframe: false,
+  });
+
+  const interactiveScreenDepthMaterial = new CustomShaderMaterial({
+    // CSM
+    baseMaterial: THREE.MeshDepthMaterial,
+    vertexShader: wobbleVertexShader,
+    uniforms: interactiveScreenWallMaterialUnifroms,
+    silent: true,
+
+    // MeshDepthMaterial
+    depthPacking: THREE.RGBADepthPacking,
   });
 
   /**
@@ -250,6 +321,8 @@ export default function Atelier(props) {
    */
   useFrame((state, delta) => {
     holographicMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
+    interactiveScreenWallMaterialUnifroms.uTime.value =
+      state.clock.getElapsedTime();
   });
 
   return (
@@ -1564,13 +1637,26 @@ export default function Atelier(props) {
         material={kuniyoshiUtagawaPaintingMaterial}
         position={[9.598, 1.643, 41.219]}
       />
-      <mesh
+      {/* <mesh
         name="interactive-wall-screen"
         geometry={nodes["interactive-wall-screen"].geometry}
         material={atelierMaterial}
         position={[-4.771, -0.081, 16.835]}
         rotation={[0, 0, -Math.PI / 2]}
+      /> */}
+
+      {/* Custom interactive wall screen */}
+      <mesh
+        scale={[0.5, 1.25, 1.75]}
+        position={[-5.0, 2.5, 29.25]}
+        rotation={[Math.PI * 0.5, 0.0, 0.0]}
+        geometry={interactiveScreenGeometry}
+        material={interactiveScreenMaterial}
+        customDepthMaterial={interactiveScreenDepthMaterial}
+        receiveShadow={true}
+        castShadow={true}
       />
+
       <mesh
         name="painting-frame"
         geometry={nodes["painting-frame"].geometry}
