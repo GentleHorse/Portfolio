@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Root, Text, Image, Container } from "@react-three/uikit";
@@ -9,17 +9,23 @@ import { Image as DreiImage, useKeyboardControls } from "@react-three/drei";
 export default function PortalArea({
   position,
   rotation,
-  collisionObjWidth = 3.0,
+  collisionObjWidth = 2.0,
   collisionObjHeight = 1.0,
-  collisionObjDepth = 3.0,
+  collisionObjDepth = 2.0,
   isOutsideUrl = false,
   projectUrl,
   message,
-  text = "Go to the project page",
-  textHeight = 5.0,
-  textDistance = 8.0,
-  fontSize = 60.0,
-  enterIconWidth = 250.0,
+  containerWidth = 800,
+  title = "Go to the project page",
+  titleHeight = 1.5,
+  titleDistance = 8.0,
+  titleFontSize = 60.0,
+  text,
+  textFontSize = 40.0,
+  enterIconWidth = 150.0,
+  infoIconWidth = 150.0,
+  infoIconDistance = 2.0,
+  infoIconHeight = 2.5,
 }) {
   /**
    * GAME STORE
@@ -99,35 +105,46 @@ export default function PortalArea({
         {/* INFO ICON */}
         {!showEnterKey && (
           <>
-            <mesh
-              position-y={0.05}
-              scale={[collisionObjWidth * 2, collisionObjDepth * 2, 1.0]}
-              rotation-x={-Math.PI * 0.5}
-            >
-              <planeGeometry />
-              <meshBasicMaterial />
-            </mesh>
-
-            <mesh position-y={3} scale={[0.5, 2.0, 1]}>
-              <planeGeometry />
-              <meshBasicMaterial />
-            </mesh>
-
-            <mesh position-y={1.5} scale={[0.5, 0.5, 1]}>
-              <planeGeometry />
-              <meshBasicMaterial />
-            </mesh>
+            <group position={[0, infoIconHeight, -1.0 * infoIconDistance]}>
+              <Root>
+                <Image
+                  src="./images/icons/info.svg"
+                  width={infoIconWidth}
+                  marginTop={0}
+                  opacity={0.75}
+                />
+              </Root>
+            </group>
           </>
         )}
 
         {/* TEXT & ENTER KEY ICON */}
         {!!showEnterKey && (
-          <group position={[0, textHeight, -1 * textDistance]}>
+          <group position={[0, titleHeight, -1 * titleDistance]}>
             <Root>
-              <Container flexDirection="column" gap={15} alignItems="center">
-                <Text fontWeight="extra-bold" fontSize={fontSize} color="white">
-                  {text}
+              <Container
+                flexDirection="column"
+                gap={15}
+                alignItems="center"
+                width={containerWidth}
+              >
+                <Text
+                  fontWeight="extra-bold"
+                  fontSize={titleFontSize}
+                  color="white"
+                >
+                  {title}
                 </Text>
+                {!!text && (
+                  <Text
+                    fontWeight="normal"
+                    fontSize={textFontSize}
+                    color="white"
+                  >
+                    {text}
+                  </Text>
+                )}
+
                 <Image
                   src="./images/icons/enter-key.svg"
                   width={enterIconWidth}

@@ -27,12 +27,12 @@ export default function Experience() {
       <Background color="#1C1C1C" />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-left" />
+      <Perf position="top-left" />
       <axesHelper />
-      <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* FOG */}
-      <fog attach="fog" args={["#1C1C1C", 8, 80]} />
+      <fog attach="fog" args={["#1C1C1C", 8, 60]} />
 
 
       {/* PHYSICS SCENE */}
@@ -43,10 +43,7 @@ export default function Experience() {
         <group position={[0, 0, 0]} rotation={[0, Math.PI * -0.5, 0]}>
           <Atelier scale={2.0} />
           <AtelierCollisionObjects />
-          <PortalAreas />
-
-          {/* PROJECT PAGE PORTALS */}
-          {/* {gameState !== gameStates.LOADING && <PortalAreas />} */}
+          {gameState !== gameStates.LOADING && <PortalAreas />}
         </group>
       </Physics>
     </>

@@ -10,223 +10,208 @@ export default function PortalAreas() {
 
       {/* DESIGN - AMBIENCE OF LIGHT */}
       <PortalArea
-        position={[38, 0, 15]}
+        position={[36.5, 0, 15]}
         rotation={[0, -Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/ambience-of-light"}
-        text="Ambience of Light"
-        textHeight={5.0}
-        textDistance={8.0}
+        title="Ambience of Light"
+        titleHeight={3.5}
+        titleDistance={7.0}
+        text="Modular lamp, presented at OBJECT Rotterdam 2024"
+        textFontSize={20}
         message={"Set URL: Ambience of Light"}
       />
 
       {/* DESIGN - BEAUTY OF TIME PASSING */}
       <PortalArea
-        position={[32, 0, 40]}
+        position={[29, 0, 42.5]}
         rotation={[0, -Math.PI * 0.35, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/beauty-of-time-passing"}
-        text="Beauty of Time Passing"
-        textHeight={5.0}
-        textDistance={8.0}
+        title="Beauty of Time Passing"
+        titleHeight={3.5}
+        titleDistance={7.0}
+        text="Interactiive spatial light installation, presented at Dutch Design Week 2023"
+        textFontSize={20}
         message={"Set URL: Beauty of Time Passing"}
       />
 
       {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
       <PortalArea
-        position={[48, 0, 52.5]}
+        position={[45, 0, 49]}
         rotation={[0, -Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/intervention-in-our-disconnection"}
-        text="Intervention in our Disconnection"
-        textHeight={5.0}
-        textDistance={8.0}
+        title="Intervention in our Disconnection"
+        titleHeight={3.5}
+        titleDistance={7.0}
+        text="Marble stone Upcylcing project, collaborated with the local company"
+        textFontSize={20}
         message={"Set URL: Intervention in our Disconnection"}
       />
 
       {/* DESIGN - MASU TYPO */}
       <PortalArea
-        position={[75, 0, 37.5]}
+        position={[72.5, 0, 36.0]}
         rotation={[0, -Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/masu-typo"}
-        text="Masu Typo"
-        textHeight={5.0}
-        textDistance={8.0}
+        title="Masu Typo"
+        titleHeight={3.5}
+        titleDistance={7.0}
+        text="Alphabet typeface inspired by Japanese mono letters"
+        textFontSize={20}
         message={"Set URL: Masu Typo"}
       />
 
       {/* DESIGN - COMFORTING DINNER */}
       <PortalArea
-        position={[65, 0, 6.25]}
+        position={[63.5, 0, 8.75]}
         rotation={[0, -Math.PI * 0.25, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/comforting-dinner"}
-        text="Comforting Dinner"
-        textHeight={5.0}
-        textDistance={8.0}
+        title="Comforting Dinner"
+        titleHeight={3.5}
+        titleDistance={7.0}
+        text="Multisensory ceramic dinner set, presented at Dutch Design Week 2020"
+        textFontSize={20}
         message={"Set URL: Comforting Dinner"}
       />
 
       {/* 3D VISUALS */}
       <PortalArea
-        position={[-35.0, 0, 3.75]}
+        position={[-33.0, 0, 2.5]}
         rotation={[0, Math.PI * 0.65, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/three-d-visuals"}
-        text="3D Motion Visuals"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="3D Motion Visuals"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="Blender, Unreal Engine, Houdini"
         message={"Set URL: 3D Visuals"}
       />
 
       {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
       <PortalArea
-        position={[-60.0, 0, 14.0]}
+        position={[-57.0, 0, 14.0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/object-rotterdam-2024"}
-        text="OBJECT Rotterdam 2024"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="OBJECT Rotterdam 2024"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="3D interactive floor planning tool"
         message={"Set URL: OBJECT Rotterdam 2024"}
       />
 
       {/* 3D APP DEV - PORTFOLIO WEBSITE */}
       <PortalArea
-        position={[-60.0, 0, 5.0]}
+        position={[-57.0, 0, 5.0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/portfolio-website"}
-        text="Portfolio Website"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="Portfolio Website"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="'Game Feel' multi-page portfolio"
         message={"Set URL: Portfolio Website"}
       />
 
       {/* 3D APP DEV - NUL ZES CRAFT DE MARKT */}
       <PortalArea
-        position={[-60.0, 0, -3.5]}
+        position={[-57.0, 0, -3.5]}
         rotation={[0, Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         isOutsideUrl={true}
         projectUrl={"https://nul-zes-crafted-de-markt-promo.vercel.app/"}
-        text="Nul Zes Crafted de Markt"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="Nul Zes Crafted de Markt"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="3D digital flyer for local design market"
         message={"Set URL: Outside URL - Nul Zes Crafted de Markt"}
       />
 
       {/* 3D APP DEV - WEATHER CEREAL */}
       <PortalArea
-        position={[-60.0, 0, -9.0]}
+        position={[-57.0, 0, -9.0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/weather-cereal"}
-        text="Weather Cereal"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="Weather Cereal"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="3D interactive 7-day forcast"
         message={"Set URL: Weather Cereal"}
       />
 
       {/* 3D APP DEV - MARBLE ON A ROLL */}
       <PortalArea
-        position={[-60.0, 0, -15.0]}
+        position={[-57.0, 0, -15.0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/marble-race"}
-        text="Marble's on a Roll"
-        textHeight={4.0}
-        textDistance={7.0}
+        title="Marble's on a Roll"
+        titleHeight={4.0}
+        titleDistance={7.0}
+        text="3D time attack game"
         message={"Set URL: Marble's on a Roll"}
       />
 
       {/* ABOUT ME */}
       <PortalArea
-        position={[5.5, 0.1, 48.0]}
+        position={[4.5, 0.1, 46.75]}
         rotation={[0, Math.PI * 1.15, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         projectUrl={"/about"}
-        text="Who made this?"
-        textHeight={3.5}
-        textDistance={2.0}
-        fontSize={30}
-        enterIconWidth={100}
+        title="Who made this website?"
+        titleHeight={3.5}
+        titleDistance={3.5}
+        titleFontSize={25}
+        textFontSize={15}
+        enterIconWidth={120}
         message={"Set URL: About"}
       />
 
       {/* SOCIAL MEDIA ICON - GITHUB */}
       <PortalArea
-        position={[82.5, 0, 62.5]}
+        position={[81.75, 0, 61.0]}
         rotation={[0, -Math.PI * 0.75, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         isOutsideUrl={true}
         projectUrl={"https://github.com/GentleHorse"}
-        text="GitHub"
-        textHeight={3.5}
-        textDistance={2.0}
-        fontSize={30}
+        title="GitHub"
+        titleHeight={3.5}
+        titleDistance={2.0}
+        titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - GitHub"}
       />
 
       {/* SOCIAL MEDIA ICON - X */}
       <PortalArea
-        position={[78.0, 0, 67.5]}
+        position={[76.5, 0, 66.5]}
         rotation={[0, -Math.PI * 0.70, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         isOutsideUrl={true}
         projectUrl={"https://x.com/toshihito_endo"}
-        text="X"
-        textHeight={3.5}
-        textDistance={2.0}
-        fontSize={30}
+        title="X"
+        titleHeight={3.5}
+        titleDistance={2.0}
+        titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - X"}
       />
 
       {/* SOCIAL MEDIA ICON - INSTAGRAM */}
       <PortalArea
-        position={[75.0, 0, 72.5]}
+        position={[73.0, 0, 71.5]}
         rotation={[0, -Math.PI * 0.725, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         isOutsideUrl={true}
         projectUrl={"https://www.instagram.com/toshihitoendo/"}
-        text="Instagram"
-        textHeight={3.5}
-        textDistance={2.0}
-        fontSize={30}
+        title="Instagram"
+        titleHeight={3.5}
+        titleDistance={2.0}
+        titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - Instagram"}
       />
 
       {/* SOCIAL MEDIA ICON - LINKEDIN */}
       <PortalArea
-        position={[71.5, 0, 77.5]}
+        position={[69.5, 0, 76.0]}
         rotation={[0, -Math.PI * 0.75, 0]}
-        collisionObjWidth={1.0}
-        collisionObjDepth={1.0}
         isOutsideUrl={true}
         projectUrl={"https://www.linkedin.com/in/toshihito-endo-a68a82172/"}
-        text="LinkedIn"
-        textHeight={3.5}
-        textDistance={2.0}
-        fontSize={30}
+        title="LinkedIn"
+        titleHeight={3.5}
+        titleDistance={2.0}
+        titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - LinkedIn"}
       />
