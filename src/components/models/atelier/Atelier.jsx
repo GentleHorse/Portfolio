@@ -33,7 +33,7 @@ export default function Atelier(props) {
   /**
    * MATERIAL | MODEL UV
    */
-  const atelierTexture = useTexture("./textures/new-atelier/baked03-1024.jpg");
+  const atelierTexture = useTexture("./textures/new-atelier/baked.jpg");
   atelierTexture.flipY = false;
   atelierTexture.colorSpace = THREE.SRGBColorSpace;
   const atelierMaterial = new THREE.MeshBasicMaterial({
