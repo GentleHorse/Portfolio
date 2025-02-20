@@ -371,7 +371,7 @@ export default function Atelier(props) {
   useFrame((state, delta) => {
     holographicMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
     interactiveScreenWallMaterialUnifroms.uTime.value =
-      state.clock.getElapsedTime();
+      state.clock.getElapsedTime() * 0.5;
     lightDispersionMaterial.uniforms.uTime.value = state.clock.getElapsedTime();
   });
 

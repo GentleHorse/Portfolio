@@ -28,9 +28,9 @@ export default function Experience() {
       <Background color="#1C1C1C" />
 
       {/* DEBUG TOOLS */}
-      {/* <Perf position="top-left" />
-      <axesHelper />
-      <OrbitControls makeDefault /> */}
+      <Perf position="top-left" />
+      {/* <axesHelper /> */}
+      {/* <OrbitControls makeDefault /> */}
 
       {/* FOG */}
       <fog attach="fog" args={["#1C1C1C", 8, 60]} />
