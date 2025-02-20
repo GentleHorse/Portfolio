@@ -179,6 +179,24 @@ export default function Atelier(props) {
   });
 
   /**
+   * MATERIAL | PC SCREENS
+   */
+  const pcScreenTop = useTexture("/textures/pc-screens/pc-screen-top.jpg");
+  pcScreenTop.flipY =false;
+  pcScreenTop.colorSpace = THREE.SRGBColorSpace;
+  const pcScreenTopMaterial = new THREE.MeshBasicMaterial({
+    map: pcScreenTop,
+    toneMapped: false,
+  });
+  const pcScreenBottom = useTexture("/textures/pc-screens/pc-screen-bottom.jpg");
+  pcScreenBottom.flipY =false;
+  pcScreenBottom.colorSpace = THREE.SRGBColorSpace;
+  const pcScreenBottomMaterial = new THREE.MeshBasicMaterial({
+    map: pcScreenBottom,
+    toneMapped: false,
+  });
+
+  /**
    * MATERIAL | PAINTING IMAGES
    */
   const mondorianPainting = useTexture("/textures/paintings/mondorian.jpg");
@@ -480,14 +498,14 @@ export default function Atelier(props) {
       <mesh
         name="pc-screen-top"
         geometry={nodes["pc-screen-top"].geometry}
-        material={atelierMaterial}
+        material={pcScreenTopMaterial}
         position={[-4.261, 1.644, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
       <mesh
         name="pc-screen-bottom"
         geometry={nodes["pc-screen-bottom"].geometry}
-        material={atelierMaterial}
+        material={pcScreenBottomMaterial}
         position={[-4.261, 0.278, 2.398]}
         rotation={[0, Math.PI / 4, 0]}
       />
