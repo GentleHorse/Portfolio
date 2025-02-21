@@ -28,7 +28,7 @@ export default function Experience() {
       <Background color="#1C1C1C" />
 
       {/* DEBUG TOOLS */}
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
       {/* <axesHelper /> */}
       {/* <OrbitControls makeDefault /> */}
 

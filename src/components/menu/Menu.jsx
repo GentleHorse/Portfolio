@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { gameStates, useGameStore } from "../../store/store.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+
 import Modal from "../UI/Modal.jsx";
 
-import escKeyIcon from "../../../public/images/icons/esc-key.svg";
-import moveKeysIcon from "../../../public/images/icons/move-keys.svg";
-import mouseIcon from "../../../public/images/icons/mouse.svg";
-import arrowIcon from "../../../public/images/icons/directional-arrow-up.svg";
-import selfPortraitImage from "../../../public/images/portrait/selfportrait.jpg";
+import escKeyIcon from "../../../public/images/icons/esc-key-grey.svg";
+import moveKeysIcon from "../../../public/images/icons/move-keys-grey.svg";
+import mouseIcon from "../../../public/images/icons/mouse-grey.svg";
+import selfPortraitImage from "../../../public/images/menu/menu-hello-me.png";
+import worksIconImage from "../../../public/images/menu/menu-works-06.png";
 
 export default function Menu() {
   /**
@@ -104,75 +112,58 @@ export default function Menu() {
   const contentsArray = [
     {
       id: "c1",
+      title: "Welcome to my atelier!",
       content: (
         <section className="flex flex-col items-center h-full justify-evenly">
-          <div className="w-full mt-16 px-[80px] text-slate-50">
-            <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
-              Welcome to my atelier!
+          <div className="w-full mt-16">
+            <p className="my-5 mx-6 text-[#434343] font-light text-2xl text-justify">
+              This is a place where I work on projects. I organise a space with{" "}
+              <span className="font-bold">“my work objects”</span> as well as{" "}
+              <span className="font-bold">“my identity fragments”</span> to make
+              it comfortable and now, I'm glad to have you here! Feel free to
+              walk around and will you find me to{" "}
+              <span className="font-bold">“say hello”</span>?
             </p>
-
-            <div className="mb-10">
-              <p className="my-5 text-slate-50 font-light text-2xl">
-                I enjoy visiting museums, but I prefer exploring ateliers
-                because they allow me to sense the person behind the art and
-                design works. In these spaces, I might find unfinished,
-                unlabeled, or uncategorized pieces that spark my curiosity and
-                reveal more about the creator than completed works alone.
-              </p>
-
-              <p className="my-5 text-slate-50 font-light text-2xl">
-                Similarly, my atelier embraces a bit of chaos. Some projects may
-                seem disorganized or altered, lacking clear descriptions,
-                encouraging you to engage with and feel them, rather than just
-                comprehend them.
-              </p>
-            </div>
           </div>
 
           <button
-            className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#09090985] hover:bg-[#565d7595] text-slate-50 uppercase font-serif font-extrabold text-xl"
+            className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full text-[#434343] hover:text-[#81C7D4] uppercase font-serif font-extrabold text-xl"
             onClick={contentPageIncrementHandler}
           >
             <p>n e x t</p>
-            <img src="./images/icons/play-triangle.svg" className="w-[35px]" />
           </button>
         </section>
       ),
     },
     {
       id: "c2",
+      title: "How to walk the atelier",
       content: (
         <section className="flex flex-col items-center h-full justify-evenly">
-          <div className="w-full mt-16 px-[120px] text-slate-50 text-md">
-            <p className="mb-20 text-center text-slate-50 font-serif text-4xl">
-              How to walk the atelier
-            </p>
-
-            <div className="flex justify-between mb-10 py-20 border rounded-xl">
-              <div className="mx-4 flex flex-col items-center justify-center">
-                <img src={moveKeysIcon} className="w-20 h-16" />
-                <p className="m-1 font-montserrat text-md text-center">
-                  WASD/AQSD/arrow keys to move
-                </p>
-              </div>
-              <div className="mx-4 flex flex-col items-center justify-center">
-                <img src={mouseIcon} className="w-16 h-16" />
-                <p className="m-1 font-montserrat text-md text-center">
-                  Mouse to change the camera angle
-                </p>
-              </div>
-              <div className="mx-4 flex flex-col items-center justify-center">
-                <img src={escKeyIcon} className="w-16 h-16" />
-                <p className="m-1 font-montserrat text-md text-center">
-                  Esc key to go back to Menu
-                </p>
-              </div>
+          <div className="flex justify-between mb-10 pt-20">
+            <div className="mx-4 flex flex-col items-center justify-center">
+              <img src={moveKeysIcon} className="w-20 h-16" />
+              <p className="m-1 font-montserrat text-md text-center">
+                WASD/AQSD/arrow keys to move
+              </p>
+            </div>
+            <div className="mx-4 flex flex-col items-center justify-center">
+              <img src={mouseIcon} className="w-16 h-16" />
+              <p className="m-1 font-montserrat text-md text-center">
+                Mouse to change the camera angle
+              </p>
+            </div>
+            <div className="mx-4 flex flex-col items-center justify-center">
+              <img src={escKeyIcon} className="w-16 h-16" />
+              <p className="m-1 font-montserrat text-md text-center">
+                Esc key to go back to Menu
+              </p>
             </div>
           </div>
 
           <div className="flex gap-10">
             <button
-              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#09090985] hover:bg-[#565d7595] text-slate-50 uppercase font-serif font-extrabold text-xl"
+              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full text-[#434343] hover:text-[#81C7D4] uppercase font-serif font-extrabold text-xl"
               onClick={contentPageDecrementHandler}
             >
               <img
@@ -182,61 +173,10 @@ export default function Menu() {
               <p>b a c k</p>
             </button>
             <button
-              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#09090985] hover:bg-[#565d7595] text-slate-50 uppercase font-serif font-extrabold text-xl"
-              onClick={contentPageIncrementHandler}
-            >
-              <p>n e x t</p>
-              <img
-                src="./images/icons/play-triangle.svg"
-                className="w-[35px]"
-              />
-            </button>
-          </div>
-        </section>
-      ),
-    },
-    {
-      id: "c3",
-      content: (
-        <section className="flex flex-col items-center h-full justify-evenly">
-          <div className="w-full mt-10 px-[120px] text-slate-50 text-md">
-            <p className="my-10 text-center text-slate-50 font-serif text-4xl">
-              Individual project pages
-            </p>
-
-            <div className="flex justify-between gap-12 mb-10 pt-10">
-              <div>
-                <p className="mb-24 font-light text-2xl">
-                  If you feel like knowing more about the project, you can visit
-                  individual project pages by pressing the 'Enter' key.
-                </p>
-                <p className="font-great-vibes text-4xl">E n j o y !</p>
-              </div>
-
-              <img src="./images/menu/portal-enter.jpg" className="h-[200px]" />
-            </div>
-          </div>
-
-          <div className="flex gap-10">
-            <button
-              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#09090985] hover:bg-[#565d7595] text-slate-50 uppercase font-serif font-extrabold text-xl"
-              onClick={contentPageDecrementHandler}
-            >
-              <img
-                src="./images/icons/play-triangle-reverse.svg"
-                className="w-[35px]"
-              />
-              <p>b a c k</p>
-            </button>
-            <button
-              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#09090985] hover:bg-[#565d7595] text-slate-50 uppercase font-serif font-extrabold text-xl"
+              className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full bg-[#D0104C] hover:bg-[#D0104C60] text-slate-50 uppercase font-serif font-extrabold text-xl"
               onClick={modalCloseHandler}
             >
               <p>P l a y</p>
-              <img
-                src="./images/icons/play-triangle.svg"
-                className="w-[35px]"
-              />
             </button>
           </div>
         </section>
@@ -249,49 +189,92 @@ export default function Menu() {
       <Modal
         open={isModalOpen}
         onClose={gameStartHandler} // Called when the menu modal gets closed
-        className="w-[1000px] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
+        className="relative w-[90vw] h-[90vh] pt-[5vh] rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
       >
-        <section className="relative overflow-hidden w-auto h-full grid grid-cols-7 items-start">
-          {/* MAIN SECTION */}
-          <div className="h-full col-span-6">
-            {contentsArray[contentPage].content}
+        <section className="h-full grid grid-cols-7">
+          {/* SOCIAL MEDIA ICONS */}
+          <div>
+            <ul className="pl-14 flex flex-col items-start justify-start gap-6">
+              <li>
+                <a href="https://github.com/GentleHorse" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                    className="text-[40px] text-[#FFFFFF]"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/toshihitoendo/"
+                  target="_blank"
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className="text-[40px] text-[#FFFFFF]"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/toshihito_endo" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faXTwitter}
+                    className="text-[40px] text-[#FFFFFF]"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/toshihito-endo-a68a82172/"
+                  target="_blank"
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className="text-[40px] text-[#FFFFFF]"
+                  />
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* LINKS FOOTER */}
-          <div className="mt-[70px] text-slate-50 text-xl flex flex-col gap-7 justify-end">
+          {/* MAIN SECTION */}
+          <div className="col-span-4 h-full flex flex-col">
+            <div className="ml-4 mt-16 px-8 py-14 bg-white rounded-2xl">
+              <h1 className="w-full text-center text-5xl font-eb-garamond">
+                {contentsArray[contentPage].title}
+              </h1>
+              <div>{contentsArray[contentPage].content}</div>
+            </div>
+          </div>
+
+          {/* WORKS */}
+          <div className="col-span-2 pr-14 flex flex-col items-end justify-start">
             <Link
               to="/works"
               reloadDocument={true}
-              className="mr-12 flex flex-row items-center justify-end"
+              className="flex flex-col items-center justify-center"
             >
-              <p className="font-serif text-xl">Works</p>
-              <img src={arrowIcon} className="ml-2 w-6 h-6" />
-            </Link>
-
-            <Link
-              to="/contact"
-              reloadDocument={true}
-              className="mr-12 flex flex-row items-center justify-end"
-            >
-              <p className="font-serif text-xl">Contact</p>
-              <img src={arrowIcon} className="ml-2 w-6 h-6" />
+              <img src={worksIconImage} className="h-[150px]" />
+              <p className="mt-2 font-serif uppercase text-[#30d010] text-xl">
+                w o r k s
+              </p>
             </Link>
           </div>
-
-          <Link
-            to="/about"
-            reloadDocument={true}
-            className="mr-12 flex flex-row items-center justify-end"
-          >
-            <img
-              src={selfPortraitImage}
-              className="absolute bottom-12 right-12 w-[180px] h-[180px] rounded-full hover:cursor-pointer"
-            />
-            <p className="absolute bottom-14 right-6 font-permanent-marker text-[#D0104C] text-xl">
-              Wanna know about me?
-            </p>
-          </Link>
         </section>
+
+        {/* ABOUT ME */}
+        <div className="absolute bottom-16 right-24 w-[250px] h-[250px]">
+          <img src={selfPortraitImage} />
+        </div>
+
+        <Link
+          to="/about"
+          reloadDocument={true}
+          className="absolute bottom-16 right-24 w-[250px] h-[250px] flex flex-col justify-center hover:bg-[#FFFFFF70] z-10 rounded-full"
+        >
+          <p className="h-full pt-[105px] font-permanent-marker text-[#D0104C] text-4xl text-center opacity-0 hover:opacity-100 z-20">
+            About me?
+          </p>
+        </Link>
       </Modal>
     </>
   );

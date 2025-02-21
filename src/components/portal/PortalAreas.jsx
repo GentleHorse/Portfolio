@@ -151,10 +151,10 @@ export default function PortalAreas() {
         position={[4.5, 0.1, 46.75]}
         rotation={[0, Math.PI * 1.15, 0]}
         projectUrl={"/about"}
-        title="Who made this website?"
+        title="Hello! You got me!"
         titleHeight={3.5}
         titleDistance={3.5}
-        titleFontSize={25}
+        titleFontSize={35}
         textFontSize={15}
         enterIconWidth={120}
         message={"Set URL: About"}
