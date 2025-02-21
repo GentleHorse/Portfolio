@@ -200,6 +200,7 @@ export default function Atelier(props) {
    * MATERIAL | PAINTING IMAGES
    */
   const mondorianPainting = useTexture("/textures/paintings/mondorian.jpg");
+  mondorianPainting.flipY = false;
   mondorianPainting.colorSpace = THREE.SRGBColorSpace;
   const mondorianPaintingMaterial = new THREE.MeshBasicMaterial({
     map: mondorianPainting,
@@ -208,6 +209,7 @@ export default function Atelier(props) {
   const pieterClaeszPainting = useTexture(
     "/textures/paintings/pieter-claesz.jpg"
   );
+  pieterClaeszPainting.flipY = false;
   pieterClaeszPainting.colorSpace = THREE.SRGBColorSpace;
   const pieterClaeszPaintingMaterial = new THREE.MeshBasicMaterial({
     map: pieterClaeszPainting,
@@ -216,6 +218,7 @@ export default function Atelier(props) {
   const kuniyoshiUtagawaPainting = useTexture(
     "/textures/paintings/kuniyoshi-utagawa.jpg"
   );
+  kuniyoshiUtagawaPainting.flipY = false;
   kuniyoshiUtagawaPainting.colorSpace = THREE.SRGBColorSpace;
   const kuniyoshiUtagawaPaintingMaterial = new THREE.MeshBasicMaterial({
     map: kuniyoshiUtagawaPainting,
@@ -1713,18 +1716,21 @@ export default function Atelier(props) {
         name="painting-image-01"
         geometry={nodes["painting-image-01"].geometry}
         material={mondorianPaintingMaterial}
+        rotation={[0, 0, Math.PI]}
         position={[13.027, 2.323, 41.23]}
       />
       <mesh
         name="painting-image-02"
         geometry={nodes["painting-image-02"].geometry}
         material={pieterClaeszPaintingMaterial}
+        rotation={[0, 0, Math.PI]}
         position={[10.301, 3.545, 41.219]}
       />
       <mesh
         name="painting-image-03"
         geometry={nodes["painting-image-03"].geometry}
         material={kuniyoshiUtagawaPaintingMaterial}
+        rotation={[0, 0, Math.PI]}
         position={[9.598, 1.643, 41.219]}
       />
       {/* <mesh
