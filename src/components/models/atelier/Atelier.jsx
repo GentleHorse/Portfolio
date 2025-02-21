@@ -275,7 +275,7 @@ export default function Atelier(props) {
 
   // Portfolio website
   const portfolioWebsiteVideoTexture01 = useVideoTexture(
-    "videos/portfolio-website/portfolio-website-01.mp4"
+    "videos/portfolio-website/portfolio-website-11.mp4"
   );
   portfolioWebsiteVideoTexture01.wrapS = THREE.RepeatWrapping;
   portfolioWebsiteVideoTexture01.wrapT = THREE.RepeatWrapping;
