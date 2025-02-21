@@ -196,7 +196,11 @@ export default function Menu() {
           <div>
             <ul className="pl-14 flex flex-col items-start justify-start gap-6">
               <li>
-                <a href="https://github.com/GentleHorse" target="_blank">
+                <a
+                  href="https://github.com/GentleHorse"
+                  target="_blank"
+                  className="focus:outline-none" // Remove outline of the default focus
+                >
                   <FontAwesomeIcon
                     icon={faGithub}
                     className="text-[40px] text-[#FFFFFF]"
