@@ -18,9 +18,13 @@ export default function InfoPop({
   infoIconWidth = 150.0,
   infoIconDistance = 2.0,
   infoIconHeight = 2.5,
+  sound,
 }) {
   // Info state
   const [showInfo, setShowInfo] = useState(false);
+
+  // Collision sound
+  const collisionSound = new Audio(sound);
 
   return (
     <>
@@ -78,6 +82,7 @@ export default function InfoPop({
           colliders={false}
           onIntersectionEnter={() => {
             setShowInfo(true);
+            collisionSound.play();
           }}
           onIntersectionExit={() => {
             setShowInfo(false);

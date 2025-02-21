@@ -1,6 +1,8 @@
 import InfoPop from "./InfoPop.jsx";
 import CollisionObject from "../utilComponents/CollisionObject";
 
+import softThickClick from "../../../public/sounds/soft-thick-click.wav";
+
 export default function InfoPops() {
   return (
     <>
@@ -21,6 +23,7 @@ export default function InfoPops() {
         infoIconWidth={80}
         textFontSize={20.0}
         text="Good smell in the room makes me relaxed, and at the same time activated. My favorites are lavender and frankincense."
+        sound={softThickClick}
       />
 
       {/* ATERLIER AREA | Workshop table */}
@@ -35,6 +38,7 @@ export default function InfoPops() {
         infoIconHeight={4.5}
         textFontSize={20.0}
         text="Sense of touch is important for me, especially working on digital products. Love sketching ideas on physical notebooks, making mock-ups with paper and  cardboards."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Accounting */}
@@ -47,6 +51,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="I used to work in the accounting industry in Japan. It was fun to analyse things, find out solutions. Personally I found some similarities in programming and that's why I can also enjoy it."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Local cuisine map */}
@@ -59,6 +64,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="My first design experience was to make the local food map for guests of the hotel in Tokyo. Thinking and making for someone always bring me excitements."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | SNES & LEGO */}
@@ -72,6 +78,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="Super Nintendo & LEGO were the very first playful interactive experience in my life, which deeply impacted on my creative practices. Now, I enjoy 'making' more than 'playing'."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Piano */}
@@ -84,6 +91,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="I used to play classic piano pieces, and I like them. When I want to focus on projects deeply, I always choose them for listening."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Japanese Nature, mountains */}
@@ -98,6 +106,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="I was born and raised in the small village in Aichi prefecture in Japan. In my childhood, my family used to go hiking in Nagano prefecture, which is famous for rich forests and mountains. And after I grew up, I often visited Hakone for seeking rich nature. Nature is defintely one of my bigggest source of inspirations all the time."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Choir */}
@@ -110,6 +119,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="When I was a child, I belonged to the children's choir. There we sang not only Japanese traditional folk songs, but also sang hymns, gospel songs, or other countries' traditional songs."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Classical art paintings */}
@@ -123,6 +133,7 @@ export default function InfoPops() {
         infoIconDistance={2.0}
         textFontSize={18.0}
         text="I like visiting museums for seeing classical art paintings. Here's some of my favorites painted by Piet Mondriaan, Pieter Claesz and Kuniyoshi Utagawa."
+        sound={softThickClick}
       />
 
       {/* MUSEUM AREA | Books */}
@@ -136,6 +147,7 @@ export default function InfoPops() {
         titleFontSize={40.0}
         textFontSize={18.0}
         text="Nowadays you can easily and quickly get informations via Internet or AI such as Chat GPT. But sometimes, I feel like it's just as important to take my time and learn things at my own pace."
+        sound={softThickClick}
       />
     </>
   );

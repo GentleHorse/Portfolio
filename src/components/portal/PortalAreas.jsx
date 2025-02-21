@@ -1,8 +1,12 @@
 import PortalArea from "./PortalArea.jsx";
 import CollisionObject from "../utilComponents/CollisionObject.jsx";
 
-export default function PortalAreas() {
+import softThickClick from "../../../public/sounds/soft-thick-click.wav";
+import supBro from "../../../public/sounds/sup-bro.mp3";
+import helloRobot from "../../../public/sounds/hello-robot.wav";
+import helloMale from "../../../public/sounds/hello-male.wav";
 
+export default function PortalAreas() {
   return (
     <group>
       {/* DEBUG - POSITION, ROTATION */}
@@ -19,6 +23,7 @@ export default function PortalAreas() {
         text="Modular lamp, presented at OBJECT Rotterdam 2024"
         textFontSize={20}
         message={"Set URL: Ambience of Light"}
+        sound={softThickClick}
       />
 
       {/* DESIGN - BEAUTY OF TIME PASSING */}
@@ -32,6 +37,7 @@ export default function PortalAreas() {
         text="Interactiive spatial light installation, presented at Dutch Design Week 2023"
         textFontSize={20}
         message={"Set URL: Beauty of Time Passing"}
+        sound={softThickClick}
       />
 
       {/* DESIGN - INTERVENTION IN OUR DISCONNECTION */}
@@ -45,6 +51,7 @@ export default function PortalAreas() {
         text="Marble stone upcylcing project, collaborated with the local company"
         textFontSize={20}
         message={"Set URL: Intervention in our Disconnection"}
+        sound={softThickClick}
       />
 
       {/* DESIGN - MASU TYPO */}
@@ -58,6 +65,7 @@ export default function PortalAreas() {
         text="Alphabet typeface inspired by Japanese mono letters"
         textFontSize={20}
         message={"Set URL: Masu Typo"}
+        sound={softThickClick}
       />
 
       {/* DESIGN - COMFORTING DINNER */}
@@ -71,6 +79,7 @@ export default function PortalAreas() {
         text="Multisensory ceramic dinner set, presented at Dutch Design Week 2020"
         textFontSize={20}
         message={"Set URL: Comforting Dinner"}
+        sound={softThickClick}
       />
 
       {/* 3D VISUALS */}
@@ -83,6 +92,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="Blender, Unreal Engine, Houdini"
         message={"Set URL: 3D Visuals"}
+        sound={softThickClick}
       />
 
       {/* 3D APP DEV - OBJECT ROTTERDAM 2024 */}
@@ -95,6 +105,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="3D interactive floor planning tool"
         message={"Set URL: OBJECT Rotterdam 2024"}
+        sound={softThickClick}
       />
 
       {/* 3D APP DEV - PORTFOLIO WEBSITE */}
@@ -107,6 +118,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="'Game Feel' multi-page portfolio"
         message={"Set URL: Portfolio Website"}
+        sound={softThickClick}
       />
 
       {/* 3D APP DEV - NUL ZES CRAFT DE MARKT */}
@@ -120,6 +132,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="3D digital flyer for local design market"
         message={"Set URL: Outside URL - Nul Zes Crafted de Markt"}
+        sound={softThickClick}
       />
 
       {/* 3D APP DEV - WEATHER CEREAL */}
@@ -132,6 +145,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="3D interactive 7-day forcast"
         message={"Set URL: Weather Cereal"}
+        sound={softThickClick}
       />
 
       {/* 3D APP DEV - MARBLE ON A ROLL */}
@@ -144,6 +158,7 @@ export default function PortalAreas() {
         titleDistance={7.0}
         text="3D time attack game"
         message={"Set URL: Marble's on a Roll"}
+        sound={softThickClick}
       />
 
       {/* ABOUT ME */}
@@ -158,6 +173,7 @@ export default function PortalAreas() {
         textFontSize={15}
         enterIconWidth={120}
         message={"Set URL: About"}
+        sound={helloRobot}
       />
 
       {/* SOCIAL MEDIA ICON - GITHUB */}
@@ -172,12 +188,13 @@ export default function PortalAreas() {
         titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - GitHub"}
+        sound={softThickClick}
       />
 
       {/* SOCIAL MEDIA ICON - X */}
       <PortalArea
         position={[76.5, 0, 66.5]}
-        rotation={[0, -Math.PI * 0.70, 0]}
+        rotation={[0, -Math.PI * 0.7, 0]}
         isOutsideUrl={true}
         projectUrl={"https://x.com/toshihito_endo"}
         title="X"
@@ -186,6 +203,7 @@ export default function PortalAreas() {
         titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - X"}
+        sound={softThickClick}
       />
 
       {/* SOCIAL MEDIA ICON - INSTAGRAM */}
@@ -200,6 +218,7 @@ export default function PortalAreas() {
         titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - Instagram"}
+        sound={softThickClick}
       />
 
       {/* SOCIAL MEDIA ICON - LINKEDIN */}
@@ -214,6 +233,7 @@ export default function PortalAreas() {
         titleFontSize={30}
         enterIconWidth={100}
         message={"Set URL: Outside URL - LinkedIn"}
+        sound={softThickClick}
       />
     </group>
   );

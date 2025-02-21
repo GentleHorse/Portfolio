@@ -25,6 +25,7 @@ export default function PortalArea({
   infoIconWidth = 150.0,
   infoIconDistance = 2.0,
   infoIconHeight = 2.5,
+  sound,
 }) {
   /**
    * GAME STORE
@@ -33,6 +34,11 @@ export default function PortalArea({
     gameState: state.gameState,
     setGameState: state.setGameState,
   }));
+
+  /**
+   * COLLISION SOUND
+   */
+  const collisionSound = new Audio(sound);
 
   /**
    * NAVIGATE
@@ -163,6 +169,8 @@ export default function PortalArea({
             console.log(message);
 
             setShowEnterKey(true);
+
+            collisionSound.play();
           }}
           onIntersectionExit={() => {
             setCurProjectUrl(null);
