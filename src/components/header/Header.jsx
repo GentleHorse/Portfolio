@@ -73,7 +73,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[25px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -87,7 +87,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[25px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -102,7 +102,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[25px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
@@ -117,7 +117,7 @@ export default function Header({ home, about, works, contact }) {
                   <h1
                     className={`font-serif ${
                       isBrowser
-                        ? "mt-[20px] mr-[10px] mb-[5px] text-[30px]"
+                        ? "mt-[20px] mr-[10px] mb-[5px] text-[25px]"
                         : "text-center my-[35px] text-[25px]"
                     } text-[#FFFFFF]`}
                   >
