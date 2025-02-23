@@ -15,6 +15,7 @@ import ThreeDVisualsPage from "./pages/design/ThreeDVisuals.jsx";
 
 import PortfolioWebsitePage from "./pages/webDev/PortfolioWebsite.jsx";
 import ObjectRotterdam2024Page from "./pages/webDev/ObjectRotterdam2024.jsx";
+import NulZesCraftedDeMarktPage from "./pages/webDev/NulZesCraftedDeMarkt.jsx";
 import WeatherCerealPage from "./pages/webDev/WeatherCereal.jsx";
 import DonutsUniversePage from "./pages/webDev/DonutsUniverse.jsx";
 import MarbleRacePage from "./pages/webDev/MarbleRace.jsx";
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
 
       { path: "portfolio-website", element: <PortfolioWebsitePage /> },
       { path: "object-rotterdam-2024", element: <ObjectRotterdam2024Page /> },
+      { path: "nul-zes-crafted-de-markt", element: <NulZesCraftedDeMarktPage /> },
       { path: "weather-cereal", element: <WeatherCerealPage /> },
       { path: "donuts-universe", element: <DonutsUniversePage /> },
       { path: "marble-race", element: <MarbleRacePage /> },

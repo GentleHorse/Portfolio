@@ -125,8 +125,7 @@ export default function PortalAreas() {
       <PortalArea
         position={[-57.0, 0, -3.5]}
         rotation={[0, Math.PI * 0.5, 0]}
-        isOutsideUrl={true}
-        projectUrl={"https://nul-zes-crafted-de-markt-promo.vercel.app/"}
+        projectUrl={"/nul-zes-crafted-de-markt"}
         title="Nul Zes Crafted de Markt"
         titleHeight={4.0}
         titleDistance={7.0}
