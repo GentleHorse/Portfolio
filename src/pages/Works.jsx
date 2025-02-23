@@ -41,6 +41,7 @@ import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thu
 import ThreeDVisualThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-3-d-visuals.jpg";
 import PortfolioWebsiteThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
 import OBJECRotterdam2024Thumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
+import NulZesCraftedDeMarktThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-nul-zes-crafted-de-markt.jpg";
 import WeatherCerealThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 import DonutsUniverseThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-donuts-universe.jpg";
 import MarbleOnARollThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
@@ -61,6 +62,7 @@ const IMAGE_DIST_STRENGTH = isBrowser ? 0.65 : 0.45;
  * PROJECTS LIST ARRAY
  */
 const PROJECTS_LIST_ARRAY = [
+  // 3D Web Applications
   {
     id: "a01",
     title: "Portfolio Website",
@@ -76,12 +78,35 @@ const PROJECTS_LIST_ARRAY = [
     zPos: 0,
   },
   {
-    id: "d02",
-    title: "Beauty of Time Passing",
-    imageUrl: BeautyOfTimePassingThumbnail,
-    projectPageUrl: "/beauty-of-time-passing",
+    id: "a03",
+    title: "Crafted De Markt",
+    imageUrl: NulZesCraftedDeMarktThumbnail,
+    projectPageUrl: "/nul-zes-crafted-de-markt",
     zPos: 0,
   },
+  {
+    id: "a04",
+    title: "Weather Cereal",
+    imageUrl: WeatherCerealThumbnail,
+    projectPageUrl: "/weather-cereal",
+    zPos: 0,
+  },
+  {
+    id: "a05",
+    title: "Donuts Universe",
+    imageUrl: DonutsUniverseThumbnail,
+    projectPageUrl: "/donuts-universe",
+    zPos: 0,
+  },
+  {
+    id: "a06",
+    title: "Marble's on a Roll",
+    imageUrl: MarbleOnARollThumbnail,
+    projectPageUrl: "/marble-race",
+    zPos: 0,
+  },
+
+  // Design Projects
   {
     id: "d06",
     title: "3D Visuals",
@@ -89,25 +114,19 @@ const PROJECTS_LIST_ARRAY = [
     projectPageUrl: "/three-d-visuals",
     zPos: 0,
   },
+
   {
-    id: "a03",
-    title: "Weather Cereal",
-    imageUrl: WeatherCerealThumbnail,
-    projectPageUrl: "/weather-cereal",
+    id: "d01",
+    title: "Ambience of Light",
+    imageUrl: AmbienceOfLightThumbnail,
+    projectPageUrl: "/ambience-of-light",
     zPos: 0,
   },
   {
-    id: "a04",
-    title: "Donuts Universe",
-    imageUrl: DonutsUniverseThumbnail,
-    projectPageUrl: "/donuts-universe",
-    zPos: 0,
-  },
-  {
-    id: "d04",
-    title: "Masu Typo",
-    imageUrl: MasuTypoThumbnail,
-    projectPageUrl: "/masu-typo",
+    id: "d02",
+    title: "Beauty of Time Passing",
+    imageUrl: BeautyOfTimePassingThumbnail,
+    projectPageUrl: "/beauty-of-time-passing",
     zPos: 0,
   },
   {
@@ -118,24 +137,17 @@ const PROJECTS_LIST_ARRAY = [
     zPos: 0,
   },
   {
+    id: "d04",
+    title: "Masu Typo",
+    imageUrl: MasuTypoThumbnail,
+    projectPageUrl: "/masu-typo",
+    zPos: 0,
+  },
+  {
     id: "d05",
     title: "Comforting Dinner",
     imageUrl: ComfortingDinnerThumbnail,
     projectPageUrl: "/comforting-dinner",
-    zPos: 0,
-  },
-  {
-    id: "d01",
-    title: "Ambience of Light",
-    imageUrl: AmbienceOfLightThumbnail,
-    projectPageUrl: "/ambience-of-light",
-    zPos: 0,
-  },
-  {
-    id: "a05",
-    title: "Marble's on a Roll",
-    imageUrl: MarbleOnARollThumbnail,
-    projectPageUrl: "/marble-race",
     zPos: 0,
   },
 ];

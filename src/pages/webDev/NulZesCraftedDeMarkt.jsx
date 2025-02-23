@@ -6,7 +6,7 @@ import { isBrowser, isMobile } from "react-device-detect";
 
 import "lenis/dist/lenis.css";
 
-import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-nul-zes-crafted-de-markt.jpg";
+import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-08.jpg";
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
 import WeatherCerealImage01 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-01.jpg";
