@@ -8,7 +8,7 @@ import SectionIndicator from "../../components/sectionIndicator/SectionIndicator
 import "lenis/dist/lenis.css";
 
 import ObjectRotterdam2024HeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
-import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
+import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-07.jpg";
 
 import ObjectRotterdamImage01 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-01.jpg";
 import ObjectRotterdamImage02 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-02.jpg";
@@ -523,12 +523,12 @@ export default function ObjectRotterdam2024Page() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/weather-cereal"
+              to="/nul-zes-crafted-de-markt"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={WeatherCerealHeroImage}
+                src={NulZesCraftedDeMarktHeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 

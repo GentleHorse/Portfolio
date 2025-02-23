@@ -9,21 +9,29 @@ import "lenis/dist/lenis.css";
 import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-08.jpg";
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
-import WeatherCerealImage01 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-01.jpg";
-import WeatherCerealImage02 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-02.jpg";
-import WeatherCerealImage03 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-03.jpg";
-import WeatherCerealImage04 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-04.jpg";
+import NulZesCraftedDeMarktImage01 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-01.jpg"
+import NulZesCraftedDeMarktImage02 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-02.jpg"
+import NulZesCraftedDeMarktImage03 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-03.jpg"
+import NulZesCraftedDeMarktImage04 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-04.jpg"
+import NulZesCraftedDeMarktImage05 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-05.jpg"
+import NulZesCraftedDeMarktImage06 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-06.jpg"
 
 import NulZesCraftedDeMarktVideo01 from "../../../public/videos/nul-zes-crafted-de-markt/crafted-de-markt-03.mp4";
+import NulZesCraftedDeMarktVideo02 from "../../../public/videos/nul-zes-crafted-de-markt/crafted-de-markt-04.mp4";
 
 const IMAGES_ARRAY = [
-  WeatherCerealImage01,
-  WeatherCerealImage02,
-  WeatherCerealImage03,
-  WeatherCerealImage04,
+  NulZesCraftedDeMarktImage01,
+  NulZesCraftedDeMarktImage02,
+  NulZesCraftedDeMarktImage03,
+  NulZesCraftedDeMarktImage04,
+  NulZesCraftedDeMarktImage05,
+  NulZesCraftedDeMarktImage06,
 ];
 
-const VIDEOS_ARRAY = [NulZesCraftedDeMarktVideo01];
+const VIDEOS_ARRAY = [
+  NulZesCraftedDeMarktVideo01,
+  NulZesCraftedDeMarktVideo02,
+];
 
 export default function NulZesCraftedDeMarktPage() {
   /**
@@ -173,10 +181,12 @@ export default function NulZesCraftedDeMarktPage() {
             </div>
           </section>
 
+          
+
           <section className="mt-[120px] mb-[240px] mx-[10vw] xl:mx-[240px]">
             <div className="mx-auto w-full xl:w-[70%]">
               <video
-                className="hidden-element grid-images w-full object-cover"
+                className="hidden-element grid-images w-full object-cover mb-12"
                 autoPlay
                 loop
                 muted
@@ -184,10 +194,19 @@ export default function NulZesCraftedDeMarktPage() {
               >
                 <source src={NulZesCraftedDeMarktVideo01} type="video/mp4" />
               </video>
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={NulZesCraftedDeMarktVideo02} type="video/mp4" />
+              </video>
             </div>
           </section>
 
-          {!!isBrowser && (
+          {/* {!!isBrowser && (
             <section className="mt-[87px] w-[100vw]">
               <img
                 src={WeatherCerealImage01}
@@ -229,7 +248,7 @@ export default function NulZesCraftedDeMarktPage() {
                 />
               </section>
             </>
-          )}
+          )} */}
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 

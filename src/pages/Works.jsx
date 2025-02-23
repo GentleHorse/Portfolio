@@ -49,7 +49,7 @@ import MarbleOnARollThumbnail from "../../public/images/app-developments/__thumb
 /**
  * SCROLL VALUES
  */
-const SCROLL_PAGES = isBrowser ? 7.5 : 5.5;
+const SCROLL_PAGES = isBrowser ? 8.25 : 6.0;
 const SCROLL_DAMPING = 0.325; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 0.4; // the higher, the slower animation gets
 
