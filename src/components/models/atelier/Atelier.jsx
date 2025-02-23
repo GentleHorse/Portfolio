@@ -278,7 +278,7 @@ export default function Atelier(props) {
 
   // Portfolio website
   const portfolioWebsiteVideoTexture01 = useVideoTexture(
-    "videos/portfolio-website/portfolio-website-11.mp4"
+    "videos/portfolio-website/portfolio-website-08.mp4"
   );
   portfolioWebsiteVideoTexture01.wrapS = THREE.RepeatWrapping;
   portfolioWebsiteVideoTexture01.wrapT = THREE.RepeatWrapping;
@@ -289,7 +289,7 @@ export default function Atelier(props) {
   });
 
   const portfolioWebsiteVideoTexture02 = useVideoTexture(
-    "videos/portfolio-website/portfolio-website-02.mp4"
+    "videos/portfolio-website/portfolio-website-04.mp4"
   );
   portfolioWebsiteVideoTexture02.wrapS = THREE.RepeatWrapping;
   portfolioWebsiteVideoTexture02.wrapT = THREE.RepeatWrapping;
@@ -300,7 +300,7 @@ export default function Atelier(props) {
   });
 
   const portfolioWebsiteVideoTexture03 = useVideoTexture(
-    "videos/portfolio-website/portfolio-website-08-cropped.mp4"
+    "videos/portfolio-website/portfolio-website-07.mp4"
   );
   portfolioWebsiteVideoTexture03.wrapS = THREE.RepeatWrapping;
   portfolioWebsiteVideoTexture03.wrapT = THREE.RepeatWrapping;
@@ -311,7 +311,7 @@ export default function Atelier(props) {
   });
 
   const portfolioWebsiteVideoTexture04 = useVideoTexture(
-    "videos/portfolio-website/portfolio-website-03.mp4"
+    "videos/portfolio-website/portfolio-website-05.mp4"
   );
   portfolioWebsiteVideoTexture04.wrapS = THREE.RepeatWrapping;
   portfolioWebsiteVideoTexture04.wrapT = THREE.RepeatWrapping;
