@@ -9,12 +9,12 @@ import "lenis/dist/lenis.css";
 import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-08.jpg";
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
-import NulZesCraftedDeMarktImage01 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-01.jpg"
-import NulZesCraftedDeMarktImage02 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-02.jpg"
-import NulZesCraftedDeMarktImage03 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-03.jpg"
-import NulZesCraftedDeMarktImage04 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-04.jpg"
-import NulZesCraftedDeMarktImage05 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-05.jpg"
-import NulZesCraftedDeMarktImage06 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-06.jpg"
+import NulZesCraftedDeMarktImage01 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-01.jpg";
+import NulZesCraftedDeMarktImage02 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-02.jpg";
+import NulZesCraftedDeMarktImage03 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-03.jpg";
+import NulZesCraftedDeMarktImage04 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-04.jpg";
+import NulZesCraftedDeMarktImage05 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-05.jpg";
+import NulZesCraftedDeMarktImage06 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-06.jpg";
 
 import NulZesCraftedDeMarktVideo01 from "../../../public/videos/nul-zes-crafted-de-markt/crafted-de-markt-03.mp4";
 import NulZesCraftedDeMarktVideo02 from "../../../public/videos/nul-zes-crafted-de-markt/crafted-de-markt-04.mp4";
@@ -28,10 +28,7 @@ const IMAGES_ARRAY = [
   NulZesCraftedDeMarktImage06,
 ];
 
-const VIDEOS_ARRAY = [
-  NulZesCraftedDeMarktVideo01,
-  NulZesCraftedDeMarktVideo02,
-];
+const VIDEOS_ARRAY = [NulZesCraftedDeMarktVideo01, NulZesCraftedDeMarktVideo02];
 
 export default function NulZesCraftedDeMarktPage() {
   /**
@@ -182,11 +179,39 @@ export default function NulZesCraftedDeMarktPage() {
           </section>
 
           
+          <section className="mt-[120px] xl:mt-[240px] mb-[240px] xl:mb-[480px]">
+            <div className="grid grid-cols-6 gap-0">
+              <img
+                src={NulZesCraftedDeMarktImage01}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+              <img
+                src={NulZesCraftedDeMarktImage02}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+              <img
+                src={NulZesCraftedDeMarktImage03}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+                            <img
+                src={NulZesCraftedDeMarktImage04}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+              <img
+                src={NulZesCraftedDeMarktImage05}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+              <img
+                src={NulZesCraftedDeMarktImage06}
+                className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
+              />
+            </div>
+          </section>
 
           <section className="mt-[120px] mb-[240px] mx-[10vw] xl:mx-[240px]">
             <div className="mx-auto w-full xl:w-[70%]">
               <video
-                className="hidden-element grid-images w-full object-cover mb-12"
+                className="hidden-element grid-images w-full object-cover mb-24 xl:mb-36"
                 autoPlay
                 loop
                 muted
@@ -206,49 +231,6 @@ export default function NulZesCraftedDeMarktPage() {
             </div>
           </section>
 
-          {/* {!!isBrowser && (
-            <section className="mt-[87px] w-[100vw]">
-              <img
-                src={WeatherCerealImage01}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={WeatherCerealImage02}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={WeatherCerealImage03}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={WeatherCerealImage04}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-            </section>
-          )}
-
-          {!!isMobile && (
-            <>
-              <section className="mt-[87px] mx-[10vw] flex flex-col gap-12">
-                <img
-                  src={WeatherCerealImage01}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={WeatherCerealImage02}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={WeatherCerealImage03}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={WeatherCerealImage04}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-              </section>
-            </>
-          )} */}
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
