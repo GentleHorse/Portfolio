@@ -210,7 +210,7 @@ export default function PortalAreas() {
         position={[73.0, 0, 71.5]}
         rotation={[0, -Math.PI * 0.725, 0]}
         isOutsideUrl={true}
-        projectUrl={"https://www.instagram.com/toshihitoendo/"}
+        projectUrl={"https://www.instagram.com/studiotoshihitoendo/"}
         title="Instagram"
         titleHeight={3.5}
         titleDistance={2.0}

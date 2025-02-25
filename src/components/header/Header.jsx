@@ -133,7 +133,7 @@ export default function Header({ home, about, works, contact }) {
                 }`}
               >
                 <a
-                  href="https://www.instagram.com/toshihitoendo/"
+                  href="https://www.instagram.com/studiotoshihitoendo/"
                   target="_blank"
                 >
                   <FontAwesomeIcon
