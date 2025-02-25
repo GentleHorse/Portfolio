@@ -209,7 +209,7 @@ export default function Menu() {
               </li>
               <li>
                 <a
-                  href="https://www.instagram.com/toshihitoendo/"
+                  href="https://www.instagram.com/studiotoshihitoendo/"
                   target="_blank"
                 >
                   <FontAwesomeIcon
