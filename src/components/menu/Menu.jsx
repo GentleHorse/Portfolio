@@ -14,6 +14,7 @@ import Modal from "../UI/Modal.jsx";
 import escKeyIcon from "../../../public/images/icons/esc-key-grey.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys-grey.svg";
 import mouseIcon from "../../../public/images/icons/mouse-grey.svg";
+import cssdaNomineeVoteIcon from "../../../public/images/icons/cssda-nominee-white-vote.svg";
 import selfPortraitImage from "../../../public/images/menu/menu-hello-me.png";
 import worksIconImage from "../../../public/images/menu/menu-works-06.png";
 
@@ -116,7 +117,7 @@ export default function Menu() {
       content: (
         <section className="flex flex-col items-center h-full justify-evenly">
           <div className="w-full mt-16">
-            <p className="my-5 mx-6 text-[#434343] font-light text-2xl text-justify">
+            <p className="my-5 mx-6 text-[#434343] font-light text-xl xl:text-2xl text-justify">
               This is a place where I work on projects. I organise a space with{" "}
               <span className="font-bold">“my work objects”</span> as well as{" "}
               <span className="font-bold">“my identity fragments”</span> to make
@@ -140,36 +141,32 @@ export default function Menu() {
       title: "How to walk the atelier",
       content: (
         <section className="flex flex-col items-center h-full justify-evenly">
-          <div className="flex justify-between mb-10 pt-20">
+          <div className="grid grid-cols-3 mb-10 pt-20">
             <div className="mx-4 flex flex-col items-center justify-center">
-              <img src={moveKeysIcon} className="w-20 h-16" />
-              <p className="m-1 font-montserrat text-md text-center">
+              <img src={moveKeysIcon} className="w-16 h-14 xl:w-20 xl:h-16" />
+              <p className="m-1 font-montserrat text-sm xl:text-md text-center">
                 WASD/AQSD/arrow keys to move
               </p>
             </div>
             <div className="mx-4 flex flex-col items-center justify-center">
-              <img src={mouseIcon} className="w-16 h-16" />
-              <p className="m-1 font-montserrat text-md text-center">
+              <img src={mouseIcon} className="w-14 h-14 xl:w-16 xl:h-16" />
+              <p className="m-1 font-montserrat text-sm xl:text-md text-center">
                 Mouse to change the camera angle
               </p>
             </div>
             <div className="mx-4 flex flex-col items-center justify-center">
-              <img src={escKeyIcon} className="w-16 h-16" />
-              <p className="m-1 font-montserrat text-md text-center">
+              <img src={escKeyIcon} className="w-14 h-14 xl:w-16 xl:h-16" />
+              <p className="m-1 font-montserrat text-sm xl:text-md text-center">
                 Esc key to go back to Menu
               </p>
             </div>
           </div>
 
-          <div className="flex gap-10">
+          <div className="flex gap-5">
             <button
               className="px-1 py-4 my-10 flex justify-evenly items-center w-[170px] h-1/7 rounded-full text-[#434343] hover:text-[#81C7D4] uppercase font-serif font-extrabold text-xl"
               onClick={contentPageDecrementHandler}
             >
-              <img
-                src="./images/icons/play-triangle-reverse.svg"
-                className="w-[35px]"
-              />
               <p>b a c k</p>
             </button>
             <button
@@ -243,7 +240,7 @@ export default function Menu() {
           {/* MAIN SECTION */}
           <div className="col-span-4 h-full flex flex-col">
             <div className="ml-4 mt-16 px-8 py-14 bg-white rounded-2xl">
-              <h1 className="w-full text-center text-5xl font-eb-garamond">
+              <h1 className="w-full text-center text-4xl xl:text-5xl font-eb-garamond">
                 {contentsArray[contentPage].title}
               </h1>
               <div>{contentsArray[contentPage].content}</div>
@@ -266,7 +263,7 @@ export default function Menu() {
         </section>
 
         {/* ABOUT ME */}
-        <div className="absolute bottom-16 right-24 w-[250px] h-[250px]">
+        <div className="absolute bottom-12 right-20 xl:bottom-16 xl:right-24 w-[200px] h-[200px] xl:w-[250px] xl:h-[250px]">
           <img src={selfPortraitImage} />
         </div>
 
@@ -279,6 +276,19 @@ export default function Menu() {
             About me?
           </p>
         </Link>
+
+        {/* CSSDA ICON */}
+        <div
+          className="absolute bottom-6 left-6 w-[120px] h-[120px] hover:cursor-pointer"
+          onClick={() => {
+            window.open(
+              "https://www.cssdesignawards.com/wotd-award-nominees",
+              "_blank"
+            );
+          }}
+        >
+          <img src={cssdaNomineeVoteIcon} />
+        </div>
       </Modal>
     </>
   );
