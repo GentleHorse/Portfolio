@@ -199,11 +199,11 @@ const UI_UX_ICONS_ARRAY = [
 
 const EXPERIENCES_ARRAY = [
   {
-    when: "Dec 2023 - now",
-    entity: "Studio Toshihito Endo (Eindhoven, NL)",
-    postition: "Designer, Developer",
+    when: "Jan 2024 - now",
+    entity: "Design x Development",
+    postition: "Freelance Design Engineer",
     description:
-      "As a designer in self-employment, I design objects for exhibitions while applying my skills to developing 3D web applications.",
+      "As a freelance designer & developer, I design products for exhibitions while applying my skills to developing 3D web applications.",
   },
   {
     when: "Aug 2022",
@@ -393,7 +393,7 @@ function AboutPageExperience() {
           <section className="h-[160vh] xl:h-[200vh] w-[100vw]">
             <article className="relative py-[15%] xl:py-[10%] px-[10%] xl:px-[12%] backdrop-blur-md bg-[#C1C1C1]/15">
               <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
-                I am a Japanese designer and developer, a graduate of Design
+                I am a Design Engineer from Japan, a graduate of Design
                 Academy Eindhoven (Netherlands), where I created the project{" "}
                 <a
                   className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
@@ -411,7 +411,7 @@ function AboutPageExperience() {
                 >
                   "Beauty of Time Passing"
                 </a>
-                . My work focuses on uniting design and development, as seen in
+                . My work focuses on creating immersive interactive experiences in 3D spatial worlds, as seen in
                 projects like{" "}
                 <a
                   className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
@@ -471,35 +471,6 @@ function AboutPageExperience() {
                     : "hidden-thumbnail"
                 } absolute top-[50%] left-[15%] w-[450px] h-[300px] object-cover`}
               />
-
-              <p className="mb-10 font-open-sans text-[20px] xl:text-[55px] text-[#C1C1C1]">
-                In my product design education, I’ve become passionate about how
-                subtle details in products can create emotionally resonant
-                interactions, as demonstrated in{" "}
-                <a
-                  className="font-bold bg-[#000000] hover:bg-[#D0104C] hover:cursor-pointer text-[#FFFFFF]"
-                  onClick={() =>
-                    window.open("https://toshihito-endo.com/comforting-dinner")
-                  }
-                  onMouseEnter={() =>
-                    hoverStartTextsHandler("comfortingDinner")
-                  }
-                  onMouseLeave={() => hoverEndTextsHandler("comfortingDinner")}
-                >
-                  "Comforting Dinner"
-                </a>
-                . I believe these nuances have an even more significant impact
-                within digital environments.
-              </p>
-
-              <img
-                src={ComfortingDinnerHeroImage}
-                className={`${
-                  hoverTextsArray[2].isHover
-                    ? "show-thumbnail"
-                    : "hidden-thumbnail"
-                } absolute top-[75%] right-[15%] w-[450px] h-[300px] object-cover`}
-              />
             </article>
           </section>
 
@@ -510,7 +481,7 @@ function AboutPageExperience() {
               <article className="py-[10%] xl:py-[2.5%] backdrop-blur-md bg-[#C1C1C1]/15 divide-y divide-[#C1C1C1]/65">
                 {/* LANGUAGES */}
                 <div className="ml-5 py-8 flex flex-row">
-                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[45px] xl:text-[75px] text-[#FFFFFF]">
                     languages
                   </h1>
                   <ul className="flex flex-row gap-5 items-start">
@@ -533,7 +504,7 @@ function AboutPageExperience() {
 
                 {/* LIBRARIES */}
                 <div className="ml-5 py-8 flex flex-row">
-                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[45px] xl:text-[75px] text-[#FFFFFF]">
                     library
                   </h1>
                   <ul className="flex flex-row gap-5 items-start">
@@ -556,7 +527,7 @@ function AboutPageExperience() {
 
                 {/* 3D */}
                 <div className="ml-5 py-8 flex flex-row">
-                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[45px] xl:text-[75px] text-[#FFFFFF]">
                     3D
                   </h1>
                   <ul className="flex flex-row gap-5 items-start">
@@ -579,7 +550,7 @@ function AboutPageExperience() {
 
                 {/* UI/UX */}
                 <div className="ml-5 py-8 flex flex-row">
-                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[75px] text-[#FFFFFF]">
+                  <h1 className="flex-none w-2/5 font-open-sans uppercase text-[45px] xl:text-[75px] text-[#FFFFFF]">
                     UI / UX
                   </h1>
                   <ul className="flex flex-row gap-5 items-start">
