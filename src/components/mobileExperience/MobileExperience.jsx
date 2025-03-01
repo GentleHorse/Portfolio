@@ -8,7 +8,6 @@ import Modal from "../UI/Modal.jsx";
 import gsap from "gsap";
 
 import tiltIcon from "../../../public/images/icons/tilt.svg";
-import cssdaNomineeVoteIcon from "../../../public/images/icons/cssda-nominee-white-vote.svg";
 
 export default function MobileExperience() {
   /**
@@ -105,7 +104,7 @@ export default function MobileExperience() {
           onClose={() => setIsModalOpen(false)}
           className="w-[90vw] h-[80vh] overflow-hidden rounded-2xl backdrop-blur-md bg-[#C1C1C1]/15"
         >
-          <section className="w-full h-full flex flex-col items-center justify-between">
+          <section className="w-full h-full flex flex-col items-center justify-evenly">
             <div className="mt-10">
               <p className="m-6 text-2xl text-stone-300 font-permanent-marker">
                 Get tired of clicking, scrolling?
@@ -130,31 +129,12 @@ export default function MobileExperience() {
                 />
                 <p>T i l t ?</p>
               </button>
-
-              <div
-                className="w-16 h-16"
-                onClick={() => {
-                  window.open(
-                    "https://www.cssdesignawards.com/wotd-award-nominees",
-                    "_blank"
-                  );
-                }}
-              >
-                <img src={cssdaNomineeVoteIcon} />
-              </div>
             </div>
           </section>
         </Modal>
       )}
 
-      <Canvas
-      // camera={{
-      //   fov: 45,
-      //   near: 0.1,
-      //   far: 200,
-      //   position: [0, 0, 10],
-      // }}
-      >
+      <Canvas>
         <Suspense fallback={<LoadingScreenMobile />}>
           <MobileScene mobileOrientation={mobileOrientation} />
         </Suspense>

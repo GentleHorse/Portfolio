@@ -14,7 +14,6 @@ import Modal from "../UI/Modal.jsx";
 import escKeyIcon from "../../../public/images/icons/esc-key-grey.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys-grey.svg";
 import mouseIcon from "../../../public/images/icons/mouse-grey.svg";
-import cssdaNomineeVoteIcon from "../../../public/images/icons/cssda-nominee-white-vote.svg";
 import selfPortraitImage from "../../../public/images/menu/menu-hello-me.png";
 import worksIconImage from "../../../public/images/menu/menu-works-06.png";
 
@@ -276,19 +275,6 @@ export default function Menu() {
             About me?
           </p>
         </Link>
-
-        {/* CSSDA ICON */}
-        <div
-          className="absolute bottom-6 left-6 w-[120px] h-[120px] hover:cursor-pointer"
-          onClick={() => {
-            window.open(
-              "https://www.cssdesignawards.com/wotd-award-nominees",
-              "_blank"
-            );
-          }}
-        >
-          <img src={cssdaNomineeVoteIcon} />
-        </div>
       </Modal>
     </>
   );
