@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root.jsx";
 import HomePage from "./pages/Home.jsx";
 import AboutPage from "./pages/About.jsx";
-import WorksPage from "./pages/WorksNew.jsx";
+import WorksPage from "./pages/Works.jsx";
 import ContactPage from "./pages/Contact.jsx";
 
 import AmbienceOfLightPage from "./pages/design/AmbienceOfLight.jsx";
