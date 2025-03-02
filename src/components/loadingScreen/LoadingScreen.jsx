@@ -1,9 +1,13 @@
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useMemo } from "react";
 import { gameStates, useGameStore } from "../../store/store.js";
-import { useProgress, Html, Environment } from "@react-three/drei";
+import {
+  useProgress,
+  Html,
+  Environment,
+  MeshTransmissionMaterial,
+} from "@react-three/drei";
 
 import LoadingRing from "../models/loadingRing/LoadingRing.jsx";
-import SilkySphere from "../models/silky-sphere/SilkySphere.jsx";
 import { useFrame } from "@react-three/fiber";
 
 export default function LoadingScreen(props) {
@@ -27,13 +31,26 @@ export default function LoadingScreen(props) {
   }, []);
 
   /**
+   * MATERIAL
+   */
+  const GLASS_MATERIAL = useMemo(() => {
+    return (
+      <MeshTransmissionMaterial
+        flatShading={true}
+        backside={false}
+        thickness={1.5}
+      />
+    );
+  }, []);
+
+  /**
    * Loading rotation animation
    */
   const loadingRing01 = useRef();
   const loadingRing02 = useRef();
   const loadingRing03 = useRef();
   const glassSphere = useRef();
-  
+
   useFrame((state, delta) => {
     loadingRing01.current.rotation.x = state.clock.getElapsedTime() * -0.3;
     loadingRing01.current.rotation.z = state.clock.getElapsedTime() * -0.4;
@@ -48,7 +65,7 @@ export default function LoadingScreen(props) {
 
     glassSphere.current.rotation.y = state.clock.getElapsedTime() * 0.25;
     glassSphere.current.rotation.x = state.clock.getElapsedTime() * -0.55;
-  })
+  });
 
   return (
     <>
@@ -71,7 +88,10 @@ export default function LoadingScreen(props) {
         </group>
 
         <group ref={glassSphere} scale={0.75}>
-          <SilkySphere />
+          <mesh>
+            <icosahedronGeometry args={[0.95, 0]} />
+            {GLASS_MATERIAL}
+          </mesh>
         </group>
       </group>
 
