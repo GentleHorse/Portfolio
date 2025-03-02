@@ -24,6 +24,7 @@ export default {
         'great-vibes': ['"Great Vibes", cursive'],
         'pinyon-script': ['"Pinyon Script", cursive'],
         'montserrat': ['"Montserrat", sans-serif'],
+        'dm-serif-display': ['"DM Serif Display", serif'],
       }
     },
   },
