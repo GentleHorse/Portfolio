@@ -15,7 +15,7 @@ import escKeyIcon from "../../../public/images/icons/esc-key-grey.svg";
 import moveKeysIcon from "../../../public/images/icons/move-keys-grey.svg";
 import mouseIcon from "../../../public/images/icons/mouse-grey.svg";
 import selfPortraitImage from "../../../public/images/menu/menu-hello-me.png";
-import worksIconImage from "../../../public/images/menu/menu-works-06.png";
+import worksIconImage from "../../../public/images/menu/menu-works.png";
 
 export default function Menu() {
   /**
