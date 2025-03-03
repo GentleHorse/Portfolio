@@ -12,7 +12,7 @@ This is my **interactive 3D portfolio website**, designed as a **first-person ex
 - 🎮 **Features:** Real-time physics, optimized 3D models, smooth camera interactions  
 - 🏆 **Recognition:** *FWA Of The Day (March 2025), CSS Design Award Nominee*  
 
-📷 **[Insert GIF or Screenshot Preview]** *(Showcase a quick interaction!)*  
+📷 **![GIT Preview](/public/videos/portfolio-website/portfolio-website-preview.gif)**   
 
 ---
 
