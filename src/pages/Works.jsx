@@ -248,7 +248,7 @@ export default function WorksPage() {
         </Suspense>
       </Canvas>
 
-      {!!isBrowser && <GlassLensUI />}
+      {!!isBrowser && document.readyState === "complete" && <GlassLensUI />}
     </div>
   );
 }
