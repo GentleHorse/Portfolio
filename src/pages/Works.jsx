@@ -38,7 +38,7 @@ import { gameStates, useGameStore } from "../store/store.js";
 
 import Header from "../components/header/Header.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
-import GlassLensObjects from "../components/models/glassLensObjects/GlassLensObjects.jsx";
+import GlassLens from "../components/models/glassLens/GlassLens.jsx";
 
 import PortfolioWebsiteThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website-w-badge-ribbon.jpg";
 import OBJECRotterdam2024Thumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
@@ -312,7 +312,7 @@ function Experience() {
 
       {!!isMobile && <GlassFocusTorus material={GLASS_MATERIAL} />}
 
-      {!!isBrowser && <GlassLens material={GLASS_MATERIAL} />}
+      {!!isBrowser && <GlassLens objectIndex={1} material={GLASS_MATERIAL} />}
 
       <Scroll>
         <Projects rotation={isBrowser ? [0, -Math.PI * 0.025, 0] : [0, 0, 0]} />
@@ -532,33 +532,33 @@ function Projects({ ...props }) {
  * G L A S S L E N S ======================================================
  */
 
-function GlassLens({ material }) {
-  const lens = useRef();
+// function GlassLens({ material }) {
+//   const lens = useRef();
 
-  useFrame((state, delta) => {
-    // Tie lens to the pointer
-    // getCurrentViewport gives us the width & height that would fill the screen in threejs units
-    // By giving it a target coordinate we can offset these bounds, for instance width/height for a plane that
-    // sits 15 units from 0/0/0 towards the camera (which is where the lens is)
-    const viewport = state.viewport.getCurrentViewport(state.camera, [0, 0, 0]);
-    easing.damp3(
-      lens.current.position,
-      [
-        (state.pointer.x * viewport.width) / 2,
-        (state.pointer.y * viewport.height) / 2,
-        0,
-      ],
-      0.15,
-      delta
-    );
-  });
+//   useFrame((state, delta) => {
+//     // Tie lens to the pointer
+//     // getCurrentViewport gives us the width & height that would fill the screen in threejs units
+//     // By giving it a target coordinate we can offset these bounds, for instance width/height for a plane that
+//     // sits 15 units from 0/0/0 towards the camera (which is where the lens is)
+//     const viewport = state.viewport.getCurrentViewport(state.camera, [0, 0, 0]);
+//     easing.damp3(
+//       lens.current.position,
+//       [
+//         (state.pointer.x * viewport.width) / 2,
+//         (state.pointer.y * viewport.height) / 2,
+//         0,
+//       ],
+//       0.15,
+//       delta
+//     );
+//   });
 
-  return (
-    <group ref={lens} scale={1.5}>
-      <GlassLensObjects rotation-y={Math.PI} objectIndex={1} material={material} />
-    </group>
-  );
-}
+//   return (
+//     <group ref={lens} scale={1.5}>
+//       <GlassLensObjects rotation-y={Math.PI} objectIndex={1} material={material} />
+//     </group>
+//   );
+// }
 
 /**
  * G L A S S T O R U S ======================================================
