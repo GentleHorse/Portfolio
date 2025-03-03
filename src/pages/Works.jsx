@@ -54,6 +54,8 @@ import InterventionInOurDisconnectionThumbnail from "../../public/images/design-
 import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-masu-typo.jpg";
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 
+import FocusFrameImage from "../../public/images/ui/select-frame-cross-soft.png";
+
 /**
  * SCROLL VALUES
  */
@@ -382,6 +384,7 @@ function Projects({ ...props }) {
    */
   const imageGroups = useRef([]);
   const images = useRef([]);
+  const focusFrames = useRef([]);
 
   /**
    * MOUSE POINTER SET UP ON HOVER STATE
@@ -403,6 +406,12 @@ function Projects({ ...props }) {
       duration: 1.0,
       ease: "power2.out",
     });
+
+    gsap.to(focusFrames.current[index].material, {
+      opacity: 1.0,
+      duration: 1.0,
+      ease: "power2.out",
+    });
   };
   const pointerOutImageGroupAnimationHandler = (index) => {
     gsap.to(images.current[index].position, {
@@ -413,6 +422,12 @@ function Projects({ ...props }) {
 
     gsap.to(images.current[index].material, {
       opacity: 1.0,
+      duration: 1.0,
+      ease: "power2.out",
+    });
+
+    gsap.to(focusFrames.current[index].material, {
+      opacity: 0.0,
       duration: 1.0,
       ease: "power2.out",
     });
@@ -496,6 +511,15 @@ function Projects({ ...props }) {
               }}
               transparent={true}
             />
+            {!!isBrowser && (
+              <Image
+                ref={(element) => (focusFrames.current[index] = element)}
+                url={FocusFrameImage}
+                scale={[width * 0.775, (width * 0.775 * 9.6) / 14.4, 1]}
+                opacity={0.0}
+                transparent={true}
+              />
+            )}
           </group>
         </group>
       ))}
