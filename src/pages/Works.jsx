@@ -34,7 +34,7 @@ import { easing } from "maath";
 
 import { isMobile, isBrowser } from "react-device-detect";
 
-import { gameStates, useGameStore } from "../store/store.js";
+import { gameStates, useGameStore, useGlassLensStore } from "../store/store.js";
 
 import Header from "../components/header/Header.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
@@ -243,6 +243,8 @@ export default function WorksPage() {
           </ScrollControls>
         </Suspense>
       </Canvas>
+
+      {!!isBrowser && <GlassLensUI />}
     </div>
   );
 }
@@ -253,13 +255,18 @@ export default function WorksPage() {
 
 function Experience() {
   /**
+   * GLASS LENS STORE
+   */
+  const { glassObjectIndex } = useGlassLensStore((state) => ({
+    glassObjectIndex: state.glassObjectIndex,
+  }));
+
+  /**
    * GLASS MATERIAL
    */
   const GLASS_MATERIAL = useMemo(() => {
     return <MeshTransmissionMaterial backside={false} thickness={2} />;
   }, []);
-
-  // ----------------------------------------------------
 
   /**
    * SCROLL REF
@@ -312,7 +319,9 @@ function Experience() {
 
       {!!isMobile && <GlassFocusTorus material={GLASS_MATERIAL} />}
 
-      {!!isBrowser && <GlassLens objectIndex={1} material={GLASS_MATERIAL} />}
+      {!!isBrowser && (
+        <GlassLens objectIndex={glassObjectIndex} material={GLASS_MATERIAL} />
+      )}
 
       <Scroll>
         <Projects rotation={isBrowser ? [0, -Math.PI * 0.025, 0] : [0, 0, 0]} />
@@ -529,38 +538,6 @@ function Projects({ ...props }) {
 }
 
 /**
- * G L A S S L E N S ======================================================
- */
-
-// function GlassLens({ material }) {
-//   const lens = useRef();
-
-//   useFrame((state, delta) => {
-//     // Tie lens to the pointer
-//     // getCurrentViewport gives us the width & height that would fill the screen in threejs units
-//     // By giving it a target coordinate we can offset these bounds, for instance width/height for a plane that
-//     // sits 15 units from 0/0/0 towards the camera (which is where the lens is)
-//     const viewport = state.viewport.getCurrentViewport(state.camera, [0, 0, 0]);
-//     easing.damp3(
-//       lens.current.position,
-//       [
-//         (state.pointer.x * viewport.width) / 2,
-//         (state.pointer.y * viewport.height) / 2,
-//         0,
-//       ],
-//       0.15,
-//       delta
-//     );
-//   });
-
-//   return (
-//     <group ref={lens} scale={1.5}>
-//       <GlassLensObjects rotation-y={Math.PI} objectIndex={1} material={material} />
-//     </group>
-//   );
-// }
-
-/**
  * G L A S S T O R U S ======================================================
  */
 
@@ -595,6 +572,9 @@ function GlassFocusTorus({ material }) {
   );
 }
 
+/**
+ * L O A D I N G | M O B I L E ======================================================
+ */
 function LoadingScreenMobile() {
   const { active, progress, errors, item, loaded, total } = useProgress();
 
@@ -613,3 +593,73 @@ function LoadingScreenMobile() {
 }
 
 useGLTF.preload("/models/torus-lens-plane/torus-lens-plane.glb");
+
+/**
+ * G L A S S L E N S | U I ======================================================
+ */
+function GlassLensUI() {
+  /**
+   * GLASS LENS STORE
+   */
+  const { glassObjectIndex, setGlassObjectIndex } = useGlassLensStore(
+    (state) => ({
+      glassObjectIndex: state.glassObjectIndex,
+      setGlassObjectIndex: state.setGlassObjectIndex,
+    })
+  );
+
+  return (
+    <div className="fixed bottom-[5vh] right-[5vw] z-50">
+      <ul className="flex flex-col items-center justify-center">
+        <li>
+          <button
+            className={`text-white ${
+              glassObjectIndex === 1 && "font-extrabold"
+            }`}
+            onClick={() => {
+              setGlassObjectIndex(1);
+            }}
+          >
+            ICO
+          </button>
+        </li>
+        <li>
+          <button
+            className={`text-white ${
+              glassObjectIndex === 2 && "font-extrabold"
+            }`}
+            onClick={() => {
+              setGlassObjectIndex(2);
+            }}
+          >
+            LENS
+          </button>
+        </li>
+        <li>
+          <button
+            className={`text-white ${
+              glassObjectIndex === 3 && "font-extrabold"
+            }`}
+            onClick={() => {
+              setGlassObjectIndex(3);
+            }}
+          >
+            VIRTICAL
+          </button>
+        </li>
+        <li>
+          <button
+            className={`text-white ${
+              glassObjectIndex === 4 && "font-extrabold"
+            }`}
+            onClick={() => {
+              setGlassObjectIndex(4);
+            }}
+          >
+            HONRY COM
+          </button>
+        </li>
+      </ul>
+    </div>
+  );
+}

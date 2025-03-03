@@ -66,3 +66,16 @@ export const useGameStore = create(
     },
   }))
 );
+
+
+/**
+ * GLASS LENS STORE
+ */
+export const useGlassLensStore = create(
+ subscribeWithSelector((set, get) => ({
+    glassObjectIndex: 1,
+    setGlassObjectIndex: (index) => {
+      set({ glassObjectIndex: index });
+  },
+ }))
+)
