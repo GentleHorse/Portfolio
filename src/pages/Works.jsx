@@ -38,6 +38,7 @@ import { gameStates, useGameStore } from "../store/store.js";
 
 import Header from "../components/header/Header.jsx";
 import LoadingScreen from "../components/loadingScreen/LoadingScreen.jsx";
+import GlassLensObjects from "../components/models/glassLensObjects/GlassLensObjects.jsx";
 
 import PortfolioWebsiteThumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website-w-badge-ribbon.jpg";
 import OBJECRotterdam2024Thumbnail from "../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
@@ -531,7 +532,7 @@ function Projects({ ...props }) {
  * G L A S S L E N S ======================================================
  */
 
-function GlassLens({ material = <meshNormalMaterial /> }) {
+function GlassLens({ material }) {
   const lens = useRef();
 
   useFrame((state, delta) => {
@@ -553,10 +554,9 @@ function GlassLens({ material = <meshNormalMaterial /> }) {
   });
 
   return (
-    <mesh ref={lens} scale={2.0}>
-      <icosahedronGeometry />
-      {material}
-    </mesh>
+    <group ref={lens} scale={1.5}>
+      <GlassLensObjects rotation-y={Math.PI} objectIndex={1} material={material} />
+    </group>
   );
 }
 
