@@ -92,8 +92,8 @@ For an in-depth look at the development process, design decisions, and technical
 
 ## 📧 Contact
 
-📌 **Portfolio:** [portfolio website - works](https://toshihito-endo.com/works)  
+📌 **Portfolio:** [Portfolio](https://toshihito-endo.com/works)  
 📌 **GitHub:** [GitHub](https://github.com/GentleHorse)  
-📌 **LinkedIn:** [linkedin.com/in/yourprofile](https://www.linkedin.com/in/toshihito-endo-a68a82172/)
+📌 **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/toshihito-endo-a68a82172/)
 
 ---
