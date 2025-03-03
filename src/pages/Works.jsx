@@ -56,6 +56,10 @@ import MasuTypoThumbnail from "../../public/images/design-projects/__thumbnail-i
 import ComfortingDinnerThumbnail from "../../public/images/design-projects/__thumbnail-images/thumbnail-comforting-dinner.jpg";
 
 import FocusFrameImage from "../../public/images/ui/select-frame-cross-soft.png";
+import IcosahedronIcon from "../../public/images/icons/glass-lens/icosahedron.svg";
+import CircleIcon from "../../public/images/icons/glass-lens/circle.svg";
+import VerticalStripesIcon from "../../public/images/icons/glass-lens/vertical-stripes.svg";
+import HoneyCombIcon from "../../public/images/icons/glass-lens/honeycomb.svg";
 
 /**
  * SCROLL VALUES
@@ -609,54 +613,68 @@ function GlassLensUI() {
   );
 
   return (
-    <div className="fixed bottom-[5vh] right-[5vw] z-50">
-      <ul className="flex flex-col items-center justify-center">
+    <div className="fixed bottom-[6vh] right-[4vw] z-50">
+      <ul className="flex flex-col items-center justify-center gap-2">
+        <div className="font-extrabold text-white flex flex-col items-center text-[20px] mb-4">
+          <p>L</p>
+          <p>E</p>
+          <p>N</p>
+          <p>S</p>
+        </div>
         <li>
           <button
-            className={`text-white ${
-              glassObjectIndex === 1 && "font-extrabold"
-            }`}
             onClick={() => {
               setGlassObjectIndex(1);
             }}
           >
-            ICO
+            <img
+              className={`w-8 h-8  ${
+                glassObjectIndex === 1 ? "opacity-100" : "opacity-55"
+              }`}
+              src={IcosahedronIcon}
+            />
           </button>
         </li>
         <li>
           <button
-            className={`text-white ${
-              glassObjectIndex === 2 && "font-extrabold"
-            }`}
             onClick={() => {
               setGlassObjectIndex(2);
             }}
           >
-            LENS
+            <img
+              className={`w-8 h-8  ${
+                glassObjectIndex === 2 ? "opacity-100" : "opacity-55"
+              }`}
+              src={CircleIcon}
+            />
           </button>
         </li>
         <li>
           <button
-            className={`text-white ${
-              glassObjectIndex === 3 && "font-extrabold"
-            }`}
             onClick={() => {
               setGlassObjectIndex(3);
             }}
           >
-            VIRTICAL
+            <img
+              className={`w-8 h-8  ${
+                glassObjectIndex === 3 ? "opacity-100" : "opacity-55"
+              }`}
+              src={VerticalStripesIcon}
+            />
           </button>
         </li>
         <li>
           <button
-            className={`text-white ${
-              glassObjectIndex === 4 && "font-extrabold"
-            }`}
             onClick={() => {
               setGlassObjectIndex(4);
             }}
           >
-            HONRY COM
+            <img
+              className={`w-8 h-8  ${
+                glassObjectIndex === 4 ? "opacity-100" : "opacity-55"
+              }`}
+              src={HoneyCombIcon}
+            />
           </button>
         </li>
       </ul>
