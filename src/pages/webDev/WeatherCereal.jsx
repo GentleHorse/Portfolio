@@ -7,7 +7,7 @@ import { isBrowser, isMobile } from "react-device-detect";
 import "lenis/dist/lenis.css";
 
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
-import DonutsUniverseHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-donuts-universe.jpg";
+import MarbleOnARollHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
 
 import WeatherCerealImage01 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-01.jpg";
 import WeatherCerealImage02 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-02.jpg";
@@ -238,12 +238,12 @@ export default function WeatherCerealPage() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/donuts-universe"
+              to="/marble-race"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={DonutsUniverseHeroImage}
+                src={MarbleOnARollHeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 

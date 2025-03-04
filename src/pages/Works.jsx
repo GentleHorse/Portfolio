@@ -64,7 +64,7 @@ import HoneyCombIcon from "../../public/images/icons/glass-lens/honeycomb.svg";
 /**
  * SCROLL VALUES
  */
-const SCROLL_PAGES = isBrowser ? 15 : 6.0;
+const SCROLL_PAGES = isBrowser ? 13.5 : 5.5;
 const SCROLL_DAMPING = 0.325; // the lower, the slower animation gets
 const SCROLL_DISTANCE = 0.4; // the higher, the slower animation gets
 
@@ -112,14 +112,6 @@ const PROJECTS_LIST_ARRAY = [
   },
   {
     id: "webapp05",
-    title: "Donuts Universe",
-    tagLine: "Simplicity meets immersion in 3D",
-    hashTags: "#Three.js #WebGL #React",
-    imageUrl: DonutsUniverseThumbnail,
-    projectPageUrl: "/donuts-universe",
-  },
-  {
-    id: "webapp06",
     title: "Marble's on a Roll",
     tagLine: "Roll fast, finish first!",
     hashTags: "#Three.js #Rapier #WebGL #React",
