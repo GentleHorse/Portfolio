@@ -77,7 +77,7 @@ const IMAGE_DIST_STRENGTH = isBrowser ? 1.25 : 0.45;
  * PROJECTS LIST ARRAY
  */
 const PROJECTS_LIST_ARRAY = [
-  // 3D Web Applications
+
   {
     id: "webapp01",
     title: "Portfolio Website",
@@ -93,6 +93,14 @@ const PROJECTS_LIST_ARRAY = [
     hashTags: "#Three.js #WebGL #React #Blender",
     imageUrl: OBJECRotterdam2024Thumbnail,
     projectPageUrl: "/object-rotterdam-2024",
+  },
+  {
+    id: "design02",
+    title: "Beauty of Time Passing",
+    tagLine: "A living canvas of digital nature",
+    hashTags: "#Wood #Glass #Houdini #Three.js #WebGL #React",
+    imageUrl: BeautyOfTimePassingThumbnail,
+    projectPageUrl: "/beauty-of-time-passing",
   },
   {
     id: "webapp03",
@@ -119,7 +127,7 @@ const PROJECTS_LIST_ARRAY = [
     projectPageUrl: "/marble-race",
   },
 
-  // Design Projects
+
   {
     id: "design01",
     title: "3D Visuals",
@@ -127,14 +135,6 @@ const PROJECTS_LIST_ARRAY = [
     hashTags: "#Blender #UE5 #Houdini",
     imageUrl: ThreeDVisualThumbnail,
     projectPageUrl: "/three-d-visuals",
-  },
-  {
-    id: "design02",
-    title: "Beauty of Time Passing",
-    tagLine: "A living canvas of digital nature",
-    hashTags: "#Wood #Glass #Houdini #Three.js #WebGL #React",
-    imageUrl: BeautyOfTimePassingThumbnail,
-    projectPageUrl: "/beauty-of-time-passing",
   },
   {
     id: "design03",
