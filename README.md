@@ -12,7 +12,7 @@ This is my **interactive 3D portfolio website**, designed as a **first-person ex
 
 - 🌐 **Built with:** Three.js, React Three Fiber, WebGL, GLSL
 - 🎮 **Features:** Real-time physics, optimized 3D models, smooth camera interactions
-- 🏆 **Recognition:** _FWA Of The Day (March 2025), CSS Design Award Nominee_
+- 🏆 **Recognition:** _FWA Of The Day (March 2025), CSSDA Website of the Day (March 2025)_
 
 ![GIT Preview](/public/videos/portfolio-website/portfolio-website-preview.gif)
 
