@@ -69,7 +69,7 @@ _(Runs on `localhost:3000` by default.)_
 ## 🏆 Recognition & Awards
 
 - 🏅 **FWA Of The Day (March 2025)**
-- 🏅 **CSS Design Awards – Public Vote Nominee**
+- 🏅 **CSSDA Website of the Day (March 2025)**
 
 ---
 
