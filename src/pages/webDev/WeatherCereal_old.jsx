@@ -134,18 +134,17 @@ export default function WeatherCerealPage() {
             <div className="flex flex-col xl:flex-row">
               <div className="flex-none w-auto xl:w-[350px]">
                 <p className="mb-[4px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
-                  2025
+                  2024
                 </p>
                 <div>
                   <p className="mb-[20px] xl:mb-[26px] text-[14px] xl:text-[24px] text-[#C1C1C1]">
-                  UX/UI Design
-                    <br /> + 3D Modeling
+                    3D Design
                     <br /> + Web Development
                   </p>
                   <button
                     className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
                     onClick={() =>
-                      window.open("https://weather-cereal.vercel.app/")
+                      window.open("https://weather-3d-forecast.vercel.app/")
                     }
                   >
                     <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
