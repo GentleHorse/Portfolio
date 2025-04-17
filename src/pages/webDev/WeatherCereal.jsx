@@ -3,6 +3,8 @@ import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 
 import "lenis/dist/lenis.css";
@@ -21,12 +23,13 @@ const IMAGES_ARRAY = [
   WeatherCerealImage01,
   WeatherCerealImage02,
   WeatherCerealImage03,
-  WeatherCerealImage04
+  WeatherCerealImage04,
 ];
 
 const VIDEOS_ARRAY = [WeatherCerealVideo01];
 
 export default function WeatherCerealPage() {
+  
   /**
    * IMAGES ARRAY
    */
@@ -155,16 +158,28 @@ export default function WeatherCerealPage() {
                     <br /> + 3D Modeling
                     <br /> + Web Development
                   </p>
-                  <button
-                    className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
-                    onClick={() =>
-                      window.open("https://weather-cereal.vercel.app/")
-                    }
-                  >
-                    <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                      Launch Project
-                    </p>
-                  </button>
+                  <div className="mt-0 xl:mt-10 mb-10 xl:mb-16 flex flex-row items-center gap-4">
+                    <button
+                      className="border-2 rounded-xl hover:bg-[#C1C1C1]"
+                      onClick={() =>
+                        window.open("https://weather-cereal.vercel.app/")
+                      }
+                    >
+                      <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                        Launch Project
+                      </p>
+                    </button>
+                    <a
+                      href="https://github.com/GentleHorse/WeatherCereal"
+                      target="_blank"
+                      className="focus:outline-none" // Remove outline of the default focus
+                    >
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -188,7 +203,7 @@ export default function WeatherCerealPage() {
           <section className="mt-[87px]">
             <img
               src={WeatherCerealImage01}
-              className="w-full h-[270px] xl:h-[720px] object-cover"
+              className="w-full h-[120px] xl:h-[420px] object-cover"
             />
           </section>
 
@@ -252,11 +267,14 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
-            <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
-            />
+          {/* <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
+            <div>
+              <img
+                src={WeatherCerealImage01}
+                className="hidden-element w-[450px] h-auto object-cover"
+              />
+            </div>
+
             <img
               src={WeatherCerealImage01}
               className="hidden-element w-[450px] h-auto object-cover"
@@ -272,7 +290,7 @@ export default function WeatherCerealPage() {
               src={WeatherCerealImage01}
               className="hidden-element w-[450px] h-auto object-cover"
             />
-          </section>
+          </section> */}
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
@@ -338,7 +356,7 @@ export default function WeatherCerealPage() {
             </div>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
+          {/* <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
             <img
               src={WeatherCerealImage01}
               className="hidden-element w-[450px] h-auto object-cover"
@@ -347,7 +365,7 @@ export default function WeatherCerealPage() {
               src={WeatherCerealImage01}
               className="hidden-element w-[450px] h-auto object-cover"
             />
-          </section>
+          </section> */}
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">

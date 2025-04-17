@@ -3,6 +3,8 @@ import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 
 import "lenis/dist/lenis.css";
@@ -206,16 +208,28 @@ export default function PortfolioWebsitePage() {
                     <br /> + 3D Modeling
                     <br /> + Web Development
                   </p>
-                  <button
-                    className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
-                    onClick={() =>
-                      window.location.replace("https://toshihito-endo.com/")
-                    }
-                  >
-                    <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                      Launch Project
-                    </p>
-                  </button>
+                  <div className="mt-0 xl:mt-10 mb-10 xl:mb-16 flex flex-row items-center gap-4">
+                    <button
+                      className="border-2 rounded-xl hover:bg-[#C1C1C1]"
+                      onClick={() =>
+                        window.location.replace("https://toshihito-endo.com/")
+                      }
+                    >
+                      <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                        Launch Project
+                      </p>
+                    </button>
+                    <a
+                      href="https://github.com/GentleHorse/Portfolio"
+                      target="_blank"
+                      className="focus:outline-none" // Remove outline of the default focus
+                    >
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="text-[40px] xl:text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
 
