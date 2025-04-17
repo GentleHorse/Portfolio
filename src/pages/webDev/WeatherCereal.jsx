@@ -8,52 +8,23 @@ import SectionIndicator from "../../components/sectionIndicator/SectionIndicator
 import "lenis/dist/lenis.css";
 
 import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
-import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-07.jpg";
+import ObjectRotterdam2024HeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
 
-import ObjectRotterdamImage01 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-01.jpg";
-import ObjectRotterdamImage02 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-02.jpg";
-import ObjectRotterdamImage03 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-03.jpg";
-import ObjectRotterdamImage04 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-04.jpg";
-import ObjectRotterdamImage05 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-05.jpg";
-import ObjectRotterdamImage06 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-06.jpg";
-import ObjectRotterdamImage07 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-07.jpg";
-import ObjectRotterdamImage08 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-08.jpg";
-import ObjectRotterdamImage09 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-09.jpg";
-import ObjectRotterdamImage10 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-10.jpg";
-import ObjectRotterdamImage11 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-11.jpg";
-import ObjectRotterdamImage12 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-12.jpg";
-import ObjectRotterdamImage13 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-13.jpg";
-import ObjectRotterdamImage14 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-14.jpg";
-import ObjectRotterdamImage15 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-15.jpg";
-import ObjectRotterdamImage16 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-16.jpg";
-import ObjectRotterdamImage17 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-17.jpg";
-import ObjectRotterdamImage18 from "../../../public/images/app-developments/object-rotterdam/object-rotterdam-image-18.jpg";
+import WeatherCerealImage01 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-01.jpg";
+import WeatherCerealImage02 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-02.jpg";
+import WeatherCerealImage03 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-03.jpg";
+import WeatherCerealImage04 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-04.jpg";
 
-import ObjectRotterdamVideo01 from "../../../public/videos/object-rotterdam/object-rotterdam-01.mp4";
-import ObjectRotterdamVideo02 from "../../../public/videos/object-rotterdam/object-rotterdam-02.mp4";
+import WeatherCerealVideo01 from "../../../public/videos/weather-cereal/weather-cereal-01.mp4";
 
 const IMAGES_ARRAY = [
-  ObjectRotterdamImage01,
-  ObjectRotterdamImage02,
-  ObjectRotterdamImage03,
-  ObjectRotterdamImage04,
-  ObjectRotterdamImage05,
-  ObjectRotterdamImage06,
-  ObjectRotterdamImage07,
-  ObjectRotterdamImage08,
-  ObjectRotterdamImage09,
-  ObjectRotterdamImage10,
-  ObjectRotterdamImage11,
-  ObjectRotterdamImage12,
-  ObjectRotterdamImage13,
-  ObjectRotterdamImage14,
-  ObjectRotterdamImage15,
-  ObjectRotterdamImage16,
-  ObjectRotterdamImage17,
-  ObjectRotterdamImage18,
+  WeatherCerealImage01,
+  WeatherCerealImage02,
+  WeatherCerealImage03,
+  WeatherCerealImage04
 ];
 
-const VIDEOS_ARRAY = [ObjectRotterdamVideo01, ObjectRotterdamVideo02];
+const VIDEOS_ARRAY = [WeatherCerealVideo01];
 
 export default function WeatherCerealPage() {
   /**
@@ -161,7 +132,10 @@ export default function WeatherCerealPage() {
         <div id="page">
           {/* ----- INTRO ----- */}
 
-          <section className="py-[76px] xl:pt-[148px] mx-[10vw] xl:mx-[240px]">
+          <section
+            name="intro"
+            className="py-[76px] xl:pt-[148px] mx-[10vw] xl:mx-[240px]"
+          >
             <h1 className="project-title mb-[21px] xl:mb-[42px] font-serif text-[36px] xl:text-[72px] text-[#C1C1C1]">
               Weather Cereal
             </h1>
@@ -195,24 +169,25 @@ export default function WeatherCerealPage() {
               </div>
 
               <p className="mb-[36px] xl:mb-[72px] xl:grow text-[18px] xl:text-[28px] text-[#C1C1C1]">
-                "Weather Cereal" is a 3D web application that presents a 7-day
-                weather forecast in the style of a morning newspaper, complete
-                with an animated cereal bowl beside it, recreating a familiar
-                breakfast scene with a bit of joke.
+                Though brief, checking the weather each morning deeply
+                influences one’s mood. "Weather Cereal" turns that habit into a
+                calming experience with tranquil 3D scenes and gentle sounds
+                inspired by Japanese zen gardens, aiming to elevate emotional
+                well-being alongside providing practical weather updates.
               </p>
             </div>
             <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
-              <p className="text-[14px] text-[#C1C1C1]">#weather forecast</p>
+              <p className="text-[14px] text-[#C1C1C1]">#mindful mornings</p>
               <p className="text-[14px] text-[#C1C1C1]">
-                #nostalgia of old style
+                #daily tranquil ritual
               </p>
-              <p className="text-[14px] text-[#C1C1C1]">#a joke to spark</p>
+              <p className="text-[14px] text-[#C1C1C1]">#mood by design</p>
             </div>
           </section>
 
           <section className="mt-[87px]">
             <img
-              src={ObjectRotterdamImage01}
+              src={WeatherCerealImage01}
               className="w-full h-[270px] xl:h-[720px] object-cover"
             />
           </section>
@@ -227,18 +202,17 @@ export default function WeatherCerealPage() {
               CHALLENGE
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              3D scene for "sitting, thinking, and working together"
+              Turning Forecasts into Feelings
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              The designer consistently notices a gap between off-site planning
-              and the on-site experience of exhibitions and commercial events.
-              While reproducing spaces using 3D software is a common solution,
-              it can often feel overwhelming and discourage usage. By utilising
-              WebGL and web-based technologies, he envisions creating 3D scenes
-              that are more interactive, engaging, and accessible. This approach
-              not only bridges the gap between virtual and real spaces but also
-              fosters remote collaboration, encouraging people to "sit, think,
-              and work together" easily, whether with or without 3D backgrounds.
+              The key challenge lies in lifting the user’s mood within just
+              20–60 seconds—the typical time people spend checking the weather.
+              While offering clear, stress-free forecasts, "Weather Cereal"
+              enhances this micro-moment with cinematic, data-driven 3D visuals,
+              minimalist mobile-first UI, and gentle motion paired with nature
+              sounds. Together, these elements create a calming yet energizing
+              experience that subtly shifts the user's emotional state toward a
+              more positive, vibrant start to their day.
             </p>
           </section>
 
@@ -251,7 +225,7 @@ export default function WeatherCerealPage() {
                 muted
                 playsInline
               >
-                <source src={ObjectRotterdamVideo01} type="video/mp4" />
+                <source src={WeatherCerealVideo01} type="video/mp4" />
               </video>
             </div>
           </section>
@@ -266,63 +240,56 @@ export default function WeatherCerealPage() {
               APPROACH
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              Detailed but optimised reproduction
+              Zen garden mood enhanced by “komorebi” effects
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              This 3D application was developed to aid in planning a shared
-              exhibition space for participants, including the designer. It
-              needed to be tangible and precise to provide a “sense of the
-              actual site.” The exhibition space and participants' artworks were
-              faithfully recreated using 3D software, with item dimensions
-              accurately reflecting real-world measurements. Afterward, the
-              models were optimised for the web environment to ensure smooth
-              performance without compromising visual fidelity, allowing
-              participants to experience a realistic and detailed preview of the
-              exhibition.
+              Nature is the heart of this weather app, designed to create a
+              calming yet subtly energizing visual experience. Inspired by
+              Japanese zen gardens—miniature landscapes of stylized nature—the
+              scene brings serenity into users’ hands. To deepen the tranquil
+              atmosphere, soft dappled light known as komorebi is projected,
+              evoking the peaceful feeling of sunlight filtering through leaves.
             </p>
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-10">
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
             <img
-              src={ObjectRotterdamImage02}
-              className="hidden-element w-full h-auto object-cover"
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
             />
             <img
-              src={ObjectRotterdamImage03}
-              className="hidden-element w-full h-auto object-cover"
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
+            />
+          </section>
+
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
+            <img
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
             />
             <img
-              src={ObjectRotterdamImage04}
-              className="hidden-element w-full h-auto object-cover"
-            />
-            <img
-              src={ObjectRotterdamImage05}
-              className="hidden-element w-full h-auto object-cover"
-            />
-            <img
-              src={ObjectRotterdamImage06}
-              className="hidden-element w-full h-auto object-cover"
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
             />
           </section>
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              Speed up communication, involve participants
+              Slow animations create a relaxed interaction rhythm
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              One drawback of relying solely on 3D-rendered images for planning
-              is the time it takes to communicate between 3D visualizers and
-              those less familiar with creating 3D spaces. To address this, the
-              web application allows participants to freely adjust compositions
-              and layouts of art and design items, enabling them to test floor
-              plans in real-time. This approach streamlines the process while
-              preserving the “sense of the actual site,” encouraging interactive
-              and collaborative experimentation.
+              Every motion is carefully designed to slow the pace and evoke
+              calm. Weather icons fall lightly, and petals rotate and drift
+              gently, like floating in a breeze. These slow movements help shape
+              a peaceful rhythm. The depth of field effect further enhances this
+              softness, drawing attention to key elements while maintaining an
+              overall sense of visual tranquility.
             </p>
           </section>
 
-          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px]">
-            <div className="mx-auto w-[70%]">
+          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly">
+            <div className="mx-auto w-[40%]">
               <video
                 className="hidden-element grid-images w-full object-cover"
                 autoPlay
@@ -330,66 +297,85 @@ export default function WeatherCerealPage() {
                 muted
                 playsInline
               >
-                <source src={ObjectRotterdamVideo02} type="video/mp4" />
+                <source src={WeatherCerealVideo01} type="video/mp4" />
+              </video>
+            </div>
+            <div className="mx-auto w-[40%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={WeatherCerealVideo01} type="video/mp4" />
               </video>
             </div>
           </section>
 
-          <section className="mt-[120px] mx-[10vw] xl:mx-[240px] flex flex-col gap-32">
+          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly">
+            <div className="mx-auto w-[40%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={WeatherCerealVideo01} type="video/mp4" />
+              </video>
+            </div>
+            <div className="mx-auto w-[40%]">
+              <video
+                className="hidden-element grid-images w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={WeatherCerealVideo01} type="video/mp4" />
+              </video>
+            </div>
+          </section>
+
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
             <img
-              src={ObjectRotterdamImage07}
-              className="hidden-element w-full h-auto object-cover"
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
             />
             <img
-              src={ObjectRotterdamImage08}
-              className="hidden-element w-full h-auto object-cover"
+              src={WeatherCerealImage01}
+              className="hidden-element w-[450px] h-auto object-cover"
             />
           </section>
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              Immersive 3D digital documentation
+              Layered nature sounds add depth to weather app experience
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              Each time he participates in exhibitions, he captures images and
-              videos to document the experience. This serves two purposes:
-              sharing the event with those unable to attend and gathering
-              inspiration for future projects. However, he often finds that
-              traditional documentation lacks the depth, mood, and atmosphere of
-              the actual space. This realisation motivated him to develop a 3D
-              explorable digital reproduction, allowing for a more immersive and
-              accurate representation of the exhibition space, based on his
-              visual records.
+              The app uses weather-based audio to deepen sensory engagement.
+              Natural sounds—such as wind, birds, and streams—are layered and
+              adjusted based on real-time data. Shared base layers ensure
+              consistency across scenes, while unique additions highlight
+              changing weather. This approach strengthens the connection between
+              sound and visuals, enriching the zen garden atmosphere with subtle
+              emotional cues.
             </p>
           </section>
 
-          <section className="mt-[120px] mb-[120px] w-[100vw]">
-            <div className="grid grid-cols-2 grid-rows-3 gap-0">
-              <img
-                src={ObjectRotterdamImage09}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-              <img
-                src={ObjectRotterdamImage10}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-              <img
-                src={ObjectRotterdamImage11}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-              <img
-                src={ObjectRotterdamImage12}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-              <img
-                src={ObjectRotterdamImage13}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-              <img
-                src={ObjectRotterdamImage14}
-                className="hidden-element grid-images object-cover h-[140px] xl:h-full"
-              />
-            </div>
+          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+            <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+              Cohesive icons used across forecast and UI elements
+            </p>
+            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              Clear, quick visual communication is key, so custom icons are used
+              throughout to avoid visual noise and maintain calmness. A cohesive
+              style spans 3D scenes, forecast data, and loading states. For
+              precipitation, the app uses nine distinct levels with custom
+              icons—moving beyond graphs—to help users better anticipate and
+              prepare for varying weather conditions.
+            </p>
           </section>
 
           {/* ----- OUTCOME ----- */}
@@ -402,17 +388,40 @@ export default function WeatherCerealPage() {
               OUTCOME
             </p>
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
-              One for floor planning, one for digital archiving
+              Weather data driven 3D scenes and soundscapes
             </p>
             <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
-              The designer ended up creating two applications. One facilitates
-              collaboration with two other designers, enabling discussions on
-              sharing and designing the exhibition space. The second app serves
-              to archive the exhibition in 3D, capturing its layout while adding
-              mood and atmosphere, preserving the experience beyond the event
-              itself.
+              The app retrieves weather data via OpenWeatherMap API to create
+              atmospheric 3D scenes, enriched with ambient audio that reflects
+              the current weather.
             </p>
+          </section>
 
+          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+            <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+              Geo-based auto location + global search support
+            </p>
+            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              To enhance everyday usability, the app automatically detects the
+              user’s location via geolocation. For added flexibility, users can
+              also manually enter any city name to check weather conditions
+              globally, making the experience both convenient and customizable.
+            </p>
+          </section>
+
+          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+            <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
+              48 hours weather & precipitation forecast
+            </p>
+            <p className="hidden-element mb-[18px] xl:mb-[125px] text-[16px] xl:text-[22px] text-[#C1C1C1]">
+              One of the app’s core functions is its 48-hour forecast. Users
+              access it easily by tapping an icon. To enhance the experience, a
+              scroll-based 3D weather animation adds a subtle but fun layer to
+              user interaction.
+            </p>
+          </section>
+
+          <section className="pt-[48px] mx-[10vw] xl:mx-[240px]">
             <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-start gap-10 xl:gap-4">
               <button
                 onClick={() =>
@@ -422,66 +431,29 @@ export default function WeatherCerealPage() {
                 }
               >
                 <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                  Launch "Floor Planning"
-                </p>
-              </button>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://object-rotterdam-2024-digital-archive.vercel.app/"
-                  )
-                }
-              >
-                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                  Launch "Digital Archive"
+                  Launch Project
                 </p>
               </button>
             </div>
           </section>
 
-          {!!isBrowser && (
-            <section className="mt-[87px] w-[100vw]">
-              <img
-                src={ObjectRotterdamImage15}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={ObjectRotterdamImage16}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={ObjectRotterdamImage17}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-              <img
-                src={ObjectRotterdamImage18}
-                className="sticky top-0 w-full h-auto object-cover"
-              />
-            </section>
-          )}
+          {/* ----- BONUS ----- */}
 
-          {!!isMobile && (
-            <>
-              <section className="mt-[87px] mx-[10vw] flex flex-col gap-12">
-                <img
-                  src={ObjectRotterdamImage15}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={ObjectRotterdamImage16}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={ObjectRotterdamImage17}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-                <img
-                  src={ObjectRotterdamImage18}
-                  className="hidden-element w-full h-auto object-cover"
-                />
-              </section>
-            </>
-          )}
+          <section
+            name="bonus"
+            className="relative overflow-hidden mt-[96px] xl:mt-[240px] mb-[18px] xl:mb-[64px] mx-[10vw] xl:mx-[240px] p-[64px] bg-[url(/images/app-developments/weather-cereal/weather-cereal-image-01.jpg)] bg-fill bg-center rounded-lg"
+          >
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+            <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-white">
+              WHY "WEATHER CEREAL"?
+            </p>
+            <p className="hidden-element text-[16px] xl:text-[22px] text-white/75">
+              Why Weather Cereal? Because mornings are rituals — and just like
+              cereal gives your body energy, this app gives your brain a gentle
+              boost through visuals, sounds, and weather. It’s a playful way to
+              say “start your day with nature.”
+            </p>
+          </section>
 
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
@@ -493,12 +465,12 @@ export default function WeatherCerealPage() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/nul-zes-crafted-de-markt"
+              to="/object-rotterdam-2024"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={NulZesCraftedDeMarktHeroImage}
+                src={ObjectRotterdam2024HeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 

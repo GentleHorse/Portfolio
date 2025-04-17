@@ -7,7 +7,7 @@ import { isBrowser, isMobile } from "react-device-detect";
 import "lenis/dist/lenis.css";
 
 import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-08.jpg";
-import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
+import MarbleOnARollHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
 
 import NulZesCraftedDeMarktImage01 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-01.jpg";
 import NulZesCraftedDeMarktImage02 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-02.jpg";
@@ -242,12 +242,12 @@ export default function NulZesCraftedDeMarktPage() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/weather-cereal"
+              to="/marble-race"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={WeatherCerealHeroImage}
+                src={MarbleOnARollHeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 
