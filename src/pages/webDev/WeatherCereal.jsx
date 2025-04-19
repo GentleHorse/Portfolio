@@ -6,6 +6,7 @@ import { isBrowser, isMobile } from "react-device-detect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
+import SoundLayerUI from "../../components/utilComponents/SoundLayerUI.jsx";
 
 import "lenis/dist/lenis.css";
 
@@ -16,20 +17,209 @@ import WeatherCerealImage01 from "../../../public/images/app-developments/weathe
 import WeatherCerealImage02 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-02.jpg";
 import WeatherCerealImage03 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-03.jpg";
 import WeatherCerealImage04 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-04.jpg";
+import WeatherCerealImage05 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-05.jpg";
 
 import WeatherCerealVideo01 from "../../../public/videos/weather-cereal/weather-cereal-01.mp4";
+import WeatherCerealVideo02 from "../../../public/videos/weather-cereal/weather-cereal-02.mp4";
 
 const IMAGES_ARRAY = [
   WeatherCerealImage01,
   WeatherCerealImage02,
   WeatherCerealImage03,
   WeatherCerealImage04,
+  WeatherCerealImage05,
 ];
 
-const VIDEOS_ARRAY = [WeatherCerealVideo01];
+const VIDEOS_ARRAY = [WeatherCerealVideo01, WeatherCerealVideo02];
+
+const WEATHER_SOUNDS_SOURCE_ARRAY_OBJ = {
+  clear: [
+    {
+      id: "clear-01",
+      audioName: "Waterfall",
+      audioURL: "/sounds/weather/clear/waterfall.mp3",
+    },
+    {
+      id: "clear-02",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/clear/wind-soft.mp3",
+    },
+    {
+      id: "clear-03",
+      audioName: "Leaves",
+      audioURL: "/sounds/weather/clear/leaves.mp3",
+    },
+    {
+      id: "clear-04",
+      audioName: "Birds (dawn chorus)",
+      audioURL: "/sounds/weather/clear/birds-dawn-chorus.mp3",
+    },
+    {
+      id: "clear-05",
+      audioName: "Stream",
+      audioURL: "/sounds/weather/clear/stream.mp3",
+    },
+  ],
+  clouds: [
+    {
+      id: "clouds-01",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/clouds/wind-soft.mp3",
+    },
+    {
+      id: "clouds-02",
+      audioName: "Leaves",
+      audioURL: "/sounds/weather/clouds/leaves.mp3",
+    },
+    {
+      id: "clouds-03",
+      audioName: "Birds (raven)",
+      audioURL: "/sounds/weather/clouds/birds-raven.mp3",
+    },
+    {
+      id: "clouds-04",
+      audioName: "Stream",
+      audioURL: "/sounds/weather/clouds/stream.mp3",
+    },
+  ],
+  rain: [
+    {
+      id: "rain-01",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/rain/wind-soft.mp3",
+    },
+    {
+      id: "rain-02",
+      audioName: "Dripping rain",
+      audioURL: "/sounds/weather/rain/dripping-rain.mp3",
+    },
+    {
+      id: "rain-03",
+      audioName: "Rainfall (light)",
+      audioURL: "/sounds/weather/rain/rainfall-light.mp3",
+    },
+    {
+      id: "rain-04",
+      audioName: "Rainfall (heavy)",
+      audioURL: "/sounds/weather/rain/rainfall-heavy.mp3",
+    },
+  ],
+  drizzle: [
+    {
+      id: "drizzle-01",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/drizzle/wind-soft.mp3",
+    },
+    {
+      id: "drizzle-02",
+      audioName: "Leaves",
+      audioURL: "/sounds/weather/drizzle/leaves.mp3",
+    },
+    {
+      id: "drizzle-03",
+      audioName: "Stream",
+      audioURL: "/sounds/weather/drizzle/stream.mp3",
+    },
+    {
+      id: "drizzle-04",
+      audioName: "Dripping rain",
+      audioURL: "/sounds/weather/drizzle/dripping-rain.mp3",
+    },
+    {
+      id: "drizzle-05",
+      audioName: "Rainfall (light)",
+      audioURL: "/sounds/weather/drizzle/rainfall-light.mp3",
+    },
+    {
+      id: "drizzle-06",
+      audioName: "Rainfall (medium)",
+      audioURL: "/sounds/weather/drizzle/rainfall-medium.mp3",
+    },
+  ],
+  thunderstorm: [
+    {
+      id: "thunderstorm-01",
+      audioName: "Waterfall",
+      audioURL: "/sounds/weather/thunderstorm/waterfall.mp3",
+    },
+    {
+      id: "thunderstorm-02",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/thunderstorm/wind-soft.mp3",
+    },
+    {
+      id: "thunderstorm-03",
+      audioName: "Stream",
+      audioURL: "/sounds/weather/thunderstorm/stream.mp3",
+    },
+    {
+      id: "thunderstorm-04",
+      audioName: "Rainfall (heavy)",
+      audioURL: "/sounds/weather/thunderstorm/rainfall-heavy.mp3",
+    },
+    {
+      id: "thunderstorm-05",
+      audioName: "Thunder rumbles",
+      audioURL: "/sounds/weather/thunderstorm/thunder-rumbles.mp3",
+    },
+  ],
+  snow: [
+    {
+      id: "snow-01",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/snow/wind-soft.mp3",
+    },
+    {
+      id: "snow-02",
+      audioName: "Wind (hard)",
+      audioURL: "/sounds/weather/snow/wind-hard.mp3",
+    },
+    {
+      id: "snow-03",
+      audioName: "Frost cracking",
+      audioURL: "/sounds/weather/snow/frost-cracking.mp3",
+    },
+    {
+      id: "snow-04",
+      audioName: "Crunching snow",
+      audioURL: "/sounds/weather/snow/crunching-snow.mp3",
+    },
+    {
+      id: "snow-05",
+      audioName: "Wind chimes",
+      audioURL: "/sounds/weather/snow/wind-chimes.mp3",
+    },
+  ],
+  mist: [
+    {
+      id: "mist-01",
+      audioName: "Wind (soft)",
+      audioURL: "/sounds/weather/mist/wind-soft.mp3",
+    },
+    {
+      id: "mist-02",
+      audioName: "Wind (deep)",
+      audioURL: "/sounds/weather/mist/wind-deep.mp3",
+    },
+    {
+      id: "mist-03",
+      audioName: "Leaves",
+      audioURL: "/sounds/weather/mist/leaves.mp3",
+    },
+    {
+      id: "mist-04",
+      audioName: "Birds (owl)",
+      audioURL: "/sounds/weather/mist/birds-owl.mp3",
+    },
+    {
+      id: "mist-05",
+      audioName: "Birds (raven)",
+      audioURL: "/sounds/weather/mist/birds-raven.mp3",
+    },
+  ],
+};
 
 export default function WeatherCerealPage() {
-  
   /**
    * IMAGES ARRAY
    */
@@ -267,30 +457,27 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
-          {/* <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
-            <div>
-              <img
-                src={WeatherCerealImage01}
-                className="hidden-element w-[450px] h-auto object-cover"
-              />
-            </div>
-
+          <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-10">
             <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
+              src={WeatherCerealImage02}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={WeatherCerealImage03}
+              className="hidden-element w-full h-auto object-cover"
             />
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] grid grid-cols-2 gap-10">
             <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
+              src={WeatherCerealImage04}
+              className="hidden-element w-full h-auto object-cover"
             />
             <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
+              src={WeatherCerealImage05}
+              className="hidden-element w-full h-auto object-cover"
             />
-          </section> */}
+          </section>
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
@@ -306,8 +493,8 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
-          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly">
-            <div className="mx-auto w-[40%]">
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+            <div className="mx-auto w-[70%]">
               <video
                 className="hidden-element grid-images w-full object-cover"
                 autoPlay
@@ -315,57 +502,10 @@ export default function WeatherCerealPage() {
                 muted
                 playsInline
               >
-                <source src={WeatherCerealVideo01} type="video/mp4" />
-              </video>
-            </div>
-            <div className="mx-auto w-[40%]">
-              <video
-                className="hidden-element grid-images w-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source src={WeatherCerealVideo01} type="video/mp4" />
+                <source src={WeatherCerealVideo02} type="video/mp4" />
               </video>
             </div>
           </section>
-
-          <section className="mt-[80px] mb-[240px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly">
-            <div className="mx-auto w-[40%]">
-              <video
-                className="hidden-element grid-images w-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source src={WeatherCerealVideo01} type="video/mp4" />
-              </video>
-            </div>
-            <div className="mx-auto w-[40%]">
-              <video
-                className="hidden-element grid-images w-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source src={WeatherCerealVideo01} type="video/mp4" />
-              </video>
-            </div>
-          </section>
-
-          {/* <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-row justify-evenly gap-10">
-            <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
-            />
-            <img
-              src={WeatherCerealImage01}
-              className="hidden-element w-[450px] h-auto object-cover"
-            />
-          </section> */}
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
@@ -380,6 +520,37 @@ export default function WeatherCerealPage() {
               sound and visuals, enriching the zen garden atmosphere with subtle
               emotional cues.
             </p>
+          </section>
+
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-20">
+            <SoundLayerUI
+              title='Weather - "Clear"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.clear}
+            />
+            <SoundLayerUI
+              title='Weather - "Clouds"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.clouds}
+            />
+            <SoundLayerUI
+              title='Weather - "Rain"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.rain}
+            />
+            <SoundLayerUI
+              title='Weather - "Drizzle"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.drizzle}
+            />
+            <SoundLayerUI
+              title='Weather - "Thunderstorm"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.thunderstorm}
+            />
+            <SoundLayerUI
+              title='Weather - "Snow"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.snow}
+            />
+            <SoundLayerUI
+              title='Weather - "Mist"'
+              audioArray={WEATHER_SOUNDS_SOURCE_ARRAY_OBJ.mist}
+            />
           </section>
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
