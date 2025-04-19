@@ -18,9 +18,12 @@ import WeatherCerealImage02 from "../../../public/images/app-developments/weathe
 import WeatherCerealImage03 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-03.jpg";
 import WeatherCerealImage04 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-04.jpg";
 import WeatherCerealImage05 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-05.jpg";
+import WeatherCerealImage06 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-06.jpg";
+import WeatherCerealImage07 from "../../../public/images/app-developments/weather-cereal/weather-cereal-image-07.jpg";
 
 import WeatherCerealVideo01 from "../../../public/videos/weather-cereal/weather-cereal-01.mp4";
 import WeatherCerealVideo02 from "../../../public/videos/weather-cereal/weather-cereal-02.mp4";
+import WeatherCerealVideo03 from "../../../public/videos/weather-cereal/weather-cereal-03.mp4";
 
 const IMAGES_ARRAY = [
   WeatherCerealImage01,
@@ -28,9 +31,15 @@ const IMAGES_ARRAY = [
   WeatherCerealImage03,
   WeatherCerealImage04,
   WeatherCerealImage05,
+  WeatherCerealImage06,
+  WeatherCerealImage07,
 ];
 
-const VIDEOS_ARRAY = [WeatherCerealVideo01, WeatherCerealVideo02];
+const VIDEOS_ARRAY = [
+  WeatherCerealVideo01,
+  WeatherCerealVideo02,
+  WeatherCerealVideo03,
+];
 
 const WEATHER_SOUNDS_SOURCE_ARRAY_OBJ = {
   clear: [
@@ -335,7 +344,7 @@ export default function WeatherCerealPage() {
             <img
               src={WeatherCerealHeroImage}
               alt="Weather Cereal Hero Image"
-              className="mb-[25px] xl:mb-[70px] w-full h-[200px] xl:h-[500px] object-cover"
+              className="mb-[25px] xl:mb-[70px] w-full h-auto object-cover"
             />
             <div className="flex flex-col xl:flex-row">
               <div className="flex-none w-auto xl:w-[350px]">
@@ -401,7 +410,7 @@ export default function WeatherCerealPage() {
 
           <section
             name="challenge"
-            className="pt-[124px] mx-[10vw] xl:mx-[240px]"
+            className="pt-[124px] xl:pt-[240px] mx-[10vw] xl:mx-[240px]"
           >
             <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
               CHALLENGE
@@ -439,7 +448,7 @@ export default function WeatherCerealPage() {
 
           <section
             name="approach"
-            className="pt-[124px] mx-[10vw] xl:mx-[240px]"
+            className="pt-[124px] xl:pt-[240px] mx-[10vw] xl:mx-[240px]"
           >
             <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-[#C1C1C1]">
               APPROACH
@@ -479,7 +488,7 @@ export default function WeatherCerealPage() {
             />
           </section>
 
-          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+          <section className="pt-[124px] xl:pt-[240px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
               Slow animations create a relaxed interaction rhythm
             </p>
@@ -507,7 +516,7 @@ export default function WeatherCerealPage() {
             </div>
           </section>
 
-          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+          <section className="pt-[124px] xl:pt-[240px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
               Layered nature sounds add depth to weather app experience
             </p>
@@ -553,7 +562,7 @@ export default function WeatherCerealPage() {
             />
           </section>
 
-          <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
+          <section className="pt-[124px] xl:pt-[240px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
               Cohesive icons used across forecast and UI elements
             </p>
@@ -565,6 +574,26 @@ export default function WeatherCerealPage() {
               icons—moving beyond graphs—to help users better anticipate and
               prepare for varying weather conditions.
             </p>
+          </section>
+
+          <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-16 xl:gap-32">
+            <img
+              src={WeatherCerealImage06}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <img
+              src={WeatherCerealImage07}
+              className="hidden-element w-full h-auto object-cover"
+            />
+            <video
+              className="hidden-element grid-images w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={WeatherCerealVideo03} type="video/mp4" />
+            </video>
           </section>
 
           {/* ----- OUTCOME ----- */}
