@@ -340,11 +340,6 @@ export default function WeatherCerealPage() {
     });
   }, []);
 
-  /**
-   * Hover state
-   */
-  const [hover, setHover] = useState(false);
-
   return (
     <>
       <Header home about works contact />
@@ -452,7 +447,7 @@ export default function WeatherCerealPage() {
           </section>
 
           <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-            <div className="mx-auto w-[70%]">
+            <div className="mx-auto w-full xl:w-[70%]">
               <video
                 className="hidden-element grid-images w-full object-cover"
                 autoPlay
@@ -487,7 +482,7 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
-          <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-10">
+          <section className="mt-[42px] xl:mt-[87px] xl:mb-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-10">
             <img
               src={WeatherCerealImage02}
               className="hidden-element w-full h-auto object-cover"
@@ -498,7 +493,7 @@ export default function WeatherCerealPage() {
             />
           </section>
 
-          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] grid grid-cols-2 gap-10">
+          <section className="mt-[42px] xl:mt-[87px] mx-[10vw] xl:mx-[240px] grid grid-cols-2 xl:gap-10">
             <img
               src={WeatherCerealImage04}
               className="hidden-element w-full h-auto object-cover"
@@ -524,7 +519,7 @@ export default function WeatherCerealPage() {
           </section>
 
           <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
-            <div className="mx-auto w-[70%]">
+            <div className="mx-auto w-full xl:w-[70%]">
               <video
                 className="hidden-element grid-images w-full object-cover"
                 autoPlay
@@ -639,37 +634,37 @@ export default function WeatherCerealPage() {
           <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-24 xl:gap-48">
             <VideoPlayer
               title='Weather - "Clear"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/clear.jpg"
               videoSrc={WeatherCerealVideo04}
             />
             <VideoPlayer
               title='Weather - "Clouds"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/clouds.jpg"
               videoSrc={WeatherCerealVideo05}
             />
             <VideoPlayer
               title='Weather - "Rain"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/rain.jpg"
               videoSrc={WeatherCerealVideo06}
             />
             <VideoPlayer
               title='Weather - "Drizzle"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/drizzle.jpg"
               videoSrc={WeatherCerealVideo07}
             />
             <VideoPlayer
               title='Weather - "Thunderstorm"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/thunderstorm.jpg"
               videoSrc={WeatherCerealVideo08}
             />
             <VideoPlayer
               title='Weather - "Snow"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/snow.jpg"
               videoSrc={WeatherCerealVideo09}
             />
             <VideoPlayer
               title='Weather - "Mist"'
-              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
+              posterImgSrc="/videos/weather-cereal/poster/mist.jpg"
               videoSrc={WeatherCerealVideo10}
             />
           </section>
@@ -752,7 +747,7 @@ export default function WeatherCerealPage() {
 
           <section
             name="bonus"
-            className="relative overflow-hidden mt-[96px] xl:mt-[240px] mb-[18px] xl:mb-[64px] mx-[10vw] xl:mx-[240px] p-[64px] bg-[url(/images/app-developments/weather-cereal/weather-cereal-image-01.jpg)] bg-fill bg-center rounded-lg"
+            className="relative overflow-hidden mt-[96px] xl:mt-[240px] mb-[18px] xl:mb-[64px] mx-[10vw] xl:mx-[240px] p-[32px] xl:p-[64px] bg-[url(/images/app-developments/weather-cereal/weather-cereal-image-01.jpg)] bg-fill bg-center rounded-lg"
           >
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
             <p className="hidden-element mb-[8px] xl:mb-[18px] font-montserrat text-[10px] xl:text-[14px] text-white">
