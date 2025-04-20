@@ -3,6 +3,8 @@ import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 
 import "lenis/dist/lenis.css";
@@ -98,18 +100,18 @@ export default function ObjectRotterdam2024Page() {
     console.log("LoadedStauts: ", loadedStatus);
 
     // if (imagesArray.length === 18 && videosArray.length === 2) {
-      // Initialize Lenis
-      const lenis = new Lenis();
+    // Initialize Lenis
+    const lenis = new Lenis();
 
-      // Use requestAnimationFrame to continuously update the scroll
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
+    }
 
-      console.log(`Set Lenis`);
+    requestAnimationFrame(raf);
+
+    console.log(`Set Lenis`);
     // }
 
     return () => {
@@ -117,7 +119,7 @@ export default function ObjectRotterdam2024Page() {
       lenis.destroy();
 
       console.log("Reset and destroy Lenis");
-    }
+    };
   }, [imagesArray, videosArray]);
 
   /**
@@ -202,29 +204,54 @@ export default function ObjectRotterdam2024Page() {
               </p>
             </div>
 
-            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-start gap-10 xl:gap-4">
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://object-rotterdam-2024-floor-plan.vercel.app/"
-                  )
-                }
-              >
-                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                  Launch "Floor Planning"
-                </p>
-              </button>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://object-rotterdam-2024-digital-archive.vercel.app/"
-                  )
-                }
-              >
-                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                  Launch "Digital Archive"
-                </p>
-              </button>
+            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-center gap-10 xl:gap-12">
+              <div className="flex flex-row items-center gap-4">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://object-rotterdam-2024-floor-plan.vercel.app/"
+                    )
+                  }
+                >
+                  <p className="border-2 rounded-xl hover:bg-[#C1C1C1] text-center px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                    Launch "Floor Planning"
+                  </p>
+                </button>
+                <a
+                  href="https://github.com/GentleHorse/ObjectRotterdam2024FloorPlan"
+                  target="_blank"
+                  className="focus:outline-none" // Remove outline of the default focus
+                >
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                    className="text-[40px] xl:text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                  />
+                </a>
+              </div>
+
+              <div className="flex flex-row items-center gap-4">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://object-rotterdam-2024-digital-archive.vercel.app/"
+                    )
+                  }
+                >
+                  <p className="border-2 rounded-xl hover:bg-[#C1C1C1] text-center px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                    Launch "Digital Archive"
+                  </p>
+                </button>
+                <a
+                  href="https://github.com/GentleHorse/OBJECTRotterdam2024DitigalArchive"
+                  target="_blank"
+                  className="focus:outline-none" // Remove outline of the default focus
+                >
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                    className="text-[40px] xl:text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                  />
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">

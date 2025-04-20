@@ -3,11 +3,13 @@ import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import "lenis/dist/lenis.css";
 
 import NulZesCraftedDeMarktHeroImage from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-08.jpg";
-import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
+import MarbleOnARollHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-marble-on-a-roll.jpg";
 
 import NulZesCraftedDeMarktImage01 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-01.jpg";
 import NulZesCraftedDeMarktImage02 from "../../../public/images/app-developments/nul-zes-crafted-de-markt/nul-zes-crafted-de-markt-image-02.jpg";
@@ -146,7 +148,7 @@ export default function NulZesCraftedDeMarktPage() {
                     3D Design
                     <br /> + Web Development
                   </p>
-                  <button
+                  {/* <button
                     className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
                     onClick={() =>
                       window.open(
@@ -157,7 +159,31 @@ export default function NulZesCraftedDeMarktPage() {
                     <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
                       Launch Project
                     </p>
-                  </button>
+                  </button> */}
+                  <div className="mt-0 xl:mt-10 mb-10 xl:mb-16 flex flex-row items-center gap-4">
+                    <button
+                      className="border-2 rounded-xl hover:bg-[#C1C1C1]"
+                      onClick={() =>
+                        window.open(
+                          "https://nul-zes-crafted-de-markt-promo.vercel.app/"
+                        )
+                      }
+                    >
+                      <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                        Launch Project
+                      </p>
+                    </button>
+                    <a
+                      href="https://github.com/GentleHorse/CraftedDeMarkt_3DFlyer"
+                      target="_blank"
+                      className="focus:outline-none" // Remove outline of the default focus
+                    >
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="text-[40px] xl:text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -178,7 +204,6 @@ export default function NulZesCraftedDeMarktPage() {
             </div>
           </section>
 
-          
           <section className="mt-[120px] xl:mt-[240px] mb-[240px] xl:mb-[480px]">
             <div className="grid grid-cols-6 gap-0">
               <img
@@ -193,7 +218,7 @@ export default function NulZesCraftedDeMarktPage() {
                 src={NulZesCraftedDeMarktImage03}
                 className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
               />
-                            <img
+              <img
                 src={NulZesCraftedDeMarktImage04}
                 className="hidden-element grid-images object-cover h-[180px] xl:h-[420px]"
               />
@@ -231,7 +256,6 @@ export default function NulZesCraftedDeMarktPage() {
             </div>
           </section>
 
-
           {/* -------------- TO NEXT PROJECT FOOTER PART ------------ */}
 
           <section className="my-[84px] xl:my-[124px] mx-[5vw] xl:mx-[240px]">
@@ -242,12 +266,12 @@ export default function NulZesCraftedDeMarktPage() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/weather-cereal"
+              to="/marble-race"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={WeatherCerealHeroImage}
+                src={MarbleOnARollHeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 

@@ -88,6 +88,14 @@ const PROJECTS_LIST_ARRAY = [
   },
   {
     id: "webapp02",
+    title: "Weather Cereal",
+    tagLine: "Zen-inspired 3D weather app with ambient sound",
+    hashTags: "#Three.js #Rapier #WebGL #React #Next.js #Blender",
+    imageUrl: WeatherCerealThumbnail,
+    projectPageUrl: "/weather-cereal",
+  },
+  {
+    id: "webapp03",
     title: "OBJECT Rotterdam 2024",
     tagLine: "Seamless exhibition planning and documentation in a 3D space",
     hashTags: "#Three.js #WebGL #React #Blender",
@@ -103,20 +111,12 @@ const PROJECTS_LIST_ARRAY = [
     projectPageUrl: "/beauty-of-time-passing",
   },
   {
-    id: "webapp03",
+    id: "webapp04",
     title: "Crafted De Markt",
     tagLine: "A Playful 3D Flyer Showcasing Creative Products",
     hashTags: "#Three.js #WebGL #Shader #Blender",
     imageUrl: NulZesCraftedDeMarktThumbnail,
     projectPageUrl: "/nul-zes-crafted-de-markt",
-  },
-  {
-    id: "webapp04",
-    title: "Weather Cereal",
-    tagLine: "A 7-day forecast with a spoonful of humor",
-    hashTags: "#Three.js #Rapier #WebGL #React #Blender",
-    imageUrl: WeatherCerealThumbnail,
-    projectPageUrl: "/weather-cereal",
   },
   {
     id: "webapp05",

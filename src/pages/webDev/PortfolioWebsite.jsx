@@ -3,12 +3,14 @@ import Lenis from "lenis";
 import Header from "../../components/header/Header.jsx";
 import { Link } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 
 import "lenis/dist/lenis.css";
 
 import PortfolioWebsiteHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-portfolio-website.jpg";
-import ObjectRotterdam2024HeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-object-rotterdam-2024.jpg";
+import WeatherCerealHeroImage from "../../../public/images/app-developments/__thumbnail-images/thumbnail-weather-cereal.jpg";
 
 import PortfolioWebsiteImage01 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-01.jpg";
 import PortfolioWebsiteImage02 from "../../../public/images/app-developments/portfolio-website/portfolio-website-image-02.jpg";
@@ -206,16 +208,28 @@ export default function PortfolioWebsitePage() {
                     <br /> + 3D Modeling
                     <br /> + Web Development
                   </p>
-                  <button
-                    className="mt-0 xl:mt-10 mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
-                    onClick={() =>
-                      window.location.replace("https://toshihito-endo.com/")
-                    }
-                  >
-                    <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                      Launch Project
-                    </p>
-                  </button>
+                  <div className="mt-0 xl:mt-10 mb-10 xl:mb-16 flex flex-row items-center gap-4">
+                    <button
+                      className="border-2 rounded-xl hover:bg-[#C1C1C1]"
+                      onClick={() =>
+                        window.location.replace("https://toshihito-endo.com/")
+                      }
+                    >
+                      <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                        Launch Project
+                      </p>
+                    </button>
+                    <a
+                      href="https://github.com/GentleHorse/Portfolio"
+                      target="_blank"
+                      className="focus:outline-none" // Remove outline of the default focus
+                    >
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="text-[40px] xl:text-[45px] text-[#FFFFFF] hover:text-[#FFFFFF]/70"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -789,12 +803,12 @@ export default function PortfolioWebsitePage() {
 
           <section className="mt-0 xl:mt-[87px] mx-[5vw] xl:mx-[240px]">
             <Link
-              to="/object-rotterdam-2024"
+              to="/weather-cereal"
               className="relative w-full flex flex-col items-center"
               reloadDocument={true}
             >
               <img
-                src={ObjectRotterdam2024HeroImage}
+                src={WeatherCerealHeroImage}
                 className="w-3/5 xl:w-2/5 h-auto object-cover opacity-50"
               />
 
