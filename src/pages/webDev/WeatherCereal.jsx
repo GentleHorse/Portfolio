@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import SectionIndicator from "../../components/sectionIndicator/SectionIndicator.jsx";
 import SoundLayerUI from "../../components/utilComponents/SoundLayerUI.jsx";
+import VideoPlayer from "../../components/utilComponents/VideoPlayer.jsx";
 
 import "lenis/dist/lenis.css";
 
@@ -24,6 +25,16 @@ import WeatherCerealImage07 from "../../../public/images/app-developments/weathe
 import WeatherCerealVideo01 from "../../../public/videos/weather-cereal/weather-cereal-01.mp4";
 import WeatherCerealVideo02 from "../../../public/videos/weather-cereal/weather-cereal-02.mp4";
 import WeatherCerealVideo03 from "../../../public/videos/weather-cereal/weather-cereal-03.mp4";
+import WeatherCerealVideo04 from "../../../public/videos/weather-cereal/weather-cereal-04-clear.mp4";
+import WeatherCerealVideo05 from "../../../public/videos/weather-cereal/weather-cereal-05-clouds.mp4";
+import WeatherCerealVideo06 from "../../../public/videos/weather-cereal/weather-cereal-06-rain.mp4";
+import WeatherCerealVideo07 from "../../../public/videos/weather-cereal/weather-cereal-07-drizzle.mp4";
+import WeatherCerealVideo08 from "../../../public/videos/weather-cereal/weather-cereal-08-thunderstorm.mp4";
+import WeatherCerealVideo09 from "../../../public/videos/weather-cereal/weather-cereal-09-snow.mp4";
+import WeatherCerealVideo10 from "../../../public/videos/weather-cereal/weather-cereal-10-mist.mp4";
+import WeatherCerealVideo11 from "../../../public/videos/weather-cereal/weather-cereal-11.mp4";
+import WeatherCerealVideo12 from "../../../public/videos/weather-cereal/weather-cereal-12.mp4";
+import WeatherCerealVideo13 from "../../../public/videos/weather-cereal/weather-cereal-13.mp4";
 
 const IMAGES_ARRAY = [
   WeatherCerealImage01,
@@ -39,6 +50,16 @@ const VIDEOS_ARRAY = [
   WeatherCerealVideo01,
   WeatherCerealVideo02,
   WeatherCerealVideo03,
+  WeatherCerealVideo04,
+  WeatherCerealVideo05,
+  WeatherCerealVideo06,
+  WeatherCerealVideo07,
+  WeatherCerealVideo08,
+  WeatherCerealVideo09,
+  WeatherCerealVideo10,
+  WeatherCerealVideo11,
+  WeatherCerealVideo12,
+  WeatherCerealVideo13,
 ];
 
 const WEATHER_SOUNDS_SOURCE_ARRAY_OBJ = {
@@ -615,6 +636,37 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
+          <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-24 xl:gap-48">
+            <VideoPlayer
+              title='Weather - "Clear"'
+              videoSrc={WeatherCerealVideo04}
+            />
+            <VideoPlayer
+              title='Weather - "Clouds"'
+              videoSrc={WeatherCerealVideo05}
+            />
+            <VideoPlayer
+              title='Weather - "Rain"'
+              videoSrc={WeatherCerealVideo06}
+            />
+            <VideoPlayer
+              title='Weather - "Drizzle"'
+              videoSrc={WeatherCerealVideo07}
+            />
+            <VideoPlayer
+              title='Weather - "Thunderstorm"'
+              videoSrc={WeatherCerealVideo08}
+            />
+            <VideoPlayer
+              title='Weather - "Snow"'
+              videoSrc={WeatherCerealVideo09}
+            />
+            <VideoPlayer
+              title='Weather - "Mist"'
+              videoSrc={WeatherCerealVideo10}
+            />
+          </section>
+
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
             <p className="hidden-element mb-[24px] xl:mb-[45px] font-bold text-[18px] xl:text-[24px] text-[#C1C1C1]">
               Geo-based auto location + global search support
@@ -625,6 +677,29 @@ export default function WeatherCerealPage() {
               also manually enter any city name to check weather conditions
               globally, making the experience both convenient and customizable.
             </p>
+          </section>
+
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px] grid grid-rows-2 xl:grid-rows-1 grid-cols-1 xl:grid-cols-2 gap-10">
+            <video
+              className="mx-auto w-full xl:w-4/5 h-auto rounded-xl shadow-lg"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={WeatherCerealVideo11} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <video
+              className="mx-auto w-full xl:w-4/5 h-auto rounded-xl shadow-lg"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={WeatherCerealVideo12} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </section>
 
           <section className="pt-[124px] mx-[10vw] xl:mx-[240px]">
@@ -639,16 +714,29 @@ export default function WeatherCerealPage() {
             </p>
           </section>
 
-          <section className="pt-[48px] mx-[10vw] xl:mx-[240px]">
-            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 mr-10 flex flex-col xl:flex-row items-start gap-10 xl:gap-4">
+          <section className="mt-[87px] mx-[10vw] xl:mx-[240px]">
+            <video
+              className="mx-auto w-full xl:w-4/5 h-auto rounded-xl shadow-lg"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={WeatherCerealVideo13} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </section>
+
+          <section className="mt-[96px] xl:mt-[240px] mx-[10vw] xl:mx-[240px]">
+            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 flex flex-col items-center">
               <button
                 onClick={() =>
                   window.open(
-                    "https://object-rotterdam-2024-floor-plan.vercel.app/"
+                    "https://weather-cereal.vercel.app/"
                   )
                 }
               >
-                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center mr-4 my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
+                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
                   Launch Project
                 </p>
               </button>
