@@ -639,30 +639,37 @@ export default function WeatherCerealPage() {
           <section className="my-[87px] mx-[10vw] xl:mx-[240px] flex flex-col gap-24 xl:gap-48">
             <VideoPlayer
               title='Weather - "Clear"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo04}
             />
             <VideoPlayer
               title='Weather - "Clouds"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo05}
             />
             <VideoPlayer
               title='Weather - "Rain"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo06}
             />
             <VideoPlayer
               title='Weather - "Drizzle"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo07}
             />
             <VideoPlayer
               title='Weather - "Thunderstorm"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo08}
             />
             <VideoPlayer
               title='Weather - "Snow"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo09}
             />
             <VideoPlayer
               title='Weather - "Mist"'
+              posterImgSrc="/videos/weather-cereal/poster/poster.jpg"
               videoSrc={WeatherCerealVideo10}
             />
           </section>
@@ -731,9 +738,7 @@ export default function WeatherCerealPage() {
             <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 flex flex-col items-center">
               <button
                 onClick={() =>
-                  window.open(
-                    "https://weather-cereal.vercel.app/"
-                  )
+                  window.open("https://weather-cereal.vercel.app/")
                 }
               >
                 <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">

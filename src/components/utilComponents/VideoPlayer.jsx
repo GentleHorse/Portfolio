@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-export default function VideoPlayer({ title, videoSrc }) {
+export default function VideoPlayer({ title, videoSrc, posterImgSrc }) {
   const video = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -48,6 +48,8 @@ export default function VideoPlayer({ title, videoSrc }) {
           playsInline
           muted
           controls={false}
+          preload="metadata"
+          poster={posterImgSrc}
         >
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
