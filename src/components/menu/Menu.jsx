@@ -262,16 +262,16 @@ export default function Menu() {
         </section>
 
         {/* ABOUT ME */}
-        <div className="absolute bottom-12 right-20 xl:bottom-16 xl:right-24 w-[200px] h-[200px] xl:w-[250px] xl:h-[250px]">
+        <div className="absolute bottom-14 right-14 w-[200px] h-[200px]">
           <img src={selfPortraitImage} />
         </div>
 
         <Link
           to="/about"
           reloadDocument={true}
-          className="absolute bottom-12 right-20 xl:bottom-16 xl:right-24 w-[200px] h-[200px] xl:w-[250px] xl:h-[250px] flex flex-col justify-center hover:bg-[#FFFFFF70] z-10 rounded-full"
+          className="absolute bottom-14 right-14 w-[200px] h-[200px] flex flex-col justify-center hover:bg-[#FFFFFF70] z-10 rounded-full"
         >
-          <p className="h-full pt-[90px] xl:pt-[105px] font-permanent-marker text-[#D0104C] text-2xl xl:text-4xl text-center opacity-0 hover:opacity-100 z-20">
+          <p className="h-full pt-[90px] font-permanent-marker text-[#D0104C] text-2xl text-center opacity-0 hover:opacity-100 z-20">
             About me?
           </p>
         </Link>
