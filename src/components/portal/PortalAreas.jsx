@@ -142,7 +142,7 @@ export default function PortalAreas() {
         title="Weather Cereal"
         titleHeight={4.0}
         titleDistance={7.0}
-        text="3D interactive 7-day forcast"
+        text="Multisensory Zen Weather Forecast"
         message={"Set URL: Weather Cereal"}
         sound={softThickClick}
       />
