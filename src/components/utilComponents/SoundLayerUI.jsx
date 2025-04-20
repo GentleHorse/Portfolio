@@ -54,9 +54,11 @@ export default function SoundLayerUI({ title, audioArray }) {
                   src={
                     playingAudios.includes(index)
                       ? "/images/icons/white-square.svg"
-                      : "/images/icons/white-triangle-roate-90d.svg"
+                      : "/images/icons/white-triangle.svg"
                   }
-                  className="w-[25px] h-[25px]"
+                  className={`w-[25px] h-[25px] ${
+                    playingAudios.includes(index) ? "" : "rotate-90"
+                  }`}
                   alt={
                     playingAudios.includes(index) ? "stop icon" : "play icon"
                   }

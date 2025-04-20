@@ -70,9 +70,9 @@ export default function VideoPlayer({ title, videoSrc }) {
               src={
                 isPlaying
                   ? "/images/icons/white-square.svg"
-                  : "/images/icons/white-triangle-roate-90d.svg"
+                  : "/images/icons/white-triangle.svg"
               }
-              className="w-[50px] h-[50px]"
+              className={`w-[50px] h-[50px] ${isPlaying ? "" : "rotate-90"}`}
               alt={isPlaying ? "stop icon" : "play icon"}
             />
           </button>
@@ -94,9 +94,9 @@ export default function VideoPlayer({ title, videoSrc }) {
             src={
               isPlaying
                 ? "/images/icons/white-square.svg"
-                : "/images/icons/white-triangle-roate-90d.svg"
+                : "/images/icons/white-triangle.svg"
             }
-            className="w-[25px] h-[25px]"
+            className={`w-[25px] h-[25px] ${isPlaying ? "" : "rotate-90"}`}
             alt={isPlaying ? "stop icon" : "play icon"}
           />
         </button>
