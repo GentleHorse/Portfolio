@@ -729,18 +729,17 @@ export default function WeatherCerealPage() {
             </video>
           </section>
 
-          <section className="mt-[96px] xl:mt-[240px] mx-[10vw] xl:mx-[240px]">
-            <div className="mt-10 xl:mt-0 mb-16 xl:mb-24 flex flex-col items-center">
-              <button
-                onClick={() =>
-                  window.open("https://weather-cereal.vercel.app/")
-                }
-              >
-                <p className="inline border-2 rounded-xl hover:bg-[#C1C1C1] text-center my-2 px-6 py-4 font-light font-roboto text-[10px] xl:text-[15px] text-[#C1C1C1] hover:text-[#ffffff]">
-                  Launch Project
-                </p>
-              </button>
-            </div>
+          <section className="mt-[96px] xl:mt-[240px] mx-[10vw] xl:mx-[240px] flex flex-col">
+            <button
+              className="hidden-element mx-[10vw] xl:mx-[320px] mb-10 xl:mb-16 border-2 rounded-xl hover:bg-[#C1C1C1]"
+              onClick={() =>
+                window.location.replace("https://weather-cereal.vercel.app/")
+              }
+            >
+              <p className="text-center mx-4 my-2 xl:px-2 py-1 xl:py-2 font-light font-roboto text-[14px] xl:text-[20px] text-[#C1C1C1] hover:text-[#ffffff]">
+                Launch Project
+              </p>
+            </button>
           </section>
 
           {/* ----- BONUS ----- */}
