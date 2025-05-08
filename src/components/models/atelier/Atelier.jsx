@@ -182,14 +182,16 @@ export default function Atelier(props) {
    * MATERIAL | PC SCREENS
    */
   const pcScreenTop = useTexture("/textures/pc-screens/pc-screen-top.jpg");
-  pcScreenTop.flipY =false;
+  pcScreenTop.flipY = false;
   pcScreenTop.colorSpace = THREE.SRGBColorSpace;
   const pcScreenTopMaterial = new THREE.MeshBasicMaterial({
     map: pcScreenTop,
     toneMapped: false,
   });
-  const pcScreenBottom = useTexture("/textures/pc-screens/pc-screen-bottom.jpg");
-  pcScreenBottom.flipY =false;
+  const pcScreenBottom = useTexture(
+    "/textures/pc-screens/pc-screen-bottom.jpg"
+  );
+  pcScreenBottom.flipY = false;
   pcScreenBottom.colorSpace = THREE.SRGBColorSpace;
   const pcScreenBottomMaterial = new THREE.MeshBasicMaterial({
     map: pcScreenBottom,
@@ -420,6 +422,7 @@ export default function Atelier(props) {
 
       {/* ---------- !!! PASTE JSXTIFY CODE BELOW HERE !!! ---------- */}
 
+      {/* Work Area | Architecture */}
       <mesh
         name="atelier-wood-floor"
         geometry={nodes["atelier-wood-floor"].geometry}
@@ -462,6 +465,8 @@ export default function Atelier(props) {
         material={atelierMaterial}
         position={[1.205, 4.017, 0.513]}
       />
+
+      {/* Work Area | Objects */}
       <mesh
         name="coffee-cup001"
         geometry={nodes["coffee-cup001"].geometry}
